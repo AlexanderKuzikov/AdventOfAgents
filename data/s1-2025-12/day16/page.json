@@ -13,10 +13,10 @@
   "canonical_url": "https://adventofagents.com/2025/12/16",
   "video_id": "N25rAzQXkEA",
   "video_url": "https://www.youtube.com/watch?v=N25rAzQXkEA",
-  "video_title": "",
-  "creator_name": "",
+  "video_title": "AoA: Langgraph x A2A",
+  "creator_name": "Elia Secchi",
   "duration": "",
-  "duration_s": 0,
+  "duration_s": 580,
   "links": [
     {
       "title": "Agent Starter Pack",
@@ -44,5 +44,6 @@
       "code": "uvx agent-starter-pack create my-agent -a langgraph_base"
     }
   ],
-  "description": "**Day 16 of Google's Advent of Agents**\n\nBuild LangGraph agents with A2A support!\n\n[LangGraph](https://langchain-ai.github.io/langgraph/) is a popular framework for building stateful, multi-actor applications with LLMs. Now you can build LangGraph agents with full A2A capabilities using Agent Starter Pack.\n\nThe `langgraph_base` template in the Agent Starter Pack gives you a production-ready LangGraph agent that speaks the A2A protocol. This means:\n\n- **A2A server out of the box**: Your LangGraph agent is instantly discoverable by other agents—regardless of what framework they use\n- **Connect to any UI**: Expose your agent via A2A and plug it into chatbots, dashboards, or custom interfaces\n- **Production-ready testing**: Integration and load tests included\n- **Deployment ready**: Terraform and CI/CD generated for Cloud Run or Agent Engine\n- **Gemini Enterprise ready**: Register your agent to Gemini Enterprise with one command\n\nCreate your agent with one command."
+  "description": "**Day 16 of Google's Advent of Agents**\n\nBuild LangGraph agents with A2A support!\n\n[LangGraph](https://langchain-ai.github.io/langgraph/) is a popular framework for building stateful, multi-actor applications with LLMs. Now you can build LangGraph agents with full A2A capabilities using Agent Starter Pack.\n\nThe `langgraph_base` template in the Agent Starter Pack gives you a production-ready LangGraph agent that speaks the A2A protocol. This means:\n\n- **A2A server out of the box**: Your LangGraph agent is instantly discoverable by other agents—regardless of what framework they use\n- **Connect to any UI**: Expose your agent via A2A and plug it into chatbots, dashboards, or custom interfaces\n- **Production-ready testing**: Integration and load tests included\n- **Deployment ready**: Terraform and CI/CD generated for Cloud Run or Agent Engine\n- **Gemini Enterprise ready**: Register your agent to Gemini Enterprise with one command\n\nCreate your agent with one command.",
+  "upload_date": "20251215"
 }

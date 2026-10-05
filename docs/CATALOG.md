@@ -5,7 +5,7 @@
 
 Статусы: ✅ переведён · 🟡 субтитры скачаны, ждёт перевода · ⚪ видео нет или недоступно
 
-Всего дней: **60**, с субтитрами: **38**, переведено: **4**
+Всего дней: **60**, с субтитрами: **38**, переведено: **10**
 
 ## Темы
 
@@ -14,7 +14,7 @@
 ## s1-2025-12
 
 ### day01 — Launch Initiative  
-🟡 · Launch
+🟡 · 0:59 · Launch
 
 25 days. Zero to Production-Ready AI Agents on Google Cloud.
 
@@ -51,7 +51,7 @@ uvx --from google-adk adk web my_agent/
 ---
 
 ### day03 — Gemini 3 + ADK  
-🟡 · Gemini 3, ADK, Google Search
+🟡 · 6:23 · Gemini 3, ADK, Google Search
 
 Build a powerful AI Agent using Gemini 3 and ADK with native support for Google Search grounding, computer use, and real-time streaming.
 
@@ -137,7 +137,7 @@ make deploy
 ---
 
 ### day06 — 🧑‍💻 ADK ready in Antigravity, Gemini CLI, Cursor, Firebase Studio and more  
-🟡 · ANTIGRAVITY, CLI, IDE, ADK
+🟡 · 1:51 · ANTIGRAVITY, CLI, IDE, ADK
 
 Building agents shouldn't require an hour of environment configuration. If you use the Agent Starter Pack you already have IDE magnet context baked in for the Agent Development Kit (ADK).
 
@@ -178,7 +178,7 @@ How do I create a function tool using Agent Development Kit?
 ---
 
 ### day07 — LLMs Can Execute Code: Autonomous Problem Solving  
-🟡 · Code Execution, LLMs, Agents, ADK
+🟡 · 1:44 · Code Execution, LLMs, Agents, ADK
 
 Explore how LLMs can not only write but also execute, debug, and refine code autonomously, transforming them into powerful problem solvers.
 
@@ -252,7 +252,7 @@ gap_analysis_agent = LlmAgent(
 ---
 
 ### day08 — Effective Context Management with ADK Layers  
-🟡 · Context Management, Layers, Caching
+🟡 · 2:15 · Context Management, Layers, Caching
 
 ADK Context design thesis: context as a compiled view
 
@@ -397,7 +397,7 @@ def chat(session_id: str, user_message: str, ui_style: str | None = None):
 ---
 
 ### day09 — ⏪ Undo buttons for your Agents  
-🟡 · Rewind, Resume, ADK, Time Travel, Undo
+🟡 · 1:50 · Rewind, Resume, ADK, Time Travel, Undo
 
 Building an "Edit Message" or "Regenerate" feature shouldn't require complex database migrations. In the ADK, time travel is built-in.
 
@@ -436,7 +436,7 @@ asyncio.run(runner.run(query="Let's try that request again with these constraint
 ---
 
 ### day10 — Big Context ≠ Better Memory  
-🟡 · Memory, ADK, Context Caching, Context Compaction, Memory
+🟡 · 7:15 · Memory, ADK, Context Caching, Context Compaction, Memory
 
 Long-running agent sessions face two enemies: latency and "lost in the middle" syndrome. The ADK solves this with Context Caching and Context Compaction.
 
@@ -535,7 +535,7 @@ print(response.text)
 ---
 
 ### day12 — Multimodal Agents with Gemini Live API  
-🟡 · Bidi-streaming, WebSockets, Gemini Live, AI Agent, ADK
+🟡 · 4:59 · Bidi-streaming, WebSockets, Gemini Live, AI Agent, ADK
 
 Explore ADK Bi-Directional Streaming: A visual guide to real-time multimodal AI agent development with WebSockets and Gemini Live.
 
@@ -590,7 +590,7 @@ uv run --project .. uvicorn main:app --port 8000
 ---
 
 ### day13 — Interactions API  
-🟡 · Interactions API, ADK, A2A, Google Cloud, Google DeepMind
+🟡 · 12:00 · Interactions API, ADK, A2A, Google Cloud, Google DeepMind
 
 Interactions API marks a fundamental shift from stateless text generation to stateful, autonomous workflows.
 
@@ -651,7 +651,7 @@ uvx agent-starter-pack create -p -a adk_a2a_base
 ---
 
 ### day15 — Introducing A2UI  
-🟡 · A2UI, Generative UI, Agent-to-User Interface, Agent Development
+🟡 · 8:22 · A2UI, Generative UI, Agent-to-User Interface, Agent Development
 
 Discover A2UI (Agent-to-User Interface), an open project that enables agents to stream dynamic, generative UIs as JSONL payloads, decoupling UI definition from rendering and breaking the ceiling of traditional chat interfaces.
 
@@ -676,7 +676,7 @@ npm run demo:all
 ---
 
 ### day16 — LangGraph + A2A  
-🟡 · LangGraph, A2A, Agent Starter Pack, Multi-Agent
+🟡 · 9:40 · LangGraph, A2A, Agent Starter Pack, Multi-Agent
 
 Build LangGraph agents with full A2A capabilities using Agent Starter Pack. Your agent becomes instantly discoverable by other agents.
 
@@ -696,7 +696,7 @@ uvx agent-starter-pack create my-agent -a langgraph_base
 ---
 
 ### day17 — Gemini 3 Flash is here!  
-🟡 · gemini, flash, thinking, adk
+🟡 · 2:38 · gemini, flash, thinking, adk
 
 Google's fastest model just got smarter with configurable thinking levels and granular controls.
 
@@ -790,7 +790,7 @@ print("Agent configured with governed BigQuery access.")
 ---
 
 ### day19 — Register to Gemini Enterprise  
-🟡 · Gemini Enterprise, Agent Starter Pack, Deployment, A2A
+🟡 · 6:05 · Gemini Enterprise, Agent Starter Pack, Deployment, A2A
 
 Register your agent to Gemini Enterprise! 🌐 and make it discoverable to everyone in your organization, right alongside Google's built-in agents.
 
@@ -865,7 +865,7 @@ else: # Non-breaking fall-back behavior
 ---
 
 ### day21 — Kaggle Capstone Winners Highlight  
-🟡 · Hall of Fame, Winners, Agents for Good, Enterprise Agents, Concierge Agents, Freestyle
+🟡 · 4:32 · Hall of Fame, Winners, Agents for Good, Enterprise Agents, Concierge Agents, Freestyle
 
 🏆 The Hall of Fame: Meet the Winners
 
@@ -1033,7 +1033,7 @@ curl -X POST  -d "$TEMPLATE_CONFIG"   -H "Content-Type: application/json"  -H "A
 ---
 
 ### day23 — Durable, Resilient Agents with Google ADK + Restate  
-🟡 · Durable Execution, ADK, Restate, Resilient Agents
+🟡 · 5:13 · Durable Execution, ADK, Restate, Resilient Agents
 
 Most agents are fragile. Durable Execution with Google ADK and Restate ensures your agent never loses context, survives crashes, and can pause execution for days.
 
@@ -1068,7 +1068,7 @@ docker run --name restate --rm -p 8080:8080 -p 9070:9070   --add-host host.docke
 ---
 
 ### day24 — A2A-ify Anything  
-🟡 · A2A, Agent Starter Pack, ADK Samples
+🟡 · 4:56 · A2A, Agent Starter Pack, ADK Samples
 
 Take any ADK or LangGraph sample and launch it with A2A on top. Layer A2A capabilities onto existing agents with a single flag.
 
@@ -1092,7 +1092,7 @@ uvx agent-starter-pack enhance --base-template adk_a2a_base
 ---
 
 ### day25 — 🎉 Grand Finale: Mission Accomplished!  
-🟡 · Architecture, Blueprint, Production, Summary, Agent Engine, ADK, Gemini 3, Multi-agent
+🟡 · 5:43 · Architecture, Blueprint, Production, Summary, Agent Engine, ADK, Gemini 3, Multi-agent
 
 Congratulations! You've successfully completed the 25-day Advent of Agents journey.
 
@@ -1137,7 +1137,7 @@ make install && make dev
 ## s2-2026-03
 
 ### day01 — Season 2 Kick Off  
-🟡 · Launch
+🟡 · 0:45 · Launch
 
 31 days. Zero to Production-Ready AI Agents on Google Cloud.
 
@@ -1483,7 +1483,7 @@ root_agent = Agent(
 ---
 
 ### day08 — Multi-Agent Patterns: Sequential Agents  
-🟡 · Multi-Agent, Sequential Pipelines, Architecture, ADK
+✅ · 5:24 · Multi-Agent, Sequential Pipelines, Architecture, ADK
 
 Build predictable sequential workflows where the output of one agent goes straight to the next.
 
@@ -1546,7 +1546,7 @@ __all__ = ["root_agent"]
 ---
 
 ### day09 — Multi-Agent Patterns: Coordinator/Dispatcher Agents  
-🟡 · Multi-Agent, Coordinator, Veo 3.1, ADK
+✅ · 0:08 · Multi-Agent, Coordinator, Veo 3.1, ADK
 
 Build high-fidelity educational video agents that maintain character and scene consistency using the Google ADK, Gemini 3.1 Pro, Nano Banana and Veo 3.1.
 
@@ -1815,7 +1815,7 @@ adk web app
 ---
 
 ### day14 — Multi-Agent Patterns: Human in the Loop  
-🟡 · Multi-Agent, ADK, Human-in-the-Loop, Security
+✅ · 3:36 · Multi-Agent, ADK, Human-in-the-Loop, Security
 
 Inject an approval breakpoint to pause agent execution and wait for manual user confirmation before executing sensitive financial APIs.
 
@@ -2106,7 +2106,7 @@ if __name__ == "__main__":
 ---
 
 ### day16 — ADK Dev Skills: Accelerated Multiagent Triage  
-🟡 · Multiagent, Dev Skills, CLI
+✅ · 3:46 · Multiagent, Dev Skills, CLI
 
 Accelerate multiagent system development from scaffolding to deployment using ADK Dev Skills.
 
@@ -2166,7 +2166,7 @@ app = App(name="retail_returns_app", root_agent=root_agent)
 ---
 
 ### day17 — Workspace & Gemini Enterprise: no-code agents  
-🟡 · Gemini Enterprise, Google Workspace, Connectors, Agent Designer
+✅ · 3:57 · Gemini Enterprise, Google Workspace, Connectors, Agent Designer
 
 Connect and use Google Workspace connectors in personal Gemini Enterprise agents.
 
@@ -2188,7 +2188,7 @@ Connect and use Google Workspace connectors in personal Gemini Enterprise agents
 ---
 
 ### day18 — Workspace & Gemini Enterprise: ADK agents  
-🟡 · Gemini Enterprise, Google Workspace, ADK, MCP, Vertex AI
+🟡 · 4:55 · Gemini Enterprise, Google Workspace, ADK, MCP, Vertex AI
 
 Build ADK agents that use the Vertex AI Search MCP server and Google Workspace APIs, deploy them to Vertex AI, and register them with Gemini Enterprise.
 
@@ -2243,7 +2243,7 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
 ---
 
 ### day19 — Live Shopping Agent: Build with ADK and Gemini Embedding 2  
-🟡 · ADK, Gemini Live, Vector Search
+✅ · 1:26 · ADK, Gemini Live, Vector Search
 
 Build a live multimodal shopping app with ADK and Gemini Embedding 2.
 
@@ -2697,7 +2697,7 @@ root_agent = SequentialAgent(
 ---
 
 ### day21 — Developer's Guide to AI Agent Protocols  
-🟡 · MCP, A2A, UCP, AP2, A2UI, AG-UI, ADK, Protocols
+🟡 · 8:30 · MCP, A2A, UCP, AP2, A2UI, AG-UI, ADK, Protocols
 
 Six protocols, disambiguated. See how MCP, A2A, UCP, AP2, A2UI, and AG-UI work together to build a production-ready supply chain agent with ADK.
 
@@ -2821,7 +2821,7 @@ add_adk_fastapi_endpoint(app, ag_ui_agent, path="/")
 ---
 
 ### day22 — ADK Evaluation: Trajectory Tests and Rubric-Based Scoring  
-🟡 · ADK, Evaluation, CI/CD, Testing
+🟡 · 1:28 · ADK, Evaluation, CI/CD, Testing
 
 Define deterministic trajectory tests and rubric-based evaluations that run on every code push, catching agent regressions before they reach production.
 
@@ -2913,7 +2913,7 @@ adk eval ./app eval/trajectory_tests.json \
 ---
 
 ### day23 — Model Armor: AI Security Firewall for Agents  
-🟡 · Model Armor, Security, GCP, Agent Safety
+🟡 · 4:29 · Model Armor, Security, GCP, Agent Safety
 
 Protect AI agents from prompt injection, jailbreaks, and data leakage using Google Cloud Model Armor as a defense-in-depth security layer.
 
@@ -2989,7 +2989,7 @@ def sanitize_response(model_response: str) -> tuple[bool, str]:
 ---
 
 ### day24 — Batch Processing: Scale to 10k with ADK  
-🟡 · Batch Processing, ADK, Scale
+🟡 · 5:56 · Batch Processing, ADK, Scale
 
 Shift from interactive processing to an Agent as Orchestrator pattern using the ADK and Gemini Batch API for efficient, large-scale asynchronous workloads.
 
@@ -3126,7 +3126,7 @@ python check_status.py
 ---
 
 ### day25 — Agent Deployment: How to Deploy AI Agents  
-🟡 · Deployment, Agent Engine, Cloud Run, Vertex AI
+🟡 · 5:37 · Deployment, Agent Engine, Cloud Run, Vertex AI
 
 Deploy your AI agents to Vertex AI Agent Engine or Google Cloud Run securely and easily.
 
@@ -3161,7 +3161,7 @@ uv run adk deploy cloud_run app
 ---
 
 ### day26 — Authentication: End-User Identity Propagation  
-🟡 · Authentication, Security, Identity Propagation, Interactive Auth
+🟡 · 8:34 · Authentication, Security, Identity Propagation, Interactive Auth
 
 Securely delegate permissions by prompting end-users for OAuth consent during agent execution.
 
@@ -3339,7 +3339,7 @@ root_agent = Agent(
 ---
 
 ### day27 — Scion: an open testbed for agent orchestration  
-🟡 · Multiagent, Harness Engineering, CLI
+🟡 · 9:49 · Multiagent, Harness Engineering, CLI
 
 Explore multi-agent patterns with an agnostic supra-harness system that isolates agents in git worktrees and containers, allowing easy orchestration and communication
 
@@ -3402,7 +3402,7 @@ scion attach my-agent
 ---
 
 ### day28 — A2A Protocol: Decoupling Reasoning from Execution  
-🟡 · A2A, LangGraph, ADK, Protocol
+🟡 · 5:55 · A2A, LangGraph, ADK, Protocol
 
 Decouple your reasoning engine from execution using the universal A2A 1.0 protocol to bridge a Python LangGraph orchestrator and a Go ADK service.
 
@@ -3624,7 +3624,7 @@ python a2a_langgraph_orchestrator.py
 ---
 
 ### day29 — ApiRegistry: Dynamically Fetching BigQuery Tools  
-🟡 · ApiRegistry, BigQuery, Authentication
+🟡 · 3:29 · ApiRegistry, BigQuery, Authentication
 
 Learn how to use the ApiRegistry object to dynamically fetch an admin-approved, fully configured BigQuery tool directly from the Cloud API Registry at runtime.
 

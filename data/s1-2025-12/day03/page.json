@@ -12,10 +12,10 @@
   "canonical_url": "https://adventofagents.com/2025/12/03",
   "video_id": "9EGtawwvlNs",
   "video_url": "https://www.youtube.com/watch?v=9EGtawwvlNs",
-  "video_title": "",
-  "creator_name": "",
+  "video_title": "Build an AI Agent with Gemini 3",
+  "creator_name": "Google for Developers",
   "duration": "",
-  "duration_s": 0,
+  "duration_s": 383,
   "links": [
     {
       "title": "Build an AI Agent with Gemini 3 (Video)",
@@ -58,5 +58,6 @@
       "code": "curl 'https://raw.githubusercontent.com/GoogleCloudPlatform/devrel-demos/refs/heads/main/ai-ml/agent-labs/gemini-3-pro-agent-demo/my_agent/agent.py' > my_agent/agent.py\nadk web"
     }
   ],
-  "description": "**Day 3 of Google's Advent of Agents**\n\nGemini 3 is Google's most intelligent model yet. In just a few minutes, you can build a powerful AI Agent using Gemini 3 and ADK with native, day-one support for its most advanced capabilities.\n\n**What you get with ADK and Gemini 3:**\n\n- **Google Search grounding:** Native access to real-time web data\n- **Computer use:** Agents that navigate and interact with UIs\n- **Live API:** Real-time streaming for voice and video agents\n- **Native observability:** Full visibility into Gemini calls, tool use, and agent reasoning\n\n**Get started with just one command:**\n\n```bash\nuvx agent-starter-pack create -y --api-key YOUR_GEMINI_API_KEY\n```\n\nNo need to code from scratch. Use Gemini CLI or Antigravity IDE to generate your agent. The agent-starter-pack includes an ADK cheatsheet to guide you through everything.\n\n**Resources:**\n\n- Video tutorial to build an AI Agent with Gemini 3 and ADK\n- GitHub repo with working code\n- Complete docs for the ADK Google Search Tool"
+  "description": "**Day 3 of Google's Advent of Agents**\n\nGemini 3 is Google's most intelligent model yet. In just a few minutes, you can build a powerful AI Agent using Gemini 3 and ADK with native, day-one support for its most advanced capabilities.\n\n**What you get with ADK and Gemini 3:**\n\n- **Google Search grounding:** Native access to real-time web data\n- **Computer use:** Agents that navigate and interact with UIs\n- **Live API:** Real-time streaming for voice and video agents\n- **Native observability:** Full visibility into Gemini calls, tool use, and agent reasoning\n\n**Get started with just one command:**\n\n```bash\nuvx agent-starter-pack create -y --api-key YOUR_GEMINI_API_KEY\n```\n\nNo need to code from scratch. Use Gemini CLI or Antigravity IDE to generate your agent. The agent-starter-pack includes an ADK cheatsheet to guide you through everything.\n\n**Resources:**\n\n- Video tutorial to build an AI Agent with Gemini 3 and ADK\n- GitHub repo with working code\n- Complete docs for the ADK Google Search Tool",
+  "upload_date": "20251120"
 }

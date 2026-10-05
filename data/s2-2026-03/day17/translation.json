@@ -1,0 +1,53 @@
+{
+  "note": "Субтитры автоматические (auto, en-orig). Имя докладчика восстановлено по странице дня — Pierrick Voulet.",
+  "segments": [
+    {
+      "t": 0,
+      "en": "Hi everyone, I'm Pierrick from Google Workspace. Today I'll show you how to connect and use Workspace connectors in Gemini Enterprise personal agents that are accessible from the web app. Let's assume you already created a new GCP project and configured billing. The first thing to do is to enable Gemini Enterprise: go to the console and search for Gemini Enterprise, select the product and click Start 30 days free trial to begin the onboarding process. You'll first need to activate the required API to enable the service for your project.",
+      "ru": "Всем привет, я Пьеррик из команды Google Workspace. Сегодня покажу, как подключать и использовать коннекторы Workspace в персональных агентах Gemini Enterprise, доступных из веб-приложения. Предположим, вы уже создали новый GCP-проект и настроили биллинг. Первое, что нужно сделать, — включить Gemini Enterprise: зайдите в консоль, найдите Gemini Enterprise, выберите продукт и нажмите «Start 30 days free trial», чтобы начать онбординг. Сначала потребуется активировать нужный API для вашего проекта.",
+      "fix": "Perrick -> Pierrick (Pierrick Voulet по странице дня)"
+    },
+    {
+      "t": 42,
+      "en": "Now that Gemini Enterprise is fully enabled, you can create an application here. You just need to provide a display name and choose the region. Once the app is ready, you need to configure the workforce identity. We choose Google identity for simplicity here. Next, let's connect your business data: navigate to connected data source and add a new one. There are many options.",
+      "ru": "Когда Gemini Enterprise включён, здесь можно создать приложение. Нужно лишь задать отображаемое имя и выбрать регион. Когда приложение готово, настройте идентификацию для сотрудников — мы ради простоты выбираем Google identity. Дальше подключаем бизнес-данные: переходим к подключённым источникам данных и добавляем новый. Вариантов много.",
+      "fix": null
+    },
+    {
+      "t": 65,
+      "en": "Some are specific to Google Workspace, such as Gmail, Calendar and Drive. Others are specific to Google Cloud or third parties, and they typically connect to databases and APIs. Here we'll go ahead with Google Drive. Choose what you would like to share and give your data connector a name before clicking Create. That's as simple as that. The Drive data is now connected to your application.",
+      "ru": "Часть коннекторов — из Google Workspace: Gmail, Calendar, Drive. Другие относятся к Google Cloud или к сторонним системам и обычно ходят в базы данных и API. Здесь выберем Google Drive. Отметьте, что хотите передать, дайте коннектору имя и нажмите Create. Всё так просто. Данные Drive подключены к приложению.",
+      "fix": null
+    },
+    {
+      "t": 107,
+      "en": "Now let's access the Gemini Enterprise web app using the provided link in the chat. Take a look at your connectors and make sure Drive is enabled. Then you can ask questions directly about the Workspace data, such as finding the title of the last Drive file you created. The agent looks into your connected data and answers accordingly.",
+      "ru": "Теперь откройте веб-приложение Gemini Enterprise по ссылке из чата. Посмотрите на коннекторы и убедитесь, что Drive включён. После этого можно задавать вопросы про данные Workspace напрямую — например, найти название последнего созданного вами файла на Drive. Агент заглянет в подключённые данные и ответит.",
+      "fix": "The drive data -> The Drive data"
+    },
+    {
+      "t": 126,
+      "en": "You can do a lot with this already. But what if you want your own custom agents to rely on data stores? In Gemini Enterprise, anyone can build their own personal agents using the agent designer. It's a no-code solution. It's not enabled by default though, so go to the application configuration to enable the feature. With the designer enabled, let's come back to the Gemini Enterprise web app.",
+      "ru": "Уже сейчас это даёт много возможностей. Но что, если вам нужны собственные агенты, опирающиеся на хранилища данных? В Gemini Enterprise любой может собрать персонального агента в Agent Designer. Это решение без кода. По умолчанию оно выключено, поэтому зайдите в настройки приложения и включите функцию. После этого вернёмся в веб-приложение Gemini Enterprise.",
+      "fix": null
+    },
+    {
+      "t": 155,
+      "en": "Make sure to refresh the page to get access to the new feature. In the app sidebar, click New Agent to open the designer and describe what you need in a prompt. I'm going with a pirate-themed scene assistant for enterprise data search in this case. It takes a moment to create the agent based on my request. And just like that, our pirate data searcher is ready.",
+      "ru": "Обновите страницу, чтобы новая функция стала доступна. В боковой панели приложения нажмите New Agent — откроется конструктор, и там промптом опишите, что нужно. Я в этот раз сделаю пиратского помощника для поиска по корпоративным данным. Агенту нужно немного времени, чтобы создаться по моему запросу. И вот наш пиратский поисковик по данным готов.",
+      "fix": "a pirate scene assistant -> a pirate-themed assistant; our parrot data searcher -> our pirate data searcher"
+    },
+    {
+      "t": 183,
+      "en": "You can jump into the flow tab to review and edit the setup, including the model being used and connected data sources like Google Drive and search. Once you're satisfied, click Create and start the chat to see your new agent in action. When you ask a question, the agent uses its connected tools to pull real-time data as before, but it also uses the custom behavior you required — in this case, a pirate theme. It's not really useful, but I guess you get the point.",
+      "ru": "Перейдите на вкладку flow, чтобы посмотреть и поправить настройки: какая модель используется и какие источники данных подключены — например, Google Drive и поиск. Когда всё устроит, нажмите Create и начните чат, чтобы увидеть агента в работе. Задав вопрос, вы получите данные в реальном времени из подключённых инструментов, но агент вдобавок применит заданное вами поведение — здесь пиратскую тематику. Практической пользы в этом мало, но идею вы поняли.",
+      "fix": null
+    },
+    {
+      "t": 210,
+      "en": "Oh, yeah. It's also worth noting that the custom agent is saved in your library, so you can pin it for easier access next time it's needed. And that's all I had for you today. I'm dropping links in case you want to learn more about this capability. I hope you enjoyed it. Bye, everyone.",
+      "ru": "Ещё стоит отметить: персональный агент сохраняется в вашей библиотеке, его можно закрепить, чтобы в следующий раз он был под рукой. На этом всё, что я хотел показать сегодня. Ссылки приложу — на случай, если захотите узнать больше про эту возможность. Надеюсь, было интересно. До свидания!",
+      "fix": null
+    }
+  ]
+}

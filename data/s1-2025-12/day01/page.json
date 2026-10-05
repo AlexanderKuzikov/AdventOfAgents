@@ -10,10 +10,10 @@
   "canonical_url": "https://adventofagents.com/2025/12/01",
   "video_id": "aYG7h20YNB0",
   "video_url": "https://www.youtube.com/watch?v=aYG7h20YNB0",
-  "video_title": "",
-  "creator_name": "",
+  "video_title": "Day 1 of Advent of Agents Google Cloud Video",
+  "creator_name": "Who Invited Abe",
   "duration": "",
-  "duration_s": 0,
+  "duration_s": 59,
   "links": [
     {
       "title": "Introduction to Agents Whitepaper",
@@ -40,5 +40,6 @@
   "icon": "🎄",
   "resource_link": "https://goo.gle/advent-of-agents",
   "code_snippets": [],
-  "description": "**Advent of Agents 2025 starts NOW!**\n\n25 days. Zero to Production-Ready AI Agents on Google Cloud.\n\n**Every day until Christmas:**\n\n- ⚡ One feature, < 5 min to try\n- 💻 Copy-paste commands that actually work\n- 📖 Links to docs\n\nFrom quickstart agents to multi-agent orchestration. From local dev to production deployment.\n\n**The Hub:** Bookmark this site! Each day we unlock new content along with helpful code snippets. It's your permanent archive to catch up on missed days, recover past posts, and grab the code you need to build your production agent by Christmas.\n\n**What we are covering:** We're going deep on the latest tools:\n\n- **Gemini 3:** Context engineering, Computer Use, Live API, and advanced patterns\n- [Google ADK](https://google.github.io/adk-docs/): The Agent Development Kit (Python)\n- [Vertex AI Agent Engine](https://cloud.google.com/products/agent-builder): Deploy an Agent in minutes\n- [The Agent Starter Pack](https://github.com/GoogleCloudPlatform/agent-starter-pack): E2E production-ready templates\n\n**📚 Recommended Reading:** To kick things off, check out the [Introduction to Agents whitepaper](https://www.kaggle.com/whitepaper-introduction-to-agents), released as part of the 5 Days of Agents with Kaggle.\n\n**Let's get ready to build!**"
+  "description": "**Advent of Agents 2025 starts NOW!**\n\n25 days. Zero to Production-Ready AI Agents on Google Cloud.\n\n**Every day until Christmas:**\n\n- ⚡ One feature, < 5 min to try\n- 💻 Copy-paste commands that actually work\n- 📖 Links to docs\n\nFrom quickstart agents to multi-agent orchestration. From local dev to production deployment.\n\n**The Hub:** Bookmark this site! Each day we unlock new content along with helpful code snippets. It's your permanent archive to catch up on missed days, recover past posts, and grab the code you need to build your production agent by Christmas.\n\n**What we are covering:** We're going deep on the latest tools:\n\n- **Gemini 3:** Context engineering, Computer Use, Live API, and advanced patterns\n- [Google ADK](https://google.github.io/adk-docs/): The Agent Development Kit (Python)\n- [Vertex AI Agent Engine](https://cloud.google.com/products/agent-builder): Deploy an Agent in minutes\n- [The Agent Starter Pack](https://github.com/GoogleCloudPlatform/agent-starter-pack): E2E production-ready templates\n\n**📚 Recommended Reading:** To kick things off, check out the [Introduction to Agents whitepaper](https://www.kaggle.com/whitepaper-introduction-to-agents), released as part of the 5 Days of Agents with Kaggle.\n\n**Let's get ready to build!**",
+  "upload_date": "20251202"
 }

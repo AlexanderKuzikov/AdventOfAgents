@@ -13,10 +13,10 @@
   "canonical_url": "https://adventofagents.com/2025/12/19",
   "video_id": "dhT2dAbRwVk",
   "video_url": "https://www.youtube.com/watch?v=dhT2dAbRwVk",
-  "video_title": "",
-  "creator_name": "",
+  "video_title": "Register Gemini Enterprise with Agent Starter Pack",
+  "creator_name": "Elia Secchi",
   "duration": "",
-  "duration_s": 0,
+  "duration_s": 365,
   "links": [
     {
       "title": "Agent Starter Pack",
@@ -49,5 +49,6 @@
       "code": "# Create your agent\nuvx agent-starter-pack create --adk\n\n# Deploy it\nmake deploy\n\n# Register to Gemini Enterprise\nmake register-gemini-enterprise"
     }
   ],
-  "description": "**Day 19 of Google's Advent of Agents**\n\nRegister your agent to Gemini Enterprise! 🌐\n\n[Gemini Enterprise](https://cloud.google.com/gemini-enterprise) is Google's intranet search 🔍, AI assistant 🤖, and agentic platform for organizations. It gives knowledge workers a single interface to access enterprise data 📊, perform tasks ✅, and work with agents—without switching between multiple tools.\n\nThe Agents Gallery 🖼️ At the heart of Gemini Enterprise is the Agents Gallery. Google-made agents like Deep Research and Data Insights live here—but you're not limited to Google's agents. You can register your own custom agents 🛠️. Once registered, your agent becomes discoverable to everyone in your organization 👥, right alongside the built-in ones.\n\nSimple Registration ⚡ Agent Starter Pack makes registration simple.\n\nThe registration command handles everything:\n\n- **Auto-detects agent type**: ADK on Agent Engine or A2A on Cloud Run\n- **Lists available apps**: Shows which Gemini Enterprise apps you can register to\n- **Fetches display name**: Pulls the name from your deployed agent\n- **Direct console link**: Takes you straight to your agent in the catalog\n\nYour agent goes from deployed to discoverable. Enterprise-wide visibility, zero friction."
+  "description": "**Day 19 of Google's Advent of Agents**\n\nRegister your agent to Gemini Enterprise! 🌐\n\n[Gemini Enterprise](https://cloud.google.com/gemini-enterprise) is Google's intranet search 🔍, AI assistant 🤖, and agentic platform for organizations. It gives knowledge workers a single interface to access enterprise data 📊, perform tasks ✅, and work with agents—without switching between multiple tools.\n\nThe Agents Gallery 🖼️ At the heart of Gemini Enterprise is the Agents Gallery. Google-made agents like Deep Research and Data Insights live here—but you're not limited to Google's agents. You can register your own custom agents 🛠️. Once registered, your agent becomes discoverable to everyone in your organization 👥, right alongside the built-in ones.\n\nSimple Registration ⚡ Agent Starter Pack makes registration simple.\n\nThe registration command handles everything:\n\n- **Auto-detects agent type**: ADK on Agent Engine or A2A on Cloud Run\n- **Lists available apps**: Shows which Gemini Enterprise apps you can register to\n- **Fetches display name**: Pulls the name from your deployed agent\n- **Direct console link**: Takes you straight to your agent in the catalog\n\nYour agent goes from deployed to discoverable. Enterprise-wide visibility, zero friction.",
+  "upload_date": "20251218"
 }

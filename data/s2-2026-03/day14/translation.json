@@ -1,0 +1,59 @@
+{
+  "note": "Субтитры автоматические (auto, en-orig). Перевод восстановлен по смыслу; имена классов и файлов приведены по коду со страницы дня.",
+  "segments": [
+    {
+      "t": 0,
+      "en": "Hey folks, welcome back to Advent of Agents. This is season 2, day 14, and in this one we're going to show you how to build your own human-in-the-loop agentic architecture. Human-in-the-loop architectures have become so popular recently, especially since AI agents have become almost as good as humans at doing certain tasks — maybe too good. And that's why we introduce a human in the loop: this whole flow brings a human back into the non-deterministic flow that is AI agents when it comes to high-stakes decision-making and/or output within your agentic flow.",
+      "ru": "Привет, снова привет из Advent of Agents. Это второй сезон, четырнадцатый день, и сегодня покажем, как собрать собственную агентную архитектуру с человеком в контуре. Схемы с человеком в контуре стали очень популярны, особенно после того, как ИИ-агенты стали почти такими же хорошими, как люди, в ряде задач — возможно, даже слишком хорошими. Именно поэтому мы и возвращаем человека в поток. Вся эта схема возвращает человека в недетерминированный поток агентов — когда речь идёт о решениях с высокими ставками или о выходных данных агентного сценария.",
+      "fix": "highstakes decision-m and or -> high-stakes decision-making and/or"
+    },
+    {
+      "t": 30,
+      "en": "In this example, we'll be touching a simple refund process. You may build a customer service agent that wants to refund a certain user some amount of money, but you want to have a real human in the loop to make sure you approve or deny the refund based on the amount. So let's jump right in.",
+      "ru": "В этом примере возьмём простой процесс возврата денег. Может быть, вы строите агента поддержки, который хочет вернуть пользователю некоторую сумму, но вам нужен живой человек в контуре, чтобы он подтверждал или отклонял возврат в зависимости от суммы. Давайте прямо к коду.",
+      "fix": null
+    },
+    {
+      "t": 54,
+      "en": "This is what our code looks like. A couple of pieces of important information first. We import a bunch of things from ADK; specifically, the most important one is LongRunningFunctionTool. Let's say, for example, it asks us to approve or deny the refund. We can come a day later, press yes or no, and then the agent will reboot its flow based on the memory it stores — which brings us to the memory service that we need to implement in order to store that context for the conversation, so we can come back to it at any point in time.",
+      "ru": "Вот как выглядит наш код. Сначала несколько важных моментов. Мы импортируем много чего из ADK, но самое главное здесь — `LongRunningFunctionTool`. Предположим, агент просит нас подтвердить или отклонить возврат. Мы можем вернуться через день, нажать «да» или «нет» — и агент перезапустит свой поток на основе сохранённой памяти. И тут мы подходим к сервису памяти: его нужно реализовать, чтобы хранить контекст разговора и иметь возможность вернуться к нему в любой момент.",
+      "fix": "long running function tool -> LongRunningFunctionTool"
+    },
+    {
+      "t": 78,
+      "en": "The two functions we're interested in: one is asking for approval, and two is processing the refund. Processing the refund is a typical tool that the agent has access to, which actually lets it perform the refund. The ask_for_approval function is the one that we're going to bake into the LongRunningFunctionTool, to give it the possibility to ask us for human-in-the-loop intervention.",
+      "ru": "Нас интересуют две функции. Первая — `ask_for_approval`, запрос подтверждения. Вторая — `process_refund`, сам возврат. Обработка возврата — это типичный инструмент, доступный агенту, который и выполняет возврат. А `ask_for_approval` — та функция, которую мы заворачиваем в `LongRunningFunctionTool`, чтобы агент мог запросить вмешательства человека.",
+      "fix": null
+    },
+    {
+      "t": 102,
+      "en": "Okay, number three, this is the agent. We've seen this one before — a very simple agent. It just says: you handle refunds, and always ask for approval first by calling this specific function. If approved, then you can call another function called process_refund. Finally, we strap everything together in our main function here, set up our runner, and then take a look at the content of every event. This is the event inside of ADK, and we can identify each portion of the event so that we know which ones to look for when calling a human or a specific tool. And then we get the human decision here, capture it in a choice variable, check whether that choice is yes or no, and from there reboot our runner. We have to punch in the session ID so that we know which context to pull back from memory for our human-in-the-loop workflow to reboot, and then finally we send it back to the user.",
+      "ru": "Номер три — это сам агент. Мы его уже видели: очень простой агент. Он говорит: ты обрабатываешь возвраты и всегда сначала запрашивай подтверждение, вызывая вот эту функцию. Если подтверждено — можешь вызвать другую функцию, `process_refund`. Дальше мы собираем всё вместе в нашей главной функции, настраиваем runner и смотрим содержимое каждого события. Это событие внутри ADK, и по нему можно опознать каждую часть, чтобы понимать, какие из них нас интересуют — вызов человека или конкретного инструмента. Затем получаем решение человека, записываем его в переменную `choice`, проверяем, «да» там или «нет», и перезапускаем runner. Обязательно передаём session ID, чтобы было понятно, какой контекст подтянуть из памяти для перезапуска нашего сценария с человеком в контуре. И наконец отправляем результат пользователю.",
+      "fix": null
+    },
+    {
+      "t": 155,
+      "en": "Let's see what this looks like in action. We're going to run uv run python agents/refund_agent.py. There's another agent inside of this folder called extended_refund_agent, which shows a little bit more functionality for human in the loop. If you want to explore this pattern more, feel free to check out that file. We'll press enter here and give it a second to run.",
+      "ru": "Посмотрим, как это работает. Запускаем `uv run python agents/refund_agent.py`. В этой же папке лежит ещё один агент — `extended_refund_agent`, он показывает чуть больше возможностей для схемы с человеком в контуре. Если захотите глубже копнуть этот паттерн, загляните в этот файл. Жмём Enter и даём секунду на запуск.",
+      "fix": "uvun python agents/refund agent -> uv run python agents/refund_agent.py"
+    },
+    {
+      "t": 168,
+      "en": "Great. The agent comes back and says: okay, I've requested approval for a $200 refund for a duplicate charge on some transaction ID. And then you can see the agent spits out the JSON for logging purposes to show status and purpose and then the amount. You can define this as you wish. Then it gives me the option to approve or deny. I'll go ahead and approve it because I'm feeling generous today.",
+      "ru": "Отлично. Агент возвращается и говорит: хорошо, я запросил подтверждение возврата на 200 долларов за двойное списание по некоторому ID транзакции. Дальше видно, что агент выплёвывает JSON для логирования: статус, назначение и сумму. Как именно это описать — решаете вы. После этого мне предлагают подтвердить или отклонить. Подтверждаю — сегодня я щедрый.",
+      "fix": null
+    },
+    {
+      "t": 193,
+      "en": "Okay, I've processed the $200 refund for the duplicate charge on that transaction. Remember, it's calling the tool to process the refund after it's made contact with me and I've responded to it. Let's run this one more time and then click no, deny the refund, and see what happens.",
+      "ru": "Хорошо, я обработал возврат на 200 долларов за двойное списание по той транзакции. Помните: инструмент возврата вызывается только после того, как агент связался со мной и я ему ответил. Давайте запустим ещё раз и на этот раз нажмём «нет» — отклоним возврат и посмотрим, что получится.",
+      "fix": null
+    },
+    {
+      "t": 208,
+      "en": "Great: I've asked for approval to refund $200 for a duplicate charge on that transaction, but it was rejected and I'm unable to process the refund. You can imagine the agent responding to the customer in this way. I hope this one was helpful. You can imagine building out a much more complex agentic flow and having humans in the loop at certain portions, then contacting the human via email, WhatsApp, or some kind of text message. Thanks so much for watching. I'll see you in the next day.",
+      "ru": "Получаем: я запросил подтверждение возврата на 200 долларов за двойное списание, но возврат отклонён, и я не могу его обработать. Дальше агент отвечает клиенту примерно так. Надеюсь, пример был полезен. Вполне можно представить куда более сложный агентный поток, где человек подключается в отдельных точках, а обращение к нему идёт по почте, через WhatsApp или любым другим мессенджером. Спасибо, что смотрели, увидимся в следующий день.",
+      "fix": null
+    }
+  ]
+}

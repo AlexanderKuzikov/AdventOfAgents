@@ -14,10 +14,10 @@
   "canonical_url": "https://adventofagents.com/2025/12/09",
   "video_id": "9FQh-Pw2sfE",
   "video_url": "https://www.youtube.com/watch?v=9FQh-Pw2sfE",
-  "video_title": "",
-  "creator_name": "",
+  "video_title": "Advent of Agents - Day 9 - Time Travel",
+  "creator_name": "Enrique Chan",
   "duration": "",
-  "duration_s": 0,
+  "duration_s": 110,
   "links": [
     {
       "title": "ADK Docs: Runtime Resume",
@@ -45,5 +45,6 @@
       "code": "import asyncio\nfrom adk.api.agents.in_memory_runner import InMemoryRunner\n\n# 1. Initialize the runner\nrunner = InMemoryRunner(...)\n\n# 2. Something goes wrong? (e.g., hallucination or error at 'invocation_456')\n# Instead of clearing the session, we request a rewind.\n\n# 3. Rewind (Time Travel)\n# This asynchronously restores session state and artifacts to the target moment.\nasyncio.run(\n    runner.rewind_async(\n        session_id='session_123',\n        before_invocation_id='invocation_456'\n    )\n)\n\n# 4. Resume the conversation from that exact point\nasyncio.run(runner.run(query=\"Let's try that request again with these constraints...\"))"
     }
   ],
-  "description": "**Day 9 of Google's Advent of Agents**\n\nYour agent does step 1, 2, 3, 4... \nbut what if you realize step 2 was a mistake and you want to rewind time and start from there?\n\nNow the ADK has time travel and checkpointing!\n\nInstead of destructively deleting history, the runner calculates the difference between \"now\" and \"then\" (State & Artifact Deltas) and appends a rewind event to the log. \nThis allows you to revert the application state to a specific timestamp or invocation ID while keeping a complete audit trail of what happened.\n\n**The simple fix**\n\nYou don't just \"go back\"—you restore the world to exactly how it was, and you keep the rewound path in case you need it.\n\nTry it out yourself in this sample [adk-python](https://github.com/google/adk-python/blob/main/contributing/samples/rewind_session/main.py).\n\nAs a developer, you can use rewind to undo a step in the conversation, or to revert to a previous state of the application.\nThe agent can also take this action as a tool, if you have configured it to know how to do so.\n"
+  "description": "**Day 9 of Google's Advent of Agents**\n\nYour agent does step 1, 2, 3, 4... \nbut what if you realize step 2 was a mistake and you want to rewind time and start from there?\n\nNow the ADK has time travel and checkpointing!\n\nInstead of destructively deleting history, the runner calculates the difference between \"now\" and \"then\" (State & Artifact Deltas) and appends a rewind event to the log. \nThis allows you to revert the application state to a specific timestamp or invocation ID while keeping a complete audit trail of what happened.\n\n**The simple fix**\n\nYou don't just \"go back\"—you restore the world to exactly how it was, and you keep the rewound path in case you need it.\n\nTry it out yourself in this sample [adk-python](https://github.com/google/adk-python/blob/main/contributing/samples/rewind_session/main.py).\n\nAs a developer, you can use rewind to undo a step in the conversation, or to revert to a previous state of the application.\nThe agent can also take this action as a tool, if you have configured it to know how to do so.\n",
+  "upload_date": "20251208"
 }

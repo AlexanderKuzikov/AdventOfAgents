@@ -10,10 +10,10 @@
   "canonical_url": "https://adventofagents.com/2026/03/01",
   "video_id": "MUnjMBHsaEw",
   "video_url": "https://www.youtube.com/watch?v=MUnjMBHsaEw",
-  "video_title": "",
-  "creator_name": "",
+  "video_title": "Advent of Agents Season 2 Promo Video",
+  "creator_name": "Who Invited Abe",
   "duration": "",
-  "duration_s": 0,
+  "duration_s": 45,
   "links": [
     {
       "title": "Subscribe to weekly newsletter",
@@ -40,5 +40,6 @@
   "icon": "🌸",
   "resource_link": "https://goo.gle/advent-of-agents",
   "code_snippets": [],
-  "description": "\n**Day 1 of Google's Advent of Agents — Season 2**\n\nWelcome to **Season 2** of Advent of Agents! A fresh season of AI Agent tutorials blooms this spring.\n\n31 days. 31 tutorials. Production-Ready AI Agents on Google Cloud.\n\n**Every day in March you will:**\n\n-  🌱 Learn one new concept or feature to explore\n-  💻 Build an agent with copy-paste commands that actually work\n-  📖 Explore links to docs and resources\n\nFrom advanced agent patterns to multi-agent orchestration. From prototyping to production deployment.\n\n**What's New in Season 2:** Building on the foundations from Season 1, this season goes deeper:\n\n-  [Agent Development Kit](https://google.github.io/adk-docs/): Build agents with the latest ADK features\n-  [Vertex AI Agent Engine](https://cloud.google.com/products/agent-builder): Scale your agents to production\n-  [Agent Starter Pack](https://github.com/GoogleCloudPlatform/agent-starter-pack): E2E production-ready templates\n\n**Getting Started:** New to agents? Check out the Kaggle’s [Introduction to Agents whitepaper](https://www.kaggle.com/whitepaper-introduction-to-agents) and browse the [Season 1 Archive](http://adventofagents.com/2025/12/) to catch up on the fundamentals.\n\n**Let's build something amazing this spring! 🌸**\n"
+  "description": "\n**Day 1 of Google's Advent of Agents — Season 2**\n\nWelcome to **Season 2** of Advent of Agents! A fresh season of AI Agent tutorials blooms this spring.\n\n31 days. 31 tutorials. Production-Ready AI Agents on Google Cloud.\n\n**Every day in March you will:**\n\n-  🌱 Learn one new concept or feature to explore\n-  💻 Build an agent with copy-paste commands that actually work\n-  📖 Explore links to docs and resources\n\nFrom advanced agent patterns to multi-agent orchestration. From prototyping to production deployment.\n\n**What's New in Season 2:** Building on the foundations from Season 1, this season goes deeper:\n\n-  [Agent Development Kit](https://google.github.io/adk-docs/): Build agents with the latest ADK features\n-  [Vertex AI Agent Engine](https://cloud.google.com/products/agent-builder): Scale your agents to production\n-  [Agent Starter Pack](https://github.com/GoogleCloudPlatform/agent-starter-pack): E2E production-ready templates\n\n**Getting Started:** New to agents? Check out the Kaggle’s [Introduction to Agents whitepaper](https://www.kaggle.com/whitepaper-introduction-to-agents) and browse the [Season 1 Archive](http://adventofagents.com/2025/12/) to catch up on the fundamentals.\n\n**Let's build something amazing this spring! 🌸**\n",
+  "upload_date": "20260227"
 }

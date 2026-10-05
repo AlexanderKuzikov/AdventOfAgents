@@ -1,0 +1,53 @@
+{
+  "note": "Субтитры автоматические (auto, en-orig). Названия инструментов и сгенерированных сущностей приведены по коду со страницы дня (npx, Dockerfile, Agent Starter Pack).",
+  "segments": [
+    {
+      "t": 1,
+      "en": "ADK Dev Skills is a new approach to developing agents using AI. You can see that this is going to be installed with just one command using npx. And once it's installed, it gives you six different skills for building agents.",
+      "ru": "ADK Dev Skills — это новый подход к разработке агентов с помощью ИИ. Ставится одной командой через npx. После установки вы получаете шесть разных навыков для работы с агентами.",
+      "fix": "MPX -> npx"
+    },
+    {
+      "t": 17,
+      "en": "The first thing we do here is just send a prompt to build a retail agent. And now the ADK cheatsheet is actually being activated behind the scenes, and this is now going to look at the Agent Starter Pack for references, and behind the scenes also the ADK documentation. Then at this point, the agent is going to create a design spec for us to review and approve.",
+      "ru": "Первое, что мы делаем, — отправляем промпт на создание агента для розницы. Под капотом активируется ADK cheatsheet, а также подтягиваются референсы из Agent Starter Pack и документация ADK. После этого агент составляет дизайн-спеку, которую мы можем посмотреть и согласовать.",
+      "fix": "the through agent starter pack -> the Agent Starter Pack"
+    },
+    {
+      "t": 43,
+      "en": "And once you are happy with it, we can accept it. Then the agent can create, through the Agent Starter Pack, the actual template of the code, and then customize it based on the prompt we asked. You can see that all of this is done automatically by an interface like Gemini CLI, or you can use other tools like Claude Code, Antigravity, Codex — they are all supported by the skills. And now the agent has been created, and I just prompted it to create an evaluation suite to make sure everything really works before I get my hands on them. And you can see that in this case it's using ADK Eval to actually make the evals here, and the different eval sets have been evaluated.",
+      "ru": "И когда спеца вас устраивает, мы её принимаем. Дальше агент через Agent Starter Pack создаёт сам шаблон кода и настраивает его под наш промпт. Всё это автоматически делает интерфейс наподобие Gemini CLI; подойдут и другие инструменты — Claude Code, Antigravity, Codex, все они поддержаны навыками. Итак, агент создан, а я дополнительно попросил его собрать набор eval-ов, чтобы убедиться, что всё действительно работает, прежде чем брать это в свои руки. Здесь он задействует ADK Eval, и различные наборы уже отработали.",
+      "fix": "creating the evaluation suit -> creating an evaluation suite; Cloud Code Antigravity, Code X -> Claude Code, Antigravity, Codex"
+    },
+    {
+      "t": 86,
+      "en": "Then next, I'm focusing on deployment. I want to make sure that what we build locally can actually be deployed and hosted on Agent Engine as our development target. And the agent goes through the process of looking at the different requirements, creating the Dockerfile, and then deploying to Agent Engine. Agent Engine is just one of the available targets. You can also deploy on Cloud Run, and more support for other targets is coming soon, for example GKE.",
+      "ru": "Дальше я перехожу к деплою. Мне нужно убедиться, что то, что мы собрали локально, действительно разворачивается и работает на Agent Engine — это наша цель разработки. Агент проходит весь путь: смотрит требования, создаёт Dockerfile и деплоит на Agent Engine. Agent Engine — лишь одна из доступных целей. Можно деплоить и на Cloud Run, а поддержка других целей, например GKE, появится скоро.",
+      "fix": "creating the bottle -> creating the Dockerfile"
+    },
+    {
+      "t": 112,
+      "en": "And you can see that now the agent is going through the deployment process. Then once it's finished, we can focus on the next step of the lifecycle. So the next step after this will be, for example, creating a CI/CD process. And this again can be done through different skills among the six we've provided here. This can again be done with a single prompt. And then reach the final stage of the lifecycle, which would be about logging and monitoring.",
+      "ru": "Видно, как агент проходит деплой. Когда процесс завершится, можно перейти к следующему шагу жизненного цикла. Например, к созданию CI/CD — это снова делается через один из шести навыков, опять же одним промптом. И дальше — финальная стадия жизненного цикла: логирование и мониторинг.",
+      "fix": null
+    },
+    {
+      "t": 140,
+      "en": "And the agent can also do these sorts of tasks in the background. For example, you'll see here in a moment that the agent is going to stop looking at Agent Engine, and then we can set up the CI/CD process while the Agent Engine deployment is still running, so as to run things in parallel. And once the CI/CD process is finished through the different staging deployment targets, we can then set up observability. You can see here that the agent is explaining how to use Cloud Trace or BigQuery for analytics.",
+      "ru": "Агент умеет делать такие задачи в фоне. Например, сейчас он перестаёт смотреть на Agent Engine, и мы можем настроить CI/CD, пока деплой на Agent Engine ещё идёт, то есть параллельно. И когда CI/CD отработает через промежуточные цели деплоя, мы настраиваем наблюдаемость. Здесь агент объясняет, как использовать Cloud Trace или BigQuery для аналитики.",
+      "fix": null
+    },
+    {
+      "t": 170,
+      "en": "And once this is finished, we can go back to Agent Engine and check: okay, is the Agent Engine deployment finished? If so, great — let's run some tests against it. And the agent is now going to try to create a script to query the agent that we deployed remotely on Agent Engine from locally, and actually run the test that we created before on it, to make sure everything is really working both locally and remotely. And this is more or less what we wanted to cover today. You can see the agent is working perfectly, and we just need to run the test against it.",
+      "ru": "Когда это готово, возвращаемся к Agent Engine и проверяем: деплой завершился? Если да — отлично, давайте прогонем тесты. Агент пытается написать скрипт, который локально дёрнет удалённо задеплоенного агента на Agent Engine, и прогнать на нём тот самый тест, который мы создали раньше, — чтобы убедиться, что всё работает и локально, и удалённо. Это примерно то, что мы хотели показать сегодня. Видно, что агент работает отлично, остаётся только прогнать тест.",
+      "fix": null
+    },
+    {
+      "t": 210,
+      "en": "These skills are available for you to use on npx. I hope you'll enjoy them, and we appreciate the feedback from the community on anything else you would like to see here to make your developer experience even better. That's all for today. You can see here the agent passing all the tests. See you.",
+      "ru": "Эти навыки доступны через npx. Надеюсь, вам понравится, и будем благодарны за обратную связь от сообщества — что ещё стоит добавить, чтобы сделать работу разработчика удобнее. На этом всё, до встречи. Здесь видно, что агент проходит все тесты.",
+      "fix": "on MPX -> on npx"
+    }
+  ]
+}

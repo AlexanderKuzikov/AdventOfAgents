@@ -12,10 +12,10 @@
   "canonical_url": "https://adventofagents.com/2025/12/24",
   "video_id": "6UUEeiX2y58",
   "video_url": "https://www.youtube.com/watch?v=6UUEeiX2y58",
-  "video_title": "",
-  "creator_name": "",
+  "video_title": "A2Afy Any Agent",
+  "creator_name": "Elia Secchi",
   "duration": "",
-  "duration_s": 0,
+  "duration_s": 296,
   "links": [
     {
       "title": "ADK Samples",
@@ -43,5 +43,6 @@
       "code": "# Create with A2A from a sample\nuvx agent-starter-pack create my-agent     -a adk@deep-search     --base-template adk_a2a_base\n\n# Or enhance an existing agent\nuvx agent-starter-pack enhance --base-template adk_a2a_base"
     }
   ],
-  "description": "**Day 24 of Google's Advent of Agents**\n\nA2A-ify anything! Take any ADK or LangGraph sample and launch it with A2A on top.\n\nThe [google/adk-samples](https://github.com/google/adk-samples) repository contains ready-to-use agents built with the Agent Development Kit. You'll find agents for deep research, customer service, data engineering, financial advising, travel planning, and more—covering a range of real-world use cases.\n\nThese samples are great starting points. But what if you need your agent to collaborate with other agents, or connect to different UIs?\n\nThat's where Agent Starter Pack comes in. You can now layer A2A on top of any ADK sample with a single flag. This takes any sample (deep-search, customer-service, data-science, travel-concierge) and wraps it with full A2A capabilities:\n\n- **Auto-generated agent card**: The A2A metadata is created for you\n- **A2A endpoint exposed**: Your agent can receive requests from other agents or UIs\n- **Production infrastructure**: Terraform, CI/CD, and observability included\n\nYou get the best of both worlds: a proven sample agent, ready for multi-agent collaboration.\n\nAlready have an agent? Use the \n`enhance`\n command to add A2A capabilities to your existing code."
+  "description": "**Day 24 of Google's Advent of Agents**\n\nA2A-ify anything! Take any ADK or LangGraph sample and launch it with A2A on top.\n\nThe [google/adk-samples](https://github.com/google/adk-samples) repository contains ready-to-use agents built with the Agent Development Kit. You'll find agents for deep research, customer service, data engineering, financial advising, travel planning, and more—covering a range of real-world use cases.\n\nThese samples are great starting points. But what if you need your agent to collaborate with other agents, or connect to different UIs?\n\nThat's where Agent Starter Pack comes in. You can now layer A2A on top of any ADK sample with a single flag. This takes any sample (deep-search, customer-service, data-science, travel-concierge) and wraps it with full A2A capabilities:\n\n- **Auto-generated agent card**: The A2A metadata is created for you\n- **A2A endpoint exposed**: Your agent can receive requests from other agents or UIs\n- **Production infrastructure**: Terraform, CI/CD, and observability included\n\nYou get the best of both worlds: a proven sample agent, ready for multi-agent collaboration.\n\nAlready have an agent? Use the \n`enhance`\n command to add A2A capabilities to your existing code.",
+  "upload_date": "20251222"
 }

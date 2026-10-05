@@ -13,10 +13,10 @@
   "canonical_url": "https://adventofagents.com/2025/12/15",
   "video_id": "kJFnJr-leDI",
   "video_url": "https://www.youtube.com/watch?v=kJFnJr-leDI",
-  "video_title": "",
-  "creator_name": "",
+  "video_title": "A2UI Launch Advent of Agents",
+  "creator_name": "alan blount",
   "duration": "",
-  "duration_s": 0,
+  "duration_s": 502,
   "links": [
     {
       "title": "A2UI Official Website",
@@ -44,5 +44,6 @@
       "code": "\ngit clone https://github.com/google/a2ui.git\ncd a2ui\nexport GEMINI_API_KEY=\"your_gemini_api_key_here\"\ncd samples/client/lit\nnpm install\nnpm run demo:all\n"
     }
   ],
-  "description": "**Day 15 of Google's Advent of Agents**\n\n🚧 **Chat interfaces have a ceiling.**\nWhen an agent needs to collect structured data or present complex options, simple text becomes tedious.\n\n🚀 **Today we are making A2UI (Agent-to-User Interface) available to the public.**\nWe decouple the UI definition from the rendering engine.\nInstead of hardcoding screens, your agent generated structured outputs and streams JSON lines to the client.\n\nThe client 📲 listens to the stream and renders native components—buttons, forms, carousels.\nThe client controls the UI and all styling, but remote agents can make layouts for widgets and select from both a set of common component and custom components.\n\n**What you get with A2UI:**\n\n- 🔌 **Transport Agnostic:** Currently we have A2A but HTTP, SSE, WebSockets, etc are feasible.\n- 🏗️ **Framework Agnostic:** Write once; render on Angular, React, Flutter, or Android.\n- 🔒 **Security:** Native secure message format, not remote code execution.\n- ✨ **Generative:** Agents can generate UI components on the fly, or hydrate existing UI components with values.\n\n**⚠️ ️Status: Early Stage Public Preview:**\n\nA2UI is currently in v0.8 (Public Preview). The specification and implementations are functional but are still evolving. We are opening the project to foster collaboration, gather feedback, and solicit contributions (e.g., on client renderers). Expect changes.\n\n**Resources:**\n- Check out the [A2UI Official Website](https://a2ui.org/)\n- Check out the [A2UI Github Repo](https://github.com/google/a2ui)\n- Check out the [A2UI Composer](https://a2ui-editor.ag-ui.com/) thanks CopilotKit / AG UI team!"
+  "description": "**Day 15 of Google's Advent of Agents**\n\n🚧 **Chat interfaces have a ceiling.**\nWhen an agent needs to collect structured data or present complex options, simple text becomes tedious.\n\n🚀 **Today we are making A2UI (Agent-to-User Interface) available to the public.**\nWe decouple the UI definition from the rendering engine.\nInstead of hardcoding screens, your agent generated structured outputs and streams JSON lines to the client.\n\nThe client 📲 listens to the stream and renders native components—buttons, forms, carousels.\nThe client controls the UI and all styling, but remote agents can make layouts for widgets and select from both a set of common component and custom components.\n\n**What you get with A2UI:**\n\n- 🔌 **Transport Agnostic:** Currently we have A2A but HTTP, SSE, WebSockets, etc are feasible.\n- 🏗️ **Framework Agnostic:** Write once; render on Angular, React, Flutter, or Android.\n- 🔒 **Security:** Native secure message format, not remote code execution.\n- ✨ **Generative:** Agents can generate UI components on the fly, or hydrate existing UI components with values.\n\n**⚠️ ️Status: Early Stage Public Preview:**\n\nA2UI is currently in v0.8 (Public Preview). The specification and implementations are functional but are still evolving. We are opening the project to foster collaboration, gather feedback, and solicit contributions (e.g., on client renderers). Expect changes.\n\n**Resources:**\n- Check out the [A2UI Official Website](https://a2ui.org/)\n- Check out the [A2UI Github Repo](https://github.com/google/a2ui)\n- Check out the [A2UI Composer](https://a2ui-editor.ag-ui.com/) thanks CopilotKit / AG UI team!",
+  "upload_date": "20251215"
 }

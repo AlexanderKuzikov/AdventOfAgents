@@ -13,10 +13,10 @@
   "canonical_url": "https://adventofagents.com/2025/12/17",
   "video_id": "1txijlIHS_I",
   "video_url": "https://www.youtube.com/watch?v=1txijlIHS_I",
-  "video_title": "",
-  "creator_name": "",
+  "video_title": "ADK with Gemini 3 Flash",
+  "creator_name": "Kazunori Sato",
   "duration": "",
-  "duration_s": 0,
+  "duration_s": 158,
   "links": [
     {
       "title": "Gemini 3 Flash Announcement",
@@ -59,5 +59,6 @@
       "code": "pip install google-adk # and follow the instruction in the video"
     }
   ],
-  "description": "**Day 17 of Google's Advent of Agents**\n\n**Google's fastest model just got a lot smarter.**\nGemini 3 Flash combines flagship-level reasoning with the speed and cost-efficiency you expect from the Flash series.\n\nFlash scored **33.7%** without tool use on Humanity’s Last Exam, in comparison to Gemini 3 Pro at 37.5%, Gemini 2.5 Flash at 11%, and the newly released GPT-5.2 scored 34.5%.\n\nOn the multimodality and reasoning benchmark MMMU-Pro, the new model outscored all competitors with an **81.2%** score.\n\nAnd this is for only $0.50/1M input tokens and $3.00/1M output tokens, redefining the pareto frontier between quality, price, and performance.\n\nIt introduces powerful new controls for developers:\n\n- **🧠 Configurable Thinking Levels:** explicit control over the model's reasoning budget. (`high`, `low`, `minimal`)\n- **👁️ Granular Media Resolution:** Optimize your token usage by adjusting vision processing resolution (`low`, `medium`, `high`) per image or video frame.\n- **🔐 Robust Thought Signatures:** Encrypted tokens that preserve the model's reasoning state during multi-turn function calling, ensuring context isn't lost when the model pauses to use a tool.\n\n**ADK makes these features seamless.** The ADK automatically handles the complex circulation of **Thought Signatures** for you, so you can focus on building agents, not managing encrypted tokens.\n"
+  "description": "**Day 17 of Google's Advent of Agents**\n\n**Google's fastest model just got a lot smarter.**\nGemini 3 Flash combines flagship-level reasoning with the speed and cost-efficiency you expect from the Flash series.\n\nFlash scored **33.7%** without tool use on Humanity’s Last Exam, in comparison to Gemini 3 Pro at 37.5%, Gemini 2.5 Flash at 11%, and the newly released GPT-5.2 scored 34.5%.\n\nOn the multimodality and reasoning benchmark MMMU-Pro, the new model outscored all competitors with an **81.2%** score.\n\nAnd this is for only $0.50/1M input tokens and $3.00/1M output tokens, redefining the pareto frontier between quality, price, and performance.\n\nIt introduces powerful new controls for developers:\n\n- **🧠 Configurable Thinking Levels:** explicit control over the model's reasoning budget. (`high`, `low`, `minimal`)\n- **👁️ Granular Media Resolution:** Optimize your token usage by adjusting vision processing resolution (`low`, `medium`, `high`) per image or video frame.\n- **🔐 Robust Thought Signatures:** Encrypted tokens that preserve the model's reasoning state during multi-turn function calling, ensuring context isn't lost when the model pauses to use a tool.\n\n**ADK makes these features seamless.** The ADK automatically handles the complex circulation of **Thought Signatures** for you, so you can focus on building agents, not managing encrypted tokens.\n",
+  "upload_date": "20251217"
 }

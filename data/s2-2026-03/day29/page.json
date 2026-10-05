@@ -12,10 +12,10 @@
   "canonical_url": "https://adventofagents.com/2026/03/29",
   "video_id": "981wf6l3fCA",
   "video_url": "https://www.youtube.com/watch?v=981wf6l3fCA",
-  "video_title": "",
-  "creator_name": "",
+  "video_title": "Advent of Agents Day 29",
+  "creator_name": "Enrique Chan",
   "duration": "",
-  "duration_s": 0,
+  "duration_s": 209,
   "links": [
     {
       "title": "API Registry Documentation",
@@ -51,5 +51,6 @@
       "code": "import google.auth\nfrom google.cloud import bigquery\n\nclass ApiRegistry:\n    @staticmethod\n    def get_tool(tool_id):\n        #Dynamically fetch config from Cloud Registry\n        creds, project = google.auth.default()\n        project = project or \"project-id\" #replace project-id with your project id\n        return bigquery.Client(credentials=creds, project=project)\n\ndef run_task():\n    #1. Fetch tool from Registry\n    bq = ApiRegistry.get_tool(\"bigquery-admin-v2\")\n    \n    # 2. Execute admin-approved query\n    #replace project-id with your project id\n    sql = \"SELECT status FROM `project-id.registry_demo.test_table`\"\n    for row in bq.query(sql):\n        print(f\"Verified via Registry: {row.status}\")\n\nif __name__ == \"__main__\":\n    run_task()"
     }
   ],
-  "description": "**Day 29 of Google's Advent of Agents — Season 2**\n\nHardcoding API credentials into your agents is a security risk and an infrastructure headache. Instead, we can dynamically fetch admin-approved, fully configured tools directly from the Cloud API Registry at runtime.\n\n**How It Works**\n\nBy leveraging the `ApiRegistry`, we separate our agent logic from infrastructure specifics to enforce strict enterprise governance while keeping our AI portable. The registry ensures the agent always pulls the right connection settings, IAM roles, and boundaries without relying on local keys.\n\n- **Dependencies**: Include `google-cloud-bigquery` and `google-auth` to securely interact with GCP.\n- **Environment Authorization**: Use Application Default Credentials to connect from your local environment seamlessly, or inherit Workload Identity when running on Cloud Run.\n- **ApiRegistry Reference**: The wrapper dynamically yields a configured `bigquery.Client()` out of the box so your code stays clean and your credentials stay safe.\n\n**Resources:**\n\n- [API Registry Documentation](https://docs.cloud.google.com/api-registry/docs/overview)\n- [Enhanced Tool Governance in Vertex AI](https://cloud.google.com/blog/products/ai-machine-learning/new-enhanced-tool-governance-in-vertex-ai-agent-builder?e=48754805)"
+  "description": "**Day 29 of Google's Advent of Agents — Season 2**\n\nHardcoding API credentials into your agents is a security risk and an infrastructure headache. Instead, we can dynamically fetch admin-approved, fully configured tools directly from the Cloud API Registry at runtime.\n\n**How It Works**\n\nBy leveraging the `ApiRegistry`, we separate our agent logic from infrastructure specifics to enforce strict enterprise governance while keeping our AI portable. The registry ensures the agent always pulls the right connection settings, IAM roles, and boundaries without relying on local keys.\n\n- **Dependencies**: Include `google-cloud-bigquery` and `google-auth` to securely interact with GCP.\n- **Environment Authorization**: Use Application Default Credentials to connect from your local environment seamlessly, or inherit Workload Identity when running on Cloud Run.\n- **ApiRegistry Reference**: The wrapper dynamically yields a configured `bigquery.Client()` out of the box so your code stays clean and your credentials stay safe.\n\n**Resources:**\n\n- [API Registry Documentation](https://docs.cloud.google.com/api-registry/docs/overview)\n- [Enhanced Tool Governance in Vertex AI](https://cloud.google.com/blog/products/ai-machine-learning/new-enhanced-tool-governance-in-vertex-ai-agent-builder?e=48754805)",
+  "upload_date": "20260329"
 }

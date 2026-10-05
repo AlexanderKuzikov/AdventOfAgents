@@ -13,10 +13,10 @@
   "canonical_url": "https://adventofagents.com/2025/12/23",
   "video_id": "TkGFdildEXk",
   "video_url": "https://www.youtube.com/watch?v=TkGFdildEXk",
-  "video_title": "",
-  "creator_name": "",
+  "video_title": "Resilient AI Agents with Google ADK and Restate",
+  "creator_name": "Restate",
   "duration": "",
-  "duration_s": 0,
+  "duration_s": 313,
   "links": [
     {
       "title": "Restate Google ADK Example Repository",
@@ -40,5 +40,6 @@
       "code": "#This CLI snippet gets you a local durable environment in seconds.\n\n# 1. Get the Claims Processing sample\ngit clone https://github.com/restatedev/restate-google-adk-example\ncd restate-google-adk-example\n\n# 2. Start the Durable Agent (uses uv)\n# The agent will register itself and wait for work\nexport GOOGLE_API_KEY=\"YOUR_KEY_HERE\"\nuv run .\n\n# 3. In a new terminal, start the Restate Server\n# This acts as the durable log and orchestrator\ndocker run --name restate --rm -p 8080:8080 -p 9070:9070   --add-host host.docker.internal:host-gateway   docker.restate.dev/restatedev/restate:latest\n\n# 4. Open the UI to trace execution\n# http://localhost:9070"
     }
   ],
-  "description": "**Day 23 of Google's Advent of Agents**\n\n**Durable Execution: The Unkillable Agent** 🛡️\n\nMost agents are fragile: if the process dies, the memory dies 🪦. If your server crashes while waiting for a user reply, you lose the entire context.\n\n**Enter Durable Execution.** By combining the **Restate plugin** with Google ADK, you give your agent a persistent brain. Restate acts as a \"durability engine\" that wraps your code, ensuring that every step, tool call, and state change is recorded in a log-based journal.\n\n**I'm not talking about saving state to a database manually.** I'm talking about code that can pause execution for days (waiting for a human approval signal 🚦), survive a full server reboot, and wake up exactly on the line of code where it left off.\n\n**With the Restate Plugin, your agents can:**\n\n- ✅ **Never lose progress** - If the pod crashes, it resumes exactly where it stopped.\n- ✅ **Sleep for days** - Pause execution for human approval without keeping resources active.\n- ✅ **Recover gracefully** - Automatic retries and timeouts for every tool call.\n- ✅ **Simplify Logic** - Write complex, long-running workflows as standard procedural code.\n\n**Resources:**\n- Check out the [Restate Plugin](https://google.github.io/adk-docs/plugins/restate/)\n- Check out the [Restate Overview](https://docs.restate.dev/ai)\n"
+  "description": "**Day 23 of Google's Advent of Agents**\n\n**Durable Execution: The Unkillable Agent** 🛡️\n\nMost agents are fragile: if the process dies, the memory dies 🪦. If your server crashes while waiting for a user reply, you lose the entire context.\n\n**Enter Durable Execution.** By combining the **Restate plugin** with Google ADK, you give your agent a persistent brain. Restate acts as a \"durability engine\" that wraps your code, ensuring that every step, tool call, and state change is recorded in a log-based journal.\n\n**I'm not talking about saving state to a database manually.** I'm talking about code that can pause execution for days (waiting for a human approval signal 🚦), survive a full server reboot, and wake up exactly on the line of code where it left off.\n\n**With the Restate Plugin, your agents can:**\n\n- ✅ **Never lose progress** - If the pod crashes, it resumes exactly where it stopped.\n- ✅ **Sleep for days** - Pause execution for human approval without keeping resources active.\n- ✅ **Recover gracefully** - Automatic retries and timeouts for every tool call.\n- ✅ **Simplify Logic** - Write complex, long-running workflows as standard procedural code.\n\n**Resources:**\n- Check out the [Restate Plugin](https://google.github.io/adk-docs/plugins/restate/)\n- Check out the [Restate Overview](https://docs.restate.dev/ai)\n",
+  "upload_date": "20251209"
 }

@@ -1,0 +1,71 @@
+{
+  "note": "Субтитры автоматические (auto, en-orig). Перевод восстановлен по смыслу, термины приведены к официальным (SequentialAgent, output_key, Vertex AI, InsightMiner). Ключ fix помечает места, где распознавание ошиблось.",
+  "segments": [
+    {
+      "t": 3,
+      "en": "Hello everyone. Today I'm going to show you an example of how to run a sequential agent with ADK. Let me briefly cover what a sequential agent is: it's an agent that runs specialized sub-agents in a sequence. This is very useful for use cases where we know the pattern of execution — for example, we read a PDF file, we extract the information, we store it in BigQuery. It will always be the same. So this is a straightforward implementation, especially for when we need to debug these agents easily.",
+      "ru": "Всем привет. Сегодня покажу пример запуска последовательного агента на ADK. Коротко о том, что это такое: агент, который выполняет специализированных субагентов по очереди. Это очень полезно для сценариев, где порядок выполнения известен заранее: прочитать PDF-файл, извлечь информацию, положить её в BigQuery. Порядок всегда один и тот же, поэтому реализация получается прямой — особенно когда важно, чтобы агентов было легко дебажить.",
+      "fix": "ADKE -> ADK; sub aent -> sub-agents"
+    },
+    {
+      "t": 41,
+      "en": "Now let me share my screen so I can walk you through the code. A couple of things to keep in mind: I added this in my agent.py, and I also have an env file where I store my project ID and the region I want to use, as well as whether I want to use Vertex AI. In this case I am using Vertex AI.",
+      "ru": "Сейчас поделюсь экраном и пройдусь по коду. Пара моментов, на которые стоит обратить внимание. Всё это в моём файле `agent.py`. Плюс у меня есть env-файл, где я храню project ID, регион и то, использовать ли мне Vertex AI — в этом примере я использую Vertex AI.",
+      "fix": "in my agent. type -> in my agent.py; N file -> env file; workday AI -> Vertex AI"
+    },
+    {
+      "t": 68,
+      "en": "Here on the screen you'll see that I have three sub-agents. First I have a reader, and the reader will just analyze a provided PDF and provide the raw text of its content. Then a second sub-agent, the miner, will extract the top five most important technical facts of that PDF. And then finally sub-agent number three will generate a three-sentence executive briefing suitable for a business stakeholder.",
+      "ru": "На экране видно, что у меня три субагента. Первый — reader: он разбирает переданный PDF и отдаёт сырой текст его содержимого. Второй — miner: он извлекает пять самых важных технических фактов из этого PDF. И третий субагент генерирует трёхпредложную executive-брифинговую записку, готовую для бизнес- stakeholder.",
+      "fix": "the minor -> the miner (InsightMiner)"
+    },
+    {
+      "t": 91,
+      "en": "The cool thing about this is that as you can see, we'll specify the output key of each of these sub-agents, and then in the sub-agent that runs after, in the prompt we can specify which of that output we want to use with the raw text placeholder. So you can see here: reader, miner, synthesizer, and then we have the root agent where we specify the order. First we'll run the reader, then the miner, then the synthesizer.",
+      "ru": "Прикольно здесь вот что: для каждого субагента мы задаём `output_key`, и в следующем субагенте в промпте указываем, какой из этих выходов использовать через плейсхолдер сырого текста. То есть здесь у нас reader, miner, synthesizer, а сверху корневой агент, в котором задан порядок: сначала reader, потом miner, потом synthesizer.",
+      "fix": null
+    },
+    {
+      "t": 112,
+      "en": "Now let's run it to see it in action. I'll just do adk web — oh, I already have it running, let me just refresh it. And I will upload a PDF file that I already have on my local machine.",
+      "ru": "Теперь запустим и посмотрим в работе. Я просто сделаю `adk web` — о, у меня уже запущено, обновлю страницу. И загружу PDF-файл, который у меня уже есть на локальной машине.",
+      "fix": null
+    },
+    {
+      "t": 148,
+      "en": "Let's just wait for this check to happen — and this is done, I don't need to provide any more information. Just wanted to point out: while sub-agent number one runs, this is something I got from research.google, so you'll be able to see many of our latest research. I'm using this Gemini paper to read a map. Feel free to test with any of those, or any other PDF you may have.",
+      "ru": "Подождём, пока пройдёт проверка — готово, больше ничего вводить не нужно. Пока работает первый субагент, обратите внимание: этот документ я взял с research.google, там можно найти свежие исследования Google. Я использую эту статью Gemini, чтобы прочитать карту. Смело подставляйте любой другой материал или свой PDF.",
+      "fix": "research.g Google -> research.google; this teaching AI to read a map -> this Gemini paper to read a map"
+    },
+    {
+      "t": 173,
+      "en": "This one will take a little bit, just because right now I'm using Gemini Pro models which have good performance but a bit of higher latency compared to Gemini Flash models. Let's just wait until it gives us that raw PDF information.",
+      "ru": "Этот прогон займёт чуть больше времени, потому что сейчас я использую модели Gemini Pro: у них хорошее качество, но задержка выше, чем у Gemini Flash. Подождём, пока вернётся сырой текст из PDF.",
+      "fix": null
+    },
+    {
+      "t": 204,
+      "en": "So yeah, for this example, as you saw, you can use any sort of PDF. Down the line, feel free to adjust this. Something that I found very useful in my use cases is extracting the PDF information and then getting that unstructured data into a structured format — and that's where I found the sequential agents to be the most useful.",
+      "ru": "Итак, в этом примере, как вы видели, подойдёт любой PDF. Дальше это легко перенастроить под свою задачу. Очень полезным для моих сценариев оказался приём: извлечь данные из PDF, а затем привести эту неструктурированную информацию к структурированному виду — и вот тут последовательные агенты оказались самыми полезными.",
+      "fix": null
+    },
+    {
+      "t": 232,
+      "en": "Okay, here we see the raw PDF information, and we can see here that the PDF reader is the first one to run in the sequential agent pipeline. Then we'll have the Insight Miner and then the executive synthesizer, and we see right here the exact output that we got from that sub-agent. Let's just wait until we get our five most important facts.",
+      "ru": "Вот сырые данные из PDF. Видно, что первым в конвейере отработал PDF reader. Затем идёт Insight Miner, потом executive synthesizer, и здесь видно точный вывод каждого субагента. Подождём пять самых важных фактов.",
+      "fix": "the inside liner -> the Insight Miner"
+    },
+    {
+      "t": 256,
+      "en": "And as I mentioned, we're using Gemini Pro for all of these steps. And we can see here that the Insight Miner gave us our top five facts that it found in that PDF information. And then let's just wait until we get our executive briefing for these five things.",
+      "ru": "Как я говорил, на всех шагах используется Gemini Pro. Insight Miner выдал пять главных фактов, найденных в PDF. Теперь ждём executive-брифинг по этим пяти пунктам.",
+      "fix": "top five bags -> top five facts"
+    },
+    {
+      "t": 293,
+      "en": "All right, here we have the executive summary. So it's very straightforward, can be adapted to many cool use cases, and it's very easy to debug as well. As you can see, the output of each step is visible, and it's very linear, so it's easier to spot where things are going wrong. This is where an LLM doesn't have to pick which sub-agent to call. And with that, I hope you enjoyed this very short tutorial.",
+      "ru": "Готово — вот executive-резюме. Итак, всё очень прямолинейно, легко переносится на массу сценариев и элементарно дебажится: видно вывод каждого шага, поток линейный, и сразу понятно, где что-то пошло не так. Здесь от LLM не требуется решать, какого субагента вызвать. На этом всё, надеюсь, короткий туториал был полезен.",
+      "fix": null
+    }
+  ]
+}

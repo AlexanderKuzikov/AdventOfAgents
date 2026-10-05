@@ -13,10 +13,10 @@
   "canonical_url": "https://adventofagents.com/2026/03/08",
   "video_id": "vXoDUg2UZmQ",
   "video_url": "https://www.youtube.com/watch?v=vXoDUg2UZmQ",
-  "video_title": "",
-  "creator_name": "",
+  "video_title": "Sequential Agents",
+  "creator_name": "Barbara Amoros",
   "duration": "",
-  "duration_s": 0,
+  "duration_s": 324,
   "links": [
     {
       "title": "ADK Documentation: SequentialAgent",
@@ -49,5 +49,6 @@
       "code": "from .agent import root_agent\n\n__all__ = [\"root_agent\"]"
     }
   ],
-  "description": "\n**Day 8 of Google's Advent of Agents — Season 2**\n\nThe **SequentialAgent** in ADK lets you build a predictable workflow where the output of one agent goes straight to the next.\n\nThis keeps things simple because the agent does not have to guess what to do next. Since the flow is always the same, you get consistent results without the extra thinking time or randomness you might see in more complex setups.\n\n**How it works**\n\n- **Session state management** where one agent saves its work to an **output_key** and the next one grabs it using the raw text placeholder in the prompt.\n- **Simple debugging** because the flow is just a straight line, debugging is easy since you can check the data at every single step to see exactly what happened.\n\nCheck out the [ADK Documentation: SequentialAgent](https://google.github.io/adk-docs/agents/workflow-agents/sequential-agents/) for more information.\n\n"
+  "description": "\n**Day 8 of Google's Advent of Agents — Season 2**\n\nThe **SequentialAgent** in ADK lets you build a predictable workflow where the output of one agent goes straight to the next.\n\nThis keeps things simple because the agent does not have to guess what to do next. Since the flow is always the same, you get consistent results without the extra thinking time or randomness you might see in more complex setups.\n\n**How it works**\n\n- **Session state management** where one agent saves its work to an **output_key** and the next one grabs it using the raw text placeholder in the prompt.\n- **Simple debugging** because the flow is just a straight line, debugging is easy since you can check the data at every single step to see exactly what happened.\n\nCheck out the [ADK Documentation: SequentialAgent](https://google.github.io/adk-docs/agents/workflow-agents/sequential-agents/) for more information.\n\n",
+  "upload_date": "20260304"
 }

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workspace &amp; Gemini Enterprise: no-code agents — EN / RU</title>
+<style>
+:root {
+  --en-bg: #f7f8fa;
+  --line: #dfe3e8;
+  --accent: #0b57d0;
+  --ts: #8a9099;
+  --muted: #5f6672;
+  --fix: #fff3cd;
+  --fix-line: #e0b100;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 32px 20px 72px;
+  background: #eef0f3;
+  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #1a1a1a;
+}
+
+.page { max-width: 1400px; margin: 0 auto; }
+
+h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.head .sub { color: var(--muted); font-size: 15px; }
+.head .sub a { color: var(--accent); }
+
+.legend {
+  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
+}
+.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
+.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+
+.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+
+button {
+  font: inherit; font-size: 14px; padding: 7px 14px;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: #fff; color: #1a1a1a; cursor: pointer;
+}
+button:hover { border-color: #b9c0ca; background: #fafbfc; }
+
+.grid {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden;
+}
+
+.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
+
+.head-row {
+  background: #2f3541; color: #fff;
+  font-size: 13px; letter-spacing: 0.04em;
+  text-transform: uppercase; font-weight: 600;
+  position: sticky; top: 0; z-index: 5;
+}
+.head-row > div { padding: 10px 18px; }
+.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
+
+.row > .ts {
+  padding: 14px 8px; font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ts); text-align: right;
+  border-right: 1px solid var(--line); background: #fbfbfc;
+}
+.row > .en, .row > .ru {
+  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
+}
+.row > .en { background: var(--en-bg); }
+.row > .ru { border-right: 0; }
+
+.row.cont > .ts::after {
+  content: ""; display: block; width: 14px; height: 1px;
+  background: var(--line); margin: 8px 0 0 auto;
+}
+.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
+
+.row.fixed > .en { background: var(--fix); }
+.row.fixed .tag { display: none; }
+
+body.show-fixes .row.fixed .tag { display: block; }
+
+.tag {
+  display: inline-block; margin-top: 6px;
+  font-size: 11.5px; line-height: 1.35;
+  color: #6b5400; background: var(--fix);
+  border-left: 3px solid var(--fix-line);
+  padding: 3px 8px; border-radius: 0 4px 4px 0;
+}
+
+.app { margin-top: 26px; }
+.app h2 { font-size: 19px; margin: 0 0 10px; }
+
+table {
+  width: 100%; border-collapse: collapse;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden; font-size: 15px;
+}
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
+.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
+
+body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
+body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
+body.hide-en .row, body.hide-en .head-row,
+body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
+
+@media (max-width: 900px) {
+  .head-row, .row { grid-template-columns: 56px 1fr; }
+  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
+  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .bar, .legend { display: none; }
+  .head-row { position: static; }
+  .grid, table { border-radius: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <h1>Workspace &amp; Gemini Enterprise: no-code agents</h1>
+    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
+      Видео: <a href="https://www.youtube.com/watch?v=2kQbRBftUus">https://www.youtube.com/watch?v=2kQbRBftUus</a> · 03:57
+      · auto (YouTube en-orig)</div>
+  </div>
+
+  <div class="legend">
+    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
+    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
+  </div>
+
+  <div class="bar">
+    <button id="btn-mark">Показать исправления</button>
+    <button id="btn-print">Печать / PDF</button>
+  </div>
+
+  <div class="grid">
+    <div class="head-row">
+      <div>Time</div>
+      <div>English</div>
+      <div>Русский</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">00:00</div>
+      <div class="en">Hi everyone, I&#x27;m Pierrick from Google Workspace. Today I&#x27;ll show you how to connect and use Workspace connectors in Gemini Enterprise personal agents that are accessible from the web app. Let&#x27;s assume you already created a new GCP project and configured billing. The first thing to do is to enable Gemini Enterprise: go to the console and search for Gemini Enterprise, select the product and click Start 30 days free trial to begin the onboarding process. You&#x27;ll first need to activate the required API to enable the service for your project.<div class="tag">уточнено: Perrick -&gt; Pierrick (Pierrick Voulet по странице дня)</div></div>
+      <div class="ru">Всем привет, я Пьеррик из команды Google Workspace. Сегодня покажу, как подключать и использовать коннекторы Workspace в персональных агентах Gemini Enterprise, доступных из веб-приложения. Предположим, вы уже создали новый GCP-проект и настроили биллинг. Первое, что нужно сделать, — включить Gemini Enterprise: зайдите в консоль, найдите Gemini Enterprise, выберите продукт и нажмите «Start 30 days free trial», чтобы начать онбординг. Сначала потребуется активировать нужный API для вашего проекта.</div>
+    </div>
+    <div class="row">
+      <div class="ts">00:42</div>
+      <div class="en">Now that Gemini Enterprise is fully enabled, you can create an application here. You just need to provide a display name and choose the region. Once the app is ready, you need to configure the workforce identity. We choose Google identity for simplicity here. Next, let&#x27;s connect your business data: navigate to connected data source and add a new one. There are many options.</div>
+      <div class="ru">Когда Gemini Enterprise включён, здесь можно создать приложение. Нужно лишь задать отображаемое имя и выбрать регион. Когда приложение готово, настройте идентификацию для сотрудников — мы ради простоты выбираем Google identity. Дальше подключаем бизнес-данные: переходим к подключённым источникам данных и добавляем новый. Вариантов много.</div>
+    </div>
+    <div class="row">
+      <div class="ts">01:05</div>
+      <div class="en">Some are specific to Google Workspace, such as Gmail, Calendar and Drive. Others are specific to Google Cloud or third parties, and they typically connect to databases and APIs. Here we&#x27;ll go ahead with Google Drive. Choose what you would like to share and give your data connector a name before clicking Create. That&#x27;s as simple as that. The Drive data is now connected to your application.</div>
+      <div class="ru">Часть коннекторов — из Google Workspace: Gmail, Calendar, Drive. Другие относятся к Google Cloud или к сторонним системам и обычно ходят в базы данных и API. Здесь выберем Google Drive. Отметьте, что хотите передать, дайте коннектору имя и нажмите Create. Всё так просто. Данные Drive подключены к приложению.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">01:47</div>
+      <div class="en">Now let&#x27;s access the Gemini Enterprise web app using the provided link in the chat. Take a look at your connectors and make sure Drive is enabled. Then you can ask questions directly about the Workspace data, such as finding the title of the last Drive file you created. The agent looks into your connected data and answers accordingly.<div class="tag">уточнено: The drive data -&gt; The Drive data</div></div>
+      <div class="ru">Теперь откройте веб-приложение Gemini Enterprise по ссылке из чата. Посмотрите на коннекторы и убедитесь, что Drive включён. После этого можно задавать вопросы про данные Workspace напрямую — например, найти название последнего созданного вами файла на Drive. Агент заглянет в подключённые данные и ответит.</div>
+    </div>
+    <div class="row">
+      <div class="ts">02:06</div>
+      <div class="en">You can do a lot with this already. But what if you want your own custom agents to rely on data stores? In Gemini Enterprise, anyone can build their own personal agents using the agent designer. It&#x27;s a no-code solution. It&#x27;s not enabled by default though, so go to the application configuration to enable the feature. With the designer enabled, let&#x27;s come back to the Gemini Enterprise web app.</div>
+      <div class="ru">Уже сейчас это даёт много возможностей. Но что, если вам нужны собственные агенты, опирающиеся на хранилища данных? В Gemini Enterprise любой может собрать персонального агента в Agent Designer. Это решение без кода. По умолчанию оно выключено, поэтому зайдите в настройки приложения и включите функцию. После этого вернёмся в веб-приложение Gemini Enterprise.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">02:35</div>
+      <div class="en">Make sure to refresh the page to get access to the new feature. In the app sidebar, click New Agent to open the designer and describe what you need in a prompt. I&#x27;m going with a pirate-themed scene assistant for enterprise data search in this case. It takes a moment to create the agent based on my request. And just like that, our pirate data searcher is ready.<div class="tag">уточнено: a pirate scene assistant -&gt; a pirate-themed assistant; our parrot data searcher -&gt; our pirate data searcher</div></div>
+      <div class="ru">Обновите страницу, чтобы новая функция стала доступна. В боковой панели приложения нажмите New Agent — откроется конструктор, и там промптом опишите, что нужно. Я в этот раз сделаю пиратского помощника для поиска по корпоративным данным. Агенту нужно немного времени, чтобы создаться по моему запросу. И вот наш пиратский поисковик по данным готов.</div>
+    </div>
+    <div class="row">
+      <div class="ts">03:03</div>
+      <div class="en">You can jump into the flow tab to review and edit the setup, including the model being used and connected data sources like Google Drive and search. Once you&#x27;re satisfied, click Create and start the chat to see your new agent in action. When you ask a question, the agent uses its connected tools to pull real-time data as before, but it also uses the custom behavior you required — in this case, a pirate theme. It&#x27;s not really useful, but I guess you get the point.</div>
+      <div class="ru">Перейдите на вкладку flow, чтобы посмотреть и поправить настройки: какая модель используется и какие источники данных подключены — например, Google Drive и поиск. Когда всё устроит, нажмите Create и начните чат, чтобы увидеть агента в работе. Задав вопрос, вы получите данные в реальном времени из подключённых инструментов, но агент вдобавок применит заданное вами поведение — здесь пиратскую тематику. Практической пользы в этом мало, но идею вы поняли.</div>
+    </div>
+    <div class="row">
+      <div class="ts">03:30</div>
+      <div class="en">Oh, yeah. It&#x27;s also worth noting that the custom agent is saved in your library, so you can pin it for easier access next time it&#x27;s needed. And that&#x27;s all I had for you today. I&#x27;m dropping links in case you want to learn more about this capability. I hope you enjoyed it. Bye, everyone.</div>
+      <div class="ru">Ещё стоит отметить: персональный агент сохраняется в вашей библиотеке, его можно закрепить, чтобы в следующий раз он был под рукой. На этом всё, что я хотел показать сегодня. Ссылки приложу — на случай, если захотите узнать больше про эту возможность. Надеюсь, было интересно. До свидания!</div>
+    </div>
+  </div>
+
+  <div class="app">
+    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
+    <table>
+      <thead>
+        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+      </thead>
+      <tbody>
+      <tr><td>[00:00]</td><td>Hi everyone, I&#x27;m Pierrick from Google Workspace. Today I&#x27;ll show you how to connect and use Workspace connectors in Gemini Enterprise personal agents that are accessible from the web app. Let&#x27;s assume you already created a new GCP project and configured billing. The first thing to do is to enable Gemini Enterprise: go to the console and search for Gemini Enterprise, select the product and click Start 30 days free trial to begin the onboarding process. You&#x27;ll first need to activate the required API to enable the service for your project.</td><td>Perrick -&gt; Pierrick (Pierrick Voulet по странице дня)</td><td>Всем привет, я Пьеррик из команды Google Workspace. Сегодня покажу, как подключать и использовать коннекторы Workspace в персональных агентах Gemini Enterprise, доступных из веб-приложения. Предположим, вы уже создали новый GCP-проект и настроили биллинг. Первое, что нужно сделать, — включить Gemini Enterprise: зайдите в консоль, найдите Gemini Enterprise, выберите продукт и нажмите «Start 30 days free trial», чтобы начать онбординг. Сначала потребуется активировать нужный API для вашего проекта.</td></tr>
+      <tr><td>[01:47]</td><td>Now let&#x27;s access the Gemini Enterprise web app using the provided link in the chat. Take a look at your connectors and make sure Drive is enabled. Then you can ask questions directly about the Workspace data, such as finding the title of the last Drive file you created. The agent looks into your connected data and answers accordingly.</td><td>The drive data -&gt; The Drive data</td><td>Теперь откройте веб-приложение Gemini Enterprise по ссылке из чата. Посмотрите на коннекторы и убедитесь, что Drive включён. После этого можно задавать вопросы про данные Workspace напрямую — например, найти название последнего созданного вами файла на Drive. Агент заглянет в подключённые данные и ответит.</td></tr>
+      <tr><td>[02:35]</td><td>Make sure to refresh the page to get access to the new feature. In the app sidebar, click New Agent to open the designer and describe what you need in a prompt. I&#x27;m going with a pirate-themed scene assistant for enterprise data search in this case. It takes a moment to create the agent based on my request. And just like that, our pirate data searcher is ready.</td><td>a pirate scene assistant -&gt; a pirate-themed assistant; our parrot data searcher -&gt; our pirate data searcher</td><td>Обновите страницу, чтобы новая функция стала доступна. В боковой панели приложения нажмите New Agent — откроется конструктор, и там промптом опишите, что нужно. Я в этот раз сделаю пиратского помощника для поиска по корпоративным данным. Агенту нужно немного времени, чтобы создаться по моему запросу. И вот наш пиратский поисковик по данным готов.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Субтитры автоматические (auto, en-orig). Имя докладчика восстановлено по странице дня — Pierrick Voulet.</p>
+  </div>
+
+</div>
+<script>
+const el = id => document.getElementById(id);
+
+el('tgl-en').addEventListener('change', e =>
+  document.body.classList.toggle('hide-en', !e.target.checked));
+el('tgl-ru').addEventListener('change', e =>
+  document.body.classList.toggle('hide-ru', !e.target.checked));
+el('btn-print').addEventListener('click', () => window.print());
+el('btn-mark').addEventListener('click', () => {
+  const on = !document.body.classList.contains('show-fixes');
+  document.body.classList.toggle('show-fixes', on);
+  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
+});
+</script>
+</body>
+</html>

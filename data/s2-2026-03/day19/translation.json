@@ -1,0 +1,41 @@
+{
+  "note": "Ролик — демонстрация приложения LensMosaic без комментария спикера: только диалог с агентом. Перевод дословный.",
+  "segments": [
+    {
+      "t": 6,
+      "en": "Hi, what is this?",
+      "ru": "Привет, что это?",
+      "fix": null
+    },
+    {
+      "t": 9,
+      "en": "That appears to be a Mac Mini. Is there anything else I can help you with?",
+      "ru": "Похоже на Mac Mini. Чем ещё могу помочь?",
+      "fix": null
+    },
+    {
+      "t": 23,
+      "en": "Now, what do you see?",
+      "ru": "А теперь что вы видите?",
+      "fix": null
+    },
+    {
+      "t": 26,
+      "en": "I see a wireless keyboard and a double-walled glass cup with a tea bag inside, sitting on a wooden coaster. Is there anything specific you'd like to know about them? Can you find a teapot for this glass?",
+      "ru": "Вижу беспроводную клавиатуру и стакан с двойными стенками, в котором лежит чайный пакетик, стакан стоит на деревянной подставке. Что-то конкретное о них хотите узнать? Найдёте чайник под этот стакан?",
+      "fix": null
+    },
+    {
+      "t": 43,
+      "en": "I found a few options, including a French press, a kettle with four cups, and an electric tea kettle with an infuser. They are now showing on your screen.",
+      "ru": "Нашлось несколько вариантов: френч-пресс, чайник на четыре чашки и электрический чайник с заварочным устройством. Сейчас они появились у вас на экране.",
+      "fix": null
+    },
+    {
+      "t": 64,
+      "en": "Can you find a fertilizer for this? I can do that. I'm searching for fertilizer for that plant now. I found a liquid fertilizer, slow-release options, and spikes. They're on your screen. Slow-release fertilizer and some plant food. They're on your screen now.",
+      "ru": "Подберёте удобрение для этого растения? Конечно. Ищу удобрение для этого растения. Нашлись жидкое удобрение, варианты с медленным высвобождением и палочки-таблетки. Они на вашем экране. Удобрение с медленным высвобождением и ещё немного подкормки — теперь они у вас на экране.",
+      "fix": null
+    }
+  ]
+}

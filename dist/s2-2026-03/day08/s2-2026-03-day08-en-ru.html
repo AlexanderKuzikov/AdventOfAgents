@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multi-Agent Patterns: Sequential Agents — EN / RU</title>
+<style>
+:root {
+  --en-bg: #f7f8fa;
+  --line: #dfe3e8;
+  --accent: #0b57d0;
+  --ts: #8a9099;
+  --muted: #5f6672;
+  --fix: #fff3cd;
+  --fix-line: #e0b100;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 32px 20px 72px;
+  background: #eef0f3;
+  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #1a1a1a;
+}
+
+.page { max-width: 1400px; margin: 0 auto; }
+
+h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.head .sub { color: var(--muted); font-size: 15px; }
+.head .sub a { color: var(--accent); }
+
+.legend {
+  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
+}
+.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
+.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+
+.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+
+button {
+  font: inherit; font-size: 14px; padding: 7px 14px;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: #fff; color: #1a1a1a; cursor: pointer;
+}
+button:hover { border-color: #b9c0ca; background: #fafbfc; }
+
+.grid {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden;
+}
+
+.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
+
+.head-row {
+  background: #2f3541; color: #fff;
+  font-size: 13px; letter-spacing: 0.04em;
+  text-transform: uppercase; font-weight: 600;
+  position: sticky; top: 0; z-index: 5;
+}
+.head-row > div { padding: 10px 18px; }
+.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
+
+.row > .ts {
+  padding: 14px 8px; font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ts); text-align: right;
+  border-right: 1px solid var(--line); background: #fbfbfc;
+}
+.row > .en, .row > .ru {
+  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
+}
+.row > .en { background: var(--en-bg); }
+.row > .ru { border-right: 0; }
+
+.row.cont > .ts::after {
+  content: ""; display: block; width: 14px; height: 1px;
+  background: var(--line); margin: 8px 0 0 auto;
+}
+.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
+
+.row.fixed > .en { background: var(--fix); }
+.row.fixed .tag { display: none; }
+
+body.show-fixes .row.fixed .tag { display: block; }
+
+.tag {
+  display: inline-block; margin-top: 6px;
+  font-size: 11.5px; line-height: 1.35;
+  color: #6b5400; background: var(--fix);
+  border-left: 3px solid var(--fix-line);
+  padding: 3px 8px; border-radius: 0 4px 4px 0;
+}
+
+.app { margin-top: 26px; }
+.app h2 { font-size: 19px; margin: 0 0 10px; }
+
+table {
+  width: 100%; border-collapse: collapse;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden; font-size: 15px;
+}
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
+.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
+
+body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
+body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
+body.hide-en .row, body.hide-en .head-row,
+body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
+
+@media (max-width: 900px) {
+  .head-row, .row { grid-template-columns: 56px 1fr; }
+  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
+  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .bar, .legend { display: none; }
+  .head-row { position: static; }
+  .grid, table { border-radius: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <h1>Multi-Agent Patterns: Sequential Agents</h1>
+    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
+      Видео: <a href="https://www.youtube.com/watch?v=vXoDUg2UZmQ">https://www.youtube.com/watch?v=vXoDUg2UZmQ</a> · 05:24
+      · auto (YouTube en-orig)</div>
+  </div>
+
+  <div class="legend">
+    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
+    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
+  </div>
+
+  <div class="bar">
+    <button id="btn-mark">Показать исправления</button>
+    <button id="btn-print">Печать / PDF</button>
+  </div>
+
+  <div class="grid">
+    <div class="head-row">
+      <div>Time</div>
+      <div>English</div>
+      <div>Русский</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">00:03</div>
+      <div class="en">Hello everyone. Today I&#x27;m going to show you an example of how to run a sequential agent with ADK. Let me briefly cover what a sequential agent is: it&#x27;s an agent that runs specialized sub-agents in a sequence. This is very useful for use cases where we know the pattern of execution — for example, we read a PDF file, we extract the information, we store it in BigQuery. It will always be the same. So this is a straightforward implementation, especially for when we need to debug these agents easily.<div class="tag">уточнено: ADKE -&gt; ADK; sub aent -&gt; sub-agents</div></div>
+      <div class="ru">Всем привет. Сегодня покажу пример запуска последовательного агента на ADK. Коротко о том, что это такое: агент, который выполняет специализированных субагентов по очереди. Это очень полезно для сценариев, где порядок выполнения известен заранее: прочитать PDF-файл, извлечь информацию, положить её в BigQuery. Порядок всегда один и тот же, поэтому реализация получается прямой — особенно когда важно, чтобы агентов было легко дебажить.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">00:41</div>
+      <div class="en">Now let me share my screen so I can walk you through the code. A couple of things to keep in mind: I added this in my agent.py, and I also have an env file where I store my project ID and the region I want to use, as well as whether I want to use Vertex AI. In this case I am using Vertex AI.<div class="tag">уточнено: in my agent. type -&gt; in my agent.py; N file -&gt; env file; workday AI -&gt; Vertex AI</div></div>
+      <div class="ru">Сейчас поделюсь экраном и пройдусь по коду. Пара моментов, на которые стоит обратить внимание. Всё это в моём файле `agent.py`. Плюс у меня есть env-файл, где я храню project ID, регион и то, использовать ли мне Vertex AI — в этом примере я использую Vertex AI.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">01:08</div>
+      <div class="en">Here on the screen you&#x27;ll see that I have three sub-agents. First I have a reader, and the reader will just analyze a provided PDF and provide the raw text of its content. Then a second sub-agent, the miner, will extract the top five most important technical facts of that PDF. And then finally sub-agent number three will generate a three-sentence executive briefing suitable for a business stakeholder.<div class="tag">уточнено: the minor -&gt; the miner (InsightMiner)</div></div>
+      <div class="ru">На экране видно, что у меня три субагента. Первый — reader: он разбирает переданный PDF и отдаёт сырой текст его содержимого. Второй — miner: он извлекает пять самых важных технических фактов из этого PDF. И третий субагент генерирует трёхпредложную executive-брифинговую записку, готовую для бизнес- stakeholder.</div>
+    </div>
+    <div class="row">
+      <div class="ts">01:31</div>
+      <div class="en">The cool thing about this is that as you can see, we&#x27;ll specify the output key of each of these sub-agents, and then in the sub-agent that runs after, in the prompt we can specify which of that output we want to use with the raw text placeholder. So you can see here: reader, miner, synthesizer, and then we have the root agent where we specify the order. First we&#x27;ll run the reader, then the miner, then the synthesizer.</div>
+      <div class="ru">Прикольно здесь вот что: для каждого субагента мы задаём `output_key`, и в следующем субагенте в промпте указываем, какой из этих выходов использовать через плейсхолдер сырого текста. То есть здесь у нас reader, miner, synthesizer, а сверху корневой агент, в котором задан порядок: сначала reader, потом miner, потом synthesizer.</div>
+    </div>
+    <div class="row">
+      <div class="ts">01:52</div>
+      <div class="en">Now let&#x27;s run it to see it in action. I&#x27;ll just do adk web — oh, I already have it running, let me just refresh it. And I will upload a PDF file that I already have on my local machine.</div>
+      <div class="ru">Теперь запустим и посмотрим в работе. Я просто сделаю `adk web` — о, у меня уже запущено, обновлю страницу. И загружу PDF-файл, который у меня уже есть на локальной машине.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">02:28</div>
+      <div class="en">Let&#x27;s just wait for this check to happen — and this is done, I don&#x27;t need to provide any more information. Just wanted to point out: while sub-agent number one runs, this is something I got from research.google, so you&#x27;ll be able to see many of our latest research. I&#x27;m using this Gemini paper to read a map. Feel free to test with any of those, or any other PDF you may have.<div class="tag">уточнено: research.g Google -&gt; research.google; this teaching AI to read a map -&gt; this Gemini paper to read a map</div></div>
+      <div class="ru">Подождём, пока пройдёт проверка — готово, больше ничего вводить не нужно. Пока работает первый субагент, обратите внимание: этот документ я взял с research.google, там можно найти свежие исследования Google. Я использую эту статью Gemini, чтобы прочитать карту. Смело подставляйте любой другой материал или свой PDF.</div>
+    </div>
+    <div class="row">
+      <div class="ts">02:53</div>
+      <div class="en">This one will take a little bit, just because right now I&#x27;m using Gemini Pro models which have good performance but a bit of higher latency compared to Gemini Flash models. Let&#x27;s just wait until it gives us that raw PDF information.</div>
+      <div class="ru">Этот прогон займёт чуть больше времени, потому что сейчас я использую модели Gemini Pro: у них хорошее качество, но задержка выше, чем у Gemini Flash. Подождём, пока вернётся сырой текст из PDF.</div>
+    </div>
+    <div class="row">
+      <div class="ts">03:24</div>
+      <div class="en">So yeah, for this example, as you saw, you can use any sort of PDF. Down the line, feel free to adjust this. Something that I found very useful in my use cases is extracting the PDF information and then getting that unstructured data into a structured format — and that&#x27;s where I found the sequential agents to be the most useful.</div>
+      <div class="ru">Итак, в этом примере, как вы видели, подойдёт любой PDF. Дальше это легко перенастроить под свою задачу. Очень полезным для моих сценариев оказался приём: извлечь данные из PDF, а затем привести эту неструктурированную информацию к структурированному виду — и вот тут последовательные агенты оказались самыми полезными.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">03:52</div>
+      <div class="en">Okay, here we see the raw PDF information, and we can see here that the PDF reader is the first one to run in the sequential agent pipeline. Then we&#x27;ll have the Insight Miner and then the executive synthesizer, and we see right here the exact output that we got from that sub-agent. Let&#x27;s just wait until we get our five most important facts.<div class="tag">уточнено: the inside liner -&gt; the Insight Miner</div></div>
+      <div class="ru">Вот сырые данные из PDF. Видно, что первым в конвейере отработал PDF reader. Затем идёт Insight Miner, потом executive synthesizer, и здесь видно точный вывод каждого субагента. Подождём пять самых важных фактов.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">04:16</div>
+      <div class="en">And as I mentioned, we&#x27;re using Gemini Pro for all of these steps. And we can see here that the Insight Miner gave us our top five facts that it found in that PDF information. And then let&#x27;s just wait until we get our executive briefing for these five things.<div class="tag">уточнено: top five bags -&gt; top five facts</div></div>
+      <div class="ru">Как я говорил, на всех шагах используется Gemini Pro. Insight Miner выдал пять главных фактов, найденных в PDF. Теперь ждём executive-брифинг по этим пяти пунктам.</div>
+    </div>
+    <div class="row">
+      <div class="ts">04:53</div>
+      <div class="en">All right, here we have the executive summary. So it&#x27;s very straightforward, can be adapted to many cool use cases, and it&#x27;s very easy to debug as well. As you can see, the output of each step is visible, and it&#x27;s very linear, so it&#x27;s easier to spot where things are going wrong. This is where an LLM doesn&#x27;t have to pick which sub-agent to call. And with that, I hope you enjoyed this very short tutorial.</div>
+      <div class="ru">Готово — вот executive-резюме. Итак, всё очень прямолинейно, легко переносится на массу сценариев и элементарно дебажится: видно вывод каждого шага, поток линейный, и сразу понятно, где что-то пошло не так. Здесь от LLM не требуется решать, какого субагента вызвать. На этом всё, надеюсь, короткий туториал был полезен.</div>
+    </div>
+  </div>
+
+  <div class="app">
+    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
+    <table>
+      <thead>
+        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+      </thead>
+      <tbody>
+      <tr><td>[00:03]</td><td>Hello everyone. Today I&#x27;m going to show you an example of how to run a sequential agent with ADK. Let me briefly cover what a sequential agent is: it&#x27;s an agent that runs specialized sub-agents in a sequence. This is very useful for use cases where we know the pattern of execution — for example, we read a PDF file, we extract the information, we store it in BigQuery. It will always be the same. So this is a straightforward implementation, especially for when we need to debug these agents easily.</td><td>ADKE -&gt; ADK; sub aent -&gt; sub-agents</td><td>Всем привет. Сегодня покажу пример запуска последовательного агента на ADK. Коротко о том, что это такое: агент, который выполняет специализированных субагентов по очереди. Это очень полезно для сценариев, где порядок выполнения известен заранее: прочитать PDF-файл, извлечь информацию, положить её в BigQuery. Порядок всегда один и тот же, поэтому реализация получается прямой — особенно когда важно, чтобы агентов было легко дебажить.</td></tr>
+      <tr><td>[00:41]</td><td>Now let me share my screen so I can walk you through the code. A couple of things to keep in mind: I added this in my agent.py, and I also have an env file where I store my project ID and the region I want to use, as well as whether I want to use Vertex AI. In this case I am using Vertex AI.</td><td>in my agent. type -&gt; in my agent.py; N file -&gt; env file; workday AI -&gt; Vertex AI</td><td>Сейчас поделюсь экраном и пройдусь по коду. Пара моментов, на которые стоит обратить внимание. Всё это в моём файле `agent.py`. Плюс у меня есть env-файл, где я храню project ID, регион и то, использовать ли мне Vertex AI — в этом примере я использую Vertex AI.</td></tr>
+      <tr><td>[01:08]</td><td>Here on the screen you&#x27;ll see that I have three sub-agents. First I have a reader, and the reader will just analyze a provided PDF and provide the raw text of its content. Then a second sub-agent, the miner, will extract the top five most important technical facts of that PDF. And then finally sub-agent number three will generate a three-sentence executive briefing suitable for a business stakeholder.</td><td>the minor -&gt; the miner (InsightMiner)</td><td>На экране видно, что у меня три субагента. Первый — reader: он разбирает переданный PDF и отдаёт сырой текст его содержимого. Второй — miner: он извлекает пять самых важных технических фактов из этого PDF. И третий субагент генерирует трёхпредложную executive-брифинговую записку, готовую для бизнес- stakeholder.</td></tr>
+      <tr><td>[02:28]</td><td>Let&#x27;s just wait for this check to happen — and this is done, I don&#x27;t need to provide any more information. Just wanted to point out: while sub-agent number one runs, this is something I got from research.google, so you&#x27;ll be able to see many of our latest research. I&#x27;m using this Gemini paper to read a map. Feel free to test with any of those, or any other PDF you may have.</td><td>research.g Google -&gt; research.google; this teaching AI to read a map -&gt; this Gemini paper to read a map</td><td>Подождём, пока пройдёт проверка — готово, больше ничего вводить не нужно. Пока работает первый субагент, обратите внимание: этот документ я взял с research.google, там можно найти свежие исследования Google. Я использую эту статью Gemini, чтобы прочитать карту. Смело подставляйте любой другой материал или свой PDF.</td></tr>
+      <tr><td>[03:52]</td><td>Okay, here we see the raw PDF information, and we can see here that the PDF reader is the first one to run in the sequential agent pipeline. Then we&#x27;ll have the Insight Miner and then the executive synthesizer, and we see right here the exact output that we got from that sub-agent. Let&#x27;s just wait until we get our five most important facts.</td><td>the inside liner -&gt; the Insight Miner</td><td>Вот сырые данные из PDF. Видно, что первым в конвейере отработал PDF reader. Затем идёт Insight Miner, потом executive synthesizer, и здесь видно точный вывод каждого субагента. Подождём пять самых важных фактов.</td></tr>
+      <tr><td>[04:16]</td><td>And as I mentioned, we&#x27;re using Gemini Pro for all of these steps. And we can see here that the Insight Miner gave us our top five facts that it found in that PDF information. And then let&#x27;s just wait until we get our executive briefing for these five things.</td><td>top five bags -&gt; top five facts</td><td>Как я говорил, на всех шагах используется Gemini Pro. Insight Miner выдал пять главных фактов, найденных в PDF. Теперь ждём executive-брифинг по этим пяти пунктам.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Субтитры автоматические (auto, en-orig). Перевод восстановлен по смыслу, термины приведены к официальным (SequentialAgent, output_key, Vertex AI, InsightMiner). Ключ fix помечает места, где распознавание ошиблось.</p>
+  </div>
+
+</div>
+<script>
+const el = id => document.getElementById(id);
+
+el('tgl-en').addEventListener('change', e =>
+  document.body.classList.toggle('hide-en', !e.target.checked));
+el('tgl-ru').addEventListener('change', e =>
+  document.body.classList.toggle('hide-ru', !e.target.checked));
+el('btn-print').addEventListener('click', () => window.print());
+el('btn-mark').addEventListener('click', () => {
+  const on = !document.body.classList.contains('show-fixes');
+  document.body.classList.toggle('show-fixes', on);
+  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
+});
+</script>
+</body>
+</html>

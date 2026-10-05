@@ -13,10 +13,10 @@
   "canonical_url": "https://adventofagents.com/2025/12/06",
   "video_id": "Ep8usBDUTtA",
   "video_url": "https://www.youtube.com/watch?v=Ep8usBDUTtA",
-  "video_title": "",
-  "creator_name": "",
+  "video_title": "Advent of Agents - Day 6 - Antigravity / IDEs",
+  "creator_name": "Enrique Chan",
   "duration": "",
-  "duration_s": 0,
+  "duration_s": 111,
   "links": [
     {
       "title": "Antigravity",
@@ -69,5 +69,6 @@
       "code": "fetch from https://google.github.io/adk-docs/llms.txt\nHow do I create a function tool using Agent Development Kit?"
     }
   ],
-  "description": "**Day 6 of Google's Advent of Agents**\n\nBuilding agents shouldn't require an hour of environment configuration. If you use the Agent Starter Pack you already have IDE magnet context baked in for the Agent Development Kit (ADK).\n\nIn the attached video, you can see the antigravity with zero config aware of how ADK works, thanks to that default-on ADK cheatsheet which ships with the Agent Starter Pack and works with most IDEs.\n\nIf you aren’t using the Agent Starter Pack, here are a few ideas how you might configure a few IDEs.\n\n**Super Short Command:**\n\n```bash\nuvx agent-starter-pack create deep_search --adk\n```\n\n**Resources:**\n\n- Check out the [Agent Starter Pack](https://github.com/GoogleCloudPlatform/agent-starter-pack)\n- Check out the [ADK Documentation](https://google.github.io/adk-docs/)\n- Check out the [ADK Cheat Sheet](https://googlecloudplatform.github.io/agent-starter-pack/guide/installation.html)\n- Check out the [llms.txt explanation](https://llmstxt.org/)\n- Check out the [Video: ADK ready in Antigravity, Gemini CLI, Cursor, Firebase Studio and more](https://www.youtube.com/watch?v=Ep8usBDUTtA)\n- Bonus: Gemini made [Code Wiki](https://codewiki.google/github.com/google/adk-go)"
+  "description": "**Day 6 of Google's Advent of Agents**\n\nBuilding agents shouldn't require an hour of environment configuration. If you use the Agent Starter Pack you already have IDE magnet context baked in for the Agent Development Kit (ADK).\n\nIn the attached video, you can see the antigravity with zero config aware of how ADK works, thanks to that default-on ADK cheatsheet which ships with the Agent Starter Pack and works with most IDEs.\n\nIf you aren’t using the Agent Starter Pack, here are a few ideas how you might configure a few IDEs.\n\n**Super Short Command:**\n\n```bash\nuvx agent-starter-pack create deep_search --adk\n```\n\n**Resources:**\n\n- Check out the [Agent Starter Pack](https://github.com/GoogleCloudPlatform/agent-starter-pack)\n- Check out the [ADK Documentation](https://google.github.io/adk-docs/)\n- Check out the [ADK Cheat Sheet](https://googlecloudplatform.github.io/agent-starter-pack/guide/installation.html)\n- Check out the [llms.txt explanation](https://llmstxt.org/)\n- Check out the [Video: ADK ready in Antigravity, Gemini CLI, Cursor, Firebase Studio and more](https://www.youtube.com/watch?v=Ep8usBDUTtA)\n- Bonus: Gemini made [Code Wiki](https://codewiki.google/github.com/google/adk-go)",
+  "upload_date": "20251206"
 }
