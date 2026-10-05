@@ -4,152 +4,37 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Workspace &amp; Gemini Enterprise: ADK agents — EN / RU</title>
-<style>
-:root {
-  --en-bg: #f7f8fa;
-  --line: #dfe3e8;
-  --accent: #0b57d0;
-  --ts: #8a9099;
-  --muted: #5f6672;
-  --fix: #fff3cd;
-  --fix-line: #e0b100;
-}
-
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-
-body {
-  margin: 0;
-  padding: 32px 20px 72px;
-  background: #eef0f3;
-  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.45;
-  color: #1a1a1a;
-}
-
-.page { max-width: 1400px; margin: 0 auto; }
-
-h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
-.head .sub { color: var(--muted); font-size: 15px; }
-.head .sub a { color: var(--accent); }
-
-.legend {
-  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
-  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
-}
-.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
-.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
-
-.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
-
-button {
-  font: inherit; font-size: 14px; padding: 7px 14px;
-  border: 1px solid var(--line); border-radius: 6px;
-  background: #fff; color: #1a1a1a; cursor: pointer;
-}
-button:hover { border-color: #b9c0ca; background: #fafbfc; }
-
-.grid {
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden;
-}
-
-.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
-
-.head-row {
-  background: #2f3541; color: #fff;
-  font-size: 13px; letter-spacing: 0.04em;
-  text-transform: uppercase; font-weight: 600;
-  position: sticky; top: 0; z-index: 5;
-}
-.head-row > div { padding: 10px 18px; }
-.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
-
-.row > .ts {
-  padding: 14px 8px; font-size: 12px;
-  font-variant-numeric: tabular-nums;
-  color: var(--ts); text-align: right;
-  border-right: 1px solid var(--line); background: #fbfbfc;
-}
-.row > .en, .row > .ru {
-  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
-}
-.row > .en { background: var(--en-bg); }
-.row > .ru { border-right: 0; }
-
-.row.cont > .ts::after {
-  content: ""; display: block; width: 14px; height: 1px;
-  background: var(--line); margin: 8px 0 0 auto;
-}
-.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
-
-.row.fixed > .en { background: var(--fix); }
-.row.fixed .tag { display: none; }
-
-body.show-fixes .row.fixed .tag { display: block; }
-
-.tag {
-  display: inline-block; margin-top: 6px;
-  font-size: 11.5px; line-height: 1.35;
-  color: #6b5400; background: var(--fix);
-  border-left: 3px solid var(--fix-line);
-  padding: 3px 8px; border-radius: 0 4px 4px 0;
-}
-
-.app { margin-top: 26px; }
-.app h2 { font-size: 19px; margin: 0 0 10px; }
-
-table {
-  width: 100%; border-collapse: collapse;
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden; font-size: 15px;
-}
-th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
-th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
-tr:last-child td { border-bottom: 0; }
-td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
-.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
-
-body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
-body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
-body.hide-en .row, body.hide-en .head-row,
-body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
-
-@media (max-width: 900px) {
-  .head-row, .row { grid-template-columns: 56px 1fr; }
-  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
-  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
-}
-
-@media print {
-  body { background: #fff; padding: 0; }
-  .bar, .legend { display: none; }
-  .head-row { position: static; }
-  .grid, table { border-radius: 0; }
-}
-</style>
+<link rel="stylesheet" href="../../assets/style.css">
 </head>
 <body>
+<div class="top"><div class="inner">
+<a class="brand" href="../../index.html">Advent of Agents — перевод</a>
+<nav><a href="../../index.html#seasons">Сезоны</a>
+<a href="../../index.html#materials">Материалы</a>
+<a href="https://adventofagents.com/">Оригинал</a>
+</nav>
+<div class="spacer"></div>
+<a href="https://github.com/AlexanderKuzikov/AdventOfAgents">репозиторий</a>
+</div></div>
 <div class="page">
-
-  <div class="head">
-    <h1>Workspace &amp; Gemini Enterprise: ADK agents</h1>
-    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
-      Видео: <a href="https://www.youtube.com/watch?v=dVBvx9r-D-4">https://www.youtube.com/watch?v=dVBvx9r-D-4</a> · 04:55
-      · auto (YouTube en-orig)</div>
-  </div>
-
-  <div class="legend">
-    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
-    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
-  </div>
-
-  <div class="bar">
-    <button id="btn-mark">Показать исправления</button>
-    <button id="btn-print">Печать / PDF</button>
-  </div>
-
+<p class="crumbs"><a href="../../index.html">Все дни</a> &rsaquo; <a href="../../index.html#s2-2026-03">s2-2026-03</a> &rsaquo; day18</p>
+<h1>Workspace &amp; Gemini Enterprise: ADK agents</h1>
+<p class="lede">Двуязычная транскрипция: английский оригинал слева, русский перевод справа, абзацы стоят строго напротив друг друга.</p>
+<div class="stats">
+  <div class="stat"><div class="n">04:55</div><div class="k">длительность</div></div>
+  <div class="stat"><div class="n">5</div><div class="k">абзацев</div></div>
+  <div class="stat"><div class="n">2</div><div class="k">правок распознавания</div></div>
+</div>
+<div class="bar">
+  <label class="legend"><input type="checkbox" id="tgl-en" checked> оригинал</label>
+  <label class="legend"><input type="checkbox" id="tgl-ru" checked> перевод</label>
+</div>
+<div class="bar">
+  <button id="btn-mark">Показать исправления</button>
+  <button id="btn-print">Печать / PDF</button>
+  <a class="btn" href="s2-2026-03-day18-transcript-ru.docx">Скачать DOCX</a>
+  <a href="https://www.youtube.com/watch?v=dVBvx9r-D-4" target="_blank" rel="noopener">оригинальный ролик</a>
+</div>
   <div class="grid">
     <div class="head-row">
       <div>Time</div>
@@ -158,7 +43,7 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">00:00</div>
-      <div class="en">Hi everyone, I&#x27;m Pierrick from Google Workspace. Yesterday we showed how to build and use no-code agents with access to Workspace connectors in Gemini Enterprise. Today I&#x27;ll show you how to build, deploy and access Workspace-enabled ADK agents from anywhere. In this example we&#x27;ll extend yesterday&#x27;s setup and use Vertex AI Agent Engine in the Gemini Enterprise web app — though we could just as easily switch to Cloud Run, Google Chat or Gmail.<div class="tag">уточнено: I&#x27;m Cheric -&gt; I&#x27;m Pierrick (Pierrick Voulet по странице дня)</div></div>
+      <div class="en">Hi everyone, I&#x27;m Pierrick from Google Workspace. Yesterday we showed how to build and use no-code agents with access to Workspace connectors in Gemini Enterprise. Today I&#x27;ll show you how to build, deploy and access Workspace-enabled ADK agents from anywhere. In this example we&#x27;ll extend yesterday&#x27;s setup and use Vertex AI Agent Engine in the Gemini Enterprise web app — though we could just as easily switch to Cloud Run, Google Chat or Gmail.<div class="tagline">уточнено: I&#x27;m Cheric -&gt; I&#x27;m Pierrick (Pierrick Voulet по странице дня)</div></div>
       <div class="ru">Привет, я Пьеррик из Google Workspace. Вчера мы показали, как строить и использовать агентов без кода с доступом к коннекторам Workspace в Gemini Enterprise. Сегодня покажу, как собрать, задеплоить и получить доступ к агентам ADK с интеграцией Workspace откуда угодно. В этом примере мы продолжим вчерашнюю настройку и возьмём Vertex AI Agent Engine в веб-приложении Gemini Enterprise — хотя так же легко можно переключиться на Cloud Run, Google Chat или Gmail.</div>
     </div>
     <div class="row">
@@ -168,7 +53,7 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">01:38</div>
-      <div class="en">Now that you know a bit more about the agent, let&#x27;s run a few commands to enable the required APIs and the Vertex AI Search MCP. From there we can start building and deploying the agent to Vertex AI Agent Engine with uv commands. It will take a while, so in the meantime let&#x27;s focus on access. We need to enable the Vertex AI Reasoning Engine service account to access the data stores we&#x27;ve set up in Gemini Enterprise. Next, let&#x27;s configure OAuth for our GCP project: navigate to the Branding section of the Google Cloud project, where we need to define its name, type and contact information. Under Data Access, we manually add the scopes used by our custom agent — in this case, Google Cloud Platform and Calendar. With the scopes defined, we can generate the OAuth credentials. The type is web application; we need a name and we need to add the two authorized redirect URIs required by Gemini Enterprise.<div class="tag">уточнено: UV commands -&gt; uv commands; the Vertex AI reasoning engine service account -&gt; the Vertex AI Reasoning Engine service account</div></div>
+      <div class="en">Now that you know a bit more about the agent, let&#x27;s run a few commands to enable the required APIs and the Vertex AI Search MCP. From there we can start building and deploying the agent to Vertex AI Agent Engine with uv commands. It will take a while, so in the meantime let&#x27;s focus on access. We need to enable the Vertex AI Reasoning Engine service account to access the data stores we&#x27;ve set up in Gemini Enterprise. Next, let&#x27;s configure OAuth for our GCP project: navigate to the Branding section of the Google Cloud project, where we need to define its name, type and contact information. Under Data Access, we manually add the scopes used by our custom agent — in this case, Google Cloud Platform and Calendar. With the scopes defined, we can generate the OAuth credentials. The type is web application; we need a name and we need to add the two authorized redirect URIs required by Gemini Enterprise.<div class="tagline">уточнено: UV commands -&gt; uv commands; the Vertex AI reasoning engine service account -&gt; the Vertex AI Reasoning Engine service account</div></div>
       <div class="ru">Теперь, когда вы знаете про агента чуть больше, выполним несколько команд: включим нужные API и Vertex AI Search MCP. Дальше можно собирать агента и деплоить в Vertex AI Agent Engine командами uv. Это займёт время, а пока займёмся доступом. Нужно включить сервисный аккаунт Vertex AI Reasoning Engine, чтобы обращаться к хранилищам данных, настроенным в Gemini Enterprise. Затем настроим OAuth для нашего GCP-проекта: перейдите в раздел Branding в проекте Google Cloud, где нужно задать имя, тип и контактные данные. В разделе Data Access вручную добавляем scopes, которые использует наш кастомный агент — в нашем случае Google Cloud Platform и Calendar. Когда scopes заданы, можно сгенерировать OAuth-учётные данные. Тип — веб-приложение; нужны имя и два авторизованных redirect URI, которые требуются Gemini Enterprise.</div>
     </div>
     <div class="row">
@@ -183,34 +68,25 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
   </div>
 
-  <div class="app">
-    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
-    <table>
-      <thead>
-        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
-      </thead>
-      <tbody>
-      <tr><td>[00:00]</td><td>Hi everyone, I&#x27;m Pierrick from Google Workspace. Yesterday we showed how to build and use no-code agents with access to Workspace connectors in Gemini Enterprise. Today I&#x27;ll show you how to build, deploy and access Workspace-enabled ADK agents from anywhere. In this example we&#x27;ll extend yesterday&#x27;s setup and use Vertex AI Agent Engine in the Gemini Enterprise web app — though we could just as easily switch to Cloud Run, Google Chat or Gmail.</td><td>I&#x27;m Cheric -&gt; I&#x27;m Pierrick (Pierrick Voulet по странице дня)</td><td>Привет, я Пьеррик из Google Workspace. Вчера мы показали, как строить и использовать агентов без кода с доступом к коннекторам Workspace в Gemini Enterprise. Сегодня покажу, как собрать, задеплоить и получить доступ к агентам ADK с интеграцией Workspace откуда угодно. В этом примере мы продолжим вчерашнюю настройку и возьмём Vertex AI Agent Engine в веб-приложении Gemini Enterprise — хотя так же легко можно переключиться на Cloud Run, Google Chat или Gmail.</td></tr>
-      <tr><td>[01:38]</td><td>Now that you know a bit more about the agent, let&#x27;s run a few commands to enable the required APIs and the Vertex AI Search MCP. From there we can start building and deploying the agent to Vertex AI Agent Engine with uv commands. It will take a while, so in the meantime let&#x27;s focus on access. We need to enable the Vertex AI Reasoning Engine service account to access the data stores we&#x27;ve set up in Gemini Enterprise. Next, let&#x27;s configure OAuth for our GCP project: navigate to the Branding section of the Google Cloud project, where we need to define its name, type and contact information. Under Data Access, we manually add the scopes used by our custom agent — in this case, Google Cloud Platform and Calendar. With the scopes defined, we can generate the OAuth credentials. The type is web application; we need a name and we need to add the two authorized redirect URIs required by Gemini Enterprise.</td><td>UV commands -&gt; uv commands; the Vertex AI reasoning engine service account -&gt; the Vertex AI Reasoning Engine service account</td><td>Теперь, когда вы знаете про агента чуть больше, выполним несколько команд: включим нужные API и Vertex AI Search MCP. Дальше можно собирать агента и деплоить в Vertex AI Agent Engine командами uv. Это займёт время, а пока займёмся доступом. Нужно включить сервисный аккаунт Vertex AI Reasoning Engine, чтобы обращаться к хранилищам данных, настроенным в Gemini Enterprise. Затем настроим OAuth для нашего GCP-проекта: перейдите в раздел Branding в проекте Google Cloud, где нужно задать имя, тип и контактные данные. В разделе Data Access вручную добавляем scopes, которые использует наш кастомный агент — в нашем случае Google Cloud Platform и Calendar. Когда scopes заданы, можно сгенерировать OAuth-учётные данные. Тип — веб-приложение; нужны имя и два авторизованных redirect URI, которые требуются Gemini Enterprise.</td></tr>
-      </tbody>
-    </table>
-    <p class="note">Субтитры автоматические (auto, en-orig). Названия сверены со страницей дня: Vertex AI Agent Engine, Vertex AI Search MCP, OAuth-полномочия Google Cloud Platform и Calendar, agent registration в Gemini Enterprise. Докладчик — Pierrick Voulet (страница дня).</p>
+  <h2 id="fixes">Где автосубтитры соврали и как это восстановлено</h2>
+  <table class="plain">
+    <thead>
+      <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>00:00</td><td>Hi everyone, I&#x27;m Pierrick from Google Workspace. Yesterday we showed how to build and use no-code agents with access to Workspace connectors in Gemini Enterprise. Today I&#x27;ll show you how to build, deploy and access Workspace-enabled ADK agents from anywhere. In this example we&#x27;ll extend yesterday&#x27;s setup and use Vertex AI Agent Engine in the Gemini Enterprise web app — though we could just as easily switch to Cloud Run, Google Chat or Gmail.</td><td>I&#x27;m Cheric -&gt; I&#x27;m Pierrick (Pierrick Voulet по странице дня)</td><td>Привет, я Пьеррик из Google Workspace. Вчера мы показали, как строить и использовать агентов без кода с доступом к коннекторам Workspace в Gemini Enterprise. Сегодня покажу, как собрать, задеплоить и получить доступ к агентам ADK с интеграцией Workspace откуда угодно. В этом примере мы продолжим вчерашнюю настройку и возьмём Vertex AI Agent Engine в веб-приложении Gemini Enterprise — хотя так же легко можно переключиться на Cloud Run, Google Chat или Gmail.</td></tr>
+      <tr><td>01:38</td><td>Now that you know a bit more about the agent, let&#x27;s run a few commands to enable the required APIs and the Vertex AI Search MCP. From there we can start building and deploying the agent to Vertex AI Agent Engine with uv commands. It will take a while, so in the meantime let&#x27;s focus on access. We need to enable the Vertex AI Reasoning Engine service account to access the data stores we&#x27;ve set up in Gemini Enterprise. Next, let&#x27;s configure OAuth for our GCP project: navigate to the Branding section of the Google Cloud project, where we need to define its name, type and contact information. Under Data Access, we manually add the scopes used by our custom agent — in this case, Google Cloud Platform and Calendar. With the scopes defined, we can generate the OAuth credentials. The type is web application; we need a name and we need to add the two authorized redirect URIs required by Gemini Enterprise.</td><td>UV commands -&gt; uv commands; the Vertex AI reasoning engine service account -&gt; the Vertex AI Reasoning Engine service account</td><td>Теперь, когда вы знаете про агента чуть больше, выполним несколько команд: включим нужные API и Vertex AI Search MCP. Дальше можно собирать агента и деплоить в Vertex AI Agent Engine командами uv. Это займёт время, а пока займёмся доступом. Нужно включить сервисный аккаунт Vertex AI Reasoning Engine, чтобы обращаться к хранилищам данных, настроенным в Gemini Enterprise. Затем настроим OAuth для нашего GCP-проекта: перейдите в раздел Branding в проекте Google Cloud, где нужно задать имя, тип и контактные данные. В разделе Data Access вручную добавляем scopes, которые использует наш кастомный агент — в нашем случае Google Cloud Platform и Calendar. Когда scopes заданы, можно сгенерировать OAuth-учётные данные. Тип — веб-приложение; нужны имя и два авторизованных redirect URI, которые требуются Gemini Enterprise.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Субтитры автоматические (auto, en-orig). Названия сверены со страницей дня: Vertex AI Agent Engine, Vertex AI Search MCP, OAuth-полномочия Google Cloud Platform и Calendar, agent registration в Gemini Enterprise. Докладчик — Pierrick Voulet (страница дня).</p>
+  <div class="pager">
+  <a class="prev" href="../day17/s2-2026-03-day17-en-ru.html" rel="prev">← day17 &rarr;</a>
+  <a class="next" href="../day19/s2-2026-03-day19-en-ru.html" rel="next">day19 → &rarr;</a>
   </div>
-
 </div>
-<script>
-const el = id => document.getElementById(id);
-
-el('tgl-en').addEventListener('change', e =>
-  document.body.classList.toggle('hide-en', !e.target.checked));
-el('tgl-ru').addEventListener('change', e =>
-  document.body.classList.toggle('hide-ru', !e.target.checked));
-el('btn-print').addEventListener('click', () => window.print());
-el('btn-mark').addEventListener('click', () => {
-  const on = !document.body.classList.contains('show-fixes');
-  document.body.classList.toggle('show-fixes', on);
-  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
-});
-</script>
+<div class="page">
+<p class="note">Перевод с английского. Субтитры автоматические (YouTube auto), поэтому в приложении указано, где распознавание было исправлено. Исходный ролик: <a href="https://www.youtube.com/watch?v=dVBvx9r-D-4">YouTube</a>.</p>
+</div>
+<script src="../../assets/app.js"></script>
 </body>
 </html>

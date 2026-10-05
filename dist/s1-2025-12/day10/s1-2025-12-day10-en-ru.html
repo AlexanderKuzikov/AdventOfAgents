@@ -4,152 +4,37 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Big Context ≠ Better Memory — EN / RU</title>
-<style>
-:root {
-  --en-bg: #f7f8fa;
-  --line: #dfe3e8;
-  --accent: #0b57d0;
-  --ts: #8a9099;
-  --muted: #5f6672;
-  --fix: #fff3cd;
-  --fix-line: #e0b100;
-}
-
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-
-body {
-  margin: 0;
-  padding: 32px 20px 72px;
-  background: #eef0f3;
-  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.45;
-  color: #1a1a1a;
-}
-
-.page { max-width: 1400px; margin: 0 auto; }
-
-h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
-.head .sub { color: var(--muted); font-size: 15px; }
-.head .sub a { color: var(--accent); }
-
-.legend {
-  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
-  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
-}
-.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
-.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
-
-.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
-
-button {
-  font: inherit; font-size: 14px; padding: 7px 14px;
-  border: 1px solid var(--line); border-radius: 6px;
-  background: #fff; color: #1a1a1a; cursor: pointer;
-}
-button:hover { border-color: #b9c0ca; background: #fafbfc; }
-
-.grid {
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden;
-}
-
-.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
-
-.head-row {
-  background: #2f3541; color: #fff;
-  font-size: 13px; letter-spacing: 0.04em;
-  text-transform: uppercase; font-weight: 600;
-  position: sticky; top: 0; z-index: 5;
-}
-.head-row > div { padding: 10px 18px; }
-.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
-
-.row > .ts {
-  padding: 14px 8px; font-size: 12px;
-  font-variant-numeric: tabular-nums;
-  color: var(--ts); text-align: right;
-  border-right: 1px solid var(--line); background: #fbfbfc;
-}
-.row > .en, .row > .ru {
-  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
-}
-.row > .en { background: var(--en-bg); }
-.row > .ru { border-right: 0; }
-
-.row.cont > .ts::after {
-  content: ""; display: block; width: 14px; height: 1px;
-  background: var(--line); margin: 8px 0 0 auto;
-}
-.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
-
-.row.fixed > .en { background: var(--fix); }
-.row.fixed .tag { display: none; }
-
-body.show-fixes .row.fixed .tag { display: block; }
-
-.tag {
-  display: inline-block; margin-top: 6px;
-  font-size: 11.5px; line-height: 1.35;
-  color: #6b5400; background: var(--fix);
-  border-left: 3px solid var(--fix-line);
-  padding: 3px 8px; border-radius: 0 4px 4px 0;
-}
-
-.app { margin-top: 26px; }
-.app h2 { font-size: 19px; margin: 0 0 10px; }
-
-table {
-  width: 100%; border-collapse: collapse;
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden; font-size: 15px;
-}
-th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
-th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
-tr:last-child td { border-bottom: 0; }
-td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
-.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
-
-body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
-body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
-body.hide-en .row, body.hide-en .head-row,
-body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
-
-@media (max-width: 900px) {
-  .head-row, .row { grid-template-columns: 56px 1fr; }
-  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
-  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
-}
-
-@media print {
-  body { background: #fff; padding: 0; }
-  .bar, .legend { display: none; }
-  .head-row { position: static; }
-  .grid, table { border-radius: 0; }
-}
-</style>
+<link rel="stylesheet" href="../../assets/style.css">
 </head>
 <body>
+<div class="top"><div class="inner">
+<a class="brand" href="../../index.html">Advent of Agents — перевод</a>
+<nav><a href="../../index.html#seasons">Сезоны</a>
+<a href="../../index.html#materials">Материалы</a>
+<a href="https://adventofagents.com/">Оригинал</a>
+</nav>
+<div class="spacer"></div>
+<a href="https://github.com/AlexanderKuzikov/AdventOfAgents">репозиторий</a>
+</div></div>
 <div class="page">
-
-  <div class="head">
-    <h1>Big Context ≠ Better Memory</h1>
-    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
-      Видео: <a href="https://www.youtube.com/watch?v=L3eKHw9df-g">https://www.youtube.com/watch?v=L3eKHw9df-g</a> · 07:15
-      · auto (YouTube en-orig)</div>
-  </div>
-
-  <div class="legend">
-    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
-    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
-  </div>
-
-  <div class="bar">
-    <button id="btn-mark">Показать исправления</button>
-    <button id="btn-print">Печать / PDF</button>
-  </div>
-
+<p class="crumbs"><a href="../../index.html">Все дни</a> &rsaquo; <a href="../../index.html#s1-2025-12">s1-2025-12</a> &rsaquo; day10</p>
+<h1>Big Context ≠ Better Memory</h1>
+<p class="lede">Двуязычная транскрипция: английский оригинал слева, русский перевод справа, абзацы стоят строго напротив друг друга.</p>
+<div class="stats">
+  <div class="stat"><div class="n">07:15</div><div class="k">длительность</div></div>
+  <div class="stat"><div class="n">8</div><div class="k">абзацев</div></div>
+  <div class="stat"><div class="n">7</div><div class="k">правок распознавания</div></div>
+</div>
+<div class="bar">
+  <label class="legend"><input type="checkbox" id="tgl-en" checked> оригинал</label>
+  <label class="legend"><input type="checkbox" id="tgl-ru" checked> перевод</label>
+</div>
+<div class="bar">
+  <button id="btn-mark">Показать исправления</button>
+  <button id="btn-print">Печать / PDF</button>
+  <a class="btn" href="s1-2025-12-day10-transcript-ru.docx">Скачать DOCX</a>
+  <a href="https://www.youtube.com/watch?v=L3eKHw9df-g" target="_blank" rel="noopener">оригинальный ролик</a>
+</div>
   <div class="grid">
     <div class="head-row">
       <div>Time</div>
@@ -158,27 +43,27 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">00:00</div>
-      <div class="en">Hey everyone. In this video we&#x27;ll talk about how the built-in features of the Google Agent Development Kit help address one of the key challenges you run into when deploying an AI agent to production with ADK. We&#x27;ll cover two key features: context compaction and context caching. First I&#x27;ll explain visually how they work, and then we&#x27;ll walk step by step through implementing them in code. When you deploy an ADK agent, it collects context information: the user request, user information, data the model retrieves, the tool calls it makes, and any output the model generates. All of this is stored in what we call a session. Within the session, the information is stored as events.<div class="tag">уточнено: agent development kit framework -&gt; Agent Development Kit</div></div>
+      <div class="en">Hey everyone. In this video we&#x27;ll talk about how the built-in features of the Google Agent Development Kit help address one of the key challenges you run into when deploying an AI agent to production with ADK. We&#x27;ll cover two key features: context compaction and context caching. First I&#x27;ll explain visually how they work, and then we&#x27;ll walk step by step through implementing them in code. When you deploy an ADK agent, it collects context information: the user request, user information, data the model retrieves, the tool calls it makes, and any output the model generates. All of this is stored in what we call a session. Within the session, the information is stored as events.<div class="tagline">уточнено: agent development kit framework -&gt; Agent Development Kit</div></div>
       <div class="ru">Привет. В этом видео поговорим о том, как встроенные возможности Google Agent Development Kit решают одну из ключевых проблем, с которой сталкивается при выводе агента в продакшен на ADK. Разберём две главные функции: context compaction и context caching. Сначала наглядно объясню, как они работают, а затем пройдём пошагово по реализации в коде. При деплое агента на ADK он собирает контекстную информацию: запрос пользователя, данные о пользователе, то, что модель извлекла, какие инструменты вызывала и что сгенерировала. Всё это хранится в том, что мы называем сессией. Внутри сессии информация хранится в виде событий.</div>
     </div>
     <div class="row fixed">
       <div class="ts">01:05</div>
-      <div class="en">When you start off, there are few events. But as the complexity of the agent grows, the number of events in the session increases drastically, which in turn increases processing time and slows down responses. Let&#x27;s talk about how to mitigate this with context compaction. When implementing this feature there are a few variables you have to define. Number one is the compaction interval: at what point do you want the automatic summarizer to summarize events? That&#x27;s defined by the compaction interval. Then there&#x27;s the overlap size, which is based on the sliding-window theory: when the next set of events is compacted, it also takes one event from the previous one as an overlap.<div class="tag">уточнено: overlap size which is based off the sliding window theory -&gt; overlap size, основанный на теории скользящего окна</div></div>
+      <div class="en">When you start off, there are few events. But as the complexity of the agent grows, the number of events in the session increases drastically, which in turn increases processing time and slows down responses. Let&#x27;s talk about how to mitigate this with context compaction. When implementing this feature there are a few variables you have to define. Number one is the compaction interval: at what point do you want the automatic summarizer to summarize events? That&#x27;s defined by the compaction interval. Then there&#x27;s the overlap size, which is based on the sliding-window theory: when the next set of events is compacted, it also takes one event from the previous one as an overlap.<div class="tagline">уточнено: overlap size which is based off the sliding window theory -&gt; overlap size, основанный на теории скользящего окна</div></div>
       <div class="ru">Вначале событий мало. Но по мере роста сложности агента их количество в сессии резко увеличивается, а вместе с ним растёт время обработки и падает скорость ответов. Посмотрим, как это лечится с помощью context compaction. При реализации этой функции нужно задать несколько параметров. Первый — compaction interval: в какой момент автоматический суммаризатор должен суммировать события. Это и задаёт compaction interval. Второй — overlap size, основанный на теории скользящего окна: когда суммируется следующая порция событий, она берёт ещё одно событие из предыдущей как перекрытие.</div>
     </div>
     <div class="row fixed">
       <div class="ts">02:08</div>
-      <div class="en">Here, event one — nothing happens; event two — nothing happens; and then a third event is sent by the user. At that point the summarizer is triggered and summarizes the first three events into a short summary. You can define your own model to do the summarizing, or your own prompt — that&#x27;s defined by the compaction settings. Now let&#x27;s move on: say you have three more events, four, five and six. As soon as we hit event six, the summarizer triggers again. And now it doesn&#x27;t just summarize four, five and six, but also takes one event from before, event three, which is what the overlap size defines. That summary is stored as summary two.<div class="tag">уточнено: which is defined by the compaction into it -&gt; which is defined by the compaction settings</div></div>
+      <div class="en">Here, event one — nothing happens; event two — nothing happens; and then a third event is sent by the user. At that point the summarizer is triggered and summarizes the first three events into a short summary. You can define your own model to do the summarizing, or your own prompt — that&#x27;s defined by the compaction settings. Now let&#x27;s move on: say you have three more events, four, five and six. As soon as we hit event six, the summarizer triggers again. And now it doesn&#x27;t just summarize four, five and six, but also takes one event from before, event three, which is what the overlap size defines. That summary is stored as summary two.<div class="tagline">уточнено: which is defined by the compaction into it -&gt; which is defined by the compaction settings</div></div>
       <div class="ru">Здесь: событие первое — ничего не происходит; второе — тоже; затем пользователь присылает третье событие. В этот момент срабатывает суммаризатор и сводит первые три события в короткое резюме. Модель для суммирования можно задать свою, равно как и свой промпт — это определяется настройками compaction. Дальше: пусть появятся ещё три события — четвёртое, пятое и шестое. Как только мы доходим до шестого, суммаризатор срабатывает снова. И теперь он суммирует не только 4, 5 и 6, но и берёт одно событие из предыдущих — третье, как и задаёт overlap size. Это резюме сохраняется как summary two.</div>
     </div>
     <div class="row fixed">
       <div class="ts">03:39</div>
-      <div class="en">What does this achieve? It reduces the context information and the number of tokens sent — we&#x27;ll see that in the live code. Let&#x27;s jump into code. To build my agent I&#x27;ll use the Agent Starter Pack, linked in the comments below: that&#x27;s the easiest way to build a production-ready agent with ADK. So I&#x27;ll create my agent with the starter pack and the ADK base template. Now that the agent exists, I&#x27;ll edit it. First I&#x27;ll import EventsCompactionConfig, then remove the built-in tools, since I won&#x27;t be using them. And I&#x27;ll add my compaction config at the app level when defining the app: EventsCompactionConfig, with compaction interval set to three and overlap size set to one.<div class="tag">уточнено: agent starter pack -&gt; Agent Starter Pack</div></div>
+      <div class="en">What does this achieve? It reduces the context information and the number of tokens sent — we&#x27;ll see that in the live code. Let&#x27;s jump into code. To build my agent I&#x27;ll use the Agent Starter Pack, linked in the comments below: that&#x27;s the easiest way to build a production-ready agent with ADK. So I&#x27;ll create my agent with the starter pack and the ADK base template. Now that the agent exists, I&#x27;ll edit it. First I&#x27;ll import EventsCompactionConfig, then remove the built-in tools, since I won&#x27;t be using them. And I&#x27;ll add my compaction config at the app level when defining the app: EventsCompactionConfig, with compaction interval set to three and overlap size set to one.<div class="tagline">уточнено: agent starter pack -&gt; Agent Starter Pack</div></div>
       <div class="ru">Что это даёт? Сокращает объём контекстной информации и число отправляемых токенов — это мы увидим в живом коде. Заглянем в код. Агента я соберу на Agent Starter Pack, ссылка в комментариях: это самый простой способ сделать продакшен-агента на ADK. Создаю агента из стартер-пака по базовому шаблону ADK. Дальше правлю: первым делом импортирую `EventsCompactionConfig`, затем убираю встроенные инструменты — они мне не нужны. И добавляю конфигурацию compaction на уровне приложения: `EventsCompactionConfig` с compaction interval, равным трём, и overlap size, равным единице.</div>
     </div>
     <div class="row fixed">
       <div class="ts">05:19</div>
-      <div class="en">Then I run make playground, and ADK web opens automatically. Here&#x27;s what I&#x27;m going to do: I&#x27;ll ask for the significance of each lunar month and ask it to proceed after every single month, so we can watch the events. Starting with January, I&#x27;ll keep saying proceed. Got the one for Jan. I&#x27;ll say proceed — you can see the first event has been created, and the summary hasn&#x27;t been triggered yet. I&#x27;ll say proceed again, and we get the second event, then proceed again for the third.<div class="tag">уточнено: ADK web automatically open when I run the make playground through it in starter kit -&gt; ADK web открывается автоматически при make playground</div></div>
+      <div class="en">Then I run make playground, and ADK web opens automatically. Here&#x27;s what I&#x27;m going to do: I&#x27;ll ask for the significance of each lunar month and ask it to proceed after every single month, so we can watch the events. Starting with January, I&#x27;ll keep saying proceed. Got the one for Jan. I&#x27;ll say proceed — you can see the first event has been created, and the summary hasn&#x27;t been triggered yet. I&#x27;ll say proceed again, and we get the second event, then proceed again for the third.<div class="tagline">уточнено: ADK web automatically open when I run the make playground through it in starter kit -&gt; ADK web открывается автоматически при make playground</div></div>
       <div class="ru">Затем выполняю `make playground`, и ADK web открывается автоматически. План такой: спрошу о значении каждого лунного месяца и попрошу переходить к следующему после каждого ответа, чтобы наблюдать за событиями. Начинаю с января и просто пишу proceed. Ответ за январь получен. Пишу proceed — видно, что первое событие создано, а суммаризация ещё не сработала. Снова proceed — получаем второе событие, и снова proceed ради третьего.</div>
     </div>
     <div class="row">
@@ -188,49 +73,40 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">07:41</div>
-      <div class="en">What has this resulted in? Instead of sending the large individual responses, I&#x27;m sending a summary. And if I look at the total token count, it&#x27;s 926 for the fourth interaction versus 1445 for the previous one. You can see that&#x27;s an improvement in both token count and performance, because each time I don&#x27;t have to keep sending the entire context. Let&#x27;s keep going: even at the sixth month another summary will be triggered. You see summary one generated by the first three events, summary two generated by the next three events, and then the seventh month. That&#x27;s how context compaction works. It&#x27;s a built-in feature in ADK.<div class="tag">уточнено: versus,1445 for the previous interaction -&gt; 926 for the fourth interaction versus 1445 for the previous</div></div>
+      <div class="en">What has this resulted in? Instead of sending the large individual responses, I&#x27;m sending a summary. And if I look at the total token count, it&#x27;s 926 for the fourth interaction versus 1445 for the previous one. You can see that&#x27;s an improvement in both token count and performance, because each time I don&#x27;t have to keep sending the entire context. Let&#x27;s keep going: even at the sixth month another summary will be triggered. You see summary one generated by the first three events, summary two generated by the next three events, and then the seventh month. That&#x27;s how context compaction works. It&#x27;s a built-in feature in ADK.<div class="tagline">уточнено: versus,1445 for the previous interaction -&gt; 926 for the fourth interaction versus 1445 for the previous</div></div>
       <div class="ru">К чему это привело? Вместо того чтобы слать большие индивидуальные ответы, я отправляю резюме. И если посмотреть на счётчик токенов, то на четвёртом взаимодействии он равен 926 против 1445 на предыдущем. Видно улучшение и по токенам, и по производительности: каждый раз не нужно пересылать весь контекст. Продолжим: даже на шестом месяце сработает ещё одно резюме. Вот summary one, порождённое первыми тремя событиями, вот summary two — следующими тремя, а затем седьмой месяц. Так работает context compaction. Это встроенная возможность ADK.</div>
     </div>
     <div class="row fixed">
       <div class="ts">09:10</div>
-      <div class="en">Now let&#x27;s move on to context caching. When would you use it? It&#x27;s ideally used when you have a large data set, or a prompt that is reused several times within the agent as well as the sub-agents. If you&#x27;re reusing a prompt, caching helps both latency and the price per token. The first thing to do is import the context caching libraries. I&#x27;ve imported this class here, and I can define it within my app: ContextCacheConfig, similar to how we defined the compaction config. It has three main variables. The first is the minimum number of tokens at which I want caching to trigger — say 4000 or 5000 tokens; anything less and caching won&#x27;t trigger. I&#x27;ll set minimum tokens to 4096. Second, the time to live: how long the cache stays alive — 3600 seconds. Third, the cache intervals: how many times the cache can be used before it expires — say 10 times, after which I want it to expire and refresh. That&#x27;s how you define a context cache. This is helpful if you have a large system prompt, or reuse a file or data set across the agent many times.<div class="tag">уточнено: say 4,96 -&gt; 4096 (степень двойки, стандартное значение для порога кэширования)</div></div>
+      <div class="en">Now let&#x27;s move on to context caching. When would you use it? It&#x27;s ideally used when you have a large data set, or a prompt that is reused several times within the agent as well as the sub-agents. If you&#x27;re reusing a prompt, caching helps both latency and the price per token. The first thing to do is import the context caching libraries. I&#x27;ve imported this class here, and I can define it within my app: ContextCacheConfig, similar to how we defined the compaction config. It has three main variables. The first is the minimum number of tokens at which I want caching to trigger — say 4000 or 5000 tokens; anything less and caching won&#x27;t trigger. I&#x27;ll set minimum tokens to 4096. Second, the time to live: how long the cache stays alive — 3600 seconds. Third, the cache intervals: how many times the cache can be used before it expires — say 10 times, after which I want it to expire and refresh. That&#x27;s how you define a context cache. This is helpful if you have a large system prompt, or reuse a file or data set across the agent many times.<div class="tagline">уточнено: say 4,96 -&gt; 4096 (степень двойки, стандартное значение для порога кэширования)</div></div>
       <div class="ru">Теперь переходим к context caching. Когда его применять? Идеально, когда у вас большой набор данных или промпт, который переиспользуется несколько раз в агенте и в субагентах. Если промпт переиспользуется, кэш помогает и по задержке, и по цене за токен. Первым делом импортируем библиотеки кэширования контекста. Вот этот класс, его можно задать внутри приложения: `ContextCacheConfig` — так же, как мы задавали конфигурацию compaction. У неё три главных параметра. Первый — минимальное число токенов, при котором кэширование включается: скажем, 4000 или 5000; меньше — кэш не сработает. Я задам minimum tokens равным 4096. Второй — время жизни: сколько кэш живёт, здесь 3600 секунд. Третий — интервалы кэша: сколько раз кэш можно использовать до истечения, скажем 10 раз, после чего он должен протухнуть и обновиться. Так определяется context cache. Это полезно, если у вас большой системный промпт или один и тот же файл или набор данных переиспользуется в агенте много раз.</div>
     </div>
   </div>
 
-  <div class="app">
-    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
-    <table>
-      <thead>
-        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
-      </thead>
-      <tbody>
-      <tr><td>[00:00]</td><td>Hey everyone. In this video we&#x27;ll talk about how the built-in features of the Google Agent Development Kit help address one of the key challenges you run into when deploying an AI agent to production with ADK. We&#x27;ll cover two key features: context compaction and context caching. First I&#x27;ll explain visually how they work, and then we&#x27;ll walk step by step through implementing them in code. When you deploy an ADK agent, it collects context information: the user request, user information, data the model retrieves, the tool calls it makes, and any output the model generates. All of this is stored in what we call a session. Within the session, the information is stored as events.</td><td>agent development kit framework -&gt; Agent Development Kit</td><td>Привет. В этом видео поговорим о том, как встроенные возможности Google Agent Development Kit решают одну из ключевых проблем, с которой сталкивается при выводе агента в продакшен на ADK. Разберём две главные функции: context compaction и context caching. Сначала наглядно объясню, как они работают, а затем пройдём пошагово по реализации в коде. При деплое агента на ADK он собирает контекстную информацию: запрос пользователя, данные о пользователе, то, что модель извлекла, какие инструменты вызывала и что сгенерировала. Всё это хранится в том, что мы называем сессией. Внутри сессии информация хранится в виде событий.</td></tr>
-      <tr><td>[01:05]</td><td>When you start off, there are few events. But as the complexity of the agent grows, the number of events in the session increases drastically, which in turn increases processing time and slows down responses. Let&#x27;s talk about how to mitigate this with context compaction. When implementing this feature there are a few variables you have to define. Number one is the compaction interval: at what point do you want the automatic summarizer to summarize events? That&#x27;s defined by the compaction interval. Then there&#x27;s the overlap size, which is based on the sliding-window theory: when the next set of events is compacted, it also takes one event from the previous one as an overlap.</td><td>overlap size which is based off the sliding window theory -&gt; overlap size, основанный на теории скользящего окна</td><td>Вначале событий мало. Но по мере роста сложности агента их количество в сессии резко увеличивается, а вместе с ним растёт время обработки и падает скорость ответов. Посмотрим, как это лечится с помощью context compaction. При реализации этой функции нужно задать несколько параметров. Первый — compaction interval: в какой момент автоматический суммаризатор должен суммировать события. Это и задаёт compaction interval. Второй — overlap size, основанный на теории скользящего окна: когда суммируется следующая порция событий, она берёт ещё одно событие из предыдущей как перекрытие.</td></tr>
-      <tr><td>[02:08]</td><td>Here, event one — nothing happens; event two — nothing happens; and then a third event is sent by the user. At that point the summarizer is triggered and summarizes the first three events into a short summary. You can define your own model to do the summarizing, or your own prompt — that&#x27;s defined by the compaction settings. Now let&#x27;s move on: say you have three more events, four, five and six. As soon as we hit event six, the summarizer triggers again. And now it doesn&#x27;t just summarize four, five and six, but also takes one event from before, event three, which is what the overlap size defines. That summary is stored as summary two.</td><td>which is defined by the compaction into it -&gt; which is defined by the compaction settings</td><td>Здесь: событие первое — ничего не происходит; второе — тоже; затем пользователь присылает третье событие. В этот момент срабатывает суммаризатор и сводит первые три события в короткое резюме. Модель для суммирования можно задать свою, равно как и свой промпт — это определяется настройками compaction. Дальше: пусть появятся ещё три события — четвёртое, пятое и шестое. Как только мы доходим до шестого, суммаризатор срабатывает снова. И теперь он суммирует не только 4, 5 и 6, но и берёт одно событие из предыдущих — третье, как и задаёт overlap size. Это резюме сохраняется как summary two.</td></tr>
-      <tr><td>[03:39]</td><td>What does this achieve? It reduces the context information and the number of tokens sent — we&#x27;ll see that in the live code. Let&#x27;s jump into code. To build my agent I&#x27;ll use the Agent Starter Pack, linked in the comments below: that&#x27;s the easiest way to build a production-ready agent with ADK. So I&#x27;ll create my agent with the starter pack and the ADK base template. Now that the agent exists, I&#x27;ll edit it. First I&#x27;ll import EventsCompactionConfig, then remove the built-in tools, since I won&#x27;t be using them. And I&#x27;ll add my compaction config at the app level when defining the app: EventsCompactionConfig, with compaction interval set to three and overlap size set to one.</td><td>agent starter pack -&gt; Agent Starter Pack</td><td>Что это даёт? Сокращает объём контекстной информации и число отправляемых токенов — это мы увидим в живом коде. Заглянем в код. Агента я соберу на Agent Starter Pack, ссылка в комментариях: это самый простой способ сделать продакшен-агента на ADK. Создаю агента из стартер-пака по базовому шаблону ADK. Дальше правлю: первым делом импортирую `EventsCompactionConfig`, затем убираю встроенные инструменты — они мне не нужны. И добавляю конфигурацию compaction на уровне приложения: `EventsCompactionConfig` с compaction interval, равным трём, и overlap size, равным единице.</td></tr>
-      <tr><td>[05:19]</td><td>Then I run make playground, and ADK web opens automatically. Here&#x27;s what I&#x27;m going to do: I&#x27;ll ask for the significance of each lunar month and ask it to proceed after every single month, so we can watch the events. Starting with January, I&#x27;ll keep saying proceed. Got the one for Jan. I&#x27;ll say proceed — you can see the first event has been created, and the summary hasn&#x27;t been triggered yet. I&#x27;ll say proceed again, and we get the second event, then proceed again for the third.</td><td>ADK web automatically open when I run the make playground through it in starter kit -&gt; ADK web открывается автоматически при make playground</td><td>Затем выполняю `make playground`, и ADK web открывается автоматически. План такой: спрошу о значении каждого лунного месяца и попрошу переходить к следующему после каждого ответа, чтобы наблюдать за событиями. Начинаю с января и просто пишу proceed. Ответ за январь получен. Пишу proceed — видно, что первое событие создано, а суммаризация ещё не сработала. Снова proceed — получаем второе событие, и снова proceed ради третьего.</td></tr>
-      <tr><td>[07:41]</td><td>What has this resulted in? Instead of sending the large individual responses, I&#x27;m sending a summary. And if I look at the total token count, it&#x27;s 926 for the fourth interaction versus 1445 for the previous one. You can see that&#x27;s an improvement in both token count and performance, because each time I don&#x27;t have to keep sending the entire context. Let&#x27;s keep going: even at the sixth month another summary will be triggered. You see summary one generated by the first three events, summary two generated by the next three events, and then the seventh month. That&#x27;s how context compaction works. It&#x27;s a built-in feature in ADK.</td><td>versus,1445 for the previous interaction -&gt; 926 for the fourth interaction versus 1445 for the previous</td><td>К чему это привело? Вместо того чтобы слать большие индивидуальные ответы, я отправляю резюме. И если посмотреть на счётчик токенов, то на четвёртом взаимодействии он равен 926 против 1445 на предыдущем. Видно улучшение и по токенам, и по производительности: каждый раз не нужно пересылать весь контекст. Продолжим: даже на шестом месяце сработает ещё одно резюме. Вот summary one, порождённое первыми тремя событиями, вот summary two — следующими тремя, а затем седьмой месяц. Так работает context compaction. Это встроенная возможность ADK.</td></tr>
-      <tr><td>[09:10]</td><td>Now let&#x27;s move on to context caching. When would you use it? It&#x27;s ideally used when you have a large data set, or a prompt that is reused several times within the agent as well as the sub-agents. If you&#x27;re reusing a prompt, caching helps both latency and the price per token. The first thing to do is import the context caching libraries. I&#x27;ve imported this class here, and I can define it within my app: ContextCacheConfig, similar to how we defined the compaction config. It has three main variables. The first is the minimum number of tokens at which I want caching to trigger — say 4000 or 5000 tokens; anything less and caching won&#x27;t trigger. I&#x27;ll set minimum tokens to 4096. Second, the time to live: how long the cache stays alive — 3600 seconds. Third, the cache intervals: how many times the cache can be used before it expires — say 10 times, after which I want it to expire and refresh. That&#x27;s how you define a context cache. This is helpful if you have a large system prompt, or reuse a file or data set across the agent many times.</td><td>say 4,96 -&gt; 4096 (степень двойки, стандартное значение для порога кэширования)</td><td>Теперь переходим к context caching. Когда его применять? Идеально, когда у вас большой набор данных или промпт, который переиспользуется несколько раз в агенте и в субагентах. Если промпт переиспользуется, кэш помогает и по задержке, и по цене за токен. Первым делом импортируем библиотеки кэширования контекста. Вот этот класс, его можно задать внутри приложения: `ContextCacheConfig` — так же, как мы задавали конфигурацию compaction. У неё три главных параметра. Первый — минимальное число токенов, при котором кэширование включается: скажем, 4000 или 5000; меньше — кэш не сработает. Я задам minimum tokens равным 4096. Второй — время жизни: сколько кэш живёт, здесь 3600 секунд. Третий — интервалы кэша: сколько раз кэш можно использовать до истечения, скажем 10 раз, после чего он должен протухнуть и обновиться. Так определяется context cache. Это полезно, если у вас большой системный промпт или один и тот же файл или набор данных переиспользуется в агенте много раз.</td></tr>
-      </tbody>
-    </table>
-    <p class="note">Субтитры автоматические (auto, en-orig). Названия полей сверены по документации ADK: EventsCompactionConfig (compaction_interval, overlap_size), ContextCacheConfig (ttl_seconds, cache_intervals, minimum tokens). Докладчик — Kazunori Sato (по подписи ролика).</p>
+  <h2 id="fixes">Где автосубтитры соврали и как это восстановлено</h2>
+  <table class="plain">
+    <thead>
+      <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>00:00</td><td>Hey everyone. In this video we&#x27;ll talk about how the built-in features of the Google Agent Development Kit help address one of the key challenges you run into when deploying an AI agent to production with ADK. We&#x27;ll cover two key features: context compaction and context caching. First I&#x27;ll explain visually how they work, and then we&#x27;ll walk step by step through implementing them in code. When you deploy an ADK agent, it collects context information: the user request, user information, data the model retrieves, the tool calls it makes, and any output the model generates. All of this is stored in what we call a session. Within the session, the information is stored as events.</td><td>agent development kit framework -&gt; Agent Development Kit</td><td>Привет. В этом видео поговорим о том, как встроенные возможности Google Agent Development Kit решают одну из ключевых проблем, с которой сталкивается при выводе агента в продакшен на ADK. Разберём две главные функции: context compaction и context caching. Сначала наглядно объясню, как они работают, а затем пройдём пошагово по реализации в коде. При деплое агента на ADK он собирает контекстную информацию: запрос пользователя, данные о пользователе, то, что модель извлекла, какие инструменты вызывала и что сгенерировала. Всё это хранится в том, что мы называем сессией. Внутри сессии информация хранится в виде событий.</td></tr>
+      <tr><td>01:05</td><td>When you start off, there are few events. But as the complexity of the agent grows, the number of events in the session increases drastically, which in turn increases processing time and slows down responses. Let&#x27;s talk about how to mitigate this with context compaction. When implementing this feature there are a few variables you have to define. Number one is the compaction interval: at what point do you want the automatic summarizer to summarize events? That&#x27;s defined by the compaction interval. Then there&#x27;s the overlap size, which is based on the sliding-window theory: when the next set of events is compacted, it also takes one event from the previous one as an overlap.</td><td>overlap size which is based off the sliding window theory -&gt; overlap size, основанный на теории скользящего окна</td><td>Вначале событий мало. Но по мере роста сложности агента их количество в сессии резко увеличивается, а вместе с ним растёт время обработки и падает скорость ответов. Посмотрим, как это лечится с помощью context compaction. При реализации этой функции нужно задать несколько параметров. Первый — compaction interval: в какой момент автоматический суммаризатор должен суммировать события. Это и задаёт compaction interval. Второй — overlap size, основанный на теории скользящего окна: когда суммируется следующая порция событий, она берёт ещё одно событие из предыдущей как перекрытие.</td></tr>
+      <tr><td>02:08</td><td>Here, event one — nothing happens; event two — nothing happens; and then a third event is sent by the user. At that point the summarizer is triggered and summarizes the first three events into a short summary. You can define your own model to do the summarizing, or your own prompt — that&#x27;s defined by the compaction settings. Now let&#x27;s move on: say you have three more events, four, five and six. As soon as we hit event six, the summarizer triggers again. And now it doesn&#x27;t just summarize four, five and six, but also takes one event from before, event three, which is what the overlap size defines. That summary is stored as summary two.</td><td>which is defined by the compaction into it -&gt; which is defined by the compaction settings</td><td>Здесь: событие первое — ничего не происходит; второе — тоже; затем пользователь присылает третье событие. В этот момент срабатывает суммаризатор и сводит первые три события в короткое резюме. Модель для суммирования можно задать свою, равно как и свой промпт — это определяется настройками compaction. Дальше: пусть появятся ещё три события — четвёртое, пятое и шестое. Как только мы доходим до шестого, суммаризатор срабатывает снова. И теперь он суммирует не только 4, 5 и 6, но и берёт одно событие из предыдущих — третье, как и задаёт overlap size. Это резюме сохраняется как summary two.</td></tr>
+      <tr><td>03:39</td><td>What does this achieve? It reduces the context information and the number of tokens sent — we&#x27;ll see that in the live code. Let&#x27;s jump into code. To build my agent I&#x27;ll use the Agent Starter Pack, linked in the comments below: that&#x27;s the easiest way to build a production-ready agent with ADK. So I&#x27;ll create my agent with the starter pack and the ADK base template. Now that the agent exists, I&#x27;ll edit it. First I&#x27;ll import EventsCompactionConfig, then remove the built-in tools, since I won&#x27;t be using them. And I&#x27;ll add my compaction config at the app level when defining the app: EventsCompactionConfig, with compaction interval set to three and overlap size set to one.</td><td>agent starter pack -&gt; Agent Starter Pack</td><td>Что это даёт? Сокращает объём контекстной информации и число отправляемых токенов — это мы увидим в живом коде. Заглянем в код. Агента я соберу на Agent Starter Pack, ссылка в комментариях: это самый простой способ сделать продакшен-агента на ADK. Создаю агента из стартер-пака по базовому шаблону ADK. Дальше правлю: первым делом импортирую `EventsCompactionConfig`, затем убираю встроенные инструменты — они мне не нужны. И добавляю конфигурацию compaction на уровне приложения: `EventsCompactionConfig` с compaction interval, равным трём, и overlap size, равным единице.</td></tr>
+      <tr><td>05:19</td><td>Then I run make playground, and ADK web opens automatically. Here&#x27;s what I&#x27;m going to do: I&#x27;ll ask for the significance of each lunar month and ask it to proceed after every single month, so we can watch the events. Starting with January, I&#x27;ll keep saying proceed. Got the one for Jan. I&#x27;ll say proceed — you can see the first event has been created, and the summary hasn&#x27;t been triggered yet. I&#x27;ll say proceed again, and we get the second event, then proceed again for the third.</td><td>ADK web automatically open when I run the make playground through it in starter kit -&gt; ADK web открывается автоматически при make playground</td><td>Затем выполняю `make playground`, и ADK web открывается автоматически. План такой: спрошу о значении каждого лунного месяца и попрошу переходить к следующему после каждого ответа, чтобы наблюдать за событиями. Начинаю с января и просто пишу proceed. Ответ за январь получен. Пишу proceed — видно, что первое событие создано, а суммаризация ещё не сработала. Снова proceed — получаем второе событие, и снова proceed ради третьего.</td></tr>
+      <tr><td>07:41</td><td>What has this resulted in? Instead of sending the large individual responses, I&#x27;m sending a summary. And if I look at the total token count, it&#x27;s 926 for the fourth interaction versus 1445 for the previous one. You can see that&#x27;s an improvement in both token count and performance, because each time I don&#x27;t have to keep sending the entire context. Let&#x27;s keep going: even at the sixth month another summary will be triggered. You see summary one generated by the first three events, summary two generated by the next three events, and then the seventh month. That&#x27;s how context compaction works. It&#x27;s a built-in feature in ADK.</td><td>versus,1445 for the previous interaction -&gt; 926 for the fourth interaction versus 1445 for the previous</td><td>К чему это привело? Вместо того чтобы слать большие индивидуальные ответы, я отправляю резюме. И если посмотреть на счётчик токенов, то на четвёртом взаимодействии он равен 926 против 1445 на предыдущем. Видно улучшение и по токенам, и по производительности: каждый раз не нужно пересылать весь контекст. Продолжим: даже на шестом месяце сработает ещё одно резюме. Вот summary one, порождённое первыми тремя событиями, вот summary two — следующими тремя, а затем седьмой месяц. Так работает context compaction. Это встроенная возможность ADK.</td></tr>
+      <tr><td>09:10</td><td>Now let&#x27;s move on to context caching. When would you use it? It&#x27;s ideally used when you have a large data set, or a prompt that is reused several times within the agent as well as the sub-agents. If you&#x27;re reusing a prompt, caching helps both latency and the price per token. The first thing to do is import the context caching libraries. I&#x27;ve imported this class here, and I can define it within my app: ContextCacheConfig, similar to how we defined the compaction config. It has three main variables. The first is the minimum number of tokens at which I want caching to trigger — say 4000 or 5000 tokens; anything less and caching won&#x27;t trigger. I&#x27;ll set minimum tokens to 4096. Second, the time to live: how long the cache stays alive — 3600 seconds. Third, the cache intervals: how many times the cache can be used before it expires — say 10 times, after which I want it to expire and refresh. That&#x27;s how you define a context cache. This is helpful if you have a large system prompt, or reuse a file or data set across the agent many times.</td><td>say 4,96 -&gt; 4096 (степень двойки, стандартное значение для порога кэширования)</td><td>Теперь переходим к context caching. Когда его применять? Идеально, когда у вас большой набор данных или промпт, который переиспользуется несколько раз в агенте и в субагентах. Если промпт переиспользуется, кэш помогает и по задержке, и по цене за токен. Первым делом импортируем библиотеки кэширования контекста. Вот этот класс, его можно задать внутри приложения: `ContextCacheConfig` — так же, как мы задавали конфигурацию compaction. У неё три главных параметра. Первый — минимальное число токенов, при котором кэширование включается: скажем, 4000 или 5000; меньше — кэш не сработает. Я задам minimum tokens равным 4096. Второй — время жизни: сколько кэш живёт, здесь 3600 секунд. Третий — интервалы кэша: сколько раз кэш можно использовать до истечения, скажем 10 раз, после чего он должен протухнуть и обновиться. Так определяется context cache. Это полезно, если у вас большой системный промпт или один и тот же файл или набор данных переиспользуется в агенте много раз.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Субтитры автоматические (auto, en-orig). Названия полей сверены по документации ADK: EventsCompactionConfig (compaction_interval, overlap_size), ContextCacheConfig (ttl_seconds, cache_intervals, minimum tokens). Докладчик — Kazunori Sato (по подписи ролика).</p>
+  <div class="pager">
+  <a class="prev" href="../day09/s1-2025-12-day09-en-ru.html" rel="prev">← day09 &rarr;</a>
+  <a class="next" href="../day12/s1-2025-12-day12-en-ru.html" rel="next">day12 → &rarr;</a>
   </div>
-
 </div>
-<script>
-const el = id => document.getElementById(id);
-
-el('tgl-en').addEventListener('change', e =>
-  document.body.classList.toggle('hide-en', !e.target.checked));
-el('tgl-ru').addEventListener('change', e =>
-  document.body.classList.toggle('hide-ru', !e.target.checked));
-el('btn-print').addEventListener('click', () => window.print());
-el('btn-mark').addEventListener('click', () => {
-  const on = !document.body.classList.contains('show-fixes');
-  document.body.classList.toggle('show-fixes', on);
-  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
-});
-</script>
+<div class="page">
+<p class="note">Перевод с английского. Субтитры автоматические (YouTube auto), поэтому в приложении указано, где распознавание было исправлено. Исходный ролик: <a href="https://www.youtube.com/watch?v=L3eKHw9df-g">YouTube</a>.</p>
+</div>
+<script src="../../assets/app.js"></script>
 </body>
 </html>

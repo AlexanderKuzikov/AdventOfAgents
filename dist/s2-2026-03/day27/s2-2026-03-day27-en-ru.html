@@ -4,152 +4,37 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Scion: an open testbed for agent orchestration — EN / RU</title>
-<style>
-:root {
-  --en-bg: #f7f8fa;
-  --line: #dfe3e8;
-  --accent: #0b57d0;
-  --ts: #8a9099;
-  --muted: #5f6672;
-  --fix: #fff3cd;
-  --fix-line: #e0b100;
-}
-
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-
-body {
-  margin: 0;
-  padding: 32px 20px 72px;
-  background: #eef0f3;
-  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.45;
-  color: #1a1a1a;
-}
-
-.page { max-width: 1400px; margin: 0 auto; }
-
-h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
-.head .sub { color: var(--muted); font-size: 15px; }
-.head .sub a { color: var(--accent); }
-
-.legend {
-  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
-  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
-}
-.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
-.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
-
-.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
-
-button {
-  font: inherit; font-size: 14px; padding: 7px 14px;
-  border: 1px solid var(--line); border-radius: 6px;
-  background: #fff; color: #1a1a1a; cursor: pointer;
-}
-button:hover { border-color: #b9c0ca; background: #fafbfc; }
-
-.grid {
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden;
-}
-
-.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
-
-.head-row {
-  background: #2f3541; color: #fff;
-  font-size: 13px; letter-spacing: 0.04em;
-  text-transform: uppercase; font-weight: 600;
-  position: sticky; top: 0; z-index: 5;
-}
-.head-row > div { padding: 10px 18px; }
-.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
-
-.row > .ts {
-  padding: 14px 8px; font-size: 12px;
-  font-variant-numeric: tabular-nums;
-  color: var(--ts); text-align: right;
-  border-right: 1px solid var(--line); background: #fbfbfc;
-}
-.row > .en, .row > .ru {
-  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
-}
-.row > .en { background: var(--en-bg); }
-.row > .ru { border-right: 0; }
-
-.row.cont > .ts::after {
-  content: ""; display: block; width: 14px; height: 1px;
-  background: var(--line); margin: 8px 0 0 auto;
-}
-.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
-
-.row.fixed > .en { background: var(--fix); }
-.row.fixed .tag { display: none; }
-
-body.show-fixes .row.fixed .tag { display: block; }
-
-.tag {
-  display: inline-block; margin-top: 6px;
-  font-size: 11.5px; line-height: 1.35;
-  color: #6b5400; background: var(--fix);
-  border-left: 3px solid var(--fix-line);
-  padding: 3px 8px; border-radius: 0 4px 4px 0;
-}
-
-.app { margin-top: 26px; }
-.app h2 { font-size: 19px; margin: 0 0 10px; }
-
-table {
-  width: 100%; border-collapse: collapse;
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden; font-size: 15px;
-}
-th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
-th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
-tr:last-child td { border-bottom: 0; }
-td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
-.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
-
-body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
-body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
-body.hide-en .row, body.hide-en .head-row,
-body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
-
-@media (max-width: 900px) {
-  .head-row, .row { grid-template-columns: 56px 1fr; }
-  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
-  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
-}
-
-@media print {
-  body { background: #fff; padding: 0; }
-  .bar, .legend { display: none; }
-  .head-row { position: static; }
-  .grid, table { border-radius: 0; }
-}
-</style>
+<link rel="stylesheet" href="../../assets/style.css">
 </head>
 <body>
+<div class="top"><div class="inner">
+<a class="brand" href="../../index.html">Advent of Agents — перевод</a>
+<nav><a href="../../index.html#seasons">Сезоны</a>
+<a href="../../index.html#materials">Материалы</a>
+<a href="https://adventofagents.com/">Оригинал</a>
+</nav>
+<div class="spacer"></div>
+<a href="https://github.com/AlexanderKuzikov/AdventOfAgents">репозиторий</a>
+</div></div>
 <div class="page">
-
-  <div class="head">
-    <h1>Scion: an open testbed for agent orchestration</h1>
-    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
-      Видео: <a href="https://www.youtube.com/watch?v=T93MW7wETOc">https://www.youtube.com/watch?v=T93MW7wETOc</a> · 09:49
-      · auto (YouTube en-orig)</div>
-  </div>
-
-  <div class="legend">
-    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
-    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
-  </div>
-
-  <div class="bar">
-    <button id="btn-mark">Показать исправления</button>
-    <button id="btn-print">Печать / PDF</button>
-  </div>
-
+<p class="crumbs"><a href="../../index.html">Все дни</a> &rsaquo; <a href="../../index.html#s2-2026-03">s2-2026-03</a> &rsaquo; day27</p>
+<h1>Scion: an open testbed for agent orchestration</h1>
+<p class="lede">Двуязычная транскрипция: английский оригинал слева, русский перевод справа, абзацы стоят строго напротив друг друга.</p>
+<div class="stats">
+  <div class="stat"><div class="n">09:49</div><div class="k">длительность</div></div>
+  <div class="stat"><div class="n">10</div><div class="k">абзацев</div></div>
+  <div class="stat"><div class="n">7</div><div class="k">правок распознавания</div></div>
+</div>
+<div class="bar">
+  <label class="legend"><input type="checkbox" id="tgl-en" checked> оригинал</label>
+  <label class="legend"><input type="checkbox" id="tgl-ru" checked> перевод</label>
+</div>
+<div class="bar">
+  <button id="btn-mark">Показать исправления</button>
+  <button id="btn-print">Печать / PDF</button>
+  <a class="btn" href="s2-2026-03-day27-transcript-ru.docx">Скачать DOCX</a>
+  <a href="https://www.youtube.com/watch?v=T93MW7wETOc" target="_blank" rel="noopener">оригинальный ролик</a>
+</div>
   <div class="grid">
     <div class="head-row">
       <div>Time</div>
@@ -158,7 +43,7 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">00:01</div>
-      <div class="en">Hi, my name&#x27;s Preston Holmes, and I&#x27;d like to introduce you to Scion. It&#x27;s an open-source testbed for exploring this new realm of agent orchestration where we give agents an extra degree of autonomy. It&#x27;s really about making progress along the path from a starting point where you have no AI at all in your world, to having more and more AI in your IDE — maybe switching to another terminal type, something made popular later by Claude Code, Gemini CLI and the like — and ultimately getting into how agents manage multiple agents. This idea of agent workflows, multi-agent workflows, is something where there are many, many opinions. And Scion is designed to bring essentially a game engine upon which you can bring your own game titles. Imagine how you want multiple agents to work together, and it&#x27;s really as simple as describing the way they work.<div class="tag">уточнено: Cloud Code -&gt; Claude Code (тут и далее по ролику)</div></div>
+      <div class="en">Hi, my name&#x27;s Preston Holmes, and I&#x27;d like to introduce you to Scion. It&#x27;s an open-source testbed for exploring this new realm of agent orchestration where we give agents an extra degree of autonomy. It&#x27;s really about making progress along the path from a starting point where you have no AI at all in your world, to having more and more AI in your IDE — maybe switching to another terminal type, something made popular later by Claude Code, Gemini CLI and the like — and ultimately getting into how agents manage multiple agents. This idea of agent workflows, multi-agent workflows, is something where there are many, many opinions. And Scion is designed to bring essentially a game engine upon which you can bring your own game titles. Imagine how you want multiple agents to work together, and it&#x27;s really as simple as describing the way they work.<div class="tagline">уточнено: Cloud Code -&gt; Claude Code (тут и далее по ролику)</div></div>
       <div class="ru">Привет, меня зовут Престон Холмс, и я хочу представить вам Scion. Это опенсорсный стенд для исследования новой области — оркестрации агентов, где агенту дают дополнительную степень автономии. Речь о том, чтобы двигаться по пути от стартовой точки, где ИИ в вашем мире нет вообще, к тому, что ИИ в вашей IDE становится всё больше: переключение на другой терминал, популяризированное позже Claude Code, Gemini CLI и подобными инструментами, — и в конечном счёте к тому, как агенты управляют другими агентами. Про agent workflows, мультиагентные схемы, мнений очень много. Scion сделан как игровой движок, поверх которого можно приносить свои игры. Представьте, как вы хотите, чтобы несколько агентов работали вместе, — это действительно сводится к описанию того, как они работают.</div>
     </div>
     <div class="row">
@@ -168,12 +53,12 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">01:53</div>
-      <div class="en">Scion can run entirely locally with something like Docker or Podman or the Apple container tool. You can also run it remotely on VMs or even in a fully distributed mode. Locally, it&#x27;s just Docker or Podman running on your workstation — easy enough. All the state is managed in the local filesystem. You can run and host an API server on a VM and still interact with it via the CLI, or you can run it in a fully distributed mode. The web server, we can run either locally or remotely — in this case we&#x27;re running it remotely on a VM. I can have a set of what&#x27;s called namespaces, which are groves, to collect different collections of agents. I can go into this grove and create a new agent; I&#x27;ll call this one orchestrator, and start it up. This is a launch container running in Docker in the VM — it can also run in Kubernetes.<div class="tag">уточнено: Cloud Code -&gt; Claude Code</div></div>
+      <div class="en">Scion can run entirely locally with something like Docker or Podman or the Apple container tool. You can also run it remotely on VMs or even in a fully distributed mode. Locally, it&#x27;s just Docker or Podman running on your workstation — easy enough. All the state is managed in the local filesystem. You can run and host an API server on a VM and still interact with it via the CLI, or you can run it in a fully distributed mode. The web server, we can run either locally or remotely — in this case we&#x27;re running it remotely on a VM. I can have a set of what&#x27;s called namespaces, which are groves, to collect different collections of agents. I can go into this grove and create a new agent; I&#x27;ll call this one orchestrator, and start it up. This is a launch container running in Docker in the VM — it can also run in Kubernetes.<div class="tagline">уточнено: Cloud Code -&gt; Claude Code</div></div>
       <div class="ru">Scion полностью работает локально — достаточно Docker, Podman или Apple container tool. Его можно развернуть удалённо на VM или вообще в распределённом режиме. Локально это просто Docker или Podman на вашей рабочей станции, состояние хранится в локальной файловой системе. Можно поднять API-сервер на VM и общаться с ним через CLI, а можно запустить в полностью распределённом режиме. Веб-сервер работает локально или удалённо; здесь он запущен на VM. Есть сущности, которые называются namespaces, — это «рощи» для группировки разных наборов агентов. Заходим в рощу, создаём нового агента — назовём его orchestrator — и запускаем. Это контейнер в Docker на VM, он же может крутиться в Kubernetes.</div>
     </div>
     <div class="row fixed">
       <div class="ts">03:11</div>
-      <div class="en">Once this is started, we open a web terminal into that agent. Let&#x27;s grab a prompt that does a very simple orchestration: using the Scion CLI tool, start three agents for the colors red, green and blue to write a poem about each of their colors; wait for them to complete; and then clean up those agents. Because the models are so well trained on bash and command lines, the first thing you&#x27;ll see it do is just call scion --help. It&#x27;ll learn that there&#x27;s a start command, and call scion start --help. It will understand that it needs to start these three agents. We&#x27;ll see it start a red, a green and a blue agent and assign each to write a poem about their color.<div class="tag">уточнено: Scion-help -&gt; scion --help; Scion start-help -&gt; scion start --help</div></div>
+      <div class="en">Once this is started, we open a web terminal into that agent. Let&#x27;s grab a prompt that does a very simple orchestration: using the Scion CLI tool, start three agents for the colors red, green and blue to write a poem about each of their colors; wait for them to complete; and then clean up those agents. Because the models are so well trained on bash and command lines, the first thing you&#x27;ll see it do is just call scion --help. It&#x27;ll learn that there&#x27;s a start command, and call scion start --help. It will understand that it needs to start these three agents. We&#x27;ll see it start a red, a green and a blue agent and assign each to write a poem about their color.<div class="tagline">уточнено: Scion-help -&gt; scion --help; Scion start-help -&gt; scion start --help</div></div>
       <div class="ru">После запуска открываем веб-терминал в этого агента. Берём промпт с простой оркестрацией: через CLI Scion запустить три агента — красный, зелёный и синий, — чтобы каждый написал стихотворение о своём цвете, дождаться их завершения и затем убрать этих агентов. Модели очень хорошо обучены на bash и командных строках, поэтому первое, что вы увидите, — вызов `scion --help`. Агент узнает, что есть команда start, и вызовет `scion start --help`. Потом поймёт, что нужно запустить трёх агентов, и действительно поднимет красного, зелёного и синего, поручив каждому написать стих о своём цвете.</div>
     </div>
     <div class="row">
@@ -183,12 +68,12 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">04:32</div>
-      <div class="en">Of course, we can also run this locally: set up Podman, Docker Desktop or Apple Container on your laptops, and you see here a list of what&#x27;s running locally — the same kind of thing. You can see where they&#x27;re running, what runtime they&#x27;re in, and certain state from these agents. They can notify me when they&#x27;re waiting for input, and you can send a message to one of these, which is simply a quick way of getting a bit of text injected into the harness. Locally I can run these different harnesses in their own containers — here&#x27;s a small script; it opens four of them: Gemini CLI in the top left, OpenCode top right, plus Codex and Claude Code. All running in their own container, listed here. Each of them can report its status and state, they&#x27;re relatively easy to reconnect to, and you can stop and delete them.<div class="tag">уточнено: list my locally -&gt; what&#x27;s running locally; an inserted bit of text -&gt; a bit of text injected</div></div>
+      <div class="en">Of course, we can also run this locally: set up Podman, Docker Desktop or Apple Container on your laptops, and you see here a list of what&#x27;s running locally — the same kind of thing. You can see where they&#x27;re running, what runtime they&#x27;re in, and certain state from these agents. They can notify me when they&#x27;re waiting for input, and you can send a message to one of these, which is simply a quick way of getting a bit of text injected into the harness. Locally I can run these different harnesses in their own containers — here&#x27;s a small script; it opens four of them: Gemini CLI in the top left, OpenCode top right, plus Codex and Claude Code. All running in their own container, listed here. Each of them can report its status and state, they&#x27;re relatively easy to reconnect to, and you can stop and delete them.<div class="tagline">уточнено: list my locally -&gt; what&#x27;s running locally; an inserted bit of text -&gt; a bit of text injected</div></div>
       <div class="ru">Разумеется, это же можно запустить и локально: поставить на ноутбук Podman, Docker Desktop или Apple Container. Здесь виден список локально запущенного — то же самое. Видно, где они работают, в каком рантайме и в каком состоянии. Они могут уведомить меня, когда ждут ввода, а можно отправить сообщение любому из них — это простой способ подставить текст в harness. Локально эти разные harness работают в собственных контейнерах: вот небольшой скрипт открывает четыре — Gemini CLI слева сверху, OpenCode справа, плюс Codex и Claude Code. У каждого свой контейнер, все они в списке. Каждый умеет сообщать свой статус и состояние, к ним относительно легко переподключиться, их можно останавливать и удалять.</div>
     </div>
     <div class="row fixed">
       <div class="ts">05:36</div>
-      <div class="en">Of course, you can be your own orchestrator. The agents write their own poems in this case into the workspace you started them from. And if you look here, we can list the worktrees and see that each of these agents has its own worktree, directly mounted into its container workspace. Now, what if we want to have the agents try something a little more complex than writing color poems? For this, we want to come up with a full game — essentially a question-and-challenge game for agents to play. This is Relics of Athenaeum: a game that demonstrates how different agents can collaborate together in something like Scion. These are essentially characters in a classic role-playing game, except that they run different models and different harnesses in containers.<div class="tag">уточнено: a a full game, essentially a question challenge game -&gt; a full game, essentially a question-and-challenge game</div></div>
+      <div class="en">Of course, you can be your own orchestrator. The agents write their own poems in this case into the workspace you started them from. And if you look here, we can list the worktrees and see that each of these agents has its own worktree, directly mounted into its container workspace. Now, what if we want to have the agents try something a little more complex than writing color poems? For this, we want to come up with a full game — essentially a question-and-challenge game for agents to play. This is Relics of Athenaeum: a game that demonstrates how different agents can collaborate together in something like Scion. These are essentially characters in a classic role-playing game, except that they run different models and different harnesses in containers.<div class="tagline">уточнено: a a full game, essentially a question challenge game -&gt; a full game, essentially a question-and-challenge game</div></div>
       <div class="ru">Разумеется, оркестратором можете быть и вы сами. Агенты пишут свои стихи в рабочее пространство, из которого были запущены. Здесь можно вывести список worktree и увидеть, что у каждого агента свой worktree, смонтированный прямо в его контейнер. А что, если дать агентам задачу посложнее, чем цветные стихи? Для этого нужна целая игра — по сути игра-вопросник для агентов. Это Relics of Athenaeum: игра, показывающая, как разные агенты сотрудничают в Scion. Это персонажи классической ролевой игры, только под каждым — своя модель и свой harness в контейнере.</div>
     </div>
     <div class="row">
@@ -198,49 +83,40 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">07:12</div>
-      <div class="en">How does this work? In this framework everything is collected and sent to Cloud Logging and Cloud telemetry, so every interaction and every message between agents can be collected. Here you can see our color agents — the red, blue and green agents talking to the orchestrator. Once you have all of this collected, it&#x27;s possible to build a visualization showing what&#x27;s happening as these agents — the game agents in my case — explore the space. What you&#x27;re seeing is a combination of broadcast messages — one agent broadcasting to a group chat of all the other agents — as well as a number of direct messages, the lines passing between agents. And you see agents reading and writing different files, creating files, and as they create files, more and more artifacts are collected into the shared workspace. These agents are able to play the game for over an hour to solve all the challenges. Not everything is easy on the first try: they have to retry, back up, solve things. In this particular playthrough they split into two groups to pursue different parts independently.<div class="tag">уточнено: Cloud telemetry -&gt; Cloud Telemetry</div></div>
+      <div class="en">How does this work? In this framework everything is collected and sent to Cloud Logging and Cloud telemetry, so every interaction and every message between agents can be collected. Here you can see our color agents — the red, blue and green agents talking to the orchestrator. Once you have all of this collected, it&#x27;s possible to build a visualization showing what&#x27;s happening as these agents — the game agents in my case — explore the space. What you&#x27;re seeing is a combination of broadcast messages — one agent broadcasting to a group chat of all the other agents — as well as a number of direct messages, the lines passing between agents. And you see agents reading and writing different files, creating files, and as they create files, more and more artifacts are collected into the shared workspace. These agents are able to play the game for over an hour to solve all the challenges. Not everything is easy on the first try: they have to retry, back up, solve things. In this particular playthrough they split into two groups to pursue different parts independently.<div class="tagline">уточнено: Cloud telemetry -&gt; Cloud Telemetry</div></div>
       <div class="ru">Как это работает? В этой среде всё собирается и отправляется в Cloud Logging и телеметрию Cloud, так что каждое взаимодействие и каждое сообщение между агентами можно собрать. Здесь видны наши цветные агенты: красный, синий и зелёный переговариваются с оркестратором. Когда всё это собрано, можно построить визуализацию того, что происходит, пока агенты — в моём случае игровые — исследуют пространство. На экране смесь broadcast-сообщений: один агент пишет в групповой чат всем остальным, — плюс прямые сообщения, линии между агентами. Видно, как агенты читают и пишут файлы, создают их, и по мере создания всё больше артефактов оседает в общем пространстве. Эти агенты способны играть больше часа, решая все задачи. Не всё с первого раза даётся легко: приходится повторять, откатываться, догадываться. В конкретном этом забеге они разбились на две группы и параллельно брались за разные части.</div>
     </div>
     <div class="row fixed">
       <div class="ts">08:28</div>
-      <div class="en">So you really see a very organic, emergent type of behaviour from the LLMs. In this case there&#x27;s really no code involved for the game itself — the entire game is simply markdown. Everything here is literally just markdown templates for these agents, along with their instructions for what the game is, how to play it, especially for the game runner. Scion is an open-source project, available on GitHub; resources are on the detail pages, with full documentation and installation instructions. You can install it simply and run it locally, install it on a VM, or even run the web server locally and get some of that same UI with agents interacting with each other. It&#x27;s there to experiment, and I hope you get a chance to try out your own opinions about how agents can work together in Scion. Thank you.<div class="tag">уточнено: a chance to try out your own opinions -&gt; a chance to try out your own opinion</div></div>
+      <div class="en">So you really see a very organic, emergent type of behaviour from the LLMs. In this case there&#x27;s really no code involved for the game itself — the entire game is simply markdown. Everything here is literally just markdown templates for these agents, along with their instructions for what the game is, how to play it, especially for the game runner. Scion is an open-source project, available on GitHub; resources are on the detail pages, with full documentation and installation instructions. You can install it simply and run it locally, install it on a VM, or even run the web server locally and get some of that same UI with agents interacting with each other. It&#x27;s there to experiment, and I hope you get a chance to try out your own opinions about how agents can work together in Scion. Thank you.<div class="tagline">уточнено: a chance to try out your own opinions -&gt; a chance to try out your own opinion</div></div>
       <div class="ru">Так что видно очень органичное, эмерджентное поведение языковых моделей. В этом случае в самой игре кода нет — вся игра состоит из markdown. Здесь буквально только markdown-шаблоны для агентов и инструкции: что это за игра, как в неё играть, особенно для игрового раннера. Scion — опенсорсный проект, доступный на GitHub; ресурсы лежат на страницах дня, там полная документация и инструкции по установке. Ставится и запускается локально, ставится на VM, а можно даже поднять веб-сервер локально и получить тот же интерфейс с взаимодействием агентов. Всё это — для экспериментов, и надеюсь, у вас будет возможность сформировать собственное мнение о том, как агенты могут работать вместе в Scion. Спасибо.</div>
     </div>
   </div>
 
-  <div class="app">
-    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
-    <table>
-      <thead>
-        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
-      </thead>
-      <tbody>
-      <tr><td>[00:01]</td><td>Hi, my name&#x27;s Preston Holmes, and I&#x27;d like to introduce you to Scion. It&#x27;s an open-source testbed for exploring this new realm of agent orchestration where we give agents an extra degree of autonomy. It&#x27;s really about making progress along the path from a starting point where you have no AI at all in your world, to having more and more AI in your IDE — maybe switching to another terminal type, something made popular later by Claude Code, Gemini CLI and the like — and ultimately getting into how agents manage multiple agents. This idea of agent workflows, multi-agent workflows, is something where there are many, many opinions. And Scion is designed to bring essentially a game engine upon which you can bring your own game titles. Imagine how you want multiple agents to work together, and it&#x27;s really as simple as describing the way they work.</td><td>Cloud Code -&gt; Claude Code (тут и далее по ролику)</td><td>Привет, меня зовут Престон Холмс, и я хочу представить вам Scion. Это опенсорсный стенд для исследования новой области — оркестрации агентов, где агенту дают дополнительную степень автономии. Речь о том, чтобы двигаться по пути от стартовой точки, где ИИ в вашем мире нет вообще, к тому, что ИИ в вашей IDE становится всё больше: переключение на другой терминал, популяризированное позже Claude Code, Gemini CLI и подобными инструментами, — и в конечном счёте к тому, как агенты управляют другими агентами. Про agent workflows, мультиагентные схемы, мнений очень много. Scion сделан как игровой движок, поверх которого можно приносить свои игры. Представьте, как вы хотите, чтобы несколько агентов работали вместе, — это действительно сводится к описанию того, как они работают.</td></tr>
-      <tr><td>[01:53]</td><td>Scion can run entirely locally with something like Docker or Podman or the Apple container tool. You can also run it remotely on VMs or even in a fully distributed mode. Locally, it&#x27;s just Docker or Podman running on your workstation — easy enough. All the state is managed in the local filesystem. You can run and host an API server on a VM and still interact with it via the CLI, or you can run it in a fully distributed mode. The web server, we can run either locally or remotely — in this case we&#x27;re running it remotely on a VM. I can have a set of what&#x27;s called namespaces, which are groves, to collect different collections of agents. I can go into this grove and create a new agent; I&#x27;ll call this one orchestrator, and start it up. This is a launch container running in Docker in the VM — it can also run in Kubernetes.</td><td>Cloud Code -&gt; Claude Code</td><td>Scion полностью работает локально — достаточно Docker, Podman или Apple container tool. Его можно развернуть удалённо на VM или вообще в распределённом режиме. Локально это просто Docker или Podman на вашей рабочей станции, состояние хранится в локальной файловой системе. Можно поднять API-сервер на VM и общаться с ним через CLI, а можно запустить в полностью распределённом режиме. Веб-сервер работает локально или удалённо; здесь он запущен на VM. Есть сущности, которые называются namespaces, — это «рощи» для группировки разных наборов агентов. Заходим в рощу, создаём нового агента — назовём его orchestrator — и запускаем. Это контейнер в Docker на VM, он же может крутиться в Kubernetes.</td></tr>
-      <tr><td>[03:11]</td><td>Once this is started, we open a web terminal into that agent. Let&#x27;s grab a prompt that does a very simple orchestration: using the Scion CLI tool, start three agents for the colors red, green and blue to write a poem about each of their colors; wait for them to complete; and then clean up those agents. Because the models are so well trained on bash and command lines, the first thing you&#x27;ll see it do is just call scion --help. It&#x27;ll learn that there&#x27;s a start command, and call scion start --help. It will understand that it needs to start these three agents. We&#x27;ll see it start a red, a green and a blue agent and assign each to write a poem about their color.</td><td>Scion-help -&gt; scion --help; Scion start-help -&gt; scion start --help</td><td>После запуска открываем веб-терминал в этого агента. Берём промпт с простой оркестрацией: через CLI Scion запустить три агента — красный, зелёный и синий, — чтобы каждый написал стихотворение о своём цвете, дождаться их завершения и затем убрать этих агентов. Модели очень хорошо обучены на bash и командных строках, поэтому первое, что вы увидите, — вызов `scion --help`. Агент узнает, что есть команда start, и вызовет `scion start --help`. Потом поймёт, что нужно запустить трёх агентов, и действительно поднимет красного, зелёного и синего, поручив каждому написать стих о своём цвете.</td></tr>
-      <tr><td>[04:32]</td><td>Of course, we can also run this locally: set up Podman, Docker Desktop or Apple Container on your laptops, and you see here a list of what&#x27;s running locally — the same kind of thing. You can see where they&#x27;re running, what runtime they&#x27;re in, and certain state from these agents. They can notify me when they&#x27;re waiting for input, and you can send a message to one of these, which is simply a quick way of getting a bit of text injected into the harness. Locally I can run these different harnesses in their own containers — here&#x27;s a small script; it opens four of them: Gemini CLI in the top left, OpenCode top right, plus Codex and Claude Code. All running in their own container, listed here. Each of them can report its status and state, they&#x27;re relatively easy to reconnect to, and you can stop and delete them.</td><td>list my locally -&gt; what&#x27;s running locally; an inserted bit of text -&gt; a bit of text injected</td><td>Разумеется, это же можно запустить и локально: поставить на ноутбук Podman, Docker Desktop или Apple Container. Здесь виден список локально запущенного — то же самое. Видно, где они работают, в каком рантайме и в каком состоянии. Они могут уведомить меня, когда ждут ввода, а можно отправить сообщение любому из них — это простой способ подставить текст в harness. Локально эти разные harness работают в собственных контейнерах: вот небольшой скрипт открывает четыре — Gemini CLI слева сверху, OpenCode справа, плюс Codex и Claude Code. У каждого свой контейнер, все они в списке. Каждый умеет сообщать свой статус и состояние, к ним относительно легко переподключиться, их можно останавливать и удалять.</td></tr>
-      <tr><td>[05:36]</td><td>Of course, you can be your own orchestrator. The agents write their own poems in this case into the workspace you started them from. And if you look here, we can list the worktrees and see that each of these agents has its own worktree, directly mounted into its container workspace. Now, what if we want to have the agents try something a little more complex than writing color poems? For this, we want to come up with a full game — essentially a question-and-challenge game for agents to play. This is Relics of Athenaeum: a game that demonstrates how different agents can collaborate together in something like Scion. These are essentially characters in a classic role-playing game, except that they run different models and different harnesses in containers.</td><td>a a full game, essentially a question challenge game -&gt; a full game, essentially a question-and-challenge game</td><td>Разумеется, оркестратором можете быть и вы сами. Агенты пишут свои стихи в рабочее пространство, из которого были запущены. Здесь можно вывести список worktree и увидеть, что у каждого агента свой worktree, смонтированный прямо в его контейнер. А что, если дать агентам задачу посложнее, чем цветные стихи? Для этого нужна целая игра — по сути игра-вопросник для агентов. Это Relics of Athenaeum: игра, показывающая, как разные агенты сотрудничают в Scion. Это персонажи классической ролевой игры, только под каждым — своя модель и свой harness в контейнере.</td></tr>
-      <tr><td>[07:12]</td><td>How does this work? In this framework everything is collected and sent to Cloud Logging and Cloud telemetry, so every interaction and every message between agents can be collected. Here you can see our color agents — the red, blue and green agents talking to the orchestrator. Once you have all of this collected, it&#x27;s possible to build a visualization showing what&#x27;s happening as these agents — the game agents in my case — explore the space. What you&#x27;re seeing is a combination of broadcast messages — one agent broadcasting to a group chat of all the other agents — as well as a number of direct messages, the lines passing between agents. And you see agents reading and writing different files, creating files, and as they create files, more and more artifacts are collected into the shared workspace. These agents are able to play the game for over an hour to solve all the challenges. Not everything is easy on the first try: they have to retry, back up, solve things. In this particular playthrough they split into two groups to pursue different parts independently.</td><td>Cloud telemetry -&gt; Cloud Telemetry</td><td>Как это работает? В этой среде всё собирается и отправляется в Cloud Logging и телеметрию Cloud, так что каждое взаимодействие и каждое сообщение между агентами можно собрать. Здесь видны наши цветные агенты: красный, синий и зелёный переговариваются с оркестратором. Когда всё это собрано, можно построить визуализацию того, что происходит, пока агенты — в моём случае игровые — исследуют пространство. На экране смесь broadcast-сообщений: один агент пишет в групповой чат всем остальным, — плюс прямые сообщения, линии между агентами. Видно, как агенты читают и пишут файлы, создают их, и по мере создания всё больше артефактов оседает в общем пространстве. Эти агенты способны играть больше часа, решая все задачи. Не всё с первого раза даётся легко: приходится повторять, откатываться, догадываться. В конкретном этом забеге они разбились на две группы и параллельно брались за разные части.</td></tr>
-      <tr><td>[08:28]</td><td>So you really see a very organic, emergent type of behaviour from the LLMs. In this case there&#x27;s really no code involved for the game itself — the entire game is simply markdown. Everything here is literally just markdown templates for these agents, along with their instructions for what the game is, how to play it, especially for the game runner. Scion is an open-source project, available on GitHub; resources are on the detail pages, with full documentation and installation instructions. You can install it simply and run it locally, install it on a VM, or even run the web server locally and get some of that same UI with agents interacting with each other. It&#x27;s there to experiment, and I hope you get a chance to try out your own opinions about how agents can work together in Scion. Thank you.</td><td>a chance to try out your own opinions -&gt; a chance to try out your own opinion</td><td>Так что видно очень органичное, эмерджентное поведение языковых моделей. В этом случае в самой игре кода нет — вся игра состоит из markdown. Здесь буквально только markdown-шаблоны для агентов и инструкции: что это за игра, как в неё играть, особенно для игрового раннера. Scion — опенсорсный проект, доступный на GitHub; ресурсы лежат на страницах дня, там полная документация и инструкции по установке. Ставится и запускается локально, ставится на VM, а можно даже поднять веб-сервер локально и получить тот же интерфейс с взаимодействием агентов. Всё это — для экспериментов, и надеюсь, у вас будет возможность сформировать собственное мнение о том, как агенты могут работать вместе в Scion. Спасибо.</td></tr>
-      </tbody>
-    </table>
-    <p class="note">Субтитры автоматические (auto, en-orig). Названия приведены по странице дня и репозиторию github.com/googlecloudplatform/scion: Claude Code, Relics of Athenaeum, scion-tool, git worktree.</p>
+  <h2 id="fixes">Где автосубтитры соврали и как это восстановлено</h2>
+  <table class="plain">
+    <thead>
+      <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>00:01</td><td>Hi, my name&#x27;s Preston Holmes, and I&#x27;d like to introduce you to Scion. It&#x27;s an open-source testbed for exploring this new realm of agent orchestration where we give agents an extra degree of autonomy. It&#x27;s really about making progress along the path from a starting point where you have no AI at all in your world, to having more and more AI in your IDE — maybe switching to another terminal type, something made popular later by Claude Code, Gemini CLI and the like — and ultimately getting into how agents manage multiple agents. This idea of agent workflows, multi-agent workflows, is something where there are many, many opinions. And Scion is designed to bring essentially a game engine upon which you can bring your own game titles. Imagine how you want multiple agents to work together, and it&#x27;s really as simple as describing the way they work.</td><td>Cloud Code -&gt; Claude Code (тут и далее по ролику)</td><td>Привет, меня зовут Престон Холмс, и я хочу представить вам Scion. Это опенсорсный стенд для исследования новой области — оркестрации агентов, где агенту дают дополнительную степень автономии. Речь о том, чтобы двигаться по пути от стартовой точки, где ИИ в вашем мире нет вообще, к тому, что ИИ в вашей IDE становится всё больше: переключение на другой терминал, популяризированное позже Claude Code, Gemini CLI и подобными инструментами, — и в конечном счёте к тому, как агенты управляют другими агентами. Про agent workflows, мультиагентные схемы, мнений очень много. Scion сделан как игровой движок, поверх которого можно приносить свои игры. Представьте, как вы хотите, чтобы несколько агентов работали вместе, — это действительно сводится к описанию того, как они работают.</td></tr>
+      <tr><td>01:53</td><td>Scion can run entirely locally with something like Docker or Podman or the Apple container tool. You can also run it remotely on VMs or even in a fully distributed mode. Locally, it&#x27;s just Docker or Podman running on your workstation — easy enough. All the state is managed in the local filesystem. You can run and host an API server on a VM and still interact with it via the CLI, or you can run it in a fully distributed mode. The web server, we can run either locally or remotely — in this case we&#x27;re running it remotely on a VM. I can have a set of what&#x27;s called namespaces, which are groves, to collect different collections of agents. I can go into this grove and create a new agent; I&#x27;ll call this one orchestrator, and start it up. This is a launch container running in Docker in the VM — it can also run in Kubernetes.</td><td>Cloud Code -&gt; Claude Code</td><td>Scion полностью работает локально — достаточно Docker, Podman или Apple container tool. Его можно развернуть удалённо на VM или вообще в распределённом режиме. Локально это просто Docker или Podman на вашей рабочей станции, состояние хранится в локальной файловой системе. Можно поднять API-сервер на VM и общаться с ним через CLI, а можно запустить в полностью распределённом режиме. Веб-сервер работает локально или удалённо; здесь он запущен на VM. Есть сущности, которые называются namespaces, — это «рощи» для группировки разных наборов агентов. Заходим в рощу, создаём нового агента — назовём его orchestrator — и запускаем. Это контейнер в Docker на VM, он же может крутиться в Kubernetes.</td></tr>
+      <tr><td>03:11</td><td>Once this is started, we open a web terminal into that agent. Let&#x27;s grab a prompt that does a very simple orchestration: using the Scion CLI tool, start three agents for the colors red, green and blue to write a poem about each of their colors; wait for them to complete; and then clean up those agents. Because the models are so well trained on bash and command lines, the first thing you&#x27;ll see it do is just call scion --help. It&#x27;ll learn that there&#x27;s a start command, and call scion start --help. It will understand that it needs to start these three agents. We&#x27;ll see it start a red, a green and a blue agent and assign each to write a poem about their color.</td><td>Scion-help -&gt; scion --help; Scion start-help -&gt; scion start --help</td><td>После запуска открываем веб-терминал в этого агента. Берём промпт с простой оркестрацией: через CLI Scion запустить три агента — красный, зелёный и синий, — чтобы каждый написал стихотворение о своём цвете, дождаться их завершения и затем убрать этих агентов. Модели очень хорошо обучены на bash и командных строках, поэтому первое, что вы увидите, — вызов `scion --help`. Агент узнает, что есть команда start, и вызовет `scion start --help`. Потом поймёт, что нужно запустить трёх агентов, и действительно поднимет красного, зелёного и синего, поручив каждому написать стих о своём цвете.</td></tr>
+      <tr><td>04:32</td><td>Of course, we can also run this locally: set up Podman, Docker Desktop or Apple Container on your laptops, and you see here a list of what&#x27;s running locally — the same kind of thing. You can see where they&#x27;re running, what runtime they&#x27;re in, and certain state from these agents. They can notify me when they&#x27;re waiting for input, and you can send a message to one of these, which is simply a quick way of getting a bit of text injected into the harness. Locally I can run these different harnesses in their own containers — here&#x27;s a small script; it opens four of them: Gemini CLI in the top left, OpenCode top right, plus Codex and Claude Code. All running in their own container, listed here. Each of them can report its status and state, they&#x27;re relatively easy to reconnect to, and you can stop and delete them.</td><td>list my locally -&gt; what&#x27;s running locally; an inserted bit of text -&gt; a bit of text injected</td><td>Разумеется, это же можно запустить и локально: поставить на ноутбук Podman, Docker Desktop или Apple Container. Здесь виден список локально запущенного — то же самое. Видно, где они работают, в каком рантайме и в каком состоянии. Они могут уведомить меня, когда ждут ввода, а можно отправить сообщение любому из них — это простой способ подставить текст в harness. Локально эти разные harness работают в собственных контейнерах: вот небольшой скрипт открывает четыре — Gemini CLI слева сверху, OpenCode справа, плюс Codex и Claude Code. У каждого свой контейнер, все они в списке. Каждый умеет сообщать свой статус и состояние, к ним относительно легко переподключиться, их можно останавливать и удалять.</td></tr>
+      <tr><td>05:36</td><td>Of course, you can be your own orchestrator. The agents write their own poems in this case into the workspace you started them from. And if you look here, we can list the worktrees and see that each of these agents has its own worktree, directly mounted into its container workspace. Now, what if we want to have the agents try something a little more complex than writing color poems? For this, we want to come up with a full game — essentially a question-and-challenge game for agents to play. This is Relics of Athenaeum: a game that demonstrates how different agents can collaborate together in something like Scion. These are essentially characters in a classic role-playing game, except that they run different models and different harnesses in containers.</td><td>a a full game, essentially a question challenge game -&gt; a full game, essentially a question-and-challenge game</td><td>Разумеется, оркестратором можете быть и вы сами. Агенты пишут свои стихи в рабочее пространство, из которого были запущены. Здесь можно вывести список worktree и увидеть, что у каждого агента свой worktree, смонтированный прямо в его контейнер. А что, если дать агентам задачу посложнее, чем цветные стихи? Для этого нужна целая игра — по сути игра-вопросник для агентов. Это Relics of Athenaeum: игра, показывающая, как разные агенты сотрудничают в Scion. Это персонажи классической ролевой игры, только под каждым — своя модель и свой harness в контейнере.</td></tr>
+      <tr><td>07:12</td><td>How does this work? In this framework everything is collected and sent to Cloud Logging and Cloud telemetry, so every interaction and every message between agents can be collected. Here you can see our color agents — the red, blue and green agents talking to the orchestrator. Once you have all of this collected, it&#x27;s possible to build a visualization showing what&#x27;s happening as these agents — the game agents in my case — explore the space. What you&#x27;re seeing is a combination of broadcast messages — one agent broadcasting to a group chat of all the other agents — as well as a number of direct messages, the lines passing between agents. And you see agents reading and writing different files, creating files, and as they create files, more and more artifacts are collected into the shared workspace. These agents are able to play the game for over an hour to solve all the challenges. Not everything is easy on the first try: they have to retry, back up, solve things. In this particular playthrough they split into two groups to pursue different parts independently.</td><td>Cloud telemetry -&gt; Cloud Telemetry</td><td>Как это работает? В этой среде всё собирается и отправляется в Cloud Logging и телеметрию Cloud, так что каждое взаимодействие и каждое сообщение между агентами можно собрать. Здесь видны наши цветные агенты: красный, синий и зелёный переговариваются с оркестратором. Когда всё это собрано, можно построить визуализацию того, что происходит, пока агенты — в моём случае игровые — исследуют пространство. На экране смесь broadcast-сообщений: один агент пишет в групповой чат всем остальным, — плюс прямые сообщения, линии между агентами. Видно, как агенты читают и пишут файлы, создают их, и по мере создания всё больше артефактов оседает в общем пространстве. Эти агенты способны играть больше часа, решая все задачи. Не всё с первого раза даётся легко: приходится повторять, откатываться, догадываться. В конкретном этом забеге они разбились на две группы и параллельно брались за разные части.</td></tr>
+      <tr><td>08:28</td><td>So you really see a very organic, emergent type of behaviour from the LLMs. In this case there&#x27;s really no code involved for the game itself — the entire game is simply markdown. Everything here is literally just markdown templates for these agents, along with their instructions for what the game is, how to play it, especially for the game runner. Scion is an open-source project, available on GitHub; resources are on the detail pages, with full documentation and installation instructions. You can install it simply and run it locally, install it on a VM, or even run the web server locally and get some of that same UI with agents interacting with each other. It&#x27;s there to experiment, and I hope you get a chance to try out your own opinions about how agents can work together in Scion. Thank you.</td><td>a chance to try out your own opinions -&gt; a chance to try out your own opinion</td><td>Так что видно очень органичное, эмерджентное поведение языковых моделей. В этом случае в самой игре кода нет — вся игра состоит из markdown. Здесь буквально только markdown-шаблоны для агентов и инструкции: что это за игра, как в неё играть, особенно для игрового раннера. Scion — опенсорсный проект, доступный на GitHub; ресурсы лежат на страницах дня, там полная документация и инструкции по установке. Ставится и запускается локально, ставится на VM, а можно даже поднять веб-сервер локально и получить тот же интерфейс с взаимодействием агентов. Всё это — для экспериментов, и надеюсь, у вас будет возможность сформировать собственное мнение о том, как агенты могут работать вместе в Scion. Спасибо.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Субтитры автоматические (auto, en-orig). Названия приведены по странице дня и репозиторию github.com/googlecloudplatform/scion: Claude Code, Relics of Athenaeum, scion-tool, git worktree.</p>
+  <div class="pager">
+  <a class="prev" href="../day26/s2-2026-03-day26-en-ru.html" rel="prev">← day26 &rarr;</a>
+  <a class="next" href="../day28/s2-2026-03-day28-en-ru.html" rel="next">day28 → &rarr;</a>
   </div>
-
 </div>
-<script>
-const el = id => document.getElementById(id);
-
-el('tgl-en').addEventListener('change', e =>
-  document.body.classList.toggle('hide-en', !e.target.checked));
-el('tgl-ru').addEventListener('change', e =>
-  document.body.classList.toggle('hide-ru', !e.target.checked));
-el('btn-print').addEventListener('click', () => window.print());
-el('btn-mark').addEventListener('click', () => {
-  const on = !document.body.classList.contains('show-fixes');
-  document.body.classList.toggle('show-fixes', on);
-  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
-});
-</script>
+<div class="page">
+<p class="note">Перевод с английского. Субтитры автоматические (YouTube auto), поэтому в приложении указано, где распознавание было исправлено. Исходный ролик: <a href="https://www.youtube.com/watch?v=T93MW7wETOc">YouTube</a>.</p>
+</div>
+<script src="../../assets/app.js"></script>
 </body>
 </html>

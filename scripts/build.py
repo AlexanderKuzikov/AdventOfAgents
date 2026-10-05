@@ -11,6 +11,7 @@ import json
 import sys
 from pathlib import Path
 
+from assets import APP_JS, STYLE
 from docx import Document
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -74,247 +75,6 @@ def load(day):
 
 # --------------------------------------------------------------------------
 # HTML: две колонки, точное противопоставление абзацев
-# --------------------------------------------------------------------------
-
-HTML_CSS = """
-:root {
-  --en-bg: #f7f8fa;
-  --line: #dfe3e8;
-  --accent: #0b57d0;
-  --ts: #8a9099;
-  --muted: #5f6672;
-  --fix: #fff3cd;
-  --fix-line: #e0b100;
-}
-
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-
-body {
-  margin: 0;
-  padding: 32px 20px 72px;
-  background: #eef0f3;
-  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.45;
-  color: #1a1a1a;
-}
-
-.page { max-width: 1400px; margin: 0 auto; }
-
-h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
-.head .sub { color: var(--muted); font-size: 15px; }
-.head .sub a { color: var(--accent); }
-
-.legend {
-  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
-  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
-}
-.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
-.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
-
-.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
-
-button {
-  font: inherit; font-size: 14px; padding: 7px 14px;
-  border: 1px solid var(--line); border-radius: 6px;
-  background: #fff; color: #1a1a1a; cursor: pointer;
-}
-button:hover { border-color: #b9c0ca; background: #fafbfc; }
-
-.grid {
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden;
-}
-
-.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
-
-.head-row {
-  background: #2f3541; color: #fff;
-  font-size: 13px; letter-spacing: 0.04em;
-  text-transform: uppercase; font-weight: 600;
-  position: sticky; top: 0; z-index: 5;
-}
-.head-row > div { padding: 10px 18px; }
-.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
-
-.row > .ts {
-  padding: 14px 8px; font-size: 12px;
-  font-variant-numeric: tabular-nums;
-  color: var(--ts); text-align: right;
-  border-right: 1px solid var(--line); background: #fbfbfc;
-}
-.row > .en, .row > .ru {
-  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
-}
-.row > .en { background: var(--en-bg); }
-.row > .ru { border-right: 0; }
-
-.row.cont > .ts::after {
-  content: ""; display: block; width: 14px; height: 1px;
-  background: var(--line); margin: 8px 0 0 auto;
-}
-.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
-
-.row.fixed > .en { background: var(--fix); }
-.row.fixed .tag { display: none; }
-
-body.show-fixes .row.fixed .tag { display: block; }
-
-.tag {
-  display: inline-block; margin-top: 6px;
-  font-size: 11.5px; line-height: 1.35;
-  color: #6b5400; background: var(--fix);
-  border-left: 3px solid var(--fix-line);
-  padding: 3px 8px; border-radius: 0 4px 4px 0;
-}
-
-.app { margin-top: 26px; }
-.app h2 { font-size: 19px; margin: 0 0 10px; }
-
-table {
-  width: 100%; border-collapse: collapse;
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden; font-size: 15px;
-}
-th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
-th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
-tr:last-child td { border-bottom: 0; }
-td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
-.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
-
-body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
-body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
-body.hide-en .row, body.hide-en .head-row,
-body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
-
-@media (max-width: 900px) {
-  .head-row, .row { grid-template-columns: 56px 1fr; }
-  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
-  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
-}
-
-@media print {
-  body { background: #fff; padding: 0; }
-  .bar, .legend { display: none; }
-  .head-row { position: static; }
-  .grid, table { border-radius: 0; }
-}
-"""
-
-HTML_JS = """
-const el = id => document.getElementById(id);
-
-el('tgl-en').addEventListener('change', e =>
-  document.body.classList.toggle('hide-en', !e.target.checked));
-el('tgl-ru').addEventListener('change', e =>
-  document.body.classList.toggle('hide-ru', !e.target.checked));
-el('btn-print').addEventListener('click', () => window.print());
-el('btn-mark').addEventListener('click', () => {
-  const on = !document.body.classList.contains('show-fixes');
-  document.body.classList.toggle('show-fixes', on);
-  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
-});
-"""
-
-
-def build_html(day, meta, out):
-    rows = []
-    fixes = []
-    prev_t = None
-
-    for seg in meta["segments"]:
-        first = seg["t"] != prev_t
-        cls = "row" if first else "row cont"
-        if seg.get("fix"):
-            cls += " fixed"
-            fixes.append(seg)
-        stamp = mmss(seg["t"]) if first else ""
-        tag = (
-            f'<div class="tag">уточнено: {H.escape(seg["fix"])}</div>'
-            if seg.get("fix")
-            else ""
-        )
-        rows.append(
-            f'    <div class="{cls}">\n'
-            f'      <div class="ts">{stamp}</div>\n'
-            f'      <div class="en">{H.escape(seg["en"])}{tag}</div>\n'
-            f'      <div class="ru">{H.escape(seg["ru"])}</div>\n'
-            f'    </div>'
-        )
-        prev_t = seg["t"]
-
-    fix_table = "\n".join(
-        f'      <tr><td>[{mmss(s["t"])}]</td><td>{H.escape(s["en"])}</td>'
-        f'<td>{H.escape(s["fix"])}</td><td>{H.escape(s["ru"])}</td></tr>'
-        for s in fixes
-    )
-
-    fix_block = ""
-    if fix_table:
-        fix_block = f"""
-  <div class="app">
-    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
-    <table>
-      <thead>
-        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
-      </thead>
-      <tbody>
-{fix_table}
-      </tbody>
-    </table>
-    <p class="note">{H.escape(meta.get("note", ""))}</p>
-  </div>
-"""
-
-    url = meta.get("url") or VIDEO_URL.format(meta["video_id"])
-    subtitle_kind = meta.get("subtitle_kind", "")
-
-    doc = f"""<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{H.escape(meta["title"])} — EN / RU</title>
-<style>{HTML_CSS}</style>
-</head>
-<body>
-<div class="page">
-
-  <div class="head">
-    <h1>{H.escape(meta["title"])}</h1>
-    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
-      Видео: <a href="{H.escape(url)}">{H.escape(url)}</a> · {mmss(meta["duration_s"])}
-      · {H.escape(subtitle_kind)}</div>
-  </div>
-
-  <div class="legend">
-    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
-    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
-  </div>
-
-  <div class="bar">
-    <button id="btn-mark">Показать исправления</button>
-    <button id="btn-print">Печать / PDF</button>
-  </div>
-
-  <div class="grid">
-    <div class="head-row">
-      <div>Time</div>
-      <div>English</div>
-      <div>Русский</div>
-    </div>
-{chr(10).join(rows)}
-  </div>
-{fix_block}
-</div>
-<script>{HTML_JS}</script>
-</body>
-</html>
-"""
-    out.write_text(doc, encoding="utf-8")
-
-
 # --------------------------------------------------------------------------
 # DOCX: только перевод + приложение с исправлениями
 # --------------------------------------------------------------------------
@@ -432,29 +192,397 @@ def build_docx(day, meta, out):
     doc.save(out)
 
 
+
+# --------------------------------------------------------------------------
+# Общие файлы сайта
 # --------------------------------------------------------------------------
 
+ASSETS = DIST / "assets"
+
+
+def write_assets():
+    ASSETS.mkdir(parents=True, exist_ok=True)
+    (ASSETS / "style.css").write_text(STYLE, encoding="utf-8")
+    (ASSETS / "app.js").write_text(APP_JS, encoding="utf-8")
+
+
+def head(title, depth=0, extra=""):
+    """Шапка страницы. depth — насколько подняться до dist/ за ../."""
+    up = "../" * depth
+    return (
+        "<!DOCTYPE html>\n"
+        '<html lang="ru">\n<head>\n'
+        '<meta charset="utf-8">\n'
+        '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
+        f"<title>{H.escape(title)}</title>\n"
+        f'<link rel="stylesheet" href="{up}assets/style.css">\n'
+        f"{extra}"
+        "</head>\n<body>\n"
+        '<div class="top"><div class="inner">\n'
+        f'<a class="brand" href="{up}index.html">Advent of Agents — перевод</a>\n'
+        "<nav>"
+        f'<a href="{up}index.html#seasons">Сезоны</a>\n'
+        f'<a href="{up}index.html#materials">Материалы</a>\n'
+        f'<a href="https://adventofagents.com/">Оригинал</a>\n'
+        "</nav>\n"
+        '<div class="spacer"></div>\n'
+        f'<a href="https://github.com/AlexanderKuzikov/AdventOfAgents">репозиторий</a>\n'
+        "</div></div>\n"
+    )
+
+
+def footer(depth=0):
+    up = "../" * depth
+    return (
+        '<div class="page">\n'
+        '<p class="note">Перевод с английского. Субтитры автоматические (YouTube auto), '
+        "поэтому в приложении указано, где распознавание было исправлено. "
+        f'Исходный ролик: <a href="https://www.youtube.com/watch?v=VIDEOID">YouTube</a>.</p>\n'
+        "</div>\n"
+        f'<script src="{up}assets/app.js"></script>\n'
+        "</body>\n</html>\n"
+    )
+
+def build_day_html(day, meta, nav):
+    """Страница дня: двуязычная сетка в обвязке сайта."""
+    out_dir = DIST / day
+    out_dir.mkdir(parents=True, exist_ok=True)
+    base = slug(day)
+    path = out_dir / f"{base}-en-ru.html"
+
+    rows = []
+    fixes = []
+    prev_t = None
+
+    for seg in meta["segments"]:
+        first = seg["t"] != prev_t
+        cls = "row" if first else "row cont"
+        if seg.get("fix"):
+            cls += " fixed"
+            fixes.append(seg)
+        stamp = mmss(seg["t"]) if first else ""
+        tag = f'<div class="tagline">уточнено: {H.escape(seg["fix"])}</div>' if seg.get("fix") else ""
+        rows.append(
+            f'    <div class="{cls}">\n'
+            f'      <div class="ts">{stamp}</div>\n'
+            f'      <div class="en">{H.escape(seg["en"])}{tag}</div>\n'
+            f'      <div class="ru">{H.escape(seg["ru"])}</div>\n'
+            f'    </div>'
+        )
+        prev_t = seg["t"]
+
+    fix_block = ""
+    if fixes:
+        table = "\n".join(
+            f'      <tr><td>{H.escape(mmss(s["t"]))}</td><td>{H.escape(s["en"])}</td>'
+            f'<td>{H.escape(s["fix"])}</td><td>{H.escape(s["ru"])}</td></tr>'
+            for s in fixes
+        )
+        fix_block = f"""
+  <h2 id="fixes">Где автосубтитры соврали и как это восстановлено</h2>
+  <table class="plain">
+    <thead>
+      <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+    </thead>
+    <tbody>
+{table}
+    </tbody>
+  </table>
+  <p class="note">{H.escape(meta.get("note", ""))}</p>
+"""
+
+    video_url = meta.get("video_url") or ""
+    extra_link = ""
+    if video_url:
+        extra_link = (
+            f'<a href="{H.escape(video_url)}" target="_blank" rel="noopener">оригинальный ролик</a>'
+        )
+
+    doc = (
+        head(f'{meta["title"]} — EN / RU', depth=2)
+        + '<div class="page">\n'
+        f'<p class="crumbs"><a href="../../index.html">Все дни</a> '
+        f'&rsaquo; <a href="../../index.html#{H.escape(day.split("/")[0])}">'
+        f'{H.escape(day.split("/")[0])}</a> &rsaquo; {H.escape(day.split("/")[1])}</p>\n'
+        f'<h1>{H.escape(meta["title"])}</h1>\n'
+        '<p class="lede">Двуязычная транскрипция: английский оригинал слева, '
+        "русский перевод справа, абзацы стоят строго напротив друг друга.</p>\n"
+        '<div class="stats">\n'
+        f'  <div class="stat"><div class="n">{mmss(meta["duration_s"])}</div>'
+        '<div class="k">длительность</div></div>\n'
+        f'  <div class="stat"><div class="n">{len(meta["segments"])}</div>'
+        '<div class="k">абзацев</div></div>\n'
+        f'  <div class="stat"><div class="n">{len(fixes)}</div>'
+        '<div class="k">правок распознавания</div></div>\n'
+        "</div>\n"
+        '<div class="bar">\n'
+        '  <label class="legend"><input type="checkbox" id="tgl-en" checked> оригинал</label>\n'
+        '  <label class="legend"><input type="checkbox" id="tgl-ru" checked> перевод</label>\n'
+        "</div>\n"
+        '<div class="bar">\n'
+        '  <button id="btn-mark">Показать исправления</button>\n'
+        '  <button id="btn-print">Печать / PDF</button>\n'
+        f'  <a class="btn" href="{slug(day)}-transcript-ru.docx">Скачать DOCX</a>\n'
+        f"  {extra_link}\n"
+        "</div>\n"
+        '  <div class="grid">\n'
+        '    <div class="head-row">\n'
+        "      <div>Time</div>\n      <div>English</div>\n      <div>Русский</div>\n"
+        "    </div>\n"
+        f"{chr(10).join(rows)}\n"
+        "  </div>\n"
+        f"{fix_block}"
+        f"{nav}"
+        "</div>\n"
+        + footer(depth=2).replace("VIDEOID", meta.get("video_id", ""))
+    )
+
+    path.write_text(doc, encoding="utf-8")
+    return path
+
+# --------------------------------------------------------------------------
+# Индекс: все дни сайта + материалы
+# --------------------------------------------------------------------------
+
+# Домены, чьи ссылки попадают в раздел «Материалы» как документы, а не как ссылки дня
+DOC_HOSTS = (
+    "kaggle.com/whitepaper", "a2a-protocol.org", "modelcontextprotocol.io",
+    "docs.ag-ui.com", "a2ui.org", "ucp.dev", "owasp.org",
+    "langchain-ai.github.io", "blog.langchain.dev", "a2a-editor.ag-ui.com",
+    "google.github.io/adk-docs", "cloud.google.com/blog", "developers.googleblog.com",
+    "codelabs.developers.google.com", "developers.google.com", "docs.cloud.google.com",
+)
+
+# Организации, чьи репозитории показываем отдельно от проектов участников
+KNOWN_ORGS = {
+    "google", "google-gemini", "googlecloudplatform", "google-agentic-commerce",
+    "a2aproject", "modelcontextprotocol", "restatedev",
+}
+
+# Заголовки-заглушки в site: у репозитория нет имени, есть «Open Source Repo»
+PLACEHOLDER_TITLES = {
+    "open source repo", "project repository", "github repository", "repository",
+    "open source repository", "source code", "code", "repo", "github repo",
+}
+
+
+def host_of(url):
+    return url.split("//", 1)[-1].split("/", 1)[0]
+
+
+def collect_site():
+    """Все дни из page.json — включая те, что ещё не переведены."""
+    seasons = {}
+    for page_file in sorted(DATA.glob("s*/*/page.json")):
+        day_dir = page_file.parent
+        page = json.loads(page_file.read_text(encoding="utf-8"))
+        key = day_dir.parent.name
+        seasons.setdefault(key, []).append({
+            "day": day_dir.name,
+            "title": page.get("title", ""),
+            "summary": page.get("summary", ""),
+            "tags": page.get("tags", []),
+            "video_id": page.get("video_id"),
+            "video_available": page.get("video_available", True),
+            "duration_s": page.get("duration_s", 0),
+            "creator_name": page.get("creator_name", ""),
+            "canonical_url": page.get("canonical_url", ""),
+            "links": page.get("links", []),
+            "translated": (day_dir / "translation.json").exists(),
+            "has_subs": (day_dir / "en-orig.json3").exists(),
+        })
+    return seasons
+
+
+def collect_materials(seasons):
+    """Ссылки со всех дней, разложенные по типам.
+
+    Два разных правила отбора, потому что ссылки разного качества:
+
+    * официальные репозитории берём все, что принадлежат известной
+      организации, — их единицы, и каждая по делу (заголовок у таких
+      ссылок часто «Open Source Repo», так что по заголовку их не отличить);
+    * остальное отбираем по частоте: материалом считается ссылка,
+      встретившаяся в двух и более разных днях. Разовая ссылка —
+      это штука конкретного туториала.
+    """
+    seen = {}
+    for days in seasons.values():
+        for day in days:
+            for link in day["links"]:
+                url = link["url"]
+                if not url:
+                    continue
+                if url in seen:
+                    seen[url]["days"].add(day["day"])
+                else:
+                    seen[url] = {"title": link["title"], "days": {day["day"]}}
+
+    docs, repos_known, repos_community = [], [], []
+
+    for url, info in sorted(seen.items()):
+        host = host_of(url)
+        title = info["title"]
+
+        if "github.com" in host:
+            if title.strip().lower() in PLACEHOLDER_TITLES:
+                continue  # «Open Source Repo» — имени нет, оставить нечего
+            org = url.split("github.com/")[1].split("/")[0].lower()
+            if org in KNOWN_ORGS:
+                repos_known.append((title, url))
+            elif len(info["days"]) >= 2:
+                repos_community.append((title, url))
+            continue
+
+        if any(h in url for h in DOC_HOSTS) and len(info["days"]) >= 2:
+            docs.append((title, url, host))
+
+    # Один и тот же репозиторий сайт упоминает под разными URL (регистр в пути,
+    # архивная ветка): в списке оставляем первый вариант.
+    def dedupe(items):
+        out, seen = [], set()
+        for item in items:
+            key = item[0].strip().lower()
+            if key in seen:
+                continue
+            seen.add(key)
+            out.append(item)
+        return out
+
+    return {
+        "docs": dedupe(docs),
+        "repos_known": dedupe(repos_known),
+        "repos_community": dedupe(repos_community),
+        "total": len(seen),
+    }
+
+def day_card(season, day):
+    name = day["day"]
+    base = slug(f"{season}/{name}")
+    translated = day["translated"]
+
+    # теги через ||, а не пробелом: «Agent Starter Pack» содержит пробелы,
+    # регистр приводим к нижнему — подписи на сайте не приведены к единому виду
+    tags = "||".join(t.lower() for t in day["tags"])
+    pill = '<span class="pill done">переведён</span>' if translated else (
+        '<span class="pill draft">субтитры</span>' if day["has_subs"]
+        else '<span class="pill">только страница</span>'
+    )
+
+    links = []
+    if translated:
+        links.append(f'<a href="{H.escape(season)}/{name}/{base}-en-ru.html">EN | RU</a>')
+        links.append(f'<a href="{season}/{name}/{base}-transcript-ru.docx">DOCX</a>')
+    if day["video_id"] and day["video_available"]:
+        links.append(f'<a href="https://www.youtube.com/watch?v={day["video_id"]}" '
+                     'target="_blank" rel="noopener">видео</a>')
+    if day["canonical_url"]:
+        links.append(f'<a href="{H.escape(day["canonical_url"])}" target="_blank" '
+                     'rel="noopener">страница</a>')
+
+    tag_html = "".join(f'<span class="tag">{H.escape(t)}</span>' for t in day["tags"][:4])
+
+    return (
+        f'    <div class="day" data-tags="{H.escape(tags)}">\n'
+        f'      <div class="n">{H.escape(season)} &middot; {name} &middot; {mmss(day["duration_s"])}</div>\n'
+        f'      <div class="t">{H.escape(day["title"])}</div>\n'
+        f'      <div class="s">{H.escape(day["summary"][:150])}</div>\n'
+        f'      <div class="tags">{tag_html}</div>\n'
+        f'      <div class="links">{pill} {" ".join(links)}</div>\n'
+        "    </div>"
+    )
+
+
+def build_index(seasons, mats):
+    total_days = sum(len(d) for d in seasons.values())
+    translated = sum(1 for d in seasons.values() for x in d if x["translated"])
+    with_subs = sum(1 for d in seasons.values() for x in d if x["has_subs"])
+
+    tag_freq = {}
+    for days in seasons.values():
+        for day in days:
+            for tag in day["tags"]:
+                tag_freq[tag] = tag_freq.get(tag, 0) + 1
+    top_tags = [t for t, n in sorted(tag_freq.items(), key=lambda kv: (-kv[1], kv[0])) if n > 1]
+
+    filters = "".join(f'<button data-tag="{H.escape(t)}">{H.escape(t)}</button>' for t in top_tags)
+
+    season_blocks = []
+    for season in sorted(seasons, reverse=True):
+        days = sorted(seasons[season], key=lambda d: d["day"])
+        cards = "\n".join(day_card(season, d) for d in days)
+        done = sum(1 for d in days if d["translated"])
+        season_blocks.append(
+            f'  <h3 id="{H.escape(season)}">{H.escape(season)} '
+            f'<span class="pill">{done} из {len(days)} переведено</span></h3>\n'
+            f'  <div class="days">\n{cards}\n  </div>\n'
+        )
+
+    def mat_list(items, with_host=False):
+        out = []
+        for entry in items:
+            title, url = entry[0], entry[1]
+            host = f' <span class="host">{H.escape(entry[2])}</span>' if with_host else ""
+            out.append(f'<li><a href="{H.escape(url)}" target="_blank" rel="noopener">'
+                       f'{H.escape(title)}</a>{host}</li>')
+        return "\n        ".join(out)
+
+    community_block = ""
+    if mats["repos_community"]:
+        community_block = (
+            f'    <div class="mat"><h3>Репозитории участников ({len(mats["repos_community"])})</h3>\n'
+            f"      <ul>\n        {mat_list(mats['repos_community'])}\n      </ul></div>\n"
+        )
+
+    doc = (
+        head("Advent of Agents — двуязычные переводы", depth=0)
+        + '<div class="page">\n'
+        '<h1>Advent of Agents — двуязычные переводы</h1>\n'
+        '<p class="lede">Все ролики Google Cloud Advent of Agents с английским оригиналом '
+        "и русским переводом, выстроенным абзац в абзац. Источник — "
+        '<a href="https://adventofagents.com/" target="_blank" rel="noopener">adventofagents.com</a>, '
+        "данные собраны из официального манифеста сайта.</p>\n"
+        '<div class="stats">\n'
+        f'  <div class="stat"><div class="n">{len(seasons)}</div><div class="k">сезона</div></div>\n'
+        f'  <div class="stat"><div class="n">{total_days}</div><div class="k">дней на сайте</div></div>\n'
+        f'  <div class="stat"><div class="n">{with_subs}</div><div class="k">с субтитрами</div></div>\n'
+        f'  <div class="stat"><div class="n">{translated}</div><div class="k">переведено</div></div>\n'
+        f'  <div class="stat"><div class="n">{mats["total"]}</div><div class="k">ссылок собрано</div></div>\n'
+        "</div>\n"
+        '<h2 id="seasons">Дни по сезонам</h2>\n'
+        f'<div class="filters" id="filters">\n'
+        f'  <button data-tag="" class="on">все темы</button>\n  {filters}\n'
+        "</div>\n"
+        + "\n".join(season_blocks)
+        + '\n<h2 id="materials">Материалы со всех дней</h2>\n'
+        f'<p class="lede">Из {mats["total"]} собранных ссылок эти выглядят полезными: '
+        "спецификации и whitepaper’ы, официальные репозитории и проекты участников.</p>\n"
+        '  <div class="mats">\n'
+        f'    <div class="mat"><h3>Документы и спецификации ({len(mats["docs"])})</h3>\n'
+        f"      <ul>\n        {mat_list(mats['docs'], with_host=True)}\n      </ul></div>\n"
+        f'    <div class="mat"><h3>Официальные репозитории ({len(mats["repos_known"])})</h3>\n'
+        f"      <ul>\n        {mat_list(mats['repos_known'])}\n      </ul></div>\n"
+        f"{community_block}"
+        "  </div>\n"
+        '<h2>Как это устроено</h2>\n'
+        "<p>Данные лежат в <code>data/&lt;сезон&gt;/&lt;день&gt;/</code>: страница сайта, "
+        "автосубтитры и ручной перевод. Генераторы — в <code>scripts/</code>, "
+        "сборка одной командой <code>python scripts/build.py</code>. "
+        "Английский текст в колонке рядом с переводом взят из тех же автосубтитров, "
+        "поэтому обе колонки показывают ровно один и тот же фрагмент ролика.</p>\n"
+        "</div>\n"
+        + footer(depth=0).replace("VIDEOID", "")
+    )
+
+    path = DIST / "index.html"
+    path.write_text(doc, encoding="utf-8")
+    return path
+
+# --------------------------------------------------------------------------
 
 def slug(day):
     """s3-2026-10/day01 -> day01-s3-2026-10"""
     return "-".join(day.split("/"))
-
-
-def build_day(day):
-    meta = load(day)
-    out_dir = DIST / day
-    out_dir.mkdir(parents=True, exist_ok=True)
-
-    base = slug(day)
-    html_path = out_dir / f"{base}-en-ru.html"
-    docx_path = out_dir / f"{base}-transcript-ru.docx"
-    build_html(day, meta, html_path)
-    build_docx(day, meta, docx_path)
-
-    fixes = sum(1 for s in meta["segments"] if s.get("fix"))
-    print(f"{day}: {len(meta['segments'])} сегментов, {fixes} правок")
-    print(f"  {html_path.relative_to(ROOT)}")
-    print(f"  {docx_path.relative_to(ROOT)}")
 
 
 def discover():
@@ -464,17 +592,67 @@ def discover():
     )
 
 
+def nav_html(season_days, day):
+    """Навигация по соседним дням того же сезона."""
+    idx = season_days.index(day)
+    out = []
+
+    def link(target, cls, label, rel):
+        # мы уже внутри dist/<сезон>/<день>/, поэтому сосед — это ../<день>/
+        name = target.split("/")[1]
+        base = f"{slug(target)}-en-ru.html"
+        return (f'  <a class="{cls}" href="../{name}/{base}" rel="{rel}">'
+                f'{H.escape(label)} &rarr;</a>')
+
+    if idx > 0:
+        out.append(link(season_days[idx - 1], "prev", f'← {season_days[idx - 1].split("/")[1]}', "prev"))
+    if idx < len(season_days) - 1:
+        out.append(link(season_days[idx + 1], "next", f'{season_days[idx + 1].split("/")[1]} →', "next"))
+
+    return f'  <div class="pager">\n' + "\n".join(out) + "\n  </div>\n" if out else ""
+
+
+def build_day(day, season_days):
+    meta = load(day)
+    out_dir = DIST / day
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    base = slug(day)
+    html_path = build_day_html(day, meta, nav_html(season_days, day))
+    docx_path = out_dir / f"{base}-transcript-ru.docx"
+    build_docx(day, meta, docx_path)
+
+    fixes = sum(1 for s in meta["segments"] if s.get("fix"))
+    print(f"{day}: {len(meta['segments'])} абзацев, {fixes} правок")
+
+
 def main():
-    ap = argparse.ArgumentParser(description="Сборка артефактов Advent of Agents")
-    ap.add_argument("days", nargs="*", help="дни вида day01 (по умолчанию — все)")
+    ap = argparse.ArgumentParser(description="Сборка dist/: сайт с индексом и страницами дней")
+    ap.add_argument("days", nargs="*", help="дни вида s3-2026-10/day04 (по умолчанию — все)")
+    ap.add_argument("--no-index", action="store_true", help="не пересобирать индекс")
     args = ap.parse_args()
 
     days = args.days or discover()
-    if not days:
-        sys.exit("нет ни одного дня в data/*/translation.json")
+    if not days and not args.no_index:
+        sys.exit("нет ни одного дня в data/*/*/translation.json")
 
+    write_assets()
+
+    by_season = {}
     for day in days:
-        build_day(day)
+        by_season.setdefault(day.split("/")[0], []).append(day)
+
+    for season_days in by_season.values():
+        for day in season_days:
+            build_day(day, season_days)
+
+    if not args.no_index:
+        seasons = collect_site()
+        mats = collect_materials(seasons)
+        path = build_index(seasons, mats)
+        print(f"\n{path.relative_to(ROOT)}: дней {sum(len(d) for d in seasons.values())}, "
+              f"ссылок {mats['total']}, документов {len(mats['docs'])}, "
+              f"репозиториев {len(mats['repos_known']) + len(mats['repos_community'])}")
 
 
 if __name__ == "__main__":

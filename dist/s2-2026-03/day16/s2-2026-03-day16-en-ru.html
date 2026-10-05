@@ -4,152 +4,37 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ADK Dev Skills: Accelerated Multiagent Triage — EN / RU</title>
-<style>
-:root {
-  --en-bg: #f7f8fa;
-  --line: #dfe3e8;
-  --accent: #0b57d0;
-  --ts: #8a9099;
-  --muted: #5f6672;
-  --fix: #fff3cd;
-  --fix-line: #e0b100;
-}
-
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-
-body {
-  margin: 0;
-  padding: 32px 20px 72px;
-  background: #eef0f3;
-  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.45;
-  color: #1a1a1a;
-}
-
-.page { max-width: 1400px; margin: 0 auto; }
-
-h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
-.head .sub { color: var(--muted); font-size: 15px; }
-.head .sub a { color: var(--accent); }
-
-.legend {
-  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
-  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
-}
-.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
-.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
-
-.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
-
-button {
-  font: inherit; font-size: 14px; padding: 7px 14px;
-  border: 1px solid var(--line); border-radius: 6px;
-  background: #fff; color: #1a1a1a; cursor: pointer;
-}
-button:hover { border-color: #b9c0ca; background: #fafbfc; }
-
-.grid {
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden;
-}
-
-.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
-
-.head-row {
-  background: #2f3541; color: #fff;
-  font-size: 13px; letter-spacing: 0.04em;
-  text-transform: uppercase; font-weight: 600;
-  position: sticky; top: 0; z-index: 5;
-}
-.head-row > div { padding: 10px 18px; }
-.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
-
-.row > .ts {
-  padding: 14px 8px; font-size: 12px;
-  font-variant-numeric: tabular-nums;
-  color: var(--ts); text-align: right;
-  border-right: 1px solid var(--line); background: #fbfbfc;
-}
-.row > .en, .row > .ru {
-  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
-}
-.row > .en { background: var(--en-bg); }
-.row > .ru { border-right: 0; }
-
-.row.cont > .ts::after {
-  content: ""; display: block; width: 14px; height: 1px;
-  background: var(--line); margin: 8px 0 0 auto;
-}
-.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
-
-.row.fixed > .en { background: var(--fix); }
-.row.fixed .tag { display: none; }
-
-body.show-fixes .row.fixed .tag { display: block; }
-
-.tag {
-  display: inline-block; margin-top: 6px;
-  font-size: 11.5px; line-height: 1.35;
-  color: #6b5400; background: var(--fix);
-  border-left: 3px solid var(--fix-line);
-  padding: 3px 8px; border-radius: 0 4px 4px 0;
-}
-
-.app { margin-top: 26px; }
-.app h2 { font-size: 19px; margin: 0 0 10px; }
-
-table {
-  width: 100%; border-collapse: collapse;
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden; font-size: 15px;
-}
-th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
-th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
-tr:last-child td { border-bottom: 0; }
-td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
-.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
-
-body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
-body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
-body.hide-en .row, body.hide-en .head-row,
-body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
-
-@media (max-width: 900px) {
-  .head-row, .row { grid-template-columns: 56px 1fr; }
-  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
-  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
-}
-
-@media print {
-  body { background: #fff; padding: 0; }
-  .bar, .legend { display: none; }
-  .head-row { position: static; }
-  .grid, table { border-radius: 0; }
-}
-</style>
+<link rel="stylesheet" href="../../assets/style.css">
 </head>
 <body>
+<div class="top"><div class="inner">
+<a class="brand" href="../../index.html">Advent of Agents — перевод</a>
+<nav><a href="../../index.html#seasons">Сезоны</a>
+<a href="../../index.html#materials">Материалы</a>
+<a href="https://adventofagents.com/">Оригинал</a>
+</nav>
+<div class="spacer"></div>
+<a href="https://github.com/AlexanderKuzikov/AdventOfAgents">репозиторий</a>
+</div></div>
 <div class="page">
-
-  <div class="head">
-    <h1>ADK Dev Skills: Accelerated Multiagent Triage</h1>
-    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
-      Видео: <a href="https://www.youtube.com/watch?v=7PNOkMLAk4c">https://www.youtube.com/watch?v=7PNOkMLAk4c</a> · 03:46
-      · auto (YouTube en-orig)</div>
-  </div>
-
-  <div class="legend">
-    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
-    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
-  </div>
-
-  <div class="bar">
-    <button id="btn-mark">Показать исправления</button>
-    <button id="btn-print">Печать / PDF</button>
-  </div>
-
+<p class="crumbs"><a href="../../index.html">Все дни</a> &rsaquo; <a href="../../index.html#s2-2026-03">s2-2026-03</a> &rsaquo; day16</p>
+<h1>ADK Dev Skills: Accelerated Multiagent Triage</h1>
+<p class="lede">Двуязычная транскрипция: английский оригинал слева, русский перевод справа, абзацы стоят строго напротив друг друга.</p>
+<div class="stats">
+  <div class="stat"><div class="n">03:46</div><div class="k">длительность</div></div>
+  <div class="stat"><div class="n">8</div><div class="k">абзацев</div></div>
+  <div class="stat"><div class="n">5</div><div class="k">правок распознавания</div></div>
+</div>
+<div class="bar">
+  <label class="legend"><input type="checkbox" id="tgl-en" checked> оригинал</label>
+  <label class="legend"><input type="checkbox" id="tgl-ru" checked> перевод</label>
+</div>
+<div class="bar">
+  <button id="btn-mark">Показать исправления</button>
+  <button id="btn-print">Печать / PDF</button>
+  <a class="btn" href="s2-2026-03-day16-transcript-ru.docx">Скачать DOCX</a>
+  <a href="https://www.youtube.com/watch?v=7PNOkMLAk4c" target="_blank" rel="noopener">оригинальный ролик</a>
+</div>
   <div class="grid">
     <div class="head-row">
       <div>Time</div>
@@ -158,22 +43,22 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">00:01</div>
-      <div class="en">ADK Dev Skills is a new approach to developing agents using AI. You can see that this is going to be installed with just one command using npx. And once it&#x27;s installed, it gives you six different skills for building agents.<div class="tag">уточнено: MPX -&gt; npx</div></div>
+      <div class="en">ADK Dev Skills is a new approach to developing agents using AI. You can see that this is going to be installed with just one command using npx. And once it&#x27;s installed, it gives you six different skills for building agents.<div class="tagline">уточнено: MPX -&gt; npx</div></div>
       <div class="ru">ADK Dev Skills — это новый подход к разработке агентов с помощью ИИ. Ставится одной командой через npx. После установки вы получаете шесть разных навыков для работы с агентами.</div>
     </div>
     <div class="row fixed">
       <div class="ts">00:17</div>
-      <div class="en">The first thing we do here is just send a prompt to build a retail agent. And now the ADK cheatsheet is actually being activated behind the scenes, and this is now going to look at the Agent Starter Pack for references, and behind the scenes also the ADK documentation. Then at this point, the agent is going to create a design spec for us to review and approve.<div class="tag">уточнено: the through agent starter pack -&gt; the Agent Starter Pack</div></div>
+      <div class="en">The first thing we do here is just send a prompt to build a retail agent. And now the ADK cheatsheet is actually being activated behind the scenes, and this is now going to look at the Agent Starter Pack for references, and behind the scenes also the ADK documentation. Then at this point, the agent is going to create a design spec for us to review and approve.<div class="tagline">уточнено: the through agent starter pack -&gt; the Agent Starter Pack</div></div>
       <div class="ru">Первое, что мы делаем, — отправляем промпт на создание агента для розницы. Под капотом активируется ADK cheatsheet, а также подтягиваются референсы из Agent Starter Pack и документация ADK. После этого агент составляет дизайн-спеку, которую мы можем посмотреть и согласовать.</div>
     </div>
     <div class="row fixed">
       <div class="ts">00:43</div>
-      <div class="en">And once you are happy with it, we can accept it. Then the agent can create, through the Agent Starter Pack, the actual template of the code, and then customize it based on the prompt we asked. You can see that all of this is done automatically by an interface like Gemini CLI, or you can use other tools like Claude Code, Antigravity, Codex — they are all supported by the skills. And now the agent has been created, and I just prompted it to create an evaluation suite to make sure everything really works before I get my hands on them. And you can see that in this case it&#x27;s using ADK Eval to actually make the evals here, and the different eval sets have been evaluated.<div class="tag">уточнено: creating the evaluation suit -&gt; creating an evaluation suite; Cloud Code Antigravity, Code X -&gt; Claude Code, Antigravity, Codex</div></div>
+      <div class="en">And once you are happy with it, we can accept it. Then the agent can create, through the Agent Starter Pack, the actual template of the code, and then customize it based on the prompt we asked. You can see that all of this is done automatically by an interface like Gemini CLI, or you can use other tools like Claude Code, Antigravity, Codex — they are all supported by the skills. And now the agent has been created, and I just prompted it to create an evaluation suite to make sure everything really works before I get my hands on them. And you can see that in this case it&#x27;s using ADK Eval to actually make the evals here, and the different eval sets have been evaluated.<div class="tagline">уточнено: creating the evaluation suit -&gt; creating an evaluation suite; Cloud Code Antigravity, Code X -&gt; Claude Code, Antigravity, Codex</div></div>
       <div class="ru">И когда спеца вас устраивает, мы её принимаем. Дальше агент через Agent Starter Pack создаёт сам шаблон кода и настраивает его под наш промпт. Всё это автоматически делает интерфейс наподобие Gemini CLI; подойдут и другие инструменты — Claude Code, Antigravity, Codex, все они поддержаны навыками. Итак, агент создан, а я дополнительно попросил его собрать набор eval-ов, чтобы убедиться, что всё действительно работает, прежде чем брать это в свои руки. Здесь он задействует ADK Eval, и различные наборы уже отработали.</div>
     </div>
     <div class="row fixed">
       <div class="ts">01:26</div>
-      <div class="en">Then next, I&#x27;m focusing on deployment. I want to make sure that what we build locally can actually be deployed and hosted on Agent Engine as our development target. And the agent goes through the process of looking at the different requirements, creating the Dockerfile, and then deploying to Agent Engine. Agent Engine is just one of the available targets. You can also deploy on Cloud Run, and more support for other targets is coming soon, for example GKE.<div class="tag">уточнено: creating the bottle -&gt; creating the Dockerfile</div></div>
+      <div class="en">Then next, I&#x27;m focusing on deployment. I want to make sure that what we build locally can actually be deployed and hosted on Agent Engine as our development target. And the agent goes through the process of looking at the different requirements, creating the Dockerfile, and then deploying to Agent Engine. Agent Engine is just one of the available targets. You can also deploy on Cloud Run, and more support for other targets is coming soon, for example GKE.<div class="tagline">уточнено: creating the bottle -&gt; creating the Dockerfile</div></div>
       <div class="ru">Дальше я перехожу к деплою. Мне нужно убедиться, что то, что мы собрали локально, действительно разворачивается и работает на Agent Engine — это наша цель разработки. Агент проходит весь путь: смотрит требования, создаёт Dockerfile и деплоит на Agent Engine. Agent Engine — лишь одна из доступных целей. Можно деплоить и на Cloud Run, а поддержка других целей, например GKE, появится скоро.</div>
     </div>
     <div class="row">
@@ -193,42 +78,33 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">03:30</div>
-      <div class="en">These skills are available for you to use on npx. I hope you&#x27;ll enjoy them, and we appreciate the feedback from the community on anything else you would like to see here to make your developer experience even better. That&#x27;s all for today. You can see here the agent passing all the tests. See you.<div class="tag">уточнено: on MPX -&gt; on npx</div></div>
+      <div class="en">These skills are available for you to use on npx. I hope you&#x27;ll enjoy them, and we appreciate the feedback from the community on anything else you would like to see here to make your developer experience even better. That&#x27;s all for today. You can see here the agent passing all the tests. See you.<div class="tagline">уточнено: on MPX -&gt; on npx</div></div>
       <div class="ru">Эти навыки доступны через npx. Надеюсь, вам понравится, и будем благодарны за обратную связь от сообщества — что ещё стоит добавить, чтобы сделать работу разработчика удобнее. На этом всё, до встречи. Здесь видно, что агент проходит все тесты.</div>
     </div>
   </div>
 
-  <div class="app">
-    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
-    <table>
-      <thead>
-        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
-      </thead>
-      <tbody>
-      <tr><td>[00:01]</td><td>ADK Dev Skills is a new approach to developing agents using AI. You can see that this is going to be installed with just one command using npx. And once it&#x27;s installed, it gives you six different skills for building agents.</td><td>MPX -&gt; npx</td><td>ADK Dev Skills — это новый подход к разработке агентов с помощью ИИ. Ставится одной командой через npx. После установки вы получаете шесть разных навыков для работы с агентами.</td></tr>
-      <tr><td>[00:17]</td><td>The first thing we do here is just send a prompt to build a retail agent. And now the ADK cheatsheet is actually being activated behind the scenes, and this is now going to look at the Agent Starter Pack for references, and behind the scenes also the ADK documentation. Then at this point, the agent is going to create a design spec for us to review and approve.</td><td>the through agent starter pack -&gt; the Agent Starter Pack</td><td>Первое, что мы делаем, — отправляем промпт на создание агента для розницы. Под капотом активируется ADK cheatsheet, а также подтягиваются референсы из Agent Starter Pack и документация ADK. После этого агент составляет дизайн-спеку, которую мы можем посмотреть и согласовать.</td></tr>
-      <tr><td>[00:43]</td><td>And once you are happy with it, we can accept it. Then the agent can create, through the Agent Starter Pack, the actual template of the code, and then customize it based on the prompt we asked. You can see that all of this is done automatically by an interface like Gemini CLI, or you can use other tools like Claude Code, Antigravity, Codex — they are all supported by the skills. And now the agent has been created, and I just prompted it to create an evaluation suite to make sure everything really works before I get my hands on them. And you can see that in this case it&#x27;s using ADK Eval to actually make the evals here, and the different eval sets have been evaluated.</td><td>creating the evaluation suit -&gt; creating an evaluation suite; Cloud Code Antigravity, Code X -&gt; Claude Code, Antigravity, Codex</td><td>И когда спеца вас устраивает, мы её принимаем. Дальше агент через Agent Starter Pack создаёт сам шаблон кода и настраивает его под наш промпт. Всё это автоматически делает интерфейс наподобие Gemini CLI; подойдут и другие инструменты — Claude Code, Antigravity, Codex, все они поддержаны навыками. Итак, агент создан, а я дополнительно попросил его собрать набор eval-ов, чтобы убедиться, что всё действительно работает, прежде чем брать это в свои руки. Здесь он задействует ADK Eval, и различные наборы уже отработали.</td></tr>
-      <tr><td>[01:26]</td><td>Then next, I&#x27;m focusing on deployment. I want to make sure that what we build locally can actually be deployed and hosted on Agent Engine as our development target. And the agent goes through the process of looking at the different requirements, creating the Dockerfile, and then deploying to Agent Engine. Agent Engine is just one of the available targets. You can also deploy on Cloud Run, and more support for other targets is coming soon, for example GKE.</td><td>creating the bottle -&gt; creating the Dockerfile</td><td>Дальше я перехожу к деплою. Мне нужно убедиться, что то, что мы собрали локально, действительно разворачивается и работает на Agent Engine — это наша цель разработки. Агент проходит весь путь: смотрит требования, создаёт Dockerfile и деплоит на Agent Engine. Agent Engine — лишь одна из доступных целей. Можно деплоить и на Cloud Run, а поддержка других целей, например GKE, появится скоро.</td></tr>
-      <tr><td>[03:30]</td><td>These skills are available for you to use on npx. I hope you&#x27;ll enjoy them, and we appreciate the feedback from the community on anything else you would like to see here to make your developer experience even better. That&#x27;s all for today. You can see here the agent passing all the tests. See you.</td><td>on MPX -&gt; on npx</td><td>Эти навыки доступны через npx. Надеюсь, вам понравится, и будем благодарны за обратную связь от сообщества — что ещё стоит добавить, чтобы сделать работу разработчика удобнее. На этом всё, до встречи. Здесь видно, что агент проходит все тесты.</td></tr>
-      </tbody>
-    </table>
-    <p class="note">Субтитры автоматические (auto, en-orig). Названия инструментов и сгенерированных сущностей приведены по коду со страницы дня (npx, Dockerfile, Agent Starter Pack).</p>
+  <h2 id="fixes">Где автосубтитры соврали и как это восстановлено</h2>
+  <table class="plain">
+    <thead>
+      <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>00:01</td><td>ADK Dev Skills is a new approach to developing agents using AI. You can see that this is going to be installed with just one command using npx. And once it&#x27;s installed, it gives you six different skills for building agents.</td><td>MPX -&gt; npx</td><td>ADK Dev Skills — это новый подход к разработке агентов с помощью ИИ. Ставится одной командой через npx. После установки вы получаете шесть разных навыков для работы с агентами.</td></tr>
+      <tr><td>00:17</td><td>The first thing we do here is just send a prompt to build a retail agent. And now the ADK cheatsheet is actually being activated behind the scenes, and this is now going to look at the Agent Starter Pack for references, and behind the scenes also the ADK documentation. Then at this point, the agent is going to create a design spec for us to review and approve.</td><td>the through agent starter pack -&gt; the Agent Starter Pack</td><td>Первое, что мы делаем, — отправляем промпт на создание агента для розницы. Под капотом активируется ADK cheatsheet, а также подтягиваются референсы из Agent Starter Pack и документация ADK. После этого агент составляет дизайн-спеку, которую мы можем посмотреть и согласовать.</td></tr>
+      <tr><td>00:43</td><td>And once you are happy with it, we can accept it. Then the agent can create, through the Agent Starter Pack, the actual template of the code, and then customize it based on the prompt we asked. You can see that all of this is done automatically by an interface like Gemini CLI, or you can use other tools like Claude Code, Antigravity, Codex — they are all supported by the skills. And now the agent has been created, and I just prompted it to create an evaluation suite to make sure everything really works before I get my hands on them. And you can see that in this case it&#x27;s using ADK Eval to actually make the evals here, and the different eval sets have been evaluated.</td><td>creating the evaluation suit -&gt; creating an evaluation suite; Cloud Code Antigravity, Code X -&gt; Claude Code, Antigravity, Codex</td><td>И когда спеца вас устраивает, мы её принимаем. Дальше агент через Agent Starter Pack создаёт сам шаблон кода и настраивает его под наш промпт. Всё это автоматически делает интерфейс наподобие Gemini CLI; подойдут и другие инструменты — Claude Code, Antigravity, Codex, все они поддержаны навыками. Итак, агент создан, а я дополнительно попросил его собрать набор eval-ов, чтобы убедиться, что всё действительно работает, прежде чем брать это в свои руки. Здесь он задействует ADK Eval, и различные наборы уже отработали.</td></tr>
+      <tr><td>01:26</td><td>Then next, I&#x27;m focusing on deployment. I want to make sure that what we build locally can actually be deployed and hosted on Agent Engine as our development target. And the agent goes through the process of looking at the different requirements, creating the Dockerfile, and then deploying to Agent Engine. Agent Engine is just one of the available targets. You can also deploy on Cloud Run, and more support for other targets is coming soon, for example GKE.</td><td>creating the bottle -&gt; creating the Dockerfile</td><td>Дальше я перехожу к деплою. Мне нужно убедиться, что то, что мы собрали локально, действительно разворачивается и работает на Agent Engine — это наша цель разработки. Агент проходит весь путь: смотрит требования, создаёт Dockerfile и деплоит на Agent Engine. Agent Engine — лишь одна из доступных целей. Можно деплоить и на Cloud Run, а поддержка других целей, например GKE, появится скоро.</td></tr>
+      <tr><td>03:30</td><td>These skills are available for you to use on npx. I hope you&#x27;ll enjoy them, and we appreciate the feedback from the community on anything else you would like to see here to make your developer experience even better. That&#x27;s all for today. You can see here the agent passing all the tests. See you.</td><td>on MPX -&gt; on npx</td><td>Эти навыки доступны через npx. Надеюсь, вам понравится, и будем благодарны за обратную связь от сообщества — что ещё стоит добавить, чтобы сделать работу разработчика удобнее. На этом всё, до встречи. Здесь видно, что агент проходит все тесты.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Субтитры автоматические (auto, en-orig). Названия инструментов и сгенерированных сущностей приведены по коду со страницы дня (npx, Dockerfile, Agent Starter Pack).</p>
+  <div class="pager">
+  <a class="prev" href="../day14/s2-2026-03-day14-en-ru.html" rel="prev">← day14 &rarr;</a>
+  <a class="next" href="../day17/s2-2026-03-day17-en-ru.html" rel="next">day17 → &rarr;</a>
   </div>
-
 </div>
-<script>
-const el = id => document.getElementById(id);
-
-el('tgl-en').addEventListener('change', e =>
-  document.body.classList.toggle('hide-en', !e.target.checked));
-el('tgl-ru').addEventListener('change', e =>
-  document.body.classList.toggle('hide-ru', !e.target.checked));
-el('btn-print').addEventListener('click', () => window.print());
-el('btn-mark').addEventListener('click', () => {
-  const on = !document.body.classList.contains('show-fixes');
-  document.body.classList.toggle('show-fixes', on);
-  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
-});
-</script>
+<div class="page">
+<p class="note">Перевод с английского. Субтитры автоматические (YouTube auto), поэтому в приложении указано, где распознавание было исправлено. Исходный ролик: <a href="https://www.youtube.com/watch?v=7PNOkMLAk4c">YouTube</a>.</p>
+</div>
+<script src="../../assets/app.js"></script>
 </body>
 </html>

@@ -4,152 +4,37 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Authentication: End-User Identity Propagation — EN / RU</title>
-<style>
-:root {
-  --en-bg: #f7f8fa;
-  --line: #dfe3e8;
-  --accent: #0b57d0;
-  --ts: #8a9099;
-  --muted: #5f6672;
-  --fix: #fff3cd;
-  --fix-line: #e0b100;
-}
-
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-
-body {
-  margin: 0;
-  padding: 32px 20px 72px;
-  background: #eef0f3;
-  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.45;
-  color: #1a1a1a;
-}
-
-.page { max-width: 1400px; margin: 0 auto; }
-
-h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
-.head .sub { color: var(--muted); font-size: 15px; }
-.head .sub a { color: var(--accent); }
-
-.legend {
-  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
-  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
-}
-.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
-.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
-
-.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
-
-button {
-  font: inherit; font-size: 14px; padding: 7px 14px;
-  border: 1px solid var(--line); border-radius: 6px;
-  background: #fff; color: #1a1a1a; cursor: pointer;
-}
-button:hover { border-color: #b9c0ca; background: #fafbfc; }
-
-.grid {
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden;
-}
-
-.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
-
-.head-row {
-  background: #2f3541; color: #fff;
-  font-size: 13px; letter-spacing: 0.04em;
-  text-transform: uppercase; font-weight: 600;
-  position: sticky; top: 0; z-index: 5;
-}
-.head-row > div { padding: 10px 18px; }
-.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
-
-.row > .ts {
-  padding: 14px 8px; font-size: 12px;
-  font-variant-numeric: tabular-nums;
-  color: var(--ts); text-align: right;
-  border-right: 1px solid var(--line); background: #fbfbfc;
-}
-.row > .en, .row > .ru {
-  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
-}
-.row > .en { background: var(--en-bg); }
-.row > .ru { border-right: 0; }
-
-.row.cont > .ts::after {
-  content: ""; display: block; width: 14px; height: 1px;
-  background: var(--line); margin: 8px 0 0 auto;
-}
-.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
-
-.row.fixed > .en { background: var(--fix); }
-.row.fixed .tag { display: none; }
-
-body.show-fixes .row.fixed .tag { display: block; }
-
-.tag {
-  display: inline-block; margin-top: 6px;
-  font-size: 11.5px; line-height: 1.35;
-  color: #6b5400; background: var(--fix);
-  border-left: 3px solid var(--fix-line);
-  padding: 3px 8px; border-radius: 0 4px 4px 0;
-}
-
-.app { margin-top: 26px; }
-.app h2 { font-size: 19px; margin: 0 0 10px; }
-
-table {
-  width: 100%; border-collapse: collapse;
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden; font-size: 15px;
-}
-th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
-th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
-tr:last-child td { border-bottom: 0; }
-td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
-.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
-
-body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
-body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
-body.hide-en .row, body.hide-en .head-row,
-body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
-
-@media (max-width: 900px) {
-  .head-row, .row { grid-template-columns: 56px 1fr; }
-  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
-  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
-}
-
-@media print {
-  body { background: #fff; padding: 0; }
-  .bar, .legend { display: none; }
-  .head-row { position: static; }
-  .grid, table { border-radius: 0; }
-}
-</style>
+<link rel="stylesheet" href="../../assets/style.css">
 </head>
 <body>
+<div class="top"><div class="inner">
+<a class="brand" href="../../index.html">Advent of Agents — перевод</a>
+<nav><a href="../../index.html#seasons">Сезоны</a>
+<a href="../../index.html#materials">Материалы</a>
+<a href="https://adventofagents.com/">Оригинал</a>
+</nav>
+<div class="spacer"></div>
+<a href="https://github.com/AlexanderKuzikov/AdventOfAgents">репозиторий</a>
+</div></div>
 <div class="page">
-
-  <div class="head">
-    <h1>Authentication: End-User Identity Propagation</h1>
-    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
-      Видео: <a href="https://www.youtube.com/watch?v=NzQM4GihwQU">https://www.youtube.com/watch?v=NzQM4GihwQU</a> · 08:34
-      · auto (YouTube en-orig)</div>
-  </div>
-
-  <div class="legend">
-    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
-    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
-  </div>
-
-  <div class="bar">
-    <button id="btn-mark">Показать исправления</button>
-    <button id="btn-print">Печать / PDF</button>
-  </div>
-
+<p class="crumbs"><a href="../../index.html">Все дни</a> &rsaquo; <a href="../../index.html#s2-2026-03">s2-2026-03</a> &rsaquo; day26</p>
+<h1>Authentication: End-User Identity Propagation</h1>
+<p class="lede">Двуязычная транскрипция: английский оригинал слева, русский перевод справа, абзацы стоят строго напротив друг друга.</p>
+<div class="stats">
+  <div class="stat"><div class="n">08:34</div><div class="k">длительность</div></div>
+  <div class="stat"><div class="n">9</div><div class="k">абзацев</div></div>
+  <div class="stat"><div class="n">7</div><div class="k">правок распознавания</div></div>
+</div>
+<div class="bar">
+  <label class="legend"><input type="checkbox" id="tgl-en" checked> оригинал</label>
+  <label class="legend"><input type="checkbox" id="tgl-ru" checked> перевод</label>
+</div>
+<div class="bar">
+  <button id="btn-mark">Показать исправления</button>
+  <button id="btn-print">Печать / PDF</button>
+  <a class="btn" href="s2-2026-03-day26-transcript-ru.docx">Скачать DOCX</a>
+  <a href="https://www.youtube.com/watch?v=NzQM4GihwQU" target="_blank" rel="noopener">оригинальный ролик</a>
+</div>
   <div class="grid">
     <div class="head-row">
       <div>Time</div>
@@ -158,32 +43,32 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">00:01</div>
-      <div class="en">Hi everyone, welcome to day 26 of Advent of Agents season 2. Today we&#x27;ll talk about an unavoidable production concept, which is agent authentication, and specifically about how to pass end-user credentials to the agent so it can perform actions. Why should we pass end-user credentials at all? An agent with its own credentials can access any public information, but if you want your agent to reach your calendar, your Drive data or your Gmail, it needs access to your credentials. Today we&#x27;ll see how to do that without actually handing your password to the agent, and we&#x27;ll do it with OAuth 2.0.<div class="tag">уточнено: Oath 2.0 -&gt; OAuth 2.0 (далее по тексту так же)</div></div>
+      <div class="en">Hi everyone, welcome to day 26 of Advent of Agents season 2. Today we&#x27;ll talk about an unavoidable production concept, which is agent authentication, and specifically about how to pass end-user credentials to the agent so it can perform actions. Why should we pass end-user credentials at all? An agent with its own credentials can access any public information, but if you want your agent to reach your calendar, your Drive data or your Gmail, it needs access to your credentials. Today we&#x27;ll see how to do that without actually handing your password to the agent, and we&#x27;ll do it with OAuth 2.0.<div class="tagline">уточнено: Oath 2.0 -&gt; OAuth 2.0 (далее по тексту так же)</div></div>
       <div class="ru">Привет, добро пожаловать в 26-й день второго сезона Advent of Agents. Сегодня разберём неизбежную для продакшена тему — аутентификацию агентов, а именно то, как передать агенту учётные данные конечного пользователя, чтобы он мог выполнять действия. Зачем вообще передавать учётные данные пользователя? Агент со своими собственными учётными данными получит доступ к любой публичной информации, но чтобы он дошёл до вашего календаря, данных Drive или Gmail, ему нужны ваши учётные данные. Сегодня посмотрим, как это сделать, не отдавая пароль агенту, — через OAuth 2.0.</div>
     </div>
     <div class="row fixed">
       <div class="ts">00:48</div>
-      <div class="en">Let&#x27;s briefly go through the OAuth 2.0 workflow before we jump into the code. There are four players here: the user, the ADK web or client, the OAuth server — because we&#x27;re using Google Calendar — and the agent back end that holds all these tools. To start, the user says to the ADK web or any client: hey, can you access my calendar and retrieve my events? What the ADK web does is redirect the user to the authorization server, and the authorization server shows a consent screen. The user clicks all the boxes saying approve access, and then the authorization server gives your client an auth code. It does not give it access directly, but instead gives it an authorization code, which the client can exchange for an access token. The access token is very short-lived, say an hour, and the agent uses it to access the Calendar API. If the token expires, it uses the refresh token to get a new access token, and the cycle continues.<div class="tag">уточнено: Google o server -&gt; OAuth server; gives you client with an o code -&gt; gives your client an auth code; in her -&gt; in an hour</div></div>
+      <div class="en">Let&#x27;s briefly go through the OAuth 2.0 workflow before we jump into the code. There are four players here: the user, the ADK web or client, the OAuth server — because we&#x27;re using Google Calendar — and the agent back end that holds all these tools. To start, the user says to the ADK web or any client: hey, can you access my calendar and retrieve my events? What the ADK web does is redirect the user to the authorization server, and the authorization server shows a consent screen. The user clicks all the boxes saying approve access, and then the authorization server gives your client an auth code. It does not give it access directly, but instead gives it an authorization code, which the client can exchange for an access token. The access token is very short-lived, say an hour, and the agent uses it to access the Calendar API. If the token expires, it uses the refresh token to get a new access token, and the cycle continues.<div class="tagline">уточнено: Google o server -&gt; OAuth server; gives you client with an o code -&gt; gives your client an auth code; in her -&gt; in an hour</div></div>
       <div class="ru">Коротко пройдёмся по схеме OAuth 2.0, прежде чем нырнуть в код. Здесь четверо участников: пользователь, ADK web или клиент, OAuth-сервер — потому что мы работаем с Google Calendar — и агентный бэкенд, где живут все инструменты. В начале пользователь говорит ADK web или любому клиенту: слушай, загляни в мой календарь и вытащи события. ADK web перенаправляет пользователя на сервер авторизации, а тот показывает экран согласия. Пользователь прокликивает все галочки «разрешить доступ», и сервер авторизации выдаёт клиенту auth code. Прямого доступа он не даёт — именно код авторизации, который клиент может обменять на access token. Живёт access token совсем недолго, скажем час, и агент использует его для доступа к Calendar API. Когда токен истекает, используется refresh token, чтобы получить новый, и цикл повторяется.</div>
     </div>
     <div class="row fixed">
       <div class="ts">02:56</div>
-      <div class="en">Now let&#x27;s see how to implement this OAuth 2.0 handshake with ADK. I&#x27;ll switch to this other tab with the Google Cloud Console editor and scroll all the way down to the root agent definition. Here we can see the root agent has a model name and an instruction that tells it: you&#x27;re a helpful personal calendar assistant. It has two tools: list_calendar_events to list all the events, and get_event to get more information about one particular event. We also pass it the current time, which is nothing but a Python function that runs every time before this agent is called — we do that by adding it to the before_agent_callback.<div class="tag">уточнено: list calendar events to list -&gt; list_calendar_events; before agent call back -&gt; before_agent_callback</div></div>
+      <div class="en">Now let&#x27;s see how to implement this OAuth 2.0 handshake with ADK. I&#x27;ll switch to this other tab with the Google Cloud Console editor and scroll all the way down to the root agent definition. Here we can see the root agent has a model name and an instruction that tells it: you&#x27;re a helpful personal calendar assistant. It has two tools: list_calendar_events to list all the events, and get_event to get more information about one particular event. We also pass it the current time, which is nothing but a Python function that runs every time before this agent is called — we do that by adding it to the before_agent_callback.<div class="tagline">уточнено: list calendar events to list -&gt; list_calendar_events; before agent call back -&gt; before_agent_callback</div></div>
       <div class="ru">Теперь посмотрим, как реализовать это рукопожатие OAuth 2.0 в ADK. Перейду на другую вкладку с редактором Google Cloud Console и прокручу до определения корневого агента. У него есть имя модели и инструкция «ты полезный персональный помощник по календарю». Есть два инструмента: `list_calendar_events` — вывести все события, и `get_event` — получить подробности одного события. Ещё мы передаём текущее время — это просто Python-функция, которая выполняется каждый раз перед вызовом агента; добавляется она через `before_agent_callback`.</div>
     </div>
     <div class="row fixed">
       <div class="ts">03:44</div>
-      <div class="en">Now we&#x27;ve seen the agent definition, and we still need to build the calendar tools that this agent can invoke. Here we have defined a calendar toolset: Google Calendar is a built-in ADK tool, meaning you can just import it and use it out of the box. We&#x27;re passing three parameters: client ID, secret, and a tool filter. Client ID and secret are needed for the OAuth 2.0 handshake itself, and we&#x27;ll see shortly how to get these credentials. The tool filter matters, because it decides the scope of this tool: here we&#x27;re saying this tool can only get events from the calendar — it cannot do any writes or deletes or any other operations. We grab this tool by its function name and add it to the tools array of the agent. And note that we haven&#x27;t added any extra OAuth 2.0 information to this pre-built toolset.<div class="tag">уточнено: a calendar tool set -&gt; a calendar toolset; tool filter -&gt; tool_filter</div></div>
+      <div class="en">Now we&#x27;ve seen the agent definition, and we still need to build the calendar tools that this agent can invoke. Here we have defined a calendar toolset: Google Calendar is a built-in ADK tool, meaning you can just import it and use it out of the box. We&#x27;re passing three parameters: client ID, secret, and a tool filter. Client ID and secret are needed for the OAuth 2.0 handshake itself, and we&#x27;ll see shortly how to get these credentials. The tool filter matters, because it decides the scope of this tool: here we&#x27;re saying this tool can only get events from the calendar — it cannot do any writes or deletes or any other operations. We grab this tool by its function name and add it to the tools array of the agent. And note that we haven&#x27;t added any extra OAuth 2.0 information to this pre-built toolset.<div class="tagline">уточнено: a calendar tool set -&gt; a calendar toolset; tool filter -&gt; tool_filter</div></div>
       <div class="ru">С определением агента разобрались, осталось собрать сами инструменты работы с календарём. Здесь определён набор инструментов Calendar: Google Calendar — встроенный инструмент ADK, его можно просто импортировать и использовать из коробки. Мы передаём три параметра: client ID, secret и фильтр инструментов. Client ID и secret нужны для самого рукопожатия OAuth 2.0, как их получить — покажу чуть позже. Фильтр инструментов важен, потому что задаёт область полномочий: здесь мы говорим, что инструмент может только читать события календаря — никаких записей, удалений и прочих операций. Забираем инструмент по имени функции и добавляем в массив tools агента. И обратите внимание: в этот предсобранный набор мы не добавили никакой дополнительной информации об OAuth 2.0.</div>
     </div>
     <div class="row fixed">
       <div class="ts">04:46</div>
-      <div class="en">But that&#x27;s not usually the case, right? You might have a custom API you want to call for which ADK has no built-in tool. For those cases we start by defining a standard Python function: here we have defined a list_calendar_events Python function which calls the Google Calendar API directly instead of using a pre-built tool. You can do this with any custom Python function and any API you want to call. But how does the agent know it has to authenticate this particular Python function? To do that, we define a convenience wrapper inside the agent: AuthenticatedFunctionTool. It takes as its first argument the function you want to authenticate, and this tells the agent that invoking this function requires authentication.<div class="tag">уточнено: the authenticated function tool -&gt; AuthenticatedFunctionTool</div></div>
+      <div class="en">But that&#x27;s not usually the case, right? You might have a custom API you want to call for which ADK has no built-in tool. For those cases we start by defining a standard Python function: here we have defined a list_calendar_events Python function which calls the Google Calendar API directly instead of using a pre-built tool. You can do this with any custom Python function and any API you want to call. But how does the agent know it has to authenticate this particular Python function? To do that, we define a convenience wrapper inside the agent: AuthenticatedFunctionTool. It takes as its first argument the function you want to authenticate, and this tells the agent that invoking this function requires authentication.<div class="tagline">уточнено: the authenticated function tool -&gt; AuthenticatedFunctionTool</div></div>
       <div class="ru">Но обычно бывает наоборот, верно? У вас может быть свой API, для которого в ADK нет встроенного инструмента. В таких случаях начинаем с обычной Python-функции: вот определена функция `list_calendar_events`, которая напрямую обращается к Google Calendar API вместо готового инструмента. Так можно сделать с любой своей функцией и любым API. Но как агент поймёт, что эту конкретную функцию нужно аутентифицировать? Для этого внутри агента определяется удобная обёртка — `AuthenticatedFunctionTool`. Первым аргументом она принимает функцию, которую нужно аутентифицировать, и этим говорит агенту, что её вызов требует аутентификации.</div>
     </div>
     <div class="row fixed">
       <div class="ts">05:26</div>
-      <div class="en">Then we define two important parameters: the OAuth scheme and the OAuth credential. The OAuth scheme says what kind of authentication this agent should perform to use the tool. Here it&#x27;s OAuth 2.0, but it could be an API key, or OIDC, or any other scheme — we&#x27;re sticking with OAuth 2.0. If you have an OAuth 2.0 identity provider, you can grab your authorization URL and token URL and substitute them here. Then we define the scope: what&#x27;s the scope of this tool? Here we have read-only access, so that this list of events doesn&#x27;t do anything by writing or deleting events. And the second parameter we pass here is the auth credentials, which is the client ID and the secret itself.<div class="tag">уточнено: the O scheme and the O credential -&gt; the OAuth scheme and the OAuth credential</div></div>
+      <div class="en">Then we define two important parameters: the OAuth scheme and the OAuth credential. The OAuth scheme says what kind of authentication this agent should perform to use the tool. Here it&#x27;s OAuth 2.0, but it could be an API key, or OIDC, or any other scheme — we&#x27;re sticking with OAuth 2.0. If you have an OAuth 2.0 identity provider, you can grab your authorization URL and token URL and substitute them here. Then we define the scope: what&#x27;s the scope of this tool? Here we have read-only access, so that this list of events doesn&#x27;t do anything by writing or deleting events. And the second parameter we pass here is the auth credentials, which is the client ID and the secret itself.<div class="tagline">уточнено: the O scheme and the O credential -&gt; the OAuth scheme and the OAuth credential</div></div>
       <div class="ru">Затем задаём два важных параметра: OAuth-схему и OAuth-учётные данные. Схема говорит, какую аутентификацию агенту нужно выполнить для использования инструмента. Здесь это OAuth 2.0, но это может быть и API-ключ, и OIDC, и любая другая схема — мы остановились на OAuth 2.0. Если у вас есть OAuth 2.0 identity provider, возьмите оттуда authorization URL и token URL и подставьте их здесь. Дальше задаём scope: каковы полномочия инструмента? У нас доступ только на чтение, чтобы вывод событий ничего не писал и не удалял. Второй параметр — это учётные данные аутентификации, то есть client ID и secret.</div>
     </div>
     <div class="row">
@@ -198,44 +83,35 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">07:47</div>
-      <div class="en">And that brings us to the end of the demo. For the final part, let&#x27;s see how to create the OAuth client ID and secret. Since we&#x27;re accessing Google Calendar today, we get our OAuth client ID and secret from Google Cloud Console. Go to the clients tab, select a web application, and importantly add the ADK web URI to the redirect URIs. Once you click create, you should have your client ID and secret. You can add those to the environment variables for this demo, but make sure to put these secrets into Vault or a secret management tool when you do it in production.<div class="tag">уточнено: put these secrets into a wault -&gt; put these secrets into Vault</div></div>
+      <div class="en">And that brings us to the end of the demo. For the final part, let&#x27;s see how to create the OAuth client ID and secret. Since we&#x27;re accessing Google Calendar today, we get our OAuth client ID and secret from Google Cloud Console. Go to the clients tab, select a web application, and importantly add the ADK web URI to the redirect URIs. Once you click create, you should have your client ID and secret. You can add those to the environment variables for this demo, but make sure to put these secrets into Vault or a secret management tool when you do it in production.<div class="tagline">уточнено: put these secrets into a wault -&gt; put these secrets into Vault</div></div>
       <div class="ru">На этом демонстрация закончена. Последняя часть — как создать OAuth client ID и secret. Раз мы обращаемся к Google Calendar, client ID и secret берём в Google Cloud Console. Откройте вкладку clients, выберите Web application и, что важно, добавьте URI ADK web в список redirect URIs. После нажатия Create у вас будут client ID и secret. Для этого демо их можно положить в переменные окружения, но в продакшене обязательно уберите секреты в Vault или другой менеджер секретов.</div>
     </div>
   </div>
 
-  <div class="app">
-    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
-    <table>
-      <thead>
-        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
-      </thead>
-      <tbody>
-      <tr><td>[00:01]</td><td>Hi everyone, welcome to day 26 of Advent of Agents season 2. Today we&#x27;ll talk about an unavoidable production concept, which is agent authentication, and specifically about how to pass end-user credentials to the agent so it can perform actions. Why should we pass end-user credentials at all? An agent with its own credentials can access any public information, but if you want your agent to reach your calendar, your Drive data or your Gmail, it needs access to your credentials. Today we&#x27;ll see how to do that without actually handing your password to the agent, and we&#x27;ll do it with OAuth 2.0.</td><td>Oath 2.0 -&gt; OAuth 2.0 (далее по тексту так же)</td><td>Привет, добро пожаловать в 26-й день второго сезона Advent of Agents. Сегодня разберём неизбежную для продакшена тему — аутентификацию агентов, а именно то, как передать агенту учётные данные конечного пользователя, чтобы он мог выполнять действия. Зачем вообще передавать учётные данные пользователя? Агент со своими собственными учётными данными получит доступ к любой публичной информации, но чтобы он дошёл до вашего календаря, данных Drive или Gmail, ему нужны ваши учётные данные. Сегодня посмотрим, как это сделать, не отдавая пароль агенту, — через OAuth 2.0.</td></tr>
-      <tr><td>[00:48]</td><td>Let&#x27;s briefly go through the OAuth 2.0 workflow before we jump into the code. There are four players here: the user, the ADK web or client, the OAuth server — because we&#x27;re using Google Calendar — and the agent back end that holds all these tools. To start, the user says to the ADK web or any client: hey, can you access my calendar and retrieve my events? What the ADK web does is redirect the user to the authorization server, and the authorization server shows a consent screen. The user clicks all the boxes saying approve access, and then the authorization server gives your client an auth code. It does not give it access directly, but instead gives it an authorization code, which the client can exchange for an access token. The access token is very short-lived, say an hour, and the agent uses it to access the Calendar API. If the token expires, it uses the refresh token to get a new access token, and the cycle continues.</td><td>Google o server -&gt; OAuth server; gives you client with an o code -&gt; gives your client an auth code; in her -&gt; in an hour</td><td>Коротко пройдёмся по схеме OAuth 2.0, прежде чем нырнуть в код. Здесь четверо участников: пользователь, ADK web или клиент, OAuth-сервер — потому что мы работаем с Google Calendar — и агентный бэкенд, где живут все инструменты. В начале пользователь говорит ADK web или любому клиенту: слушай, загляни в мой календарь и вытащи события. ADK web перенаправляет пользователя на сервер авторизации, а тот показывает экран согласия. Пользователь прокликивает все галочки «разрешить доступ», и сервер авторизации выдаёт клиенту auth code. Прямого доступа он не даёт — именно код авторизации, который клиент может обменять на access token. Живёт access token совсем недолго, скажем час, и агент использует его для доступа к Calendar API. Когда токен истекает, используется refresh token, чтобы получить новый, и цикл повторяется.</td></tr>
-      <tr><td>[02:56]</td><td>Now let&#x27;s see how to implement this OAuth 2.0 handshake with ADK. I&#x27;ll switch to this other tab with the Google Cloud Console editor and scroll all the way down to the root agent definition. Here we can see the root agent has a model name and an instruction that tells it: you&#x27;re a helpful personal calendar assistant. It has two tools: list_calendar_events to list all the events, and get_event to get more information about one particular event. We also pass it the current time, which is nothing but a Python function that runs every time before this agent is called — we do that by adding it to the before_agent_callback.</td><td>list calendar events to list -&gt; list_calendar_events; before agent call back -&gt; before_agent_callback</td><td>Теперь посмотрим, как реализовать это рукопожатие OAuth 2.0 в ADK. Перейду на другую вкладку с редактором Google Cloud Console и прокручу до определения корневого агента. У него есть имя модели и инструкция «ты полезный персональный помощник по календарю». Есть два инструмента: `list_calendar_events` — вывести все события, и `get_event` — получить подробности одного события. Ещё мы передаём текущее время — это просто Python-функция, которая выполняется каждый раз перед вызовом агента; добавляется она через `before_agent_callback`.</td></tr>
-      <tr><td>[03:44]</td><td>Now we&#x27;ve seen the agent definition, and we still need to build the calendar tools that this agent can invoke. Here we have defined a calendar toolset: Google Calendar is a built-in ADK tool, meaning you can just import it and use it out of the box. We&#x27;re passing three parameters: client ID, secret, and a tool filter. Client ID and secret are needed for the OAuth 2.0 handshake itself, and we&#x27;ll see shortly how to get these credentials. The tool filter matters, because it decides the scope of this tool: here we&#x27;re saying this tool can only get events from the calendar — it cannot do any writes or deletes or any other operations. We grab this tool by its function name and add it to the tools array of the agent. And note that we haven&#x27;t added any extra OAuth 2.0 information to this pre-built toolset.</td><td>a calendar tool set -&gt; a calendar toolset; tool filter -&gt; tool_filter</td><td>С определением агента разобрались, осталось собрать сами инструменты работы с календарём. Здесь определён набор инструментов Calendar: Google Calendar — встроенный инструмент ADK, его можно просто импортировать и использовать из коробки. Мы передаём три параметра: client ID, secret и фильтр инструментов. Client ID и secret нужны для самого рукопожатия OAuth 2.0, как их получить — покажу чуть позже. Фильтр инструментов важен, потому что задаёт область полномочий: здесь мы говорим, что инструмент может только читать события календаря — никаких записей, удалений и прочих операций. Забираем инструмент по имени функции и добавляем в массив tools агента. И обратите внимание: в этот предсобранный набор мы не добавили никакой дополнительной информации об OAuth 2.0.</td></tr>
-      <tr><td>[04:46]</td><td>But that&#x27;s not usually the case, right? You might have a custom API you want to call for which ADK has no built-in tool. For those cases we start by defining a standard Python function: here we have defined a list_calendar_events Python function which calls the Google Calendar API directly instead of using a pre-built tool. You can do this with any custom Python function and any API you want to call. But how does the agent know it has to authenticate this particular Python function? To do that, we define a convenience wrapper inside the agent: AuthenticatedFunctionTool. It takes as its first argument the function you want to authenticate, and this tells the agent that invoking this function requires authentication.</td><td>the authenticated function tool -&gt; AuthenticatedFunctionTool</td><td>Но обычно бывает наоборот, верно? У вас может быть свой API, для которого в ADK нет встроенного инструмента. В таких случаях начинаем с обычной Python-функции: вот определена функция `list_calendar_events`, которая напрямую обращается к Google Calendar API вместо готового инструмента. Так можно сделать с любой своей функцией и любым API. Но как агент поймёт, что эту конкретную функцию нужно аутентифицировать? Для этого внутри агента определяется удобная обёртка — `AuthenticatedFunctionTool`. Первым аргументом она принимает функцию, которую нужно аутентифицировать, и этим говорит агенту, что её вызов требует аутентификации.</td></tr>
-      <tr><td>[05:26]</td><td>Then we define two important parameters: the OAuth scheme and the OAuth credential. The OAuth scheme says what kind of authentication this agent should perform to use the tool. Here it&#x27;s OAuth 2.0, but it could be an API key, or OIDC, or any other scheme — we&#x27;re sticking with OAuth 2.0. If you have an OAuth 2.0 identity provider, you can grab your authorization URL and token URL and substitute them here. Then we define the scope: what&#x27;s the scope of this tool? Here we have read-only access, so that this list of events doesn&#x27;t do anything by writing or deleting events. And the second parameter we pass here is the auth credentials, which is the client ID and the secret itself.</td><td>the O scheme and the O credential -&gt; the OAuth scheme and the OAuth credential</td><td>Затем задаём два важных параметра: OAuth-схему и OAuth-учётные данные. Схема говорит, какую аутентификацию агенту нужно выполнить для использования инструмента. Здесь это OAuth 2.0, но это может быть и API-ключ, и OIDC, и любая другая схема — мы остановились на OAuth 2.0. Если у вас есть OAuth 2.0 identity provider, возьмите оттуда authorization URL и token URL и подставьте их здесь. Дальше задаём scope: каковы полномочия инструмента? У нас доступ только на чтение, чтобы вывод событий ничего не писал и не удалял. Второй параметр — это учётные данные аутентификации, то есть client ID и secret.</td></tr>
-      <tr><td>[07:47]</td><td>And that brings us to the end of the demo. For the final part, let&#x27;s see how to create the OAuth client ID and secret. Since we&#x27;re accessing Google Calendar today, we get our OAuth client ID and secret from Google Cloud Console. Go to the clients tab, select a web application, and importantly add the ADK web URI to the redirect URIs. Once you click create, you should have your client ID and secret. You can add those to the environment variables for this demo, but make sure to put these secrets into Vault or a secret management tool when you do it in production.</td><td>put these secrets into a wault -&gt; put these secrets into Vault</td><td>На этом демонстрация закончена. Последняя часть — как создать OAuth client ID и secret. Раз мы обращаемся к Google Calendar, client ID и secret берём в Google Cloud Console. Откройте вкладку clients, выберите Web application и, что важно, добавьте URI ADK web в список redirect URIs. После нажатия Create у вас будут client ID и secret. Для этого демо их можно положить в переменные окружения, но в продакшене обязательно уберите секреты в Vault или другой менеджер секретов.</td></tr>
-      </tbody>
-    </table>
-    <p class="note">Субтитры автоматические (auto, en-orig). Термины сверены с кодом и описанием дня: OAuth 2.0, before_agent_callback, list_calendar_events, tool_filter, AuthenticatedFunctionTool, Vault. Докладчик — Sita lakshmi Sangameswaran (страница дня).</p>
+  <h2 id="fixes">Где автосубтитры соврали и как это восстановлено</h2>
+  <table class="plain">
+    <thead>
+      <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>00:01</td><td>Hi everyone, welcome to day 26 of Advent of Agents season 2. Today we&#x27;ll talk about an unavoidable production concept, which is agent authentication, and specifically about how to pass end-user credentials to the agent so it can perform actions. Why should we pass end-user credentials at all? An agent with its own credentials can access any public information, but if you want your agent to reach your calendar, your Drive data or your Gmail, it needs access to your credentials. Today we&#x27;ll see how to do that without actually handing your password to the agent, and we&#x27;ll do it with OAuth 2.0.</td><td>Oath 2.0 -&gt; OAuth 2.0 (далее по тексту так же)</td><td>Привет, добро пожаловать в 26-й день второго сезона Advent of Agents. Сегодня разберём неизбежную для продакшена тему — аутентификацию агентов, а именно то, как передать агенту учётные данные конечного пользователя, чтобы он мог выполнять действия. Зачем вообще передавать учётные данные пользователя? Агент со своими собственными учётными данными получит доступ к любой публичной информации, но чтобы он дошёл до вашего календаря, данных Drive или Gmail, ему нужны ваши учётные данные. Сегодня посмотрим, как это сделать, не отдавая пароль агенту, — через OAuth 2.0.</td></tr>
+      <tr><td>00:48</td><td>Let&#x27;s briefly go through the OAuth 2.0 workflow before we jump into the code. There are four players here: the user, the ADK web or client, the OAuth server — because we&#x27;re using Google Calendar — and the agent back end that holds all these tools. To start, the user says to the ADK web or any client: hey, can you access my calendar and retrieve my events? What the ADK web does is redirect the user to the authorization server, and the authorization server shows a consent screen. The user clicks all the boxes saying approve access, and then the authorization server gives your client an auth code. It does not give it access directly, but instead gives it an authorization code, which the client can exchange for an access token. The access token is very short-lived, say an hour, and the agent uses it to access the Calendar API. If the token expires, it uses the refresh token to get a new access token, and the cycle continues.</td><td>Google o server -&gt; OAuth server; gives you client with an o code -&gt; gives your client an auth code; in her -&gt; in an hour</td><td>Коротко пройдёмся по схеме OAuth 2.0, прежде чем нырнуть в код. Здесь четверо участников: пользователь, ADK web или клиент, OAuth-сервер — потому что мы работаем с Google Calendar — и агентный бэкенд, где живут все инструменты. В начале пользователь говорит ADK web или любому клиенту: слушай, загляни в мой календарь и вытащи события. ADK web перенаправляет пользователя на сервер авторизации, а тот показывает экран согласия. Пользователь прокликивает все галочки «разрешить доступ», и сервер авторизации выдаёт клиенту auth code. Прямого доступа он не даёт — именно код авторизации, который клиент может обменять на access token. Живёт access token совсем недолго, скажем час, и агент использует его для доступа к Calendar API. Когда токен истекает, используется refresh token, чтобы получить новый, и цикл повторяется.</td></tr>
+      <tr><td>02:56</td><td>Now let&#x27;s see how to implement this OAuth 2.0 handshake with ADK. I&#x27;ll switch to this other tab with the Google Cloud Console editor and scroll all the way down to the root agent definition. Here we can see the root agent has a model name and an instruction that tells it: you&#x27;re a helpful personal calendar assistant. It has two tools: list_calendar_events to list all the events, and get_event to get more information about one particular event. We also pass it the current time, which is nothing but a Python function that runs every time before this agent is called — we do that by adding it to the before_agent_callback.</td><td>list calendar events to list -&gt; list_calendar_events; before agent call back -&gt; before_agent_callback</td><td>Теперь посмотрим, как реализовать это рукопожатие OAuth 2.0 в ADK. Перейду на другую вкладку с редактором Google Cloud Console и прокручу до определения корневого агента. У него есть имя модели и инструкция «ты полезный персональный помощник по календарю». Есть два инструмента: `list_calendar_events` — вывести все события, и `get_event` — получить подробности одного события. Ещё мы передаём текущее время — это просто Python-функция, которая выполняется каждый раз перед вызовом агента; добавляется она через `before_agent_callback`.</td></tr>
+      <tr><td>03:44</td><td>Now we&#x27;ve seen the agent definition, and we still need to build the calendar tools that this agent can invoke. Here we have defined a calendar toolset: Google Calendar is a built-in ADK tool, meaning you can just import it and use it out of the box. We&#x27;re passing three parameters: client ID, secret, and a tool filter. Client ID and secret are needed for the OAuth 2.0 handshake itself, and we&#x27;ll see shortly how to get these credentials. The tool filter matters, because it decides the scope of this tool: here we&#x27;re saying this tool can only get events from the calendar — it cannot do any writes or deletes or any other operations. We grab this tool by its function name and add it to the tools array of the agent. And note that we haven&#x27;t added any extra OAuth 2.0 information to this pre-built toolset.</td><td>a calendar tool set -&gt; a calendar toolset; tool filter -&gt; tool_filter</td><td>С определением агента разобрались, осталось собрать сами инструменты работы с календарём. Здесь определён набор инструментов Calendar: Google Calendar — встроенный инструмент ADK, его можно просто импортировать и использовать из коробки. Мы передаём три параметра: client ID, secret и фильтр инструментов. Client ID и secret нужны для самого рукопожатия OAuth 2.0, как их получить — покажу чуть позже. Фильтр инструментов важен, потому что задаёт область полномочий: здесь мы говорим, что инструмент может только читать события календаря — никаких записей, удалений и прочих операций. Забираем инструмент по имени функции и добавляем в массив tools агента. И обратите внимание: в этот предсобранный набор мы не добавили никакой дополнительной информации об OAuth 2.0.</td></tr>
+      <tr><td>04:46</td><td>But that&#x27;s not usually the case, right? You might have a custom API you want to call for which ADK has no built-in tool. For those cases we start by defining a standard Python function: here we have defined a list_calendar_events Python function which calls the Google Calendar API directly instead of using a pre-built tool. You can do this with any custom Python function and any API you want to call. But how does the agent know it has to authenticate this particular Python function? To do that, we define a convenience wrapper inside the agent: AuthenticatedFunctionTool. It takes as its first argument the function you want to authenticate, and this tells the agent that invoking this function requires authentication.</td><td>the authenticated function tool -&gt; AuthenticatedFunctionTool</td><td>Но обычно бывает наоборот, верно? У вас может быть свой API, для которого в ADK нет встроенного инструмента. В таких случаях начинаем с обычной Python-функции: вот определена функция `list_calendar_events`, которая напрямую обращается к Google Calendar API вместо готового инструмента. Так можно сделать с любой своей функцией и любым API. Но как агент поймёт, что эту конкретную функцию нужно аутентифицировать? Для этого внутри агента определяется удобная обёртка — `AuthenticatedFunctionTool`. Первым аргументом она принимает функцию, которую нужно аутентифицировать, и этим говорит агенту, что её вызов требует аутентификации.</td></tr>
+      <tr><td>05:26</td><td>Then we define two important parameters: the OAuth scheme and the OAuth credential. The OAuth scheme says what kind of authentication this agent should perform to use the tool. Here it&#x27;s OAuth 2.0, but it could be an API key, or OIDC, or any other scheme — we&#x27;re sticking with OAuth 2.0. If you have an OAuth 2.0 identity provider, you can grab your authorization URL and token URL and substitute them here. Then we define the scope: what&#x27;s the scope of this tool? Here we have read-only access, so that this list of events doesn&#x27;t do anything by writing or deleting events. And the second parameter we pass here is the auth credentials, which is the client ID and the secret itself.</td><td>the O scheme and the O credential -&gt; the OAuth scheme and the OAuth credential</td><td>Затем задаём два важных параметра: OAuth-схему и OAuth-учётные данные. Схема говорит, какую аутентификацию агенту нужно выполнить для использования инструмента. Здесь это OAuth 2.0, но это может быть и API-ключ, и OIDC, и любая другая схема — мы остановились на OAuth 2.0. Если у вас есть OAuth 2.0 identity provider, возьмите оттуда authorization URL и token URL и подставьте их здесь. Дальше задаём scope: каковы полномочия инструмента? У нас доступ только на чтение, чтобы вывод событий ничего не писал и не удалял. Второй параметр — это учётные данные аутентификации, то есть client ID и secret.</td></tr>
+      <tr><td>07:47</td><td>And that brings us to the end of the demo. For the final part, let&#x27;s see how to create the OAuth client ID and secret. Since we&#x27;re accessing Google Calendar today, we get our OAuth client ID and secret from Google Cloud Console. Go to the clients tab, select a web application, and importantly add the ADK web URI to the redirect URIs. Once you click create, you should have your client ID and secret. You can add those to the environment variables for this demo, but make sure to put these secrets into Vault or a secret management tool when you do it in production.</td><td>put these secrets into a wault -&gt; put these secrets into Vault</td><td>На этом демонстрация закончена. Последняя часть — как создать OAuth client ID и secret. Раз мы обращаемся к Google Calendar, client ID и secret берём в Google Cloud Console. Откройте вкладку clients, выберите Web application и, что важно, добавьте URI ADK web в список redirect URIs. После нажатия Create у вас будут client ID и secret. Для этого демо их можно положить в переменные окружения, но в продакшене обязательно уберите секреты в Vault или другой менеджер секретов.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Субтитры автоматические (auto, en-orig). Термины сверены с кодом и описанием дня: OAuth 2.0, before_agent_callback, list_calendar_events, tool_filter, AuthenticatedFunctionTool, Vault. Докладчик — Sita lakshmi Sangameswaran (страница дня).</p>
+  <div class="pager">
+  <a class="prev" href="../day25/s2-2026-03-day25-en-ru.html" rel="prev">← day25 &rarr;</a>
+  <a class="next" href="../day27/s2-2026-03-day27-en-ru.html" rel="next">day27 → &rarr;</a>
   </div>
-
 </div>
-<script>
-const el = id => document.getElementById(id);
-
-el('tgl-en').addEventListener('change', e =>
-  document.body.classList.toggle('hide-en', !e.target.checked));
-el('tgl-ru').addEventListener('change', e =>
-  document.body.classList.toggle('hide-ru', !e.target.checked));
-el('btn-print').addEventListener('click', () => window.print());
-el('btn-mark').addEventListener('click', () => {
-  const on = !document.body.classList.contains('show-fixes');
-  document.body.classList.toggle('show-fixes', on);
-  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
-});
-</script>
+<div class="page">
+<p class="note">Перевод с английского. Субтитры автоматические (YouTube auto), поэтому в приложении указано, где распознавание было исправлено. Исходный ролик: <a href="https://www.youtube.com/watch?v=NzQM4GihwQU">YouTube</a>.</p>
+</div>
+<script src="../../assets/app.js"></script>
 </body>
 </html>

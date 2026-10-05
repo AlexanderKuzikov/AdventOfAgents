@@ -4,152 +4,37 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Model Armor: AI Security Firewall for Agents — EN / RU</title>
-<style>
-:root {
-  --en-bg: #f7f8fa;
-  --line: #dfe3e8;
-  --accent: #0b57d0;
-  --ts: #8a9099;
-  --muted: #5f6672;
-  --fix: #fff3cd;
-  --fix-line: #e0b100;
-}
-
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-
-body {
-  margin: 0;
-  padding: 32px 20px 72px;
-  background: #eef0f3;
-  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.45;
-  color: #1a1a1a;
-}
-
-.page { max-width: 1400px; margin: 0 auto; }
-
-h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
-.head .sub { color: var(--muted); font-size: 15px; }
-.head .sub a { color: var(--accent); }
-
-.legend {
-  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
-  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
-}
-.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
-.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
-
-.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
-
-button {
-  font: inherit; font-size: 14px; padding: 7px 14px;
-  border: 1px solid var(--line); border-radius: 6px;
-  background: #fff; color: #1a1a1a; cursor: pointer;
-}
-button:hover { border-color: #b9c0ca; background: #fafbfc; }
-
-.grid {
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden;
-}
-
-.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
-
-.head-row {
-  background: #2f3541; color: #fff;
-  font-size: 13px; letter-spacing: 0.04em;
-  text-transform: uppercase; font-weight: 600;
-  position: sticky; top: 0; z-index: 5;
-}
-.head-row > div { padding: 10px 18px; }
-.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
-
-.row > .ts {
-  padding: 14px 8px; font-size: 12px;
-  font-variant-numeric: tabular-nums;
-  color: var(--ts); text-align: right;
-  border-right: 1px solid var(--line); background: #fbfbfc;
-}
-.row > .en, .row > .ru {
-  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
-}
-.row > .en { background: var(--en-bg); }
-.row > .ru { border-right: 0; }
-
-.row.cont > .ts::after {
-  content: ""; display: block; width: 14px; height: 1px;
-  background: var(--line); margin: 8px 0 0 auto;
-}
-.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
-
-.row.fixed > .en { background: var(--fix); }
-.row.fixed .tag { display: none; }
-
-body.show-fixes .row.fixed .tag { display: block; }
-
-.tag {
-  display: inline-block; margin-top: 6px;
-  font-size: 11.5px; line-height: 1.35;
-  color: #6b5400; background: var(--fix);
-  border-left: 3px solid var(--fix-line);
-  padding: 3px 8px; border-radius: 0 4px 4px 0;
-}
-
-.app { margin-top: 26px; }
-.app h2 { font-size: 19px; margin: 0 0 10px; }
-
-table {
-  width: 100%; border-collapse: collapse;
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden; font-size: 15px;
-}
-th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
-th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
-tr:last-child td { border-bottom: 0; }
-td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
-.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
-
-body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
-body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
-body.hide-en .row, body.hide-en .head-row,
-body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
-
-@media (max-width: 900px) {
-  .head-row, .row { grid-template-columns: 56px 1fr; }
-  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
-  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
-}
-
-@media print {
-  body { background: #fff; padding: 0; }
-  .bar, .legend { display: none; }
-  .head-row { position: static; }
-  .grid, table { border-radius: 0; }
-}
-</style>
+<link rel="stylesheet" href="../../assets/style.css">
 </head>
 <body>
+<div class="top"><div class="inner">
+<a class="brand" href="../../index.html">Advent of Agents — перевод</a>
+<nav><a href="../../index.html#seasons">Сезоны</a>
+<a href="../../index.html#materials">Материалы</a>
+<a href="https://adventofagents.com/">Оригинал</a>
+</nav>
+<div class="spacer"></div>
+<a href="https://github.com/AlexanderKuzikov/AdventOfAgents">репозиторий</a>
+</div></div>
 <div class="page">
-
-  <div class="head">
-    <h1>Model Armor: AI Security Firewall for Agents</h1>
-    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
-      Видео: <a href="https://www.youtube.com/watch?v=Wrxg8OsquEY">https://www.youtube.com/watch?v=Wrxg8OsquEY</a> · 04:29
-      · auto (YouTube en-orig)</div>
-  </div>
-
-  <div class="legend">
-    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
-    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
-  </div>
-
-  <div class="bar">
-    <button id="btn-mark">Показать исправления</button>
-    <button id="btn-print">Печать / PDF</button>
-  </div>
-
+<p class="crumbs"><a href="../../index.html">Все дни</a> &rsaquo; <a href="../../index.html#s2-2026-03">s2-2026-03</a> &rsaquo; day23</p>
+<h1>Model Armor: AI Security Firewall for Agents</h1>
+<p class="lede">Двуязычная транскрипция: английский оригинал слева, русский перевод справа, абзацы стоят строго напротив друг друга.</p>
+<div class="stats">
+  <div class="stat"><div class="n">04:29</div><div class="k">длительность</div></div>
+  <div class="stat"><div class="n">7</div><div class="k">абзацев</div></div>
+  <div class="stat"><div class="n">5</div><div class="k">правок распознавания</div></div>
+</div>
+<div class="bar">
+  <label class="legend"><input type="checkbox" id="tgl-en" checked> оригинал</label>
+  <label class="legend"><input type="checkbox" id="tgl-ru" checked> перевод</label>
+</div>
+<div class="bar">
+  <button id="btn-mark">Показать исправления</button>
+  <button id="btn-print">Печать / PDF</button>
+  <a class="btn" href="s2-2026-03-day23-transcript-ru.docx">Скачать DOCX</a>
+  <a href="https://www.youtube.com/watch?v=Wrxg8OsquEY" target="_blank" rel="noopener">оригинальный ролик</a>
+</div>
   <div class="grid">
     <div class="head-row">
       <div>Time</div>
@@ -158,12 +43,12 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">00:01</div>
-      <div class="en">Hello everyone. I&#x27;m Lekan, a cloud architect here at Google. Today I&#x27;ll be going over AI agent defense in depth with Google Cloud Model Armor. As AI agents become more powerful and autonomous, we often overlook a critical element, which is security. Today I&#x27;m going to show you how Google Cloud Model Armor can be used to build a robust security layer for agent systems.<div class="tag">уточнено: defense up depth -&gt; defense in depth</div></div>
+      <div class="en">Hello everyone. I&#x27;m Lekan, a cloud architect here at Google. Today I&#x27;ll be going over AI agent defense in depth with Google Cloud Model Armor. As AI agents become more powerful and autonomous, we often overlook a critical element, which is security. Today I&#x27;m going to show you how Google Cloud Model Armor can be used to build a robust security layer for agent systems.<div class="tagline">уточнено: defense up depth -&gt; defense in depth</div></div>
       <div class="ru">Всем привет, я Лекан, облачный архитектор в Google. Сегодня разберём защиту ИИ-агентов в глубину на примере Google Cloud Model Armor. По мере того как агенты становятся мощнее и автономнее, мы часто упускаем из виду ключевой элемент — безопасность. Покажу, как Model Armor позволяет выстроить надёжный защитный слой для агентных систем.</div>
     </div>
     <div class="row fixed">
       <div class="ts">00:32</div>
-      <div class="en">We&#x27;ll protect our AI agent against prompt injection attempts, jailbreak attempts, malicious actors trying to extract PII or sensitive data or use malicious URLs, and also ensure that our AI agent&#x27;s interaction adheres to responsible AI standards. To demonstrate this, I&#x27;ve built a simple agent to show Model Armor in action.<div class="tag">уточнено: at or use malicious URLs -&gt; or use malicious URLs</div></div>
+      <div class="en">We&#x27;ll protect our AI agent against prompt injection attempts, jailbreak attempts, malicious actors trying to extract PII or sensitive data or use malicious URLs, and also ensure that our AI agent&#x27;s interaction adheres to responsible AI standards. To demonstrate this, I&#x27;ve built a simple agent to show Model Armor in action.<div class="tagline">уточнено: at or use malicious URLs -&gt; or use malicious URLs</div></div>
       <div class="ru">Мы защитим агента от попыток prompt injection, от jailbreak, от злоумышленников, пытающихся вытащить PII или чувствительные данные либо использовать вредоносные URL, и заодно проверим, что взаимодействие агента соответствует стандартам responsible AI. Для демонстрации я собрал простого агента, чтобы показать Model Armor в действии.</div>
     </div>
     <div class="row">
@@ -173,12 +58,12 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">01:46</div>
-      <div class="en">Next, we have to define the sanitized prompt method. This references the template created in Model Armor to ensure that whatever prompt is gotten from our user adheres to the standards already set. And lastly, we define the sanitized response method that intercepts the response gotten from the AI model, to ensure that the response adheres to our standards set even before the user gets the response.<div class="tag">уточнено: sanitized prompt method / sanitized response method -&gt; по коду это sanitize_user_prompt и sanitize_model_response</div></div>
+      <div class="en">Next, we have to define the sanitized prompt method. This references the template created in Model Armor to ensure that whatever prompt is gotten from our user adheres to the standards already set. And lastly, we define the sanitized response method that intercepts the response gotten from the AI model, to ensure that the response adheres to our standards set even before the user gets the response.<div class="tagline">уточнено: sanitized prompt method / sanitized response method -&gt; по коду это sanitize_user_prompt и sanitize_model_response</div></div>
       <div class="ru">Дальше определяем метод санации промпта. Он ссылается на шаблон из Model Armor и гарантирует, что любой промпт от пользователя проходит установленные стандарты. И последнее — метод санации ответа, который перехватывает ответ модели и проверяет его на соответствие нашим стандартам ещё до того, как ответ увидит пользователь.</div>
     </div>
     <div class="row fixed">
       <div class="ts">02:35</div>
-      <div class="en">Now let&#x27;s test a couple of these in action. First, let me try a prompt injection / jailbreak attempt: I&#x27;ll tell our agent to show us its system instructions. You can see in real time that the request is intercepted by our Model Armor service, and we&#x27;re given a response explaining why this request cannot be fulfilled.<div class="tag">уточнено: prompt injection audio break attempt -&gt; prompt injection / jailbreak attempt</div></div>
+      <div class="en">Now let&#x27;s test a couple of these in action. First, let me try a prompt injection / jailbreak attempt: I&#x27;ll tell our agent to show us its system instructions. You can see in real time that the request is intercepted by our Model Armor service, and we&#x27;re given a response explaining why this request cannot be fulfilled.<div class="tagline">уточнено: prompt injection audio break attempt -&gt; prompt injection / jailbreak attempt</div></div>
       <div class="ru">Теперь проверим пару сценариев в действии. Сначала попытка prompt injection / jailbreak: я попрошу агента показать свои системные инструкции. Видно в реальном времени, что запрос перехвачен сервисом Model Armor, и мы получаем объяснение, почему этот запрос не может быть выполнен.</div>
     </div>
     <div class="row">
@@ -188,42 +73,33 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">03:53</div>
-      <div class="en">And lastly, let&#x27;s try one that would potentially trigger our responsible AI standards that have been set. You can see this prompt has been flagged as hate speech and harassment. And so, what Google Cloud Model Armor is also cloud agnostic, so you don&#x27;t need to have your agents running on Google Cloud. By securing both the input and output, we ensure that our agent remains safe, compliant, and robust.<div class="tag">уточнено: try a a that would potentially trigger -&gt; try one that would potentially trigger</div></div>
+      <div class="en">And lastly, let&#x27;s try one that would potentially trigger our responsible AI standards that have been set. You can see this prompt has been flagged as hate speech and harassment. And so, what Google Cloud Model Armor is also cloud agnostic, so you don&#x27;t need to have your agents running on Google Cloud. By securing both the input and output, we ensure that our agent remains safe, compliant, and robust.<div class="tagline">уточнено: try a a that would potentially trigger -&gt; try one that would potentially trigger</div></div>
       <div class="ru">И наконец, попробуем запрос, который может задеть наши стандарты responsible AI. Видно, что промпт помечен как речь ненависти и травля. И ещё: Google Cloud Model Armor не привязан к облаку, необязательно запускать агентов на Google Cloud. Закрывая и вход, и выход, мы гарантируем, что агент остаётся безопасным, соответствующим требованиям и устойчивым.</div>
     </div>
   </div>
 
-  <div class="app">
-    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
-    <table>
-      <thead>
-        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
-      </thead>
-      <tbody>
-      <tr><td>[00:01]</td><td>Hello everyone. I&#x27;m Lekan, a cloud architect here at Google. Today I&#x27;ll be going over AI agent defense in depth with Google Cloud Model Armor. As AI agents become more powerful and autonomous, we often overlook a critical element, which is security. Today I&#x27;m going to show you how Google Cloud Model Armor can be used to build a robust security layer for agent systems.</td><td>defense up depth -&gt; defense in depth</td><td>Всем привет, я Лекан, облачный архитектор в Google. Сегодня разберём защиту ИИ-агентов в глубину на примере Google Cloud Model Armor. По мере того как агенты становятся мощнее и автономнее, мы часто упускаем из виду ключевой элемент — безопасность. Покажу, как Model Armor позволяет выстроить надёжный защитный слой для агентных систем.</td></tr>
-      <tr><td>[00:32]</td><td>We&#x27;ll protect our AI agent against prompt injection attempts, jailbreak attempts, malicious actors trying to extract PII or sensitive data or use malicious URLs, and also ensure that our AI agent&#x27;s interaction adheres to responsible AI standards. To demonstrate this, I&#x27;ve built a simple agent to show Model Armor in action.</td><td>at or use malicious URLs -&gt; or use malicious URLs</td><td>Мы защитим агента от попыток prompt injection, от jailbreak, от злоумышленников, пытающихся вытащить PII или чувствительные данные либо использовать вредоносные URL, и заодно проверим, что взаимодействие агента соответствует стандартам responsible AI. Для демонстрации я собрал простого агента, чтобы показать Model Armor в действии.</td></tr>
-      <tr><td>[01:46]</td><td>Next, we have to define the sanitized prompt method. This references the template created in Model Armor to ensure that whatever prompt is gotten from our user adheres to the standards already set. And lastly, we define the sanitized response method that intercepts the response gotten from the AI model, to ensure that the response adheres to our standards set even before the user gets the response.</td><td>sanitized prompt method / sanitized response method -&gt; по коду это sanitize_user_prompt и sanitize_model_response</td><td>Дальше определяем метод санации промпта. Он ссылается на шаблон из Model Armor и гарантирует, что любой промпт от пользователя проходит установленные стандарты. И последнее — метод санации ответа, который перехватывает ответ модели и проверяет его на соответствие нашим стандартам ещё до того, как ответ увидит пользователь.</td></tr>
-      <tr><td>[02:35]</td><td>Now let&#x27;s test a couple of these in action. First, let me try a prompt injection / jailbreak attempt: I&#x27;ll tell our agent to show us its system instructions. You can see in real time that the request is intercepted by our Model Armor service, and we&#x27;re given a response explaining why this request cannot be fulfilled.</td><td>prompt injection audio break attempt -&gt; prompt injection / jailbreak attempt</td><td>Теперь проверим пару сценариев в действии. Сначала попытка prompt injection / jailbreak: я попрошу агента показать свои системные инструкции. Видно в реальном времени, что запрос перехвачен сервисом Model Armor, и мы получаем объяснение, почему этот запрос не может быть выполнен.</td></tr>
-      <tr><td>[03:53]</td><td>And lastly, let&#x27;s try one that would potentially trigger our responsible AI standards that have been set. You can see this prompt has been flagged as hate speech and harassment. And so, what Google Cloud Model Armor is also cloud agnostic, so you don&#x27;t need to have your agents running on Google Cloud. By securing both the input and output, we ensure that our agent remains safe, compliant, and robust.</td><td>try a a that would potentially trigger -&gt; try one that would potentially trigger</td><td>И наконец, попробуем запрос, который может задеть наши стандарты responsible AI. Видно, что промпт помечен как речь ненависти и травля. И ещё: Google Cloud Model Armor не привязан к облаку, необязательно запускать агентов на Google Cloud. Закрывая и вход, и выход, мы гарантируем, что агент остаётся безопасным, соответствующим требованиям и устойчивым.</td></tr>
-      </tbody>
-    </table>
-    <p class="note">Субтитры автоматические (auto, en-orig). Названия методов сверены с кодом со страницы дня: sanitize_user_prompt, sanitize_model_response, SanitizeUserPromptRequest, SanitizeModelResponseRequest.</p>
+  <h2 id="fixes">Где автосубтитры соврали и как это восстановлено</h2>
+  <table class="plain">
+    <thead>
+      <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>00:01</td><td>Hello everyone. I&#x27;m Lekan, a cloud architect here at Google. Today I&#x27;ll be going over AI agent defense in depth with Google Cloud Model Armor. As AI agents become more powerful and autonomous, we often overlook a critical element, which is security. Today I&#x27;m going to show you how Google Cloud Model Armor can be used to build a robust security layer for agent systems.</td><td>defense up depth -&gt; defense in depth</td><td>Всем привет, я Лекан, облачный архитектор в Google. Сегодня разберём защиту ИИ-агентов в глубину на примере Google Cloud Model Armor. По мере того как агенты становятся мощнее и автономнее, мы часто упускаем из виду ключевой элемент — безопасность. Покажу, как Model Armor позволяет выстроить надёжный защитный слой для агентных систем.</td></tr>
+      <tr><td>00:32</td><td>We&#x27;ll protect our AI agent against prompt injection attempts, jailbreak attempts, malicious actors trying to extract PII or sensitive data or use malicious URLs, and also ensure that our AI agent&#x27;s interaction adheres to responsible AI standards. To demonstrate this, I&#x27;ve built a simple agent to show Model Armor in action.</td><td>at or use malicious URLs -&gt; or use malicious URLs</td><td>Мы защитим агента от попыток prompt injection, от jailbreak, от злоумышленников, пытающихся вытащить PII или чувствительные данные либо использовать вредоносные URL, и заодно проверим, что взаимодействие агента соответствует стандартам responsible AI. Для демонстрации я собрал простого агента, чтобы показать Model Armor в действии.</td></tr>
+      <tr><td>01:46</td><td>Next, we have to define the sanitized prompt method. This references the template created in Model Armor to ensure that whatever prompt is gotten from our user adheres to the standards already set. And lastly, we define the sanitized response method that intercepts the response gotten from the AI model, to ensure that the response adheres to our standards set even before the user gets the response.</td><td>sanitized prompt method / sanitized response method -&gt; по коду это sanitize_user_prompt и sanitize_model_response</td><td>Дальше определяем метод санации промпта. Он ссылается на шаблон из Model Armor и гарантирует, что любой промпт от пользователя проходит установленные стандарты. И последнее — метод санации ответа, который перехватывает ответ модели и проверяет его на соответствие нашим стандартам ещё до того, как ответ увидит пользователь.</td></tr>
+      <tr><td>02:35</td><td>Now let&#x27;s test a couple of these in action. First, let me try a prompt injection / jailbreak attempt: I&#x27;ll tell our agent to show us its system instructions. You can see in real time that the request is intercepted by our Model Armor service, and we&#x27;re given a response explaining why this request cannot be fulfilled.</td><td>prompt injection audio break attempt -&gt; prompt injection / jailbreak attempt</td><td>Теперь проверим пару сценариев в действии. Сначала попытка prompt injection / jailbreak: я попрошу агента показать свои системные инструкции. Видно в реальном времени, что запрос перехвачен сервисом Model Armor, и мы получаем объяснение, почему этот запрос не может быть выполнен.</td></tr>
+      <tr><td>03:53</td><td>And lastly, let&#x27;s try one that would potentially trigger our responsible AI standards that have been set. You can see this prompt has been flagged as hate speech and harassment. And so, what Google Cloud Model Armor is also cloud agnostic, so you don&#x27;t need to have your agents running on Google Cloud. By securing both the input and output, we ensure that our agent remains safe, compliant, and robust.</td><td>try a a that would potentially trigger -&gt; try one that would potentially trigger</td><td>И наконец, попробуем запрос, который может задеть наши стандарты responsible AI. Видно, что промпт помечен как речь ненависти и травля. И ещё: Google Cloud Model Armor не привязан к облаку, необязательно запускать агентов на Google Cloud. Закрывая и вход, и выход, мы гарантируем, что агент остаётся безопасным, соответствующим требованиям и устойчивым.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Субтитры автоматические (auto, en-orig). Названия методов сверены с кодом со страницы дня: sanitize_user_prompt, sanitize_model_response, SanitizeUserPromptRequest, SanitizeModelResponseRequest.</p>
+  <div class="pager">
+  <a class="prev" href="../day22/s2-2026-03-day22-en-ru.html" rel="prev">← day22 &rarr;</a>
+  <a class="next" href="../day24/s2-2026-03-day24-en-ru.html" rel="next">day24 → &rarr;</a>
   </div>
-
 </div>
-<script>
-const el = id => document.getElementById(id);
-
-el('tgl-en').addEventListener('change', e =>
-  document.body.classList.toggle('hide-en', !e.target.checked));
-el('tgl-ru').addEventListener('change', e =>
-  document.body.classList.toggle('hide-ru', !e.target.checked));
-el('btn-print').addEventListener('click', () => window.print());
-el('btn-mark').addEventListener('click', () => {
-  const on = !document.body.classList.contains('show-fixes');
-  document.body.classList.toggle('show-fixes', on);
-  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
-});
-</script>
+<div class="page">
+<p class="note">Перевод с английского. Субтитры автоматические (YouTube auto), поэтому в приложении указано, где распознавание было исправлено. Исходный ролик: <a href="https://www.youtube.com/watch?v=Wrxg8OsquEY">YouTube</a>.</p>
+</div>
+<script src="../../assets/app.js"></script>
 </body>
 </html>

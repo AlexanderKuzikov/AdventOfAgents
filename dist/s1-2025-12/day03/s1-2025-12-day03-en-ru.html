@@ -4,152 +4,37 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gemini 3 + ADK — EN / RU</title>
-<style>
-:root {
-  --en-bg: #f7f8fa;
-  --line: #dfe3e8;
-  --accent: #0b57d0;
-  --ts: #8a9099;
-  --muted: #5f6672;
-  --fix: #fff3cd;
-  --fix-line: #e0b100;
-}
-
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-
-body {
-  margin: 0;
-  padding: 32px 20px 72px;
-  background: #eef0f3;
-  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.45;
-  color: #1a1a1a;
-}
-
-.page { max-width: 1400px; margin: 0 auto; }
-
-h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
-.head .sub { color: var(--muted); font-size: 15px; }
-.head .sub a { color: var(--accent); }
-
-.legend {
-  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
-  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
-}
-.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
-.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
-
-.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
-
-button {
-  font: inherit; font-size: 14px; padding: 7px 14px;
-  border: 1px solid var(--line); border-radius: 6px;
-  background: #fff; color: #1a1a1a; cursor: pointer;
-}
-button:hover { border-color: #b9c0ca; background: #fafbfc; }
-
-.grid {
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden;
-}
-
-.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
-
-.head-row {
-  background: #2f3541; color: #fff;
-  font-size: 13px; letter-spacing: 0.04em;
-  text-transform: uppercase; font-weight: 600;
-  position: sticky; top: 0; z-index: 5;
-}
-.head-row > div { padding: 10px 18px; }
-.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
-
-.row > .ts {
-  padding: 14px 8px; font-size: 12px;
-  font-variant-numeric: tabular-nums;
-  color: var(--ts); text-align: right;
-  border-right: 1px solid var(--line); background: #fbfbfc;
-}
-.row > .en, .row > .ru {
-  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
-}
-.row > .en { background: var(--en-bg); }
-.row > .ru { border-right: 0; }
-
-.row.cont > .ts::after {
-  content: ""; display: block; width: 14px; height: 1px;
-  background: var(--line); margin: 8px 0 0 auto;
-}
-.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
-
-.row.fixed > .en { background: var(--fix); }
-.row.fixed .tag { display: none; }
-
-body.show-fixes .row.fixed .tag { display: block; }
-
-.tag {
-  display: inline-block; margin-top: 6px;
-  font-size: 11.5px; line-height: 1.35;
-  color: #6b5400; background: var(--fix);
-  border-left: 3px solid var(--fix-line);
-  padding: 3px 8px; border-radius: 0 4px 4px 0;
-}
-
-.app { margin-top: 26px; }
-.app h2 { font-size: 19px; margin: 0 0 10px; }
-
-table {
-  width: 100%; border-collapse: collapse;
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden; font-size: 15px;
-}
-th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
-th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
-tr:last-child td { border-bottom: 0; }
-td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
-.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
-
-body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
-body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
-body.hide-en .row, body.hide-en .head-row,
-body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
-
-@media (max-width: 900px) {
-  .head-row, .row { grid-template-columns: 56px 1fr; }
-  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
-  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
-}
-
-@media print {
-  body { background: #fff; padding: 0; }
-  .bar, .legend { display: none; }
-  .head-row { position: static; }
-  .grid, table { border-radius: 0; }
-}
-</style>
+<link rel="stylesheet" href="../../assets/style.css">
 </head>
 <body>
+<div class="top"><div class="inner">
+<a class="brand" href="../../index.html">Advent of Agents — перевод</a>
+<nav><a href="../../index.html#seasons">Сезоны</a>
+<a href="../../index.html#materials">Материалы</a>
+<a href="https://adventofagents.com/">Оригинал</a>
+</nav>
+<div class="spacer"></div>
+<a href="https://github.com/AlexanderKuzikov/AdventOfAgents">репозиторий</a>
+</div></div>
 <div class="page">
-
-  <div class="head">
-    <h1>Gemini 3 + ADK</h1>
-    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
-      Видео: <a href="https://www.youtube.com/watch?v=9EGtawwvlNs">https://www.youtube.com/watch?v=9EGtawwvlNs</a> · 06:23
-      · auto (YouTube en-orig)</div>
-  </div>
-
-  <div class="legend">
-    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
-    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
-  </div>
-
-  <div class="bar">
-    <button id="btn-mark">Показать исправления</button>
-    <button id="btn-print">Печать / PDF</button>
-  </div>
-
+<p class="crumbs"><a href="../../index.html">Все дни</a> &rsaquo; <a href="../../index.html#s1-2025-12">s1-2025-12</a> &rsaquo; day03</p>
+<h1>Gemini 3 + ADK</h1>
+<p class="lede">Двуязычная транскрипция: английский оригинал слева, русский перевод справа, абзацы стоят строго напротив друг друга.</p>
+<div class="stats">
+  <div class="stat"><div class="n">06:23</div><div class="k">длительность</div></div>
+  <div class="stat"><div class="n">8</div><div class="k">абзацев</div></div>
+  <div class="stat"><div class="n">5</div><div class="k">правок распознавания</div></div>
+</div>
+<div class="bar">
+  <label class="legend"><input type="checkbox" id="tgl-en" checked> оригинал</label>
+  <label class="legend"><input type="checkbox" id="tgl-ru" checked> перевод</label>
+</div>
+<div class="bar">
+  <button id="btn-mark">Показать исправления</button>
+  <button id="btn-print">Печать / PDF</button>
+  <a class="btn" href="s1-2025-12-day03-transcript-ru.docx">Скачать DOCX</a>
+  <a href="https://www.youtube.com/watch?v=9EGtawwvlNs" target="_blank" rel="noopener">оригинальный ролик</a>
+</div>
   <div class="grid">
     <div class="head-row">
       <div>Time</div>
@@ -163,7 +48,7 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">00:27</div>
-      <div class="en">To start off, let&#x27;s create an empty project folder where our AI agent will live. I&#x27;ve done that, named it gemini-3-pro-ai-agent, and opened a terminal. Then we&#x27;re going to initialize our project folder with uv. uv is a Python package manager, and if you don&#x27;t have it installed, the instructions are in the description box below. Next we&#x27;ll add the two libraries we need for this project: Google ADK&#x27;s library and Google&#x27;s Gemini library.<div class="tag">уточнено: UV is a Python package manager -&gt; uv is a Python package manager</div></div>
+      <div class="en">To start off, let&#x27;s create an empty project folder where our AI agent will live. I&#x27;ve done that, named it gemini-3-pro-ai-agent, and opened a terminal. Then we&#x27;re going to initialize our project folder with uv. uv is a Python package manager, and if you don&#x27;t have it installed, the instructions are in the description box below. Next we&#x27;ll add the two libraries we need for this project: Google ADK&#x27;s library and Google&#x27;s Gemini library.<div class="tagline">уточнено: UV is a Python package manager -&gt; uv is a Python package manager</div></div>
       <div class="ru">Для начала создадим пустую папку проекта, в которой будет жить наш агент. Я это сделал, назвал папку `gemini-3-pro-ai-agent` и открыл терминал. Затем инициализируем проект через `uv`. Это менеджер пакетов для Python; если он у вас не установлен, инструкция — в описании под видео. Дальше добавим две библиотеки, которые нам нужны: библиотеку Google ADK и библиотеку Gemini от Google.</div>
     </div>
     <div class="row">
@@ -178,57 +63,48 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">02:48</div>
-      <div class="en">Now we want to make some changes to this code. First off, we want to use Gemini 3 Pro instead of Gemini 2.0 Flash — this is the model name for Gemini 3 Pro. Next, I want to change the instruction set: instead of this single line of instruction, we want to make it a bit more detailed. We also want to instruct the agent to cite its sources implicitly, by providing answers clearly based on search results. And for this basic search agent, we give it one tool: access to Google Search. The final thing is to import asyncio. And that&#x27;s our basic agent: built with Gemini 3 Pro, with access to Google Search.<div class="tag">уточнено: cite its sources implicitly -&gt; даём агенту неявно ссылаться на источники</div></div>
+      <div class="en">Now we want to make some changes to this code. First off, we want to use Gemini 3 Pro instead of Gemini 2.0 Flash — this is the model name for Gemini 3 Pro. Next, I want to change the instruction set: instead of this single line of instruction, we want to make it a bit more detailed. We also want to instruct the agent to cite its sources implicitly, by providing answers clearly based on search results. And for this basic search agent, we give it one tool: access to Google Search. The final thing is to import asyncio. And that&#x27;s our basic agent: built with Gemini 3 Pro, with access to Google Search.<div class="tagline">уточнено: cite its sources implicitly -&gt; даём агенту неявно ссылаться на источники</div></div>
       <div class="ru">Теперь правим код. Первое: вместо Gemini 2.0 Flash ставим Gemini 3 Pro — вот такое имя модели. Второе: меняем набор инструкций — вместо одной строки сделаем чуть подробнее. Ещё добавим указание агенту неявно ссылаться на источники, отвечая чётко и на основе результатов поиска. Этому простому поисковому агенту даём один инструмент — доступ к Google Search. И последнее: импортируем asyncio. Вот и наш базовый агент: на Gemini 3 Pro и с доступом к Google Search.</div>
     </div>
     <div class="row fixed">
       <div class="ts">03:38</div>
-      <div class="en">Now, back in the terminal, we&#x27;re going to deploy our agent with adk web. You can now use this link to access your agent. We can now start interacting with our agent in ADK web. I&#x27;ve been meaning to take horseback riding lessons in my city but I just don&#x27;t know where to get started. So let me ask about that. We&#x27;re getting some detailed response from our agent about exactly where I can find these lessons. It has also listed the places and locations where I can get started, and categorized them by how serious or how basic they are.<div class="tag">уточнено: interacting with our agent in ABK web -&gt; in ADK web</div></div>
+      <div class="en">Now, back in the terminal, we&#x27;re going to deploy our agent with adk web. You can now use this link to access your agent. We can now start interacting with our agent in ADK web. I&#x27;ve been meaning to take horseback riding lessons in my city but I just don&#x27;t know where to get started. So let me ask about that. We&#x27;re getting some detailed response from our agent about exactly where I can find these lessons. It has also listed the places and locations where I can get started, and categorized them by how serious or how basic they are.<div class="tagline">уточнено: interacting with our agent in ABK web -&gt; in ADK web</div></div>
       <div class="ru">Возвращаемся в терминал и запускаем агента командой `adk web`. По ссылке теперь можно зайти к агенту и начать с ним общаться. Я давно хочу взять уроки верховой езды в своём городе и не понимаю, с чего начать. Спрошу об этом. Агент отвечает подробно: где именно искать занятия. Он также перечислил места и локации, с которых можно начать, и разбил их по уровню — насколько серьёзно и насколько по-начальному это занятие.</div>
     </div>
     <div class="row fixed">
       <div class="ts">04:26</div>
-      <div class="en">Let&#x27;s explore the model&#x27;s chain of thinking that produced this response. To do this, let&#x27;s open the events tab and click on this tab with the text — this is what is being returned by the model. If we go to the next event, we see something very interesting: the thought signature of Gemini. The thought signature in Gemini 3 Pro helps the model understand the context of the conversation. We also see the websites that Gemini 3 Pro actually searched: horsesport.com, thebesttoronto.com, Reddit, and many, many more.<div class="tag">уточнено: horsesport.com, the besttoronto.com -&gt; horsesport.com, thebesttoronto.com</div></div>
+      <div class="en">Let&#x27;s explore the model&#x27;s chain of thinking that produced this response. To do this, let&#x27;s open the events tab and click on this tab with the text — this is what is being returned by the model. If we go to the next event, we see something very interesting: the thought signature of Gemini. The thought signature in Gemini 3 Pro helps the model understand the context of the conversation. We also see the websites that Gemini 3 Pro actually searched: horsesport.com, thebesttoronto.com, Reddit, and many, many more.<div class="tagline">уточнено: horsesport.com, the besttoronto.com -&gt; horsesport.com, thebesttoronto.com</div></div>
       <div class="ru">Посмотрим на цепочку рассуждений модели, которая дала этот ответ. Откроем вкладку events и кликнем на вкладку с текстом — это то, что возвращает модель. На следующем событии мы увидим кое-что очень интересное: thought signature от Gemini. Она помогает модели удерживать контекст разговора. Тут же видно сайты, которые Gemini 3 Pro действительно искал: horsesport.com, thebesttoronto.com, Reddit и ещё много других.</div>
     </div>
     <div class="row fixed">
       <div class="ts">05:15</div>
-      <div class="en">If we scroll further, we actually see the web search queries that Gemini 3 Pro makes and in what order. It starts with a generic search for horseback riding lessons Toronto, then digs deeper — horseback riding near downtown Toronto, followed by best horse riding schools Toronto. At that point it&#x27;s determined some of the names of the schools available in that area. So you see the searches actually get much more specific. Then it even looks up whether it&#x27;s accessible by public transit, which is very interesting. It also looks up whether these stables are actually open. So from just a single prompt — where can I learn horseback riding in Toronto — Gemini 3 was able to go through this chain of thought to arrive at this response, and I think that&#x27;s pretty cool. There are so many more amazing agents you can build with Gemini 3 Pro and ADK. If you&#x27;re interested, check out the links below. Happy building.<div class="tag">уточнено: which as you know um have good performance but -&gt; (фрагмент не относится к этому дню)</div></div>
+      <div class="en">If we scroll further, we actually see the web search queries that Gemini 3 Pro makes and in what order. It starts with a generic search for horseback riding lessons Toronto, then digs deeper — horseback riding near downtown Toronto, followed by best horse riding schools Toronto. At that point it&#x27;s determined some of the names of the schools available in that area. So you see the searches actually get much more specific. Then it even looks up whether it&#x27;s accessible by public transit, which is very interesting. It also looks up whether these stables are actually open. So from just a single prompt — where can I learn horseback riding in Toronto — Gemini 3 was able to go through this chain of thought to arrive at this response, and I think that&#x27;s pretty cool. There are so many more amazing agents you can build with Gemini 3 Pro and ADK. If you&#x27;re interested, check out the links below. Happy building.<div class="tagline">уточнено: which as you know um have good performance but -&gt; (фрагмент не относится к этому дню)</div></div>
       <div class="ru">Если прокрутить дальше, увидим сами поисковые запросы и их порядок. Сначала общий запрос про уроки верховой езды в Торонто, потом копает глубже — верховая езда рядом с даунтауном, затем лучшие школы верховой езды в Торонто. К этому моменту модель уже выяснила названия школ в этом районе. То есть запросы становятся всё конкретнее. Дальше она даже проверяет, можно ли добраться туда на общественном транспорте, — это очень интересно. И заодно смотрит, работают ли эти конюшни вообще. Итак, из одного промпта «где в Торонто научиться верховой езде» Gemini 3 прошла эту цепочку рассуждений и пришла к такому ответу — это, по-моему, очень круто. На Gemini 3 Pro и ADK можно собрать ещё множество замечательных агентов. Ссылки — под видео. Хорошей разработки.</div>
     </div>
   </div>
 
-  <div class="app">
-    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
-    <table>
-      <thead>
-        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
-      </thead>
-      <tbody>
-      <tr><td>[00:27]</td><td>To start off, let&#x27;s create an empty project folder where our AI agent will live. I&#x27;ve done that, named it gemini-3-pro-ai-agent, and opened a terminal. Then we&#x27;re going to initialize our project folder with uv. uv is a Python package manager, and if you don&#x27;t have it installed, the instructions are in the description box below. Next we&#x27;ll add the two libraries we need for this project: Google ADK&#x27;s library and Google&#x27;s Gemini library.</td><td>UV is a Python package manager -&gt; uv is a Python package manager</td><td>Для начала создадим пустую папку проекта, в которой будет жить наш агент. Я это сделал, назвал папку `gemini-3-pro-ai-agent` и открыл терминал. Затем инициализируем проект через `uv`. Это менеджер пакетов для Python; если он у вас не установлен, инструкция — в описании под видео. Дальше добавим две библиотеки, которые нам нужны: библиотеку Google ADK и библиотеку Gemini от Google.</td></tr>
-      <tr><td>[02:48]</td><td>Now we want to make some changes to this code. First off, we want to use Gemini 3 Pro instead of Gemini 2.0 Flash — this is the model name for Gemini 3 Pro. Next, I want to change the instruction set: instead of this single line of instruction, we want to make it a bit more detailed. We also want to instruct the agent to cite its sources implicitly, by providing answers clearly based on search results. And for this basic search agent, we give it one tool: access to Google Search. The final thing is to import asyncio. And that&#x27;s our basic agent: built with Gemini 3 Pro, with access to Google Search.</td><td>cite its sources implicitly -&gt; даём агенту неявно ссылаться на источники</td><td>Теперь правим код. Первое: вместо Gemini 2.0 Flash ставим Gemini 3 Pro — вот такое имя модели. Второе: меняем набор инструкций — вместо одной строки сделаем чуть подробнее. Ещё добавим указание агенту неявно ссылаться на источники, отвечая чётко и на основе результатов поиска. Этому простому поисковому агенту даём один инструмент — доступ к Google Search. И последнее: импортируем asyncio. Вот и наш базовый агент: на Gemini 3 Pro и с доступом к Google Search.</td></tr>
-      <tr><td>[03:38]</td><td>Now, back in the terminal, we&#x27;re going to deploy our agent with adk web. You can now use this link to access your agent. We can now start interacting with our agent in ADK web. I&#x27;ve been meaning to take horseback riding lessons in my city but I just don&#x27;t know where to get started. So let me ask about that. We&#x27;re getting some detailed response from our agent about exactly where I can find these lessons. It has also listed the places and locations where I can get started, and categorized them by how serious or how basic they are.</td><td>interacting with our agent in ABK web -&gt; in ADK web</td><td>Возвращаемся в терминал и запускаем агента командой `adk web`. По ссылке теперь можно зайти к агенту и начать с ним общаться. Я давно хочу взять уроки верховой езды в своём городе и не понимаю, с чего начать. Спрошу об этом. Агент отвечает подробно: где именно искать занятия. Он также перечислил места и локации, с которых можно начать, и разбил их по уровню — насколько серьёзно и насколько по-начальному это занятие.</td></tr>
-      <tr><td>[04:26]</td><td>Let&#x27;s explore the model&#x27;s chain of thinking that produced this response. To do this, let&#x27;s open the events tab and click on this tab with the text — this is what is being returned by the model. If we go to the next event, we see something very interesting: the thought signature of Gemini. The thought signature in Gemini 3 Pro helps the model understand the context of the conversation. We also see the websites that Gemini 3 Pro actually searched: horsesport.com, thebesttoronto.com, Reddit, and many, many more.</td><td>horsesport.com, the besttoronto.com -&gt; horsesport.com, thebesttoronto.com</td><td>Посмотрим на цепочку рассуждений модели, которая дала этот ответ. Откроем вкладку events и кликнем на вкладку с текстом — это то, что возвращает модель. На следующем событии мы увидим кое-что очень интересное: thought signature от Gemini. Она помогает модели удерживать контекст разговора. Тут же видно сайты, которые Gemini 3 Pro действительно искал: horsesport.com, thebesttoronto.com, Reddit и ещё много других.</td></tr>
-      <tr><td>[05:15]</td><td>If we scroll further, we actually see the web search queries that Gemini 3 Pro makes and in what order. It starts with a generic search for horseback riding lessons Toronto, then digs deeper — horseback riding near downtown Toronto, followed by best horse riding schools Toronto. At that point it&#x27;s determined some of the names of the schools available in that area. So you see the searches actually get much more specific. Then it even looks up whether it&#x27;s accessible by public transit, which is very interesting. It also looks up whether these stables are actually open. So from just a single prompt — where can I learn horseback riding in Toronto — Gemini 3 was able to go through this chain of thought to arrive at this response, and I think that&#x27;s pretty cool. There are so many more amazing agents you can build with Gemini 3 Pro and ADK. If you&#x27;re interested, check out the links below. Happy building.</td><td>which as you know um have good performance but -&gt; (фрагмент не относится к этому дню)</td><td>Если прокрутить дальше, увидим сами поисковые запросы и их порядок. Сначала общий запрос про уроки верховой езды в Торонто, потом копает глубже — верховая езда рядом с даунтауном, затем лучшие школы верховой езды в Торонто. К этому моменту модель уже выяснила названия школ в этом районе. То есть запросы становятся всё конкретнее. Дальше она даже проверяет, можно ли добраться туда на общественном транспорте, — это очень интересно. И заодно смотрит, работают ли эти конюшни вообще. Итак, из одного промпта «где в Торонто научиться верховой езде» Gemini 3 прошла эту цепочку рассуждений и пришла к такому ответу — это, по-моему, очень круто. На Gemini 3 Pro и ADK можно собрать ещё множество замечательных агентов. Ссылки — под видео. Хорошей разработки.</td></tr>
-      </tbody>
-    </table>
-    <p class="note">Субтитры автоматические (auto, en-orig). Команды и названия сверены со страницей дня и документацией: uv, adk create, adk web, Google Search tool, thought signature.</p>
+  <h2 id="fixes">Где автосубтитры соврали и как это восстановлено</h2>
+  <table class="plain">
+    <thead>
+      <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>00:27</td><td>To start off, let&#x27;s create an empty project folder where our AI agent will live. I&#x27;ve done that, named it gemini-3-pro-ai-agent, and opened a terminal. Then we&#x27;re going to initialize our project folder with uv. uv is a Python package manager, and if you don&#x27;t have it installed, the instructions are in the description box below. Next we&#x27;ll add the two libraries we need for this project: Google ADK&#x27;s library and Google&#x27;s Gemini library.</td><td>UV is a Python package manager -&gt; uv is a Python package manager</td><td>Для начала создадим пустую папку проекта, в которой будет жить наш агент. Я это сделал, назвал папку `gemini-3-pro-ai-agent` и открыл терминал. Затем инициализируем проект через `uv`. Это менеджер пакетов для Python; если он у вас не установлен, инструкция — в описании под видео. Дальше добавим две библиотеки, которые нам нужны: библиотеку Google ADK и библиотеку Gemini от Google.</td></tr>
+      <tr><td>02:48</td><td>Now we want to make some changes to this code. First off, we want to use Gemini 3 Pro instead of Gemini 2.0 Flash — this is the model name for Gemini 3 Pro. Next, I want to change the instruction set: instead of this single line of instruction, we want to make it a bit more detailed. We also want to instruct the agent to cite its sources implicitly, by providing answers clearly based on search results. And for this basic search agent, we give it one tool: access to Google Search. The final thing is to import asyncio. And that&#x27;s our basic agent: built with Gemini 3 Pro, with access to Google Search.</td><td>cite its sources implicitly -&gt; даём агенту неявно ссылаться на источники</td><td>Теперь правим код. Первое: вместо Gemini 2.0 Flash ставим Gemini 3 Pro — вот такое имя модели. Второе: меняем набор инструкций — вместо одной строки сделаем чуть подробнее. Ещё добавим указание агенту неявно ссылаться на источники, отвечая чётко и на основе результатов поиска. Этому простому поисковому агенту даём один инструмент — доступ к Google Search. И последнее: импортируем asyncio. Вот и наш базовый агент: на Gemini 3 Pro и с доступом к Google Search.</td></tr>
+      <tr><td>03:38</td><td>Now, back in the terminal, we&#x27;re going to deploy our agent with adk web. You can now use this link to access your agent. We can now start interacting with our agent in ADK web. I&#x27;ve been meaning to take horseback riding lessons in my city but I just don&#x27;t know where to get started. So let me ask about that. We&#x27;re getting some detailed response from our agent about exactly where I can find these lessons. It has also listed the places and locations where I can get started, and categorized them by how serious or how basic they are.</td><td>interacting with our agent in ABK web -&gt; in ADK web</td><td>Возвращаемся в терминал и запускаем агента командой `adk web`. По ссылке теперь можно зайти к агенту и начать с ним общаться. Я давно хочу взять уроки верховой езды в своём городе и не понимаю, с чего начать. Спрошу об этом. Агент отвечает подробно: где именно искать занятия. Он также перечислил места и локации, с которых можно начать, и разбил их по уровню — насколько серьёзно и насколько по-начальному это занятие.</td></tr>
+      <tr><td>04:26</td><td>Let&#x27;s explore the model&#x27;s chain of thinking that produced this response. To do this, let&#x27;s open the events tab and click on this tab with the text — this is what is being returned by the model. If we go to the next event, we see something very interesting: the thought signature of Gemini. The thought signature in Gemini 3 Pro helps the model understand the context of the conversation. We also see the websites that Gemini 3 Pro actually searched: horsesport.com, thebesttoronto.com, Reddit, and many, many more.</td><td>horsesport.com, the besttoronto.com -&gt; horsesport.com, thebesttoronto.com</td><td>Посмотрим на цепочку рассуждений модели, которая дала этот ответ. Откроем вкладку events и кликнем на вкладку с текстом — это то, что возвращает модель. На следующем событии мы увидим кое-что очень интересное: thought signature от Gemini. Она помогает модели удерживать контекст разговора. Тут же видно сайты, которые Gemini 3 Pro действительно искал: horsesport.com, thebesttoronto.com, Reddit и ещё много других.</td></tr>
+      <tr><td>05:15</td><td>If we scroll further, we actually see the web search queries that Gemini 3 Pro makes and in what order. It starts with a generic search for horseback riding lessons Toronto, then digs deeper — horseback riding near downtown Toronto, followed by best horse riding schools Toronto. At that point it&#x27;s determined some of the names of the schools available in that area. So you see the searches actually get much more specific. Then it even looks up whether it&#x27;s accessible by public transit, which is very interesting. It also looks up whether these stables are actually open. So from just a single prompt — where can I learn horseback riding in Toronto — Gemini 3 was able to go through this chain of thought to arrive at this response, and I think that&#x27;s pretty cool. There are so many more amazing agents you can build with Gemini 3 Pro and ADK. If you&#x27;re interested, check out the links below. Happy building.</td><td>which as you know um have good performance but -&gt; (фрагмент не относится к этому дню)</td><td>Если прокрутить дальше, увидим сами поисковые запросы и их порядок. Сначала общий запрос про уроки верховой езды в Торонто, потом копает глубже — верховая езда рядом с даунтауном, затем лучшие школы верховой езды в Торонто. К этому моменту модель уже выяснила названия школ в этом районе. То есть запросы становятся всё конкретнее. Дальше она даже проверяет, можно ли добраться туда на общественном транспорте, — это очень интересно. И заодно смотрит, работают ли эти конюшни вообще. Итак, из одного промпта «где в Торонто научиться верховой езде» Gemini 3 прошла эту цепочку рассуждений и пришла к такому ответу — это, по-моему, очень круто. На Gemini 3 Pro и ADK можно собрать ещё множество замечательных агентов. Ссылки — под видео. Хорошей разработки.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Субтитры автоматические (auto, en-orig). Команды и названия сверены со страницей дня и документацией: uv, adk create, adk web, Google Search tool, thought signature.</p>
+  <div class="pager">
+  <a class="prev" href="../day01/s1-2025-12-day01-en-ru.html" rel="prev">← day01 &rarr;</a>
+  <a class="next" href="../day06/s1-2025-12-day06-en-ru.html" rel="next">day06 → &rarr;</a>
   </div>
-
 </div>
-<script>
-const el = id => document.getElementById(id);
-
-el('tgl-en').addEventListener('change', e =>
-  document.body.classList.toggle('hide-en', !e.target.checked));
-el('tgl-ru').addEventListener('change', e =>
-  document.body.classList.toggle('hide-ru', !e.target.checked));
-el('btn-print').addEventListener('click', () => window.print());
-el('btn-mark').addEventListener('click', () => {
-  const on = !document.body.classList.contains('show-fixes');
-  document.body.classList.toggle('show-fixes', on);
-  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
-});
-</script>
+<div class="page">
+<p class="note">Перевод с английского. Субтитры автоматические (YouTube auto), поэтому в приложении указано, где распознавание было исправлено. Исходный ролик: <a href="https://www.youtube.com/watch?v=9EGtawwvlNs">YouTube</a>.</p>
+</div>
+<script src="../../assets/app.js"></script>
 </body>
 </html>

@@ -4,152 +4,37 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Agent Security: Implementing SAIF Guardrails — EN / RU</title>
-<style>
-:root {
-  --en-bg: #f7f8fa;
-  --line: #dfe3e8;
-  --accent: #0b57d0;
-  --ts: #8a9099;
-  --muted: #5f6672;
-  --fix: #fff3cd;
-  --fix-line: #e0b100;
-}
-
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-
-body {
-  margin: 0;
-  padding: 32px 20px 72px;
-  background: #eef0f3;
-  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.45;
-  color: #1a1a1a;
-}
-
-.page { max-width: 1400px; margin: 0 auto; }
-
-h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
-.head .sub { color: var(--muted); font-size: 15px; }
-.head .sub a { color: var(--accent); }
-
-.legend {
-  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
-  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
-}
-.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
-.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
-
-.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
-
-button {
-  font: inherit; font-size: 14px; padding: 7px 14px;
-  border: 1px solid var(--line); border-radius: 6px;
-  background: #fff; color: #1a1a1a; cursor: pointer;
-}
-button:hover { border-color: #b9c0ca; background: #fafbfc; }
-
-.grid {
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden;
-}
-
-.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
-
-.head-row {
-  background: #2f3541; color: #fff;
-  font-size: 13px; letter-spacing: 0.04em;
-  text-transform: uppercase; font-weight: 600;
-  position: sticky; top: 0; z-index: 5;
-}
-.head-row > div { padding: 10px 18px; }
-.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
-
-.row > .ts {
-  padding: 14px 8px; font-size: 12px;
-  font-variant-numeric: tabular-nums;
-  color: var(--ts); text-align: right;
-  border-right: 1px solid var(--line); background: #fbfbfc;
-}
-.row > .en, .row > .ru {
-  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
-}
-.row > .en { background: var(--en-bg); }
-.row > .ru { border-right: 0; }
-
-.row.cont > .ts::after {
-  content: ""; display: block; width: 14px; height: 1px;
-  background: var(--line); margin: 8px 0 0 auto;
-}
-.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
-
-.row.fixed > .en { background: var(--fix); }
-.row.fixed .tag { display: none; }
-
-body.show-fixes .row.fixed .tag { display: block; }
-
-.tag {
-  display: inline-block; margin-top: 6px;
-  font-size: 11.5px; line-height: 1.35;
-  color: #6b5400; background: var(--fix);
-  border-left: 3px solid var(--fix-line);
-  padding: 3px 8px; border-radius: 0 4px 4px 0;
-}
-
-.app { margin-top: 26px; }
-.app h2 { font-size: 19px; margin: 0 0 10px; }
-
-table {
-  width: 100%; border-collapse: collapse;
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden; font-size: 15px;
-}
-th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
-th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
-tr:last-child td { border-bottom: 0; }
-td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
-.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
-
-body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
-body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
-body.hide-en .row, body.hide-en .head-row,
-body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
-
-@media (max-width: 900px) {
-  .head-row, .row { grid-template-columns: 56px 1fr; }
-  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
-  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
-}
-
-@media print {
-  body { background: #fff; padding: 0; }
-  .bar, .legend { display: none; }
-  .head-row { position: static; }
-  .grid, table { border-radius: 0; }
-}
-</style>
+<link rel="stylesheet" href="../../assets/style.css">
 </head>
 <body>
+<div class="top"><div class="inner">
+<a class="brand" href="../../index.html">Advent of Agents — перевод</a>
+<nav><a href="../../index.html#seasons">Сезоны</a>
+<a href="../../index.html#materials">Материалы</a>
+<a href="https://adventofagents.com/">Оригинал</a>
+</nav>
+<div class="spacer"></div>
+<a href="https://github.com/AlexanderKuzikov/AdventOfAgents">репозиторий</a>
+</div></div>
 <div class="page">
-
-  <div class="head">
-    <h1>Agent Security: Implementing SAIF Guardrails</h1>
-    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
-      Видео: <a href="https://www.youtube.com/watch?v=TA7lhezND7M">https://www.youtube.com/watch?v=TA7lhezND7M</a> · 13:11
-      · auto (YouTube en-orig)</div>
-  </div>
-
-  <div class="legend">
-    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
-    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
-  </div>
-
-  <div class="bar">
-    <button id="btn-mark">Показать исправления</button>
-    <button id="btn-print">Печать / PDF</button>
-  </div>
-
+<p class="crumbs"><a href="../../index.html">Все дни</a> &rsaquo; <a href="../../index.html#s3-2026-10">s3-2026-10</a> &rsaquo; day02</p>
+<h1>Agent Security: Implementing SAIF Guardrails</h1>
+<p class="lede">Двуязычная транскрипция: английский оригинал слева, русский перевод справа, абзацы стоят строго напротив друг друга.</p>
+<div class="stats">
+  <div class="stat"><div class="n">13:11</div><div class="k">длительность</div></div>
+  <div class="stat"><div class="n">29</div><div class="k">абзацев</div></div>
+  <div class="stat"><div class="n">11</div><div class="k">правок распознавания</div></div>
+</div>
+<div class="bar">
+  <label class="legend"><input type="checkbox" id="tgl-en" checked> оригинал</label>
+  <label class="legend"><input type="checkbox" id="tgl-ru" checked> перевод</label>
+</div>
+<div class="bar">
+  <button id="btn-mark">Показать исправления</button>
+  <button id="btn-print">Печать / PDF</button>
+  <a class="btn" href="s3-2026-10-day02-transcript-ru.docx">Скачать DOCX</a>
+  <a href="https://www.youtube.com/watch?v=TA7lhezND7M" target="_blank" rel="noopener">оригинальный ролик</a>
+</div>
   <div class="grid">
     <div class="head-row">
       <div>Time</div>
@@ -158,22 +43,22 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">00:02</div>
-      <div class="en">All right, welcome, everyone, to day two of season three of Advent of Agents. I&#x27;m Mika, and my colleague Anirudh Kannan and I are Cloud Security Architects at Google. We&#x27;re here to talk about agentic security and threat modeling with SAIF.<div class="tag">уточнено: Ma -&gt; Mika (Mika Devonshire); Honored -&gt; Anirudh Kannan; safe -&gt; SAIF</div></div>
+      <div class="en">All right, welcome, everyone, to day two of season three of Advent of Agents. I&#x27;m Mika, and my colleague Anirudh Kannan and I are Cloud Security Architects at Google. We&#x27;re here to talk about agentic security and threat modeling with SAIF.<div class="tagline">уточнено: Ma -&gt; Mika (Mika Devonshire); Honored -&gt; Anirudh Kannan; safe -&gt; SAIF</div></div>
       <div class="ru">Итак, всем привет — второй день третьего сезона Advent of Agents. Я Мика, а мой коллега Анирудх Каннан — мы облачные архитекторы по безопасности в Google. Сегодня говорим о безопасности агентов и моделировании угроз с помощью SAIF.</div>
     </div>
     <div class="row fixed">
       <div class="ts">00:28</div>
-      <div class="en">Thank you, Mika. You know, if I think about how much has changed in the past five years — for example, if I was trying to book a hotel five years ago, I&#x27;d have to go into this UI, look for dates, add how many people were traveling with me, whether I had any pets, and then sign in, because it doesn&#x27;t know that I&#x27;m a premium member of that hotel chain.<div class="tag">уточнено: Ma -&gt; Mika</div></div>
+      <div class="en">Thank you, Mika. You know, if I think about how much has changed in the past five years — for example, if I was trying to book a hotel five years ago, I&#x27;d have to go into this UI, look for dates, add how many people were traveling with me, whether I had any pets, and then sign in, because it doesn&#x27;t know that I&#x27;m a premium member of that hotel chain.<div class="tagline">уточнено: Ma -&gt; Mika</div></div>
       <div class="ru">Спасибо, Мика. Вот если подумать, сколько всего изменилось за последние пять лет. Например, пять лет назад, чтобы забронировать отель, я бы зашёл в этот UI, выбрал даты, указал, сколько человек едет со мной, есть ли у меня животные, и потом ещё залогинился — потому что сайт не знает, что я премиальный участник этой гостиничной сети.</div>
     </div>
     <div class="row fixed">
       <div class="ts">00:49</div>
-      <div class="en">It was a UI. It was very deterministic, traditional software that was interfacing with — and then maybe three years ago or so I would talk to a chatbot, and I would tell the chatbot, like: okay, I&#x27;m traveling on this day, I have this many people with me, and it would summarize everything I said and give me maybe a hyperlink that I would click, and then I would still have to go into the UI and do a bunch of the stuff that I used to do five years ago.<div class="tag">уточнено: interfacing with -&gt; (обрезанная фраза); pet -&gt; pets</div></div>
+      <div class="en">It was a UI. It was very deterministic, traditional software that was interfacing with — and then maybe three years ago or so I would talk to a chatbot, and I would tell the chatbot, like: okay, I&#x27;m traveling on this day, I have this many people with me, and it would summarize everything I said and give me maybe a hyperlink that I would click, and then I would still have to go into the UI and do a bunch of the stuff that I used to do five years ago.<div class="tagline">уточнено: interfacing with -&gt; (обрезанная фраза); pet -&gt; pets</div></div>
       <div class="ru">Это был UI. Очень детерминированный, традиционный софт с формами. А года три назад я уже переписывался с чат-ботом: говорил ему — вот я еду в такой-то день, меня столько-то человек, — и он суммировал всё сказанное и выдавал мне гиперссылку. Я по ней кликал — и всё равно потом заходил в UI и делал всё то же самое, что и пять лет назад.</div>
     </div>
     <div class="row fixed">
       <div class="ts">01:19</div>
-      <div class="en">But now I talk to an agent, right? I just say: I&#x27;m going on vacation to so-and-so, I want to stay these days, I have these people with me, use my saved profile, I&#x27;m a premium member. And the agent just does it. It just does all the things that I&#x27;m looking for.<div class="tag">уточнено: saved file -&gt; saved profile (сохранённый профиль)</div></div>
+      <div class="en">But now I talk to an agent, right? I just say: I&#x27;m going on vacation to so-and-so, I want to stay these days, I have these people with me, use my saved profile, I&#x27;m a premium member. And the agent just does it. It just does all the things that I&#x27;m looking for.<div class="tagline">уточнено: saved file -&gt; saved profile (сохранённый профиль)</div></div>
       <div class="ru">А теперь я говорю с агентом. Просто говорю: еду в отпуск туда-то, хочу остановиться в эти дни, со мной эти люди, возьми мой сохранённый профиль, я премиальный участник. И агент просто делает это — всё, что мне нужно, он делает сам.</div>
     </div>
     <div class="row">
@@ -188,7 +73,7 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">02:15</div>
-      <div class="en">So three years ago the Secure AI Framework came out from Google, which was a methodology to look at all of the components that make up an agentic system. That&#x27;s down from the data layer to the infrastructure layer, looking at how you protect the model and, most importantly, the application — which is really what we&#x27;re talking about today.<div class="tag">уточнено: safe -&gt; SAIF (Secure AI Framework)</div></div>
+      <div class="en">So three years ago the Secure AI Framework came out from Google, which was a methodology to look at all of the components that make up an agentic system. That&#x27;s down from the data layer to the infrastructure layer, looking at how you protect the model and, most importantly, the application — which is really what we&#x27;re talking about today.<div class="tagline">уточнено: safe -&gt; SAIF (Secure AI Framework)</div></div>
       <div class="ru">Три года назад Google выпустил Secure AI Framework — методологию, которая позволяет разобрать все компоненты агентной системы. От слоя данных до инфраструктурного слоя: как защитить модель и, что важнее, приложение — а именно об этом мы сегодня и говорим.</div>
     </div>
     <div class="row">
@@ -198,7 +83,7 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">02:56</div>
-      <div class="en">There&#x27;s the OWASP Top 10 for LLMs. There&#x27;s the OWASP Top 10 by ShiftStack, and there&#x27;s a number of others, including NIST AI RMF, which SAIF is in fact based on.<div class="tag">уточнено: OAS top 10 -&gt; OWASP Top 10; Phantom B approach by Showstack -&gt; OWASP Top 10 by ShiftStack</div></div>
+      <div class="en">There&#x27;s the OWASP Top 10 for LLMs. There&#x27;s the OWASP Top 10 by ShiftStack, and there&#x27;s a number of others, including NIST AI RMF, which SAIF is in fact based on.<div class="tagline">уточнено: OAS top 10 -&gt; OWASP Top 10; Phantom B approach by Showstack -&gt; OWASP Top 10 by ShiftStack</div></div>
       <div class="ru">Есть OWASP Top 10 for LLM. Есть OWASP Top 10 от ShiftStack. И есть другие, в том числе NIST AI RMF, на котором SAIF, вообще-то, построен.</div>
     </div>
     <div class="row">
@@ -248,7 +133,7 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">08:07</div>
-      <div class="en">So again, when you&#x27;re giving an agent authority to take action on behalf of a number of systems, you need to put it within bounds. Oh, that makes sense. And again, using something like RAG — so being able to ground it in enterprise data means this agent isn&#x27;t going to go suggesting a competitor&#x27;s hotel chain, for example, because of a better price. It&#x27;s going to stay within the bounds of those business-defined policies.<div class="tag">уточнено: rag -&gt; RAG</div></div>
+      <div class="en">So again, when you&#x27;re giving an agent authority to take action on behalf of a number of systems, you need to put it within bounds. Oh, that makes sense. And again, using something like RAG — so being able to ground it in enterprise data means this agent isn&#x27;t going to go suggesting a competitor&#x27;s hotel chain, for example, because of a better price. It&#x27;s going to stay within the bounds of those business-defined policies.<div class="tagline">уточнено: rag -&gt; RAG</div></div>
       <div class="ru">Снова: когда вы даёте агенту полномочия действовать от имени нескольких систем, его надо загнать в границы. Понятно. И опять же — используя что-то вроде RAG: если вы привязываете агента к корпоративным данным, он не начнёт вдруг предлагать гостиничную сеть конкурента, потому что у неё цена ниже. Он останется в рамках политик, заданных бизнесом.</div>
     </div>
     <div class="row">
@@ -263,7 +148,7 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">09:40</div>
-      <div class="en">We want to make sure that the RAI filters — Responsible AI filters that can apply in the model layer, which all frontier models are currently adopting — are in place, so that&#x27;s to protect against dangerous or harmful language. We also want to make sure that everything is sanitized on the way out, back to the end user.<div class="tag">уточнено: RAI filters -&gt; Responsible AI filters</div></div>
+      <div class="en">We want to make sure that the RAI filters — Responsible AI filters that can apply in the model layer, which all frontier models are currently adopting — are in place, so that&#x27;s to protect against dangerous or harmful language. We also want to make sure that everything is sanitized on the way out, back to the end user.<div class="tagline">уточнено: RAI filters -&gt; Responsible AI filters</div></div>
       <div class="ru">Нужно, чтобы были включены RAI-фильтры — фильтры ответственного ИИ на уровне модели, которые сейчас внедряют все фронтир-модели; они защищают от опасной или вредной лексики. И ещё — чтобы всё санировалось на выходе, по дороге к конечному пользователю.</div>
     </div>
     <div class="row">
@@ -273,12 +158,12 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">10:29</div>
-      <div class="en">So we just did a quick run-through and one example. If you want to read more, you can go to saif.google. These are some of the application-layer descriptions, and a lot of the Google tools you could consider layering into your approach. Should we go take a look at this in action? Let&#x27;s do it.<div class="tag">уточнено: safe.google -&gt; saif.google</div></div>
+      <div class="en">So we just did a quick run-through and one example. If you want to read more, you can go to saif.google. These are some of the application-layer descriptions, and a lot of the Google tools you could consider layering into your approach. Should we go take a look at this in action? Let&#x27;s do it.<div class="tagline">уточнено: safe.google -&gt; saif.google</div></div>
       <div class="ru">Мы быстро разобрали один пример. Если хотите почитать подробнее — заходите на saif.google. Это описания прикладного уровня и Google-инструменты, которые можно наложить на свой подход. Показать это в действии? Давайте.</div>
     </div>
     <div class="row fixed">
       <div class="ts">10:46</div>
-      <div class="en">Okay. So if we were to clone the Google SAIF data repository from GitHub, you would clone it somewhere like here. You can then run a simple scan to check your actual project — and this is running against a GCP project.<div class="tag">уточнено: state data repository -&gt; SAIF data repository</div></div>
+      <div class="en">Okay. So if we were to clone the Google SAIF data repository from GitHub, you would clone it somewhere like here. You can then run a simple scan to check your actual project — and this is running against a GCP project.<div class="tagline">уточнено: state data repository -&gt; SAIF data repository</div></div>
       <div class="ru">Итак, если склонировать с GitHub репозиторий Google SAIF Data, он окажется где-то здесь. Дальше можно запустить простое сканирование и проверить свой реальный проект. Сейчас оно прогоняется против GCP-проекта.</div>
     </div>
     <div class="row">
@@ -288,7 +173,7 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">11:41</div>
-      <div class="en">This is a secure manufacturing demo. This is all text-defined and able to be configured to any GCP project. The great thing is you&#x27;re also able to see this output in a nice HTML report. We will share the link for this, but if you were to fail one of these checks, you would also have a quick recommendation and remediation command to deploy these controls in your environment and protect your projects.<div class="tag">уточнено: secure manufacturing demo -&gt; secure manufacturing demo (демо защищённой конфигурации — формулировка неуверенная)</div></div>
+      <div class="en">This is a secure manufacturing demo. This is all text-defined and able to be configured to any GCP project. The great thing is you&#x27;re also able to see this output in a nice HTML report. We will share the link for this, but if you were to fail one of these checks, you would also have a quick recommendation and remediation command to deploy these controls in your environment and protect your projects.<div class="tagline">уточнено: secure manufacturing demo -&gt; secure manufacturing demo (демо защищённой конфигурации — формулировка неуверенная)</div></div>
       <div class="ru">Это демо защищённой сборки. Всё описано текстом и переносится на любой GCP-проект. Приятно, что результат ещё и показывается в удобном HTML-отчёте. Ссылку мы пришлём, но если какая-то проверка не пройдёт, там же будут рекомендация и команда, чтобы развернуть эти контроли у себя и закрыть проект.</div>
     </div>
     <div class="row">
@@ -303,43 +188,34 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
   </div>
 
-  <div class="app">
-    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
-    <table>
-      <thead>
-        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
-      </thead>
-      <tbody>
-      <tr><td>[00:02]</td><td>All right, welcome, everyone, to day two of season three of Advent of Agents. I&#x27;m Mika, and my colleague Anirudh Kannan and I are Cloud Security Architects at Google. We&#x27;re here to talk about agentic security and threat modeling with SAIF.</td><td>Ma -&gt; Mika (Mika Devonshire); Honored -&gt; Anirudh Kannan; safe -&gt; SAIF</td><td>Итак, всем привет — второй день третьего сезона Advent of Agents. Я Мика, а мой коллега Анирудх Каннан — мы облачные архитекторы по безопасности в Google. Сегодня говорим о безопасности агентов и моделировании угроз с помощью SAIF.</td></tr>
-      <tr><td>[00:28]</td><td>Thank you, Mika. You know, if I think about how much has changed in the past five years — for example, if I was trying to book a hotel five years ago, I&#x27;d have to go into this UI, look for dates, add how many people were traveling with me, whether I had any pets, and then sign in, because it doesn&#x27;t know that I&#x27;m a premium member of that hotel chain.</td><td>Ma -&gt; Mika</td><td>Спасибо, Мика. Вот если подумать, сколько всего изменилось за последние пять лет. Например, пять лет назад, чтобы забронировать отель, я бы зашёл в этот UI, выбрал даты, указал, сколько человек едет со мной, есть ли у меня животные, и потом ещё залогинился — потому что сайт не знает, что я премиальный участник этой гостиничной сети.</td></tr>
-      <tr><td>[00:49]</td><td>It was a UI. It was very deterministic, traditional software that was interfacing with — and then maybe three years ago or so I would talk to a chatbot, and I would tell the chatbot, like: okay, I&#x27;m traveling on this day, I have this many people with me, and it would summarize everything I said and give me maybe a hyperlink that I would click, and then I would still have to go into the UI and do a bunch of the stuff that I used to do five years ago.</td><td>interfacing with -&gt; (обрезанная фраза); pet -&gt; pets</td><td>Это был UI. Очень детерминированный, традиционный софт с формами. А года три назад я уже переписывался с чат-ботом: говорил ему — вот я еду в такой-то день, меня столько-то человек, — и он суммировал всё сказанное и выдавал мне гиперссылку. Я по ней кликал — и всё равно потом заходил в UI и делал всё то же самое, что и пять лет назад.</td></tr>
-      <tr><td>[01:19]</td><td>But now I talk to an agent, right? I just say: I&#x27;m going on vacation to so-and-so, I want to stay these days, I have these people with me, use my saved profile, I&#x27;m a premium member. And the agent just does it. It just does all the things that I&#x27;m looking for.</td><td>saved file -&gt; saved profile (сохранённый профиль)</td><td>А теперь я говорю с агентом. Просто говорю: еду в отпуск туда-то, хочу остановиться в эти дни, со мной эти люди, возьми мой сохранённый профиль, я премиальный участник. И агент просто делает это — всё, что мне нужно, он делает сам.</td></tr>
-      <tr><td>[02:15]</td><td>So three years ago the Secure AI Framework came out from Google, which was a methodology to look at all of the components that make up an agentic system. That&#x27;s down from the data layer to the infrastructure layer, looking at how you protect the model and, most importantly, the application — which is really what we&#x27;re talking about today.</td><td>safe -&gt; SAIF (Secure AI Framework)</td><td>Три года назад Google выпустил Secure AI Framework — методологию, которая позволяет разобрать все компоненты агентной системы. От слоя данных до инфраструктурного слоя: как защитить модель и, что важнее, приложение — а именно об этом мы сегодня и говорим.</td></tr>
-      <tr><td>[02:56]</td><td>There&#x27;s the OWASP Top 10 for LLMs. There&#x27;s the OWASP Top 10 by ShiftStack, and there&#x27;s a number of others, including NIST AI RMF, which SAIF is in fact based on.</td><td>OAS top 10 -&gt; OWASP Top 10; Phantom B approach by Showstack -&gt; OWASP Top 10 by ShiftStack</td><td>Есть OWASP Top 10 for LLM. Есть OWASP Top 10 от ShiftStack. И есть другие, в том числе NIST AI RMF, на котором SAIF, вообще-то, построен.</td></tr>
-      <tr><td>[08:07]</td><td>So again, when you&#x27;re giving an agent authority to take action on behalf of a number of systems, you need to put it within bounds. Oh, that makes sense. And again, using something like RAG — so being able to ground it in enterprise data means this agent isn&#x27;t going to go suggesting a competitor&#x27;s hotel chain, for example, because of a better price. It&#x27;s going to stay within the bounds of those business-defined policies.</td><td>rag -&gt; RAG</td><td>Снова: когда вы даёте агенту полномочия действовать от имени нескольких систем, его надо загнать в границы. Понятно. И опять же — используя что-то вроде RAG: если вы привязываете агента к корпоративным данным, он не начнёт вдруг предлагать гостиничную сеть конкурента, потому что у неё цена ниже. Он останется в рамках политик, заданных бизнесом.</td></tr>
-      <tr><td>[09:40]</td><td>We want to make sure that the RAI filters — Responsible AI filters that can apply in the model layer, which all frontier models are currently adopting — are in place, so that&#x27;s to protect against dangerous or harmful language. We also want to make sure that everything is sanitized on the way out, back to the end user.</td><td>RAI filters -&gt; Responsible AI filters</td><td>Нужно, чтобы были включены RAI-фильтры — фильтры ответственного ИИ на уровне модели, которые сейчас внедряют все фронтир-модели; они защищают от опасной или вредной лексики. И ещё — чтобы всё санировалось на выходе, по дороге к конечному пользователю.</td></tr>
-      <tr><td>[10:29]</td><td>So we just did a quick run-through and one example. If you want to read more, you can go to saif.google. These are some of the application-layer descriptions, and a lot of the Google tools you could consider layering into your approach. Should we go take a look at this in action? Let&#x27;s do it.</td><td>safe.google -&gt; saif.google</td><td>Мы быстро разобрали один пример. Если хотите почитать подробнее — заходите на saif.google. Это описания прикладного уровня и Google-инструменты, которые можно наложить на свой подход. Показать это в действии? Давайте.</td></tr>
-      <tr><td>[10:46]</td><td>Okay. So if we were to clone the Google SAIF data repository from GitHub, you would clone it somewhere like here. You can then run a simple scan to check your actual project — and this is running against a GCP project.</td><td>state data repository -&gt; SAIF data repository</td><td>Итак, если склонировать с GitHub репозиторий Google SAIF Data, он окажется где-то здесь. Дальше можно запустить простое сканирование и проверить свой реальный проект. Сейчас оно прогоняется против GCP-проекта.</td></tr>
-      <tr><td>[11:41]</td><td>This is a secure manufacturing demo. This is all text-defined and able to be configured to any GCP project. The great thing is you&#x27;re also able to see this output in a nice HTML report. We will share the link for this, but if you were to fail one of these checks, you would also have a quick recommendation and remediation command to deploy these controls in your environment and protect your projects.</td><td>secure manufacturing demo -&gt; secure manufacturing demo (демо защищённой конфигурации — формулировка неуверенная)</td><td>Это демо защищённой сборки. Всё описано текстом и переносится на любой GCP-проект. Приятно, что результат ещё и показывается в удобном HTML-отчёте. Ссылку мы пришлём, но если какая-то проверка не пройдёт, там же будут рекомендация и команда, чтобы развернуть эти контроли у себя и закрыть проект.</td></tr>
-      </tbody>
-    </table>
-    <p class="note">Субтитры YouTube автоматические (auto, en-orig). Перевод восстановлен по смыслу: имена докладчиков и продуктов восстановлены по странице дня, ключ fix помечает спорные места распознавания.</p>
+  <h2 id="fixes">Где автосубтитры соврали и как это восстановлено</h2>
+  <table class="plain">
+    <thead>
+      <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>00:02</td><td>All right, welcome, everyone, to day two of season three of Advent of Agents. I&#x27;m Mika, and my colleague Anirudh Kannan and I are Cloud Security Architects at Google. We&#x27;re here to talk about agentic security and threat modeling with SAIF.</td><td>Ma -&gt; Mika (Mika Devonshire); Honored -&gt; Anirudh Kannan; safe -&gt; SAIF</td><td>Итак, всем привет — второй день третьего сезона Advent of Agents. Я Мика, а мой коллега Анирудх Каннан — мы облачные архитекторы по безопасности в Google. Сегодня говорим о безопасности агентов и моделировании угроз с помощью SAIF.</td></tr>
+      <tr><td>00:28</td><td>Thank you, Mika. You know, if I think about how much has changed in the past five years — for example, if I was trying to book a hotel five years ago, I&#x27;d have to go into this UI, look for dates, add how many people were traveling with me, whether I had any pets, and then sign in, because it doesn&#x27;t know that I&#x27;m a premium member of that hotel chain.</td><td>Ma -&gt; Mika</td><td>Спасибо, Мика. Вот если подумать, сколько всего изменилось за последние пять лет. Например, пять лет назад, чтобы забронировать отель, я бы зашёл в этот UI, выбрал даты, указал, сколько человек едет со мной, есть ли у меня животные, и потом ещё залогинился — потому что сайт не знает, что я премиальный участник этой гостиничной сети.</td></tr>
+      <tr><td>00:49</td><td>It was a UI. It was very deterministic, traditional software that was interfacing with — and then maybe three years ago or so I would talk to a chatbot, and I would tell the chatbot, like: okay, I&#x27;m traveling on this day, I have this many people with me, and it would summarize everything I said and give me maybe a hyperlink that I would click, and then I would still have to go into the UI and do a bunch of the stuff that I used to do five years ago.</td><td>interfacing with -&gt; (обрезанная фраза); pet -&gt; pets</td><td>Это был UI. Очень детерминированный, традиционный софт с формами. А года три назад я уже переписывался с чат-ботом: говорил ему — вот я еду в такой-то день, меня столько-то человек, — и он суммировал всё сказанное и выдавал мне гиперссылку. Я по ней кликал — и всё равно потом заходил в UI и делал всё то же самое, что и пять лет назад.</td></tr>
+      <tr><td>01:19</td><td>But now I talk to an agent, right? I just say: I&#x27;m going on vacation to so-and-so, I want to stay these days, I have these people with me, use my saved profile, I&#x27;m a premium member. And the agent just does it. It just does all the things that I&#x27;m looking for.</td><td>saved file -&gt; saved profile (сохранённый профиль)</td><td>А теперь я говорю с агентом. Просто говорю: еду в отпуск туда-то, хочу остановиться в эти дни, со мной эти люди, возьми мой сохранённый профиль, я премиальный участник. И агент просто делает это — всё, что мне нужно, он делает сам.</td></tr>
+      <tr><td>02:15</td><td>So three years ago the Secure AI Framework came out from Google, which was a methodology to look at all of the components that make up an agentic system. That&#x27;s down from the data layer to the infrastructure layer, looking at how you protect the model and, most importantly, the application — which is really what we&#x27;re talking about today.</td><td>safe -&gt; SAIF (Secure AI Framework)</td><td>Три года назад Google выпустил Secure AI Framework — методологию, которая позволяет разобрать все компоненты агентной системы. От слоя данных до инфраструктурного слоя: как защитить модель и, что важнее, приложение — а именно об этом мы сегодня и говорим.</td></tr>
+      <tr><td>02:56</td><td>There&#x27;s the OWASP Top 10 for LLMs. There&#x27;s the OWASP Top 10 by ShiftStack, and there&#x27;s a number of others, including NIST AI RMF, which SAIF is in fact based on.</td><td>OAS top 10 -&gt; OWASP Top 10; Phantom B approach by Showstack -&gt; OWASP Top 10 by ShiftStack</td><td>Есть OWASP Top 10 for LLM. Есть OWASP Top 10 от ShiftStack. И есть другие, в том числе NIST AI RMF, на котором SAIF, вообще-то, построен.</td></tr>
+      <tr><td>08:07</td><td>So again, when you&#x27;re giving an agent authority to take action on behalf of a number of systems, you need to put it within bounds. Oh, that makes sense. And again, using something like RAG — so being able to ground it in enterprise data means this agent isn&#x27;t going to go suggesting a competitor&#x27;s hotel chain, for example, because of a better price. It&#x27;s going to stay within the bounds of those business-defined policies.</td><td>rag -&gt; RAG</td><td>Снова: когда вы даёте агенту полномочия действовать от имени нескольких систем, его надо загнать в границы. Понятно. И опять же — используя что-то вроде RAG: если вы привязываете агента к корпоративным данным, он не начнёт вдруг предлагать гостиничную сеть конкурента, потому что у неё цена ниже. Он останется в рамках политик, заданных бизнесом.</td></tr>
+      <tr><td>09:40</td><td>We want to make sure that the RAI filters — Responsible AI filters that can apply in the model layer, which all frontier models are currently adopting — are in place, so that&#x27;s to protect against dangerous or harmful language. We also want to make sure that everything is sanitized on the way out, back to the end user.</td><td>RAI filters -&gt; Responsible AI filters</td><td>Нужно, чтобы были включены RAI-фильтры — фильтры ответственного ИИ на уровне модели, которые сейчас внедряют все фронтир-модели; они защищают от опасной или вредной лексики. И ещё — чтобы всё санировалось на выходе, по дороге к конечному пользователю.</td></tr>
+      <tr><td>10:29</td><td>So we just did a quick run-through and one example. If you want to read more, you can go to saif.google. These are some of the application-layer descriptions, and a lot of the Google tools you could consider layering into your approach. Should we go take a look at this in action? Let&#x27;s do it.</td><td>safe.google -&gt; saif.google</td><td>Мы быстро разобрали один пример. Если хотите почитать подробнее — заходите на saif.google. Это описания прикладного уровня и Google-инструменты, которые можно наложить на свой подход. Показать это в действии? Давайте.</td></tr>
+      <tr><td>10:46</td><td>Okay. So if we were to clone the Google SAIF data repository from GitHub, you would clone it somewhere like here. You can then run a simple scan to check your actual project — and this is running against a GCP project.</td><td>state data repository -&gt; SAIF data repository</td><td>Итак, если склонировать с GitHub репозиторий Google SAIF Data, он окажется где-то здесь. Дальше можно запустить простое сканирование и проверить свой реальный проект. Сейчас оно прогоняется против GCP-проекта.</td></tr>
+      <tr><td>11:41</td><td>This is a secure manufacturing demo. This is all text-defined and able to be configured to any GCP project. The great thing is you&#x27;re also able to see this output in a nice HTML report. We will share the link for this, but if you were to fail one of these checks, you would also have a quick recommendation and remediation command to deploy these controls in your environment and protect your projects.</td><td>secure manufacturing demo -&gt; secure manufacturing demo (демо защищённой конфигурации — формулировка неуверенная)</td><td>Это демо защищённой сборки. Всё описано текстом и переносится на любой GCP-проект. Приятно, что результат ещё и показывается в удобном HTML-отчёте. Ссылку мы пришлём, но если какая-то проверка не пройдёт, там же будут рекомендация и команда, чтобы развернуть эти контроли у себя и закрыть проект.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Субтитры YouTube автоматические (auto, en-orig). Перевод восстановлен по смыслу: имена докладчиков и продуктов восстановлены по странице дня, ключ fix помечает спорные места распознавания.</p>
+  <div class="pager">
+  <a class="prev" href="../day01/s3-2026-10-day01-en-ru.html" rel="prev">← day01 &rarr;</a>
+  <a class="next" href="../day03/s3-2026-10-day03-en-ru.html" rel="next">day03 → &rarr;</a>
   </div>
-
 </div>
-<script>
-const el = id => document.getElementById(id);
-
-el('tgl-en').addEventListener('change', e =>
-  document.body.classList.toggle('hide-en', !e.target.checked));
-el('tgl-ru').addEventListener('change', e =>
-  document.body.classList.toggle('hide-ru', !e.target.checked));
-el('btn-print').addEventListener('click', () => window.print());
-el('btn-mark').addEventListener('click', () => {
-  const on = !document.body.classList.contains('show-fixes');
-  document.body.classList.toggle('show-fixes', on);
-  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
-});
-</script>
+<div class="page">
+<p class="note">Перевод с английского. Субтитры автоматические (YouTube auto), поэтому в приложении указано, где распознавание было исправлено. Исходный ролик: <a href="https://www.youtube.com/watch?v=TA7lhezND7M">YouTube</a>.</p>
+</div>
+<script src="../../assets/app.js"></script>
 </body>
 </html>

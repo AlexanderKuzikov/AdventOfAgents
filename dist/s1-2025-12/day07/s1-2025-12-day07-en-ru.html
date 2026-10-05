@@ -4,152 +4,37 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LLMs Can Execute Code: Autonomous Problem Solving — EN / RU</title>
-<style>
-:root {
-  --en-bg: #f7f8fa;
-  --line: #dfe3e8;
-  --accent: #0b57d0;
-  --ts: #8a9099;
-  --muted: #5f6672;
-  --fix: #fff3cd;
-  --fix-line: #e0b100;
-}
-
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-
-body {
-  margin: 0;
-  padding: 32px 20px 72px;
-  background: #eef0f3;
-  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.45;
-  color: #1a1a1a;
-}
-
-.page { max-width: 1400px; margin: 0 auto; }
-
-h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
-.head .sub { color: var(--muted); font-size: 15px; }
-.head .sub a { color: var(--accent); }
-
-.legend {
-  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
-  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
-}
-.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
-.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
-
-.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
-
-button {
-  font: inherit; font-size: 14px; padding: 7px 14px;
-  border: 1px solid var(--line); border-radius: 6px;
-  background: #fff; color: #1a1a1a; cursor: pointer;
-}
-button:hover { border-color: #b9c0ca; background: #fafbfc; }
-
-.grid {
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden;
-}
-
-.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
-
-.head-row {
-  background: #2f3541; color: #fff;
-  font-size: 13px; letter-spacing: 0.04em;
-  text-transform: uppercase; font-weight: 600;
-  position: sticky; top: 0; z-index: 5;
-}
-.head-row > div { padding: 10px 18px; }
-.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
-
-.row > .ts {
-  padding: 14px 8px; font-size: 12px;
-  font-variant-numeric: tabular-nums;
-  color: var(--ts); text-align: right;
-  border-right: 1px solid var(--line); background: #fbfbfc;
-}
-.row > .en, .row > .ru {
-  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
-}
-.row > .en { background: var(--en-bg); }
-.row > .ru { border-right: 0; }
-
-.row.cont > .ts::after {
-  content: ""; display: block; width: 14px; height: 1px;
-  background: var(--line); margin: 8px 0 0 auto;
-}
-.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
-
-.row.fixed > .en { background: var(--fix); }
-.row.fixed .tag { display: none; }
-
-body.show-fixes .row.fixed .tag { display: block; }
-
-.tag {
-  display: inline-block; margin-top: 6px;
-  font-size: 11.5px; line-height: 1.35;
-  color: #6b5400; background: var(--fix);
-  border-left: 3px solid var(--fix-line);
-  padding: 3px 8px; border-radius: 0 4px 4px 0;
-}
-
-.app { margin-top: 26px; }
-.app h2 { font-size: 19px; margin: 0 0 10px; }
-
-table {
-  width: 100%; border-collapse: collapse;
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden; font-size: 15px;
-}
-th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
-th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
-tr:last-child td { border-bottom: 0; }
-td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
-.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
-
-body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
-body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
-body.hide-en .row, body.hide-en .head-row,
-body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
-
-@media (max-width: 900px) {
-  .head-row, .row { grid-template-columns: 56px 1fr; }
-  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
-  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
-}
-
-@media print {
-  body { background: #fff; padding: 0; }
-  .bar, .legend { display: none; }
-  .head-row { position: static; }
-  .grid, table { border-radius: 0; }
-}
-</style>
+<link rel="stylesheet" href="../../assets/style.css">
 </head>
 <body>
+<div class="top"><div class="inner">
+<a class="brand" href="../../index.html">Advent of Agents — перевод</a>
+<nav><a href="../../index.html#seasons">Сезоны</a>
+<a href="../../index.html#materials">Материалы</a>
+<a href="https://adventofagents.com/">Оригинал</a>
+</nav>
+<div class="spacer"></div>
+<a href="https://github.com/AlexanderKuzikov/AdventOfAgents">репозиторий</a>
+</div></div>
 <div class="page">
-
-  <div class="head">
-    <h1>LLMs Can Execute Code: Autonomous Problem Solving</h1>
-    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
-      Видео: <a href="https://www.youtube.com/watch?v=u1txECrXj6k">https://www.youtube.com/watch?v=u1txECrXj6k</a> · 01:44
-      · auto (YouTube en-orig)</div>
-  </div>
-
-  <div class="legend">
-    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
-    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
-  </div>
-
-  <div class="bar">
-    <button id="btn-mark">Показать исправления</button>
-    <button id="btn-print">Печать / PDF</button>
-  </div>
-
+<p class="crumbs"><a href="../../index.html">Все дни</a> &rsaquo; <a href="../../index.html#s1-2025-12">s1-2025-12</a> &rsaquo; day07</p>
+<h1>LLMs Can Execute Code: Autonomous Problem Solving</h1>
+<p class="lede">Двуязычная транскрипция: английский оригинал слева, русский перевод справа, абзацы стоят строго напротив друг друга.</p>
+<div class="stats">
+  <div class="stat"><div class="n">01:44</div><div class="k">длительность</div></div>
+  <div class="stat"><div class="n">2</div><div class="k">абзацев</div></div>
+  <div class="stat"><div class="n">2</div><div class="k">правок распознавания</div></div>
+</div>
+<div class="bar">
+  <label class="legend"><input type="checkbox" id="tgl-en" checked> оригинал</label>
+  <label class="legend"><input type="checkbox" id="tgl-ru" checked> перевод</label>
+</div>
+<div class="bar">
+  <button id="btn-mark">Показать исправления</button>
+  <button id="btn-print">Печать / PDF</button>
+  <a class="btn" href="s1-2025-12-day07-transcript-ru.docx">Скачать DOCX</a>
+  <a href="https://www.youtube.com/watch?v=u1txECrXj6k" target="_blank" rel="noopener">оригинальный ролик</a>
+</div>
   <div class="grid">
     <div class="head-row">
       <div>Time</div>
@@ -158,44 +43,35 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">00:00</div>
-      <div class="en">All right, so we&#x27;ve got the sweet new ADK sample for you about a retail research agent. You can download this and get up and running in just a few commands, which I&#x27;ll copy and paste — you can see them get started. But let me flip over to the UI: you&#x27;re up and running with this beautiful AG-UI front end and multi-agent back end. In this use case we&#x27;re trying to look for opening a bakery in Dubai Marina. First the research agent kicks in, and it&#x27;s going to use Google Search to gather real-time demographic data and customer trends. Then the competitor agent queries the Google Maps Places API, looks for high-performing rivals, and identifies saturation risks in the neighbourhood.<div class="tag">уточнено: pushing th stuff -&gt; pushing this stuff</div></div>
+      <div class="en">All right, so we&#x27;ve got the sweet new ADK sample for you about a retail research agent. You can download this and get up and running in just a few commands, which I&#x27;ll copy and paste — you can see them get started. But let me flip over to the UI: you&#x27;re up and running with this beautiful AG-UI front end and multi-agent back end. In this use case we&#x27;re trying to look for opening a bakery in Dubai Marina. First the research agent kicks in, and it&#x27;s going to use Google Search to gather real-time demographic data and customer trends. Then the competitor agent queries the Google Maps Places API, looks for high-performing rivals, and identifies saturation risks in the neighbourhood.<div class="tagline">уточнено: pushing th stuff -&gt; pushing this stuff</div></div>
       <div class="ru">Готово — у нас новый сладкий ADK-семпл про агента исследования для ритейла. Его можно скачать и запустить всего парой команд — сейчас скопирую их, чтобы вы видели. А теперь переключусь на интерфейс: у вас работает красивый фронтенд на AG-UI и мультиагентный бэкенд. В этом сценарии мы ищем пекарню в Dubai Marina. Сначала включается агент исследования: он через Google Search собирает актуальные демографические данные и тренды спроса. Затем агент конкурентов обращается к Google Maps Places API, ищет сильных соперников и определяет риски перенасыщения в районе.</div>
     </div>
     <div class="row fixed">
       <div class="ts">00:26</div>
-      <div class="en">And here&#x27;s where it gets interesting. The gap-analysis agent writes and executes real Python code to mathematically calculate a viable gap score. This is not hallucinating, this is not just pushing the stuff through the context window — it&#x27;s writing the code. This execution happens in a secure sandbox running either on your laptop or in a cloud VM as a service like Agent Engine. We took all that information, ran a strategic analysis and generated an executive report. Here are an overview of some of the details within that report. The infographic is a bunch of HTML and artifacts that you could download and turn into other assets. You have a whole bunch of insights here, and you can customize this to other use cases using this as a template. And of course, we have an infographic thanks to Nano Banana. This whole thing is available on GitHub for you today: take it, download it, turn it into something cool, and show me what you built.<div class="tag">уточнено: pushing th stuff -&gt; pushing this stuff; the gap analysis agent -&gt; the gap-analysis agent</div></div>
+      <div class="en">And here&#x27;s where it gets interesting. The gap-analysis agent writes and executes real Python code to mathematically calculate a viable gap score. This is not hallucinating, this is not just pushing the stuff through the context window — it&#x27;s writing the code. This execution happens in a secure sandbox running either on your laptop or in a cloud VM as a service like Agent Engine. We took all that information, ran a strategic analysis and generated an executive report. Here are an overview of some of the details within that report. The infographic is a bunch of HTML and artifacts that you could download and turn into other assets. You have a whole bunch of insights here, and you can customize this to other use cases using this as a template. And of course, we have an infographic thanks to Nano Banana. This whole thing is available on GitHub for you today: take it, download it, turn it into something cool, and show me what you built.<div class="tagline">уточнено: pushing th stuff -&gt; pushing this stuff; the gap analysis agent -&gt; the gap-analysis agent</div></div>
       <div class="ru">И вот тут становится интересно. Агент gap-analysis пишет и выполняет настоящий код на Python, чтобы математически посчитать оценку ниши. Это не галлюцинация, это не просто проталкивание текста через контекстное окно — он пишет код. Выполнение происходит в защищённой песочнице: либо на вашем ноутбуке, либо в облачной VM как сервис, например в Agent Engine. Мы собрали всю информацию, провели стратегический анализ и сгенерировали executive-отчёт. Вот обзор части деталей этого отчёта. Инфографика — это HTML и другие артефакты, которые можно скачать и превратить в что-то другое. Здесь целая россыпь выводов, а сам отчёт можно переиспользовать как шаблон для других задач. Ну и, конечно, инфографика — спасибо Nano Banana. Всё это уже сегодня доступно на GitHub: забирайте, скачивайте, превращайте во что-нибудь интересное и показывайте, что у вас получилось.</div>
     </div>
   </div>
 
-  <div class="app">
-    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
-    <table>
-      <thead>
-        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
-      </thead>
-      <tbody>
-      <tr><td>[00:00]</td><td>All right, so we&#x27;ve got the sweet new ADK sample for you about a retail research agent. You can download this and get up and running in just a few commands, which I&#x27;ll copy and paste — you can see them get started. But let me flip over to the UI: you&#x27;re up and running with this beautiful AG-UI front end and multi-agent back end. In this use case we&#x27;re trying to look for opening a bakery in Dubai Marina. First the research agent kicks in, and it&#x27;s going to use Google Search to gather real-time demographic data and customer trends. Then the competitor agent queries the Google Maps Places API, looks for high-performing rivals, and identifies saturation risks in the neighbourhood.</td><td>pushing th stuff -&gt; pushing this stuff</td><td>Готово — у нас новый сладкий ADK-семпл про агента исследования для ритейла. Его можно скачать и запустить всего парой команд — сейчас скопирую их, чтобы вы видели. А теперь переключусь на интерфейс: у вас работает красивый фронтенд на AG-UI и мультиагентный бэкенд. В этом сценарии мы ищем пекарню в Dubai Marina. Сначала включается агент исследования: он через Google Search собирает актуальные демографические данные и тренды спроса. Затем агент конкурентов обращается к Google Maps Places API, ищет сильных соперников и определяет риски перенасыщения в районе.</td></tr>
-      <tr><td>[00:26]</td><td>And here&#x27;s where it gets interesting. The gap-analysis agent writes and executes real Python code to mathematically calculate a viable gap score. This is not hallucinating, this is not just pushing the stuff through the context window — it&#x27;s writing the code. This execution happens in a secure sandbox running either on your laptop or in a cloud VM as a service like Agent Engine. We took all that information, ran a strategic analysis and generated an executive report. Here are an overview of some of the details within that report. The infographic is a bunch of HTML and artifacts that you could download and turn into other assets. You have a whole bunch of insights here, and you can customize this to other use cases using this as a template. And of course, we have an infographic thanks to Nano Banana. This whole thing is available on GitHub for you today: take it, download it, turn it into something cool, and show me what you built.</td><td>pushing th stuff -&gt; pushing this stuff; the gap analysis agent -&gt; the gap-analysis agent</td><td>И вот тут становится интересно. Агент gap-analysis пишет и выполняет настоящий код на Python, чтобы математически посчитать оценку ниши. Это не галлюцинация, это не просто проталкивание текста через контекстное окно — он пишет код. Выполнение происходит в защищённой песочнице: либо на вашем ноутбуке, либо в облачной VM как сервис, например в Agent Engine. Мы собрали всю информацию, провели стратегический анализ и сгенерировали executive-отчёт. Вот обзор части деталей этого отчёта. Инфографика — это HTML и другие артефакты, которые можно скачать и превратить в что-то другое. Здесь целая россыпь выводов, а сам отчёт можно переиспользовать как шаблон для других задач. Ну и, конечно, инфографика — спасибо Nano Banana. Всё это уже сегодня доступно на GitHub: забирайте, скачивайте, превращайте во что-нибудь интересное и показывайте, что у вас получилось.</td></tr>
-      </tbody>
-    </table>
-    <p class="note">Субтитры автоматические (auto, en-orig). Названия приведены по странице дня и репозиторию google/mcp (пример launchmybakery): AG-UI, Agent Engine, Nano Banana, Google Maps Places API.</p>
+  <h2 id="fixes">Где автосубтитры соврали и как это восстановлено</h2>
+  <table class="plain">
+    <thead>
+      <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>00:00</td><td>All right, so we&#x27;ve got the sweet new ADK sample for you about a retail research agent. You can download this and get up and running in just a few commands, which I&#x27;ll copy and paste — you can see them get started. But let me flip over to the UI: you&#x27;re up and running with this beautiful AG-UI front end and multi-agent back end. In this use case we&#x27;re trying to look for opening a bakery in Dubai Marina. First the research agent kicks in, and it&#x27;s going to use Google Search to gather real-time demographic data and customer trends. Then the competitor agent queries the Google Maps Places API, looks for high-performing rivals, and identifies saturation risks in the neighbourhood.</td><td>pushing th stuff -&gt; pushing this stuff</td><td>Готово — у нас новый сладкий ADK-семпл про агента исследования для ритейла. Его можно скачать и запустить всего парой команд — сейчас скопирую их, чтобы вы видели. А теперь переключусь на интерфейс: у вас работает красивый фронтенд на AG-UI и мультиагентный бэкенд. В этом сценарии мы ищем пекарню в Dubai Marina. Сначала включается агент исследования: он через Google Search собирает актуальные демографические данные и тренды спроса. Затем агент конкурентов обращается к Google Maps Places API, ищет сильных соперников и определяет риски перенасыщения в районе.</td></tr>
+      <tr><td>00:26</td><td>And here&#x27;s where it gets interesting. The gap-analysis agent writes and executes real Python code to mathematically calculate a viable gap score. This is not hallucinating, this is not just pushing the stuff through the context window — it&#x27;s writing the code. This execution happens in a secure sandbox running either on your laptop or in a cloud VM as a service like Agent Engine. We took all that information, ran a strategic analysis and generated an executive report. Here are an overview of some of the details within that report. The infographic is a bunch of HTML and artifacts that you could download and turn into other assets. You have a whole bunch of insights here, and you can customize this to other use cases using this as a template. And of course, we have an infographic thanks to Nano Banana. This whole thing is available on GitHub for you today: take it, download it, turn it into something cool, and show me what you built.</td><td>pushing th stuff -&gt; pushing this stuff; the gap analysis agent -&gt; the gap-analysis agent</td><td>И вот тут становится интересно. Агент gap-analysis пишет и выполняет настоящий код на Python, чтобы математически посчитать оценку ниши. Это не галлюцинация, это не просто проталкивание текста через контекстное окно — он пишет код. Выполнение происходит в защищённой песочнице: либо на вашем ноутбуке, либо в облачной VM как сервис, например в Agent Engine. Мы собрали всю информацию, провели стратегический анализ и сгенерировали executive-отчёт. Вот обзор части деталей этого отчёта. Инфографика — это HTML и другие артефакты, которые можно скачать и превратить в что-то другое. Здесь целая россыпь выводов, а сам отчёт можно переиспользовать как шаблон для других задач. Ну и, конечно, инфографика — спасибо Nano Banana. Всё это уже сегодня доступно на GitHub: забирайте, скачивайте, превращайте во что-нибудь интересное и показывайте, что у вас получилось.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Субтитры автоматические (auto, en-orig). Названия приведены по странице дня и репозиторию google/mcp (пример launchmybakery): AG-UI, Agent Engine, Nano Banana, Google Maps Places API.</p>
+  <div class="pager">
+  <a class="prev" href="../day06/s1-2025-12-day06-en-ru.html" rel="prev">← day06 &rarr;</a>
+  <a class="next" href="../day08/s1-2025-12-day08-en-ru.html" rel="next">day08 → &rarr;</a>
   </div>
-
 </div>
-<script>
-const el = id => document.getElementById(id);
-
-el('tgl-en').addEventListener('change', e =>
-  document.body.classList.toggle('hide-en', !e.target.checked));
-el('tgl-ru').addEventListener('change', e =>
-  document.body.classList.toggle('hide-ru', !e.target.checked));
-el('btn-print').addEventListener('click', () => window.print());
-el('btn-mark').addEventListener('click', () => {
-  const on = !document.body.classList.contains('show-fixes');
-  document.body.classList.toggle('show-fixes', on);
-  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
-});
-</script>
+<div class="page">
+<p class="note">Перевод с английского. Субтитры автоматические (YouTube auto), поэтому в приложении указано, где распознавание было исправлено. Исходный ролик: <a href="https://www.youtube.com/watch?v=u1txECrXj6k">YouTube</a>.</p>
+</div>
+<script src="../../assets/app.js"></script>
 </body>
 </html>

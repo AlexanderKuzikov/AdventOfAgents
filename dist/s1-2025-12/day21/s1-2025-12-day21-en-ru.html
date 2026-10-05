@@ -4,152 +4,37 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kaggle Capstone Winners Highlight — EN / RU</title>
-<style>
-:root {
-  --en-bg: #f7f8fa;
-  --line: #dfe3e8;
-  --accent: #0b57d0;
-  --ts: #8a9099;
-  --muted: #5f6672;
-  --fix: #fff3cd;
-  --fix-line: #e0b100;
-}
-
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-
-body {
-  margin: 0;
-  padding: 32px 20px 72px;
-  background: #eef0f3;
-  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.45;
-  color: #1a1a1a;
-}
-
-.page { max-width: 1400px; margin: 0 auto; }
-
-h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
-.head .sub { color: var(--muted); font-size: 15px; }
-.head .sub a { color: var(--accent); }
-
-.legend {
-  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
-  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
-}
-.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
-.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
-
-.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
-
-button {
-  font: inherit; font-size: 14px; padding: 7px 14px;
-  border: 1px solid var(--line); border-radius: 6px;
-  background: #fff; color: #1a1a1a; cursor: pointer;
-}
-button:hover { border-color: #b9c0ca; background: #fafbfc; }
-
-.grid {
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden;
-}
-
-.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
-
-.head-row {
-  background: #2f3541; color: #fff;
-  font-size: 13px; letter-spacing: 0.04em;
-  text-transform: uppercase; font-weight: 600;
-  position: sticky; top: 0; z-index: 5;
-}
-.head-row > div { padding: 10px 18px; }
-.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
-
-.row > .ts {
-  padding: 14px 8px; font-size: 12px;
-  font-variant-numeric: tabular-nums;
-  color: var(--ts); text-align: right;
-  border-right: 1px solid var(--line); background: #fbfbfc;
-}
-.row > .en, .row > .ru {
-  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
-}
-.row > .en { background: var(--en-bg); }
-.row > .ru { border-right: 0; }
-
-.row.cont > .ts::after {
-  content: ""; display: block; width: 14px; height: 1px;
-  background: var(--line); margin: 8px 0 0 auto;
-}
-.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
-
-.row.fixed > .en { background: var(--fix); }
-.row.fixed .tag { display: none; }
-
-body.show-fixes .row.fixed .tag { display: block; }
-
-.tag {
-  display: inline-block; margin-top: 6px;
-  font-size: 11.5px; line-height: 1.35;
-  color: #6b5400; background: var(--fix);
-  border-left: 3px solid var(--fix-line);
-  padding: 3px 8px; border-radius: 0 4px 4px 0;
-}
-
-.app { margin-top: 26px; }
-.app h2 { font-size: 19px; margin: 0 0 10px; }
-
-table {
-  width: 100%; border-collapse: collapse;
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden; font-size: 15px;
-}
-th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
-th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
-tr:last-child td { border-bottom: 0; }
-td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
-.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
-
-body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
-body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
-body.hide-en .row, body.hide-en .head-row,
-body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
-
-@media (max-width: 900px) {
-  .head-row, .row { grid-template-columns: 56px 1fr; }
-  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
-  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
-}
-
-@media print {
-  body { background: #fff; padding: 0; }
-  .bar, .legend { display: none; }
-  .head-row { position: static; }
-  .grid, table { border-radius: 0; }
-}
-</style>
+<link rel="stylesheet" href="../../assets/style.css">
 </head>
 <body>
+<div class="top"><div class="inner">
+<a class="brand" href="../../index.html">Advent of Agents — перевод</a>
+<nav><a href="../../index.html#seasons">Сезоны</a>
+<a href="../../index.html#materials">Материалы</a>
+<a href="https://adventofagents.com/">Оригинал</a>
+</nav>
+<div class="spacer"></div>
+<a href="https://github.com/AlexanderKuzikov/AdventOfAgents">репозиторий</a>
+</div></div>
 <div class="page">
-
-  <div class="head">
-    <h1>Kaggle Capstone Winners Highlight</h1>
-    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
-      Видео: <a href="https://www.youtube.com/watch?v=FrfaAwq0YNg">https://www.youtube.com/watch?v=FrfaAwq0YNg</a> · 04:32
-      · auto (YouTube en-orig)</div>
-  </div>
-
-  <div class="legend">
-    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
-    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
-  </div>
-
-  <div class="bar">
-    <button id="btn-mark">Показать исправления</button>
-    <button id="btn-print">Печать / PDF</button>
-  </div>
-
+<p class="crumbs"><a href="../../index.html">Все дни</a> &rsaquo; <a href="../../index.html#s1-2025-12">s1-2025-12</a> &rsaquo; day21</p>
+<h1>Kaggle Capstone Winners Highlight</h1>
+<p class="lede">Двуязычная транскрипция: английский оригинал слева, русский перевод справа, абзацы стоят строго напротив друг друга.</p>
+<div class="stats">
+  <div class="stat"><div class="n">04:32</div><div class="k">длительность</div></div>
+  <div class="stat"><div class="n">5</div><div class="k">абзацев</div></div>
+  <div class="stat"><div class="n">5</div><div class="k">правок распознавания</div></div>
+</div>
+<div class="bar">
+  <label class="legend"><input type="checkbox" id="tgl-en" checked> оригинал</label>
+  <label class="legend"><input type="checkbox" id="tgl-ru" checked> перевод</label>
+</div>
+<div class="bar">
+  <button id="btn-mark">Показать исправления</button>
+  <button id="btn-print">Печать / PDF</button>
+  <a class="btn" href="s1-2025-12-day21-transcript-ru.docx">Скачать DOCX</a>
+  <a href="https://www.youtube.com/watch?v=FrfaAwq0YNg" target="_blank" rel="noopener">оригинальный ролик</a>
+</div>
   <div class="grid">
     <div class="head-row">
       <div>Time</div>
@@ -158,62 +43,53 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">00:00</div>
-      <div class="en">Everyone, today we&#x27;re celebrating the results of the AI agents intensive course, a massive collaboration between Google and Kaggle. Over five days in November we watched the next wave of AI builders move from theory to production. The scale was incredible: nearly 27,000 entries and over 11,000 teams competed across four distinct tracks. This wasn&#x27;t just about prompts. It required agentic mastery — multi-agent systems, custom tools and memory — to build production-ready solutions.<div class="tag">уточнено: Nearly 27,000 entrance -&gt; nearly 27,000 entries; aic AI builders -&gt; AI builders; multi- aent systems -&gt; multi-agent systems</div></div>
+      <div class="en">Everyone, today we&#x27;re celebrating the results of the AI agents intensive course, a massive collaboration between Google and Kaggle. Over five days in November we watched the next wave of AI builders move from theory to production. The scale was incredible: nearly 27,000 entries and over 11,000 teams competed across four distinct tracks. This wasn&#x27;t just about prompts. It required agentic mastery — multi-agent systems, custom tools and memory — to build production-ready solutions.<div class="tagline">уточнено: Nearly 27,000 entrance -&gt; nearly 27,000 entries; aic AI builders -&gt; AI builders; multi- aent systems -&gt; multi-agent systems</div></div>
       <div class="ru">Всем привет. Сегодня мы подводим итоги интенсива по ИИ-агентам — масштабного сотрудничества Google и Kaggle. За пять дней в ноябре мы увидели, как новая волна разработчиков ИИ переходит от теории к продакшену. Масштаб впечатляет: почти 27 000 заявок и более 11 000 команд в четырёх треках. Это было не про промпты. Требовалось владение агентными подходами — мультиагентные системы, свои инструменты и память, — чтобы строить готовые к продакшену решения.</div>
     </div>
     <div class="row fixed">
       <div class="ts">00:44</div>
-      <div class="en">Our first track, Concierge agents, focused on enhancing everyday productivity. In first place we have NewsPulse AI Agent, which addresses information noise for executives by mimicking a human research analyst. A dedicated verification agent acted as a quality gate, creating a self-correction loop to ensure every claim is citation-backed and hallucination-free. In second place we have the FIL content agent system: it compresses a two-hour workflow into a 60-second conversation, going from one sentence to a published hiking guide. In third place we have AishIngAnalyzer. It uses a critique agent to validate cosmetic ingredient safety, forcing reruns if the analysis isn&#x27;t up to par.<div class="tag">уточнено: concarch agents -&gt; Concierge agents; news polls AI agent -&gt; NewsPulse AI Agent; FIL content agent system; Asing Analyzer -&gt; AishIngAnalyzer</div></div>
+      <div class="en">Our first track, Concierge agents, focused on enhancing everyday productivity. In first place we have NewsPulse AI Agent, which addresses information noise for executives by mimicking a human research analyst. A dedicated verification agent acted as a quality gate, creating a self-correction loop to ensure every claim is citation-backed and hallucination-free. In second place we have the FIL content agent system: it compresses a two-hour workflow into a 60-second conversation, going from one sentence to a published hiking guide. In third place we have AishIngAnalyzer. It uses a critique agent to validate cosmetic ingredient safety, forcing reruns if the analysis isn&#x27;t up to par.<div class="tagline">уточнено: concarch agents -&gt; Concierge agents; news polls AI agent -&gt; NewsPulse AI Agent; FIL content agent system; Asing Analyzer -&gt; AishIngAnalyzer</div></div>
       <div class="ru">Первый трек, Concierge agents, был про повышение ежедневной продуктивности. Первое место — NewsPulse AI Agent: он борется с информационным шумом для руководителей, имитируя human-аналитика. Выделенный агент-верификатор работал как контрольные ворота качества, замыкая контур самокоррекции, чтобы каждое утверждение было подкреплено ссылкой и без галлюцинаций. Второе место — система FIL content agent: она сжимает двухчасовой рабочий процесс в 60-секундный разговор, превращая одно предложение в опубликованный гид по походам. Третье место — AishIngAnalyzer: он использует агента-критика для проверки безопасности косметических ингредиентов и принудительно перезапускает анализ, если результат не на уровне.</div>
     </div>
     <div class="row fixed">
       <div class="ts">01:32</div>
-      <div class="en">In the Agents for Good track we saw AI tackling global challenges. In first place, the carbon footprint optimization engine. The problem: 70% of corporate emissions are hidden in complex supply chains. The solution is a multi-agent system featuring a deterministic calculation agent for math accuracy and a policy agent that enforces a human-in-the-loop safety gate. It reduced human review time by 97%. In second place, Carbon Cow AI, which makes complex GHG calculations accessible through natural-language routing. Parallel Scholar won third place: it automated academic research using specialized agents and a persistent JSON knowledge base for long-term memory.<div class="tag">уточнено: GHD calculations -&gt; GHG calculations; a multi- aent system -&gt; a multi-agent system</div></div>
+      <div class="en">In the Agents for Good track we saw AI tackling global challenges. In first place, the carbon footprint optimization engine. The problem: 70% of corporate emissions are hidden in complex supply chains. The solution is a multi-agent system featuring a deterministic calculation agent for math accuracy and a policy agent that enforces a human-in-the-loop safety gate. It reduced human review time by 97%. In second place, Carbon Cow AI, which makes complex GHG calculations accessible through natural-language routing. Parallel Scholar won third place: it automated academic research using specialized agents and a persistent JSON knowledge base for long-term memory.<div class="tagline">уточнено: GHD calculations -&gt; GHG calculations; a multi- aent system -&gt; a multi-agent system</div></div>
       <div class="ru">В треке Agents for Good ИИ брался на глобальные вызовы. Первое место — движок оптимизации углеродного следа. Проблема: 70% корпоративных выбросов скрыты в сложных цепочках поставок. Решение — мультиагентная система с детерминированным агентом-калькулятором для точности математики и агентом политик, который обеспечивает шлюз безопасности с участием человека. Время ручной проверки сократилось на 97%. Второе место — Carbon Cow AI, которая делает сложные расчёты парниковых газов доступными через маршрутизацию на естественном языке. Третье место — Parallel Scholar: автоматизация академических исследований с помощью специализированных агентов и постоянной базы знаний в JSON для долговременной памяти.</div>
     </div>
     <div class="row fixed">
       <div class="ts">02:20</div>
-      <div class="en">The Enterprise track focused on resilience. In first place, the chaos playbook engine: an agent-ops laboratory that injects chaos into systems to test them. Instead of simple retries, it uses RAG to pull proven recovery strategies from a playbook. This improved success rates from 37% to 97%. In second place, Kodama, which uses the A2A protocol to simulate a large enterprise software team. In third place, Vegan Flow, featuring an autonomous procurement agent that actually negotiates prices with external vendor agents. Finally, our Freestyle track pushed the boundaries of what&#x27;s possible. In first place, Delalis: a self-expanding system. When it hits a problem it can solve, it designs, implements and tests its own new Python tools. It is an agent that builds itself.<div class="tag">уточнено: it used it uses rack -&gt; it uses RAG; Kodorama -&gt; Kodama</div></div>
+      <div class="en">The Enterprise track focused on resilience. In first place, the chaos playbook engine: an agent-ops laboratory that injects chaos into systems to test them. Instead of simple retries, it uses RAG to pull proven recovery strategies from a playbook. This improved success rates from 37% to 97%. In second place, Kodama, which uses the A2A protocol to simulate a large enterprise software team. In third place, Vegan Flow, featuring an autonomous procurement agent that actually negotiates prices with external vendor agents. Finally, our Freestyle track pushed the boundaries of what&#x27;s possible. In first place, Delalis: a self-expanding system. When it hits a problem it can solve, it designs, implements and tests its own new Python tools. It is an agent that builds itself.<div class="tagline">уточнено: it used it uses rack -&gt; it uses RAG; Kodorama -&gt; Kodama</div></div>
       <div class="ru">Трек Enterprise был про устойчивость. Первое место — chaos playbook engine, лаборатория агентной эксплуатации, которая внедряет хаос в системы и проверяет их. Вместо простых повторов она использует RAG, чтобы доставать из плейбука проверенные стратегии восстановления. Это подняло долю успешных запусков с 37% до 97%. Второе место — Kodama, которая через протокол A2A имитирует большую команду разработчиков enterprise-софта. Третье место — Vegan Flow с автономным агентом закупок, который реально торгуется о ценах с агентами внешних поставщиков. И наконец, трек Freestyle расширял границы возможного. Первое место — Delalis, саморасширяющаяся система: столкнувшись с задачей, которую может решить, она сама проектирует, реализует и тестирует новые инструменты на Python. Это агент, который строит себя сам.</div>
     </div>
     <div class="row fixed">
       <div class="ts">03:25</div>
-      <div class="en">In second place, AI stock prediction using six specialized micro-agents for parallel analysis in under ten seconds. In third place, Storyland AI, which transforms books into travel itineraries with AI, with a parallel discovery phase. Looking across all winners, we see four clear patterns for production AI: hybrid architectures mixing LLMs with deterministic code, self-correction loops, A2A protocols for microservices, and finally autonomous coordination. All the repositories with code and write-ups, as well as the YouTube videos, can be found in the links below. Thank you for our amazing community of 26,955 participants. You are building the future of agentic AI. Winners, look for your Kaggle swag emails by the end of December. Let&#x27;s keep building together. Thank you.<div class="tag">уточнено: six specialized microser agents -&gt; six specialized micro-agents</div></div>
+      <div class="en">In second place, AI stock prediction using six specialized micro-agents for parallel analysis in under ten seconds. In third place, Storyland AI, which transforms books into travel itineraries with AI, with a parallel discovery phase. Looking across all winners, we see four clear patterns for production AI: hybrid architectures mixing LLMs with deterministic code, self-correction loops, A2A protocols for microservices, and finally autonomous coordination. All the repositories with code and write-ups, as well as the YouTube videos, can be found in the links below. Thank you for our amazing community of 26,955 participants. You are building the future of agentic AI. Winners, look for your Kaggle swag emails by the end of December. Let&#x27;s keep building together. Thank you.<div class="tagline">уточнено: six specialized microser agents -&gt; six specialized micro-agents</div></div>
       <div class="ru">Второе место — предсказание цен акций на ИИ с шестью специализированными микро-агентами, которые параллельно анализируют данные меньше чем за десять секунд. Третье место — Storyland AI: превращает книги в туристические маршруты средствами ИИ, с параллельной фазой исследования. Если обобщить всех победителей, видны четыре чётких паттерна продакшен-ИИ: гибридные архитектуры, смешивающие LLM с детерминированным кодом; контуры самокоррекции; протоколы A2A для микросервисов; и, наконец, автономная координация. Все репозитории с кодом и разбором, а также видео на YouTube — по ссылкам ниже. Спасибо нашему замечательному сообществу из 26 955 участников. Вы строите будущее агентного ИИ. Победители, письма с призами от Kaggle придут до конца декабря. Продолжаем строить вместе. Спасибо.</div>
     </div>
   </div>
 
-  <div class="app">
-    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
-    <table>
-      <thead>
-        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
-      </thead>
-      <tbody>
-      <tr><td>[00:00]</td><td>Everyone, today we&#x27;re celebrating the results of the AI agents intensive course, a massive collaboration between Google and Kaggle. Over five days in November we watched the next wave of AI builders move from theory to production. The scale was incredible: nearly 27,000 entries and over 11,000 teams competed across four distinct tracks. This wasn&#x27;t just about prompts. It required agentic mastery — multi-agent systems, custom tools and memory — to build production-ready solutions.</td><td>Nearly 27,000 entrance -&gt; nearly 27,000 entries; aic AI builders -&gt; AI builders; multi- aent systems -&gt; multi-agent systems</td><td>Всем привет. Сегодня мы подводим итоги интенсива по ИИ-агентам — масштабного сотрудничества Google и Kaggle. За пять дней в ноябре мы увидели, как новая волна разработчиков ИИ переходит от теории к продакшену. Масштаб впечатляет: почти 27 000 заявок и более 11 000 команд в четырёх треках. Это было не про промпты. Требовалось владение агентными подходами — мультиагентные системы, свои инструменты и память, — чтобы строить готовые к продакшену решения.</td></tr>
-      <tr><td>[00:44]</td><td>Our first track, Concierge agents, focused on enhancing everyday productivity. In first place we have NewsPulse AI Agent, which addresses information noise for executives by mimicking a human research analyst. A dedicated verification agent acted as a quality gate, creating a self-correction loop to ensure every claim is citation-backed and hallucination-free. In second place we have the FIL content agent system: it compresses a two-hour workflow into a 60-second conversation, going from one sentence to a published hiking guide. In third place we have AishIngAnalyzer. It uses a critique agent to validate cosmetic ingredient safety, forcing reruns if the analysis isn&#x27;t up to par.</td><td>concarch agents -&gt; Concierge agents; news polls AI agent -&gt; NewsPulse AI Agent; FIL content agent system; Asing Analyzer -&gt; AishIngAnalyzer</td><td>Первый трек, Concierge agents, был про повышение ежедневной продуктивности. Первое место — NewsPulse AI Agent: он борется с информационным шумом для руководителей, имитируя human-аналитика. Выделенный агент-верификатор работал как контрольные ворота качества, замыкая контур самокоррекции, чтобы каждое утверждение было подкреплено ссылкой и без галлюцинаций. Второе место — система FIL content agent: она сжимает двухчасовой рабочий процесс в 60-секундный разговор, превращая одно предложение в опубликованный гид по походам. Третье место — AishIngAnalyzer: он использует агента-критика для проверки безопасности косметических ингредиентов и принудительно перезапускает анализ, если результат не на уровне.</td></tr>
-      <tr><td>[01:32]</td><td>In the Agents for Good track we saw AI tackling global challenges. In first place, the carbon footprint optimization engine. The problem: 70% of corporate emissions are hidden in complex supply chains. The solution is a multi-agent system featuring a deterministic calculation agent for math accuracy and a policy agent that enforces a human-in-the-loop safety gate. It reduced human review time by 97%. In second place, Carbon Cow AI, which makes complex GHG calculations accessible through natural-language routing. Parallel Scholar won third place: it automated academic research using specialized agents and a persistent JSON knowledge base for long-term memory.</td><td>GHD calculations -&gt; GHG calculations; a multi- aent system -&gt; a multi-agent system</td><td>В треке Agents for Good ИИ брался на глобальные вызовы. Первое место — движок оптимизации углеродного следа. Проблема: 70% корпоративных выбросов скрыты в сложных цепочках поставок. Решение — мультиагентная система с детерминированным агентом-калькулятором для точности математики и агентом политик, который обеспечивает шлюз безопасности с участием человека. Время ручной проверки сократилось на 97%. Второе место — Carbon Cow AI, которая делает сложные расчёты парниковых газов доступными через маршрутизацию на естественном языке. Третье место — Parallel Scholar: автоматизация академических исследований с помощью специализированных агентов и постоянной базы знаний в JSON для долговременной памяти.</td></tr>
-      <tr><td>[02:20]</td><td>The Enterprise track focused on resilience. In first place, the chaos playbook engine: an agent-ops laboratory that injects chaos into systems to test them. Instead of simple retries, it uses RAG to pull proven recovery strategies from a playbook. This improved success rates from 37% to 97%. In second place, Kodama, which uses the A2A protocol to simulate a large enterprise software team. In third place, Vegan Flow, featuring an autonomous procurement agent that actually negotiates prices with external vendor agents. Finally, our Freestyle track pushed the boundaries of what&#x27;s possible. In first place, Delalis: a self-expanding system. When it hits a problem it can solve, it designs, implements and tests its own new Python tools. It is an agent that builds itself.</td><td>it used it uses rack -&gt; it uses RAG; Kodorama -&gt; Kodama</td><td>Трек Enterprise был про устойчивость. Первое место — chaos playbook engine, лаборатория агентной эксплуатации, которая внедряет хаос в системы и проверяет их. Вместо простых повторов она использует RAG, чтобы доставать из плейбука проверенные стратегии восстановления. Это подняло долю успешных запусков с 37% до 97%. Второе место — Kodama, которая через протокол A2A имитирует большую команду разработчиков enterprise-софта. Третье место — Vegan Flow с автономным агентом закупок, который реально торгуется о ценах с агентами внешних поставщиков. И наконец, трек Freestyle расширял границы возможного. Первое место — Delalis, саморасширяющаяся система: столкнувшись с задачей, которую может решить, она сама проектирует, реализует и тестирует новые инструменты на Python. Это агент, который строит себя сам.</td></tr>
-      <tr><td>[03:25]</td><td>In second place, AI stock prediction using six specialized micro-agents for parallel analysis in under ten seconds. In third place, Storyland AI, which transforms books into travel itineraries with AI, with a parallel discovery phase. Looking across all winners, we see four clear patterns for production AI: hybrid architectures mixing LLMs with deterministic code, self-correction loops, A2A protocols for microservices, and finally autonomous coordination. All the repositories with code and write-ups, as well as the YouTube videos, can be found in the links below. Thank you for our amazing community of 26,955 participants. You are building the future of agentic AI. Winners, look for your Kaggle swag emails by the end of December. Let&#x27;s keep building together. Thank you.</td><td>six specialized microser agents -&gt; six specialized micro-agents</td><td>Второе место — предсказание цен акций на ИИ с шестью специализированными микро-агентами, которые параллельно анализируют данные меньше чем за десять секунд. Третье место — Storyland AI: превращает книги в туристические маршруты средствами ИИ, с параллельной фазой исследования. Если обобщить всех победителей, видны четыре чётких паттерна продакшен-ИИ: гибридные архитектуры, смешивающие LLM с детерминированным кодом; контуры самокоррекции; протоколы A2A для микросервисов; и, наконец, автономная координация. Все репозитории с кодом и разбором, а также видео на YouTube — по ссылкам ниже. Спасибо нашему замечательному сообществу из 26 955 участников. Вы строите будущее агентного ИИ. Победители, письма с призами от Kaggle придут до конца декабря. Продолжаем строить вместе. Спасибо.</td></tr>
-      </tbody>
-    </table>
-    <p class="note">Субтитры автоматические (auto, en-orig). Названия проектов-победителей даны так, как прозвучали в ролике; часть из них в автосубтитрах искажена (см. fix). Соответствие по тегам дня: Concierge, Agents for Good, Enterprise, Freestyle.</p>
+  <h2 id="fixes">Где автосубтитры соврали и как это восстановлено</h2>
+  <table class="plain">
+    <thead>
+      <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>00:00</td><td>Everyone, today we&#x27;re celebrating the results of the AI agents intensive course, a massive collaboration between Google and Kaggle. Over five days in November we watched the next wave of AI builders move from theory to production. The scale was incredible: nearly 27,000 entries and over 11,000 teams competed across four distinct tracks. This wasn&#x27;t just about prompts. It required agentic mastery — multi-agent systems, custom tools and memory — to build production-ready solutions.</td><td>Nearly 27,000 entrance -&gt; nearly 27,000 entries; aic AI builders -&gt; AI builders; multi- aent systems -&gt; multi-agent systems</td><td>Всем привет. Сегодня мы подводим итоги интенсива по ИИ-агентам — масштабного сотрудничества Google и Kaggle. За пять дней в ноябре мы увидели, как новая волна разработчиков ИИ переходит от теории к продакшену. Масштаб впечатляет: почти 27 000 заявок и более 11 000 команд в четырёх треках. Это было не про промпты. Требовалось владение агентными подходами — мультиагентные системы, свои инструменты и память, — чтобы строить готовые к продакшену решения.</td></tr>
+      <tr><td>00:44</td><td>Our first track, Concierge agents, focused on enhancing everyday productivity. In first place we have NewsPulse AI Agent, which addresses information noise for executives by mimicking a human research analyst. A dedicated verification agent acted as a quality gate, creating a self-correction loop to ensure every claim is citation-backed and hallucination-free. In second place we have the FIL content agent system: it compresses a two-hour workflow into a 60-second conversation, going from one sentence to a published hiking guide. In third place we have AishIngAnalyzer. It uses a critique agent to validate cosmetic ingredient safety, forcing reruns if the analysis isn&#x27;t up to par.</td><td>concarch agents -&gt; Concierge agents; news polls AI agent -&gt; NewsPulse AI Agent; FIL content agent system; Asing Analyzer -&gt; AishIngAnalyzer</td><td>Первый трек, Concierge agents, был про повышение ежедневной продуктивности. Первое место — NewsPulse AI Agent: он борется с информационным шумом для руководителей, имитируя human-аналитика. Выделенный агент-верификатор работал как контрольные ворота качества, замыкая контур самокоррекции, чтобы каждое утверждение было подкреплено ссылкой и без галлюцинаций. Второе место — система FIL content agent: она сжимает двухчасовой рабочий процесс в 60-секундный разговор, превращая одно предложение в опубликованный гид по походам. Третье место — AishIngAnalyzer: он использует агента-критика для проверки безопасности косметических ингредиентов и принудительно перезапускает анализ, если результат не на уровне.</td></tr>
+      <tr><td>01:32</td><td>In the Agents for Good track we saw AI tackling global challenges. In first place, the carbon footprint optimization engine. The problem: 70% of corporate emissions are hidden in complex supply chains. The solution is a multi-agent system featuring a deterministic calculation agent for math accuracy and a policy agent that enforces a human-in-the-loop safety gate. It reduced human review time by 97%. In second place, Carbon Cow AI, which makes complex GHG calculations accessible through natural-language routing. Parallel Scholar won third place: it automated academic research using specialized agents and a persistent JSON knowledge base for long-term memory.</td><td>GHD calculations -&gt; GHG calculations; a multi- aent system -&gt; a multi-agent system</td><td>В треке Agents for Good ИИ брался на глобальные вызовы. Первое место — движок оптимизации углеродного следа. Проблема: 70% корпоративных выбросов скрыты в сложных цепочках поставок. Решение — мультиагентная система с детерминированным агентом-калькулятором для точности математики и агентом политик, который обеспечивает шлюз безопасности с участием человека. Время ручной проверки сократилось на 97%. Второе место — Carbon Cow AI, которая делает сложные расчёты парниковых газов доступными через маршрутизацию на естественном языке. Третье место — Parallel Scholar: автоматизация академических исследований с помощью специализированных агентов и постоянной базы знаний в JSON для долговременной памяти.</td></tr>
+      <tr><td>02:20</td><td>The Enterprise track focused on resilience. In first place, the chaos playbook engine: an agent-ops laboratory that injects chaos into systems to test them. Instead of simple retries, it uses RAG to pull proven recovery strategies from a playbook. This improved success rates from 37% to 97%. In second place, Kodama, which uses the A2A protocol to simulate a large enterprise software team. In third place, Vegan Flow, featuring an autonomous procurement agent that actually negotiates prices with external vendor agents. Finally, our Freestyle track pushed the boundaries of what&#x27;s possible. In first place, Delalis: a self-expanding system. When it hits a problem it can solve, it designs, implements and tests its own new Python tools. It is an agent that builds itself.</td><td>it used it uses rack -&gt; it uses RAG; Kodorama -&gt; Kodama</td><td>Трек Enterprise был про устойчивость. Первое место — chaos playbook engine, лаборатория агентной эксплуатации, которая внедряет хаос в системы и проверяет их. Вместо простых повторов она использует RAG, чтобы доставать из плейбука проверенные стратегии восстановления. Это подняло долю успешных запусков с 37% до 97%. Второе место — Kodama, которая через протокол A2A имитирует большую команду разработчиков enterprise-софта. Третье место — Vegan Flow с автономным агентом закупок, который реально торгуется о ценах с агентами внешних поставщиков. И наконец, трек Freestyle расширял границы возможного. Первое место — Delalis, саморасширяющаяся система: столкнувшись с задачей, которую может решить, она сама проектирует, реализует и тестирует новые инструменты на Python. Это агент, который строит себя сам.</td></tr>
+      <tr><td>03:25</td><td>In second place, AI stock prediction using six specialized micro-agents for parallel analysis in under ten seconds. In third place, Storyland AI, which transforms books into travel itineraries with AI, with a parallel discovery phase. Looking across all winners, we see four clear patterns for production AI: hybrid architectures mixing LLMs with deterministic code, self-correction loops, A2A protocols for microservices, and finally autonomous coordination. All the repositories with code and write-ups, as well as the YouTube videos, can be found in the links below. Thank you for our amazing community of 26,955 participants. You are building the future of agentic AI. Winners, look for your Kaggle swag emails by the end of December. Let&#x27;s keep building together. Thank you.</td><td>six specialized microser agents -&gt; six specialized micro-agents</td><td>Второе место — предсказание цен акций на ИИ с шестью специализированными микро-агентами, которые параллельно анализируют данные меньше чем за десять секунд. Третье место — Storyland AI: превращает книги в туристические маршруты средствами ИИ, с параллельной фазой исследования. Если обобщить всех победителей, видны четыре чётких паттерна продакшен-ИИ: гибридные архитектуры, смешивающие LLM с детерминированным кодом; контуры самокоррекции; протоколы A2A для микросервисов; и, наконец, автономная координация. Все репозитории с кодом и разбором, а также видео на YouTube — по ссылкам ниже. Спасибо нашему замечательному сообществу из 26 955 участников. Вы строите будущее агентного ИИ. Победители, письма с призами от Kaggle придут до конца декабря. Продолжаем строить вместе. Спасибо.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Субтитры автоматические (auto, en-orig). Названия проектов-победителей даны так, как прозвучали в ролике; часть из них в автосубтитрах искажена (см. fix). Соответствие по тегам дня: Concierge, Agents for Good, Enterprise, Freestyle.</p>
+  <div class="pager">
+  <a class="prev" href="../day19/s1-2025-12-day19-en-ru.html" rel="prev">← day19 &rarr;</a>
+  <a class="next" href="../day23/s1-2025-12-day23-en-ru.html" rel="next">day23 → &rarr;</a>
   </div>
-
 </div>
-<script>
-const el = id => document.getElementById(id);
-
-el('tgl-en').addEventListener('change', e =>
-  document.body.classList.toggle('hide-en', !e.target.checked));
-el('tgl-ru').addEventListener('change', e =>
-  document.body.classList.toggle('hide-ru', !e.target.checked));
-el('btn-print').addEventListener('click', () => window.print());
-el('btn-mark').addEventListener('click', () => {
-  const on = !document.body.classList.contains('show-fixes');
-  document.body.classList.toggle('show-fixes', on);
-  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
-});
-</script>
+<div class="page">
+<p class="note">Перевод с английского. Субтитры автоматические (YouTube auto), поэтому в приложении указано, где распознавание было исправлено. Исходный ролик: <a href="https://www.youtube.com/watch?v=FrfaAwq0YNg">YouTube</a>.</p>
+</div>
+<script src="../../assets/app.js"></script>
 </body>
 </html>

@@ -4,152 +4,37 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Foundation 101: Five Phases of Agent Development Lifecycle — EN / RU</title>
-<style>
-:root {
-  --en-bg: #f7f8fa;
-  --line: #dfe3e8;
-  --accent: #0b57d0;
-  --ts: #8a9099;
-  --muted: #5f6672;
-  --fix: #fff3cd;
-  --fix-line: #e0b100;
-}
-
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-
-body {
-  margin: 0;
-  padding: 32px 20px 72px;
-  background: #eef0f3;
-  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.45;
-  color: #1a1a1a;
-}
-
-.page { max-width: 1400px; margin: 0 auto; }
-
-h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
-.head .sub { color: var(--muted); font-size: 15px; }
-.head .sub a { color: var(--accent); }
-
-.legend {
-  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
-  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
-}
-.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
-.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
-
-.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
-
-button {
-  font: inherit; font-size: 14px; padding: 7px 14px;
-  border: 1px solid var(--line); border-radius: 6px;
-  background: #fff; color: #1a1a1a; cursor: pointer;
-}
-button:hover { border-color: #b9c0ca; background: #fafbfc; }
-
-.grid {
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden;
-}
-
-.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
-
-.head-row {
-  background: #2f3541; color: #fff;
-  font-size: 13px; letter-spacing: 0.04em;
-  text-transform: uppercase; font-weight: 600;
-  position: sticky; top: 0; z-index: 5;
-}
-.head-row > div { padding: 10px 18px; }
-.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
-
-.row > .ts {
-  padding: 14px 8px; font-size: 12px;
-  font-variant-numeric: tabular-nums;
-  color: var(--ts); text-align: right;
-  border-right: 1px solid var(--line); background: #fbfbfc;
-}
-.row > .en, .row > .ru {
-  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
-}
-.row > .en { background: var(--en-bg); }
-.row > .ru { border-right: 0; }
-
-.row.cont > .ts::after {
-  content: ""; display: block; width: 14px; height: 1px;
-  background: var(--line); margin: 8px 0 0 auto;
-}
-.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
-
-.row.fixed > .en { background: var(--fix); }
-.row.fixed .tag { display: none; }
-
-body.show-fixes .row.fixed .tag { display: block; }
-
-.tag {
-  display: inline-block; margin-top: 6px;
-  font-size: 11.5px; line-height: 1.35;
-  color: #6b5400; background: var(--fix);
-  border-left: 3px solid var(--fix-line);
-  padding: 3px 8px; border-radius: 0 4px 4px 0;
-}
-
-.app { margin-top: 26px; }
-.app h2 { font-size: 19px; margin: 0 0 10px; }
-
-table {
-  width: 100%; border-collapse: collapse;
-  background: #fff; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden; font-size: 15px;
-}
-th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
-th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
-tr:last-child td { border-bottom: 0; }
-td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
-.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
-
-body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
-body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
-body.hide-en .row, body.hide-en .head-row,
-body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
-
-@media (max-width: 900px) {
-  .head-row, .row { grid-template-columns: 56px 1fr; }
-  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
-  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
-}
-
-@media print {
-  body { background: #fff; padding: 0; }
-  .bar, .legend { display: none; }
-  .head-row { position: static; }
-  .grid, table { border-radius: 0; }
-}
-</style>
+<link rel="stylesheet" href="../../assets/style.css">
 </head>
 <body>
+<div class="top"><div class="inner">
+<a class="brand" href="../../index.html">Advent of Agents — перевод</a>
+<nav><a href="../../index.html#seasons">Сезоны</a>
+<a href="../../index.html#materials">Материалы</a>
+<a href="https://adventofagents.com/">Оригинал</a>
+</nav>
+<div class="spacer"></div>
+<a href="https://github.com/AlexanderKuzikov/AdventOfAgents">репозиторий</a>
+</div></div>
 <div class="page">
-
-  <div class="head">
-    <h1>Foundation 101: Five Phases of Agent Development Lifecycle</h1>
-    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
-      Видео: <a href="https://www.youtube.com/watch?v=ngNxiZhxJjI">https://www.youtube.com/watch?v=ngNxiZhxJjI</a> · 07:23
-      · auto (YouTube en-orig)</div>
-  </div>
-
-  <div class="legend">
-    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
-    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
-  </div>
-
-  <div class="bar">
-    <button id="btn-mark">Показать исправления</button>
-    <button id="btn-print">Печать / PDF</button>
-  </div>
-
+<p class="crumbs"><a href="../../index.html">Все дни</a> &rsaquo; <a href="../../index.html#s3-2026-10">s3-2026-10</a> &rsaquo; day01</p>
+<h1>Foundation 101: Five Phases of Agent Development Lifecycle</h1>
+<p class="lede">Двуязычная транскрипция: английский оригинал слева, русский перевод справа, абзацы стоят строго напротив друг друга.</p>
+<div class="stats">
+  <div class="stat"><div class="n">07:23</div><div class="k">длительность</div></div>
+  <div class="stat"><div class="n">42</div><div class="k">абзацев</div></div>
+  <div class="stat"><div class="n">9</div><div class="k">правок распознавания</div></div>
+</div>
+<div class="bar">
+  <label class="legend"><input type="checkbox" id="tgl-en" checked> оригинал</label>
+  <label class="legend"><input type="checkbox" id="tgl-ru" checked> перевод</label>
+</div>
+<div class="bar">
+  <button id="btn-mark">Показать исправления</button>
+  <button id="btn-print">Печать / PDF</button>
+  <a class="btn" href="s3-2026-10-day01-transcript-ru.docx">Скачать DOCX</a>
+  <a href="https://www.youtube.com/watch?v=ngNxiZhxJjI" target="_blank" rel="noopener">оригинальный ролик</a>
+</div>
   <div class="grid">
     <div class="head-row">
       <div>Time</div>
@@ -198,7 +83,7 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row cont fixed">
       <div class="ts"></div>
-      <div class="en">For the next 31 days, you&#x27;ll have one question a day addressed, answered, solved for, a short video, and a codelab you can run in about 5 minutes.<div class="tag">уточнено: a cut up you can run → a codelab you can run</div></div>
+      <div class="en">For the next 31 days, you&#x27;ll have one question a day addressed, answered, solved for, a short video, and a codelab you can run in about 5 minutes.<div class="tagline">уточнено: a cut up you can run → a codelab you can run</div></div>
       <div class="ru">В ближайшие 31 день у вас будет по одному вопросу в день — с разбором и ответом, плюс короткое видео и codelab, который можно запустить примерно за 5 минут.</div>
     </div>
     <div class="row cont">
@@ -223,7 +108,7 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row cont fixed">
       <div class="ts"></div>
-      <div class="en">If you&#x27;re a developer, you know SDLC. SDLC is code, code is deterministic. Same input, same output. So, tests prove that it works.<div class="tag">уточнено: If If a developer → as a developer; test proves if you would work → tests prove that it works</div></div>
+      <div class="en">If you&#x27;re a developer, you know SDLC. SDLC is code, code is deterministic. Same input, same output. So, tests prove that it works.<div class="tagline">уточнено: If If a developer → as a developer; test proves if you would work → tests prove that it works</div></div>
       <div class="ru">Если вы разработчик, вы знаете SDLC. SDLC — это код, а код детерминирован: один и тот же вход — один и тот же выход. Тесты доказывают, что оно работает.</div>
     </div>
     <div class="row cont">
@@ -283,7 +168,7 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">03:41</div>
-      <div class="en">Phase two, build. You iterate on instructions and tools locally in sandbox. On Google Cloud, that&#x27;s ADK or Gemini CLI with Gemini. You could use any framework even within Google Cloud. Google Cloud is very open in terms of frameworks.<div class="tag">уточнено: ADK or Gemini CLI -&gt; Agents CLI или ADK (в коде дня: agents-cli scaffold)</div></div>
+      <div class="en">Phase two, build. You iterate on instructions and tools locally in sandbox. On Google Cloud, that&#x27;s ADK or Gemini CLI with Gemini. You could use any framework even within Google Cloud. Google Cloud is very open in terms of frameworks.<div class="tagline">уточнено: ADK or Gemini CLI -&gt; Agents CLI или ADK (в коде дня: agents-cli scaffold)</div></div>
       <div class="ru">Фаза вторая — Build. Вы итерируетесь над инструкциями и инструментами локально, в песочнице. В Google Cloud это Agents CLI или ADK с Gemini. Можно взять любой фреймворк, даже внутри Google Cloud — Google Cloud очень открыт к фреймворкам.</div>
     </div>
     <div class="row cont">
@@ -298,7 +183,7 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row cont fixed">
       <div class="ts"></div>
-      <div class="en">If your organization is going to have thousands of agents, they all cannot be deployed in its own style. Then we end up risking shadow IT.<div class="tag">уточнено: deployed in its own style → each deployed their own way</div></div>
+      <div class="en">If your organization is going to have thousands of agents, they all cannot be deployed in its own style. Then we end up risking shadow IT.<div class="tagline">уточнено: deployed in its own style → each deployed their own way</div></div>
       <div class="ru">Если в организации будут тысячи агентов, их нельзя деплоить какие попало — иначе получаем теневой IT.</div>
     </div>
     <div class="row cont">
@@ -313,7 +198,7 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row cont fixed">
       <div class="ts"></div>
-      <div class="en">How does your agent authenticate? A shared service account or its own? Like, does agent have its own identity?<div class="tag">уточнено: a shared service or its own spiffy account → a shared service account or its own</div></div>
+      <div class="en">How does your agent authenticate? A shared service account or its own? Like, does agent have its own identity?<div class="tagline">уточнено: a shared service or its own spiffy account → a shared service account or its own</div></div>
       <div class="ru">Как ваш агент аутентифицируется? Через общий сервисный аккаунт или через свой собственный? Есть ли у агента своя идентичность?</div>
     </div>
     <div class="row cont">
@@ -333,12 +218,12 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row cont fixed">
       <div class="ts"></div>
-      <div class="en">And then, can you restrict tool calls with semantic governance policies? The checkpoint: no agent touches production data without an identity, an owner, and a policy. That&#x27;s crucial.<div class="tag">уточнено: with natural semantic layer, Sorry → with semantic governance policies</div></div>
+      <div class="en">And then, can you restrict tool calls with semantic governance policies? The checkpoint: no agent touches production data without an identity, an owner, and a policy. That&#x27;s crucial.<div class="tagline">уточнено: with natural semantic layer, Sorry → with semantic governance policies</div></div>
       <div class="ru">И можно ли ограничить вызовы инструментов семантическими политиками управления? Контрольная точка: ни один агент не трогает продакшен-данные без идентичности, владельца и политики. Это ключевое.</div>
     </div>
     <div class="row fixed">
       <div class="ts">05:44</div>
-      <div class="en">Finally, optimize: day two operations, agent drift, models update, APIs change. So, you rerun evals on every change and you opt, and you use OpenTelemetry tracing to see exactly which tools your agents decided to call and why. What you learn goes straight back into scope. That is hence the reason why it&#x27;s called a loop.<div class="tag">уточнено: open telemetry → OpenTelemetry; That hence the reason → That is hence the reason</div></div>
+      <div class="en">Finally, optimize: day two operations, agent drift, models update, APIs change. So, you rerun evals on every change and you opt, and you use OpenTelemetry tracing to see exactly which tools your agents decided to call and why. What you learn goes straight back into scope. That is hence the reason why it&#x27;s called a loop.<div class="tagline">уточнено: open telemetry → OpenTelemetry; That hence the reason → That is hence the reason</div></div>
       <div class="ru">И наконец — Optimize, операции второго дня: дрифт агента, обновления моделей, изменения API. Вы перезапускаете evals при каждом изменении и используете OpenTelemetry-трейсинг, чтобы точно увидеть, какие инструменты ваш агент решил вызвать и почему. Всё, что вы узнаёте, возвращается прямиком в Scope. Вот почему это называется циклом.</div>
     </div>
     <div class="row">
@@ -348,12 +233,12 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
     <div class="row fixed">
       <div class="ts">06:34</div>
-      <div class="en">So, for today&#x27;s exercise, you&#x27;re essentially going to build one agent around all five loops. Start by writing down your five line spec. And then, install it using Agents CLI.<div class="tag">уточнено: using agency CLI -&gt; using Agents CLI</div></div>
+      <div class="en">So, for today&#x27;s exercise, you&#x27;re essentially going to build one agent around all five loops. Start by writing down your five line spec. And then, install it using Agents CLI.<div class="tagline">уточнено: using agency CLI -&gt; using Agents CLI</div></div>
       <div class="ru">Сегодняшнее упражнение: по сути, вы собираете одного агента по всем пяти циклам. Начните с того, что запишете свою спецификацию в пять пунктов, а затем установите его через Agents CLI.</div>
     </div>
     <div class="row cont fixed">
       <div class="ts"></div>
-      <div class="en">Now, you would have gotten your first audit trail. And it allows you to see what the agent decided to do. And then, use optimize: use Agents CLI evals to come up with scores and understand the behavior of your agent.<div class="tag">уточнено: use agency CLI evals -&gt; use Agents CLI evals</div></div>
+      <div class="en">Now, you would have gotten your first audit trail. And it allows you to see what the agent decided to do. And then, use optimize: use Agents CLI evals to come up with scores and understand the behavior of your agent.<div class="tagline">уточнено: use agency CLI evals -&gt; use Agents CLI evals</div></div>
       <div class="ru">И вы сразу получите первый журнал аудита — с ним видно, что агент решил делать. Дальше — Optimize: через evals в Agents CLI получите оценки и поймёте поведение агента.</div>
     </div>
     <div class="row cont">
@@ -368,41 +253,31 @@ body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
     </div>
   </div>
 
-  <div class="app">
-    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
-    <table>
-      <thead>
-        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
-      </thead>
-      <tbody>
-      <tr><td>[00:52]</td><td>For the next 31 days, you&#x27;ll have one question a day addressed, answered, solved for, a short video, and a codelab you can run in about 5 minutes.</td><td>a cut up you can run → a codelab you can run</td><td>В ближайшие 31 день у вас будет по одному вопросу в день — с разбором и ответом, плюс короткое видео и codelab, который можно запустить примерно за 5 минут.</td></tr>
-      <tr><td>[01:46]</td><td>If you&#x27;re a developer, you know SDLC. SDLC is code, code is deterministic. Same input, same output. So, tests prove that it works.</td><td>If If a developer → as a developer; test proves if you would work → tests prove that it works</td><td>Если вы разработчик, вы знаете SDLC. SDLC — это код, а код детерминирован: один и тот же вход — один и тот же выход. Тесты доказывают, что оно работает.</td></tr>
-      <tr><td>[03:41]</td><td>Phase two, build. You iterate on instructions and tools locally in sandbox. On Google Cloud, that&#x27;s ADK or Gemini CLI with Gemini. You could use any framework even within Google Cloud. Google Cloud is very open in terms of frameworks.</td><td>ADK or Gemini CLI -&gt; Agents CLI или ADK (в коде дня: agents-cli scaffold)</td><td>Фаза вторая — Build. Вы итерируетесь над инструкциями и инструментами локально, в песочнице. В Google Cloud это Agents CLI или ADK с Gemini. Можно взять любой фреймворк, даже внутри Google Cloud — Google Cloud очень открыт к фреймворкам.</td></tr>
-      <tr><td>[04:10]</td><td>If your organization is going to have thousands of agents, they all cannot be deployed in its own style. Then we end up risking shadow IT.</td><td>deployed in its own style → each deployed their own way</td><td>Если в организации будут тысячи агентов, их нельзя деплоить какие попало — иначе получаем теневой IT.</td></tr>
-      <tr><td>[04:42]</td><td>How does your agent authenticate? A shared service account or its own? Like, does agent have its own identity?</td><td>a shared service or its own spiffy account → a shared service account or its own</td><td>Как ваш агент аутентифицируется? Через общий сервисный аккаунт или через свой собственный? Есть ли у агента своя идентичность?</td></tr>
-      <tr><td>[04:42]</td><td>And then, can you restrict tool calls with semantic governance policies? The checkpoint: no agent touches production data without an identity, an owner, and a policy. That&#x27;s crucial.</td><td>with natural semantic layer, Sorry → with semantic governance policies</td><td>И можно ли ограничить вызовы инструментов семантическими политиками управления? Контрольная точка: ни один агент не трогает продакшен-данные без идентичности, владельца и политики. Это ключевое.</td></tr>
-      <tr><td>[05:44]</td><td>Finally, optimize: day two operations, agent drift, models update, APIs change. So, you rerun evals on every change and you opt, and you use OpenTelemetry tracing to see exactly which tools your agents decided to call and why. What you learn goes straight back into scope. That is hence the reason why it&#x27;s called a loop.</td><td>open telemetry → OpenTelemetry; That hence the reason → That is hence the reason</td><td>И наконец — Optimize, операции второго дня: дрифт агента, обновления моделей, изменения API. Вы перезапускаете evals при каждом изменении и используете OpenTelemetry-трейсинг, чтобы точно увидеть, какие инструменты ваш агент решил вызвать и почему. Всё, что вы узнаёте, возвращается прямиком в Scope. Вот почему это называется циклом.</td></tr>
-      <tr><td>[06:34]</td><td>So, for today&#x27;s exercise, you&#x27;re essentially going to build one agent around all five loops. Start by writing down your five line spec. And then, install it using Agents CLI.</td><td>using agency CLI -&gt; using Agents CLI</td><td>Сегодняшнее упражнение: по сути, вы собираете одного агента по всем пяти циклам. Начните с того, что запишете свою спецификацию в пять пунктов, а затем установите его через Agents CLI.</td></tr>
-      <tr><td>[06:34]</td><td>Now, you would have gotten your first audit trail. And it allows you to see what the agent decided to do. And then, use optimize: use Agents CLI evals to come up with scores and understand the behavior of your agent.</td><td>use agency CLI evals -&gt; use Agents CLI evals</td><td>И вы сразу получите первый журнал аудита — с ним видно, что агент решил делать. Дальше — Optimize: через evals в Agents CLI получите оценки и поймёте поведение агента.</td></tr>
-      </tbody>
-    </table>
-    <p class="note"></p>
+  <h2 id="fixes">Где автосубтитры соврали и как это восстановлено</h2>
+  <table class="plain">
+    <thead>
+      <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>00:52</td><td>For the next 31 days, you&#x27;ll have one question a day addressed, answered, solved for, a short video, and a codelab you can run in about 5 minutes.</td><td>a cut up you can run → a codelab you can run</td><td>В ближайшие 31 день у вас будет по одному вопросу в день — с разбором и ответом, плюс короткое видео и codelab, который можно запустить примерно за 5 минут.</td></tr>
+      <tr><td>01:46</td><td>If you&#x27;re a developer, you know SDLC. SDLC is code, code is deterministic. Same input, same output. So, tests prove that it works.</td><td>If If a developer → as a developer; test proves if you would work → tests prove that it works</td><td>Если вы разработчик, вы знаете SDLC. SDLC — это код, а код детерминирован: один и тот же вход — один и тот же выход. Тесты доказывают, что оно работает.</td></tr>
+      <tr><td>03:41</td><td>Phase two, build. You iterate on instructions and tools locally in sandbox. On Google Cloud, that&#x27;s ADK or Gemini CLI with Gemini. You could use any framework even within Google Cloud. Google Cloud is very open in terms of frameworks.</td><td>ADK or Gemini CLI -&gt; Agents CLI или ADK (в коде дня: agents-cli scaffold)</td><td>Фаза вторая — Build. Вы итерируетесь над инструкциями и инструментами локально, в песочнице. В Google Cloud это Agents CLI или ADK с Gemini. Можно взять любой фреймворк, даже внутри Google Cloud — Google Cloud очень открыт к фреймворкам.</td></tr>
+      <tr><td>04:10</td><td>If your organization is going to have thousands of agents, they all cannot be deployed in its own style. Then we end up risking shadow IT.</td><td>deployed in its own style → each deployed their own way</td><td>Если в организации будут тысячи агентов, их нельзя деплоить какие попало — иначе получаем теневой IT.</td></tr>
+      <tr><td>04:42</td><td>How does your agent authenticate? A shared service account or its own? Like, does agent have its own identity?</td><td>a shared service or its own spiffy account → a shared service account or its own</td><td>Как ваш агент аутентифицируется? Через общий сервисный аккаунт или через свой собственный? Есть ли у агента своя идентичность?</td></tr>
+      <tr><td>04:42</td><td>And then, can you restrict tool calls with semantic governance policies? The checkpoint: no agent touches production data without an identity, an owner, and a policy. That&#x27;s crucial.</td><td>with natural semantic layer, Sorry → with semantic governance policies</td><td>И можно ли ограничить вызовы инструментов семантическими политиками управления? Контрольная точка: ни один агент не трогает продакшен-данные без идентичности, владельца и политики. Это ключевое.</td></tr>
+      <tr><td>05:44</td><td>Finally, optimize: day two operations, agent drift, models update, APIs change. So, you rerun evals on every change and you opt, and you use OpenTelemetry tracing to see exactly which tools your agents decided to call and why. What you learn goes straight back into scope. That is hence the reason why it&#x27;s called a loop.</td><td>open telemetry → OpenTelemetry; That hence the reason → That is hence the reason</td><td>И наконец — Optimize, операции второго дня: дрифт агента, обновления моделей, изменения API. Вы перезапускаете evals при каждом изменении и используете OpenTelemetry-трейсинг, чтобы точно увидеть, какие инструменты ваш агент решил вызвать и почему. Всё, что вы узнаёте, возвращается прямиком в Scope. Вот почему это называется циклом.</td></tr>
+      <tr><td>06:34</td><td>So, for today&#x27;s exercise, you&#x27;re essentially going to build one agent around all five loops. Start by writing down your five line spec. And then, install it using Agents CLI.</td><td>using agency CLI -&gt; using Agents CLI</td><td>Сегодняшнее упражнение: по сути, вы собираете одного агента по всем пяти циклам. Начните с того, что запишете свою спецификацию в пять пунктов, а затем установите его через Agents CLI.</td></tr>
+      <tr><td>06:34</td><td>Now, you would have gotten your first audit trail. And it allows you to see what the agent decided to do. And then, use optimize: use Agents CLI evals to come up with scores and understand the behavior of your agent.</td><td>use agency CLI evals -&gt; use Agents CLI evals</td><td>И вы сразу получите первый журнал аудита — с ним видно, что агент решил делать. Дальше — Optimize: через evals в Agents CLI получите оценки и поймёте поведение агента.</td></tr>
+    </tbody>
+  </table>
+  <p class="note"></p>
+  <div class="pager">
+  <a class="next" href="../day02/s3-2026-10-day02-en-ru.html" rel="next">day02 → &rarr;</a>
   </div>
-
 </div>
-<script>
-const el = id => document.getElementById(id);
-
-el('tgl-en').addEventListener('change', e =>
-  document.body.classList.toggle('hide-en', !e.target.checked));
-el('tgl-ru').addEventListener('change', e =>
-  document.body.classList.toggle('hide-ru', !e.target.checked));
-el('btn-print').addEventListener('click', () => window.print());
-el('btn-mark').addEventListener('click', () => {
-  const on = !document.body.classList.contains('show-fixes');
-  document.body.classList.toggle('show-fixes', on);
-  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
-});
-</script>
+<div class="page">
+<p class="note">Перевод с английского. Субтитры автоматические (YouTube auto), поэтому в приложении указано, где распознавание было исправлено. Исходный ролик: <a href="https://www.youtube.com/watch?v=ngNxiZhxJjI">YouTube</a>.</p>
+</div>
+<script src="../../assets/app.js"></script>
 </body>
 </html>
