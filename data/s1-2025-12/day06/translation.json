@@ -1,0 +1,23 @@
+{
+  "note": "Субтитры автоматические (auto, en-orig). Названия IDE и инструментов приведены по странице дня: Antigravity, VS Code, Gemini CLI, Cursor, Firebase Studio, MCP server.",
+  "segments": [
+    {
+      "t": 1,
+      "en": "Hi. Let's look at how to bootstrap an agent using ADK and Agent Starter Pack. Here's an empty repository for an Antigravity workspace, and I'm going to quickly ask it to generate a deep-search agent using ADK and Agent Starter Pack. It's going to take a few minutes to go through the documentation and gather all the artifacts. And once we have it running, it actually generates the repository with the code and gives us instructions on how to run it.",
+      "ru": "Привет. Посмотрим, как поднять агента с помощью ADK и Agent Starter Pack. Вот пустой репозиторий для рабочего пространства Antigravity, и я коротко попрошу его сгенерировать агента глубокого поиска на ADK и Agent Starter Pack. Ему понадобится несколько минут, чтобы пройти по документации и собрать все артефакты. И когда всё запустится, он действительно сгенерирует репозиторий с кодом и даст инструкции, как это запустить.",
+      "fix": "bootstrap man agent -> bootstrap an agent; anti-gravity -> Antigravity"
+    },
+    {
+      "t": 29,
+      "en": "Here's the sample project structure: the requirements, more information on how to run it, and even how to do a make deploy to deploy it on the compute runtime of your choice. Let's say Agent Antigravity is not what you're looking for and you want to use a different IDE. No problem: we can use Visual Studio, opening it in a new environment, going to install some dependencies and add it, as well as this extension for the MCP server to read ADK documents. Once this is ready, I'm going to go into Gemini CLI and within Gemini CLI ask the question: how do I create a function tool using the Agent Development Kit?",
+      "ru": "Вот типовая структура проекта: requirements, подробности о запуске и даже про `make deploy` — задеплоить на выбранный вами compute runtime. Допустим, Agent Antigravity вам не подходит и нужен другой IDE. Без проблем: можно взять Visual Studio, открыть в нём новое окружение, поставить зависимости и добавить это расширение для MCP-сервера, чтобы читать документацию ADK. Когда всё готово, заходим в Gemini CLI и спрашиваем в нём: как создать function tool с помощью Agent Development Kit?",
+      "fix": "as well as this extension for MCP server -> as well as this extension for the MCP server"
+    },
+    {
+      "t": 86,
+      "en": "There are some dependencies needed, and while we wait for it, we can actually see that it fetched the information from the repository and it finally read through how to create a function — and even gave us an example of how to create a function tool. The world's your oyster: use whatever coding agent you like, give it the right information about your framework, and you can create your own agents ready for production today.",
+      "ru": "Нужны некоторые зависимости, и пока мы ждём, видно, что он вытащил информацию из репозитория, разобрался, как создать функцию, и даже показал пример создания function tool. Вам выбирать: берите любой coding agent, дайте ему нужные сведения о вашем фреймворке — и сегодня же соберёте собственных агентов, готовых к продакшену.",
+      "fix": null
+    }
+  ]
+}

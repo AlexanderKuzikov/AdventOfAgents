@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>🧑‍💻 ADK ready in Antigravity, Gemini CLI, Cursor, Firebase Studio and more — EN / RU</title>
+<style>
+:root {
+  --en-bg: #f7f8fa;
+  --line: #dfe3e8;
+  --accent: #0b57d0;
+  --ts: #8a9099;
+  --muted: #5f6672;
+  --fix: #fff3cd;
+  --fix-line: #e0b100;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 32px 20px 72px;
+  background: #eef0f3;
+  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #1a1a1a;
+}
+
+.page { max-width: 1400px; margin: 0 auto; }
+
+h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.head .sub { color: var(--muted); font-size: 15px; }
+.head .sub a { color: var(--accent); }
+
+.legend {
+  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
+}
+.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
+.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+
+.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+
+button {
+  font: inherit; font-size: 14px; padding: 7px 14px;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: #fff; color: #1a1a1a; cursor: pointer;
+}
+button:hover { border-color: #b9c0ca; background: #fafbfc; }
+
+.grid {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden;
+}
+
+.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
+
+.head-row {
+  background: #2f3541; color: #fff;
+  font-size: 13px; letter-spacing: 0.04em;
+  text-transform: uppercase; font-weight: 600;
+  position: sticky; top: 0; z-index: 5;
+}
+.head-row > div { padding: 10px 18px; }
+.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
+
+.row > .ts {
+  padding: 14px 8px; font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ts); text-align: right;
+  border-right: 1px solid var(--line); background: #fbfbfc;
+}
+.row > .en, .row > .ru {
+  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
+}
+.row > .en { background: var(--en-bg); }
+.row > .ru { border-right: 0; }
+
+.row.cont > .ts::after {
+  content: ""; display: block; width: 14px; height: 1px;
+  background: var(--line); margin: 8px 0 0 auto;
+}
+.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
+
+.row.fixed > .en { background: var(--fix); }
+.row.fixed .tag { display: none; }
+
+body.show-fixes .row.fixed .tag { display: block; }
+
+.tag {
+  display: inline-block; margin-top: 6px;
+  font-size: 11.5px; line-height: 1.35;
+  color: #6b5400; background: var(--fix);
+  border-left: 3px solid var(--fix-line);
+  padding: 3px 8px; border-radius: 0 4px 4px 0;
+}
+
+.app { margin-top: 26px; }
+.app h2 { font-size: 19px; margin: 0 0 10px; }
+
+table {
+  width: 100%; border-collapse: collapse;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden; font-size: 15px;
+}
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
+.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
+
+body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
+body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
+body.hide-en .row, body.hide-en .head-row,
+body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
+
+@media (max-width: 900px) {
+  .head-row, .row { grid-template-columns: 56px 1fr; }
+  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
+  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .bar, .legend { display: none; }
+  .head-row { position: static; }
+  .grid, table { border-radius: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <h1>🧑‍💻 ADK ready in Antigravity, Gemini CLI, Cursor, Firebase Studio and more</h1>
+    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
+      Видео: <a href="https://www.youtube.com/watch?v=Ep8usBDUTtA">https://www.youtube.com/watch?v=Ep8usBDUTtA</a> · 01:51
+      · auto (YouTube en-orig)</div>
+  </div>
+
+  <div class="legend">
+    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
+    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
+  </div>
+
+  <div class="bar">
+    <button id="btn-mark">Показать исправления</button>
+    <button id="btn-print">Печать / PDF</button>
+  </div>
+
+  <div class="grid">
+    <div class="head-row">
+      <div>Time</div>
+      <div>English</div>
+      <div>Русский</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">00:01</div>
+      <div class="en">Hi. Let&#x27;s look at how to bootstrap an agent using ADK and Agent Starter Pack. Here&#x27;s an empty repository for an Antigravity workspace, and I&#x27;m going to quickly ask it to generate a deep-search agent using ADK and Agent Starter Pack. It&#x27;s going to take a few minutes to go through the documentation and gather all the artifacts. And once we have it running, it actually generates the repository with the code and gives us instructions on how to run it.<div class="tag">уточнено: bootstrap man agent -&gt; bootstrap an agent; anti-gravity -&gt; Antigravity</div></div>
+      <div class="ru">Привет. Посмотрим, как поднять агента с помощью ADK и Agent Starter Pack. Вот пустой репозиторий для рабочего пространства Antigravity, и я коротко попрошу его сгенерировать агента глубокого поиска на ADK и Agent Starter Pack. Ему понадобится несколько минут, чтобы пройти по документации и собрать все артефакты. И когда всё запустится, он действительно сгенерирует репозиторий с кодом и даст инструкции, как это запустить.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">00:29</div>
+      <div class="en">Here&#x27;s the sample project structure: the requirements, more information on how to run it, and even how to do a make deploy to deploy it on the compute runtime of your choice. Let&#x27;s say Agent Antigravity is not what you&#x27;re looking for and you want to use a different IDE. No problem: we can use Visual Studio, opening it in a new environment, going to install some dependencies and add it, as well as this extension for the MCP server to read ADK documents. Once this is ready, I&#x27;m going to go into Gemini CLI and within Gemini CLI ask the question: how do I create a function tool using the Agent Development Kit?<div class="tag">уточнено: as well as this extension for MCP server -&gt; as well as this extension for the MCP server</div></div>
+      <div class="ru">Вот типовая структура проекта: requirements, подробности о запуске и даже про `make deploy` — задеплоить на выбранный вами compute runtime. Допустим, Agent Antigravity вам не подходит и нужен другой IDE. Без проблем: можно взять Visual Studio, открыть в нём новое окружение, поставить зависимости и добавить это расширение для MCP-сервера, чтобы читать документацию ADK. Когда всё готово, заходим в Gemini CLI и спрашиваем в нём: как создать function tool с помощью Agent Development Kit?</div>
+    </div>
+    <div class="row">
+      <div class="ts">01:26</div>
+      <div class="en">There are some dependencies needed, and while we wait for it, we can actually see that it fetched the information from the repository and it finally read through how to create a function — and even gave us an example of how to create a function tool. The world&#x27;s your oyster: use whatever coding agent you like, give it the right information about your framework, and you can create your own agents ready for production today.</div>
+      <div class="ru">Нужны некоторые зависимости, и пока мы ждём, видно, что он вытащил информацию из репозитория, разобрался, как создать функцию, и даже показал пример создания function tool. Вам выбирать: берите любой coding agent, дайте ему нужные сведения о вашем фреймворке — и сегодня же соберёте собственных агентов, готовых к продакшену.</div>
+    </div>
+  </div>
+
+  <div class="app">
+    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
+    <table>
+      <thead>
+        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+      </thead>
+      <tbody>
+      <tr><td>[00:01]</td><td>Hi. Let&#x27;s look at how to bootstrap an agent using ADK and Agent Starter Pack. Here&#x27;s an empty repository for an Antigravity workspace, and I&#x27;m going to quickly ask it to generate a deep-search agent using ADK and Agent Starter Pack. It&#x27;s going to take a few minutes to go through the documentation and gather all the artifacts. And once we have it running, it actually generates the repository with the code and gives us instructions on how to run it.</td><td>bootstrap man agent -&gt; bootstrap an agent; anti-gravity -&gt; Antigravity</td><td>Привет. Посмотрим, как поднять агента с помощью ADK и Agent Starter Pack. Вот пустой репозиторий для рабочего пространства Antigravity, и я коротко попрошу его сгенерировать агента глубокого поиска на ADK и Agent Starter Pack. Ему понадобится несколько минут, чтобы пройти по документации и собрать все артефакты. И когда всё запустится, он действительно сгенерирует репозиторий с кодом и даст инструкции, как это запустить.</td></tr>
+      <tr><td>[00:29]</td><td>Here&#x27;s the sample project structure: the requirements, more information on how to run it, and even how to do a make deploy to deploy it on the compute runtime of your choice. Let&#x27;s say Agent Antigravity is not what you&#x27;re looking for and you want to use a different IDE. No problem: we can use Visual Studio, opening it in a new environment, going to install some dependencies and add it, as well as this extension for the MCP server to read ADK documents. Once this is ready, I&#x27;m going to go into Gemini CLI and within Gemini CLI ask the question: how do I create a function tool using the Agent Development Kit?</td><td>as well as this extension for MCP server -&gt; as well as this extension for the MCP server</td><td>Вот типовая структура проекта: requirements, подробности о запуске и даже про `make deploy` — задеплоить на выбранный вами compute runtime. Допустим, Agent Antigravity вам не подходит и нужен другой IDE. Без проблем: можно взять Visual Studio, открыть в нём новое окружение, поставить зависимости и добавить это расширение для MCP-сервера, чтобы читать документацию ADK. Когда всё готово, заходим в Gemini CLI и спрашиваем в нём: как создать function tool с помощью Agent Development Kit?</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Субтитры автоматические (auto, en-orig). Названия IDE и инструментов приведены по странице дня: Antigravity, VS Code, Gemini CLI, Cursor, Firebase Studio, MCP server.</p>
+  </div>
+
+</div>
+<script>
+const el = id => document.getElementById(id);
+
+el('tgl-en').addEventListener('change', e =>
+  document.body.classList.toggle('hide-en', !e.target.checked));
+el('tgl-ru').addEventListener('change', e =>
+  document.body.classList.toggle('hide-ru', !e.target.checked));
+el('btn-print').addEventListener('click', () => window.print());
+el('btn-mark').addEventListener('click', () => {
+  const on = !document.body.classList.contains('show-fixes');
+  document.body.classList.toggle('show-fixes', on);
+  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
+});
+</script>
+</body>
+</html>

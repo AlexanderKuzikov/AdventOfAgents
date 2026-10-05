@@ -5,7 +5,7 @@
 
 Статусы: ✅ переведён · 🟡 субтитры скачаны, ждёт перевода · ⚪ видео нет или недоступно
 
-Всего дней: **60**, с субтитрами: **38**, переведено: **19**
+Всего дней: **60**, с субтитрами: **38**, переведено: **25**
 
 ## Темы
 
@@ -51,7 +51,7 @@ uvx --from google-adk adk web my_agent/
 ---
 
 ### day03 — Gemini 3 + ADK  
-🟡 · 6:23 · Gemini 3, ADK, Google Search
+✅ · 6:23 · Gemini 3, ADK, Google Search
 
 Build a powerful AI Agent using Gemini 3 and ADK with native support for Google Search grounding, computer use, and real-time streaming.
 
@@ -137,7 +137,7 @@ make deploy
 ---
 
 ### day06 — 🧑‍💻 ADK ready in Antigravity, Gemini CLI, Cursor, Firebase Studio and more  
-🟡 · 1:51 · ANTIGRAVITY, CLI, IDE, ADK
+✅ · 1:51 · ANTIGRAVITY, CLI, IDE, ADK
 
 Building agents shouldn't require an hour of environment configuration. If you use the Agent Starter Pack you already have IDE magnet context baked in for the Agent Development Kit (ADK).
 
@@ -178,7 +178,7 @@ How do I create a function tool using Agent Development Kit?
 ---
 
 ### day07 — LLMs Can Execute Code: Autonomous Problem Solving  
-🟡 · 1:44 · Code Execution, LLMs, Agents, ADK
+✅ · 1:44 · Code Execution, LLMs, Agents, ADK
 
 Explore how LLMs can not only write but also execute, debug, and refine code autonomously, transforming them into powerful problem solvers.
 
@@ -252,7 +252,7 @@ gap_analysis_agent = LlmAgent(
 ---
 
 ### day08 — Effective Context Management with ADK Layers  
-🟡 · 2:15 · Context Management, Layers, Caching
+✅ · 2:15 · Context Management, Layers, Caching
 
 ADK Context design thesis: context as a compiled view
 
@@ -397,7 +397,7 @@ def chat(session_id: str, user_message: str, ui_style: str | None = None):
 ---
 
 ### day09 — ⏪ Undo buttons for your Agents  
-🟡 · 1:50 · Rewind, Resume, ADK, Time Travel, Undo
+✅ · 1:50 · Rewind, Resume, ADK, Time Travel, Undo
 
 Building an "Edit Message" or "Regenerate" feature shouldn't require complex database migrations. In the ADK, time travel is built-in.
 
@@ -436,7 +436,7 @@ asyncio.run(runner.run(query="Let's try that request again with these constraint
 ---
 
 ### day10 — Big Context ≠ Better Memory  
-🟡 · 7:15 · Memory, ADK, Context Caching, Context Compaction, Memory
+✅ · 7:15 · Memory, ADK, Context Caching, Context Compaction, Memory
 
 Long-running agent sessions face two enemies: latency and "lost in the middle" syndrome. The ADK solves this with Context Caching and Context Compaction.
 

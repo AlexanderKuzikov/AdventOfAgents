@@ -1,0 +1,17 @@
+{
+  "note": "Субтитры автоматические (auto, en-orig). Названия приведены по странице дня и репозиторию google/mcp (пример launchmybakery): AG-UI, Agent Engine, Nano Banana, Google Maps Places API.",
+  "segments": [
+    {
+      "t": 0,
+      "en": "All right, so we've got the sweet new ADK sample for you about a retail research agent. You can download this and get up and running in just a few commands, which I'll copy and paste — you can see them get started. But let me flip over to the UI: you're up and running with this beautiful AG-UI front end and multi-agent back end. In this use case we're trying to look for opening a bakery in Dubai Marina. First the research agent kicks in, and it's going to use Google Search to gather real-time demographic data and customer trends. Then the competitor agent queries the Google Maps Places API, looks for high-performing rivals, and identifies saturation risks in the neighbourhood.",
+      "ru": "Готово — у нас новый сладкий ADK-семпл про агента исследования для ритейла. Его можно скачать и запустить всего парой команд — сейчас скопирую их, чтобы вы видели. А теперь переключусь на интерфейс: у вас работает красивый фронтенд на AG-UI и мультиагентный бэкенд. В этом сценарии мы ищем пекарню в Dubai Marina. Сначала включается агент исследования: он через Google Search собирает актуальные демографические данные и тренды спроса. Затем агент конкурентов обращается к Google Maps Places API, ищет сильных соперников и определяет риски перенасыщения в районе.",
+      "fix": "pushing th stuff -> pushing this stuff"
+    },
+    {
+      "t": 26,
+      "en": "And here's where it gets interesting. The gap-analysis agent writes and executes real Python code to mathematically calculate a viable gap score. This is not hallucinating, this is not just pushing the stuff through the context window — it's writing the code. This execution happens in a secure sandbox running either on your laptop or in a cloud VM as a service like Agent Engine. We took all that information, ran a strategic analysis and generated an executive report. Here are an overview of some of the details within that report. The infographic is a bunch of HTML and artifacts that you could download and turn into other assets. You have a whole bunch of insights here, and you can customize this to other use cases using this as a template. And of course, we have an infographic thanks to Nano Banana. This whole thing is available on GitHub for you today: take it, download it, turn it into something cool, and show me what you built.",
+      "ru": "И вот тут становится интересно. Агент gap-analysis пишет и выполняет настоящий код на Python, чтобы математически посчитать оценку ниши. Это не галлюцинация, это не просто проталкивание текста через контекстное окно — он пишет код. Выполнение происходит в защищённой песочнице: либо на вашем ноутбуке, либо в облачной VM как сервис, например в Agent Engine. Мы собрали всю информацию, провели стратегический анализ и сгенерировали executive-отчёт. Вот обзор части деталей этого отчёта. Инфографика — это HTML и другие артефакты, которые можно скачать и превратить в что-то другое. Здесь целая россыпь выводов, а сам отчёт можно переиспользовать как шаблон для других задач. Ну и, конечно, инфографика — спасибо Nano Banana. Всё это уже сегодня доступно на GitHub: забирайте, скачивайте, превращайте во что-нибудь интересное и показывайте, что у вас получилось.",
+      "fix": "pushing th stuff -> pushing this stuff; the gap analysis agent -> the gap-analysis agent"
+    }
+  ]
+}

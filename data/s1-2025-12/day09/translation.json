@@ -1,0 +1,29 @@
+{
+  "note": "Субтитры автоматические (auto, en-orig). Имена методов сверены со страницей дня (ссылка на github.com/google/adk-python/blob/main/contributing/samples/rewind_session/main.py): rewind_async, state_delta, artifact_delta.",
+  "segments": [
+    {
+      "t": 0,
+      "en": "We've all been there. You push a seemingly small change to production and suddenly everything breaks. Usually fixing it involves panic, digging through logs and hot fixes. But what if you could just go back? Today I'm going to show you time travel in action. It's not science fiction: it's the fastest way to revert the state of your application to the exact moment before the crash. Let's jump into the demo.",
+      "ru": "Все через это проходили. Выкатываете на прод кажущееся мелкое изменение — и всё ломается. Обычно исправление это паника, копание в логах и горячие фиксы. А что, если можно просто вернуться назад? Сегодня покажу travel во времени в действии. Это не фантастика: это самый быстрый способ вернуть состояние приложения ровно на момент перед падением. Переходим к демо.",
+      "fix": null
+    },
+    {
+      "t": 27,
+      "en": "Now let's look at how we implement this inside ADK. As you can see in the code snippet on the left, we use the rewind_async method. It essentially takes the runner and rolls the session back to a specific invocation ID or timestamp. When we do this, two important things happen. First, all session-level resources are restored to that exact moment. Second, any new messages you send are processed as if they originated from that past timeline. It creates a seamless way to fork or retry conversations programmatically.",
+      "ru": "Теперь посмотрим, как это реализовано внутри ADK. В фрагменте кода слева мы используем метод `rewind_async`. По сути он берёт runner и откатывает сессию к конкретному invocation ID или к моменту времени. При этом происходят две важные вещи. Первое: все ресурсы уровня сессии восстанавливаются на тот самый момент. Второе: любые новые сообщения, которые вы отправляете, обрабатываются так, будто они возникли в той прошлой временной линии. Получается бесшовный способ форкать или переигрывать диалоги программно.",
+      "fix": "the rewind async method -> rewind_async"
+    },
+    {
+      "t": 53,
+      "en": "So what is actually happening under the hood when you request a rewind? If you look at the code on the left, you'll see it's a three-step process. First, we look at the current session. Then, instead of deleting history, we compute the deltas — specifically the state_delta and artifact_delta. These represent the difference between where we are now and where we want to be. Finally, we wrap those deltas into a new rewind event and append it to the log. This tells the system exactly how to reconstruct the past without losing the audit trail.",
+      "ru": "Что же на самом деле происходит под капотом, когда вы запрашиваете откат? В коде слева видно, что это процесс из трёх шагов. Сначала мы смотрим текущую сессию. Затем, вместо удаления истории, вычисляем дельты — конкретно `state_delta` и `artifact_delta`. Они показывают разницу между тем, где мы сейчас, и тем, где хотим оказаться. Наконец, заворачиваем эти дельты в новое событие rewind и добавляем его в лог. Так система точно знает, как восстановить прошлое, не теряя аудиторский след.",
+      "fix": "state underscore delta and artifact delta -> state_delta и artifact_delta"
+    },
+    {
+      "t": 117,
+      "en": "We start by initializing the session. We set a state variable colour to red and save an artifact called file one with version one content. Next, we simulate a conversation turn: we update the state colour to blue and overwrite the artifact with version two. You can see here that the system confirms these new values. Now for the magic, we trigger the rewind_async function targeting the specific invocation ID from before those updates happened. The rewind completes and we verify the data: the state has reverted back to red and the artifact is restored to version one.",
+      "ru": "Сначала инициализируем сессию. Задаём переменную состояния colour в red и сохраняем артефакт file one с содержимым версии one. Затем имитируем ход диалога: меняем colour на blue и перезаписываем артефакт версией two. Здесь видно, что система подтверждает новые значения. И наступает магия: вызываем `rewind_async`, указывая invocation ID, который был до этих обновлений. Откат завершается, и мы проверяем данные: состояние вернулось к red, а артефакт восстановился до версии one.",
+      "fix": null
+    }
+  ]
+}

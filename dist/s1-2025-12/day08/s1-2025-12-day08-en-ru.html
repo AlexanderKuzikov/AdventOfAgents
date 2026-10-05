@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Effective Context Management with ADK Layers — EN / RU</title>
+<style>
+:root {
+  --en-bg: #f7f8fa;
+  --line: #dfe3e8;
+  --accent: #0b57d0;
+  --ts: #8a9099;
+  --muted: #5f6672;
+  --fix: #fff3cd;
+  --fix-line: #e0b100;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 32px 20px 72px;
+  background: #eef0f3;
+  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #1a1a1a;
+}
+
+.page { max-width: 1400px; margin: 0 auto; }
+
+h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.head .sub { color: var(--muted); font-size: 15px; }
+.head .sub a { color: var(--accent); }
+
+.legend {
+  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
+}
+.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
+.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+
+.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+
+button {
+  font: inherit; font-size: 14px; padding: 7px 14px;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: #fff; color: #1a1a1a; cursor: pointer;
+}
+button:hover { border-color: #b9c0ca; background: #fafbfc; }
+
+.grid {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden;
+}
+
+.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
+
+.head-row {
+  background: #2f3541; color: #fff;
+  font-size: 13px; letter-spacing: 0.04em;
+  text-transform: uppercase; font-weight: 600;
+  position: sticky; top: 0; z-index: 5;
+}
+.head-row > div { padding: 10px 18px; }
+.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
+
+.row > .ts {
+  padding: 14px 8px; font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ts); text-align: right;
+  border-right: 1px solid var(--line); background: #fbfbfc;
+}
+.row > .en, .row > .ru {
+  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
+}
+.row > .en { background: var(--en-bg); }
+.row > .ru { border-right: 0; }
+
+.row.cont > .ts::after {
+  content: ""; display: block; width: 14px; height: 1px;
+  background: var(--line); margin: 8px 0 0 auto;
+}
+.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
+
+.row.fixed > .en { background: var(--fix); }
+.row.fixed .tag { display: none; }
+
+body.show-fixes .row.fixed .tag { display: block; }
+
+.tag {
+  display: inline-block; margin-top: 6px;
+  font-size: 11.5px; line-height: 1.35;
+  color: #6b5400; background: var(--fix);
+  border-left: 3px solid var(--fix-line);
+  padding: 3px 8px; border-radius: 0 4px 4px 0;
+}
+
+.app { margin-top: 26px; }
+.app h2 { font-size: 19px; margin: 0 0 10px; }
+
+table {
+  width: 100%; border-collapse: collapse;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden; font-size: 15px;
+}
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
+.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
+
+body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
+body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
+body.hide-en .row, body.hide-en .head-row,
+body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
+
+@media (max-width: 900px) {
+  .head-row, .row { grid-template-columns: 56px 1fr; }
+  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
+  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .bar, .legend { display: none; }
+  .head-row { position: static; }
+  .grid, table { border-radius: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <h1>Effective Context Management with ADK Layers</h1>
+    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
+      Видео: <a href="https://www.youtube.com/watch?v=DdTtiWoMa3E">https://www.youtube.com/watch?v=DdTtiWoMa3E</a> · 02:15
+      · auto (YouTube en-orig)</div>
+  </div>
+
+  <div class="legend">
+    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
+    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
+  </div>
+
+  <div class="bar">
+    <button id="btn-mark">Показать исправления</button>
+    <button id="btn-print">Печать / PDF</button>
+  </div>
+
+  <div class="grid">
+    <div class="head-row">
+      <div>Time</div>
+      <div>English</div>
+      <div>Русский</div>
+    </div>
+    <div class="row">
+      <div class="ts">00:00</div>
+      <div class="en">Okay, let&#x27;s dive into a powerful new way to architect your AI agents for production using ADK. If you&#x27;re building long-running agents, you&#x27;ve definitely felt the pain of the context bottleneck. It&#x27;s a three-way pressure: dumping everything into one giant prompt just doesn&#x27;t scale. Bigger windows aren&#x27;t the magic bullet. We need a new discipline — context engineering. ADK flips the script with this idea: context isn&#x27;t just history, it&#x27;s a compiled view.</div>
+      <div class="ru">Итак, нырнём в мощный новый способ проектировать агентов для продакшена на ADK. Если вы строите долгоживущих агентов, вы точно чувствовали боль контекстного узкого места. Это давление с трёх сторон: свалить всё в один огромный промпт просто не масштабируется. Более крупные окна не являются волшебной пулей. Нужна новая дисциплина — context engineering. ADK переворачивает подход этой идеей: контекст — это не просто история, это скомпилированное представление.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">00:38</div>
+      <div class="en">Let&#x27;s break that down. Think of it this way: your agent&#x27;s state is the source code, and it gets compiled into a lean prompt. It all starts with a tiered model for your agent&#x27;s state. The session is your ground truth, and critically, it&#x27;s structured events, not just a blob of text. Then you have memory and artifacts for long-term information, which keeps the main session log clean and focused. And this is a game changer: instead of dumping files, you just use a lightweight handle.<div class="tag">уточнено: gamecher -&gt; game changer</div></div>
+      <div class="ru">Разберём подробнее. Представьте так: состояние агента — это исходный код, который компилируется в компактный промпт. Всё начинается с многоуровневой модели состояния агента. Сессия — это источник истины, и, что принципиально, она состоит из структурированных событий, а не из кляксы текста. Дальше идут память и артефакты для долгосрочной информации — благодаря им основной лог сессии остаётся чистым и сфокусированным. И вот тут гейм-ченджер: вместо того чтобы вкладывать файлы целиком, вы используете лёгкую ссылку.</div>
+    </div>
+    <div class="row">
+      <div class="ts">01:07</div>
+      <div class="en">Okay, so we have this source state. Now let&#x27;s look at how the compiler pipeline actually works. Instead of messy string building, you use an LLM flow — an explicit, testable pipeline. This structured process transforms your session&#x27;s rich history into a lean computed view for the model. And this is where it all comes together: that final compiled view gives you incredible control and efficiency. One of the biggest wins here is super precise and efficient context caching. This is huge for performance: you basically separate the static stuff from what&#x27;s new each turn, which lets the model reuse computation. The payoff is exactly what you want — lower latency, lower costs, and way more predictable behaviour.</div>
+      <div class="ru">Итак, у нас есть исходное состояние. Теперь посмотрим, как работает конвейер компиляции. Вместо небрежной сборки строк вы используете LLM-поток — явный, тестируемый конвейер. Эта структурированная процедура превращает богатую историю сессии в компактное вычисленное представление для модели. И здесь всё сходится: финальное скомпилированное представление даёт колоссальный контроль и эффективность. Один из главных выигрышей — очень точное и экономное кэширование контекста. Для производительности это огромная вещь: вы отделяете статичную часть от того, что ново на каждом ходу, и модель может переиспользовать вычисления. Отдача ровно та, что нужна: меньше задержка, меньше расходы и куда более предсказуемое поведение.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">01:46</div>
+      <div class="en">This also fixes context explosion in multi-agent systems: you can explicitly scope what each sub-agent sees. So the big takeaway is this: context isn&#x27;t just string mashing, it&#x27;s a real architectural concern. Ultimately, adopting this compiler mindset is how we build truly sophisticated AI. It&#x27;s a total game changer.<div class="tag">уточнено: multi- aent systems -&gt; multi-agent systems; sub aent -&gt; sub-agent</div></div>
+      <div class="ru">Это также снимает взрывной рост контекста в мультиагентных системах: вы явно задаёте, что видит каждый субагент. Так что главный вывод такой: контекст — это не смешивание строк, а настоящая архитектурная задача. В конечном счёте именно переход к мышлению компилятора позволяет строить по-настоящему сложный ИИ. Это тотальный гейм-ченджер.</div>
+    </div>
+  </div>
+
+  <div class="app">
+    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
+    <table>
+      <thead>
+        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+      </thead>
+      <tbody>
+      <tr><td>[00:38]</td><td>Let&#x27;s break that down. Think of it this way: your agent&#x27;s state is the source code, and it gets compiled into a lean prompt. It all starts with a tiered model for your agent&#x27;s state. The session is your ground truth, and critically, it&#x27;s structured events, not just a blob of text. Then you have memory and artifacts for long-term information, which keeps the main session log clean and focused. And this is a game changer: instead of dumping files, you just use a lightweight handle.</td><td>gamecher -&gt; game changer</td><td>Разберём подробнее. Представьте так: состояние агента — это исходный код, который компилируется в компактный промпт. Всё начинается с многоуровневой модели состояния агента. Сессия — это источник истины, и, что принципиально, она состоит из структурированных событий, а не из кляксы текста. Дальше идут память и артефакты для долгосрочной информации — благодаря им основной лог сессии остаётся чистым и сфокусированным. И вот тут гейм-ченджер: вместо того чтобы вкладывать файлы целиком, вы используете лёгкую ссылку.</td></tr>
+      <tr><td>[01:46]</td><td>This also fixes context explosion in multi-agent systems: you can explicitly scope what each sub-agent sees. So the big takeaway is this: context isn&#x27;t just string mashing, it&#x27;s a real architectural concern. Ultimately, adopting this compiler mindset is how we build truly sophisticated AI. It&#x27;s a total game changer.</td><td>multi- aent systems -&gt; multi-agent systems; sub aent -&gt; sub-agent</td><td>Это также снимает взрывной рост контекста в мультиагентных системах: вы явно задаёте, что видит каждый субагент. Так что главный вывод такой: контекст — это не смешивание строк, а настоящая архитектурная задача. В конечном счёте именно переход к мышлению компилятора позволяет строить по-настоящему сложный ИИ. Это тотальный гейм-ченджер.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Субтитры автоматические (auto, en-orig). Термины приведены по странице дня и документации ADK: context engineering, session, artifacts, context caching.</p>
+  </div>
+
+</div>
+<script>
+const el = id => document.getElementById(id);
+
+el('tgl-en').addEventListener('change', e =>
+  document.body.classList.toggle('hide-en', !e.target.checked));
+el('tgl-ru').addEventListener('change', e =>
+  document.body.classList.toggle('hide-ru', !e.target.checked));
+el('btn-print').addEventListener('click', () => window.print());
+el('btn-mark').addEventListener('click', () => {
+  const on = !document.body.classList.contains('show-fixes');
+  document.body.classList.toggle('show-fixes', on);
+  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
+});
+</script>
+</body>
+</html>
