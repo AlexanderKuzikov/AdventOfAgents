@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LangGraph + A2A — EN / RU</title>
+<style>
+:root {
+  --en-bg: #f7f8fa;
+  --line: #dfe3e8;
+  --accent: #0b57d0;
+  --ts: #8a9099;
+  --muted: #5f6672;
+  --fix: #fff3cd;
+  --fix-line: #e0b100;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 32px 20px 72px;
+  background: #eef0f3;
+  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #1a1a1a;
+}
+
+.page { max-width: 1400px; margin: 0 auto; }
+
+h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.head .sub { color: var(--muted); font-size: 15px; }
+.head .sub a { color: var(--accent); }
+
+.legend {
+  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
+}
+.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
+.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+
+.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+
+button {
+  font: inherit; font-size: 14px; padding: 7px 14px;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: #fff; color: #1a1a1a; cursor: pointer;
+}
+button:hover { border-color: #b9c0ca; background: #fafbfc; }
+
+.grid {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden;
+}
+
+.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
+
+.head-row {
+  background: #2f3541; color: #fff;
+  font-size: 13px; letter-spacing: 0.04em;
+  text-transform: uppercase; font-weight: 600;
+  position: sticky; top: 0; z-index: 5;
+}
+.head-row > div { padding: 10px 18px; }
+.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
+
+.row > .ts {
+  padding: 14px 8px; font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ts); text-align: right;
+  border-right: 1px solid var(--line); background: #fbfbfc;
+}
+.row > .en, .row > .ru {
+  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
+}
+.row > .en { background: var(--en-bg); }
+.row > .ru { border-right: 0; }
+
+.row.cont > .ts::after {
+  content: ""; display: block; width: 14px; height: 1px;
+  background: var(--line); margin: 8px 0 0 auto;
+}
+.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
+
+.row.fixed > .en { background: var(--fix); }
+.row.fixed .tag { display: none; }
+
+body.show-fixes .row.fixed .tag { display: block; }
+
+.tag {
+  display: inline-block; margin-top: 6px;
+  font-size: 11.5px; line-height: 1.35;
+  color: #6b5400; background: var(--fix);
+  border-left: 3px solid var(--fix-line);
+  padding: 3px 8px; border-radius: 0 4px 4px 0;
+}
+
+.app { margin-top: 26px; }
+.app h2 { font-size: 19px; margin: 0 0 10px; }
+
+table {
+  width: 100%; border-collapse: collapse;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden; font-size: 15px;
+}
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
+.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
+
+body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
+body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
+body.hide-en .row, body.hide-en .head-row,
+body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
+
+@media (max-width: 900px) {
+  .head-row, .row { grid-template-columns: 56px 1fr; }
+  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
+  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .bar, .legend { display: none; }
+  .head-row { position: static; }
+  .grid, table { border-radius: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <h1>LangGraph + A2A</h1>
+    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
+      Видео: <a href="https://www.youtube.com/watch?v=N25rAzQXkEA">https://www.youtube.com/watch?v=N25rAzQXkEA</a> · 09:40
+      · auto (YouTube en-orig)</div>
+  </div>
+
+  <div class="legend">
+    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
+    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
+  </div>
+
+  <div class="bar">
+    <button id="btn-mark">Показать исправления</button>
+    <button id="btn-print">Печать / PDF</button>
+  </div>
+
+  <div class="grid">
+    <div class="head-row">
+      <div>Time</div>
+      <div>English</div>
+      <div>Русский</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">00:06</div>
+      <div class="en">Hello and welcome to another day of Advent of Agents. Today we&#x27;ll show you how it&#x27;s possible to build a LangGraph agent using A2A in a matter of minutes, and then deploy that agent to Google Cloud using either Agent Engine or Cloud Run. The first thing you&#x27;ll need to run is a command like this: uvx agent-starter-pack create langgraph_base. Of course, you&#x27;ll need uv installed. Once you run this, it will download the starter pack and ask you for a name for your agent — any name will do; in this case we&#x27;ll take the default my_agent. Then you&#x27;ll choose between Agent Engine and Cloud Run; let&#x27;s go with Cloud Run for this example. It&#x27;ll then ask whether you want to add CI/CD and Terraform — you don&#x27;t need it right away, you can add it later with the enhance command, so let&#x27;s take the default again. us-central1 as the default region. This verifies our credentials, and in a matter of seconds we get a sample we can open in our IDE.<div class="tag">уточнено: langraph -&gt; LangGraph; cl run -&gt; Cloud Run; CCD -&gt; CI/CD; US central one -&gt; us-central1; ID -&gt; IDE</div></div>
+      <div class="ru">Привет, добро пожаловать на ещё один день Advent of Agents. Сегодня покажем, как за несколько минут собрать агента на LangGraph с использованием A2A, а затем задеплоить его в Google Cloud — хоть на Agent Engine, хоть на Cloud Run. Первое, что нужно выполнить, — вот такая команда: `uvx agent-starter-pack create langgraph_base`. Разумеется, должен быть установлен uv. После запуска скачается стартер-пак и спросит имя агента — подойдёт любое; в нашем случае берём дефолтное `my_agent`. Затем выбор между Agent Engine и Cloud Run; для этого примера берём Cloud Run. Дальше спросит, добавлять ли CI/CD и Terraform — сейчас не нужно, это можно добавить позже командой enhance, поэтому снова берём дефолт. Регион us-central1. Инструмент проверит учётные данные, и через несколько секунд у нас будет образец, который можно открыть в IDE.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">01:29</div>
+      <div class="en">We now have a sample containing everything needed to build and deploy this agent. You can see the structure of the repo, which contains the application. In this case it&#x27;s a really simple LangGraph agent using Gemini 3 Pro: it offers a get_weather tool and is a simple ReAct-based agent that essentially gives you weather information. The whole point of this agent is for you to change it — imagine you want something different depending on your task. Since we chose Cloud Run here, we also get a FastAPI server you can run locally, run remotely, and start using for testing. We also prepare a set of examples of unit and integration tests. The first thing you&#x27;ll typically do is check how the agent works locally: install all the dependencies and run the playground. Here the playground actually uses the A2A inspector — a web UI that lets you test any A2A agent over the A2A protocol.<div class="tag">уточнено: GM3 Pro -&gt; Gemini 3 Pro; reactbased -&gt; ReAct-based; The world purpose -&gt; The whole purpose; 8way inspector / A2 inspector -&gt; A2A inspector</div></div>
+      <div class="ru">Теперь у нас есть образец со всем необходимым, чтобы собрать и задеплоить агента. Видна структура репозитория с приложением. В нашем случае это очень простой агент на LangGraph с Gemini 3 Pro: у него есть инструмент `get_weather`, и это простой ReAct-агент, который по сути сообщает погоду. Смысл этого агента в том, чтобы вы его изменили — представьте, что вам нужно что-то другое под вашу задачу. Поскольку мы выбрали Cloud Run, у нас также есть FastAPI-сервер, который можно запускать локально и удалённо и использовать для тестов. Мы также подготовили набор примеров юнит- и интеграционных тестов. Первое, что обычно делают, — проверяют, как агент работает локально: ставят зависимости и запускают playground. Здесь playground использует A2A inspector — веб-интерфейс, позволяющий протестировать любого A2A-агента по протоколу A2A.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">03:08</div>
+      <div class="en">You can see the agent is running, and we can open the inspector UI. It looks like this: you can select dark mode, but essentially you need to paste the URL of the agent — in this case it&#x27;s deployed locally — and hit connect. You can see we connected, the agent card was valid, and we can start chatting. We can send images, we can send data. For example, we can send hi, and the agent responds — on the first cold start, and then with a message: hello, how can I help you? What&#x27;s the weather in New York? So you can use this to start using the agent, test things out, then go back to the agent&#x27;s code, modify things, and iterate this way. Once you&#x27;re ready for deployment, it&#x27;s time to run a new command: make deploy. It packages all the code here and, in this case, deploys to Cloud Run. You can see it fetching the project number and project ID, and then running gcloud run deploy my_agent.<div class="tag">уточнено: What&#x27;s the where in New York -&gt; What&#x27;s the weather in New York; eating G-Cloud but run deploy -&gt; running gcloud run deploy</div></div>
+      <div class="ru">Видно, что агент работает, и мы можем открыть инспектор. Выглядит он так: тёмную тему тоже можно включить, но по сути нужно вставить URL агента — в нашем случае он задеплоен локально — и нажать connect. Видно, что подключение прошло, agent card валиден, и можно начинать общение. Можно отправлять картинки и данные. Например, отправим hi — агент ответит: на первом холодном старте, а затем сообщением «привет, чем могу помочь? Какая погода в Нью-Йорке?». Так можно начать пользоваться агентом, всё попробовать, затем вернуться в код агента, что-то изменить и так итерировать. Когда будете готовы к деплою, выполняется новая команда: `make deploy`. Она упакует весь код и в нашем случае задеплоит в Cloud Run. Видно, как она получает номер проекта и project ID, а затем выполняет `gcloud run deploy my_agent`.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">04:35</div>
+      <div class="en">So this pushes our agent into the remote project in Google Cloud. Let&#x27;s wait a couple of seconds — well, in this case a couple of minutes, but let&#x27;s cut it out. Now that the agent is deployed successfully, it&#x27;s time to interact with it, and here we&#x27;ll use the A2A inspector again. But you can use other means: for example, a specific Python client to interact with it, or a custom UI. Since we&#x27;re just developing with it, we&#x27;ll use the inspector. You&#x27;ll need to copy this URL, open a new tab and trigger make inspector, which kicks off the same UI as before. This time we&#x27;re going to follow the guidance that we need the server URL with an agent card suffix, and then we need to print an identity token, which matters for authenticating against a remote Cloud Run instance. Back in the inspector, let&#x27;s fill in these fields: first the service URL, then the agent card suffix, and finally an identity token as the bearer token. Let&#x27;s paste it and hit connect — we managed to authenticate successfully against the remotely deployed agent. Now let&#x27;s send it a simple hi and see how it responds.<div class="tag">уточнено: the hijen card suffix -&gt; the agent card suffix; as a bear token -&gt; as a bearer token; an identity token -&gt; an identity token</div></div>
+      <div class="ru">Так мы отправляем агента в удалённый проект в Google Cloud. Подождём пару секунд — ну, в нашем случае пару минут, но вырежем это. Агент задеплоен, пора с ним пообщаться, и здесь мы снова используем A2A inspector. Но можно и другими средствами: например, отдельным Python-клиентом или собственным UI. Раз мы пока только разрабатываем, возьмём инспектор. Нужно скопировать этот URL, открыть новую вкладку и выполнить `make inspector`, что поднимает тот же интерфейс. В этот раз идём по инструкции: нужен server URL с суффиксом agent card, а затем нужно вывести identity token — это важно для аутентификации на удалённом инстансе Cloud Run. Возвращаемся в инспектор и заполняем поля: сначала service URL, затем суффикс agent card, и наконец identity token как bearer token. Вставляем и жмём connect — аутентификация к удалённо задеплоенному агенту прошла. Отправим простое hi и посмотрим на ответ.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">07:04</div>
+      <div class="en">The journey doesn&#x27;t finish here, of course. For example, you might want to look at observability: you can go into Cloud Trace and see how events are emitted every time you interact with the agent. This is extremely important so that you can understand how users use the agent, build feedback, and iterate over time. In Cloud Trace you can see a bunch of events emitted by the agent; you can click on them and see the full stack of all traces within your agent. You&#x27;ll see a mix of A2A events together with LangGraph and Google Generative AI events. For each event you can see how the agent produced a response. In this case it&#x27;s a simple request — you can see the agent just invoked the model to respond. But imagine we ask something more complex, like what&#x27;s the weather in New York: the agent might need to invoke a tool call, and we&#x27;ll see that tool call in the trace. If you refresh Cloud Trace and look at the last fifteen minutes, you&#x27;ll see that for some events we don&#x27;t have the final response yet, but we do see the full stack: the first call, invoking the tool to get the weather, then producing a final response to the user, plus a bunch of A2A events that help understand what adds latency within your service. That concludes our demo. You can then use the starter pack to prepare for production deployment, which involves Terraform and other resources to build more confidence into the agent. Let us know what you think, and hope you enjoyed this.<div class="tag">уточнено: emitted by Germany -&gt; emitted by the agent; produc producing -&gt; producing; a bunch of hauler A2A events -&gt; a bunch of A2A events; deploy to end the agent -&gt; deploy the agent</div></div>
+      <div class="ru">Конечно, на этом путешествие не заканчивается. Например, стоит посмотреть на наблюдаемость: загляните в Cloud Trace и увидите, какие события эмитятся при каждом взаимодействии с агентом. Это крайне важно, чтобы понять, как пользователи работают с агентом, собрать обратную связь и со временем итерировать. В Cloud Trace видно пачку событий от агента; кликнув по ним, вы увидите полный стек всех трасс внутри агента. Это смесь событий A2A, LangGraph и Google Generative AI. По каждому событию видно, как агент сформировал ответ. В этом случае запрос простой — видно, что агент просто вызвал модель. Но представьте более сложный вопрос вроде «какая погода в Нью-Йорке»: тогда агенту понадобится вызов инструмента, и мы увидим этот вызов в трассе. Если обновить Cloud Trace и посмотреть за последние пятнадцать минут, то для части событий финального ответа ещё нет, но виден полный стек: первый вызов, вызов инструмента за погодой и затем формирование финального ответа пользователю, плюс пачка событий A2A, которые помогают понять, что именно добавляет задержку в вашем сервисе. На этом демо закончено. Дальше можно использовать стартер-пак, чтобы подготовить продакшен-деплой с Terraform и другими ресурсами и больше доверять агенту. Напишите, что думаете, и надеюсь, вам понравилось.</div>
+    </div>
+  </div>
+
+  <div class="app">
+    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
+    <table>
+      <thead>
+        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+      </thead>
+      <tbody>
+      <tr><td>[00:06]</td><td>Hello and welcome to another day of Advent of Agents. Today we&#x27;ll show you how it&#x27;s possible to build a LangGraph agent using A2A in a matter of minutes, and then deploy that agent to Google Cloud using either Agent Engine or Cloud Run. The first thing you&#x27;ll need to run is a command like this: uvx agent-starter-pack create langgraph_base. Of course, you&#x27;ll need uv installed. Once you run this, it will download the starter pack and ask you for a name for your agent — any name will do; in this case we&#x27;ll take the default my_agent. Then you&#x27;ll choose between Agent Engine and Cloud Run; let&#x27;s go with Cloud Run for this example. It&#x27;ll then ask whether you want to add CI/CD and Terraform — you don&#x27;t need it right away, you can add it later with the enhance command, so let&#x27;s take the default again. us-central1 as the default region. This verifies our credentials, and in a matter of seconds we get a sample we can open in our IDE.</td><td>langraph -&gt; LangGraph; cl run -&gt; Cloud Run; CCD -&gt; CI/CD; US central one -&gt; us-central1; ID -&gt; IDE</td><td>Привет, добро пожаловать на ещё один день Advent of Agents. Сегодня покажем, как за несколько минут собрать агента на LangGraph с использованием A2A, а затем задеплоить его в Google Cloud — хоть на Agent Engine, хоть на Cloud Run. Первое, что нужно выполнить, — вот такая команда: `uvx agent-starter-pack create langgraph_base`. Разумеется, должен быть установлен uv. После запуска скачается стартер-пак и спросит имя агента — подойдёт любое; в нашем случае берём дефолтное `my_agent`. Затем выбор между Agent Engine и Cloud Run; для этого примера берём Cloud Run. Дальше спросит, добавлять ли CI/CD и Terraform — сейчас не нужно, это можно добавить позже командой enhance, поэтому снова берём дефолт. Регион us-central1. Инструмент проверит учётные данные, и через несколько секунд у нас будет образец, который можно открыть в IDE.</td></tr>
+      <tr><td>[01:29]</td><td>We now have a sample containing everything needed to build and deploy this agent. You can see the structure of the repo, which contains the application. In this case it&#x27;s a really simple LangGraph agent using Gemini 3 Pro: it offers a get_weather tool and is a simple ReAct-based agent that essentially gives you weather information. The whole point of this agent is for you to change it — imagine you want something different depending on your task. Since we chose Cloud Run here, we also get a FastAPI server you can run locally, run remotely, and start using for testing. We also prepare a set of examples of unit and integration tests. The first thing you&#x27;ll typically do is check how the agent works locally: install all the dependencies and run the playground. Here the playground actually uses the A2A inspector — a web UI that lets you test any A2A agent over the A2A protocol.</td><td>GM3 Pro -&gt; Gemini 3 Pro; reactbased -&gt; ReAct-based; The world purpose -&gt; The whole purpose; 8way inspector / A2 inspector -&gt; A2A inspector</td><td>Теперь у нас есть образец со всем необходимым, чтобы собрать и задеплоить агента. Видна структура репозитория с приложением. В нашем случае это очень простой агент на LangGraph с Gemini 3 Pro: у него есть инструмент `get_weather`, и это простой ReAct-агент, который по сути сообщает погоду. Смысл этого агента в том, чтобы вы его изменили — представьте, что вам нужно что-то другое под вашу задачу. Поскольку мы выбрали Cloud Run, у нас также есть FastAPI-сервер, который можно запускать локально и удалённо и использовать для тестов. Мы также подготовили набор примеров юнит- и интеграционных тестов. Первое, что обычно делают, — проверяют, как агент работает локально: ставят зависимости и запускают playground. Здесь playground использует A2A inspector — веб-интерфейс, позволяющий протестировать любого A2A-агента по протоколу A2A.</td></tr>
+      <tr><td>[03:08]</td><td>You can see the agent is running, and we can open the inspector UI. It looks like this: you can select dark mode, but essentially you need to paste the URL of the agent — in this case it&#x27;s deployed locally — and hit connect. You can see we connected, the agent card was valid, and we can start chatting. We can send images, we can send data. For example, we can send hi, and the agent responds — on the first cold start, and then with a message: hello, how can I help you? What&#x27;s the weather in New York? So you can use this to start using the agent, test things out, then go back to the agent&#x27;s code, modify things, and iterate this way. Once you&#x27;re ready for deployment, it&#x27;s time to run a new command: make deploy. It packages all the code here and, in this case, deploys to Cloud Run. You can see it fetching the project number and project ID, and then running gcloud run deploy my_agent.</td><td>What&#x27;s the where in New York -&gt; What&#x27;s the weather in New York; eating G-Cloud but run deploy -&gt; running gcloud run deploy</td><td>Видно, что агент работает, и мы можем открыть инспектор. Выглядит он так: тёмную тему тоже можно включить, но по сути нужно вставить URL агента — в нашем случае он задеплоен локально — и нажать connect. Видно, что подключение прошло, agent card валиден, и можно начинать общение. Можно отправлять картинки и данные. Например, отправим hi — агент ответит: на первом холодном старте, а затем сообщением «привет, чем могу помочь? Какая погода в Нью-Йорке?». Так можно начать пользоваться агентом, всё попробовать, затем вернуться в код агента, что-то изменить и так итерировать. Когда будете готовы к деплою, выполняется новая команда: `make deploy`. Она упакует весь код и в нашем случае задеплоит в Cloud Run. Видно, как она получает номер проекта и project ID, а затем выполняет `gcloud run deploy my_agent`.</td></tr>
+      <tr><td>[04:35]</td><td>So this pushes our agent into the remote project in Google Cloud. Let&#x27;s wait a couple of seconds — well, in this case a couple of minutes, but let&#x27;s cut it out. Now that the agent is deployed successfully, it&#x27;s time to interact with it, and here we&#x27;ll use the A2A inspector again. But you can use other means: for example, a specific Python client to interact with it, or a custom UI. Since we&#x27;re just developing with it, we&#x27;ll use the inspector. You&#x27;ll need to copy this URL, open a new tab and trigger make inspector, which kicks off the same UI as before. This time we&#x27;re going to follow the guidance that we need the server URL with an agent card suffix, and then we need to print an identity token, which matters for authenticating against a remote Cloud Run instance. Back in the inspector, let&#x27;s fill in these fields: first the service URL, then the agent card suffix, and finally an identity token as the bearer token. Let&#x27;s paste it and hit connect — we managed to authenticate successfully against the remotely deployed agent. Now let&#x27;s send it a simple hi and see how it responds.</td><td>the hijen card suffix -&gt; the agent card suffix; as a bear token -&gt; as a bearer token; an identity token -&gt; an identity token</td><td>Так мы отправляем агента в удалённый проект в Google Cloud. Подождём пару секунд — ну, в нашем случае пару минут, но вырежем это. Агент задеплоен, пора с ним пообщаться, и здесь мы снова используем A2A inspector. Но можно и другими средствами: например, отдельным Python-клиентом или собственным UI. Раз мы пока только разрабатываем, возьмём инспектор. Нужно скопировать этот URL, открыть новую вкладку и выполнить `make inspector`, что поднимает тот же интерфейс. В этот раз идём по инструкции: нужен server URL с суффиксом agent card, а затем нужно вывести identity token — это важно для аутентификации на удалённом инстансе Cloud Run. Возвращаемся в инспектор и заполняем поля: сначала service URL, затем суффикс agent card, и наконец identity token как bearer token. Вставляем и жмём connect — аутентификация к удалённо задеплоенному агенту прошла. Отправим простое hi и посмотрим на ответ.</td></tr>
+      <tr><td>[07:04]</td><td>The journey doesn&#x27;t finish here, of course. For example, you might want to look at observability: you can go into Cloud Trace and see how events are emitted every time you interact with the agent. This is extremely important so that you can understand how users use the agent, build feedback, and iterate over time. In Cloud Trace you can see a bunch of events emitted by the agent; you can click on them and see the full stack of all traces within your agent. You&#x27;ll see a mix of A2A events together with LangGraph and Google Generative AI events. For each event you can see how the agent produced a response. In this case it&#x27;s a simple request — you can see the agent just invoked the model to respond. But imagine we ask something more complex, like what&#x27;s the weather in New York: the agent might need to invoke a tool call, and we&#x27;ll see that tool call in the trace. If you refresh Cloud Trace and look at the last fifteen minutes, you&#x27;ll see that for some events we don&#x27;t have the final response yet, but we do see the full stack: the first call, invoking the tool to get the weather, then producing a final response to the user, plus a bunch of A2A events that help understand what adds latency within your service. That concludes our demo. You can then use the starter pack to prepare for production deployment, which involves Terraform and other resources to build more confidence into the agent. Let us know what you think, and hope you enjoyed this.</td><td>emitted by Germany -&gt; emitted by the agent; produc producing -&gt; producing; a bunch of hauler A2A events -&gt; a bunch of A2A events; deploy to end the agent -&gt; deploy the agent</td><td>Конечно, на этом путешествие не заканчивается. Например, стоит посмотреть на наблюдаемость: загляните в Cloud Trace и увидите, какие события эмитятся при каждом взаимодействии с агентом. Это крайне важно, чтобы понять, как пользователи работают с агентом, собрать обратную связь и со временем итерировать. В Cloud Trace видно пачку событий от агента; кликнув по ним, вы увидите полный стек всех трасс внутри агента. Это смесь событий A2A, LangGraph и Google Generative AI. По каждому событию видно, как агент сформировал ответ. В этом случае запрос простой — видно, что агент просто вызвал модель. Но представьте более сложный вопрос вроде «какая погода в Нью-Йорке»: тогда агенту понадобится вызов инструмента, и мы увидим этот вызов в трассе. Если обновить Cloud Trace и посмотреть за последние пятнадцать минут, то для части событий финального ответа ещё нет, но виден полный стек: первый вызов, вызов инструмента за погодой и затем формирование финального ответа пользователю, плюс пачка событий A2A, которые помогают понять, что именно добавляет задержку в вашем сервисе. На этом демо закончено. Дальше можно использовать стартер-пак, чтобы подготовить продакшен-деплой с Terraform и другими ресурсами и больше доверять агенту. Напишите, что думаете, и надеюсь, вам понравилось.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Субтитры автоматические (auto, en-orig). Команды сверены со страницей дня и стартер-паком: agent-starter-pack create langgraph_base, make deploy, make inspector, agent card URL + суффикс agent card, bearer token (identity token) для удалённого Cloud Run.</p>
+  </div>
+
+</div>
+<script>
+const el = id => document.getElementById(id);
+
+el('tgl-en').addEventListener('change', e =>
+  document.body.classList.toggle('hide-en', !e.target.checked));
+el('tgl-ru').addEventListener('change', e =>
+  document.body.classList.toggle('hide-ru', !e.target.checked));
+el('btn-print').addEventListener('click', () => window.print());
+el('btn-mark').addEventListener('click', () => {
+  const on = !document.body.classList.contains('show-fixes');
+  document.body.classList.toggle('show-fixes', on);
+  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
+});
+</script>
+</body>
+</html>

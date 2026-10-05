@@ -5,7 +5,7 @@
 
 Статусы: ✅ переведён · 🟡 субтитры скачаны, ждёт перевода · ⚪ видео нет или недоступно
 
-Всего дней: **60**, с субтитрами: **38**, переведено: **32**
+Всего дней: **60**, с субтитрами: **38**, переведено: **37**
 
 ## Темы
 
@@ -651,7 +651,7 @@ uvx agent-starter-pack create -p -a adk_a2a_base
 ---
 
 ### day15 — Introducing A2UI  
-🟡 · 8:22 · A2UI, Generative UI, Agent-to-User Interface, Agent Development
+✅ · 8:22 · A2UI, Generative UI, Agent-to-User Interface, Agent Development
 
 Discover A2UI (Agent-to-User Interface), an open project that enables agents to stream dynamic, generative UIs as JSONL payloads, decoupling UI definition from rendering and breaking the ceiling of traditional chat interfaces.
 
@@ -676,7 +676,7 @@ npm run demo:all
 ---
 
 ### day16 — LangGraph + A2A  
-🟡 · 9:40 · LangGraph, A2A, Agent Starter Pack, Multi-Agent
+✅ · 9:40 · LangGraph, A2A, Agent Starter Pack, Multi-Agent
 
 Build LangGraph agents with full A2A capabilities using Agent Starter Pack. Your agent becomes instantly discoverable by other agents.
 
@@ -865,7 +865,7 @@ else: # Non-breaking fall-back behavior
 ---
 
 ### day21 — Kaggle Capstone Winners Highlight  
-🟡 · 4:32 · Hall of Fame, Winners, Agents for Good, Enterprise Agents, Concierge Agents, Freestyle
+✅ · 4:32 · Hall of Fame, Winners, Agents for Good, Enterprise Agents, Concierge Agents, Freestyle
 
 🏆 The Hall of Fame: Meet the Winners
 
@@ -1137,7 +1137,7 @@ make install && make dev
 ## s2-2026-03
 
 ### day01 — Season 2 Kick Off  
-🟡 · 0:45 · Launch
+✅ · 0:45 · Launch
 
 31 days. Zero to Production-Ready AI Agents on Google Cloud.
 
@@ -2188,7 +2188,7 @@ Connect and use Google Workspace connectors in personal Gemini Enterprise agents
 ---
 
 ### day18 — Workspace & Gemini Enterprise: ADK agents  
-🟡 · 4:55 · Gemini Enterprise, Google Workspace, ADK, MCP, Vertex AI
+✅ · 4:55 · Gemini Enterprise, Google Workspace, ADK, MCP, Vertex AI
 
 Build ADK agents that use the Vertex AI Search MCP server and Google Workspace APIs, deploy them to Vertex AI, and register them with Gemini Enterprise.
 
