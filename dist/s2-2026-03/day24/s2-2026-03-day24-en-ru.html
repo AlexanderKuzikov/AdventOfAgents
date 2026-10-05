@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Batch Processing: Scale to 10k with ADK — EN / RU</title>
+<style>
+:root {
+  --en-bg: #f7f8fa;
+  --line: #dfe3e8;
+  --accent: #0b57d0;
+  --ts: #8a9099;
+  --muted: #5f6672;
+  --fix: #fff3cd;
+  --fix-line: #e0b100;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 32px 20px 72px;
+  background: #eef0f3;
+  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #1a1a1a;
+}
+
+.page { max-width: 1400px; margin: 0 auto; }
+
+h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.head .sub { color: var(--muted); font-size: 15px; }
+.head .sub a { color: var(--accent); }
+
+.legend {
+  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
+}
+.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
+.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+
+.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+
+button {
+  font: inherit; font-size: 14px; padding: 7px 14px;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: #fff; color: #1a1a1a; cursor: pointer;
+}
+button:hover { border-color: #b9c0ca; background: #fafbfc; }
+
+.grid {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden;
+}
+
+.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
+
+.head-row {
+  background: #2f3541; color: #fff;
+  font-size: 13px; letter-spacing: 0.04em;
+  text-transform: uppercase; font-weight: 600;
+  position: sticky; top: 0; z-index: 5;
+}
+.head-row > div { padding: 10px 18px; }
+.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
+
+.row > .ts {
+  padding: 14px 8px; font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ts); text-align: right;
+  border-right: 1px solid var(--line); background: #fbfbfc;
+}
+.row > .en, .row > .ru {
+  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
+}
+.row > .en { background: var(--en-bg); }
+.row > .ru { border-right: 0; }
+
+.row.cont > .ts::after {
+  content: ""; display: block; width: 14px; height: 1px;
+  background: var(--line); margin: 8px 0 0 auto;
+}
+.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
+
+.row.fixed > .en { background: var(--fix); }
+.row.fixed .tag { display: none; }
+
+body.show-fixes .row.fixed .tag { display: block; }
+
+.tag {
+  display: inline-block; margin-top: 6px;
+  font-size: 11.5px; line-height: 1.35;
+  color: #6b5400; background: var(--fix);
+  border-left: 3px solid var(--fix-line);
+  padding: 3px 8px; border-radius: 0 4px 4px 0;
+}
+
+.app { margin-top: 26px; }
+.app h2 { font-size: 19px; margin: 0 0 10px; }
+
+table {
+  width: 100%; border-collapse: collapse;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden; font-size: 15px;
+}
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
+.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
+
+body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
+body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
+body.hide-en .row, body.hide-en .head-row,
+body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
+
+@media (max-width: 900px) {
+  .head-row, .row { grid-template-columns: 56px 1fr; }
+  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
+  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .bar, .legend { display: none; }
+  .head-row { position: static; }
+  .grid, table { border-radius: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <h1>Batch Processing: Scale to 10k with ADK</h1>
+    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
+      Видео: <a href="https://www.youtube.com/watch?v=3erD0GqEzX8">https://www.youtube.com/watch?v=3erD0GqEzX8</a> · 05:56
+      · auto (YouTube en-orig)</div>
+  </div>
+
+  <div class="legend">
+    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
+    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
+  </div>
+
+  <div class="bar">
+    <button id="btn-mark">Показать исправления</button>
+    <button id="btn-print">Печать / PDF</button>
+  </div>
+
+  <div class="grid">
+    <div class="head-row">
+      <div>Time</div>
+      <div>English</div>
+      <div>Русский</div>
+    </div>
+    <div class="row">
+      <div class="ts">00:00</div>
+      <div class="en">Welcome back to Advent of Agents. Today we&#x27;re talking about taking AI to production scale. When developers first build autonomous agents, they naturally start with an interactive synchronous loop: the agent picks up a document, reads it, processes it, and moves on to the next one. But what happens when you need your agent to process an entire Cloud Storage bucket with 10,000 PDFs?</div>
+      <div class="ru">С возвращением в Advent of Agents. Сегодня говорим о выводе ИИ в продакшен. Когда разработчики впервые строят автономного агента, они по привычке начинают с интерактивного синхронного цикла: агент берёт документ, читает, обрабатывает и переходит к следующему. Но что происходит, когда агенту нужно обработать целый бакет Cloud Storage на 10 000 PDF?</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">00:35</div>
+      <div class="en">Forcing an agent into a real-time synchronous pattern at that scale is a trap. You run straight into throttled API limits, broken client connections, and absolutely massive token costs. The solution isn&#x27;t to increase your rate limits. The solution is to change the architecture.<div class="tag">уточнено: increase your late rate limits -&gt; increase your rate limits</div></div>
+      <div class="ru">Заставлять агента работать в реальном времени и синхронно при таком масштабе — ловушка. Вы упираетесь в троттлинг лимитов API, в рвущиеся клиентские соединения и в чудовищные расходы токенов. Решение — не поднимать лимиты. Решение — поменять архитектуру.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">01:03</div>
+      <div class="en">To achieve true scale, you need to shift to the Agent as Orchestrator pattern. Rather than forcing your agent to read documents one by one in memory, you equip your agent with a tool that interfaces directly with the backend infrastructure. When the agent receives a massive job, it aggregates the data, bundles the system instructions, and offloads it into a managed job queue using the Gemini Batch API.<div class="tag">уточнено: bundles system in instructions -&gt; bundles the system instructions</div></div>
+      <div class="ru">Чтобы получить настоящий масштаб, нужно перейти к паттерну «агент как оркестратор». Вместо того чтобы заставлять агента читать документы по одному в памяти, вы даёте ему инструмент, который обращается напрямую к бэкенд-инфраструктуре. Получив большую задачу, агент агрегирует данные, упаковывает системные инструкции и выгружает всё в управляемую очередь заданий через Gemini Batch API.</div>
+    </div>
+    <div class="row">
+      <div class="ts">01:43</div>
+      <div class="en">By processing asynchronously, you eliminate connection drops and get a 50% reduction in token costs compared to standard LLM calls. Let me show you exactly how this is implemented using the Gemini Python SDK. First, we need data: here we&#x27;re simulating a large payload by fetching the top stories live from the Hacker News API.</div>
+      <div class="ru">Благодаря асинхронной обработке вы избавляетесь от обрывов соединения и получаете 50-процентное снижение расходов токенов по сравнению с обычными вызовами LLM. Покажу, как это реализовано на Gemini Python SDK. Сначала нужны данные: здесь мы имитируем большой объём, подтягивая топовые новости из публичного API Hacker News.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">02:15</div>
+      <div class="en">To feed the Batch API, we must structure our inputs into JSONL format — JSON Lines. Notice the structure being written out: for each story we pass a request object perfectly matched to our execution prompt. Once your data set is formatted, we don&#x27;t perform inference right away. First, we use client.files.upload to securely push the massive JSONL chunk directly to Google&#x27;s back-end servers. The infrastructure now holds the data.<div class="tag">уточнено: JSON L format, JSON lines -&gt; JSONL format — JSON Lines</div></div>
+      <div class="ru">Чтобы накормить Batch API, входные данные нужно привести к формату JSONL, то есть JSON Lines. Посмотрите на структуру: для каждой новости мы передаём объект запроса, точно соответствующий нашему промпту исполнения. Когда набор данных готов, инференс не запускается сразу. Сначала через `client.files.upload` мы отправляем большой JSONL-блок прямо на серверы Google. Данные теперь в инфраструктуре.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">03:09</div>
+      <div class="en">Here is where the magic happens. Instead of calling generate_content in a loop, we call batches.create. We pass in our required model string, like Gemini 3.1 Pro Preview, which supports the Batch API, and then point the source argument directly to the URI of the file we just uploaded. At this exact moment, the orchestrator agent&#x27;s job is completely done: it has bundled the data, passed the instructions, and successfully pushed the workload into batch execution. The session can now safely terminate.<div class="tag">уточнено: into flex execution -&gt; into batch execution</div></div>
+      <div class="ru">Вот здесь и происходит магия. Вместо вызова `generate_content` в цикле мы вызываем `batches.create`. Передаём нужную строку модели — например, Gemini 3.1 Pro Preview, которая поддерживает Batch API, — и указываем в аргументе `source` URI только что загруженного файла. В этот момент работа оркестратора полностью закончена: он собрал данные, передал инструкции и успешно запустил задание в пакетное исполнение. Сессию теперь можно спокойно завершать.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">03:51</div>
+      <div class="en">Let&#x27;s actually run it. I&#x27;ll execute my batch_processor.py script. We see the script fetches the Hacker News data, creates the JSONL structure and uploads it. And there&#x27;s our prompt: batch job submitted successfully. Right now the current state of the job is pending. This is completely normal and is actually the exact behavior you want. The entire reason the Gemini Batch API gives you a massive 50% token cost reduction is precisely because it runs on background, lower-priority infrastructure. When you submit a job, it enters a global queue with job state pending, and Google executes it dynamically as compute frees up.<div class="tag">уточнено: back job uh submitted successfully -&gt; batch job submitted successfully; lower priority instructions -&gt; lower-priority infrastructure</div></div>
+      <div class="ru">Давайте запустим. Выполню скрипт `batch_processor.py`. Видно, что скрипт тянет данные Hacker News, собирает структуру JSONL и загружает её. И вот наш промпт: batch job submitted successfully. Сейчас состояние задания — pending. Это совершенно нормально и ровно то поведение, которое нужно. Вся причина, по которой Gemini Batch API даёт 50-процентное снижение расходов токенов, в том, что он работает на фоновой инфраструктуре с более низким приоритетом. При отправке задание попадает в глобальную очередь в состоянии pending, и Google выполняет его по мере высвобождения вычислительных мощностей.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">04:51</div>
+      <div class="en">For a tiny five-item list it usually takes anywhere from like five to ten minutes to move to job state succeeded. For a massive 10,000-page data set, it might run asynchronously overnight. When it shows pending, it physically proves the point: the orchestrator agent successfully offloaded the work to the cloud queue. There it goes — the job is queued at a 50% discount, and our agent session is safely terminated. We can close our laptop right now and the job will still finish.<div class="tag">уточнено: offloaded the work to cloud Q -&gt; to the cloud queue; The job is ceued -&gt; The job is queued</div></div>
+      <div class="ru">Для списка из пяти элементов переход в состояние succeeded обычно занимает от пяти до десяти минут. Для набора в 10 000 страниц он может асинхронно отрабатывать всю ночь. Состояние pending физически доказывает суть: агент-оркестратор успешно выгрузил работу в облачную очередь. Задание встаёт в очередь со скидкой 50%, а сессия агента спокойно завершается. Можно прямо сейчас закрыть ноутбук — задание всё равно выполнится.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">05:30</div>
+      <div class="en">That&#x27;s batch processing. You have successfully upgraded your agent from a synchronized bottleneck into an asynchronous orchestrator. You can find the copy-pasteable code snippet below along with links to the ADK documentation. Happy coding, and see you tomorrow on the next day. Bye.<div class="tag">уточнено: see you tomorrow on day 27 -&gt; в оригинале «day 27», хотя это день 24 (оговорка автора)</div></div>
+      <div class="ru">Вот и пакетная обработка. Вы успешно превратили агента из синхронного узкого места в асинхронного оркестратора. Копируемые примеры кода — ниже, вместе со ссылками на документацию ADK. Хорошего кодинга, до встречи в следующий день.</div>
+    </div>
+  </div>
+
+  <div class="app">
+    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
+    <table>
+      <thead>
+        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+      </thead>
+      <tbody>
+      <tr><td>[00:35]</td><td>Forcing an agent into a real-time synchronous pattern at that scale is a trap. You run straight into throttled API limits, broken client connections, and absolutely massive token costs. The solution isn&#x27;t to increase your rate limits. The solution is to change the architecture.</td><td>increase your late rate limits -&gt; increase your rate limits</td><td>Заставлять агента работать в реальном времени и синхронно при таком масштабе — ловушка. Вы упираетесь в троттлинг лимитов API, в рвущиеся клиентские соединения и в чудовищные расходы токенов. Решение — не поднимать лимиты. Решение — поменять архитектуру.</td></tr>
+      <tr><td>[01:03]</td><td>To achieve true scale, you need to shift to the Agent as Orchestrator pattern. Rather than forcing your agent to read documents one by one in memory, you equip your agent with a tool that interfaces directly with the backend infrastructure. When the agent receives a massive job, it aggregates the data, bundles the system instructions, and offloads it into a managed job queue using the Gemini Batch API.</td><td>bundles system in instructions -&gt; bundles the system instructions</td><td>Чтобы получить настоящий масштаб, нужно перейти к паттерну «агент как оркестратор». Вместо того чтобы заставлять агента читать документы по одному в памяти, вы даёте ему инструмент, который обращается напрямую к бэкенд-инфраструктуре. Получив большую задачу, агент агрегирует данные, упаковывает системные инструкции и выгружает всё в управляемую очередь заданий через Gemini Batch API.</td></tr>
+      <tr><td>[02:15]</td><td>To feed the Batch API, we must structure our inputs into JSONL format — JSON Lines. Notice the structure being written out: for each story we pass a request object perfectly matched to our execution prompt. Once your data set is formatted, we don&#x27;t perform inference right away. First, we use client.files.upload to securely push the massive JSONL chunk directly to Google&#x27;s back-end servers. The infrastructure now holds the data.</td><td>JSON L format, JSON lines -&gt; JSONL format — JSON Lines</td><td>Чтобы накормить Batch API, входные данные нужно привести к формату JSONL, то есть JSON Lines. Посмотрите на структуру: для каждой новости мы передаём объект запроса, точно соответствующий нашему промпту исполнения. Когда набор данных готов, инференс не запускается сразу. Сначала через `client.files.upload` мы отправляем большой JSONL-блок прямо на серверы Google. Данные теперь в инфраструктуре.</td></tr>
+      <tr><td>[03:09]</td><td>Here is where the magic happens. Instead of calling generate_content in a loop, we call batches.create. We pass in our required model string, like Gemini 3.1 Pro Preview, which supports the Batch API, and then point the source argument directly to the URI of the file we just uploaded. At this exact moment, the orchestrator agent&#x27;s job is completely done: it has bundled the data, passed the instructions, and successfully pushed the workload into batch execution. The session can now safely terminate.</td><td>into flex execution -&gt; into batch execution</td><td>Вот здесь и происходит магия. Вместо вызова `generate_content` в цикле мы вызываем `batches.create`. Передаём нужную строку модели — например, Gemini 3.1 Pro Preview, которая поддерживает Batch API, — и указываем в аргументе `source` URI только что загруженного файла. В этот момент работа оркестратора полностью закончена: он собрал данные, передал инструкции и успешно запустил задание в пакетное исполнение. Сессию теперь можно спокойно завершать.</td></tr>
+      <tr><td>[03:51]</td><td>Let&#x27;s actually run it. I&#x27;ll execute my batch_processor.py script. We see the script fetches the Hacker News data, creates the JSONL structure and uploads it. And there&#x27;s our prompt: batch job submitted successfully. Right now the current state of the job is pending. This is completely normal and is actually the exact behavior you want. The entire reason the Gemini Batch API gives you a massive 50% token cost reduction is precisely because it runs on background, lower-priority infrastructure. When you submit a job, it enters a global queue with job state pending, and Google executes it dynamically as compute frees up.</td><td>back job uh submitted successfully -&gt; batch job submitted successfully; lower priority instructions -&gt; lower-priority infrastructure</td><td>Давайте запустим. Выполню скрипт `batch_processor.py`. Видно, что скрипт тянет данные Hacker News, собирает структуру JSONL и загружает её. И вот наш промпт: batch job submitted successfully. Сейчас состояние задания — pending. Это совершенно нормально и ровно то поведение, которое нужно. Вся причина, по которой Gemini Batch API даёт 50-процентное снижение расходов токенов, в том, что он работает на фоновой инфраструктуре с более низким приоритетом. При отправке задание попадает в глобальную очередь в состоянии pending, и Google выполняет его по мере высвобождения вычислительных мощностей.</td></tr>
+      <tr><td>[04:51]</td><td>For a tiny five-item list it usually takes anywhere from like five to ten minutes to move to job state succeeded. For a massive 10,000-page data set, it might run asynchronously overnight. When it shows pending, it physically proves the point: the orchestrator agent successfully offloaded the work to the cloud queue. There it goes — the job is queued at a 50% discount, and our agent session is safely terminated. We can close our laptop right now and the job will still finish.</td><td>offloaded the work to cloud Q -&gt; to the cloud queue; The job is ceued -&gt; The job is queued</td><td>Для списка из пяти элементов переход в состояние succeeded обычно занимает от пяти до десяти минут. Для набора в 10 000 страниц он может асинхронно отрабатывать всю ночь. Состояние pending физически доказывает суть: агент-оркестратор успешно выгрузил работу в облачную очередь. Задание встаёт в очередь со скидкой 50%, а сессия агента спокойно завершается. Можно прямо сейчас закрыть ноутбук — задание всё равно выполнится.</td></tr>
+      <tr><td>[05:30]</td><td>That&#x27;s batch processing. You have successfully upgraded your agent from a synchronized bottleneck into an asynchronous orchestrator. You can find the copy-pasteable code snippet below along with links to the ADK documentation. Happy coding, and see you tomorrow on the next day. Bye.</td><td>see you tomorrow on day 27 -&gt; в оригинале «day 27», хотя это день 24 (оговорка автора)</td><td>Вот и пакетная обработка. Вы успешно превратили агента из синхронного узкого места в асинхронного оркестратора. Копируемые примеры кода — ниже, вместе со ссылками на документацию ADK. Хорошего кодинга, до встречи в следующий день.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Субтитры автоматические (auto, en-orig). Имена методов сверены с кодом со страницы дня: files.upload, batches.create, Gemini Batch API.</p>
+  </div>
+
+</div>
+<script>
+const el = id => document.getElementById(id);
+
+el('tgl-en').addEventListener('change', e =>
+  document.body.classList.toggle('hide-en', !e.target.checked));
+el('tgl-ru').addEventListener('change', e =>
+  document.body.classList.toggle('hide-ru', !e.target.checked));
+el('btn-print').addEventListener('click', () => window.print());
+el('btn-mark').addEventListener('click', () => {
+  const on = !document.body.classList.contains('show-fixes');
+  document.body.classList.toggle('show-fixes', on);
+  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
+});
+</script>
+</body>
+</html>

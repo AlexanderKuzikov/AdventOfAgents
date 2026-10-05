@@ -1,0 +1,47 @@
+{
+  "note": "Субтитры автоматические (auto, en-orig). Названия методов сверены с кодом со страницы дня: sanitize_user_prompt, sanitize_model_response, SanitizeUserPromptRequest, SanitizeModelResponseRequest.",
+  "segments": [
+    {
+      "t": 1,
+      "en": "Hello everyone. I'm Lekan, a cloud architect here at Google. Today I'll be going over AI agent defense in depth with Google Cloud Model Armor. As AI agents become more powerful and autonomous, we often overlook a critical element, which is security. Today I'm going to show you how Google Cloud Model Armor can be used to build a robust security layer for agent systems.",
+      "ru": "Всем привет, я Лекан, облачный архитектор в Google. Сегодня разберём защиту ИИ-агентов в глубину на примере Google Cloud Model Armor. По мере того как агенты становятся мощнее и автономнее, мы часто упускаем из виду ключевой элемент — безопасность. Покажу, как Model Armor позволяет выстроить надёжный защитный слой для агентных систем.",
+      "fix": "defense up depth -> defense in depth"
+    },
+    {
+      "t": 32,
+      "en": "We'll protect our AI agent against prompt injection attempts, jailbreak attempts, malicious actors trying to extract PII or sensitive data or use malicious URLs, and also ensure that our AI agent's interaction adheres to responsible AI standards. To demonstrate this, I've built a simple agent to show Model Armor in action.",
+      "ru": "Мы защитим агента от попыток prompt injection, от jailbreak, от злоумышленников, пытающихся вытащить PII или чувствительные данные либо использовать вредоносные URL, и заодно проверим, что взаимодействие агента соответствует стандартам responsible AI. Для демонстрации я собрал простого агента, чтобы показать Model Armor в действии.",
+      "fix": "at or use malicious URLs -> or use malicious URLs"
+    },
+    {
+      "t": 63,
+      "en": "Implementing Model Armor is as simple as a three-step approach. First, we have to define the Model Armor template on Google Cloud. Here we have a Model Armor template defined for detection of malicious URLs, prompt injection and jailbreak attempts, sensitive data breaches, and we've also defined it to make sure that our interactions adhere to responsible AI standards like hate speech, dangerous content, sexually explicit content, and harassment.",
+      "ru": "Внедрение Model Armor сводится к трём шагам. Сначала нужно определить шаблон Model Armor в Google Cloud. Вот шаблон: он ловит вредоносные URL, попытки prompt injection и jailbreak, утечки чувствительных данных, а также проверяет, что наше взаимодействие соответствует стандартам responsible AI — речь ненависти, опасный контент, сексуально откровенный контент и травля.",
+      "fix": null
+    },
+    {
+      "t": 106,
+      "en": "Next, we have to define the sanitized prompt method. This references the template created in Model Armor to ensure that whatever prompt is gotten from our user adheres to the standards already set. And lastly, we define the sanitized response method that intercepts the response gotten from the AI model, to ensure that the response adheres to our standards set even before the user gets the response.",
+      "ru": "Дальше определяем метод санации промпта. Он ссылается на шаблон из Model Armor и гарантирует, что любой промпт от пользователя проходит установленные стандарты. И последнее — метод санации ответа, который перехватывает ответ модели и проверяет его на соответствие нашим стандартам ещё до того, как ответ увидит пользователь.",
+      "fix": "sanitized prompt method / sanitized response method -> по коду это sanitize_user_prompt и sanitize_model_response"
+    },
+    {
+      "t": 155,
+      "en": "Now let's test a couple of these in action. First, let me try a prompt injection / jailbreak attempt: I'll tell our agent to show us its system instructions. You can see in real time that the request is intercepted by our Model Armor service, and we're given a response explaining why this request cannot be fulfilled.",
+      "ru": "Теперь проверим пару сценариев в действии. Сначала попытка prompt injection / jailbreak: я попрошу агента показать свои системные инструкции. Видно в реальном времени, что запрос перехвачен сервисом Model Armor, и мы получаем объяснение, почему этот запрос не может быть выполнен.",
+      "fix": "prompt injection audio break attempt -> prompt injection / jailbreak attempt"
+    },
+    {
+      "t": 184,
+      "en": "Next, let's try a sensitive data attempt. I'm going to give the agent a sample account number and routing number and see what it does. You can see we have sensitive data and dangerous content detected. So now let's try a more tailored dangerous content check: I just prompted my AI agent to give me examples of household chemicals I shouldn't mix together. Obviously that's not good, and we've had this request intercepted by our Model Armor service, flagged as dangerous content.",
+      "ru": "Дальше попробуем подсунуть чувствительные данные: дам агенту тестовый номер счёта и номер маршрутизации и посмотрю, что он сделает. Видно, что обнаружены чувствительные данные и опасный контент. Теперь попробуем более точечную проверку опасного контента: я попросил агента привести примеры бытовой химии, которую нельзя смешивать. Разумеется, это плохой запрос, и он перехвачен сервисом Model Armor и помечен как опасный контент.",
+      "fix": null
+    },
+    {
+      "t": 233,
+      "en": "And lastly, let's try one that would potentially trigger our responsible AI standards that have been set. You can see this prompt has been flagged as hate speech and harassment. And so, what Google Cloud Model Armor is also cloud agnostic, so you don't need to have your agents running on Google Cloud. By securing both the input and output, we ensure that our agent remains safe, compliant, and robust.",
+      "ru": "И наконец, попробуем запрос, который может задеть наши стандарты responsible AI. Видно, что промпт помечен как речь ненависти и травля. И ещё: Google Cloud Model Armor не привязан к облаку, необязательно запускать агентов на Google Cloud. Закрывая и вход, и выход, мы гарантируем, что агент остаётся безопасным, соответствующим требованиям и устойчивым.",
+      "fix": "try a a that would potentially trigger -> try one that would potentially trigger"
+    }
+  ]
+}

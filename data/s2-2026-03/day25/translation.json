@@ -1,0 +1,41 @@
+{
+  "note": "Субтитры автоматические (auto, en-orig). Команды сверены с кодом и описанием дня: agent-starter-pack, make deploy, uv run adk deploy cloud_run. Имя докладчика — Lekan Adisa (страница дня).",
+  "segments": [
+    {
+      "t": 1,
+      "en": "Hello everyone, I'm Lekan, a cloud architect here at Google, and welcome to day 25 of season 2 of Advent of Agents. Today we'll be talking about deploying ADK agents on Agent Engine and Cloud Run. Building AI agents is incredibly fun locally, but the real challenge begins when you have to put this agent into production: how do you deploy it securely? How do you scale it? And how do you expose your AI agents to your end users so they can interact with them? The answer: Agent Engine and Cloud Run.",
+      "ru": "Всем привет, я Лекан, облачный архитектор в Google. Добро пожаловать в 25-й день второго сезона Advent of Agents. Сегодня говорим о деплое агентов ADK на Agent Engine и Cloud Run. Локально строить агентов — сплошное удовольствие, но настоящая сложность начинается, когда нужно вывести агента в продакшен: как развернуть его безопасно? Как масштабировать? И как открыть агентов конечным пользователям, чтобы они с ними общались? Ответ — Agent Engine и Cloud Run.",
+      "fix": "I'm Leakan -> I'm Lekan (Lekan Adisa по странице дня)"
+    },
+    {
+      "t": 48,
+      "en": "So today I'll walk you through creating a simple AI agent using the Agent Starter Pack and deploying these agents to GCP Agent Engine and Cloud Run. In order to get started, I'm going to open up my terminal and start the creation of the agent with the agent-starter-pack command. We're prompted to enter the name of the agent: demo_agent. Then we have to select which framework we want to use — for today I'll pick a basic ADK agent. Then we select a default deployment target, and I'll pick Agent Engine.",
+      "ru": "Сегодня пройдём путь от создания простого агента через Agent Starter Pack до деплоя на Agent Engine и Cloud Run. Для начала открою терминал и запущу создание агента командой `agent-starter-pack`. Нас спросят имя агента: `demo_agent`. Затем нужно выбрать фреймворк — на сегодня возьму базового агента на ADK. После этого выбираем цель деплоя по умолчанию, и я беру Agent Engine.",
+      "fix": "a basic ADK agent -> basic ADK agent"
+    },
+    {
+      "t": 110,
+      "en": "With Agent Engine selected, we'd select a default CI/CD option, and we'll go with the simple option for today. With that in mind, we have to select the default GCP region — we go with us-central1. And once that's done, we have it test our Vertex connection and we're good to go. Once this has been done, the next thing we're going to do is try to deploy this agent with a simple command: to deploy this agent on Agent Engine, all we have to type is make deploy. Actually, it looks like I'm not in the right directory, so let me navigate to the right directory: demo_agent, then make deploy.",
+      "ru": "После выбора Agent Engine нужно указать вариант CI/CD — на сегодня берём простой. Затем выбираем регион GCP по умолчанию, у нас это us-central1. Дальше проверяется соединение с Vertex, и всё готово. Теперь пробуем задеплоить агента одной командой: для деплоя на Agent Engine достаточно набрать `make deploy`. Похоже, я не в той директории — перейду в нужную: `demo_agent`, и снова `make deploy`.",
+      "fix": null
+    },
+    {
+      "t": 172,
+      "en": "As you can see, the ADK CLI handles everything in the back end for us, and the agent is being deployed to Agent Engine. While this is deploying, let me open a separate terminal instance and deploy the same application onto Cloud Run. To deploy on Cloud Run we have to do two things: first, make sure we're in the right directory, and run make install to ensure all the right dependencies for the project are installed. Once that's done, installing this app on Cloud Run is as simple as running a single command: uv run adk deploy cloud_run.",
+      "ru": "Видно, что ADK CLI берёт на себя всю бэкенд-часть, и агент деплоится на Agent Engine. Пока идёт деплой, открою второе окно терминала и задеплою то же приложение на Cloud Run. Для этого нужно сделать две вещи: убедиться, что мы в нужной директории, и выполнить `make install`, чтобы поставить все зависимости проекта. После этого установка на Cloud Run — одна команда: `uv run adk deploy cloud_run`.",
+      "fix": "the ADK UI handles -> the ADK CLI handles; cloud run and app -> cloud_run"
+    },
+    {
+      "t": 232,
+      "en": "We'll be prompted to make a couple of selections before the agent is deployed. I want to deploy this agent in us-central1, so I'm going to select number 35, and then let the CLI do its magic. Let me go check on the Agent Engine deployment: as you can see, it's currently deploying, it should take about a minute or two. And in a couple of minutes you can see the agent has been deployed both to Agent Engine on Vertex and to Cloud Run. We could also go to GCP Agent Engine and see the demo_agent that has been deployed, and within the playground section we can interact with the agent. So for this, let's say hi, and we get a response from the agent.",
+      "ru": "Перед деплоем нас попросят сделать пару выборов. Я хочу задеплоить агента в us-central1, поэтому выбираю пункт 35 и даю CLI сделать своё дело. Проверю деплой на Agent Engine: он в процессе, займёт минуту-две. Через пару минут видно, что агент задеплоен и на Agent Engine в Vertex, и на Cloud Run. Можно также открыть GCP Agent Engine, увидеть там задеплоенный `demo_agent` и пообщаться с ним в разделе playground. Отправим «привет» — и получим ответ.",
+      "fix": null
+    },
+    {
+      "t": 306,
+      "en": "So deploying agents from local environments to production is as simple as Cloud Run or Vertex AI Agent Engine. Thank you.",
+      "ru": "Итак, перенос агента из локального окружения в продакшен — это просто Cloud Run или Vertex AI Agent Engine. Спасибо.",
+      "fix": "Vertex agent engine -> Vertex AI Agent Engine"
+    }
+  ]
+}

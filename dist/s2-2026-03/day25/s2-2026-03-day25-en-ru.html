@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Deployment: How to Deploy AI Agents — EN / RU</title>
+<style>
+:root {
+  --en-bg: #f7f8fa;
+  --line: #dfe3e8;
+  --accent: #0b57d0;
+  --ts: #8a9099;
+  --muted: #5f6672;
+  --fix: #fff3cd;
+  --fix-line: #e0b100;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 32px 20px 72px;
+  background: #eef0f3;
+  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #1a1a1a;
+}
+
+.page { max-width: 1400px; margin: 0 auto; }
+
+h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.head .sub { color: var(--muted); font-size: 15px; }
+.head .sub a { color: var(--accent); }
+
+.legend {
+  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
+}
+.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
+.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+
+.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+
+button {
+  font: inherit; font-size: 14px; padding: 7px 14px;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: #fff; color: #1a1a1a; cursor: pointer;
+}
+button:hover { border-color: #b9c0ca; background: #fafbfc; }
+
+.grid {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden;
+}
+
+.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
+
+.head-row {
+  background: #2f3541; color: #fff;
+  font-size: 13px; letter-spacing: 0.04em;
+  text-transform: uppercase; font-weight: 600;
+  position: sticky; top: 0; z-index: 5;
+}
+.head-row > div { padding: 10px 18px; }
+.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
+
+.row > .ts {
+  padding: 14px 8px; font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ts); text-align: right;
+  border-right: 1px solid var(--line); background: #fbfbfc;
+}
+.row > .en, .row > .ru {
+  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
+}
+.row > .en { background: var(--en-bg); }
+.row > .ru { border-right: 0; }
+
+.row.cont > .ts::after {
+  content: ""; display: block; width: 14px; height: 1px;
+  background: var(--line); margin: 8px 0 0 auto;
+}
+.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
+
+.row.fixed > .en { background: var(--fix); }
+.row.fixed .tag { display: none; }
+
+body.show-fixes .row.fixed .tag { display: block; }
+
+.tag {
+  display: inline-block; margin-top: 6px;
+  font-size: 11.5px; line-height: 1.35;
+  color: #6b5400; background: var(--fix);
+  border-left: 3px solid var(--fix-line);
+  padding: 3px 8px; border-radius: 0 4px 4px 0;
+}
+
+.app { margin-top: 26px; }
+.app h2 { font-size: 19px; margin: 0 0 10px; }
+
+table {
+  width: 100%; border-collapse: collapse;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden; font-size: 15px;
+}
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
+.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
+
+body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
+body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
+body.hide-en .row, body.hide-en .head-row,
+body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
+
+@media (max-width: 900px) {
+  .head-row, .row { grid-template-columns: 56px 1fr; }
+  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
+  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .bar, .legend { display: none; }
+  .head-row { position: static; }
+  .grid, table { border-radius: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <h1>Agent Deployment: How to Deploy AI Agents</h1>
+    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
+      Видео: <a href="https://www.youtube.com/watch?v=osEDoYe60E8">https://www.youtube.com/watch?v=osEDoYe60E8</a> · 05:37
+      · auto (YouTube en-orig)</div>
+  </div>
+
+  <div class="legend">
+    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
+    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
+  </div>
+
+  <div class="bar">
+    <button id="btn-mark">Показать исправления</button>
+    <button id="btn-print">Печать / PDF</button>
+  </div>
+
+  <div class="grid">
+    <div class="head-row">
+      <div>Time</div>
+      <div>English</div>
+      <div>Русский</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">00:01</div>
+      <div class="en">Hello everyone, I&#x27;m Lekan, a cloud architect here at Google, and welcome to day 25 of season 2 of Advent of Agents. Today we&#x27;ll be talking about deploying ADK agents on Agent Engine and Cloud Run. Building AI agents is incredibly fun locally, but the real challenge begins when you have to put this agent into production: how do you deploy it securely? How do you scale it? And how do you expose your AI agents to your end users so they can interact with them? The answer: Agent Engine and Cloud Run.<div class="tag">уточнено: I&#x27;m Leakan -&gt; I&#x27;m Lekan (Lekan Adisa по странице дня)</div></div>
+      <div class="ru">Всем привет, я Лекан, облачный архитектор в Google. Добро пожаловать в 25-й день второго сезона Advent of Agents. Сегодня говорим о деплое агентов ADK на Agent Engine и Cloud Run. Локально строить агентов — сплошное удовольствие, но настоящая сложность начинается, когда нужно вывести агента в продакшен: как развернуть его безопасно? Как масштабировать? И как открыть агентов конечным пользователям, чтобы они с ними общались? Ответ — Agent Engine и Cloud Run.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">00:48</div>
+      <div class="en">So today I&#x27;ll walk you through creating a simple AI agent using the Agent Starter Pack and deploying these agents to GCP Agent Engine and Cloud Run. In order to get started, I&#x27;m going to open up my terminal and start the creation of the agent with the agent-starter-pack command. We&#x27;re prompted to enter the name of the agent: demo_agent. Then we have to select which framework we want to use — for today I&#x27;ll pick a basic ADK agent. Then we select a default deployment target, and I&#x27;ll pick Agent Engine.<div class="tag">уточнено: a basic ADK agent -&gt; basic ADK agent</div></div>
+      <div class="ru">Сегодня пройдём путь от создания простого агента через Agent Starter Pack до деплоя на Agent Engine и Cloud Run. Для начала открою терминал и запущу создание агента командой `agent-starter-pack`. Нас спросят имя агента: `demo_agent`. Затем нужно выбрать фреймворк — на сегодня возьму базового агента на ADK. После этого выбираем цель деплоя по умолчанию, и я беру Agent Engine.</div>
+    </div>
+    <div class="row">
+      <div class="ts">01:50</div>
+      <div class="en">With Agent Engine selected, we&#x27;d select a default CI/CD option, and we&#x27;ll go with the simple option for today. With that in mind, we have to select the default GCP region — we go with us-central1. And once that&#x27;s done, we have it test our Vertex connection and we&#x27;re good to go. Once this has been done, the next thing we&#x27;re going to do is try to deploy this agent with a simple command: to deploy this agent on Agent Engine, all we have to type is make deploy. Actually, it looks like I&#x27;m not in the right directory, so let me navigate to the right directory: demo_agent, then make deploy.</div>
+      <div class="ru">После выбора Agent Engine нужно указать вариант CI/CD — на сегодня берём простой. Затем выбираем регион GCP по умолчанию, у нас это us-central1. Дальше проверяется соединение с Vertex, и всё готово. Теперь пробуем задеплоить агента одной командой: для деплоя на Agent Engine достаточно набрать `make deploy`. Похоже, я не в той директории — перейду в нужную: `demo_agent`, и снова `make deploy`.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">02:52</div>
+      <div class="en">As you can see, the ADK CLI handles everything in the back end for us, and the agent is being deployed to Agent Engine. While this is deploying, let me open a separate terminal instance and deploy the same application onto Cloud Run. To deploy on Cloud Run we have to do two things: first, make sure we&#x27;re in the right directory, and run make install to ensure all the right dependencies for the project are installed. Once that&#x27;s done, installing this app on Cloud Run is as simple as running a single command: uv run adk deploy cloud_run.<div class="tag">уточнено: the ADK UI handles -&gt; the ADK CLI handles; cloud run and app -&gt; cloud_run</div></div>
+      <div class="ru">Видно, что ADK CLI берёт на себя всю бэкенд-часть, и агент деплоится на Agent Engine. Пока идёт деплой, открою второе окно терминала и задеплою то же приложение на Cloud Run. Для этого нужно сделать две вещи: убедиться, что мы в нужной директории, и выполнить `make install`, чтобы поставить все зависимости проекта. После этого установка на Cloud Run — одна команда: `uv run adk deploy cloud_run`.</div>
+    </div>
+    <div class="row">
+      <div class="ts">03:52</div>
+      <div class="en">We&#x27;ll be prompted to make a couple of selections before the agent is deployed. I want to deploy this agent in us-central1, so I&#x27;m going to select number 35, and then let the CLI do its magic. Let me go check on the Agent Engine deployment: as you can see, it&#x27;s currently deploying, it should take about a minute or two. And in a couple of minutes you can see the agent has been deployed both to Agent Engine on Vertex and to Cloud Run. We could also go to GCP Agent Engine and see the demo_agent that has been deployed, and within the playground section we can interact with the agent. So for this, let&#x27;s say hi, and we get a response from the agent.</div>
+      <div class="ru">Перед деплоем нас попросят сделать пару выборов. Я хочу задеплоить агента в us-central1, поэтому выбираю пункт 35 и даю CLI сделать своё дело. Проверю деплой на Agent Engine: он в процессе, займёт минуту-две. Через пару минут видно, что агент задеплоен и на Agent Engine в Vertex, и на Cloud Run. Можно также открыть GCP Agent Engine, увидеть там задеплоенный `demo_agent` и пообщаться с ним в разделе playground. Отправим «привет» — и получим ответ.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">05:06</div>
+      <div class="en">So deploying agents from local environments to production is as simple as Cloud Run or Vertex AI Agent Engine. Thank you.<div class="tag">уточнено: Vertex agent engine -&gt; Vertex AI Agent Engine</div></div>
+      <div class="ru">Итак, перенос агента из локального окружения в продакшен — это просто Cloud Run или Vertex AI Agent Engine. Спасибо.</div>
+    </div>
+  </div>
+
+  <div class="app">
+    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
+    <table>
+      <thead>
+        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+      </thead>
+      <tbody>
+      <tr><td>[00:01]</td><td>Hello everyone, I&#x27;m Lekan, a cloud architect here at Google, and welcome to day 25 of season 2 of Advent of Agents. Today we&#x27;ll be talking about deploying ADK agents on Agent Engine and Cloud Run. Building AI agents is incredibly fun locally, but the real challenge begins when you have to put this agent into production: how do you deploy it securely? How do you scale it? And how do you expose your AI agents to your end users so they can interact with them? The answer: Agent Engine and Cloud Run.</td><td>I&#x27;m Leakan -&gt; I&#x27;m Lekan (Lekan Adisa по странице дня)</td><td>Всем привет, я Лекан, облачный архитектор в Google. Добро пожаловать в 25-й день второго сезона Advent of Agents. Сегодня говорим о деплое агентов ADK на Agent Engine и Cloud Run. Локально строить агентов — сплошное удовольствие, но настоящая сложность начинается, когда нужно вывести агента в продакшен: как развернуть его безопасно? Как масштабировать? И как открыть агентов конечным пользователям, чтобы они с ними общались? Ответ — Agent Engine и Cloud Run.</td></tr>
+      <tr><td>[00:48]</td><td>So today I&#x27;ll walk you through creating a simple AI agent using the Agent Starter Pack and deploying these agents to GCP Agent Engine and Cloud Run. In order to get started, I&#x27;m going to open up my terminal and start the creation of the agent with the agent-starter-pack command. We&#x27;re prompted to enter the name of the agent: demo_agent. Then we have to select which framework we want to use — for today I&#x27;ll pick a basic ADK agent. Then we select a default deployment target, and I&#x27;ll pick Agent Engine.</td><td>a basic ADK agent -&gt; basic ADK agent</td><td>Сегодня пройдём путь от создания простого агента через Agent Starter Pack до деплоя на Agent Engine и Cloud Run. Для начала открою терминал и запущу создание агента командой `agent-starter-pack`. Нас спросят имя агента: `demo_agent`. Затем нужно выбрать фреймворк — на сегодня возьму базового агента на ADK. После этого выбираем цель деплоя по умолчанию, и я беру Agent Engine.</td></tr>
+      <tr><td>[02:52]</td><td>As you can see, the ADK CLI handles everything in the back end for us, and the agent is being deployed to Agent Engine. While this is deploying, let me open a separate terminal instance and deploy the same application onto Cloud Run. To deploy on Cloud Run we have to do two things: first, make sure we&#x27;re in the right directory, and run make install to ensure all the right dependencies for the project are installed. Once that&#x27;s done, installing this app on Cloud Run is as simple as running a single command: uv run adk deploy cloud_run.</td><td>the ADK UI handles -&gt; the ADK CLI handles; cloud run and app -&gt; cloud_run</td><td>Видно, что ADK CLI берёт на себя всю бэкенд-часть, и агент деплоится на Agent Engine. Пока идёт деплой, открою второе окно терминала и задеплою то же приложение на Cloud Run. Для этого нужно сделать две вещи: убедиться, что мы в нужной директории, и выполнить `make install`, чтобы поставить все зависимости проекта. После этого установка на Cloud Run — одна команда: `uv run adk deploy cloud_run`.</td></tr>
+      <tr><td>[05:06]</td><td>So deploying agents from local environments to production is as simple as Cloud Run or Vertex AI Agent Engine. Thank you.</td><td>Vertex agent engine -&gt; Vertex AI Agent Engine</td><td>Итак, перенос агента из локального окружения в продакшен — это просто Cloud Run или Vertex AI Agent Engine. Спасибо.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Субтитры автоматические (auto, en-orig). Команды сверены с кодом и описанием дня: agent-starter-pack, make deploy, uv run adk deploy cloud_run. Имя докладчика — Lekan Adisa (страница дня).</p>
+  </div>
+
+</div>
+<script>
+const el = id => document.getElementById(id);
+
+el('tgl-en').addEventListener('change', e =>
+  document.body.classList.toggle('hide-en', !e.target.checked));
+el('tgl-ru').addEventListener('change', e =>
+  document.body.classList.toggle('hide-ru', !e.target.checked));
+el('btn-print').addEventListener('click', () => window.print());
+el('btn-mark').addEventListener('click', () => {
+  const on = !document.body.classList.contains('show-fixes');
+  document.body.classList.toggle('show-fixes', on);
+  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
+});
+</script>
+</body>
+</html>

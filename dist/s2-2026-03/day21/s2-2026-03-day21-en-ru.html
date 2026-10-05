@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Developer&#x27;s Guide to AI Agent Protocols — EN / RU</title>
+<style>
+:root {
+  --en-bg: #f7f8fa;
+  --line: #dfe3e8;
+  --accent: #0b57d0;
+  --ts: #8a9099;
+  --muted: #5f6672;
+  --fix: #fff3cd;
+  --fix-line: #e0b100;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 32px 20px 72px;
+  background: #eef0f3;
+  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #1a1a1a;
+}
+
+.page { max-width: 1400px; margin: 0 auto; }
+
+h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.head .sub { color: var(--muted); font-size: 15px; }
+.head .sub a { color: var(--accent); }
+
+.legend {
+  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
+}
+.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
+.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+
+.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+
+button {
+  font: inherit; font-size: 14px; padding: 7px 14px;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: #fff; color: #1a1a1a; cursor: pointer;
+}
+button:hover { border-color: #b9c0ca; background: #fafbfc; }
+
+.grid {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden;
+}
+
+.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
+
+.head-row {
+  background: #2f3541; color: #fff;
+  font-size: 13px; letter-spacing: 0.04em;
+  text-transform: uppercase; font-weight: 600;
+  position: sticky; top: 0; z-index: 5;
+}
+.head-row > div { padding: 10px 18px; }
+.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
+
+.row > .ts {
+  padding: 14px 8px; font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ts); text-align: right;
+  border-right: 1px solid var(--line); background: #fbfbfc;
+}
+.row > .en, .row > .ru {
+  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
+}
+.row > .en { background: var(--en-bg); }
+.row > .ru { border-right: 0; }
+
+.row.cont > .ts::after {
+  content: ""; display: block; width: 14px; height: 1px;
+  background: var(--line); margin: 8px 0 0 auto;
+}
+.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
+
+.row.fixed > .en { background: var(--fix); }
+.row.fixed .tag { display: none; }
+
+body.show-fixes .row.fixed .tag { display: block; }
+
+.tag {
+  display: inline-block; margin-top: 6px;
+  font-size: 11.5px; line-height: 1.35;
+  color: #6b5400; background: var(--fix);
+  border-left: 3px solid var(--fix-line);
+  padding: 3px 8px; border-radius: 0 4px 4px 0;
+}
+
+.app { margin-top: 26px; }
+.app h2 { font-size: 19px; margin: 0 0 10px; }
+
+table {
+  width: 100%; border-collapse: collapse;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden; font-size: 15px;
+}
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
+.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
+
+body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
+body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
+body.hide-en .row, body.hide-en .head-row,
+body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
+
+@media (max-width: 900px) {
+  .head-row, .row { grid-template-columns: 56px 1fr; }
+  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
+  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .bar, .legend { display: none; }
+  .head-row { position: static; }
+  .grid, table { border-radius: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <h1>Developer&#x27;s Guide to AI Agent Protocols</h1>
+    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
+      Видео: <a href="https://www.youtube.com/watch?v=DAZpxBF6Zfc">https://www.youtube.com/watch?v=DAZpxBF6Zfc</a> · 08:30
+      · auto (YouTube en-orig)</div>
+  </div>
+
+  <div class="legend">
+    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
+    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
+  </div>
+
+  <div class="bar">
+    <button id="btn-mark">Показать исправления</button>
+    <button id="btn-print">Печать / PDF</button>
+  </div>
+
+  <div class="grid">
+    <div class="head-row">
+      <div>Time</div>
+      <div>English</div>
+      <div>Русский</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">00:00</div>
+      <div class="en">Hey, so we have a Developer&#x27;s Guide to AI Agent Protocols, and I&#x27;m going to run through that for today&#x27;s Advent of Agents. MCP, A2A, UCP, AP2, A2UI, AG-UI. I know it feels like alphabet soup, but this blog post came out a couple of days ago, and it will help you put them all into the appropriate context. It covers a single scenario — a restaurant — where it puts each of these protocols together step by step.<div class="tag">уточнено: AGUI -&gt; AG-UI; A2I -&gt; A2A</div></div>
+      <div class="ru">Привет. Сегодня в Advent of Agents пройдёмся по руководству разработчика по протоколам ИИ-агентов. MCP, A2A, UCP, AP2, A2UI, AG-UI. Понимаю, звучит как каша из букв, но этот пост вышел пару дней назад и поможет расставить всё по местам. В нём разбирается один сценарий — ресторан, — где эти протоколы собираются вместе шаг за шагом.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">00:33</div>
+      <div class="en">You can follow along, and you can copy and paste the samples that are in the blog post itself. You&#x27;re probably already using MCP in your development environment or your development agent, or whatever. Any agent can access these deterministic resources and stuff them into the context window of the model, and the model can decide when to take an action or load a different resource. In this scenario, it&#x27;s deciding to use the Notion MCP server or the Mailgun MCP server as tools that can be invoked at runtime.<div class="tag">уточнено: the notion MCP server or the mail gun MCP server -&gt; the Notion MCP server or the Mailgun MCP server</div></div>
+      <div class="ru">Можно идти по нему вместе с постом и копировать примеры прямо оттуда. Скорее всего, вы уже используете MCP в своём окружении или в своём агентном ассистенте. Любой агент может обращаться к этим детерминированным ресурсам и помещать их в контекстное окно модели, а модель сама решит, когда совершить действие или загрузить другой ресурс. В этом сценарии она выбирает MCP-сервер Notion или MCP-сервер Mailgun как инструменты, вызываемые во время работы.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">01:22</div>
+      <div class="en">And again, you&#x27;re probably pretty familiar with this protocol. If you&#x27;ve been following Advent of Agents, you&#x27;re probably already familiar with A2A. In MCP you&#x27;re dealing with deterministic inputs and outputs. A2A assumes that your API is non-deterministic — it&#x27;s an agent of some sort, and therefore it will have some kind of back-and-forth dialogue and capability escalation. It&#x27;s going to make plans, and then the plans don&#x27;t always work out, and it&#x27;s going to be able to adjust to that. All of that flexibility and statefulness is a layer on the outside of most API specifications. And that&#x27;s what&#x27;s unique about A2A.<div class="tag">уточнено: that&#x27;s what&#x27;s unique about A2I -&gt; that&#x27;s what&#x27;s unique about A2A</div></div>
+      <div class="ru">И с этим протоколом вы, скорее всего, знакомы: если вы следили за Advent of Agents, то с A2A уже знакомы. В MCP речь идёт о детерминированных входах и выходах. A2A исходит из того, что ваш API недетерминирован: это агент какого-то рода, а значит, между ним и вами будет диалог с обе стороны и расширение прав доступа. Он будет строить планы, планы не всегда будут выполняться, и он сможет подстроиться. Вся эта гибкость и состоятельность — это слой поверх большинства спецификаций API. И в этом уникальность A2A.</div>
+    </div>
+    <div class="row">
+      <div class="ts">02:06</div>
+      <div class="en">You can do a lot of this without A2A — you can do it on top of MCP, you can define your own API spec on top of whatever agent you&#x27;re putting out there. Every time I&#x27;ve seen somebody do this, they end up accidentally reinventing A2A. So it is a very good spec for any agent API surface that you expose to the world, or even internally as a microservice architecture of multiple agents talking to each other. The agents are defined as clients and servers similar to a web protocol standard. So a client agent can access a remote agent after discovering what it&#x27;s capable of based on the agent card.</div>
+      <div class="ru">Многое из этого можно сделать и без A2A: поверх MCP, со своей спецификацией API поверх любого агента, который вы выпускаете. Но каждый раз, когда я вижу, как кто-то так делает, они по сути случайно изобретают A2A заново. Так что это очень хорошая спецификация для любой агентной API-поверхности, которую вы открываете наружу — или даже внутри, в микросервисной архитектуре из нескольких общающихся агентов. Агенты описаны как клиенты и серверы, примерно как в веб-протоколах. Клиентский агент может обратиться к удалённому агенту, сначала выяснив по agent card, что тот умеет.</div>
+    </div>
+    <div class="row">
+      <div class="ts">02:41</div>
+      <div class="en">I&#x27;m going to do these as a combo — UCP and AP2. If you look at UCP and AP2 together, they cover the needs of agents transacting on the internet. UCP is actually quite tactical: you can use it today. It&#x27;s using existing APIs and wrapping and organizing them into a standard that is actually open and anyone can use for connecting to some Google services, but also many other services that are out there.</div>
+      <div class="ru">Дальше эти двое вместе — UCP и AP2. Если смотреть на UCP и AP2 в связке, они закрывают потребности агентов, совершающих транзакции в интернете. UCP довольно прикладной: его можно использовать уже сегодня. Он опирается на существующие API, оборачивает и упорядочивает их в открытый стандарт, доступный всем: для подключения к некоторым сервисам Google, а также ко многим другим сервисам.</div>
+    </div>
+    <div class="row">
+      <div class="ts">03:05</div>
+      <div class="en">You can have your own agents on your own website with your own product catalog and your own checkout, or you can connect to other providers for some of these functions. The modules are isolated and independent from each other: you go to the website, find out a lot of useful information, it&#x27;s very easy to see and scroll through, and then the specification has a lot of depth to it. Everything is covered in the sample to get you started: creating a cart, adding line items to that cart, and doing a checkout.</div>
+      <div class="ru">Можно держать своих агентов на своём сайте со своим каталогом товаров и своей корзиной, а можно подключить других провайдеров под часть этих функций. Модули изолированы друг от друга: заходишь на сайт, получаешь много полезной информации, всё наглядно и легко прокручивается, а в спецификации при этом много глубины. В примере покрыто всё, с чего начать: создание корзины, добавление позиций и оформление заказа.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">03:31</div>
+      <div class="en">AP2 is strategic. It is to say: if you are allowing that agent to make a transaction, did it make a transaction that you wanted it to? The important bit is that intent mandate: did you, the human, say &#x27;I would like you to do this thing for me&#x27;? In this case, make a purchase while the human is present — that&#x27;s kind of easier. I&#x27;m going to hit a thumbprint and you&#x27;re going to do the thing right now, and I see that you did the thing, and maybe I can undo it.<div class="tag">уточнено: thumbrint -&gt; thumbprint; intent mandate -&gt; intent mandate (термин AP2)</div></div>
+      <div class="ru">AP2 — это про стратегию. Вопрос в том, что если вы разрешаете агенту совершать транзакцию, то он совершил именно ту транзакцию, которую вы хотели? Ключевое здесь — мандат намерения: говорили ли вы, человек, «я хочу, чтобы ты сделал это за меня»? В текущем сценарии это покупка при человеке на месте — тут проще. Я прикладываю палец, вы выполняете действие прямо сейчас, я вижу, что вы его выполнили, и, может быть, могу это отменить.</div>
+    </div>
+    <div class="row">
+      <div class="ts">03:58</div>
+      <div class="en">If the human is not present and you&#x27;re pushing this forward into the future, it&#x27;s a little more interesting. I put a thumbprint within these constraints: I want my agent to do the thing — maybe when the shirt goes on sale, but it&#x27;s from a merchant that I trust. Go ahead and execute the transaction. There&#x27;s a lot of power in that intent mandate, that delegation of authority to the agent, and not just for payments. You can see an implementation of it here.</div>
+      <div class="ru">А если человека нет рядом и вы откладываете это на будущее, всё становится интереснее. Я ставлю палец в этих границах: я хочу, чтобы мой агент совершил покупку — например, когда рубашка уйдёт в распродажу, но при условии, что продавец мне доверенный. Действуй, оформляй транзакцию. В этом мандате намерения, в этой передаче полномочий агенту — огромная сила, и не только для платежей. Здесь можно посмотреть реализацию.</div>
+    </div>
+    <div class="row">
+      <div class="ts">04:34</div>
+      <div class="en">UCP and AP2 work together: UCP makes it easy to put stuff in your cart and purchase it, and AP2 is that intent delegation, proving that you actually said &#x27;yeah, go ahead and make this purchase for me&#x27;. Okay, A2UI. This is: my agent can send me text and I can send text back, and at some point I get tired of that and I want it to send me buttons and forms — and I want those forms and buttons to be specific to the moment of this interaction. Not with a bunch of extra context, not the same form that everybody gets, not a component that I have to hardcode — but for it to figure out the parts and pieces it needs to put on the screen for me, the human, to interact with nicely.</div>
+      <div class="ru">UCP и AP2 работают в связке: UCP упрощает добавление товаров в корзину и покупку, а AP2 — это передача намерения, доказывающая, что вы действительно сказали «да, оформляй эту покупку за меня». Хорошо, A2UI. Суть такая: мой агент умеет присылать мне текст, и я могу отвечать текстом, но в какой-то момент это надоедает, и хочется кнопки и формы — причём формы и кнопки, подходящие именно под этот момент взаимодействия. Не с кучей лишнего контекста, не одна и та же форма для всех, не компонент, который мне надо хардкодить, — а чтобы агент сам подобрал нужные части и детали для экрана, чтобы мне, человеку, с этим было удобно работать.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">05:17</div>
+      <div class="en">This is created as a declarative spec that can be sent over the wire — over websockets, or REST API, or MCP, or A2A, or AG-UI, or whatever. It can be stored in a buffer and brought forth later, or sent over multiple different hops. It doesn&#x27;t matter. It&#x27;s just a JSON or JSONL structure that assembles these components onto a screen. The components are your components — we&#x27;re driving your design system with an agent. Here is an example of some of the A2UI messages. We&#x27;re actually in the process of migrating from version 0.8 to version 0.9; in a few weeks you should see another blog post from us about version 0.9 and some of the changes.<div class="tag">уточнено: from version 8 to version 0.9 -&gt; from version 0.8 to version 0.9; some of the ATI UI messages -&gt; some of the A2UI messages</div></div>
+      <div class="ru">Это сделано как декларативная спецификация, которую можно передать по проводу: через websockets, REST API, MCP, A2A, AG-UI или что угодно. Её можно положить в буфер и показать позже или отправить через несколько промежуточных узлов — это неважно. Это просто структура JSON или JSONL, которая собирает эти компоненты на экране. Компоненты — ваши компоненты, то есть мы управляем вашей дизайн-системой с помощью агента. Вот пример сообщений A2UI. Сейчас мы как раз мигрируем с версии 0.8 на версию 0.9, и через пару недель выйдет ещё один пост про 0.9 и изменения в ней.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">06:07</div>
+      <div class="en">I&#x27;m very excited about this, because organizing the UI to help me interact with my agent more easily and fluidly — there&#x27;s a whole lot we can do with that. Confusingly named A2UI and AG-UI. I always get tongue-tied when I try to say the two together. They work very well together. AG-UI is a spec that was put forward by the CopilotKit team almost a year ago, and we&#x27;ve been working with them the whole time. They are kind of a Swiss Army knife for any agent framework on the back end and any front-end client system, to be easily connected to each other. They organize the back-end agent streaming messages to the front end with some standard conventions about what the types of events are that it would stream.<div class="tag">уточнено: co-pilot kit team -&gt; CopilotKit team</div></div>
+      <div class="ru">Я очень жду этого: организовать интерфейс так, чтобы мне было проще и плавнее общаться с агентом, — здесь можно сделать очень многое. Названия, конечно, путающие: A2UI и AG-UI. Я всегда запинаюсь, когда пытаюсь произнести их вместе. Они отлично работают в связке. AG-UI — это спецификация, которую почти год назад предложила команда CopilotKit, и мы с ними работаем всё это время. В каком-то смысле это швейцарский нож для любого агентного фреймворка на бэкенде и любой клиентской системы на фронтенде: они позволяют легко связать их друг с другом. CopilotKit задаёт стандартные соглашения о типах событий в потоковых сообщениях от бэкенд-агента к фронтенду.</div>
+    </div>
+    <div class="row">
+      <div class="ts">06:38</div>
+      <div class="en">Their focus is that one tight connection between back end and front end, whereas A2A is a little more general and includes multi-hop agent back ends. When you&#x27;re streaming those messages across, you can stream A2UI messages across and get generative UI too. So these two things work very nicely together. You can also use A2UI by itself, or AG-UI by itself. But I think the intersection of the two is very compelling. Here&#x27;s an example of getting started, and we also have several other ones.</div>
+      <div class="ru">Их фокус — это одно тесное соединение фронтенда и бэкенда, тогда как A2A шире и покрывает многохоповые агентные бэкенды. И когда вы стримите эти сообщения, по A2A можно передавать сообщения A2UI и получать генеративный интерфейс. Так что эти две вещи работают вместе очень хорошо. Можно использовать и A2UI отдельно, и AG-UI отдельно, но, по-моему, самое интересное — их пересечение. Вот пример для старта, а у нас есть и несколько других.</div>
+    </div>
+    <div class="row">
+      <div class="ts">07:14</div>
+      <div class="en">So if you put them all together: MCP for tools, A2A for agents, UCP for easy commerce — putting things into a cart, discovering them, adding them to the cart, doing a checkout. AP2 for that delegation of authority: I&#x27;m putting my thumbprint on the device and saying yes, I authorize this transaction, or this specification for transactions that might happen in the future, which can be used beyond payments — probably in interesting ways soon. A2UI for a declarative UI spec driving your own front end, and AG-UI for streaming that to a front end. You have a lot of options and possibilities here. This is a stack that we&#x27;re working on, and we recommend you play with it. You have all the parts covered in this doc, with pointers to other individual examples. Thank you very much.</div>
+      <div class="ru">Итак, если собрать всё вместе: MCP — для инструментов, A2A — для агентов, UCP — для простой коммерции: поиск товаров, добавление в корзину, оформление заказа. AP2 — для передачи полномочий: я прикладываю палец и говорю «да, авторизую эту транзакцию» либо задаю спецификацию для будущих транзакций, причём применимую не только к платежам — в скором времени наверняка найдутся интересные применения. A2UI — декларативная спецификация интерфейса, управляющая вашим фронтендом, AG-UI — потоковая передача этого на фронтенд. Вариантов и возможностей здесь много. Это тот стек, над которым мы работаем, и мы рекомендуем с ним поиграть. Все части разобраны в этом документе, со ссылками на отдельные примеры. Большое спасибо.</div>
+    </div>
+  </div>
+
+  <div class="app">
+    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
+    <table>
+      <thead>
+        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+      </thead>
+      <tbody>
+      <tr><td>[00:00]</td><td>Hey, so we have a Developer&#x27;s Guide to AI Agent Protocols, and I&#x27;m going to run through that for today&#x27;s Advent of Agents. MCP, A2A, UCP, AP2, A2UI, AG-UI. I know it feels like alphabet soup, but this blog post came out a couple of days ago, and it will help you put them all into the appropriate context. It covers a single scenario — a restaurant — where it puts each of these protocols together step by step.</td><td>AGUI -&gt; AG-UI; A2I -&gt; A2A</td><td>Привет. Сегодня в Advent of Agents пройдёмся по руководству разработчика по протоколам ИИ-агентов. MCP, A2A, UCP, AP2, A2UI, AG-UI. Понимаю, звучит как каша из букв, но этот пост вышел пару дней назад и поможет расставить всё по местам. В нём разбирается один сценарий — ресторан, — где эти протоколы собираются вместе шаг за шагом.</td></tr>
+      <tr><td>[00:33]</td><td>You can follow along, and you can copy and paste the samples that are in the blog post itself. You&#x27;re probably already using MCP in your development environment or your development agent, or whatever. Any agent can access these deterministic resources and stuff them into the context window of the model, and the model can decide when to take an action or load a different resource. In this scenario, it&#x27;s deciding to use the Notion MCP server or the Mailgun MCP server as tools that can be invoked at runtime.</td><td>the notion MCP server or the mail gun MCP server -&gt; the Notion MCP server or the Mailgun MCP server</td><td>Можно идти по нему вместе с постом и копировать примеры прямо оттуда. Скорее всего, вы уже используете MCP в своём окружении или в своём агентном ассистенте. Любой агент может обращаться к этим детерминированным ресурсам и помещать их в контекстное окно модели, а модель сама решит, когда совершить действие или загрузить другой ресурс. В этом сценарии она выбирает MCP-сервер Notion или MCP-сервер Mailgun как инструменты, вызываемые во время работы.</td></tr>
+      <tr><td>[01:22]</td><td>And again, you&#x27;re probably pretty familiar with this protocol. If you&#x27;ve been following Advent of Agents, you&#x27;re probably already familiar with A2A. In MCP you&#x27;re dealing with deterministic inputs and outputs. A2A assumes that your API is non-deterministic — it&#x27;s an agent of some sort, and therefore it will have some kind of back-and-forth dialogue and capability escalation. It&#x27;s going to make plans, and then the plans don&#x27;t always work out, and it&#x27;s going to be able to adjust to that. All of that flexibility and statefulness is a layer on the outside of most API specifications. And that&#x27;s what&#x27;s unique about A2A.</td><td>that&#x27;s what&#x27;s unique about A2I -&gt; that&#x27;s what&#x27;s unique about A2A</td><td>И с этим протоколом вы, скорее всего, знакомы: если вы следили за Advent of Agents, то с A2A уже знакомы. В MCP речь идёт о детерминированных входах и выходах. A2A исходит из того, что ваш API недетерминирован: это агент какого-то рода, а значит, между ним и вами будет диалог с обе стороны и расширение прав доступа. Он будет строить планы, планы не всегда будут выполняться, и он сможет подстроиться. Вся эта гибкость и состоятельность — это слой поверх большинства спецификаций API. И в этом уникальность A2A.</td></tr>
+      <tr><td>[03:31]</td><td>AP2 is strategic. It is to say: if you are allowing that agent to make a transaction, did it make a transaction that you wanted it to? The important bit is that intent mandate: did you, the human, say &#x27;I would like you to do this thing for me&#x27;? In this case, make a purchase while the human is present — that&#x27;s kind of easier. I&#x27;m going to hit a thumbprint and you&#x27;re going to do the thing right now, and I see that you did the thing, and maybe I can undo it.</td><td>thumbrint -&gt; thumbprint; intent mandate -&gt; intent mandate (термин AP2)</td><td>AP2 — это про стратегию. Вопрос в том, что если вы разрешаете агенту совершать транзакцию, то он совершил именно ту транзакцию, которую вы хотели? Ключевое здесь — мандат намерения: говорили ли вы, человек, «я хочу, чтобы ты сделал это за меня»? В текущем сценарии это покупка при человеке на месте — тут проще. Я прикладываю палец, вы выполняете действие прямо сейчас, я вижу, что вы его выполнили, и, может быть, могу это отменить.</td></tr>
+      <tr><td>[05:17]</td><td>This is created as a declarative spec that can be sent over the wire — over websockets, or REST API, or MCP, or A2A, or AG-UI, or whatever. It can be stored in a buffer and brought forth later, or sent over multiple different hops. It doesn&#x27;t matter. It&#x27;s just a JSON or JSONL structure that assembles these components onto a screen. The components are your components — we&#x27;re driving your design system with an agent. Here is an example of some of the A2UI messages. We&#x27;re actually in the process of migrating from version 0.8 to version 0.9; in a few weeks you should see another blog post from us about version 0.9 and some of the changes.</td><td>from version 8 to version 0.9 -&gt; from version 0.8 to version 0.9; some of the ATI UI messages -&gt; some of the A2UI messages</td><td>Это сделано как декларативная спецификация, которую можно передать по проводу: через websockets, REST API, MCP, A2A, AG-UI или что угодно. Её можно положить в буфер и показать позже или отправить через несколько промежуточных узлов — это неважно. Это просто структура JSON или JSONL, которая собирает эти компоненты на экране. Компоненты — ваши компоненты, то есть мы управляем вашей дизайн-системой с помощью агента. Вот пример сообщений A2UI. Сейчас мы как раз мигрируем с версии 0.8 на версию 0.9, и через пару недель выйдет ещё один пост про 0.9 и изменения в ней.</td></tr>
+      <tr><td>[06:07]</td><td>I&#x27;m very excited about this, because organizing the UI to help me interact with my agent more easily and fluidly — there&#x27;s a whole lot we can do with that. Confusingly named A2UI and AG-UI. I always get tongue-tied when I try to say the two together. They work very well together. AG-UI is a spec that was put forward by the CopilotKit team almost a year ago, and we&#x27;ve been working with them the whole time. They are kind of a Swiss Army knife for any agent framework on the back end and any front-end client system, to be easily connected to each other. They organize the back-end agent streaming messages to the front end with some standard conventions about what the types of events are that it would stream.</td><td>co-pilot kit team -&gt; CopilotKit team</td><td>Я очень жду этого: организовать интерфейс так, чтобы мне было проще и плавнее общаться с агентом, — здесь можно сделать очень многое. Названия, конечно, путающие: A2UI и AG-UI. Я всегда запинаюсь, когда пытаюсь произнести их вместе. Они отлично работают в связке. AG-UI — это спецификация, которую почти год назад предложила команда CopilotKit, и мы с ними работаем всё это время. В каком-то смысле это швейцарский нож для любого агентного фреймворка на бэкенде и любой клиентской системы на фронтенде: они позволяют легко связать их друг с другом. CopilotKit задаёт стандартные соглашения о типах событий в потоковых сообщениях от бэкенд-агента к фронтенду.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Субтитры автоматические (auto, en-orig). Перевод восстановлен по смыслу; названия протоколов и названия полей сверены с кодом и таблицей на странице дня (agent-card.json, intent mandate, CopilotKit, A2UI v0.8 → v0.9).</p>
+  </div>
+
+</div>
+<script>
+const el = id => document.getElementById(id);
+
+el('tgl-en').addEventListener('change', e =>
+  document.body.classList.toggle('hide-en', !e.target.checked));
+el('tgl-ru').addEventListener('change', e =>
+  document.body.classList.toggle('hide-ru', !e.target.checked));
+el('btn-print').addEventListener('click', () => window.print());
+el('btn-mark').addEventListener('click', () => {
+  const on = !document.body.classList.contains('show-fixes');
+  document.body.classList.toggle('show-fixes', on);
+  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
+});
+</script>
+</body>
+</html>

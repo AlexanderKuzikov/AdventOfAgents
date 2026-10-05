@@ -5,7 +5,7 @@
 
 Статусы: ✅ переведён · 🟡 субтитры скачаны, ждёт перевода · ⚪ видео нет или недоступно
 
-Всего дней: **60**, с субтитрами: **38**, переведено: **10**
+Всего дней: **60**, с субтитрами: **38**, переведено: **16**
 
 ## Темы
 
@@ -2697,7 +2697,7 @@ root_agent = SequentialAgent(
 ---
 
 ### day21 — Developer's Guide to AI Agent Protocols  
-🟡 · 8:30 · MCP, A2A, UCP, AP2, A2UI, AG-UI, ADK, Protocols
+✅ · 8:30 · MCP, A2A, UCP, AP2, A2UI, AG-UI, ADK, Protocols
 
 Six protocols, disambiguated. See how MCP, A2A, UCP, AP2, A2UI, and AG-UI work together to build a production-ready supply chain agent with ADK.
 
@@ -2821,7 +2821,7 @@ add_adk_fastapi_endpoint(app, ag_ui_agent, path="/")
 ---
 
 ### day22 — ADK Evaluation: Trajectory Tests and Rubric-Based Scoring  
-🟡 · 1:28 · ADK, Evaluation, CI/CD, Testing
+✅ · 1:28 · ADK, Evaluation, CI/CD, Testing
 
 Define deterministic trajectory tests and rubric-based evaluations that run on every code push, catching agent regressions before they reach production.
 
@@ -2913,7 +2913,7 @@ adk eval ./app eval/trajectory_tests.json \
 ---
 
 ### day23 — Model Armor: AI Security Firewall for Agents  
-🟡 · 4:29 · Model Armor, Security, GCP, Agent Safety
+✅ · 4:29 · Model Armor, Security, GCP, Agent Safety
 
 Protect AI agents from prompt injection, jailbreaks, and data leakage using Google Cloud Model Armor as a defense-in-depth security layer.
 
@@ -2989,7 +2989,7 @@ def sanitize_response(model_response: str) -> tuple[bool, str]:
 ---
 
 ### day24 — Batch Processing: Scale to 10k with ADK  
-🟡 · 5:56 · Batch Processing, ADK, Scale
+✅ · 5:56 · Batch Processing, ADK, Scale
 
 Shift from interactive processing to an Agent as Orchestrator pattern using the ADK and Gemini Batch API for efficient, large-scale asynchronous workloads.
 
@@ -3126,7 +3126,7 @@ python check_status.py
 ---
 
 ### day25 — Agent Deployment: How to Deploy AI Agents  
-🟡 · 5:37 · Deployment, Agent Engine, Cloud Run, Vertex AI
+✅ · 5:37 · Deployment, Agent Engine, Cloud Run, Vertex AI
 
 Deploy your AI agents to Vertex AI Agent Engine or Google Cloud Run securely and easily.
 
@@ -3161,7 +3161,7 @@ uv run adk deploy cloud_run app
 ---
 
 ### day26 — Authentication: End-User Identity Propagation  
-🟡 · 8:34 · Authentication, Security, Identity Propagation, Interactive Auth
+✅ · 8:34 · Authentication, Security, Identity Propagation, Interactive Auth
 
 Securely delegate permissions by prompting end-users for OAuth consent during agent execution.
 
