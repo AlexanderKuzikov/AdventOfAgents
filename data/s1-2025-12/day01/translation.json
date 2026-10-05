@@ -1,0 +1,10 @@
+{
+  "note": "Промо-ролик запуска сезона. Перевод дословный, ключ fix не требуется.",
+  "segments": [
+    {
+      "t": 0,
+      "en": "Today we're officially launching the Advent of Agents calendar. Every single day we unlock a new piece of the puzzle to help you build production-ready agents on Google Cloud. And we're not just talking theory here: the goal is for you to get hands-on with code samples. We'll look at Gemini 3 to learn about context engineering, the computer use feature and the Live API, as well as Google's Agent Development Kit, where you'll learn about multi-agent workloads — loop, sequential and parallel agents. And lastly, the Agent Starter Pack, where you'll build end-to-end production agents including CI/CD, testing and deployment to Google Cloud's Agent Runtime, Agent Engine. So whether you're a startup founder or an enterprise developer, think of this as your daily crash course. If you don't want to miss out, head over to the link on the screen below. Enjoy, and have fun.",
+      "ru": "Сегодня мы официально запускаем календарь Advent of Agents. Каждый день мы открываем очередной кусок пазла, чтобы помочь вам строить готовых к продакшену агентов на Google Cloud. И речь не только о теории: цель в том, чтобы вы поработали руками с примерами кода. Мы посмотрим на Gemini 3 — context engineering, computer use и Live API, — а также на Agent Development Kit от Google, где вы разберёте мультиагентные сценарии: loop, sequential и parallel агенты. И, наконец, Agent Starter Pack, где вы соберёте сквозного продакшен-агента с CI/CD, тестами и деплоем в Agent Runtime, он же Agent Engine. Неважно, стартапер вы или корпоративный разработчик — считайте это ежедневным интенсивом. Не хотите пропустить — переходите по ссылке на экране. Пользуйтесь и получайте удовольствие."
+    }
+  ]
+}

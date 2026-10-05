@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Season 2 Kick Off — EN / RU</title>
+<style>
+:root {
+  --en-bg: #f7f8fa;
+  --line: #dfe3e8;
+  --accent: #0b57d0;
+  --ts: #8a9099;
+  --muted: #5f6672;
+  --fix: #fff3cd;
+  --fix-line: #e0b100;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 32px 20px 72px;
+  background: #eef0f3;
+  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #1a1a1a;
+}
+
+.page { max-width: 1400px; margin: 0 auto; }
+
+h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.head .sub { color: var(--muted); font-size: 15px; }
+.head .sub a { color: var(--accent); }
+
+.legend {
+  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
+}
+.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
+.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+
+.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+
+button {
+  font: inherit; font-size: 14px; padding: 7px 14px;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: #fff; color: #1a1a1a; cursor: pointer;
+}
+button:hover { border-color: #b9c0ca; background: #fafbfc; }
+
+.grid {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden;
+}
+
+.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
+
+.head-row {
+  background: #2f3541; color: #fff;
+  font-size: 13px; letter-spacing: 0.04em;
+  text-transform: uppercase; font-weight: 600;
+  position: sticky; top: 0; z-index: 5;
+}
+.head-row > div { padding: 10px 18px; }
+.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
+
+.row > .ts {
+  padding: 14px 8px; font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ts); text-align: right;
+  border-right: 1px solid var(--line); background: #fbfbfc;
+}
+.row > .en, .row > .ru {
+  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
+}
+.row > .en { background: var(--en-bg); }
+.row > .ru { border-right: 0; }
+
+.row.cont > .ts::after {
+  content: ""; display: block; width: 14px; height: 1px;
+  background: var(--line); margin: 8px 0 0 auto;
+}
+.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
+
+.row.fixed > .en { background: var(--fix); }
+.row.fixed .tag { display: none; }
+
+body.show-fixes .row.fixed .tag { display: block; }
+
+.tag {
+  display: inline-block; margin-top: 6px;
+  font-size: 11.5px; line-height: 1.35;
+  color: #6b5400; background: var(--fix);
+  border-left: 3px solid var(--fix-line);
+  padding: 3px 8px; border-radius: 0 4px 4px 0;
+}
+
+.app { margin-top: 26px; }
+.app h2 { font-size: 19px; margin: 0 0 10px; }
+
+table {
+  width: 100%; border-collapse: collapse;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden; font-size: 15px;
+}
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
+.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
+
+body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
+body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
+body.hide-en .row, body.hide-en .head-row,
+body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
+
+@media (max-width: 900px) {
+  .head-row, .row { grid-template-columns: 56px 1fr; }
+  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
+  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .bar, .legend { display: none; }
+  .head-row { position: static; }
+  .grid, table { border-radius: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <h1>Season 2 Kick Off</h1>
+    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
+      Видео: <a href="https://www.youtube.com/watch?v=MUnjMBHsaEw">https://www.youtube.com/watch?v=MUnjMBHsaEw</a> · 00:45
+      · auto (YouTube en-orig)</div>
+  </div>
+
+  <div class="legend">
+    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
+    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
+  </div>
+
+  <div class="bar">
+    <button id="btn-mark">Показать исправления</button>
+    <button id="btn-print">Печать / PDF</button>
+  </div>
+
+  <div class="grid">
+    <div class="head-row">
+      <div>Time</div>
+      <div>English</div>
+      <div>Русский</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">00:01</div>
+      <div class="en">Gemini in the house. Advent of Agents, season two.<div class="tag">уточнено: Jamin Eye in the house -&gt; Gemini in the house; Advent of Ages -&gt; Advent of Agents</div></div>
+      <div class="ru">Gemini в доме. Advent of Agents, второй сезон.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">00:07</div>
+      <div class="en">Zero to hero. Let&#x27;s get it. 31 days taking developers higher. Build agents, get a code base on fire. Started with a quick starter. Keep the learning snackable. Then we hit the deep dive: production systems, scalable. Pick your language: C#, ready, pick Python to go, TypeScript or Java. We&#x27;re running the show. Gemini 3.1 Pro with the crew. Building up the stack from a fresh Spring Boot. Welcome to the Advent of Agents.<div class="tag">уточнено: Vertically agents get a code base is on fire. Started with a cutter -&gt; Build agents, get a code base on fire. Started with a quick starter; picking systems crackable -&gt; production systems, scalable; Get your C alive ready pick Python to go -&gt; pick C#, ready, pick Python to go; the root -&gt; the crew; fresh spring boot -&gt; fresh Spring Boot (в оригинале фраза обрезана)</div></div>
+      <div class="ru">От нуля до героя. Погнали. 31 день, который поднимает разработчиков выше. Строим агентов, разжигаем кодовую базу. Начинаем с быстрого старта. Учимся небольшими порциями. Затем идём в глубину: продакшен-системы, масштабирование. Выбирайте язык: C# — готов, Python — вперёд, TypeScript или Java. Мы ведём программу. Gemini 3.1 Pro с командой. Собираем стек с нуля, со свежим Spring Boot. Добро пожаловать в Advent of Agents.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">00:44</div>
+      <div class="en">Let&#x27;s go. All of you are going to follow. From your first line of code to a hero in the zone. 31 days, building agents of your own. Welcome to the Advent of Agents.<div class="tag">уточнено: from your first line of code to a hero in the zone -&gt; текст песни, распознан приблизительно</div></div>
+      <div class="ru">Погнали. Все вы идёте с нами. От первой строки кода до героя. 31 день, чтобы построить агентов своих собственных. Добро пожаловать в Advent of Agents.</div>
+    </div>
+  </div>
+
+  <div class="app">
+    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
+    <table>
+      <thead>
+        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+      </thead>
+      <tbody>
+      <tr><td>[00:01]</td><td>Gemini in the house. Advent of Agents, season two.</td><td>Jamin Eye in the house -&gt; Gemini in the house; Advent of Ages -&gt; Advent of Agents</td><td>Gemini в доме. Advent of Agents, второй сезон.</td></tr>
+      <tr><td>[00:07]</td><td>Zero to hero. Let&#x27;s get it. 31 days taking developers higher. Build agents, get a code base on fire. Started with a quick starter. Keep the learning snackable. Then we hit the deep dive: production systems, scalable. Pick your language: C#, ready, pick Python to go, TypeScript or Java. We&#x27;re running the show. Gemini 3.1 Pro with the crew. Building up the stack from a fresh Spring Boot. Welcome to the Advent of Agents.</td><td>Vertically agents get a code base is on fire. Started with a cutter -&gt; Build agents, get a code base on fire. Started with a quick starter; picking systems crackable -&gt; production systems, scalable; Get your C alive ready pick Python to go -&gt; pick C#, ready, pick Python to go; the root -&gt; the crew; fresh spring boot -&gt; fresh Spring Boot (в оригинале фраза обрезана)</td><td>От нуля до героя. Погнали. 31 день, который поднимает разработчиков выше. Строим агентов, разжигаем кодовую базу. Начинаем с быстрого старта. Учимся небольшими порциями. Затем идём в глубину: продакшен-системы, масштабирование. Выбирайте язык: C# — готов, Python — вперёд, TypeScript или Java. Мы ведём программу. Gemini 3.1 Pro с командой. Собираем стек с нуля, со свежим Spring Boot. Добро пожаловать в Advent of Agents.</td></tr>
+      <tr><td>[00:44]</td><td>Let&#x27;s go. All of you are going to follow. From your first line of code to a hero in the zone. 31 days, building agents of your own. Welcome to the Advent of Agents.</td><td>from your first line of code to a hero in the zone -&gt; текст песни, распознан приблизительно</td><td>Погнали. Все вы идёте с нами. От первой строки кода до героя. 31 день, чтобы построить агентов своих собственных. Добро пожаловать в Advent of Agents.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Промо-ролик к сезону, идут песня и заставка. Автоматические субтитры почти не пригодны: половина слов не распознана. Перевод того, что различимо; домысливать текст песни не будем.</p>
+  </div>
+
+</div>
+<script>
+const el = id => document.getElementById(id);
+
+el('tgl-en').addEventListener('change', e =>
+  document.body.classList.toggle('hide-en', !e.target.checked));
+el('tgl-ru').addEventListener('change', e =>
+  document.body.classList.toggle('hide-ru', !e.target.checked));
+el('btn-print').addEventListener('click', () => window.print());
+el('btn-mark').addEventListener('click', () => {
+  const on = !document.body.classList.contains('show-fixes');
+  document.body.classList.toggle('show-fixes', on);
+  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
+});
+</script>
+</body>
+</html>

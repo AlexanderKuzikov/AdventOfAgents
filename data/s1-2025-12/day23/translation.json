@@ -1,0 +1,41 @@
+{
+  "note": "Субтитры автоматические (auto, en-orig). Названия сверены со страницей дня и репозиторием restatedev/restate-google-adk-example: Restate, durable execution, is_eligible, Ctrl+C, uv run. Докладчик — команда Restate (по подписи ролика).",
+  "segments": [
+    {
+      "t": 0,
+      "en": "Hi everyone. In this video we'll show you how to build resilient agents with Google ADK and Restate. Restate is a lightweight runtime that turns your AI agents into durable processes that can recover from all sorts of failures. Normally, if an AI agent crashes in the middle of a task, it would have to start over from the beginning. By enabling Restate as a plug-in for your ADK agents, your agents become recoverable: after a crash they continue from the point of failure instead of starting over. You can use this to implement all sorts of things — resilient human approval steps, long-running agents, for instance for research, and advanced multi-agent systems.",
+      "ru": "Привет. В этом видео покажем, как строить устойчивые агенты на Google ADK и Restate. Restate — лёгкий рантайм, превращающий ИИ-агентов в надёжные процессы, способные восстанавливаться после разных сбоев. Обычно, если агент падает посреди задачи, приходится начинать сначала. Включив Restate как плагин для агентов ADK, вы делаете их восстанавливаемыми: после сбоя агент продолжит с точки отказа, а не с начала. Это позволяет реализовать устойчивые шаги с участием человека, долгоживущих агентов — например, для исследований, — и продвинутые мультиагентные системы.",
+      "fix": "multi- aent systems -> multi-agent systems"
+    },
+    {
+      "t": 54,
+      "en": "Let's look at a code example. Here I define my Google ADK agent: it's a claim approval agent. If the claim amount is more than 1,000, it asks a human to review the insurance claim. If the amount is less than 1,000, it uses the check_eligibility tool. Then we create a Google ADK app and activate Restate as a plug-in — this is the part where I activate Restate to persist the steps my agent performs, so that I can recover them after a crash. Finally, I execute my runner: here the runner is executed from within a Restate handler, and this handler can be called over HTTP, as we'll see in the example. The last thing I need is to persist the steps performed inside tools as well, to make sure those can be recovered too. Here in my eligibility tool I use the Restate context, which can be supplied via the tool context, to persist the call to the customer database inside the is_eligible function. So the result coming out of it will be persisted in Restate and can be recovered.",
+      "ru": "Посмотрим на пример кода. Здесь я определяю агента ADK: это агент согласования страховых случаев. Если сумма больше 1000, он просит человека проверить заявление; если меньше — использует инструмент `check_eligibility`. Затем создаём приложение ADK и включаем Restate как плагин: именно здесь я активирую Restate, чтобы шаги, выполняемые агентом, сохранялись и могли быть восстановлены после сбоя. Дальше выполняю runner — здесь он запускается внутри Restate handler, а этот handler можно вызывать по HTTP, как мы увидим в примере. Последнее, что нужно сделать, — сохранять и шаги внутри инструментов, чтобы их тоже можно было восстановить. В инструменте проверки я использую контекст Restate, передаваемый через контекст инструмента, чтобы сохранить вызов базы клиентов внутри функции `is_eligible`. Тогда результат из неё сохраняется в Restate и может быть восстановлен.",
+      "fix": null
+    },
+    {
+      "t": 186,
+      "en": "Let's run this. Our service is running here via uv run, and Restate is running in this terminal. Let's send a request via the Restate UI. Restate runs as a single binary, which means you don't need to run any databases or other systems alongside it. The UI ships in the same single binary and runs on port 9070. Let's send a request to our claim agent: click the run handler and go to the playground, where we can send an HTTP request. If I add my user ID 123456 as the key and send the default request for a business trip of $800, the agent will start running.",
+      "ru": "Запустим. Сервис работает через `uv run`, а Restate запущен в этом терминале. Отправим запрос через UI Restate. Restate работает как один бинарник: рядом не нужно поднимать ни базы данных, ни другие системы. UI входит в тот же бинарник и слушает порт 9070. Отправим запрос агенту согласования: кликнем по handler run и перейдём в playground, где можно отправить HTTP-запрос. Если указать в качестве ключа user ID 123456 и отправить дефолтный запрос на командировку в 800 долларов, агент начнёт работу.",
+      "fix": "If I add as the key my user ID 1 2 3 4 5 six -> 123456"
+    },
+    {
+      "t": 234,
+      "en": "In the invocation step, Restate also gives me an overview of what my agent is doing. If I click on the invocation, I see that it's currently failing because the customer database is unreachable. We can also enable the live view to see what it's doing in real time: we see that it's retrying, and here on the left we see the steps it already did. It called the LLM, and right now it's retrying the eligibility tool.",
+      "ru": "На шаге invocation Restate также показывает, что делает агент. Кликнув по invocation, вижу, что он сейчас падает: база клиентов недоступна. Можно включить live view и смотреть происходящее в реальном времени: видно, что идут повторы, а слева — уже выполненные шаги. Вызвал LLM, а сейчас повторяет инструмент проверки.",
+      "fix": null
+    },
+    {
+      "t": 322,
+      "en": "We can make the scenario a little more complex by killing the service: here I'm pressing Ctrl+C in my terminal to stop the Python process. If I start it again with uv run and go back to the UI, we should see that the retries continue and the progress is still there. Let's fix the issue by looking at what went wrong. In this check_eligibility tool I call the is_eligible function, and in that function I throw a runtime exception whenever the amount is 800, just to show how retries work. If I now comment those out and restart the service, the request will go through successfully and we'll be able to make progress. We see in the Restate UI that on the next retry this eligibility tool will finish successfully and we'll end up with a success result: our claim has been approved.",
+      "ru": "Усложним сценарий: убьём сервис — я нажимаю Ctrl+C в терминале, останавливая Python-процесс. Если запустить его снова через `uv run` и вернуться в UI, повторы продолжатся, а прогресс сохранится. Теперь устраним проблему. В инструменте `check_eligibility` я вызываю функцию `is_eligible`, и в ней бросаю runtime-исключение каждый раз, когда сумма равна 800, — просто чтобы показать, как работают повторы. Если закомментировать это и перезапустить сервис, запрос пройдёт успешно. В UI Restate видно, что при следующем повторе инструмент проверки завершится успешно и мы получим успешный результат: заявление согласовано.",
+      "fix": "controll C ing -> Ctrl+C; iseligible -> is_eligible"
+    },
+    {
+      "t": 442,
+      "en": "So this is what you can do with Restate. You can also make tool execution more complex: in the repo linked below you'll find an example of human approval, where we ask a human reviewer to review our insurance claim if the amount is more than 1,000. Even if this service crashes, or Restate crashes, or something goes wrong while we're waiting, we can recover this promise we're waiting on in another process. So have a look at the readme, have a look at the repo and try running it yourself. Thank you for watching.",
+      "ru": "Вот что можно делать с Restate. Выполнение инструментов можно сделать и сложнее: в репозитории по ссылке ниже есть пример с участием человека — мы просим ревьюера проверить страховое заявление, если сумма больше 1000. Даже если сервис упадёт, или упадёт сам Restate, или что-то пойдёт не так, пока мы ждём, этот промис можно восстановить в другом процессе. Загляните в README и в репозиторий, попробуйте запустить сами. Спасибо за просмотр.",
+      "fix": null
+    }
+  ]
+}

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>🎉 Grand Finale: Mission Accomplished! — EN / RU</title>
+<style>
+:root {
+  --en-bg: #f7f8fa;
+  --line: #dfe3e8;
+  --accent: #0b57d0;
+  --ts: #8a9099;
+  --muted: #5f6672;
+  --fix: #fff3cd;
+  --fix-line: #e0b100;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 32px 20px 72px;
+  background: #eef0f3;
+  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #1a1a1a;
+}
+
+.page { max-width: 1400px; margin: 0 auto; }
+
+h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.head .sub { color: var(--muted); font-size: 15px; }
+.head .sub a { color: var(--accent); }
+
+.legend {
+  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
+}
+.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
+.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+
+.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+
+button {
+  font: inherit; font-size: 14px; padding: 7px 14px;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: #fff; color: #1a1a1a; cursor: pointer;
+}
+button:hover { border-color: #b9c0ca; background: #fafbfc; }
+
+.grid {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden;
+}
+
+.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
+
+.head-row {
+  background: #2f3541; color: #fff;
+  font-size: 13px; letter-spacing: 0.04em;
+  text-transform: uppercase; font-weight: 600;
+  position: sticky; top: 0; z-index: 5;
+}
+.head-row > div { padding: 10px 18px; }
+.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
+
+.row > .ts {
+  padding: 14px 8px; font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ts); text-align: right;
+  border-right: 1px solid var(--line); background: #fbfbfc;
+}
+.row > .en, .row > .ru {
+  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
+}
+.row > .en { background: var(--en-bg); }
+.row > .ru { border-right: 0; }
+
+.row.cont > .ts::after {
+  content: ""; display: block; width: 14px; height: 1px;
+  background: var(--line); margin: 8px 0 0 auto;
+}
+.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
+
+.row.fixed > .en { background: var(--fix); }
+.row.fixed .tag { display: none; }
+
+body.show-fixes .row.fixed .tag { display: block; }
+
+.tag {
+  display: inline-block; margin-top: 6px;
+  font-size: 11.5px; line-height: 1.35;
+  color: #6b5400; background: var(--fix);
+  border-left: 3px solid var(--fix-line);
+  padding: 3px 8px; border-radius: 0 4px 4px 0;
+}
+
+.app { margin-top: 26px; }
+.app h2 { font-size: 19px; margin: 0 0 10px; }
+
+table {
+  width: 100%; border-collapse: collapse;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden; font-size: 15px;
+}
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
+.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
+
+body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
+body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
+body.hide-en .row, body.hide-en .head-row,
+body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
+
+@media (max-width: 900px) {
+  .head-row, .row { grid-template-columns: 56px 1fr; }
+  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
+  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .bar, .legend { display: none; }
+  .head-row { position: static; }
+  .grid, table { border-radius: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <h1>🎉 Grand Finale: Mission Accomplished!</h1>
+    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
+      Видео: <a href="https://www.youtube.com/watch?v=AuE-w-z9lks">https://www.youtube.com/watch?v=AuE-w-z9lks</a> · 05:43
+      · auto (YouTube en-orig)</div>
+  </div>
+
+  <div class="legend">
+    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
+    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
+  </div>
+
+  <div class="bar">
+    <button id="btn-mark">Показать исправления</button>
+    <button id="btn-print">Печать / PDF</button>
+  </div>
+
+  <div class="grid">
+    <div class="head-row">
+      <div>Time</div>
+      <div>English</div>
+      <div>Русский</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">00:01</div>
+      <div class="en">All right. On December 25th we&#x27;re bringing you the new Agent Designer, now available in the Vertex AI console. It&#x27;s a graphical user interface that lets you build an ADK agent. Instead of writing the configuration by hand or pushing it through some CLI tool, this is just a GUI giving you access to the same set of configuration options, where you can put together your instructions, the model and some tools via MCP servers into an actual ADK agent. You can download the code, and you can run it right here in the console. This puts all of our parts and pieces together, lowers the barrier of entry, and in no time you have a multi-agent system ready to go.<div class="tag">уточнено: Vert.Ex AI console -&gt; Vertex AI console; this is just a guey -&gt; this is just a GUI; multi- aent system -&gt; multi-agent system</div></div>
+      <div class="ru">Итак, 25 декабря мы представляем новый Agent Designer, уже доступный в консоли Vertex AI. Это графический интерфейс, позволяющий собрать агента ADK. Вместо того чтобы писать конфигурацию руками или прогонять её через CLI-инструмент, вы получаете GUI с доступом к тому же набору настроек: инструкции, модель и инструменты через MCP-серверы собираются в настоящего агента ADK. Код можно скачать, а можно запустить прямо здесь, в консоли. Это собирает вместе все наши части, снижает порог входа, и в считанные минуты у вас готовая мультиагентная система.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">00:53</div>
+      <div class="en">Let&#x27;s review what we did in the 25 days of agents: YAML config, Gemini 3 Pro, source-based deployment, production observability, ADK in your IDEs, code execution and sandboxes, context as a view across primitives. We got a time-travelling debugger. We got memory management, managed MCP servers at Google scale. We got live mode deep dives. We got the Interactions API launch. We&#x27;re connecting your agents with the A2A protocol. We launched A2UI. We have a LangGraph implementation. We have the Gemini 3 Flash launch. We have tool management. We have Gemini Enterprise one-liner to deploy and register. We&#x27;ve got A2A extensions deep dive. We&#x27;ve got the Kaggle Capstone winners. We&#x27;ve got a deep dive on security and guardrails, and a deep dive on durability with Restate and ADK. And you can A2A-ify anything.<div class="tag">уточнено: YL config -&gt; YAML config; idees -&gt; IDEs; Gemini Flash3 launch -&gt; Gemini 3 Flash launch</div></div>
+      <div class="ru">Вспомним, что было в эти 25 дней агентов: YAML-конфигурация, Gemini 3 Pro, деплой из исходников, продакшен-наблюдаемость, ADK в ваших IDE, выполнение кода и песочницы, контекст как представление поверх примитивов. Был отладочник с путешествием во времени. Были управление памятью и управляемые MCP-серверы в масштабе Google. Были глубокие разборы live mode. Был запуск Interactions API. Мы подключаем ваших агентов через протокол A2A. Запустили A2UI. Есть реализация на LangGraph. Был запуск Gemini 3 Flash. Есть управление инструментами. Есть однострочник на Gemini Enterprise для деплоя и регистрации. Был глубокий разбор расширений A2A. Были победители Kaggle Capstone. Были глубокие разборы безопасности и ограничителей, а также надёжности на Restate и ADK. И вы можете превратить в A2A вообще что угодно.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">01:57</div>
+      <div class="en">We&#x27;ve also got a couple of fun Easter eggs. If you scroll to the bottom, you can triple-click and type TypeScript launch day announcement for ADK. You can also enter the Konami code, or click the Christmas tree five times to get a comic book covering many of the details of how to think about and build ADK agents. A lot of this content was also covered in our course and in the Kaggle 5-day intensive, so you&#x27;re getting the same materials in many different formats, curated by people who work in the field every day with our customers, helping them find success. We want you to find that success. We want you to be the hero of your company as a 2x, 10x or 100x engineer or product manager, or both — we&#x27;re all wearing all the hats these days.<div class="tag">уточнено: Konami code -&gt; код Конáми (Konami code)</div></div>
+      <div class="ru">Есть и пара забавных пасхалок. Если прокрутить вниз, можно троекратно кликнуть и напечатать TypeScript launch day announcement for ADK. Можно ввести код Конáми или пять раз кликнуть по ёлочке — и появится комикс о том, как думать об агентах ADK и как их строить. Многие из этих материалов вошли и в наш курс, и в пятидневный интенсив Kaggle, так что вы получаете одни и те же знания во многих форматах, собранные людьми, которые каждый день работают в этой области с нашими клиентами и помогают им добиваться результата. Мы хотим, чтобы и вы добились своего результата. Мы хотим, чтобы вы были героем своей компании — инженером или продакт-менеджером с множителем 2x, 10x или 100x, а может, и тем и другим: сейчас все мы носим все шляпы сразу.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">03:17</div>
+      <div class="en">Please review some of these materials. Anything you missed, go review the Kaggle 5-day course. Go deep on whatever topic you think is valuable — be it UX, automating your daily job, or coming up with the next business idea that will move your company forward. We&#x27;re here to help you. We&#x27;re here to provide this platform. We want to see the awesome things you make. I know 2026 is going to be a big year — maybe they&#x27;re all big years now — but we&#x27;re here for it, and we want to see what you build. Please share it with us, and thank you very much.<div class="tag">уточнено: maybe they&#x27;re just all big years for Dwa -&gt; пожалуй, теперь все годы большие (фрагмент огрызок)</div></div>
+      <div class="ru">Посмотрите часть этих материалов. Что пропустили — загляните в пятидневный курс Kaggle. Углубитесь в то, что для вас ценно: UX, автоматизация ежедневной рутины или следующая бизнес-идея, которая двинет компанию вперёд. Мы здесь, чтобы помочь, и предоставить вам эту платформу. И хотим увидеть, что вы построите. Знаю, что 2026 будет большим годом — пожалуй, теперь все годы большие, — но мы рядом и хотим увидеть ваш результат. Делитесь им, большое спасибо.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">04:56</div>
+      <div class="en">You did it: 25 days, zero to production. This is the grand finale. Thank you all for spending the last month with us. We moved beyond prompts to building real agents. We gave them brains, hands and shields. We mastered the stack using Agent Engine, multimodal, the Live API and A2A protocols. We closed the gap with enterprise hardening and durable execution. The calendar is complete, but the build has just begun. The repo and guides are yours. Now go build the future. Happy holidays and happy coding.<div class="tag">уточнено: The repo and guys are yours -&gt; The repo and guides are yours</div></div>
+      <div class="ru">Вы это сделали: 25 дней, от нуля до продакшена. Это финал. Спасибо всем, кто провёл с нами последний месяц. Мы ушли от промптов к настоящим агентам, дали им мозги, руки и щиты. Мы освоили стек на Agent Engine, мультимодальности, Live API и протоколах A2A. Мы закрыли разрыв с помощью продакшен-закалки и надёжного исполнения. Календарь завершён, но стройка только начинается. Репозиторий и материалы — ваши. Идите и стройте будущее. С праздниками и удачного кодинга.</div>
+    </div>
+    <div class="row">
+      <div class="ts">06:12</div>
+      <div class="en">Thanks so much for being part of the Advent of Agents calendar program with us. I know keeping up with models is very challenging — benchmarks seem to change weekly, if not daily. Even the processes, the frameworks and the protocols you need to build AI agents for production — we know it&#x27;s not easy. Hopefully this was valuable and useful, and we hope to do more of this content for you too. It was really fun. I learned a lot, and I hope you did too. We are trying to build the skills we need for this new world. The new world is coming fast, and we&#x27;re on top of things because we think about it, we play, we learn, we put things together. We&#x27;re going to keep doing this, and we hope you keep learning along with us.</div>
+      <div class="ru">Большое спасибо, что были с нами в календарной программе Advent of Agents. Понимаю, что угнаться за моделями очень непросто: бенчмарки, кажется, меняются каждую неделю, если не каждый день. Даже процессы, фреймворки и протоколы, нужные, чтобы выводить ИИ-агентов в продакшен, — мы знаем, это непросто. Надеюсь, всё это было полезно, и мы продолжим делать подобные материалы. Было очень интересно. Я многое узнал, надеюсь, и вы тоже. Мы стараемся выработать навыки, нужные в этом новом мире. Новый мир наступает быстро, а мы держим руку на пульсе, потому что думаем о нём, играем, учимся, собираем вместе. Мы продолжим, и надеемся, что вы будете учиться вместе с нами.</div>
+    </div>
+  </div>
+
+  <div class="app">
+    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
+    <table>
+      <thead>
+        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+      </thead>
+      <tbody>
+      <tr><td>[00:01]</td><td>All right. On December 25th we&#x27;re bringing you the new Agent Designer, now available in the Vertex AI console. It&#x27;s a graphical user interface that lets you build an ADK agent. Instead of writing the configuration by hand or pushing it through some CLI tool, this is just a GUI giving you access to the same set of configuration options, where you can put together your instructions, the model and some tools via MCP servers into an actual ADK agent. You can download the code, and you can run it right here in the console. This puts all of our parts and pieces together, lowers the barrier of entry, and in no time you have a multi-agent system ready to go.</td><td>Vert.Ex AI console -&gt; Vertex AI console; this is just a guey -&gt; this is just a GUI; multi- aent system -&gt; multi-agent system</td><td>Итак, 25 декабря мы представляем новый Agent Designer, уже доступный в консоли Vertex AI. Это графический интерфейс, позволяющий собрать агента ADK. Вместо того чтобы писать конфигурацию руками или прогонять её через CLI-инструмент, вы получаете GUI с доступом к тому же набору настроек: инструкции, модель и инструменты через MCP-серверы собираются в настоящего агента ADK. Код можно скачать, а можно запустить прямо здесь, в консоли. Это собирает вместе все наши части, снижает порог входа, и в считанные минуты у вас готовая мультиагентная система.</td></tr>
+      <tr><td>[00:53]</td><td>Let&#x27;s review what we did in the 25 days of agents: YAML config, Gemini 3 Pro, source-based deployment, production observability, ADK in your IDEs, code execution and sandboxes, context as a view across primitives. We got a time-travelling debugger. We got memory management, managed MCP servers at Google scale. We got live mode deep dives. We got the Interactions API launch. We&#x27;re connecting your agents with the A2A protocol. We launched A2UI. We have a LangGraph implementation. We have the Gemini 3 Flash launch. We have tool management. We have Gemini Enterprise one-liner to deploy and register. We&#x27;ve got A2A extensions deep dive. We&#x27;ve got the Kaggle Capstone winners. We&#x27;ve got a deep dive on security and guardrails, and a deep dive on durability with Restate and ADK. And you can A2A-ify anything.</td><td>YL config -&gt; YAML config; idees -&gt; IDEs; Gemini Flash3 launch -&gt; Gemini 3 Flash launch</td><td>Вспомним, что было в эти 25 дней агентов: YAML-конфигурация, Gemini 3 Pro, деплой из исходников, продакшен-наблюдаемость, ADK в ваших IDE, выполнение кода и песочницы, контекст как представление поверх примитивов. Был отладочник с путешествием во времени. Были управление памятью и управляемые MCP-серверы в масштабе Google. Были глубокие разборы live mode. Был запуск Interactions API. Мы подключаем ваших агентов через протокол A2A. Запустили A2UI. Есть реализация на LangGraph. Был запуск Gemini 3 Flash. Есть управление инструментами. Есть однострочник на Gemini Enterprise для деплоя и регистрации. Был глубокий разбор расширений A2A. Были победители Kaggle Capstone. Были глубокие разборы безопасности и ограничителей, а также надёжности на Restate и ADK. И вы можете превратить в A2A вообще что угодно.</td></tr>
+      <tr><td>[01:57]</td><td>We&#x27;ve also got a couple of fun Easter eggs. If you scroll to the bottom, you can triple-click and type TypeScript launch day announcement for ADK. You can also enter the Konami code, or click the Christmas tree five times to get a comic book covering many of the details of how to think about and build ADK agents. A lot of this content was also covered in our course and in the Kaggle 5-day intensive, so you&#x27;re getting the same materials in many different formats, curated by people who work in the field every day with our customers, helping them find success. We want you to find that success. We want you to be the hero of your company as a 2x, 10x or 100x engineer or product manager, or both — we&#x27;re all wearing all the hats these days.</td><td>Konami code -&gt; код Конáми (Konami code)</td><td>Есть и пара забавных пасхалок. Если прокрутить вниз, можно троекратно кликнуть и напечатать TypeScript launch day announcement for ADK. Можно ввести код Конáми или пять раз кликнуть по ёлочке — и появится комикс о том, как думать об агентах ADK и как их строить. Многие из этих материалов вошли и в наш курс, и в пятидневный интенсив Kaggle, так что вы получаете одни и те же знания во многих форматах, собранные людьми, которые каждый день работают в этой области с нашими клиентами и помогают им добиваться результата. Мы хотим, чтобы и вы добились своего результата. Мы хотим, чтобы вы были героем своей компании — инженером или продакт-менеджером с множителем 2x, 10x или 100x, а может, и тем и другим: сейчас все мы носим все шляпы сразу.</td></tr>
+      <tr><td>[03:17]</td><td>Please review some of these materials. Anything you missed, go review the Kaggle 5-day course. Go deep on whatever topic you think is valuable — be it UX, automating your daily job, or coming up with the next business idea that will move your company forward. We&#x27;re here to help you. We&#x27;re here to provide this platform. We want to see the awesome things you make. I know 2026 is going to be a big year — maybe they&#x27;re all big years now — but we&#x27;re here for it, and we want to see what you build. Please share it with us, and thank you very much.</td><td>maybe they&#x27;re just all big years for Dwa -&gt; пожалуй, теперь все годы большие (фрагмент огрызок)</td><td>Посмотрите часть этих материалов. Что пропустили — загляните в пятидневный курс Kaggle. Углубитесь в то, что для вас ценно: UX, автоматизация ежедневной рутины или следующая бизнес-идея, которая двинет компанию вперёд. Мы здесь, чтобы помочь, и предоставить вам эту платформу. И хотим увидеть, что вы построите. Знаю, что 2026 будет большим годом — пожалуй, теперь все годы большие, — но мы рядом и хотим увидеть ваш результат. Делитесь им, большое спасибо.</td></tr>
+      <tr><td>[04:56]</td><td>You did it: 25 days, zero to production. This is the grand finale. Thank you all for spending the last month with us. We moved beyond prompts to building real agents. We gave them brains, hands and shields. We mastered the stack using Agent Engine, multimodal, the Live API and A2A protocols. We closed the gap with enterprise hardening and durable execution. The calendar is complete, but the build has just begun. The repo and guides are yours. Now go build the future. Happy holidays and happy coding.</td><td>The repo and guys are yours -&gt; The repo and guides are yours</td><td>Вы это сделали: 25 дней, от нуля до продакшена. Это финал. Спасибо всем, кто провёл с нами последний месяц. Мы ушли от промптов к настоящим агентам, дали им мозги, руки и щиты. Мы освоили стек на Agent Engine, мультимодальности, Live API и протоколах A2A. Мы закрыли разрыв с помощью продакшен-закалки и надёжного исполнения. Календарь завершён, но стройка только начинается. Репозиторий и материалы — ваши. Идите и стройте будущее. С праздниками и удачного кодинга.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Субтитры автоматические (auto, en-orig). Финальный обзор сезона с несколькими спикерами. Названия приведены по странице дня: Agent Designer, Interactions API, A2UI, Gemini Enterprise, Restate, Kaggle 5-day course.</p>
+  </div>
+
+</div>
+<script>
+const el = id => document.getElementById(id);
+
+el('tgl-en').addEventListener('change', e =>
+  document.body.classList.toggle('hide-en', !e.target.checked));
+el('tgl-ru').addEventListener('change', e =>
+  document.body.classList.toggle('hide-ru', !e.target.checked));
+el('btn-print').addEventListener('click', () => window.print());
+el('btn-mark').addEventListener('click', () => {
+  const on = !document.body.classList.contains('show-fixes');
+  document.body.classList.toggle('show-fixes', on);
+  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
+});
+</script>
+</body>
+</html>

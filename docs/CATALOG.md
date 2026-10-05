@@ -5,7 +5,7 @@
 
 Статусы: ✅ переведён · 🟡 субтитры скачаны, ждёт перевода · ⚪ видео нет или недоступно
 
-Всего дней: **60**, с субтитрами: **38**, переведено: **25**
+Всего дней: **60**, с субтитрами: **38**, переведено: **32**
 
 ## Темы
 
@@ -14,7 +14,7 @@
 ## s1-2025-12
 
 ### day01 — Launch Initiative  
-🟡 · 0:59 · Launch
+✅ · 0:59 · Launch
 
 25 days. Zero to Production-Ready AI Agents on Google Cloud.
 
@@ -535,7 +535,7 @@ print(response.text)
 ---
 
 ### day12 — Multimodal Agents with Gemini Live API  
-🟡 · 4:59 · Bidi-streaming, WebSockets, Gemini Live, AI Agent, ADK
+✅ · 4:59 · Bidi-streaming, WebSockets, Gemini Live, AI Agent, ADK
 
 Explore ADK Bi-Directional Streaming: A visual guide to real-time multimodal AI agent development with WebSockets and Gemini Live.
 
@@ -696,7 +696,7 @@ uvx agent-starter-pack create my-agent -a langgraph_base
 ---
 
 ### day17 — Gemini 3 Flash is here!  
-🟡 · 2:38 · gemini, flash, thinking, adk
+✅ · 2:38 · gemini, flash, thinking, adk
 
 Google's fastest model just got smarter with configurable thinking levels and granular controls.
 
@@ -790,7 +790,7 @@ print("Agent configured with governed BigQuery access.")
 ---
 
 ### day19 — Register to Gemini Enterprise  
-🟡 · 6:05 · Gemini Enterprise, Agent Starter Pack, Deployment, A2A
+✅ · 6:05 · Gemini Enterprise, Agent Starter Pack, Deployment, A2A
 
 Register your agent to Gemini Enterprise! 🌐 and make it discoverable to everyone in your organization, right alongside Google's built-in agents.
 
@@ -1033,7 +1033,7 @@ curl -X POST  -d "$TEMPLATE_CONFIG"   -H "Content-Type: application/json"  -H "A
 ---
 
 ### day23 — Durable, Resilient Agents with Google ADK + Restate  
-🟡 · 5:13 · Durable Execution, ADK, Restate, Resilient Agents
+✅ · 5:13 · Durable Execution, ADK, Restate, Resilient Agents
 
 Most agents are fragile. Durable Execution with Google ADK and Restate ensures your agent never loses context, survives crashes, and can pause execution for days.
 
@@ -1068,7 +1068,7 @@ docker run --name restate --rm -p 8080:8080 -p 9070:9070   --add-host host.docke
 ---
 
 ### day24 — A2A-ify Anything  
-🟡 · 4:56 · A2A, Agent Starter Pack, ADK Samples
+✅ · 4:56 · A2A, Agent Starter Pack, ADK Samples
 
 Take any ADK or LangGraph sample and launch it with A2A on top. Layer A2A capabilities onto existing agents with a single flag.
 
@@ -1092,7 +1092,7 @@ uvx agent-starter-pack enhance --base-template adk_a2a_base
 ---
 
 ### day25 — 🎉 Grand Finale: Mission Accomplished!  
-🟡 · 5:43 · Architecture, Blueprint, Production, Summary, Agent Engine, ADK, Gemini 3, Multi-agent
+✅ · 5:43 · Architecture, Blueprint, Production, Summary, Agent Engine, ADK, Gemini 3, Multi-agent
 
 Congratulations! You've successfully completed the 25-day Advent of Agents journey.
 

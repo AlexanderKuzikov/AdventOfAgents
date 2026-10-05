@@ -1,0 +1,23 @@
+{
+  "note": "Промо-ролик к сезону, идут песня и заставка. Автоматические субтитры почти не пригодны: половина слов не распознана. Перевод того, что различимо; домысливать текст песни не будем.",
+  "segments": [
+    {
+      "t": 1,
+      "en": "Gemini in the house. Advent of Agents, season two.",
+      "ru": "Gemini в доме. Advent of Agents, второй сезон.",
+      "fix": "Jamin Eye in the house -> Gemini in the house; Advent of Ages -> Advent of Agents"
+    },
+    {
+      "t": 7,
+      "en": "Zero to hero. Let's get it. 31 days taking developers higher. Build agents, get a code base on fire. Started with a quick starter. Keep the learning snackable. Then we hit the deep dive: production systems, scalable. Pick your language: C#, ready, pick Python to go, TypeScript or Java. We're running the show. Gemini 3.1 Pro with the crew. Building up the stack from a fresh Spring Boot. Welcome to the Advent of Agents.",
+      "ru": "От нуля до героя. Погнали. 31 день, который поднимает разработчиков выше. Строим агентов, разжигаем кодовую базу. Начинаем с быстрого старта. Учимся небольшими порциями. Затем идём в глубину: продакшен-системы, масштабирование. Выбирайте язык: C# — готов, Python — вперёд, TypeScript или Java. Мы ведём программу. Gemini 3.1 Pro с командой. Собираем стек с нуля, со свежим Spring Boot. Добро пожаловать в Advent of Agents.",
+      "fix": "Vertically agents get a code base is on fire. Started with a cutter -> Build agents, get a code base on fire. Started with a quick starter; picking systems crackable -> production systems, scalable; Get your C alive ready pick Python to go -> pick C#, ready, pick Python to go; the root -> the crew; fresh spring boot -> fresh Spring Boot (в оригинале фраза обрезана)"
+    },
+    {
+      "t": 44,
+      "en": "Let's go. All of you are going to follow. From your first line of code to a hero in the zone. 31 days, building agents of your own. Welcome to the Advent of Agents.",
+      "ru": "Погнали. Все вы идёте с нами. От первой строки кода до героя. 31 день, чтобы построить агентов своих собственных. Добро пожаловать в Advent of Agents.",
+      "fix": "from your first line of code to a hero in the zone -> текст песни, распознан приблизительно"
+    }
+  ]
+}

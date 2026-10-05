@@ -1,0 +1,23 @@
+{
+  "note": "Субтитры автоматические (auto, en-orig). Команды сверены со страницей дня и документацией ADK: adk create, adk run, adk web, GEMINI_API_KEY в .env, thinking_level.",
+  "segments": [
+    {
+      "t": 0,
+      "en": "Hi everyone. In this video we're going to show you how to get started with the Agent Development Kit, ADK, using the latest Gemini 3 Flash model. First open the ADK documentation page by searching for ADK docs on Google. Next, find the Get Started section in the left navigation and select Python to open the quick-start guide. You can pick another language such as Go or Java if you prefer. Let's get started: copy the pip install command from the instructions to install the ADK Python SDK. Next, run the adk create command to initialize your project. When prompted for a model, type two and press Enter. This command generates a directory named my_agent containing an agent.py file, which serves as the main script for your agent. Next, replace the existing agent code with the version from the instructions page: copy the code, paste it into agent.py and save.",
+      "ru": "Привет. В этом видео покажем, как начать с Agent Development Kit, ADK, на свежей модели Gemini 3 Flash. Сначала откройте страницу документации ADK — найдите в Google запрос ADK docs. Затем в левой навигации найдите раздел Get Started и выберите Python, чтобы открыть руководство по быстрому старту. При желании можно выбрать другой язык — Go или Java. Начинаем: скопируйте из инструкций команду pip install, чтобы поставить ADK Python SDK. Затем выполните adk create, чтобы инициализировать проект. На вопрос о модели введите два и нажмите Enter. Команда создаст директорию my_agent с файлом agent.py — это основной скрипт агента. Дальше замените существующий код агента на версию из инструкций: скопируйте код, вставьте в agent.py и сохраните.",
+      "fix": "ad create command -> adk create; my agent -> my_agent; agent. py -> agent.py"
+    },
+    {
+      "t": 66,
+      "en": "Let's look at the agent's code. The agent is designed to return the current time for any given city. It uses the Gemini 3 Flash Preview model, which lets ADK deliver high-quality, low-latency performance. Because Gemini 3 Flash has configurable reasoning, developers can easily tune the model to balance speed and analytical depth. For example, you can configure the thinking_level parameter through the built-in planner API. Depending on your requirements you can choose from three levels: high, low or minimal. Now back to the quick start: the final step is setting your Gemini API key. Open the .env file, replace the placeholder with your actual key and save. Then run the adk run command. You can safely ignore any warning messages that appear. When the user prompt appears, type hi, then enter a city name, and the agent will respond with the local time.",
+      "ru": "Посмотрим на код агента. Агент возвращает текущее время для указанного города. Он использует модель Gemini 3 Flash Preview, благодаря чему ADK даёт высокое качество при низкой задержке. Поскольку у Gemini 3 Flash настраиваемое рассуждение, разработчик легко подберёт баланс между скоростью и глубиной анализа. Например, параметр `thinking_level` настраивается через встроенный planner API: в зависимости от задачи доступны три уровня — high, low и minimal. Возвращаемся к быстрому старту: последний шаг — задать ключ Gemini API. Откройте файл `.env`, замените заглушку своим ключом и сохраните. Затем выполните `adk run`. Предупреждения, если они появятся, можно спокойно игнорировать. Когда появится приглашение, введите hi, затем название города — агент ответит местным временем.",
+      "fix": "your underscore API_key -> GEMINI_API_KEY в .env"
+    },
+    {
+      "t": 128,
+      "en": "You can also run the agent with the adk web tool: adk web launches a local browser-based UI for testing and debugging your agent. You can interact visually instead of in the terminal, view the agent's reasoning steps and tool calls in real time, or monitor the agent's memory and variables. Interested in trying the tool out? To get started, search ADK docs on Google to find the official documentation. Thanks for your time.",
+      "ru": "Агента можно запустить и через `adk web`: команда поднимает локальный интерфейс в браузере для тестирования и отладки. Вы общаетесь с агентом визуально, а не в терминале, видите шаги рассуждения и вызовы инструментов в реальном времени или наблюдаете за памятью и переменными агента. Хотите попробовать? Начните с запроса ADK docs в Google — там официальная документация. Спасибо.",
+      "fix": null
+    }
+  ]
+}

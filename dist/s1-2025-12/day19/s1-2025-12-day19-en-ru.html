@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Register to Gemini Enterprise — EN / RU</title>
+<style>
+:root {
+  --en-bg: #f7f8fa;
+  --line: #dfe3e8;
+  --accent: #0b57d0;
+  --ts: #8a9099;
+  --muted: #5f6672;
+  --fix: #fff3cd;
+  --fix-line: #e0b100;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 32px 20px 72px;
+  background: #eef0f3;
+  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #1a1a1a;
+}
+
+.page { max-width: 1400px; margin: 0 auto; }
+
+h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.head .sub { color: var(--muted); font-size: 15px; }
+.head .sub a { color: var(--accent); }
+
+.legend {
+  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
+}
+.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
+.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+
+.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+
+button {
+  font: inherit; font-size: 14px; padding: 7px 14px;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: #fff; color: #1a1a1a; cursor: pointer;
+}
+button:hover { border-color: #b9c0ca; background: #fafbfc; }
+
+.grid {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden;
+}
+
+.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
+
+.head-row {
+  background: #2f3541; color: #fff;
+  font-size: 13px; letter-spacing: 0.04em;
+  text-transform: uppercase; font-weight: 600;
+  position: sticky; top: 0; z-index: 5;
+}
+.head-row > div { padding: 10px 18px; }
+.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
+
+.row > .ts {
+  padding: 14px 8px; font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ts); text-align: right;
+  border-right: 1px solid var(--line); background: #fbfbfc;
+}
+.row > .en, .row > .ru {
+  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
+}
+.row > .en { background: var(--en-bg); }
+.row > .ru { border-right: 0; }
+
+.row.cont > .ts::after {
+  content: ""; display: block; width: 14px; height: 1px;
+  background: var(--line); margin: 8px 0 0 auto;
+}
+.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
+
+.row.fixed > .en { background: var(--fix); }
+.row.fixed .tag { display: none; }
+
+body.show-fixes .row.fixed .tag { display: block; }
+
+.tag {
+  display: inline-block; margin-top: 6px;
+  font-size: 11.5px; line-height: 1.35;
+  color: #6b5400; background: var(--fix);
+  border-left: 3px solid var(--fix-line);
+  padding: 3px 8px; border-radius: 0 4px 4px 0;
+}
+
+.app { margin-top: 26px; }
+.app h2 { font-size: 19px; margin: 0 0 10px; }
+
+table {
+  width: 100%; border-collapse: collapse;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden; font-size: 15px;
+}
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
+.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
+
+body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
+body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
+body.hide-en .row, body.hide-en .head-row,
+body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
+
+@media (max-width: 900px) {
+  .head-row, .row { grid-template-columns: 56px 1fr; }
+  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
+  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .bar, .legend { display: none; }
+  .head-row { position: static; }
+  .grid, table { border-radius: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <h1>Register to Gemini Enterprise</h1>
+    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
+      Видео: <a href="https://www.youtube.com/watch?v=dhT2dAbRwVk">https://www.youtube.com/watch?v=dhT2dAbRwVk</a> · 06:05
+      · auto (YouTube en-orig)</div>
+  </div>
+
+  <div class="legend">
+    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
+    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
+  </div>
+
+  <div class="bar">
+    <button id="btn-mark">Показать исправления</button>
+    <button id="btn-print">Печать / PDF</button>
+  </div>
+
+  <div class="grid">
+    <div class="head-row">
+      <div>Time</div>
+      <div>English</div>
+      <div>Русский</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">00:06</div>
+      <div class="en">Hello and welcome to another day of Advent of Agents. Today we&#x27;ll show you how it&#x27;s possible to build an ADK agent — whether you deploy it with A2A on Cloud Run or on Agent Engine — and then register it in Gemini Enterprise in a couple of minutes. You can do it in different ways using the starter pack, but I&#x27;d suggest starting with uvx agent-starter-pack create. It gives you a prompt where you can choose the name of the service — it might be my_agent, or something else. For now let&#x27;s call it advent_agent. You&#x27;ll be able to choose between a list of samples, different agents; let&#x27;s go with the default. Again, whether Agent Engine or Cloud Run, you can register it in Gemini Enterprise. In both cases let&#x27;s go with Agent Engine. We don&#x27;t need Terraform and CI/CD for this simple demo, so let&#x27;s pick simple mode, us-central1, and boom — in a couple of seconds it verifies the credentials and generates a template using the starter pack, so we can open it in our IDE.<div class="tag">уточнено: build an AVK agent -&gt; build an ADK agent; jam/german enterprise -&gt; Gemini Enterprise; Alvent agent -&gt; advent_agent; claron -&gt; Cloud Run; CACD -&gt; CI/CD; ID -&gt; IDE</div></div>
+      <div class="ru">Привет, добро пожаловать на ещё один день Advent of Agents. Сегодня покажем, как собрать агента ADK — деплоите вы его через A2A на Cloud Run или на Agent Engine, — и за пару минут зарегистрировать его в Gemini Enterprise. Сделать это можно по-разному, но с помощью стартер-пака я бы предложил начать с `uvx agent-starter-pack create`. Дальше идёт запрос, где вы выбираете имя сервиса — это может быть `my_agent` или что-то другое. Пока назовём его `advent_agent`. Дальше можно выбрать из списка образцов и агентов; берём дефолтный. И снова: Agent Engine или Cloud Run — регистрация в Gemini Enterprise возможна в обоих случаях. Мы пойдём по пути Agent Engine. Для этого простого демо Terraform и CI/CD не нужны, поэтому выбираем простой режим, us-central1, и через пару секунд инструмент проверяет учётные данные и генерирует шаблон стартер-пака, который можно открыть в IDE.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">01:08</div>
+      <div class="en">I just opened it up in Antigravity. It&#x27;s a dummy agent composed of two tool calls and a single agent, plus some boilerplate to deploy it, in this case to Agent Engine. What&#x27;s beautiful is that you can use tools like Antigravity or Gemini together with a comprehensive ADK cheatsheet to change this agent and, in a couple of minutes, make it do what you want. But for now, let&#x27;s go with the typical journey: kick off the playground with adk web. It lets you start interacting locally with the agent, so that you can arrive at the best experience for your end user. You can see the playground running on localhost — I&#x27;ll test the agent by sending a message, in this case hi, and the agent responds. You can ask things like weather in New York, and the agent should use a tool called get_weather to answer me.<div class="tag">уточнено: anti-gravity -&gt; Antigravity; the ADK spreadsheet -&gt; the ADK cheatsheet</div></div>
+      <div class="ru">Я открыл его в Antigravity. Это простейший агент из двух вызовов инструментов и одного агента, плюс заготовка для деплоя — в нашем случае на Agent Engine. Прелесть в том, что можно взять такие инструменты, как Antigravity или Gemini, вместе с подробной шпаргалкой по ADK и за пару минут изменить этого агента так, как нужно. Но пока пройдём типичный маршрут: поднимаем playground через `adk web`. Это позволяет начать общение с агентом локально, чтобы дать пользователю лучший опыт. Видно, что playground запущен на localhost — проверю агента, отправив «hi», и он ответит. Можно спросить «погода в Нью-Йорке», и агент должен ответить через инструмент get_weather.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">03:17</div>
+      <div class="en">Perfect, that works. Now it&#x27;s time to deploy this agent to Agent Engine, and that&#x27;s a single command: make deploy. It takes the package, the agent, the code and the Agent Engine configuration and deploys it remotely to Vertex AI in the default project from my configuration. You can see here all the project, location and environment variables we&#x27;re using. Give it a couple of minutes and the agent will be deployed. You can see the agent was deployed successfully — look at the Agent Engine console, there it is, deployed into Agent Engine.<div class="tag">уточнено: in Vert.Exi XI -&gt; in Vertex AI</div></div>
+      <div class="ru">Отлично, работает. Теперь пора задеплоить агента на Agent Engine, и это одна команда: `make deploy`. Она берёт пакет, агента, код и конфигурацию Agent Engine и разворачивает удалённо в Vertex AI в проекте по умолчанию из моей конфигурации. Здесь видны проект, регион и переменные окружения, которые мы используем. Дайте пару минут, и агент задеплоится. Видно, что всё прошло успешно — посмотрите консоль Agent Engine, вот он.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">04:16</div>
+      <div class="en">Now let&#x27;s start the registration process. For this demo I created a dummy Gemini Enterprise instance in the global location. Since we&#x27;re deploying the agent in us-central1, that&#x27;s fine. You can see it&#x27;s a pretty empty Gemini Enterprise instance containing only the pre-built agents from Google. We want to register our custom agent in this console. To do that you essentially need a single command: make register gemini-enterprise. The Agent Starter Pack CLI will automatically detect that you previously deployed an agent to Agent Engine using this project ID, and ask whether you want to use that — let&#x27;s say yes. It then detects which project you&#x27;re using, which is good: we&#x27;re using the same project for Agent Engine and Gemini Enterprise. It searches for all Gemini Enterprise instances in this project, finds one, and we pick this application. The registration process kicks off and in a couple of seconds you can see it actually worked: the agent is now registered in Gemini Enterprise.<div class="tag">уточнено: Geminina enterprise instance -&gt; Gemini Enterprise instance; make register German enterprise -&gt; make register gemini-enterprise</div></div>
+      <div class="ru">Теперь запустим регистрацию. Для демо я создал пустой экземпляр Gemini Enterprise в глобальном регионе. Раз мы деплоим агента в us-central1, это подходит. Видно, что экземпляр почти пустой и содержит только встроенных агентов от Google. Мы хотим зарегистрировать в этой консоли своего агента. По сути нужна одна команда: `make register gemini-enterprise`. CLI Agent Starter Pack сам определит, что вы ранее задеплоили агента на Agent Engine с этим project ID, и спросит, использовать ли его; скажем «да». Затем определит проект — у нас один и тот же проект и для Agent Engine, и для Gemini Enterprise, — найдёт все экземпляры Gemini Enterprise в проекте, найдёт один, и мы выберем это приложение. Регистрация запускается, и через пару секунд видно, что всё сработало: агент зарегистрирован в Gemini Enterprise.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">05:37</div>
+      <div class="en">Let&#x27;s look at the console to see how this works. Click on Preview and you&#x27;ll see that now in Agents we have the new advent_agent. Let&#x27;s send it some requests and see how it responds. I&#x27;ll say hi — and the agent answers. Now let&#x27;s ask for the weather in New York. It should tell me that it&#x27;s 90°, since that&#x27;s the hardcoded value the tool returns. Perfect: 90° and sunny. So you can see how, in a couple of minutes, we created a new sample with the starter pack, deployed the agent to Agent Engine and then registered it with a single command in Gemini Enterprise. Keep in mind you can do the same deployment using A2A and Cloud Run if you prefer a container-based approach, and you can use different frameworks such as LangGraph or CrewAI. In this case we&#x27;re using ADK on Agent Engine. That concludes our demo. Hope you liked it, and see you on the next day.<div class="tag">уточнено: aa and cloud run -&gt; A2A and Cloud Run; langgraph crewi -&gt; LangGraph or CrewAI; the art code -&gt; the hardcoded value</div></div>
+      <div class="ru">Посмотрим в консоли, как это выглядит. Кликните Preview — и в разделе Agents появится новый advent_agent. Отправим ему запросы. Говорю «hi» — агент отвечает. Теперь спрошу про погоду в Нью-Йорке. Должен ответить, что 90°, потому что инструмент возвращает зашитое значение. Отлично: 90° и солнечно. Итак, за пару минут мы создали новый образец стартер-паком, задеплоили агента на Agent Engine и одной командой зарегистрировали его в Gemini Enterprise. Учтите, что тот же деплой можно сделать через A2A и Cloud Run, если вам ближе контейнерный подход, а можно взять и другие фреймворки — LangGraph или CrewAI. Здесь мы использовали ADK на Agent Engine. На этом демо закончено. Надеюсь, понравилось, до встречи завтра.</div>
+    </div>
+  </div>
+
+  <div class="app">
+    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
+    <table>
+      <thead>
+        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+      </thead>
+      <tbody>
+      <tr><td>[00:06]</td><td>Hello and welcome to another day of Advent of Agents. Today we&#x27;ll show you how it&#x27;s possible to build an ADK agent — whether you deploy it with A2A on Cloud Run or on Agent Engine — and then register it in Gemini Enterprise in a couple of minutes. You can do it in different ways using the starter pack, but I&#x27;d suggest starting with uvx agent-starter-pack create. It gives you a prompt where you can choose the name of the service — it might be my_agent, or something else. For now let&#x27;s call it advent_agent. You&#x27;ll be able to choose between a list of samples, different agents; let&#x27;s go with the default. Again, whether Agent Engine or Cloud Run, you can register it in Gemini Enterprise. In both cases let&#x27;s go with Agent Engine. We don&#x27;t need Terraform and CI/CD for this simple demo, so let&#x27;s pick simple mode, us-central1, and boom — in a couple of seconds it verifies the credentials and generates a template using the starter pack, so we can open it in our IDE.</td><td>build an AVK agent -&gt; build an ADK agent; jam/german enterprise -&gt; Gemini Enterprise; Alvent agent -&gt; advent_agent; claron -&gt; Cloud Run; CACD -&gt; CI/CD; ID -&gt; IDE</td><td>Привет, добро пожаловать на ещё один день Advent of Agents. Сегодня покажем, как собрать агента ADK — деплоите вы его через A2A на Cloud Run или на Agent Engine, — и за пару минут зарегистрировать его в Gemini Enterprise. Сделать это можно по-разному, но с помощью стартер-пака я бы предложил начать с `uvx agent-starter-pack create`. Дальше идёт запрос, где вы выбираете имя сервиса — это может быть `my_agent` или что-то другое. Пока назовём его `advent_agent`. Дальше можно выбрать из списка образцов и агентов; берём дефолтный. И снова: Agent Engine или Cloud Run — регистрация в Gemini Enterprise возможна в обоих случаях. Мы пойдём по пути Agent Engine. Для этого простого демо Terraform и CI/CD не нужны, поэтому выбираем простой режим, us-central1, и через пару секунд инструмент проверяет учётные данные и генерирует шаблон стартер-пака, который можно открыть в IDE.</td></tr>
+      <tr><td>[01:08]</td><td>I just opened it up in Antigravity. It&#x27;s a dummy agent composed of two tool calls and a single agent, plus some boilerplate to deploy it, in this case to Agent Engine. What&#x27;s beautiful is that you can use tools like Antigravity or Gemini together with a comprehensive ADK cheatsheet to change this agent and, in a couple of minutes, make it do what you want. But for now, let&#x27;s go with the typical journey: kick off the playground with adk web. It lets you start interacting locally with the agent, so that you can arrive at the best experience for your end user. You can see the playground running on localhost — I&#x27;ll test the agent by sending a message, in this case hi, and the agent responds. You can ask things like weather in New York, and the agent should use a tool called get_weather to answer me.</td><td>anti-gravity -&gt; Antigravity; the ADK spreadsheet -&gt; the ADK cheatsheet</td><td>Я открыл его в Antigravity. Это простейший агент из двух вызовов инструментов и одного агента, плюс заготовка для деплоя — в нашем случае на Agent Engine. Прелесть в том, что можно взять такие инструменты, как Antigravity или Gemini, вместе с подробной шпаргалкой по ADK и за пару минут изменить этого агента так, как нужно. Но пока пройдём типичный маршрут: поднимаем playground через `adk web`. Это позволяет начать общение с агентом локально, чтобы дать пользователю лучший опыт. Видно, что playground запущен на localhost — проверю агента, отправив «hi», и он ответит. Можно спросить «погода в Нью-Йорке», и агент должен ответить через инструмент get_weather.</td></tr>
+      <tr><td>[03:17]</td><td>Perfect, that works. Now it&#x27;s time to deploy this agent to Agent Engine, and that&#x27;s a single command: make deploy. It takes the package, the agent, the code and the Agent Engine configuration and deploys it remotely to Vertex AI in the default project from my configuration. You can see here all the project, location and environment variables we&#x27;re using. Give it a couple of minutes and the agent will be deployed. You can see the agent was deployed successfully — look at the Agent Engine console, there it is, deployed into Agent Engine.</td><td>in Vert.Exi XI -&gt; in Vertex AI</td><td>Отлично, работает. Теперь пора задеплоить агента на Agent Engine, и это одна команда: `make deploy`. Она берёт пакет, агента, код и конфигурацию Agent Engine и разворачивает удалённо в Vertex AI в проекте по умолчанию из моей конфигурации. Здесь видны проект, регион и переменные окружения, которые мы используем. Дайте пару минут, и агент задеплоится. Видно, что всё прошло успешно — посмотрите консоль Agent Engine, вот он.</td></tr>
+      <tr><td>[04:16]</td><td>Now let&#x27;s start the registration process. For this demo I created a dummy Gemini Enterprise instance in the global location. Since we&#x27;re deploying the agent in us-central1, that&#x27;s fine. You can see it&#x27;s a pretty empty Gemini Enterprise instance containing only the pre-built agents from Google. We want to register our custom agent in this console. To do that you essentially need a single command: make register gemini-enterprise. The Agent Starter Pack CLI will automatically detect that you previously deployed an agent to Agent Engine using this project ID, and ask whether you want to use that — let&#x27;s say yes. It then detects which project you&#x27;re using, which is good: we&#x27;re using the same project for Agent Engine and Gemini Enterprise. It searches for all Gemini Enterprise instances in this project, finds one, and we pick this application. The registration process kicks off and in a couple of seconds you can see it actually worked: the agent is now registered in Gemini Enterprise.</td><td>Geminina enterprise instance -&gt; Gemini Enterprise instance; make register German enterprise -&gt; make register gemini-enterprise</td><td>Теперь запустим регистрацию. Для демо я создал пустой экземпляр Gemini Enterprise в глобальном регионе. Раз мы деплоим агента в us-central1, это подходит. Видно, что экземпляр почти пустой и содержит только встроенных агентов от Google. Мы хотим зарегистрировать в этой консоли своего агента. По сути нужна одна команда: `make register gemini-enterprise`. CLI Agent Starter Pack сам определит, что вы ранее задеплоили агента на Agent Engine с этим project ID, и спросит, использовать ли его; скажем «да». Затем определит проект — у нас один и тот же проект и для Agent Engine, и для Gemini Enterprise, — найдёт все экземпляры Gemini Enterprise в проекте, найдёт один, и мы выберем это приложение. Регистрация запускается, и через пару секунд видно, что всё сработало: агент зарегистрирован в Gemini Enterprise.</td></tr>
+      <tr><td>[05:37]</td><td>Let&#x27;s look at the console to see how this works. Click on Preview and you&#x27;ll see that now in Agents we have the new advent_agent. Let&#x27;s send it some requests and see how it responds. I&#x27;ll say hi — and the agent answers. Now let&#x27;s ask for the weather in New York. It should tell me that it&#x27;s 90°, since that&#x27;s the hardcoded value the tool returns. Perfect: 90° and sunny. So you can see how, in a couple of minutes, we created a new sample with the starter pack, deployed the agent to Agent Engine and then registered it with a single command in Gemini Enterprise. Keep in mind you can do the same deployment using A2A and Cloud Run if you prefer a container-based approach, and you can use different frameworks such as LangGraph or CrewAI. In this case we&#x27;re using ADK on Agent Engine. That concludes our demo. Hope you liked it, and see you on the next day.</td><td>aa and cloud run -&gt; A2A and Cloud Run; langgraph crewi -&gt; LangGraph or CrewAI; the art code -&gt; the hardcoded value</td><td>Посмотрим в консоли, как это выглядит. Кликните Preview — и в разделе Agents появится новый advent_agent. Отправим ему запросы. Говорю «hi» — агент отвечает. Теперь спрошу про погоду в Нью-Йорке. Должен ответить, что 90°, потому что инструмент возвращает зашитое значение. Отлично: 90° и солнечно. Итак, за пару минут мы создали новый образец стартер-паком, задеплоили агента на Agent Engine и одной командой зарегистрировали его в Gemini Enterprise. Учтите, что тот же деплой можно сделать через A2A и Cloud Run, если вам ближе контейнерный подход, а можно взять и другие фреймворки — LangGraph или CrewAI. Здесь мы использовали ADK на Agent Engine. На этом демо закончено. Надеюсь, понравилось, до встречи завтра.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Субтитры автоматические (auto, en-orig). Названия сверены со страницей дня и описанием: Gemini Enterprise, Agent Engine, make register gemini-enterprise, Antigravity, LangGraph, CrewAI.</p>
+  </div>
+
+</div>
+<script>
+const el = id => document.getElementById(id);
+
+el('tgl-en').addEventListener('change', e =>
+  document.body.classList.toggle('hide-en', !e.target.checked));
+el('tgl-ru').addEventListener('change', e =>
+  document.body.classList.toggle('hide-ru', !e.target.checked));
+el('btn-print').addEventListener('click', () => window.print());
+el('btn-mark').addEventListener('click', () => {
+  const on = !document.body.classList.contains('show-fixes');
+  document.body.classList.toggle('show-fixes', on);
+  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multimodal Agents with Gemini Live API — EN / RU</title>
+<style>
+:root {
+  --en-bg: #f7f8fa;
+  --line: #dfe3e8;
+  --accent: #0b57d0;
+  --ts: #8a9099;
+  --muted: #5f6672;
+  --fix: #fff3cd;
+  --fix-line: #e0b100;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 32px 20px 72px;
+  background: #eef0f3;
+  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #1a1a1a;
+}
+
+.page { max-width: 1400px; margin: 0 auto; }
+
+h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.head .sub { color: var(--muted); font-size: 15px; }
+.head .sub a { color: var(--accent); }
+
+.legend {
+  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
+}
+.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
+.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+
+.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+
+button {
+  font: inherit; font-size: 14px; padding: 7px 14px;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: #fff; color: #1a1a1a; cursor: pointer;
+}
+button:hover { border-color: #b9c0ca; background: #fafbfc; }
+
+.grid {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden;
+}
+
+.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
+
+.head-row {
+  background: #2f3541; color: #fff;
+  font-size: 13px; letter-spacing: 0.04em;
+  text-transform: uppercase; font-weight: 600;
+  position: sticky; top: 0; z-index: 5;
+}
+.head-row > div { padding: 10px 18px; }
+.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
+
+.row > .ts {
+  padding: 14px 8px; font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ts); text-align: right;
+  border-right: 1px solid var(--line); background: #fbfbfc;
+}
+.row > .en, .row > .ru {
+  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
+}
+.row > .en { background: var(--en-bg); }
+.row > .ru { border-right: 0; }
+
+.row.cont > .ts::after {
+  content: ""; display: block; width: 14px; height: 1px;
+  background: var(--line); margin: 8px 0 0 auto;
+}
+.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
+
+.row.fixed > .en { background: var(--fix); }
+.row.fixed .tag { display: none; }
+
+body.show-fixes .row.fixed .tag { display: block; }
+
+.tag {
+  display: inline-block; margin-top: 6px;
+  font-size: 11.5px; line-height: 1.35;
+  color: #6b5400; background: var(--fix);
+  border-left: 3px solid var(--fix-line);
+  padding: 3px 8px; border-radius: 0 4px 4px 0;
+}
+
+.app { margin-top: 26px; }
+.app h2 { font-size: 19px; margin: 0 0 10px; }
+
+table {
+  width: 100%; border-collapse: collapse;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden; font-size: 15px;
+}
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
+.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
+
+body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
+body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
+body.hide-en .row, body.hide-en .head-row,
+body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
+
+@media (max-width: 900px) {
+  .head-row, .row { grid-template-columns: 56px 1fr; }
+  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
+  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .bar, .legend { display: none; }
+  .head-row { position: static; }
+  .grid, table { border-radius: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <h1>Multimodal Agents with Gemini Live API</h1>
+    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
+      Видео: <a href="https://www.youtube.com/watch?v=vLUkAGeLR1k">https://www.youtube.com/watch?v=vLUkAGeLR1k</a> · 04:59
+      · auto (YouTube en-orig)</div>
+  </div>
+
+  <div class="legend">
+    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
+    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
+  </div>
+
+  <div class="bar">
+    <button id="btn-mark">Показать исправления</button>
+    <button id="btn-print">Печать / PDF</button>
+  </div>
+
+  <div class="grid">
+    <div class="head-row">
+      <div>Time</div>
+      <div>English</div>
+      <div>Русский</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">00:01</div>
+      <div class="en">Hi, in this video I&#x27;d like to introduce ADK bidi streaming in five minutes. Here&#x27;s a quick-start demo built with ADK bidi streaming. What&#x27;s the current time and the date in Tokyo? The current time and date in Tokyo, Japan is 4:47 p.m. on December 9th, 2025. This core functionality of ADK bidi streaming is provided by the Gemini Live API. The Live API enables low-latency, real-time voice and video interaction with Gemini. The first thing you&#x27;ll notice is the smooth real-time conversation. Gemini&#x27;s native audio model is a true multimodal model: it understands voice input directly, reasons to produce a response, and produces voice output directly — without any speech-to-text or text-to-speech processing. That makes the voice interaction incredibly smooth and interactive.<div class="tag">уточнено: ADK BD streaming / ADK bitty streaming / biddy -&gt; ADK bidi streaming</div></div>
+      <div class="ru">Привет, в этом видео я представлю двунаправленный стриминг ADK за пять минут. Вот быстрый старт на двунаправленном стриминге ADK. «Которое сейчас время и какая дата в Токио?» Текущее время и дата в Токио, Япония: 16:47, 9 декабря 2025 года. Эта базовая функциональность двунаправленного стриминга ADK обеспечивается Gemini Live API. Live API даёт низкозадерживающее взаимодействие с Gemini в реальном времени по голосу и видео. Первое, что вы заметите, — плавный разговор в реальном времени. Нативная аудиомодель Gemini — по-настоящему мультимодальная: она напрямую понимает голосовой ввод, рассуждает, формируя ответ, и сразу выдаёт голосовой вывод — без всяких распознавания и синтеза речи. Благодаря этому голосовое взаимодействие получается исключительно плавным и живым.</div>
+    </div>
+    <div class="row">
+      <div class="ts">00:59</div>
+      <div class="en">This real-time conversation is made possible with the Live API and ADK bidi streaming, which is built on top of it. You might wonder why not just use the raw Live API. Building a production AI agent service on the raw Live API is challenging: you would need to implement core functionality yourself — the agent framework, tool execution, connection management, event and async framework, session persistence and more. By contrast, the ADK bidi streaming API lets you quickly build a production-level AI agent. With that, let&#x27;s continue watching the demo to learn the full functionality ADK bidi streaming provides. Thank you. What&#x27;s the current stock price of Alphabet? The most recent closing price for Alphabet Class A was 300. Is there anything else I can help you with today?</div>
+      <div class="ru">Этот разговор в реальном времени возможен благодаря Live API и двунаправленному стримингу ADK, построенному поверх него. Можно спросить, почему бы просто не использовать Live API напрямую. Строить продакшен-сервис агента поверх сырого Live API сложно: пришлось бы самому реализовать всё ядро — агентный фреймворк, выполнение инструментов, управление соединениями, событийную и асинхронную модель, хранение сессий и многое другое. Двунаправленный стриминг ADK, наоборот, позволяет быстро собрать агента продакшен-уровня. Смотрим дальше, чтобы увидеть весь функционал. «Спасибо. Какова текущая цена акций Alphabet?» Последняя цена закрытия класса A Alphabet — 300. «Чем ещё могу помочь?»</div>
+    </div>
+    <div class="row">
+      <div class="ts">02:24</div>
+      <div class="en">What you have just seen is an example of interruption detection — this is the power of bidirectional streaming. The user can interrupt at any time while the agent is still talking. Unlike typical AI chats, where the user has to wait until the agent stops talking. When the agent detects the interruption, it immediately stops and listens to the user. Also, with built-in voice activity detection, VAD, the agent can automatically determine whether the user has finished their turn and start responding. All of these events can be used to precisely control UI behaviour and deliver an outstanding user experience. You may also have noticed that both the user&#x27;s and the agent&#x27;s voices are automatically transcribed and shown in the UI. This improves the UX: the user can see how their messages were recognized and what the conversation history was at any time.</div>
+      <div class="ru">То, что вы только что увидели, — пример обнаружения перебивания. В этом и сила двунаправленного стриминга: пользователь может перебить агента в любой момент, пока тот говорит, — в отличие от обычных ИИ-чатов, где нужно дождаться конца. Когда агент замечает перебивание, он немедленно замолкает и слушает пользователя. Кроме того, благодаря встроенному определению речевой активности, VAD, агент сам понимает, что пользователь закончил свой ход, и может начинать ответ. Все эти события позволяют точно управлять поведением интерфейса и получить отличный пользовательский опыт. Вы также могли заметить, что голоса и пользователя, и агента автоматически расшифровываются и показываются в интерфейсе. Это улучшает UX: пользователь видит, как распознаны его реплики, и в любой момент может посмотреть историю разговора.</div>
+    </div>
+    <div class="row">
+      <div class="ts">03:50</div>
+      <div class="en">The agent answered with the current stock price. That capability comes from the built-in Google Search tool provided by ADK. Enabling it takes only a few lines of code. With this tool, the agent can access a wide variety of up-to-date information from the internet, dynamically gathering context based on user intent and mitigating the risk of hallucination. ADK automatically handles the entire function-calling process and event handling, meaning you don&#x27;t have to implement them from scratch.</div>
+      <div class="ru">Агент ответил актуальной ценой. Эта возможность приходит из встроенного инструмента Google Search, который предоставляет ADK. Чтобы его включить, достаточно нескольких строк кода. С этим инструментом агент получает доступ к широкому спектру свежей информации из интернета, динамически собирает контекст по намерению пользователя и снижает риск галлюцинаций. ADK сама берёт на себя весь процесс вызова функций и обработку событий — вам не нужно реализовывать это с нуля.</div>
+    </div>
+    <div class="row">
+      <div class="ts">05:08</div>
+      <div class="en">What do you see in the image? In the image I see a plant with long green leaves, a floor lamp with a rectangular shade, and some textured wall panels in the background. As you saw, ADK can also handle images. That provides a powerful way to share the user&#x27;s context with the agent. As the saying goes, a picture is worth a thousand words, and sometimes it&#x27;s much easier for the user to upload images than to spend a long time talking with the agent to share their context. For example, a user might ask: what interior items would fit my room? Since ADK can process one image per second, you can continuously upload a sequence of images to the agent, letting it understand what is happening in them. While that speed isn&#x27;t enough for tracking fast movement, it&#x27;s very useful for capturing and understanding what&#x27;s happening in the images.</div>
+      <div class="ru">«Что вы видите на изображении?» На картинке растение с длинными зелёными листьями, торшер с прямоугольным абажуром и фактурные стеновые панели на фоне. Как видите, ADK умеет работать и с изображениями. Это даёт мощный способ передать агенту контекст пользователя. Как известно, картинка стоит тысячи слов, и иногда пользователю гораздо проще загрузить фото, чем долго проговаривать контекст в разговоре. Например, пользователь может спросить: «Какие предметы интерьера подойдут к моей комнате?» Поскольку ADK обрабатывает до одного изображения в секунду, можно непрерывно отправлять агенту последовательность кадров, и он будет понимать, что в них происходит. Этой скорости недостаточно, чтобы следить за быстрым движением, но она вполне годится, чтобы зафиксировать и понять происходящее в кадре.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">06:49</div>
+      <div class="en">I just purchased an item from your e-commerce site and it doesn&#x27;t work. I understand this is frustrating. Can you tell me more about what item it is and what seems to be the issue? With ADK you also get the benefits of the advanced features in the latest Gemini Live API native audio models, such as effective dialogue and proactivity. In the last example the demo was enabled with the effective dialogue feature: in this mode the agent tries to sense the user&#x27;s emotional signals and reason about how to respond, to provide an effective interaction. This adds a powerful dimension to AI agents, especially for customer-facing services like e-commerce, maximizing the user experience. So we&#x27;ve covered the basic functionality of ADK bidi streaming. To dig deeper into the technology, just search ADK bidi to find the ADK bidi streaming documentation, including the demo we&#x27;ve seen. Thanks for watching.<div class="tag">уточнено: customer f facing -&gt; customer-facing</div></div>
+      <div class="ru">«Я только что купил товар на вашем интернет-магазине, и он не работает. Понимаю, как это неприятно. Расскажите подробнее, что это за товар и в чём проблема?» С ADK вы получаете и преимущества продвинутых возможностей новейших нативных аудиомоделей Gemini Live API — например, effective dialogue и proactivity. В последнем примере демо работало с включённой функцией effective dialogue: в этом режиме агент пытается уловить эмоциональные сигналы пользователя и обдумать, как ответить, чтобы взаимодействие получилось эффективным. Это добавляет мощное измерение ИИ-агентам, особенно в клиентских сервисах вроде электронной коммерции, где важно максимизировать пользовательский опыт. Мы разобрали базовый функционал двунаправленного стриминга ADK. Чтобы копнуть глубже, найдите в поиске ADK bidi — там документация по двунаправленному стримингу ADK и то самое демо. Спасибо за просмотр.</div>
+    </div>
+  </div>
+
+  <div class="app">
+    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
+    <table>
+      <thead>
+        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+      </thead>
+      <tbody>
+      <tr><td>[00:01]</td><td>Hi, in this video I&#x27;d like to introduce ADK bidi streaming in five minutes. Here&#x27;s a quick-start demo built with ADK bidi streaming. What&#x27;s the current time and the date in Tokyo? The current time and date in Tokyo, Japan is 4:47 p.m. on December 9th, 2025. This core functionality of ADK bidi streaming is provided by the Gemini Live API. The Live API enables low-latency, real-time voice and video interaction with Gemini. The first thing you&#x27;ll notice is the smooth real-time conversation. Gemini&#x27;s native audio model is a true multimodal model: it understands voice input directly, reasons to produce a response, and produces voice output directly — without any speech-to-text or text-to-speech processing. That makes the voice interaction incredibly smooth and interactive.</td><td>ADK BD streaming / ADK bitty streaming / biddy -&gt; ADK bidi streaming</td><td>Привет, в этом видео я представлю двунаправленный стриминг ADK за пять минут. Вот быстрый старт на двунаправленном стриминге ADK. «Которое сейчас время и какая дата в Токио?» Текущее время и дата в Токио, Япония: 16:47, 9 декабря 2025 года. Эта базовая функциональность двунаправленного стриминга ADK обеспечивается Gemini Live API. Live API даёт низкозадерживающее взаимодействие с Gemini в реальном времени по голосу и видео. Первое, что вы заметите, — плавный разговор в реальном времени. Нативная аудиомодель Gemini — по-настоящему мультимодальная: она напрямую понимает голосовой ввод, рассуждает, формируя ответ, и сразу выдаёт голосовой вывод — без всяких распознавания и синтеза речи. Благодаря этому голосовое взаимодействие получается исключительно плавным и живым.</td></tr>
+      <tr><td>[06:49]</td><td>I just purchased an item from your e-commerce site and it doesn&#x27;t work. I understand this is frustrating. Can you tell me more about what item it is and what seems to be the issue? With ADK you also get the benefits of the advanced features in the latest Gemini Live API native audio models, such as effective dialogue and proactivity. In the last example the demo was enabled with the effective dialogue feature: in this mode the agent tries to sense the user&#x27;s emotional signals and reason about how to respond, to provide an effective interaction. This adds a powerful dimension to AI agents, especially for customer-facing services like e-commerce, maximizing the user experience. So we&#x27;ve covered the basic functionality of ADK bidi streaming. To dig deeper into the technology, just search ADK bidi to find the ADK bidi streaming documentation, including the demo we&#x27;ve seen. Thanks for watching.</td><td>customer f facing -&gt; customer-facing</td><td>«Я только что купил товар на вашем интернет-магазине, и он не работает. Понимаю, как это неприятно. Расскажите подробнее, что это за товар и в чём проблема?» С ADK вы получаете и преимущества продвинутых возможностей новейших нативных аудиомоделей Gemini Live API — например, effective dialogue и proactivity. В последнем примере демо работало с включённой функцией effective dialogue: в этом режиме агент пытается уловить эмоциональные сигналы пользователя и обдумать, как ответить, чтобы взаимодействие получилось эффективным. Это добавляет мощное измерение ИИ-агентам, особенно в клиентских сервисах вроде электронной коммерции, где важно максимизировать пользовательский опыт. Мы разобрали базовый функционал двунаправленного стриминга ADK. Чтобы копнуть глубже, найдите в поиске ADK bidi — там документация по двунаправленному стримингу ADK и то самое демо. Спасибо за просмотр.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Субтитры автоматические (auto, en-orig). Термины приведены по странице дня и документации ADK: bidi streaming (двунаправленный стриминг), Gemini Live API, native audio, voice activity detection (VAD), effective dialogue.</p>
+  </div>
+
+</div>
+<script>
+const el = id => document.getElementById(id);
+
+el('tgl-en').addEventListener('change', e =>
+  document.body.classList.toggle('hide-en', !e.target.checked));
+el('tgl-ru').addEventListener('change', e =>
+  document.body.classList.toggle('hide-ru', !e.target.checked));
+el('btn-print').addEventListener('click', () => window.print());
+el('btn-mark').addEventListener('click', () => {
+  const on = !document.body.classList.contains('show-fixes');
+  document.body.classList.toggle('show-fixes', on);
+  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
+});
+</script>
+</body>
+</html>
