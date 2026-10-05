@@ -1,0 +1,63 @@
+{
+  "day": "day17",
+  "season": 1,
+  "season_name": "Season 1 — December 2025 (Winter Holiday Edition)",
+  "title": "Gemini 3 Flash is here!",
+  "summary": "Google's fastest model just got smarter with configurable thinking levels and granular controls.",
+  "tags": [
+    "gemini",
+    "flash",
+    "thinking",
+    "adk"
+  ],
+  "canonical_url": "https://adventofagents.com/2025/12/17",
+  "video_id": "1txijlIHS_I",
+  "video_url": "https://www.youtube.com/watch?v=1txijlIHS_I",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Gemini 3 Flash Announcement",
+      "url": "https://blog.google/products/gemini/gemini-3-flash/",
+      "description": "Official announcement blog post"
+    },
+    {
+      "title": "ADK Get Started Documentation",
+      "url": "https://google.github.io/adk-docs/get-started/",
+      "description": "Get started with the Agent Development Kit"
+    },
+    {
+      "title": "ADK Models Documentation",
+      "url": "https://google.github.io/adk-docs/agents/models/",
+      "description": "Learn about model configuration in ADK"
+    },
+    {
+      "title": "Developer's Guide to Multi-Agent Systems",
+      "url": "https://developers.googleblog.com/developers-guide-to-multi-agent-patterns-in-adk/",
+      "description": "Building Multi-Agent Systems with Gemini 3 Flash and ADK"
+    },
+    {
+      "title": "Google launches Gemini 3 Flash, makes it the default model in the Gemini app",
+      "url": "https://techcrunch.com/2025/12/17/google-launches-gemini-3-flash-makes-it-the-default-model-in-the-gemini-app/",
+      "description": "Techcrunch article reporting on the launch of Gemini 3 flash"
+    }
+  ],
+  "code": "",
+  "icon": "⚡",
+  "resource_link": "https://blog.google/products/gemini/gemini-3-flash/",
+  "code_snippets": [
+    {
+      "filename": "agent.py",
+      "language": "python",
+      "code": "from google.adk.agents import Agent\nfrom google.adk.planners import BuiltInPlanner\nfrom google.genai import types\n\n# Mock tool implementation\ndef get_current_time(city: str) -> dict:\n    \"\"\"Returns the current time in a specified city.\"\"\"\n    return {\"status\": \"success\", \"city\": city, \"time\": \"10:30 AM\"}\n\nroot_agent = Agent(\n    model='gemini-3-flash-preview',\n    name='root_agent',\n    description=\"Tells the current time in a specified city.\",\n    instruction=\"You are a helpful assistant that tells the current time in cities. Use the 'get_current_time' tool for this purpose.\",\n    tools=[get_current_time],\n    # Configure thinking level for Gemini 3\n    # Options: \"HIGH\" (deep reasoning), \"LOW\" (minimal latency), \"MINIMAL\" (raw speed)\n    planner=BuiltInPlanner(\n        thinking_config=types.ThinkingConfig(\n            thinking_level=\"LOW\"\n        )\n    ),\n)"
+    },
+    {
+      "filename": "install.sh",
+      "language": "shell",
+      "code": "pip install google-adk # and follow the instruction in the video"
+    }
+  ],
+  "description": "**Day 17 of Google's Advent of Agents**\n\n**Google's fastest model just got a lot smarter.**\nGemini 3 Flash combines flagship-level reasoning with the speed and cost-efficiency you expect from the Flash series.\n\nFlash scored **33.7%** without tool use on Humanity’s Last Exam, in comparison to Gemini 3 Pro at 37.5%, Gemini 2.5 Flash at 11%, and the newly released GPT-5.2 scored 34.5%.\n\nOn the multimodality and reasoning benchmark MMMU-Pro, the new model outscored all competitors with an **81.2%** score.\n\nAnd this is for only $0.50/1M input tokens and $3.00/1M output tokens, redefining the pareto frontier between quality, price, and performance.\n\nIt introduces powerful new controls for developers:\n\n- **🧠 Configurable Thinking Levels:** explicit control over the model's reasoning budget. (`high`, `low`, `minimal`)\n- **👁️ Granular Media Resolution:** Optimize your token usage by adjusting vision processing resolution (`low`, `medium`, `high`) per image or video frame.\n- **🔐 Robust Thought Signatures:** Encrypted tokens that preserve the model's reasoning state during multi-turn function calling, ensuring context isn't lost when the model pauses to use a tool.\n\n**ADK makes these features seamless.** The ADK automatically handles the complex circulation of **Thought Signatures** for you, so you can focus on building agents, not managing encrypted tokens.\n"
+}

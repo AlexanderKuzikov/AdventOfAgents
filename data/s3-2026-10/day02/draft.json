@@ -1,0 +1,432 @@
+[
+  {
+    "t": 2,
+    "en": "All right, welcome everyone to day two",
+    "ru": ""
+  },
+  {
+    "t": 6,
+    "en": "of season 3 of an advent of agents. I'm",
+    "ru": ""
+  },
+  {
+    "t": 10,
+    "en": "Ma and my colleague Honored and I are cloud security architects at Google. We're here to talk about agentic security and threat modeling with safe. >> Thank you, Ma. You know, Mika, if I was thinking about how much has changed in the past five years, so for example, if",
+    "ru": ""
+  },
+  {
+    "t": 28,
+    "en": "I was trying to book a hotel five years ago, I'd have to go to this UI, uh, look",
+    "ru": ""
+  },
+  {
+    "t": 35,
+    "en": "for dates, add how many people were",
+    "ru": ""
+  },
+  {
+    "t": 38,
+    "en": "traveling with me, if I was having any pets with me, and then sign in because",
+    "ru": ""
+  },
+  {
+    "t": 43,
+    "en": "it doesn't know that I'm a premium member of that hotel chain. It was a UI.",
+    "ru": ""
+  },
+  {
+    "t": 49,
+    "en": "It was very deterministic traditional software that was interfacing with and then maybe three years ago or so I would",
+    "ru": ""
+  },
+  {
+    "t": 56,
+    "en": "talk to a chatbot and I would tell chat bots like okay I'm traveling on this day",
+    "ru": ""
+  },
+  {
+    "t": 62,
+    "en": "I have these many people with me and it would summarize everything I said and",
+    "ru": ""
+  },
+  {
+    "t": 68,
+    "en": "give me maybe a hyperlink that I would click and then I would still have to go into the UI and do a bunch of the stuff that I used to do 5 years ago but Now I",
+    "ru": ""
+  },
+  {
+    "t": 79,
+    "en": "talk to an agent, right? I just say, \"I'm going to on vacation to so and so.",
+    "ru": ""
+  },
+  {
+    "t": 85,
+    "en": "I want to stay these days. I have these people with me. Use my saved file. I'm a premium member.\" And the agent just does it, right? It just does all the things that I'm looking for. But you know",
+    "ru": ""
+  },
+  {
+    "t": 98,
+    "en": "coming back to the topic today, how do you think threat modeling has changed from that application that was five years ago towards the agentic applications we have today? How do you think about that? >> Well, it's great that you bring that up because certainly this agent has a lot more power and autonomy. So anytime",
+    "ru": ""
+  },
+  {
+    "t": 118,
+    "en": "you're having something act on behalf of a user or take multiple actions and string things together, we need to think about that in a multi-layered threat model. >> So three years ago, the secure AI framework came out from Google, which",
+    "ru": ""
+  },
+  {
+    "t": 135,
+    "en": "was a methodology to look at all of the components that make up an agentic system. that's down from the data layer to the infrastructure layer looking at how you protect the model and most",
+    "ru": ""
+  },
+  {
+    "t": 147,
+    "en": "importantly the application which is really what we're talking about today. M [clears throat] >> so >> go ahead. >> Uh one thing that I always uh understood about safe is safe is how Google does it",
+    "ru": ""
+  },
+  {
+    "t": 163,
+    "en": ">> right? There are a number of other threat models and really whatever best fits you know your particular threat modeling approach is what should work for you. So",
+    "ru": ""
+  },
+  {
+    "t": 176,
+    "en": "there's the OAS top 10 for LLMs. There's",
+    "ru": ""
+  },
+  {
+    "t": 179,
+    "en": "the Phantom B approach by Showstack and",
+    "ru": ""
+  },
+  {
+    "t": 183,
+    "en": "there's a number of others including NIST AI RMF which safe in fact is based",
+    "ru": ""
+  },
+  {
+    "t": 189,
+    "en": "on >> awesome. >> So should we talk through some of these concerns? >> Let's do let's do that. >> Um well when you think about interacting with this hotel booking agent it starts",
+    "ru": ""
+  },
+  {
+    "t": 203,
+    "en": "with what could go wrong on the input side. So, traditionally we think of prompt injection, somebody trying to break out of the model, somebody trying to tamper with the behaviors that a a",
+    "ru": ""
+  },
+  {
+    "t": 216,
+    "en": "model could be um programmed to perform.",
+    "ru": ""
+  },
+  {
+    "t": 220,
+    "en": "Well, that's all on the input side. output. We're very familiar with how people don't want sensitive data leaking",
+    "ru": ""
+  },
+  {
+    "t": 228,
+    "en": "from the agentic interaction, but we also need to think about what that agent is going to be doing in between the steps between prompt and response. So, we don't want the agent to have access to sensitive data that it shouldn't. And",
+    "ru": ""
+  },
+  {
+    "t": 244,
+    "en": "then in terms of detecting threats, you need to enable strong logging and accountability for those agents actions",
+    "ru": ""
+  },
+  {
+    "t": 252,
+    "en": "and prevent the backend side from",
+    "ru": ""
+  },
+  {
+    "t": 255,
+    "en": "poisoning or again prompt injection.",
+    "ru": ""
+  },
+  {
+    "t": 260,
+    "en": "So, as we move down now, we're really looking at what the agent is going to be uh most concerned about, which is do we have the right policies in place to prevent that agent from exfiltrating",
+    "ru": ""
+  },
+  {
+    "t": 273,
+    "en": "data, from performing unwanted rogue",
+    "ru": ""
+  },
+  {
+    "t": 277,
+    "en": "actions perhaps, and looking at all the",
+    "ru": ""
+  },
+  {
+    "t": 281,
+    "en": "ways that that agent is routed.",
+    "ru": ""
+  },
+  {
+    "t": 284,
+    "en": "So in terms of where it can communicate,",
+    "ru": ""
+  },
+  {
+    "t": 288,
+    "en": "how it can communicate and what kind of authentication is in place, we need to have controls in place and GCP has a number of those listed in this middle column. >> Awesome.",
+    "ru": ""
+  },
+  {
+    "t": 303,
+    "en": ">> So if we're looking at this in the safe model, we're going down from the data infrastructure model and really focusing on the application side.",
+    "ru": ""
+  },
+  {
+    "t": 313,
+    "en": ">> [clears throat] >> So if I had to summarize what I've heard so far, you're saying that you know",
+    "ru": ""
+  },
+  {
+    "t": 320,
+    "en": "we're still thinking about these uh the application layer and the whole thing from the same lens as we did five years ago with those applications of like input output validation and the",
+    "ru": ""
+  },
+  {
+    "t": 332,
+    "en": "processing. But now you have new threat vectors and new attack surfaces like these MCP servers and the agentic model",
+    "ru": ""
+  },
+  {
+    "t": 339,
+    "en": "and all of those layers which are new and specific to these applications.",
+    "ru": ""
+  },
+  {
+    "t": 345,
+    "en": ">> Exactly. Because this hotel booking agent can not only read your information",
+    "ru": ""
+  },
+  {
+    "t": 351,
+    "en": "but also pass it to other systems to go",
+    "ru": ""
+  },
+  {
+    "t": 354,
+    "en": "check your loyalty rewards balance, to go check what your preference is for size of room and things like that. we need to make sure that it's handling that input properly. So, even though we're very familiar with the prompt having to be sanitized with something like a model armor, which is a AI firewall of sorts, we now have to put even more controls in place because this agent is going to be reasoning on behalf of the user. And it's going to take those system instructions and perform",
+    "ru": ""
+  },
+  {
+    "t": 385,
+    "en": "non-deterministic decisions like what do I need to go look up provide and combine",
+    "ru": ""
+  },
+  {
+    "t": 392,
+    "en": "from all these different systems to complete this booking successfully. >> And that makes sense because that's how I see this uh this this diagram you have",
+    "ru": ""
+  },
+  {
+    "t": 402,
+    "en": "up here built uh sort of broken out. You have the input, you have the output, and then you have the processing core in the middle. That's right. >> Perfect. >> So, moving along to what are the other",
+    "ru": ""
+  },
+  {
+    "t": 418,
+    "en": "rogue actions that we need to think about once it processes information and",
+    "ru": ""
+  },
+  {
+    "t": 424,
+    "en": "it decides actions that it's going to take. We need to make sure that that stays within the agent scope. So, we",
+    "ru": ""
+  },
+  {
+    "t": 432,
+    "en": "have introduced something called semantic government policies. Are you familiar with those? >> No. What is a semantic governance policy? And also what do rogue actions",
+    "ru": ""
+  },
+  {
+    "t": 442,
+    "en": "mean in like say take take for example the the hotel agent use case that we're",
+    "ru": ""
+  },
+  {
+    "t": 448,
+    "en": "thinking about. >> Yeah. So a rogue action even though the",
+    "ru": ""
+  },
+  {
+    "t": 454,
+    "en": "hotel booking agent is allowed to issue",
+    "ru": ""
+  },
+  {
+    "t": 459,
+    "en": "you a discount because of your loyalty status it shouldn't arbitrarily issue discounts over $100.",
+    "ru": ""
+  },
+  {
+    "t": 468,
+    "en": "So that is a natural language policy that the business could implement with something like a semantic governance policy to say yes we want this booking",
+    "ru": ""
+  },
+  {
+    "t": 477,
+    "en": "agent to honor the loyalty status but not to exceed certain boundaries. So again when you're giving an agent authority to take action on behalf of a",
+    "ru": ""
+  },
+  {
+    "t": 487,
+    "en": "number of systems you need to put it within bounds. >> Oh that makes sense. And again, using something like rag, so being able to ground it in enterprise data means this agent isn't going to go suggesting a competitor's hotel chain",
+    "ru": ""
+  },
+  {
+    "t": 504,
+    "en": "for example because of a better price. It's going to stay within the bounds of those business defined policies.",
+    "ru": ""
+  },
+  {
+    "t": 511,
+    "en": ">> Okay, so deterministic controls and then",
+    "ru": ""
+  },
+  {
+    "t": 514,
+    "en": "natural language policies, these semantic governance policies to enforce business rules like don't suggest competitors and things like that. That's the controls and those are these are the controls to address these threats that we have uh in in this layer here. >> Exactly. >> Okay. >> And so if we're going to move now, so we know that this booking is going to occur. The agent has performed actions within the business's rules and boundaries. Now it's going to return that verdict to the customer.",
+    "ru": ""
+  },
+  {
+    "t": 548,
+    "en": "We definitely need to watch out for data disclosure in this part. So we want to make sure for example this agent isn't going to return information about other users or what other rates um different",
+    "ru": ""
+  },
+  {
+    "t": 560,
+    "en": "tiers would be allowed. We want to make sure that this uh the RAI filters which is responsible AI filters that can apply in the model layer which all frontier models are currently adopting. So that's to protect against dangerous or harmful language. We also want to make sure that everything is sanitized on the way out back to the end",
+    "ru": ""
+  },
+  {
+    "t": 581,
+    "en": "user. >> Awesome. So, we're not just worried about uh leakage of sensitive data. We're also mitigating and thinking about the risk of what if the LM just responds back and says something that like hate speech or something that is unexpected and wouldn't be in line with uh you know the business policies or the corporate standard. >> Exactly. We want to put those guardrails in place for the output as well.",
+    "ru": ""
+  },
+  {
+    "t": 610,
+    "en": ">> Okay. >> All right. So now we just did a quick run through and one example. If you want to read more, you can go to safe.google. These are some of the uh application layer descriptions and a lot of the Google tools you can consider using to layer into your approach.",
+    "ru": ""
+  },
+  {
+    "t": 629,
+    "en": ">> Should we go take a look at this in action? >> Let's do it.",
+    "ru": ""
+  },
+  {
+    "t": 638,
+    "en": "All right.",
+    "ru": ""
+  },
+  {
+    "t": 646,
+    "en": "Okay. So, if we were to clone the Google",
+    "ru": ""
+  },
+  {
+    "t": 650,
+    "en": "state data repository from GitHub,",
+    "ru": ""
+  },
+  {
+    "t": 657,
+    "en": "you would clone it somewhere like here. You can then run a simple scan",
+    "ru": ""
+  },
+  {
+    "t": 667,
+    "en": "to check your actual project and this is",
+    "ru": ""
+  },
+  {
+    "t": 670,
+    "en": "running against a GCP project.",
+    "ru": ""
+  },
+  {
+    "t": 676,
+    "en": "So all of those controls we mentioned, you know, do we have our uh our gateway",
+    "ru": ""
+  },
+  {
+    "t": 684,
+    "en": "policies there? Do we have model armor enabled? Do we have cloud logging enabled? Do we have a gateway? Uh, and do we have an agent registry in place? It's going to run those checks against our GCP project. So, we can see that",
+    "ru": ""
+  },
+  {
+    "t": 698,
+    "en": "this is pretty well configured. This is",
+    "ru": ""
+  },
+  {
+    "t": 701,
+    "en": "a secure manufacturing demo. Um, this is",
+    "ru": ""
+  },
+  {
+    "t": 705,
+    "en": "all text defined um, and able to be",
+    "ru": ""
+  },
+  {
+    "t": 710,
+    "en": "configured to any GCP project. The great",
+    "ru": ""
+  },
+  {
+    "t": 713,
+    "en": "thing is you're also able to see",
+    "ru": ""
+  },
+  {
+    "t": 717,
+    "en": "this output in a nice HTML report. So we",
+    "ru": ""
+  },
+  {
+    "t": 721,
+    "en": "will share the link for this, but it will also if you were to fail on one of these, you would have the quick recommendation and remediation command to deploy these controls in your environment to protect your projects.",
+    "ru": ""
+  },
+  {
+    "t": 737,
+    "en": ">> Awesome. So, this is a great way for developers to uh run sort of u something",
+    "ru": ""
+  },
+  {
+    "t": 744,
+    "en": "that validates if the code that they've built is is good or not. And it's just a",
+    "ru": ""
+  },
+  {
+    "t": 750,
+    "en": "simple two github commands or two git commands away. >> Exactly.",
+    "ru": ""
+  },
+  {
+    "t": 760,
+    "en": ">> So, that said, we can wrap with here are",
+    "ru": ""
+  },
+  {
+    "t": 765,
+    "en": "some great links for further reading. You can go run this GitHub on your own GCP projects to see how you stand up to the safe framework and read more on ours",
+    "ru": ""
+  },
+  {
+    "t": 776,
+    "en": "and other threat models for LLMs.",
+    "ru": ""
+  },
+  {
+    "t": 780,
+    "en": "So feel free to share your learnings and stay tuned for day three of Advent of Agent. >> Awesome. See you everyone.",
+    "ru": ""
+  }
+]

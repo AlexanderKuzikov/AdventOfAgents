@@ -1,0 +1,60 @@
+{
+  "day": "day25",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "Agent Deployment: How to Deploy AI Agents",
+  "summary": "Deploy your AI agents to Vertex AI Agent Engine or Google Cloud Run securely and easily.",
+  "tags": [
+    "Deployment",
+    "Agent Engine",
+    "Cloud Run",
+    "Vertex AI"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/25",
+  "video_id": "osEDoYe60E8",
+  "video_url": "https://www.youtube.com/watch?v=osEDoYe60E8",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Google Cloud ADK Documentation",
+      "url": "https://google.github.io/adk-docs/",
+      "description": "Documentation for the Google Cloud Agent Development Kit."
+    },
+    {
+      "title": "Google Cloud Run Documentation",
+      "url": "https://cloud.google.com/run",
+      "description": "Learn how to run serverless containers with Cloud Run."
+    },
+    {
+      "title": "Vertex AI Agent Engine Documentation",
+      "url": "https://cloud.google.com/vertex-ai/docs",
+      "description": "Documentation for Vertex AI and Agent Engine."
+    },
+    {
+      "title": "GitHub Project Repository",
+      "url": "https://github.com/lekan2001/advent-of-agents-day-25.git",
+      "description": "Source code for Day 25."
+    }
+  ],
+  "code": "# Setup project using Agent starter pack\nuvx agent-starter-pack create\n\n# Deploy to Vertex AI Agent Engine\nmake deploy\n\n# Explicitly install dependencies via make\nmake install\n\n# Deploy to Cloud Run targeting the 'app' directory\nuv run adk deploy cloud_run app\n",
+  "icon": "🚀",
+  "resource_link": "https://google.github.io/adk-docs/",
+  "code_snippets": [
+    {
+      "title": "Deploy to Agent Engine",
+      "filename": "terminal",
+      "language": "bash",
+      "code": "# Setup project using Agent starter pack\nuvx agent-starter-pack create\n\n# Deploy to Vertex AI Agent Engine\nmake deploy"
+    },
+    {
+      "title": "Deploy to Cloud Run",
+      "filename": "terminal",
+      "language": "bash",
+      "code": "# Explicitly install dependencies via make\nmake install\n\n# Deploy to Cloud Run targeting the 'app' directory\nuv run adk deploy cloud_run app"
+    }
+  ],
+  "description": "\n\n**Day 25 of Google's Advent of Agents — Season 2**\n\nAs Generative AI shifts from prototyping to production, developers face the challenge of robustly hosting and scaling their AI agents. Knowing the correct pathways to deploy ensures your agent transitions seamlessly from a local playground to highly available cloud infrastructure.\n\n**How It Works**\n\nADK abstracts away complex infrastructure boilerplate, allowing you to deploy to either Agent Engine or Cloud Run with just a few commands. Here is how you execute deployments for both targets using ADK.\n\n**Deploying to Vertex AI Agent Engine**\n\nAgent Engine is the recommended target if your project was scaffolded using the agent-starter-pack. This automatically packages your `app/` directory, resolves dependencies via `uv`, and pushes the reasoning engine to Vertex AI.\n\n- **Dependencies**: Exported and resolved via `uv`.\n- **Packaging**: A tarball of your `app/` source packages is created in-memory.\n- **Provisioning**: ADK provisions the reasoning engine on Google Cloud in 3-5 minutes.\n- **Metadata**: A deployment JSON file (`deployment_metadata.json`) is populated with your remote agent ID.\n\n**Deploying to Google Cloud Run**\n\nCloud Run is ideal if you need your agent to run as a serverless container, responding to standard HTTP requests, Webhooks, or Eventarc triggers.\n\n- **Initialization**: ADK copies your agent source code and automatically generates a Dockerfile for your application.\n- **Configuration**: An interactive prompt asks you to select your preferred Google Cloud region.\n- **Access Control**: You will be prompted on whether to allow unauthenticated invocations.\n- **Deployment**: The container is built via Cloud Build and deployed directly to Cloud Run.\n\n**Resources:**\n\n- [Google Cloud ADK Documentation](https://google.github.io/adk-docs/)\n- [Google Cloud Run Documentation](https://cloud.google.com/run)\n- [Vertex AI Agent Engine Documentation](https://cloud.google.com/vertex-ai/docs)\n- [Github Project Repository](https://github.com/lekan2001/advent-of-agents-day-25.git)\n"
+}

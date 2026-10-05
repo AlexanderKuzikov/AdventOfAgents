@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Governance Maturity Model: Progressive Trust for Agents — EN / RU</title>
+<style>
+:root {
+  --en-bg: #f7f8fa;
+  --line: #dfe3e8;
+  --accent: #0b57d0;
+  --ts: #8a9099;
+  --muted: #5f6672;
+  --fix: #fff3cd;
+  --fix-line: #e0b100;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 32px 20px 72px;
+  background: #eef0f3;
+  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #1a1a1a;
+}
+
+.page { max-width: 1400px; margin: 0 auto; }
+
+h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.head .sub { color: var(--muted); font-size: 15px; }
+.head .sub a { color: var(--accent); }
+
+.legend {
+  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
+}
+.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
+.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+
+.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+
+button {
+  font: inherit; font-size: 14px; padding: 7px 14px;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: #fff; color: #1a1a1a; cursor: pointer;
+}
+button:hover { border-color: #b9c0ca; background: #fafbfc; }
+
+.grid {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden;
+}
+
+.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
+
+.head-row {
+  background: #2f3541; color: #fff;
+  font-size: 13px; letter-spacing: 0.04em;
+  text-transform: uppercase; font-weight: 600;
+  position: sticky; top: 0; z-index: 5;
+}
+.head-row > div { padding: 10px 18px; }
+.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
+
+.row > .ts {
+  padding: 14px 8px; font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ts); text-align: right;
+  border-right: 1px solid var(--line); background: #fbfbfc;
+}
+.row > .en, .row > .ru {
+  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
+}
+.row > .en { background: var(--en-bg); }
+.row > .ru { border-right: 0; }
+
+.row.cont > .ts::after {
+  content: ""; display: block; width: 14px; height: 1px;
+  background: var(--line); margin: 8px 0 0 auto;
+}
+.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
+
+.row.fixed > .en { background: var(--fix); }
+.row.fixed .tag { display: none; }
+
+body.show-fixes .row.fixed .tag { display: block; }
+
+.tag {
+  display: inline-block; margin-top: 6px;
+  font-size: 11.5px; line-height: 1.35;
+  color: #6b5400; background: var(--fix);
+  border-left: 3px solid var(--fix-line);
+  padding: 3px 8px; border-radius: 0 4px 4px 0;
+}
+
+.app { margin-top: 26px; }
+.app h2 { font-size: 19px; margin: 0 0 10px; }
+
+table {
+  width: 100%; border-collapse: collapse;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden; font-size: 15px;
+}
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
+.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
+
+body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
+body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
+body.hide-en .row, body.hide-en .head-row,
+body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
+
+@media (max-width: 900px) {
+  .head-row, .row { grid-template-columns: 56px 1fr; }
+  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
+  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .bar, .legend { display: none; }
+  .head-row { position: static; }
+  .grid, table { border-radius: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <h1>Governance Maturity Model: Progressive Trust for Agents</h1>
+    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
+      Видео: <a href="https://www.youtube.com/watch?v=nNjqaKVR3tc">https://www.youtube.com/watch?v=nNjqaKVR3tc</a> · 07:16
+      · auto (YouTube en-orig)</div>
+  </div>
+
+  <div class="legend">
+    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
+    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
+  </div>
+
+  <div class="bar">
+    <button id="btn-mark">Показать исправления</button>
+    <button id="btn-print">Печать / PDF</button>
+  </div>
+
+  <div class="grid">
+    <div class="head-row">
+      <div>Time</div>
+      <div>English</div>
+      <div>Русский</div>
+    </div>
+    <div class="row">
+      <div class="ts">00:01</div>
+      <div class="en">Welcome back to the scary October. Now, do you know how many agents are running in your company right now? Who are the owners for each one of these agents? What accesses do they have today? And if you asked your platform, security, and compliance leads, you would totally get different answers.</div>
+      <div class="ru">С возвращением в страшный октябрь. Знаете, сколько агентов прямо сейчас работает в вашей компании? Кто владелец каждого из них? Какие доступы у них сегодня? И если вы спросите об этом своих ответственных за платформу, безопасность и комплаенс — получите совершенно разные ответы.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">00:23</div>
+      <div class="en">Welcome to day four of Advent of Agents, season three. I&#x27;m a product manager here at Google Cloud. Today&#x27;s question is: how do your security and compliance team assess where you and your agents stand today, and build a staged roadmap towards governance? We want to introduce you to a governance maturity model framework designed for agents. We&#x27;ll walk five layers, score ourselves live in this video today, and turn the score into a 90-day plan.<div class="tag">уточнено: I&#x27;m a fear product manager -&gt; имя докладчика не разобрано (на странице дня указан Afrina M)</div></div>
+      <div class="ru">Четвёртый день третьего сезона Advent of Agents. Я продакт-менеджер в Google Cloud. Вопрос сегодняшнего дня: как ваша команда безопасности и комплаенса оценивает, где вы и ваши агенты находитесь сегодня, и как построить поэтапный план движения к управлению? Мы представим вам фреймворк — модель зрелости управления, — спроектированный специально для агентов. Разберём пять слоёв, прямо сейчас в этом видео посчитаем баллы и превратим результат в план на 90 дней.</div>
+    </div>
+    <div class="row">
+      <div class="ts">00:55</div>
+      <div class="en">First, governance is a loop, not a gate. You have to start with observing how the agent reasons, enforce policy before an action takes effect, prove what was enforced and why, respond by containing violations, and learn by feeding them back into the policy. Most deployments today do the first step, inconsistently do the second, and almost none close the entire loop — and hence the reason why a lot of agents are not able to survive in production today.</div>
+      <div class="ru">Во-первых, управление — это цикл, а не шлюз. Нужно начинать с наблюдения за тем, как агент рассуждает; применять политику до того, как действие вступит в силу; доказывать, что именно было применено и почему; реагировать, локализуя нарушения; и учиться, возвращая случившееся обратно в политику. Большинство развёртываний сегодня делают первый шаг, второй — кое-как, и почти никто не замыкает цикл целиком. Вот и причина того, что множество агентов сегодня не выживают в продакшене.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">01:29</div>
+      <div class="en">So we want to introduce you to a maturity model for agent governance. This maturity model has five layers, and you can put a score into each layer. We&#x27;ll start with the base layer, which is foundation: is every agent catalogued, owned and identifiable? Then number two, prevention: can you block policy violations inline? Number three, detection: can you spot anomalies in new agents with an immutable audit trail? Number four, response: can you prove that containment actually worked? And number five is continuous alignment — that&#x27;s the loop. Are you learning from what you go through? Now, let&#x27;s score. Get your platform, security and compliance leads all in one session. Any single team&#x27;s answer overstates coverage.<div class="tag">уточнено: every agent catalog owned and identifiable -&gt; is every agent catalogued, owned and identifiable?</div></div>
+      <div class="ru">Итак, представляем модель зрелости управления агентами. В ней пять слоёв, и в каждый можно поставить балл. Начинаем с базового слоя — Foundation: каждый ли агент учтён в каталоге, имеет владельца и распознаваемую идентичность? Дальше второй, Prevention: можно ли блокировать нарушения политики прямо на лету? Третий, Detection: можно ли замечать аномалии в новых агентах с неизменяемым аудиторским следом? Четвёртый, Response: можно ли доказать, что локализация действительно сработала? И пятый — Continuous Alignment, то есть сам цикл: учитесь ли вы на том, через что проходите? Теперь считаем. Соберите на одной сессии всех ответственных за платформу, безопасность и комплаенс: ответ одного подразделения всегда преувеличивает покрытие.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">02:27</div>
+      <div class="en">For each layer you could pick between level one, basic; level three, advanced; and level five — you&#x27;re optimized, you&#x27;re good to go. Now, let&#x27;s score the estate as it runs today. When I say estate, I mean your company. A control that isn&#x27;t enforced by default scores at the level it actually operates at — expect level one. Most organizations start there. McKinsey&#x27;s 2026 AI trust maturity survey found that 32% of organizations reach even moderate maturity in agent governance. A realistic starting score is more useful than an optimistic one.<div class="tag">уточнено: 32% of organization reach -&gt; 32% of organizations reach; номера уровней в субтитрах местами названы как four, в ролике дальше везде three/five</div></div>
+      <div class="ru">По каждому слою можно выбрать уровень один — базовый, уровень три — продвинутый, и уровень пять: вы оптимизированы, можно выдохнуть. Теперь оценим ландшафт таким, какой он есть сегодня. Под «ландшафтом» я имею в виду вашу компанию. Контроль, который не включён по умолчанию, получает оценку того уровня, на котором он реально работает, — как правило, это уровень один. Большинство организаций начинают именно оттуда. Исследование McKinsey «AI trust maturity» за 2026 год показало: до среднего уровня зрелости в управлении агентами доходят лишь 32% организаций. Реалистичная стартовая оценка полезнее оптимистичной.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">03:02</div>
+      <div class="en">So let&#x27;s start. Question one, foundation: does each agent have its own identity? Level one is if your agents share a service account or static API keys. You&#x27;re on level three if every agent has its own cryptographic or SPIFFE identity. You&#x27;re on level five — meaning you&#x27;re optimized — if rotation is enabled, automated, and delegated access works across every API. Pick your number and write it down. Question two, prevention: is every prompt screened before it reaches the model? Level one: you rely on the model&#x27;s baseline safety settings. Level three: Model Armor blocks prompt injection inline at the gateway. Level five: screening adapts to context and to new threats. What&#x27;s your number?<div class="tag">уточнено: Model Armor blocks prompt injection -&gt; Model Armor блокирует prompt injection</div></div>
+      <div class="ru">Начнём. Вопрос первый, Foundation: у каждого агента своя идентичность? Уровень один — агенты делят сервисный аккаунт или статические API-ключи. Уровень три — у каждого агента своя криптографическая или SPIFFE-идентичность. Уровень пять, то есть оптимизированный, — если ротация включена и автоматизирована, а делегированный доступ работает на каждом API. Выберите число и запишите его. Вопрос второй, Prevention: каждый ли промпт проверяется до того, как попадёт в модель? Уровень один: вы полагаетесь на базовые настройки безопасности самой модели. Уровень три: Model Armor блокирует prompt inline на шлюзе. Уровень пять: проверка адаптируется к контексту и к новым угрозам. Какое ваше число?</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">03:53</div>
+      <div class="en">Detection. Our question three is detection: can you follow one request end-to-end across sub-agents and tools? You&#x27;re in level one if all you do is print statements and you have application logs. You&#x27;re in level three if you have Cloud Logging enabled and in Cloud Trace you&#x27;re able to see every model and tool call. You&#x27;re in level five if you have distributed traces across your entire multi-agent orchestration system.<div class="tag">уточнено: you have total enabled -&gt; вы включили Cloud Logging (распознавание огрызлось)</div></div>
+      <div class="ru">Третий вопрос — Detection: можете ли вы проследить один запрос от начала до конца через субагентов и инструменты? Уровень один: у вас есть только print-ы и логи приложения. Уровень три: включён Cloud Logging, и в Cloud Trace видно каждый вызов модели и каждого инструмента. Уровень пять: распределённая трассировка по всей вашей системе оркестрации мультиагентов.</div>
+    </div>
+    <div class="row">
+      <div class="ts">04:21</div>
+      <div class="en">Now question four, response. When an agent goes rogue, can you contain it automatically? Level one: someone can contain it by hand, meaning they kill the VM or the pod manually. Level three: an admin revokes the agent&#x27;s keys in the console. Level five: the platform revokes its identity and kills its session instantly on its own. Question five, the last one, is continuous alignment. How early or how often do you catch drifts? Do you catch it before the users do? Level one: occasional spot checks. Level three: automated evals that run daily in your QA. Level five: you have a dedicated team that looks at your production samples, which are evaluated continuously for accuracy, groundedness and hallucination.</div>
+      <div class="ru">Теперь вопрос четвёртый, Response: если агент уходит в rogue-режим, можете ли вы локализовать его автоматически? Уровень один: локализация руками — кто-то вручную убивает VM или pod. Уровень три: администратор отзывает ключи агента в консоли. Уровень пять: платформа сама отзывает его идентичность и мгновенно завершает сессию. И вопрос пятый, последний, — Continuous Alignment. Как рано и как часто вы ловите дрифт? Ловите ли вы его раньше, чем это заметят пользователи? Уровень один: иногдашние точечные проверки. Уровень три: автоматические eval-ы, которые ежедневно гоняются в QA. Уровень пять: есть выделенная команда, которая смотрит на продакшен-выборки, и они непрерывно оцениваются на точность, обоснованность и галлюцинации.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">04:52</div>
+      <div class="en">And this is the last number. By now you should have five different scores written down across five questions. Start at the lowest layer below level three. Even if a layer has smoke in it, the order is very structural, right? The gateway enforces against identities that already exist, and detection only means something once there&#x27;s governed traffic to watch. So if detection scores three and foundation scores one, you have to start with foundation and reach level three everywhere before chasing five.<div class="tag">уточнено: Even if a layer hot smoke -&gt; Even if a layer has smoke in it (в оригинале огрызок)</div></div>
+      <div class="ru">Это последнее число. К этому моменту у вас должно быть пять оценок по пяти вопросам. Начинайте с самого низкого слоя, который ниже третьего уровня. Даже если в слое дымит, порядок жёстко структурирован, верно? Шлюз применяет политики к уже существующим идентичностям, а детектирование что-то значит только когда есть управляемый трафик, за которым можно наблюдать. Так что если Detection получило три, а Foundation — один, начинать надо с Foundation и довести всё до третьего уровня раньше, чем гнаться за пятым.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">05:48</div>
+      <div class="en">Then turn the score you have into a 90-day roadmap towards agent governance. Days 1 to 30: foundation. Make sure every agent in your system is registered, that you&#x27;re able to find its owner, that it has its own identity, and that all agents are deployed from one template across your organization. We do not want click ops. Days 31 to 60: prevention and detection. Every tool call goes through a gateway. Model Armor sits there catching all the unwanted and ill-formed prompts, and all the queries are traced and queryable. Days 61 to 90: response and continuous alignment. Test the kill switches and the evals that turn incidents into better-governed semantic policies, and give every layer one accountable owner.<div class="tag">уточнено: filled prompts -&gt; ill-formed prompts; the order is very structural -&gt; порядок жёстко структурирован</div></div>
+      <div class="ru">Дальше превращаем оценку в 90-дневный план движения к управлению агентами. Дни 1–30: Foundation. Убедитесь, что каждый агент в системе зарегистрирован, что вы можете найти его владельца, что у него есть своя идентичность и что все агенты разворачиваются по единому шаблону во всей организации. Click ops мы не хотим. Дни 31–60: Prevention и Detection. Каждый вызов инструмента проходит через шлюз. Model Armor стоит на пути и ловит все нежелательные и некорректно сформированные промпты, а все запросы трассируются и доступны для поиска. Дни 61–90: Response и Continuous Alignment. Протестируйте аварийные выключатели и eval-ы, которые превращают инциденты в лучше управляемые семантические политики, и назначьте каждому слою одного ответственного.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">06:43</div>
+      <div class="en">How do you know you&#x27;ve arrived? You&#x27;ll know when a new agent reaches production automatically carrying its identity and its owner and its trace, without the team doing anything to get them — all of this baked into the platform. Now revoking an agent is one action and not an entire project. Compliance evidence is a query.<div class="tag">уточнено: revoking agent is one action -&gt; revoking an agent is one action</div></div>
+      <div class="ru">Как понять, что вы на месте? Вы узнаете это, когда новый агент попадает в продакшен, автоматически неся свою идентичность, владельца и трассировку, и команде для этого не нужно ничего делать — всё это встроено в платформу. Отзыв агента теперь это одно действие, а не отдельный проект. Доказательства для комплаенса — это запрос в базу.</div>
+    </div>
+    <div class="row">
+      <div class="ts">07:06</div>
+      <div class="en">Today&#x27;s Kata runs the 15-question version in your terminal. Tomorrow, on day five: an identity for every agent. See you then. Thank you.</div>
+      <div class="ru">Kata на сегодня — это пятнадцативопросовая версия, запускаемая в вашем терминале. Завтра, в пятый день: идентичность для каждого агента. До встречи. Спасибо.</div>
+    </div>
+  </div>
+
+  <div class="app">
+    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
+    <table>
+      <thead>
+        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+      </thead>
+      <tbody>
+      <tr><td>[00:23]</td><td>Welcome to day four of Advent of Agents, season three. I&#x27;m a product manager here at Google Cloud. Today&#x27;s question is: how do your security and compliance team assess where you and your agents stand today, and build a staged roadmap towards governance? We want to introduce you to a governance maturity model framework designed for agents. We&#x27;ll walk five layers, score ourselves live in this video today, and turn the score into a 90-day plan.</td><td>I&#x27;m a fear product manager -&gt; имя докладчика не разобрано (на странице дня указан Afrina M)</td><td>Четвёртый день третьего сезона Advent of Agents. Я продакт-менеджер в Google Cloud. Вопрос сегодняшнего дня: как ваша команда безопасности и комплаенса оценивает, где вы и ваши агенты находитесь сегодня, и как построить поэтапный план движения к управлению? Мы представим вам фреймворк — модель зрелости управления, — спроектированный специально для агентов. Разберём пять слоёв, прямо сейчас в этом видео посчитаем баллы и превратим результат в план на 90 дней.</td></tr>
+      <tr><td>[01:29]</td><td>So we want to introduce you to a maturity model for agent governance. This maturity model has five layers, and you can put a score into each layer. We&#x27;ll start with the base layer, which is foundation: is every agent catalogued, owned and identifiable? Then number two, prevention: can you block policy violations inline? Number three, detection: can you spot anomalies in new agents with an immutable audit trail? Number four, response: can you prove that containment actually worked? And number five is continuous alignment — that&#x27;s the loop. Are you learning from what you go through? Now, let&#x27;s score. Get your platform, security and compliance leads all in one session. Any single team&#x27;s answer overstates coverage.</td><td>every agent catalog owned and identifiable -&gt; is every agent catalogued, owned and identifiable?</td><td>Итак, представляем модель зрелости управления агентами. В ней пять слоёв, и в каждый можно поставить балл. Начинаем с базового слоя — Foundation: каждый ли агент учтён в каталоге, имеет владельца и распознаваемую идентичность? Дальше второй, Prevention: можно ли блокировать нарушения политики прямо на лету? Третий, Detection: можно ли замечать аномалии в новых агентах с неизменяемым аудиторским следом? Четвёртый, Response: можно ли доказать, что локализация действительно сработала? И пятый — Continuous Alignment, то есть сам цикл: учитесь ли вы на том, через что проходите? Теперь считаем. Соберите на одной сессии всех ответственных за платформу, безопасность и комплаенс: ответ одного подразделения всегда преувеличивает покрытие.</td></tr>
+      <tr><td>[02:27]</td><td>For each layer you could pick between level one, basic; level three, advanced; and level five — you&#x27;re optimized, you&#x27;re good to go. Now, let&#x27;s score the estate as it runs today. When I say estate, I mean your company. A control that isn&#x27;t enforced by default scores at the level it actually operates at — expect level one. Most organizations start there. McKinsey&#x27;s 2026 AI trust maturity survey found that 32% of organizations reach even moderate maturity in agent governance. A realistic starting score is more useful than an optimistic one.</td><td>32% of organization reach -&gt; 32% of organizations reach; номера уровней в субтитрах местами названы как four, в ролике дальше везде three/five</td><td>По каждому слою можно выбрать уровень один — базовый, уровень три — продвинутый, и уровень пять: вы оптимизированы, можно выдохнуть. Теперь оценим ландшафт таким, какой он есть сегодня. Под «ландшафтом» я имею в виду вашу компанию. Контроль, который не включён по умолчанию, получает оценку того уровня, на котором он реально работает, — как правило, это уровень один. Большинство организаций начинают именно оттуда. Исследование McKinsey «AI trust maturity» за 2026 год показало: до среднего уровня зрелости в управлении агентами доходят лишь 32% организаций. Реалистичная стартовая оценка полезнее оптимистичной.</td></tr>
+      <tr><td>[03:02]</td><td>So let&#x27;s start. Question one, foundation: does each agent have its own identity? Level one is if your agents share a service account or static API keys. You&#x27;re on level three if every agent has its own cryptographic or SPIFFE identity. You&#x27;re on level five — meaning you&#x27;re optimized — if rotation is enabled, automated, and delegated access works across every API. Pick your number and write it down. Question two, prevention: is every prompt screened before it reaches the model? Level one: you rely on the model&#x27;s baseline safety settings. Level three: Model Armor blocks prompt injection inline at the gateway. Level five: screening adapts to context and to new threats. What&#x27;s your number?</td><td>Model Armor blocks prompt injection -&gt; Model Armor блокирует prompt injection</td><td>Начнём. Вопрос первый, Foundation: у каждого агента своя идентичность? Уровень один — агенты делят сервисный аккаунт или статические API-ключи. Уровень три — у каждого агента своя криптографическая или SPIFFE-идентичность. Уровень пять, то есть оптимизированный, — если ротация включена и автоматизирована, а делегированный доступ работает на каждом API. Выберите число и запишите его. Вопрос второй, Prevention: каждый ли промпт проверяется до того, как попадёт в модель? Уровень один: вы полагаетесь на базовые настройки безопасности самой модели. Уровень три: Model Armor блокирует prompt inline на шлюзе. Уровень пять: проверка адаптируется к контексту и к новым угрозам. Какое ваше число?</td></tr>
+      <tr><td>[03:53]</td><td>Detection. Our question three is detection: can you follow one request end-to-end across sub-agents and tools? You&#x27;re in level one if all you do is print statements and you have application logs. You&#x27;re in level three if you have Cloud Logging enabled and in Cloud Trace you&#x27;re able to see every model and tool call. You&#x27;re in level five if you have distributed traces across your entire multi-agent orchestration system.</td><td>you have total enabled -&gt; вы включили Cloud Logging (распознавание огрызлось)</td><td>Третий вопрос — Detection: можете ли вы проследить один запрос от начала до конца через субагентов и инструменты? Уровень один: у вас есть только print-ы и логи приложения. Уровень три: включён Cloud Logging, и в Cloud Trace видно каждый вызов модели и каждого инструмента. Уровень пять: распределённая трассировка по всей вашей системе оркестрации мультиагентов.</td></tr>
+      <tr><td>[04:52]</td><td>And this is the last number. By now you should have five different scores written down across five questions. Start at the lowest layer below level three. Even if a layer has smoke in it, the order is very structural, right? The gateway enforces against identities that already exist, and detection only means something once there&#x27;s governed traffic to watch. So if detection scores three and foundation scores one, you have to start with foundation and reach level three everywhere before chasing five.</td><td>Even if a layer hot smoke -&gt; Even if a layer has smoke in it (в оригинале огрызок)</td><td>Это последнее число. К этому моменту у вас должно быть пять оценок по пяти вопросам. Начинайте с самого низкого слоя, который ниже третьего уровня. Даже если в слое дымит, порядок жёстко структурирован, верно? Шлюз применяет политики к уже существующим идентичностям, а детектирование что-то значит только когда есть управляемый трафик, за которым можно наблюдать. Так что если Detection получило три, а Foundation — один, начинать надо с Foundation и довести всё до третьего уровня раньше, чем гнаться за пятым.</td></tr>
+      <tr><td>[05:48]</td><td>Then turn the score you have into a 90-day roadmap towards agent governance. Days 1 to 30: foundation. Make sure every agent in your system is registered, that you&#x27;re able to find its owner, that it has its own identity, and that all agents are deployed from one template across your organization. We do not want click ops. Days 31 to 60: prevention and detection. Every tool call goes through a gateway. Model Armor sits there catching all the unwanted and ill-formed prompts, and all the queries are traced and queryable. Days 61 to 90: response and continuous alignment. Test the kill switches and the evals that turn incidents into better-governed semantic policies, and give every layer one accountable owner.</td><td>filled prompts -&gt; ill-formed prompts; the order is very structural -&gt; порядок жёстко структурирован</td><td>Дальше превращаем оценку в 90-дневный план движения к управлению агентами. Дни 1–30: Foundation. Убедитесь, что каждый агент в системе зарегистрирован, что вы можете найти его владельца, что у него есть своя идентичность и что все агенты разворачиваются по единому шаблону во всей организации. Click ops мы не хотим. Дни 31–60: Prevention и Detection. Каждый вызов инструмента проходит через шлюз. Model Armor стоит на пути и ловит все нежелательные и некорректно сформированные промпты, а все запросы трассируются и доступны для поиска. Дни 61–90: Response и Continuous Alignment. Протестируйте аварийные выключатели и eval-ы, которые превращают инциденты в лучше управляемые семантические политики, и назначьте каждому слою одного ответственного.</td></tr>
+      <tr><td>[06:43]</td><td>How do you know you&#x27;ve arrived? You&#x27;ll know when a new agent reaches production automatically carrying its identity and its owner and its trace, without the team doing anything to get them — all of this baked into the platform. Now revoking an agent is one action and not an entire project. Compliance evidence is a query.</td><td>revoking agent is one action -&gt; revoking an agent is one action</td><td>Как понять, что вы на месте? Вы узнаете это, когда новый агент попадает в продакшен, автоматически неся свою идентичность, владельца и трассировку, и команде для этого не нужно ничего делать — всё это встроено в платформу. Отзыв агента теперь это одно действие, а не отдельный проект. Доказательства для комплаенса — это запрос в базу.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Субтитры YouTube автоматические (auto, en-orig). Перевод восстановлен по смыслу, термины приведены к официальным (Model Armor, Cloud Trace, SPIFFE, grounding). Ключ fix помечает спорные места распознавания, включая имя докладчика — в исходных субтитрах оно не разобралось.</p>
+  </div>
+
+</div>
+<script>
+const el = id => document.getElementById(id);
+
+el('tgl-en').addEventListener('change', e =>
+  document.body.classList.toggle('hide-en', !e.target.checked));
+el('tgl-ru').addEventListener('change', e =>
+  document.body.classList.toggle('hide-ru', !e.target.checked));
+el('btn-print').addEventListener('click', () => window.print());
+el('btn-mark').addEventListener('click', () => {
+  const on = !document.body.classList.contains('show-fixes');
+  document.body.classList.toggle('show-fixes', on);
+  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
+});
+</script>
+</body>
+</html>

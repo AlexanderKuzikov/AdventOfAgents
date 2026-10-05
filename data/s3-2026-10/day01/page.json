@@ -1,0 +1,52 @@
+{
+  "day": "day01",
+  "season": 3,
+  "season_name": "Season 3 — October 2026 (Autumn / Halloween Edition)",
+  "title": "Foundation 101: Five Phases of Agent Development Lifecycle",
+  "summary": "Map the five phases every agent moves through, from Scope to Optimize, and walk one agent around the loop in about five minutes.",
+  "tags": [
+    "Launch",
+    "ADLC",
+    "Governance"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/10/01",
+  "video_id": "ngNxiZhxJjI",
+  "video_url": "https://www.youtube.com/watch?v=ngNxiZhxJjI",
+  "video_title": "Day 1: What is ADLC (Agent Development Lifecycle)? — 5-Minute Google Cloud Kata",
+  "creator_name": "Afrina M",
+  "duration": "7:23",
+  "duration_s": 443,
+  "links": [
+    {
+      "title": "Automate your agent development lifecycle",
+      "url": "https://cloud.google.com/blog/topics/developers-practitioners/automate-agent-development-lifecycles-with-gemini-enterprise",
+      "description": "Set up, build, deploy, govern, evaluate, and publish an agent with Agents CLI skills."
+    },
+    {
+      "title": "Agents CLI in Agent Platform",
+      "url": "https://developers.googleblog.com/agents-cli-in-agent-platform-create-to-production-in-one-cli/",
+      "description": "Why Agents CLI is the programmatic backbone for the ADLC on Google Cloud."
+    },
+    {
+      "title": "Gemini Enterprise Agent Platform docs",
+      "url": "https://g.dev/cloud/adventofagents-season3-gemini-enterprise-govern",
+      "description": "Build, scale, govern, and optimize: the platform behind each ADLC phase."
+    },
+    {
+      "title": "Introduction to Agents whitepaper",
+      "url": "https://www.kaggle.com/whitepaper-introduction-to-agents",
+      "description": "Google's foundational whitepaper on how agents work."
+    }
+  ],
+  "code": "export CLOUDSDK_METRICS_ENVIRONMENT=\"advent-of-agents-s3-day01\"\n\n# Day 1: walk one agent around the ADLC loop in about five minutes.\n# Prereqs: Python 3.11+, uv, Node.js, gcloud, and a Google Cloud project with billing.\ngcloud auth application-default login\ngcloud services enable aiplatform.googleapis.com\nexport GOOGLE_CLOUD_PROJECT=YOUR_PROJECT_ID\nexport GOOGLE_CLOUD_LOCATION=us-central1\n\n# 1. SCOPE: decide what the agent may and may not do before any code exists.\ncat > DESIGN_SPEC.md <<'EOF'\n# adlc-day1\nOwner: you@example.com\nMay: answer weather and time questions with get_weather and get_current_time\nMay not: call any other tool, store user data, or act on external systems\nSuccess: picks the right tool for each question (see tests/eval)\nEOF\n\n# 2. BUILD: install Agents CLI, scaffold a prototype agent, move the spec in, run it.\nuvx google-agents-cli setup\nagents-cli scaffold create adlc-day1 --prototype --yes\nmv DESIGN_SPEC.md adlc-day1/ && cd adlc-day1\nagents-cli install\nagents-cli run \"What's the weather in San Francisco?\"\n# Find the [tool_call: get_weather(...)] line. That trace is your first audit trail.\n\n# 3. OPTIMIZE: score the agent's behavior against the scaffolded eval set (LLM judge, billable).\nagents-cli eval run\n\n# 4. SCALE + GOVERN: preview of Day 5 (deploy takes about 5-10 minutes).\n# agents-cli scaffold enhance . --deployment-target agent_runtime --prototype --yes\n# agents-cli deploy --agent-identity --project $GOOGLE_CLOUD_PROJECT --region us-central1\n",
+  "icon": "🔄",
+  "resource_link": "https://google.github.io/agents-cli/",
+  "code_snippets": [
+    {
+      "filename": "adlc-in-300-seconds.sh",
+      "language": "bash",
+      "code": "# Day 1: walk one agent around the ADLC loop in about five minutes.\n# Prereqs: Python 3.11+, uv, Node.js, gcloud, and a Google Cloud project with billing.\ngcloud auth application-default login\ngcloud services enable aiplatform.googleapis.com\nexport GOOGLE_CLOUD_PROJECT=YOUR_PROJECT_ID\nexport GOOGLE_CLOUD_LOCATION=us-central1\n\n# 1. SCOPE: decide what the agent may and may not do before any code exists.\ncat > DESIGN_SPEC.md <<'EOF'\n# adlc-day1\nOwner: you@example.com\nMay: answer weather and time questions with get_weather and get_current_time\nMay not: call any other tool, store user data, or act on external systems\nSuccess: picks the right tool for each question (see tests/eval)\nEOF\n\n# 2. BUILD: install Agents CLI, scaffold a prototype agent, move the spec in, run it.\nuvx google-agents-cli setup\nagents-cli scaffold create adlc-day1 --prototype --yes\nmv DESIGN_SPEC.md adlc-day1/ && cd adlc-day1\nagents-cli install\nagents-cli run \"What's the weather in San Francisco?\"\n# Find the [tool_call: get_weather(...)] line. That trace is your first audit trail.\n\n# 3. OPTIMIZE: score the agent's behavior against the scaffolded eval set (LLM judge, billable).\nagents-cli eval run\n\n# 4. SCALE + GOVERN: preview of Day 5 (deploy takes about 5-10 minutes).\n# agents-cli scaffold enhance . --deployment-target agent_runtime --prototype --yes\n# agents-cli deploy --agent-identity --project $GOOGLE_CLOUD_PROJECT --region us-central1"
+    }
+  ],
+  "description": "\n**Day 1 of Google's Advent of Agents — Season 3**\n\nBefore you lock an agent down, you need a map of where it lives. Agents choose their own actions at runtime: they call tools, touch data, and keep changing after you ship them. The **Agent Development Lifecycle (ADLC)** is that map, and every control in this season plugs into one of its five phases.\n\n**How It Works**\n\nADLC is a loop, not a line, and each phase ends in a checkpoint you can point to:\n\n- **Scope**: Write down what the agent may do, what it must never do, which data it touches, and who owns it. A `DESIGN_SPEC.md` is your first governance artifact.\n\n- **Build**: Scaffold with Agents CLI and ADK, then iterate locally with `agents-cli run` until every tool call in the trace matches the spec.\n\n- **Scale**: Deploy to Agent Runtime, Cloud Run, or GKE, with infrastructure defined as code instead of console clicks.\n\n- **Govern**: Give the agent its own identity, register it in Agent Registry, route its traffic through Agent Gateway, and screen prompts with Model Armor.\n\n- **Optimize**: Re-run evals on every change, trace tool calls with OpenTelemetry, and feed what you learn back into Scope.\n\n**Why Not Just SDLC or MLOps?**\n\nSDLC assumes deterministic code, so tests prove correctness. MLOps adds data and model drift, but a model only returns predictions. An agent decides which tools to call, so ADLC adds two things on top: evaluating behavior (the tool trajectory, not just the answer) and governing what the agent is allowed to reach.\n\n**Resources:**\n\n- [Automate your agent development lifecycle using any coding agent](https://cloud.google.com/blog/topics/developers-practitioners/automate-agent-development-lifecycles-with-gemini-enterprise)\n\n- [Agents CLI in Agent Platform: create to production in one CLI](https://developers.googleblog.com/agents-cli-in-agent-platform-create-to-production-in-one-cli/)"
+}

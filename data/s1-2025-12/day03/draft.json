@@ -1,0 +1,132 @@
+[
+  {
+    "t": 0,
+    "en": "Hi everyone, Gemini 3 Pro just launched and I'm super excited by all the new and improved updates. The model is really great at advanced high-level reasoning and things like following along with really complex instructions, which make it ideal for building agentic operations and ultimately building great AI agents with. So, in this video I'm going to show you exactly how you can go about building your very first AI agent with Gemini 3 Pro and the agent development",
+    "ru": ""
+  },
+  {
+    "t": 27,
+    "en": "kit. To start off, let's create an empty project folder where our AI agent will live. I've done that and I've named it Gemini 3 Pro AI agent and I've opened terminal. We're then going to initialize our project folder with UV. UV is a Python",
+    "ru": ""
+  },
+  {
+    "t": 42,
+    "en": "package manager and if you don't have it installed, you can find installation instructions in the description box below.",
+    "ru": ""
+  },
+  {
+    "t": 51,
+    "en": "And next we'll add the two libraries that we need for this project, which is Google ADK's library and Google's Gemini library.",
+    "ru": ""
+  },
+  {
+    "t": 67,
+    "en": "Now it's time to add your Google AI Studio API key. To find this API key, all you have to do is navigate to Google AI Studio and get your API key there. Uh",
+    "ru": ""
+  },
+  {
+    "t": 77,
+    "en": "once you have that, you can export it here in this type of command. Now we will activate our Python environment. Once we're in our Python environment, we can now create our ADK agent scaffolding with just one simple command. All you have to do is type in ADK create",
+    "ru": ""
+  },
+  {
+    "t": 95,
+    "en": "followed by the name of your agent.",
+    "ru": ""
+  },
+  {
+    "t": 99,
+    "en": "At which point you'll be prompted to select a model for your agent. Since we're going to be using Gemini 3 Pro, I'm going to select option two.",
+    "ru": ""
+  },
+  {
+    "t": 108,
+    "en": "And you can see the files which have been created as a result of that command. Now we can hop into Visual Studio Code and start writing in our agent.py file. Once you navigate to VS Studio and you open your agent.py file, you'll notice it already comes with some boilerplate code. Let's remove all of that. Let's go over to ADK's documentation and copy a piece of code from there. We're going to be making use of this code right here, which comes under the Google search tool",
+    "ru": ""
+  },
+  {
+    "t": 135,
+    "en": "in ADK's documentation. The link for this will be in the description box below, as well as the link to the repository of our final agent as well, because we are going to be making some changes to this code. So, let's go ahead and copy this. Head back to VS Code, and then let's paste it. Now, we want to make some changes to this code. First off, we want to use Gemini 3 Pro instead of Gemini 2.0 Flash. So, let's make that change.",
+    "ru": ""
+  },
+  {
+    "t": 168,
+    "en": "This is a model name for Gemini 3 Pro.",
+    "ru": ""
+  },
+  {
+    "t": 172,
+    "en": "Next, I want to change the instruction set. So, instead of this single line of instruction, we want to make it a bit more detailed. We also want to give instructions to the agent to cite its sources implicitly by",
+    "ru": ""
+  },
+  {
+    "t": 183,
+    "en": "providing the answers clearly based on search results. And for this basic search agent, we're giving it one tool, which is access to Google search. The final thing we want to do is make some changes here.",
+    "ru": ""
+  },
+  {
+    "t": 206,
+    "en": "And we also want to import asyncio.",
+    "ru": ""
+  },
+  {
+    "t": 211,
+    "en": "And that's our basic agent, which is built with Gemini 3 Pro, and it has access to Google search. Now, back in terminal, we are going to be deploying our agent to ADK web.",
+    "ru": ""
+  },
+  {
+    "t": 229,
+    "en": "You can now use this link to access your agent. We can now start interacting with our agent in ABK web. I've been meaning to take horse riding lessons in my city and but I just don't know where to get started. So, let me ask about that.",
+    "ru": ""
+  },
+  {
+    "t": 254,
+    "en": "So, now we're getting some detailed response from our agent on exactly where I can find these lessons. It has also listed out places and locations where I can get started and also categorize them",
+    "ru": ""
+  },
+  {
+    "t": 266,
+    "en": "best in terms of how serious or how basic they are. Let's explore the model's chain of thinking to get to this response.",
+    "ru": ""
+  },
+  {
+    "t": 276,
+    "en": "To do this, let's explore the events tab and click on this tab right here with the text. So, this text is what is being returned by the model.",
+    "ru": ""
+  },
+  {
+    "t": 287,
+    "en": "And then if we go over to the next event, we get to see something very interesting which is the thought signature of Gemini. And the thought signature in Gemini 3 Pro helps the model to understand the context in the conversation. We also see some really interesting data which is the websites that Gemini 3 Pro actually searched. So, horsesport.com, the besttoronto.com, Reddit, and many, many more. And then if",
+    "ru": ""
+  },
+  {
+    "t": 315,
+    "en": "we scroll further, we actually see the web search queries that Gemini 3 Pro does and in what order. So, first it starts off by doing a generic search for horse riding lessons Toronto. And then it digs deeper and does uh horseback riding near downtown Toronto and then followed by best horse riding schools Toronto. And at that point, I'm sure it determines some of the names of the horse riding schools available in that area. So, you see the searches actually start to get way more",
+    "ru": ""
+  },
+  {
+    "t": 346,
+    "en": "specific. And then it even looks up if",
+    "ru": ""
+  },
+  {
+    "t": 349,
+    "en": "it's accessible by a public transit, which is very interesting. And then it",
+    "ru": ""
+  },
+  {
+    "t": 354,
+    "en": "also looks up on the status of whether these stables are actually open. So, from just a single prompt of where can I learn horseback riding in Toronto, Gemini 3 was able to go through this",
+    "ru": ""
+  },
+  {
+    "t": 368,
+    "en": "chain of thought thinking in order to arrive at this response, and I think that's pretty cool. There's so many more amazing agents that you can build with Gemini 3 Pro and ADK.",
+    "ru": ""
+  },
+  {
+    "t": 378,
+    "en": "If you're interested in learning more, check out the links in the description box below, and happy building.",
+    "ru": ""
+  }
+]

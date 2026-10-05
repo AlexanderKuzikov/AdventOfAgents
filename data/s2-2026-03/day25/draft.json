@@ -1,0 +1,237 @@
+[
+  {
+    "t": 1,
+    "en": "Hello everyone, I'm Leaken, a cloud architect here at Google, and welcome to day 25 of season 2's advent of agents,",
+    "ru": ""
+  },
+  {
+    "t": 11,
+    "en": "where we'll be talking about deploying ADK agents on agent engine and cloud",
+    "ru": ""
+  },
+  {
+    "t": 18,
+    "en": "run. Building AI agents is incredibly fun",
+    "ru": ""
+  },
+  {
+    "t": 24,
+    "en": "locally, but the real challenge begins when you have to put this agent into production. you, how do you securely deploy this?",
+    "ru": ""
+  },
+  {
+    "t": 34,
+    "en": "How do you scale this? And how do you expose your AI agents to your end users",
+    "ru": ""
+  },
+  {
+    "t": 41,
+    "en": "for them to interact with? The answer,",
+    "ru": ""
+  },
+  {
+    "t": 45,
+    "en": "agent engine and cloud run.",
+    "ru": ""
+  },
+  {
+    "t": 48,
+    "en": "So today I'll walk you through creating",
+    "ru": ""
+  },
+  {
+    "t": 52,
+    "en": "a simple AI agent using the agent",
+    "ru": ""
+  },
+  {
+    "t": 55,
+    "en": "starter pack and deploying these agents to GCP agent engine and cloud run.",
+    "ru": ""
+  },
+  {
+    "t": 64,
+    "en": "In order to get started, I'm going to open up my terminal and just start uh",
+    "ru": ""
+  },
+  {
+    "t": 70,
+    "en": "the creation of the agent with the agent",
+    "ru": ""
+  },
+  {
+    "t": 73,
+    "en": "starter pack command.",
+    "ru": ""
+  },
+  {
+    "t": 78,
+    "en": "And we're prompted to insert the name of",
+    "ru": ""
+  },
+  {
+    "t": 82,
+    "en": "the agent. So we have demo agent.",
+    "ru": ""
+  },
+  {
+    "t": 87,
+    "en": "And then we have to select what framework we want to use. So for today I'm going to select a basic ADK agent.",
+    "ru": ""
+  },
+  {
+    "t": 95,
+    "en": "Then we select a a default deployment",
+    "ru": ""
+  },
+  {
+    "t": 99,
+    "en": "target. And for this I'm going to select agent engine. With agent engine selected, we'd select a default uh CI/CD option and we'll go",
+    "ru": ""
+  },
+  {
+    "t": 110,
+    "en": "with the simple option for today.",
+    "ru": ""
+  },
+  {
+    "t": 114,
+    "en": "With that in mind, we have we have to select uh default uh GCP region. So, we",
+    "ru": ""
+  },
+  {
+    "t": 121,
+    "en": "go with US Central 1.",
+    "ru": ""
+  },
+  {
+    "t": 126,
+    "en": "And once that's done,",
+    "ru": ""
+  },
+  {
+    "t": 130,
+    "en": "we have it test our vertex connection and we're",
+    "ru": ""
+  },
+  {
+    "t": 135,
+    "en": "good to go. So once this has been done,",
+    "ru": ""
+  },
+  {
+    "t": 140,
+    "en": "the next thing we're going to do is try deploy this agent with a simple command.",
+    "ru": ""
+  },
+  {
+    "t": 147,
+    "en": "To deploy this agent on agent engine, all we have to type is make deploy.",
+    "ru": ""
+  },
+  {
+    "t": 159,
+    "en": "Actually, it looks like I'm not in the right directory. So, let me move and navigate to the right directory. So, demo agent and make deploy.",
+    "ru": ""
+  },
+  {
+    "t": 172,
+    "en": "And as you can see the uh ADK UI handles",
+    "ru": ""
+  },
+  {
+    "t": 177,
+    "en": "everything in the back end for us and",
+    "ru": ""
+  },
+  {
+    "t": 180,
+    "en": "the agent is being deployed to agent engine. So while this this is deploying",
+    "ru": ""
+  },
+  {
+    "t": 186,
+    "en": "let me open a separate terminal instance and deploy the same application onto cloud run. So to deploy this application on cloud",
+    "ru": ""
+  },
+  {
+    "t": 197,
+    "en": "run we have to do two things. So, let me",
+    "ru": ""
+  },
+  {
+    "t": 201,
+    "en": "not make the same mistake again and make sure we're in the right directory.",
+    "ru": ""
+  },
+  {
+    "t": 206,
+    "en": "So, once we're in the right directory, we make install to ensure we have all",
+    "ru": ""
+  },
+  {
+    "t": 215,
+    "en": "the right dependencies for the project installed. Once this is done, to install this app on Cloud Run, it's as simple as running a single command. So, UV run ADK deploy cloud run and app.",
+    "ru": ""
+  },
+  {
+    "t": 232,
+    "en": "Once we click this, we'll be prompted to make a couple selections before and this",
+    "ru": ""
+  },
+  {
+    "t": 238,
+    "en": "for the agent to deploy. So, for this, I",
+    "ru": ""
+  },
+  {
+    "t": 241,
+    "en": "want to deploy this agent in US Central 1. So, I'm going to select number 35.",
+    "ru": ""
+  },
+  {
+    "t": 250,
+    "en": "And you let the U uh CLI do its magic.",
+    "ru": ""
+  },
+  {
+    "t": 254,
+    "en": "Let me go check in on the agent engine",
+    "ru": ""
+  },
+  {
+    "t": 258,
+    "en": "deployment. As you can see, it's currently deploying. Should take about a minute or two.",
+    "ru": ""
+  },
+  {
+    "t": 272,
+    "en": "And in a couple minutes, you could see both the agent has been deployed to both",
+    "ru": ""
+  },
+  {
+    "t": 278,
+    "en": "agent engine on vertex and also on cloud run. So we could also",
+    "ru": ""
+  },
+  {
+    "t": 285,
+    "en": "go to GCP agent engine and you could see the demo agent that has been deployed and within the playground section we could always interact with the agent. So for this let's say hi",
+    "ru": ""
+  },
+  {
+    "t": 302,
+    "en": "and we get a response from the agent. So",
+    "ru": ""
+  },
+  {
+    "t": 306,
+    "en": "deploying agents from local environments",
+    "ru": ""
+  },
+  {
+    "t": 309,
+    "en": "to production is as simple as cloud run or vertex agent engine. Thank you.",
+    "ru": ""
+  }
+]

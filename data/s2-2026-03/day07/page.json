@@ -1,0 +1,68 @@
+{
+  "day": "day07",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "ADK Agent Skill Design Patterns",
+  "summary": "Five design patterns for structuring SKILL.md content in ADK — Tool Wrapper, Generator, Reviewer, Inversion, and Pipeline.",
+  "tags": [
+    "Skills",
+    "Design Patterns",
+    "SkillToolset",
+    "ADK"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/07",
+  "video_id": null,
+  "video_url": "",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "5 Agent Skill Design Patterns (Blog)",
+      "url": "https://lavinigam.com/posts/adk-skill-design-patterns/",
+      "description": "Full walkthrough of the 5 patterns with working ADK code."
+    },
+    {
+      "title": "ADK Skills Documentation",
+      "url": "https://google.github.io/adk-docs/skills/",
+      "description": "Official guide for defining and using skills in ADK."
+    },
+    {
+      "title": "ADK Skills Part 1: Progressive Disclosure",
+      "url": "https://lavinigam.com/posts/adk-agent-skills-part1/",
+      "description": "Foundations: what skills are, L1/L2/L3 levels, inline skills."
+    },
+    {
+      "title": "ADK Skills Part 2: File-Based Skills",
+      "url": "https://lavinigam.com/posts/adk-agent-skills-part2/",
+      "description": "SKILL.md format, load_skill_from_dir, SkillToolset internals."
+    },
+    {
+      "title": "ADK Skills Part 3: Meta Skills",
+      "url": "https://lavinigam.com/posts/adk-agent-skills-part3/",
+      "description": "Pattern 4: skills that write skills."
+    },
+    {
+      "title": "Agent Skills Specification",
+      "url": "https://agentskills.io/specification",
+      "description": "The open standard defining SKILL.md format, adopted by 30+ agents."
+    },
+    {
+      "title": "Companion Code Repository",
+      "url": "https://github.com/lavinigam-gcp/build-with-adk/tree/main/adk-skill-design-patterns",
+      "description": "Clone and run all five design patterns with ADK Web."
+    }
+  ],
+  "code": "",
+  "icon": "🧩",
+  "resource_link": "https://google.github.io/adk-docs/skills/",
+  "code_snippets": [
+    {
+      "filename": "agent.py",
+      "language": "python",
+      "code": "import pathlib\nfrom google.adk import Agent\nfrom google.adk.skills import load_skill_from_dir\nfrom google.adk.tools.skill_toolset import SkillToolset\n\nSKILLS_DIR = pathlib.Path(__file__).parent / \"skills\"\n\n# One agent, five skills, five design patterns\nskill_toolset = SkillToolset(\n    skills=[\n        load_skill_from_dir(SKILLS_DIR / \"api-expert\"),       # Tool Wrapper\n        load_skill_from_dir(SKILLS_DIR / \"report-generator\"), # Generator\n        load_skill_from_dir(SKILLS_DIR / \"code-reviewer\"),    # Reviewer\n        load_skill_from_dir(SKILLS_DIR / \"project-planner\"),  # Inversion\n        load_skill_from_dir(SKILLS_DIR / \"doc-pipeline\"),     # Pipeline\n    ],\n)\n\nroot_agent = Agent(\n    model=\"gemini-3.1-flash-preview\",\n    name=\"pattern_demo_agent\",\n    description=\"A developer assistant powered by 5 skill design patterns.\",\n    instruction=\"Load relevant skills before acting on any user request.\",\n    tools=[skill_toolset],\n)"
+    }
+  ],
+  "description": "\n**Day 7 of Google's Advent of Agents — Season 2**\n\nYesterday we introduced ADK Skills and progressive disclosure. Today we tackle the next question: you know how to create a skill, but how should you structure the content inside? The [Agent Skills specification](https://agentskills.io/specification) defines the format (SKILL.md + references/ + assets/), but five distinct design patterns define what goes inside.\n\n**The Five Patterns**\n\nEach pattern uses the same SKILL.md format but structures the content differently:\n\n- **Tool Wrapper**: Wraps a library's conventions into on-demand expertise. The agent becomes a domain expert when the skill is loaded. Uses `references/` for convention docs — no templates, no scripts, pure knowledge.\n\n- **Generator**: Produces structured output from templates. Uses `assets/` for the template (WHAT to produce) and `references/` for style rules (HOW to produce it). The agent fills the template based on user input.\n\n- **Reviewer**: Evaluates code or content against a checklist. Separates WHAT to check (`references/checklist.md`) from HOW to check (the review protocol in instructions). Swap the checklist for a different review type.\n\n- **Inversion**: The skill interviews the user before acting. Phased questions gather requirements across multiple turns, then the agent synthesizes output using an `assets/` template. Prevents acting on assumptions.\n\n- **Pipeline**: Enforces a multi-step workflow with gate conditions. \"Do NOT proceed until the user confirms.\" The most complex pattern — combines all resource types and adds control flow.\n\n**Choosing the Right Pattern**\n\n- **Tool Wrapper** — Library expertise → uses **references/**\n- **Generator** — Structured output → uses **assets/ + references/**\n- **Reviewer** — Quality evaluation → uses **references/**\n- **Inversion** — Requirements gathering → uses **assets/**\n- **Pipeline** — Multi-step workflow → uses **all directories**\n\nPatterns compose — a Pipeline can include a Reviewer step, and a Generator can use Inversion to gather inputs first. The [companion blog post](https://lavinigam.com/posts/adk-skill-design-patterns/) walks through each pattern with working ADK code and SKILL.md examples.\n\n**Resources:**\n\n- [5 Agent Skill Design Patterns (Blog)](https://lavinigam.com/posts/adk-skill-design-patterns/)\n- [ADK Skills Part 1: Progressive Disclosure](https://lavinigam.com/posts/adk-agent-skills-part1/)\n- [ADK Skills Part 2: File-Based Skills](https://lavinigam.com/posts/adk-agent-skills-part2/)\n- [ADK Skills Part 3: Meta Skills](https://lavinigam.com/posts/adk-agent-skills-part3/)\n- [Agent Skills Specification](https://agentskills.io/specification)\n- [Companion Code Repository](https://github.com/lavinigam-gcp/build-with-adk/tree/main/adk-skill-design-patterns)\n"
+}

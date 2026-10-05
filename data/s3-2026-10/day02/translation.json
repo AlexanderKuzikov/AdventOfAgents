@@ -1,0 +1,161 @@
+{
+  "note": "Субтитры YouTube автоматические (auto, en-orig). Перевод восстановлен по смыслу: имена докладчиков и продуктов восстановлены по странице дня, ключ fix помечает спорные места распознавания.",
+  "segments": [
+    {
+      "t": 2,
+      "en": "All right, welcome, everyone, to day two of season three of Advent of Agents. I'm Mika, and my colleague Anirudh Kannan and I are Cloud Security Architects at Google. We're here to talk about agentic security and threat modeling with SAIF.",
+      "ru": "Итак, всем привет — второй день третьего сезона Advent of Agents. Я Мика, а мой коллега Анирудх Каннан — мы облачные архитекторы по безопасности в Google. Сегодня говорим о безопасности агентов и моделировании угроз с помощью SAIF.",
+      "fix": "Ma -> Mika (Mika Devonshire); Honored -> Anirudh Kannan; safe -> SAIF"
+    },
+    {
+      "t": 28,
+      "en": "Thank you, Mika. You know, if I think about how much has changed in the past five years — for example, if I was trying to book a hotel five years ago, I'd have to go into this UI, look for dates, add how many people were traveling with me, whether I had any pets, and then sign in, because it doesn't know that I'm a premium member of that hotel chain.",
+      "ru": "Спасибо, Мика. Вот если подумать, сколько всего изменилось за последние пять лет. Например, пять лет назад, чтобы забронировать отель, я бы зашёл в этот UI, выбрал даты, указал, сколько человек едет со мной, есть ли у меня животные, и потом ещё залогинился — потому что сайт не знает, что я премиальный участник этой гостиничной сети.",
+      "fix": "Ma -> Mika"
+    },
+    {
+      "t": 49,
+      "en": "It was a UI. It was very deterministic, traditional software that was interfacing with — and then maybe three years ago or so I would talk to a chatbot, and I would tell the chatbot, like: okay, I'm traveling on this day, I have this many people with me, and it would summarize everything I said and give me maybe a hyperlink that I would click, and then I would still have to go into the UI and do a bunch of the stuff that I used to do five years ago.",
+      "ru": "Это был UI. Очень детерминированный, традиционный софт с формами. А года три назад я уже переписывался с чат-ботом: говорил ему — вот я еду в такой-то день, меня столько-то человек, — и он суммировал всё сказанное и выдавал мне гиперссылку. Я по ней кликал — и всё равно потом заходил в UI и делал всё то же самое, что и пять лет назад.",
+      "fix": "interfacing with -> (обрезанная фраза); pet -> pets"
+    },
+    {
+      "t": 79,
+      "en": "But now I talk to an agent, right? I just say: I'm going on vacation to so-and-so, I want to stay these days, I have these people with me, use my saved profile, I'm a premium member. And the agent just does it. It just does all the things that I'm looking for.",
+      "ru": "А теперь я говорю с агентом. Просто говорю: еду в отпуск туда-то, хочу остановиться в эти дни, со мной эти люди, возьми мой сохранённый профиль, я премиальный участник. И агент просто делает это — всё, что мне нужно, он делает сам.",
+      "fix": "saved file -> saved profile (сохранённый профиль)"
+    },
+    {
+      "t": 98,
+      "en": "Coming back to today's topic: how do you think threat modeling has changed from that application five years ago towards the agentic applications we have today? How do you think about that?",
+      "ru": "Возвращаясь к сегодняшней теме: как, по-вашему, изменилось моделирование угроз — от того приложения пятилетней давности к агентным приложениям, которые у нас сегодня?"
+    },
+    {
+      "t": 110,
+      "en": "Well, it's great that you bring that up, because certainly this agent has a lot more power and autonomy. So anytime you're having something act on behalf of a user or take multiple actions and string things together, we need to think about that in a multi-layered threat model.",
+      "ru": "Отличный вопрос. Этот агент уж явно обладает гораздо большей мощностью и автономией. И когда что-то действует от имени пользователя или выполняет несколько действий, связывая их в цепочку, мы обязаны думать об этом в рамках многоуровневой модели угроз."
+    },
+    {
+      "t": 135,
+      "en": "So three years ago the Secure AI Framework came out from Google, which was a methodology to look at all of the components that make up an agentic system. That's down from the data layer to the infrastructure layer, looking at how you protect the model and, most importantly, the application — which is really what we're talking about today.",
+      "ru": "Три года назад Google выпустил Secure AI Framework — методологию, которая позволяет разобрать все компоненты агентной системы. От слоя данных до инфраструктурного слоя: как защитить модель и, что важнее, приложение — а именно об этом мы сегодня и говорим.",
+      "fix": "safe -> SAIF (Secure AI Framework)"
+    },
+    {
+      "t": 163,
+      "en": "So, one thing that I always understood about SAIF is: SAIF is how Google does it. There are a number of other threat models, and really whatever best fits your particular threat modeling approach is what should work for you.",
+      "ru": "Одно из того, что я всегда понимал про SAIF: SAIF — это то, как это делает Google. Моделей угроз существует много, и вам подойдёт та, что лучше всего ложится на ваш подход к моделированию угроз."
+    },
+    {
+      "t": 176,
+      "en": "There's the OWASP Top 10 for LLMs. There's the OWASP Top 10 by ShiftStack, and there's a number of others, including NIST AI RMF, which SAIF is in fact based on.",
+      "ru": "Есть OWASP Top 10 for LLM. Есть OWASP Top 10 от ShiftStack. И есть другие, в том числе NIST AI RMF, на котором SAIF, вообще-то, построен.",
+      "fix": "OAS top 10 -> OWASP Top 10; Phantom B approach by Showstack -> OWASP Top 10 by ShiftStack"
+    },
+    {
+      "t": 203,
+      "en": "So should we talk through some of these concerns? Let's do that. When you think about interacting with this hotel booking agent, it starts with what could go wrong on the input side. Traditionally we think of prompt injection — somebody trying to break out of the model, somebody trying to tamper with the behaviors that a model could be programmed to perform.",
+      "ru": "Давайте пройдёмся по этим проблемам. Начнём с того, что может пойти не так на входе. Традиционно мы думаем о prompt injection: кто-то пытается выбраться из модели, подменить поведение, на которое модель запрограммирована."
+    },
+    {
+      "t": 224,
+      "en": "Well, that's all on the input side. On the output side, we're very familiar with how people don't want sensitive data leaking out of the agentic interaction. But we also need to think about what that agent is going to be doing in between — in the steps between prompt and response. We don't want the agent to have access to sensitive data that it shouldn't. And then, in terms of detecting threats, you need to enable strong logging and accountability for those agents' actions, and prevent the backend side from poisoning, or, again, prompt injection.",
+      "ru": "Это всё про вход. На выходе мы хорошо знаем, что люди не хотят утечки чувствительных данных из агентного взаимодействия. Но нужно ещё думать о том, что агент делает в промежутке — между промптом и ответом. Мы не хотим, чтобы у агента был доступ к чувствительным данным, которые ему не положены. А с точки зрения обнаружения угроз нужны жёсткие логи и подотчётность действий агента, и защита бэкенда от отравления — или, опять же, от prompt injection."
+    },
+    {
+      "t": 260,
+      "en": "So as we move down, we're really looking at what the agent is going to be most concerned about: do we have the right policies in place to prevent that agent from exfiltrating data, from performing unwanted rogue actions perhaps, and looking at all the ways that agent is routed.",
+      "ru": "И дальше мы смотрим на то, что волнует нас: есть ли нужные политики, чтобы агент не мог выносить данные наружу и не совершал нежелательных rogue-действий, — и на все маршруты, по которым он ходит."
+    },
+    {
+      "t": 284,
+      "en": "So in terms of where it can communicate, how it can communicate, and what kind of authentication is in place, we need to have controls in place — and GCP has a number of those listed in this middle column.",
+      "ru": "То есть куда он может обращаться, как именно и с какой аутентификацией — нужны контроли. И GCP перечисляет немало таких в средней колонке."
+    },
+    {
+      "t": 313,
+      "en": "So if we're looking at this in the SAIF model, we're going down from the data and infrastructure layers and really focusing on the application side. If I had to summarize what I've heard so far: you're saying that we are still thinking about the application layer and the whole thing through the same lens as five years ago, with those input-output validation and processing concerns. But now you have new threat vectors and new attack surfaces, like these MCP servers and the agentic model, and all of those layers which are new and specific to these applications.",
+      "ru": "Если смотреть на это через модель SAIF, мы спускаемся от слоёв данных и инфраструктуры и фокусируемся на приложении. Если резюмировать услышанное: приложение мы по-прежнему рассматриваем через ту же оптику, что и пять лет назад — валидация входа и выхода, обработка. Но появились новые векторы угроз и новые поверхности атаки: эти MCP-серверы, сама агентная модель, все те слои, которых раньше не было и которые специфичны именно для таких приложений."
+    },
+    {
+      "t": 345,
+      "en": "Exactly. Because this hotel booking agent can not only read your information but also pass it to other systems — to go check your loyalty rewards balance, to check what your preference is for room size and things like that. We need to make sure it's handling that input properly. So even though we're very familiar with the prompt having to be sanitized with something like Model Armor, which is an AI firewall of sorts, we now have to put even more controls in place, because this agent is going to be reasoning on behalf of the user. And it's going to take those system instructions and perform non-deterministic decisions: what do I need to go look up, provide, and combine from all these different systems to complete this booking successfully.",
+      "ru": "Именно. Этот агент бронирования не только читает ваши данные, но и передаёт их другим системам — проверить баланс бонусов программы лояльности, узнать ваши предпочтения по размеру номера и так далее. Нужно убедиться, что он корректно обращается с этими данными. Мы привыкли, что промпт надо санировать чем-то вроде Model Armor — это, по сути, AI-файрвол, — но теперь контролей нужно больше, потому что агент рассуждает от имени пользователя. Он берёт системные инструкции и принимает недетерминированные решения: что мне нужно посмотреть, что взять и как скомбинировать из всех этих систем, чтобы бронирование прошло успешно."
+    },
+    {
+      "t": 392,
+      "en": "And that makes sense, because that's how I see this diagram you have up here, built sort of broken out: you have the input, you have the output, and then you have the processing core in the middle.",
+      "ru": "Логично. Именно так я и читаю вашу схему: она как бы разобрана на части — вход, выход и ядро обработки посередине."
+    },
+    {
+      "t": 418,
+      "en": "So, moving along: what are the other rogue actions we need to think about, once it processes information and decides on actions it's going to take? We need to make sure that stays within the agent scope. So we have introduced something called semantic governance policies. Are you familiar with those?",
+      "ru": "Дальше: какие ещё rogue-действия надо учитывать, когда агент обработал информацию и решил, что делать? Нужно, чтобы это оставалось в рамках scope агента. Мы ввели такую вещь, как semantic governance policies — правила управления на естественном языке. Вам это знакомо?"
+    },
+    {
+      "t": 454,
+      "en": "So a rogue action: even though the hotel booking agent is allowed to issue you a discount because of your loyalty status, it shouldn't arbitrarily issue discounts over 100 dollars. That is a natural language policy that the business could implement with something like a semantic governance policy: yes, we want this booking agent to honor the loyalty status, but not to exceed certain boundaries.",
+      "ru": "Про rogue-действие: агент бронирования имеет право выдать вам скидку за статус в программе лояльности — но он не должен по собственному усмотрению выдавать скидки больше 100 долларов. Это правило на естественном языке, которое бизнес может зашить в такую semantic governance policy: да, мы хотим, чтобы агент учитывал статус лояльности, но не выходил за определённые границы."
+    },
+    {
+      "t": 487,
+      "en": "So again, when you're giving an agent authority to take action on behalf of a number of systems, you need to put it within bounds. Oh, that makes sense. And again, using something like RAG — so being able to ground it in enterprise data means this agent isn't going to go suggesting a competitor's hotel chain, for example, because of a better price. It's going to stay within the bounds of those business-defined policies.",
+      "ru": "Снова: когда вы даёте агенту полномочия действовать от имени нескольких систем, его надо загнать в границы. Понятно. И опять же — используя что-то вроде RAG: если вы привязываете агента к корпоративным данным, он не начнёт вдруг предлагать гостиничную сеть конкурента, потому что у неё цена ниже. Он останется в рамках политик, заданных бизнесом.",
+      "fix": "rag -> RAG"
+    },
+    {
+      "t": 511,
+      "en": "So deterministic controls, and then natural language policies — these semantic governance policies to enforce business rules like don't suggest competitors and things like that. Those are the controls that address the threats we have in this layer here.",
+      "ru": "Итак, детерминированные контроли, а поверх них — правила на естественном языке, эти semantic governance policies, которые воплощают бизнес-правила вроде «не предлагай конкурентов». Это те контроли, которые закрывают угрозы на этом слое."
+    },
+    {
+      "t": 548,
+      "en": "And so if we move on now: we know this booking is going to happen. The agent has performed actions within the business's rules and boundaries. Now it's going to return that verdict to the customer. Here we definitely need to watch out for data disclosure. We want to make sure, for example, that this agent doesn't return information about other users, or what other rate tiers would be allowed.",
+      "ru": "Двигаемся дальше: мы знаем, что бронирование состоится — агент отработал в рамках правил и границ бизнеса. Теперь он возвращает результат клиенту. И вот здесь точно нужно следить за раскрытием данных. Например, мы хотим, чтобы агент не выдавал сведений о других пользователях или о том, какие другие тарифные уровни доступны."
+    },
+    {
+      "t": 580,
+      "en": "We want to make sure that the RAI filters — Responsible AI filters that can apply in the model layer, which all frontier models are currently adopting — are in place, so that's to protect against dangerous or harmful language. We also want to make sure that everything is sanitized on the way out, back to the end user.",
+      "ru": "Нужно, чтобы были включены RAI-фильтры — фильтры ответственного ИИ на уровне модели, которые сейчас внедряют все фронтир-модели; они защищают от опасной или вредной лексики. И ещё — чтобы всё санировалось на выходе, по дороге к конечному пользователю.",
+      "fix": "RAI filters -> Responsible AI filters"
+    },
+    {
+      "t": 610,
+      "en": "Awesome. So we're not just worried about leakage of sensitive data; we're also mitigating and thinking about the risk of what if the LLM just responds back and says something like hate speech, or something unexpected that wouldn't be in line with the business policies or the corporate standard. Exactly — we want to put those guardrails in place for the output as well.",
+      "ru": "Отлично. То есть мы не только боимся утечки чувствительных данных — мы ещё думаем, что будет, если языковая модель в ответ скажет что-нибудь вроде речи ненависти или вообще неожиданное, что не соответствует политикам бизнеса и корпоративным стандартам. Именно: эти ограничители нужны и на выходе."
+    },
+    {
+      "t": 629,
+      "en": "So we just did a quick run-through and one example. If you want to read more, you can go to saif.google. These are some of the application-layer descriptions, and a lot of the Google tools you could consider layering into your approach. Should we go take a look at this in action? Let's do it.",
+      "ru": "Мы быстро разобрали один пример. Если хотите почитать подробнее — заходите на saif.google. Это описания прикладного уровня и Google-инструменты, которые можно наложить на свой подход. Показать это в действии? Давайте.",
+      "fix": "safe.google -> saif.google"
+    },
+    {
+      "t": 646,
+      "en": "Okay. So if we were to clone the Google SAIF data repository from GitHub, you would clone it somewhere like here. You can then run a simple scan to check your actual project — and this is running against a GCP project.",
+      "ru": "Итак, если склонировать с GitHub репозиторий Google SAIF Data, он окажется где-то здесь. Дальше можно запустить простое сканирование и проверить свой реальный проект. Сейчас оно прогоняется против GCP-проекта.",
+      "fix": "state data repository -> SAIF data repository"
+    },
+    {
+      "t": 676,
+      "en": "So all of those controls we mentioned: do we have our gateway policies there? Do we have Model Armor enabled? Do we have Cloud Logging enabled? Do we have a gateway? And do we have an agent registry in place? It's going to run those checks against our GCP project. So we can see that this is pretty well configured.",
+      "ru": "Проверяются все те контроли, что мы называли: есть ли политики шлюза, включён ли Model Armor, включено ли Cloud Logging, есть ли шлюз и есть ли реестр агентов. Прогон идёт против нашего GCP-проекта. Видно, что конфигурация довольно хорошая."
+    },
+    {
+      "t": 701,
+      "en": "This is a secure manufacturing demo. This is all text-defined and able to be configured to any GCP project. The great thing is you're also able to see this output in a nice HTML report. We will share the link for this, but if you were to fail one of these checks, you would also have a quick recommendation and remediation command to deploy these controls in your environment and protect your projects.",
+      "ru": "Это демо защищённой сборки. Всё описано текстом и переносится на любой GCP-проект. Приятно, что результат ещё и показывается в удобном HTML-отчёте. Ссылку мы пришлём, но если какая-то проверка не пройдёт, там же будут рекомендация и команда, чтобы развернуть эти контроли у себя и закрыть проект.",
+      "fix": "secure manufacturing demo -> secure manufacturing demo (демо защищённой конфигурации — формулировка неуверенная)"
+    },
+    {
+      "t": 737,
+      "en": "Awesome. So this is a great way for developers to run something that validates whether the code they've built is good or not. And it's just two GitHub commands, or two git commands, away. Exactly.",
+      "ru": "Отлично. Это удобный способ для разработчика прогнать проверку и понять, хорош ли написанный им код. И это всего пара команд git от клонирования репозитория. Именно."
+    },
+    {
+      "t": 760,
+      "en": "So, that said, let's wrap up. Here are some great links for further reading. You can run this against your own GCP projects to see how you stand up to the SAIF framework, and read more on ours and other threat models for LLMs. Feel free to share your learnings, and stay tuned for day three of Advent of Agents. Awesome — see you, everyone.",
+      "ru": "На этом давайте закруглимся. Вот ссылки для дальнейшего чтения: можно прогнать это по своим GCP-проектам и посмотреть, как вы выглядите относительно SAIF, и почитать про нашу модель и другие модели угроз для LLM. Делитесь тем, что выясните, и ждите третий день Advent of Agents. До встречи!"
+    }
+  ]
+}

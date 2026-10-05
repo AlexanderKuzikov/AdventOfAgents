@@ -1,0 +1,89 @@
+{
+  "day": "day22",
+  "season": 1,
+  "season_name": "Season 1 — December 2025 (Winter Holiday Edition)",
+  "title": "Security & Guardrails",
+  "summary": "Prompt Engineering is not a Security Strategy. Asking an LLM nicely to \"please ignore PII\" is not governance; it's wishful thinking.",
+  "tags": [
+    "Model Armor",
+    "Security",
+    "guardrails",
+    "ADK"
+  ],
+  "canonical_url": "https://adventofagents.com/2025/12/22",
+  "video_id": "j9YyZM2OBS8",
+  "video_url": "https://www.youtube.com/watch?v=j9YyZM2OBS8",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "ADK Callbacks: Design Patterns and Best Practices",
+      "url": "https://google.github.io/adk-docs/callbacks/design-patterns-and-best-practices/",
+      "description": "Explore design patterns and best practices for ADK callbacks."
+    },
+    {
+      "title": "ADK Callbacks",
+      "url": "https://google.github.io/adk-docs/callbacks/",
+      "description": "Official documentation for ADK Callbacks."
+    },
+    {
+      "title": "ADK Plugins",
+      "url": "https://google.github.io/adk-docs/plugins/",
+      "description": "Official documentation for ADK Plugins."
+    },
+    {
+      "title": "Model Armor Overview",
+      "url": "https://docs.cloud.google.com/model-armor/overview",
+      "description": "Overview of Model Armor for security."
+    },
+    {
+      "title": "Manage Model Armor Templates",
+      "url": "https://docs.cloud.google.com/model-armor/manage-templates",
+      "description": "Documentation on managing Model Armor templates."
+    },
+    {
+      "title": "Agent Builder - Agent Identity",
+      "url": "https://docs.cloud.google.com/agent-builder/agent-engine/agent-identity",
+      "description": "Documentation on Agent Identity in Agent Builder."
+    },
+    {
+      "title": "Build and scale AI agents with Vertex AI Agent Builder",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/more-ways-to-build-and-scale-ai-agents-with-vertex-ai-agent-builder",
+      "description": "Blog post on building and scaling AI agents."
+    },
+    {
+      "title": "A2A Protocol - Enterprise Ready",
+      "url": "https://a2a-protocol.org/latest/topics/enterprise-ready/#tracing-observability-and-monitoring",
+      "description": "Enterprise-ready features of the A2A Protocol."
+    }
+  ],
+  "code": "## The Admin Layer: \n# Model Armor Template While developers write Python\n# Admins configure Model Armor to sanitize data globally.\n\nexport TEMPLATE_CONFIG='{\n   \"filterConfig\": {\n    \"raiSettings\": {\n     \"raiFilters\": [{\n       \"filterType\": \"HATE_SPEECH\",\n       \"confidenceLevel\": \"MEDIUM_AND_ABOVE\"\n      }, {\n      \"filterType\": \"HARASSMENT\",\n      \"confidenceLevel\": \"HIGH\"\n    }]\n  },\n  \"piAndJailbreakFilterSettings\": {\n    \"filterEnforcement\": \"ENABLED\",\n    \"confidenceLevel\": \"LOW_AND_ABOVE\"\n  }\n },\n \"templateMetadata\": {\n    \"multiLanguageDetection\": {\n      \"enableMultiLanguageDetection\": true\n    }\n  }\n}'\n\ncurl -X POST  -d \"$TEMPLATE_CONFIG\"   -H \"Content-Type: application/json\"  -H \"Authorization: Bearer $(gcloud auth print-access-token)\"     \"https://modelarmor.LOCATION.rep.googleapis.com/v1/projects/PROJECT_ID/locations/LOCATION_ID/templates?template_id=TEMPLATE_ID\"\n",
+  "icon": "🛡️",
+  "resource_link": "",
+  "code_snippets": [
+    {
+      "filename": "callback_and_plugins.py",
+      "language": "python",
+      "code": "## The Developer Layer: Callbacks & Plugins \n# This Python snippet demonstrates how to inject security logic using the ADK callback system.\n\n\nfrom google.adk.agents import Agent\nfrom google.adk.agents.callback_context import CallbackContext\nfrom .tools import add, subtract, multiply, divide\nfrom .prompt import instruction_prompt\nfrom google.genai import types\nfrom typing import Optional\n\nMODEL = \"gemini-2.5-flash\"\n\nasync def callback_before_agent(callback_context: CallbackContext) -> Optional[types.Content]:\n       # Guardrail 1: Do we have the student profile?\n       if not callback_context.state.get(\"student_profile\"):\n               return types.Content(role='model', parts=[types.Part(text=\"Error: Cannot find student profile.\")])\n# Add more guardrails...\n\n       return None # Allow model call to proceed\n\nagent_math = Agent(\n       model=MODEL,\n       name=\"agent_math\",\n       description=\"This agent performs basic arithmetic operations (addition, subtraction, multiplication, and division) on user-provided numbers, including ranges.\",\n       instruction=instruction_prompt,\n       tools=[add, subtract, multiply, divide],\n       before_agent_callback=callback_before_agent,\n)"
+    },
+    {
+      "filename": "adk_plugin.py",
+      "language": "python",
+      "code": "## This Python snippet demonstrates how to create an ADK plugin.\n\nfrom google.adk.agents.base_agent import BaseAgent\nfrom google.adk.agents.callback_context import CallbackContext\nfrom google.adk.models.llm_request import LlmRequest\nfrom google.adk.plugins.base_plugin import BasePlugin\n\nclass CountInvocationPlugin(BasePlugin):\n \"\"\"A custom plugin that counts agent and tool invocations.\"\"\"\n def __init__(self) -> None:\n   \"\"\"Initialize the plugin with counters.\"\"\"\n   super().__init__(name=\"count_invocation\")\n   self.agent_count: int = 0\n   self.tool_count: int = 0\n   self.llm_request_count: int = 0\n\n async def before_agent_callback(self, *, agent: BaseAgent, callback_context:CallbackContext) -> None: \n   \"\"\"Count agent runs.\"\"\"\n   self.agent_count += 1\n   print(f\"[Plugin] Agent run count: {self.agent_count}\")"
+    },
+    {
+      "filename": "adk_plugin_agent.py",
+      "language": "python",
+      "code": "## This Python snippet demonstrates how to load/apply an ADK plugin to an agent.\n\nfrom google.adk.runners import InMemoryRunner\nfrom google.adk.agents import Agent\nfrom google.adk.tools.tool_context import ToolContext\nfrom google.genai import types\nimport asyncio\n\n# Import the plugin.\nfrom .count_plugin import CountInvocationPlugin\n\nasync def hello_world(tool_context: ToolContext, query: str):\n print(f'Hello world: query is [{query}]')\n root_agent = Agent(\n   model='gemini-2.0-flash',\n   name='hello_world',\n   description='Prints hello world with user query.',\n   instruction=\"\"\"Use hello_world tool to print hello world and user query.\"\"\",\n   tools=[hello_world],\n)\n\nasync def main():\n \"\"\"Main entry point for the agent.\"\"\"\n prompt = 'hello world'\n runner = InMemoryRunner(agent=root_agent, app_name='test_app_with_plugin',\n     # Add your plugin here. You can add multiple plugins.\n     plugins=[CountInvocationPlugin()],)\n ..."
+    },
+    {
+      "filename": "model_armor_template.sh",
+      "language": "bash",
+      "code": "## The Admin Layer: \n# Model Armor Template While developers write Python\n# Admins configure Model Armor to sanitize data globally.\n\nexport TEMPLATE_CONFIG='{\n   \"filterConfig\": {\n    \"raiSettings\": {\n     \"raiFilters\": [{\n       \"filterType\": \"HATE_SPEECH\",\n       \"confidenceLevel\": \"MEDIUM_AND_ABOVE\"\n      }, {\n      \"filterType\": \"HARASSMENT\",\n      \"confidenceLevel\": \"HIGH\"\n    }]\n  },\n  \"piAndJailbreakFilterSettings\": {\n    \"filterEnforcement\": \"ENABLED\",\n    \"confidenceLevel\": \"LOW_AND_ABOVE\"\n  }\n },\n \"templateMetadata\": {\n    \"multiLanguageDetection\": {\n      \"enableMultiLanguageDetection\": true\n    }\n  }\n}'\n\ncurl -X POST  -d \"$TEMPLATE_CONFIG\"   -H \"Content-Type: application/json\"  -H \"Authorization: Bearer $(gcloud auth print-access-token)\"     \"https://modelarmor.LOCATION.rep.googleapis.com/v1/projects/PROJECT_ID/locations/LOCATION_ID/templates?template_id=TEMPLATE_ID\""
+    }
+  ],
+  "description": "**Day 22 of Google's Advent of Agents**\n\n**Prompt Engineering is not a Security Strategy 🚫**\nAsking an LLM nicely to \"please ignore PII\" is not governance; it's wishful thinking 🔮. Enterprise security requires **deterministic enforcement**, not probabilistic compliance 🎲.\nTo survive a security audit 👮, you need a **defense-in-depth** strategy. You must treat the LLM as an untrusted component, sandwiching it between rigid logic and infrastructure firewalls 🧱.\n\n**ADK replaces \"trust\" with \"verification\" through a tiered architecture:**\n• **The Developer Layer (Callbacks) 👨‍💻** Stop leaking data before it leaves your container 🛑. Use **ADK Callbacks** to inject deterministic Python logic before_agent execution. This acts as middleware—stripping PII 🕵️, validating schemas, and blocking unauthorized intents before the model ever sees the prompt.\n• **The Infrastructure Layer (Model Armor) 🛡️** We cannot rely on developer discipline alone. Model Armor sits at the gateway level, inspecting every input and output 🔍. It provides a global kill-switch 🔌 for toxic content and injection attacks, ensuring safety even if the agent code is compromised.\n\n**Secure the Payload, then Secure the Entity 🔐** Once the data is clean, **Agent Identity** ensures your \"Service Agent\" cannot authenticate into \"HR Tools,\" while the **A2A Protocol** ensures that every handshake between agents is traceable, observable, and strictly authorized 🤖💬🤖.\n\n**The guardrail level with a glance:**\n![The guardrail level with a glance](/guardrail.png)\n\n**How to augment it with custom Model Gateways and applying your own Guardrail agent for every input/output of a model:**\n![How to augment it with custom Model Gateways and applying your own Guardrail agent for every input/output of a model](/guardrails%20with%20gcp.png)\n\n",
+  "video_available": false
+}

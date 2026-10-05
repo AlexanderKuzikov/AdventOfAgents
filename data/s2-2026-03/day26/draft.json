@@ -1,0 +1,217 @@
+[
+  {
+    "t": 1,
+    "en": "Hi everyone, welcome to day 26 of advent of agents season 2 and today we will be",
+    "ru": ""
+  },
+  {
+    "t": 7,
+    "en": "talking about an unavoidable production concept which is the agent authentication and we'll specifically talk about how to pass end user credentials to the agent",
+    "ru": ""
+  },
+  {
+    "t": 18,
+    "en": "to for it to do some action. So why should we even pass end user credentials right? So the agent with its own",
+    "ru": ""
+  },
+  {
+    "t": 26,
+    "en": "credentials can access any public information. But if you want your agent to access your calendar or your drive information or your Gmail, then it needs",
+    "ru": ""
+  },
+  {
+    "t": 36,
+    "en": "access to your credentials. So today we'll see how to do that without actually giving over your password to your agent and we'll do that with Oath 2.0. So let's go through the workflow of",
+    "ru": ""
+  },
+  {
+    "t": 48,
+    "en": "how Oath 2.0 works briefly before we jump into the code. Briefly, there are four players here. The user, the ADK web",
+    "ru": ""
+  },
+  {
+    "t": 57,
+    "en": "or the client, the Google o server because we're using Google calendar and and then the agent back end which has all these tools. So at the start we",
+    "ru": ""
+  },
+  {
+    "t": 68,
+    "en": "start with saying the user says to the ADK web or any client, hey can you access my calendar and retrieve my events? Let's say what the ADK web does is it redirects the user to the authorization server and the authorization server actually shows a consent screen to the user and the user clicks on all these boxes which says approve access and then the authorization server gives your client",
+    "ru": ""
+  },
+  {
+    "t": 95,
+    "en": "with an o code. It does not give it",
+    "ru": ""
+  },
+  {
+    "t": 98,
+    "en": "access directly but instead it gives it an authorization code which the client can use to exchange it for an access token and the access token is very shortlived let's say in her and the the",
+    "ru": ""
+  },
+  {
+    "t": 110,
+    "en": "agent actually uses the access token to",
+    "ru": ""
+  },
+  {
+    "t": 114,
+    "en": "access any calendar APIs and if the token expires simple it uses the refresh",
+    "ru": ""
+  },
+  {
+    "t": 119,
+    "en": "token to get a new access token and the cycle continues okay let's now see how to implement this oath 2.0 to handshake with ADK. Let me switch over to this other tab which has the Google Cloud Console editor and I'm going to scroll all the way down to the root agent definition. And here we can see the root agent has a model name and an instruction which tells it you're a helpful personal calendar assistant and you have two tools which are list calendar events to",
+    "ru": ""
+  },
+  {
+    "t": 149,
+    "en": "list all the events and a get event to get more information about one particular event. We also pass it the current time which is nothing but a Python function that runs every time before this agent is called. And we do",
+    "ru": ""
+  },
+  {
+    "t": 164,
+    "en": "that by just adding it to the before agent call back. So every time before the agent is invoked, this particular Python function runs, grabs the current time and passes it with the along with the agents instruction. Cool. Now we've seen the definition of the agent. We still need to build the calendar tools that this agent can invoke. To do that,",
+    "ru": ""
+  },
+  {
+    "t": 184,
+    "en": "let's scroll a bit up. And here you will see we've defined a calendar tool set. So, Google Calendar is a built-in ADK",
+    "ru": ""
+  },
+  {
+    "t": 193,
+    "en": "tool, meaning you can just import it and use it out of the box. And we're passing three different parameters, client ID, secret, and a tool filter. Client ID and secret are needed for the oath 2.0 handshake itself. And we'll shortly see how to get these credentials. And tool filter here is important because that decides the scope of this tool. And here we're saying this tool can only get events from the calendar. Meaning it can it cannot do any writes or deletes or any other operations.",
+    "ru": ""
+  },
+  {
+    "t": 227,
+    "en": "Okay. And we grab this tool by its",
+    "ru": ""
+  },
+  {
+    "t": 230,
+    "en": "function name. And we'll go ahead and add it to the tools array to the agent. And now our agent has access to this tool. and pay attention to the fact that we haven't added any extra oath 2.0 information to this pre-built tool set.",
+    "ru": ""
+  },
+  {
+    "t": 246,
+    "en": "But that's not usually the case, right? You might have a custom API that you want to call for which ADK doesn't have a built-in tool. And for those instances, we start by defining a",
+    "ru": ""
+  },
+  {
+    "t": 258,
+    "en": "standard Python function. And here we have defined a list calendar events Python function which directly calls the Google calendars API instead of using a pre-built tool. You can do this with any custom uh Python function and any APIs that you want to call and but how does the agent know to authenticate this particular Python function? To do that",
+    "ru": ""
+  },
+  {
+    "t": 281,
+    "en": "we define a convenience wrapper within the agent. So here the authenticated",
+    "ru": ""
+  },
+  {
+    "t": 287,
+    "en": "function tool actually takes uh the",
+    "ru": ""
+  },
+  {
+    "t": 290,
+    "en": "first argument is the function that you want to authenticate and this tells the agent that in order to invoke this particular Python function the tool needs authentication and then we go ahead and define two important parameters which is the O scheme and the",
+    "ru": ""
+  },
+  {
+    "t": 306,
+    "en": "O credential. So the O scheme basically",
+    "ru": ""
+  },
+  {
+    "t": 310,
+    "en": "tells what kind of authentication should this agent perform to use the tool and here it's oath 2.0 but this could be uh you could do an API key authentication or you could use OIDC or any other schemes but we're sticking with oath 2.0 and for if you have any oath 2.0 into a service provider you can grab your authorization URL and token URL and substitute this here and then we define scope saying what's the scope of this u tool and here we have the readonly access for this tool so so that this",
+    "ru": ""
+  },
+  {
+    "t": 344,
+    "en": "list events doesn't do anything by",
+    "ru": ""
+  },
+  {
+    "t": 347,
+    "en": "writing or deleting events and the",
+    "ru": ""
+  },
+  {
+    "t": 350,
+    "en": "second parameter that we pass here is the authentication credential which is the client ID and the secret itself now",
+    "ru": ""
+  },
+  {
+    "t": 357,
+    "en": "let's run this agent and see how it behaves. I'm going to switch to the terminal here and run the ADK web command. And this should actually start spinning up a server. And now let's switch over to the UI. Let's ask our",
+    "ru": ""
+  },
+  {
+    "t": 372,
+    "en": "agent to list all events that I have in my calendar for today. Okay, list all",
+    "ru": ""
+  },
+  {
+    "t": 377,
+    "en": "events for today. And my calendar currently has only one event for today. And now you can see that the agent actually opened a popup for us. And let's authenticate using my email. And this is the consent screen where it'll see it'll ask you see and download any calendar data. And if if",
+    "ru": ""
+  },
+  {
+    "t": 399,
+    "en": "you look here, there's no delete or update or create. It's just see. So yes, we're going to allow that. And let me go back to the UI.",
+    "ru": ""
+  },
+  {
+    "t": 409,
+    "en": "And you will see the agent spinning up. And it should hopefully return our event. that's in the calendar. Let's give it a couple seconds. And yes, you see there's the time and the and the name. Okay, let's go ahead and actually ask it for u and ask it to delete or",
+    "ru": ""
+  },
+  {
+    "t": 427,
+    "en": "create an event. Can you create a new",
+    "ru": ""
+  },
+  {
+    "t": 432,
+    "en": "event called lunch for tomorrow at 1",
+    "ru": ""
+  },
+  {
+    "t": 436,
+    "en": "p.m.? And let's see what the agent actually says.",
+    "ru": ""
+  },
+  {
+    "t": 444,
+    "en": "Remember the agent actually doesn't have any permission. It has the scope is only to list and to get. So it now says I",
+    "ru": ""
+  },
+  {
+    "t": 453,
+    "en": "only have the ability to search and provide details about calendar events and I don't have the ability to create which is exactly what we want. And that brings us to the end of the demo. And for the final part, let's see",
+    "ru": ""
+  },
+  {
+    "t": 467,
+    "en": "how to create the oath client ID and secret. Since we you we're accessing Google calendar today. Uh we get our oath client ID and secret from Google cloud console. Let's go to the clients tab and then select a web application from here and importantly add the ADK's",
+    "ru": ""
+  },
+  {
+    "t": 485,
+    "en": "web URI to the redirect URIs and then",
+    "ru": ""
+  },
+  {
+    "t": 489,
+    "en": "once you click create you should have your client ID and secret. You can add that to the environment variables for this demo, but but make",
+    "ru": ""
+  },
+  {
+    "t": 498,
+    "en": "sure to put these secrets into a wault or a secret management tool when you do it in production. Thank you so much for watching today. There are links and resources attached to the different tabs on this day. Make sure to check them out and try the calendar region for yourself. Thank you.",
+    "ru": ""
+  }
+]

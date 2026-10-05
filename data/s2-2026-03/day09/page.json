@@ -1,0 +1,48 @@
+{
+  "day": "day09",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "Multi-Agent Patterns: Coordinator/Dispatcher Agents",
+  "summary": "Build high-fidelity educational video agents that maintain character and scene consistency using the Google ADK, Gemini 3.1 Pro, Nano Banana and Veo 3.1.",
+  "tags": [
+    "Multi-Agent",
+    "Coordinator",
+    "Veo 3.1",
+    "ADK"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/09",
+  "video_id": "QxzTVRYi95E",
+  "video_url": "https://www.youtube.com/watch?v=QxzTVRYi95E",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "GitHub Repository",
+      "url": "https://github.com/vladkol/video-avatars-agent",
+      "description": "Complete source code for the Video Avatar Agent."
+    },
+    {
+      "title": "ADK Documentation",
+      "url": "https://google.github.io/adk-docs/",
+      "description": "Official documentation for the Agent Development Kit."
+    },
+    {
+      "title": "Sample Output",
+      "url": "https://youtu.be/QxzTVRYi95E",
+      "description": "An 8-second demo of the generated avatar consistency."
+    }
+  ],
+  "code": "# 1. Clone the repository\ngit clone https://github.com/vladkol/video-avatars-agent\ncd video-avatars-agent\n\n# 2. Setup Virtual Environment\nuv venv .venv\nsource .venv/bin/activate\n\n# 3. Install Agent & MCP Dependencies\nuv pip install pip\nuv pip install -r agents/video_avatar_agent/requirements.txt\nuv pip install -r mcp/requirements.txt\n\n# 4. Configure Environment\ncp .env-template .env\n# Edit .env with your Google Cloud Project ID and GCS Bucket\n\n# 5. Run Locally\n# Start MCP Server\n./deployment/run_mcp_local.sh \n\n# In a new terminal, run the Agent\n./deployment/run_agent_local.sh\n\n# 6. Deploy to Cloud Run\n./deployment/deploy.sh\n",
+  "icon": "📹",
+  "resource_link": "https://github.com/vladkol/video-avatars-agent",
+  "code_snippets": [
+    {
+      "filename": "setup.sh",
+      "language": "bash",
+      "code": "# 1. Clone the repository\ngit clone https://github.com/vladkol/video-avatars-agent\ncd video-avatars-agent\n\n# 2. Setup Virtual Environment\nuv venv .venv\nsource .venv/bin/activate\n\n# 3. Install Agent & MCP Dependencies\nuv pip install pip\nuv pip install -r agents/video_avatar_agent/requirements.txt\nuv pip install -r mcp/requirements.txt\n\n# 4. Configure Environment\ncp .env-template .env\n# Edit .env with your Google Cloud Project ID and GCS Bucket\n\n# 5. Run Locally\n# Start MCP Server\n./deployment/run_mcp_local.sh \n\n# In a new terminal, run the Agent\n./deployment/run_agent_local.sh\n\n# 6. Deploy to Cloud Run\n./deployment/deploy.sh"
+    }
+  ],
+  "description": "\n**Day 9 of Google's Advent of Agents — Season 2**\n\nThe **Coordinator/Dispatcher** pattern uses an LLM-based root agent to dynamically route tasks to specialist sub-agents. Unlike a hardcoded `SequentialAgent` pipeline, the Coordinator reasons about user input and decides which specialists to invoke and in what order. Here we apply it to long-form video generation, where visual consistency across shots is the core challenge.\n\n**How It Works**\n\nAn **Orchestrator** root agent receives the user's request and dispatches work to two specialists:\n\n- **Script Sequencer**: Converts dense documentation into natural speech, segmenting content into 8-second chunks to match **Veo 3.1's** peak performance window.\n- **Video Agent**: Generates video clips using the Orchestrator's instructions and a reference frame, maintaining character and scene consistency across all chunks.\n\nThe Orchestrator coordinates the handoff between these agents, ensuring each video chunk receives the correct script segment and visual reference. The full application deploys on [Cloud Run](https://docs.cloud.google.com/run/docs/overview/what-is-cloud-run) with [Vertex AI Agent Engine Sessions](https://docs.cloud.google.com/agent-builder/agent-engine/sessions/overview) for state management.\n\n**Resources:**\n\n- [GitHub Repository](https://github.com/vladkol/video-avatars-agent)\n- [ADK Documentation](https://google.github.io/adk-docs/)\n"
+}

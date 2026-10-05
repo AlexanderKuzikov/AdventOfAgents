@@ -1,0 +1,53 @@
+{
+  "day": "day02",
+  "season": 1,
+  "season_name": "Season 1 — December 2025 (Winter Holiday Edition)",
+  "title": "Hello World with YAML",
+  "summary": "Build your first AI agent with Gemini 3 in under 5 minutes without writing a single line of code.",
+  "tags": [
+    "ADK",
+    "YAML",
+    "Quickstart"
+  ],
+  "canonical_url": "https://adventofagents.com/2025/12/02",
+  "video_id": "bPGf51XBJ44",
+  "video_url": "https://www.youtube.com/watch?v=bPGf51XBJ44",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "ADK Config Agents Documentation",
+      "url": "https://google.github.io/adk-docs/agents/config/",
+      "description": "Build agents with YAML configuration"
+    },
+    {
+      "title": "Tutorial: AI Agent with Google Search (YAML)",
+      "url": "https://x.com/Saboo_Shubham_/status/1971038699329908885",
+      "description": "Step-by-step tutorial (~2 mins)"
+    },
+    {
+      "title": "Tutorial: Multi-agent app with MCP (YAML)",
+      "url": "https://x.com/Saboo_Shubham_/status/1971763476818547010",
+      "description": "Build a Multi-agent app using Google ADK"
+    },
+    {
+      "title": "Third Party MCP Tools in ADK",
+      "url": "https://google.github.io/adk-docs/tools/third-party/",
+      "description": "Integrate MCP tools with your ADK agents"
+    }
+  ],
+  "code": "uvx --from google-adk adk create --type=config my_agent\nuvx --from google-adk adk web my_agent/\n",
+  "icon": "📝",
+  "resource_link": "https://google.github.io/adk-docs/agents/config/",
+  "code_snippets": [
+    {
+      "filename": "terminal",
+      "language": "bash",
+      "code": "uvx --from google-adk adk create --type=config my_agent\nuvx --from google-adk adk web my_agent/"
+    }
+  ],
+  "description": "**Day 2 of Google's Advent of Agents**\n\nBuild your first AI agent with Gemini 3 in under 5 minutes without writing a single line of code.\n\n**4 lines of text = 1 working AI agent.**\n\nNo Python. No coding. Just YAML.\n\nI'm not talking about no-code tools with limitations. I'm talking about code-first agents. The ones developers build for real world deployment.\n\n**What you get with 4 lines of YAML:**\n\n- A working AI agent powered by Gemini 3\n- Google Search integration\n- Ready to deploy\n- Zero programming knowledge needed\n\nCopy. Paste. Run with built in web UI. That's it.\n\n**And here's where it gets interesting:**\n\nOnce you have your YAML agent, you can add:\n\n- Built-in tools (google_search, code_execution)\n- Custom Python tools (when you're ready)\n- Sub-agents for complex workflows\n- Multi-agent orchestration\n\nStart simple. Scale when needed.\n\n**What you'll build today:**\n\nTry building a multi-agent app with MCP using Google ADK (pure YAML).\n\nYou can find helpful resources in the links section.",
+  "video_available": false
+}

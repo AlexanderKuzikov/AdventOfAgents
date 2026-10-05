@@ -1,0 +1,197 @@
+[
+  {
+    "t": 3,
+    "en": "Hello everyone. Today I'm going to show you an example of how to run a sequential agent with ADKE. So to",
+    "ru": ""
+  },
+  {
+    "t": 11,
+    "en": "briefly cover what a sequential agent is, is a sub aent I mean it's an agent",
+    "ru": ""
+  },
+  {
+    "t": 17,
+    "en": "that runs specialized sub agents in a sequence. So this is very useful for use cases where we know the pattern of execution. For example, we read a PDF file, we extract the information, we store it in BigQuery, it will always be the same. So this is a straightforward",
+    "ru": ""
+  },
+  {
+    "t": 35,
+    "en": "uh implementation especially for when we need to debug easily these agents. Um",
+    "ru": ""
+  },
+  {
+    "t": 41,
+    "en": "now let me show share my screen so I can",
+    "ru": ""
+  },
+  {
+    "t": 45,
+    "en": "walk you through the code. Um couple of things to keep in mind. Um I added this in my agent. type. I also have a N file",
+    "ru": ""
+  },
+  {
+    "t": 54,
+    "en": "where I have stored um my project ID and",
+    "ru": ""
+  },
+  {
+    "t": 59,
+    "en": "the region that I want to use as well as whether I want to use workday AI. In this case, I am using workday AI. So",
+    "ru": ""
+  },
+  {
+    "t": 68,
+    "en": "here on the screen you'll see that I have three sub agents. First I have a reader and the reader will just analyze",
+    "ru": ""
+  },
+  {
+    "t": 75,
+    "en": "a provided PDF and just provide the raw",
+    "ru": ""
+  },
+  {
+    "t": 78,
+    "en": "text of its content. Then uh a second",
+    "ru": ""
+  },
+  {
+    "t": 82,
+    "en": "sub agent, the minor will extract the top five most important technical facts of that PDF. And then finally the sub",
+    "ru": ""
+  },
+  {
+    "t": 91,
+    "en": "agent number three will generate a three sentence and executive briefing suitable for a business stakeholder. The cool thing about this is that as you can see we'll specify the output key of each of these sub aents and then on the sub agent that will run after we can um in",
+    "ru": ""
+  },
+  {
+    "t": 110,
+    "en": "the prompt we can specify that we want",
+    "ru": ""
+  },
+  {
+    "t": 113,
+    "en": "what what do we want to use with the or do I mean with this output so you can see here reader minor synthesizer and then we have the root agent where we specify the order. So, first we'll run the reader, then the minor, and then the synthesizer. Now, let's run it to see it in action. I'll just do ADK web.",
+    "ru": ""
+  },
+  {
+    "t": 132,
+    "en": "And this will",
+    "ru": ""
+  },
+  {
+    "t": 135,
+    "en": "create Oh, I already have it here running. Let me just refresh it. And I",
+    "ru": ""
+  },
+  {
+    "t": 141,
+    "en": "will upload a PDF file that I already",
+    "ru": ""
+  },
+  {
+    "t": 144,
+    "en": "have on my local machine.",
+    "ru": ""
+  },
+  {
+    "t": 148,
+    "en": "So, um let's just wait for this check to",
+    "ru": ""
+  },
+  {
+    "t": 152,
+    "en": "happen. And this is done. I don't need to provide any more information.",
+    "ru": ""
+  },
+  {
+    "t": 158,
+    "en": "So, just wanted to point out while sub agent number one runs that I got this from research.g Google. You'll be able to um see many of our latest research.",
+    "ru": ""
+  },
+  {
+    "t": 169,
+    "en": "I'm using this teaching AI to read a map. Well, feel free to test with any of those or any other PDF that you may have. Um, this one will take a little bit just because right now I'm using Gemini Pro models which which as you know um have good performance but um a",
+    "ru": ""
+  },
+  {
+    "t": 185,
+    "en": "bit of a higher latency compared to",
+    "ru": ""
+  },
+  {
+    "t": 188,
+    "en": "Gemini Flash models.",
+    "ru": ""
+  },
+  {
+    "t": 193,
+    "en": "Let's just wait until it gives us that",
+    "ru": ""
+  },
+  {
+    "t": 196,
+    "en": "raw PDF information.",
+    "ru": ""
+  },
+  {
+    "t": 204,
+    "en": "So yeah, for this example, as you saw, um you'll be able to use any sort of PDF. Um but down the line, feel free to adjust this. Um something that I found very useful in my um in my use cases is",
+    "ru": ""
+  },
+  {
+    "t": 218,
+    "en": "extracting the PDF information. Um and then getting that unstructured data into a structured format and that's where I found that the sequential agents are the most useful. Okay, here we see the raw um PDF information and we can",
+    "ru": ""
+  },
+  {
+    "t": 232,
+    "en": "see here the PDF reader is the first one to run in the sequential agent pipeline. Then we'll have the inside liner and then the executive synthesizer and we see right here the exact output that we got from that sub agent. Let's just wait until we get our three our five um most important facts.",
+    "ru": ""
+  },
+  {
+    "t": 253,
+    "en": "And as I mentioned, um, um, we're using",
+    "ru": ""
+  },
+  {
+    "t": 256,
+    "en": "the Gemini Pro for all of these steps. And we can see here then that the Insight miner gave us our top five bags",
+    "ru": ""
+  },
+  {
+    "t": 264,
+    "en": "that it found on that PDF information.",
+    "ru": ""
+  },
+  {
+    "t": 268,
+    "en": "And then let's just wait until we get our executive briefing um, for these",
+    "ru": ""
+  },
+  {
+    "t": 275,
+    "en": "five things.",
+    "ru": ""
+  },
+  {
+    "t": 293,
+    "en": "All right, here we have",
+    "ru": ""
+  },
+  {
+    "t": 296,
+    "en": "the executive summary. So, it's very straightforward and can be adapted to very uh many uh cool use cases and very",
+    "ru": ""
+  },
+  {
+    "t": 304,
+    "en": "easy to to debug as well. as we can see the output of each and it's very linear so easier to spot where things are going wrong. So here's where an LLM will not have to um pick where uh or which sub",
+    "ru": ""
+  },
+  {
+    "t": 317,
+    "en": "agent to call. And with that said, I hope you enjoy this um very little tutorial.",
+    "ru": ""
+  }
+]

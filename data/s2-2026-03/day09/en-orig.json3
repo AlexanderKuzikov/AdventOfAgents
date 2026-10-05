@@ -1,0 +1,90 @@
+{
+  "wireMagic": "pb3",
+  "pens": [ {
+  
+  } ],
+  "wsWinStyles": [ {
+  
+  }, {
+    "mhModeHint": 2,
+    "juJustifCode": 0,
+    "sdScrollDir": 3
+  } ],
+  "wpWinPositions": [ {
+  
+  }, {
+    "apPoint": 6,
+    "ahHorPos": 20,
+    "avVerPos": 100,
+    "rcRows": 2,
+    "ccCols": 40
+  } ],
+  "events": [ {
+    "tStartMs": 0,
+    "dDurationMs": 9640,
+    "id": 1,
+    "wpWinPosId": 1,
+    "wsWinStyleId": 1
+  }, {
+    "tStartMs": 320,
+    "dDurationMs": 9320,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "Hi,"
+    }, {
+      "utf8": " I'm",
+      "tOffsetMs": 760
+    }, {
+      "utf8": " Anya",
+      "tOffsetMs": 1080
+    }, {
+      "utf8": " Cappie.",
+      "tOffsetMs": 1360
+    }, {
+      "utf8": " Today,",
+      "tOffsetMs": 2360
+    }, {
+      "utf8": " we",
+      "tOffsetMs": 3120
+    }, {
+      "utf8": " will",
+      "tOffsetMs": 3280
+    }, {
+      "utf8": " talk",
+      "tOffsetMs": 3440
+    } ]
+  }, {
+    "tStartMs": 3990,
+    "dDurationMs": 5650,
+    "wWinId": 1,
+    "aAppend": 1,
+    "segs": [ {
+      "utf8": "\n"
+    } ]
+  }, {
+    "tStartMs": 4000,
+    "dDurationMs": 5640,
+    "wWinId": 1,
+    "segs": [ {
+      "utf8": "about"
+    }, {
+      "utf8": " safety",
+      "tOffsetMs": 760
+    }, {
+      "utf8": " and",
+      "tOffsetMs": 1360
+    }, {
+      "utf8": " security",
+      "tOffsetMs": 1520
+    }, {
+      "utf8": " for",
+      "tOffsetMs": 2240
+    }, {
+      "utf8": " AI",
+      "tOffsetMs": 2560
+    }, {
+      "utf8": " agents.",
+      "tOffsetMs": 2960
+    } ]
+  } ]
+}

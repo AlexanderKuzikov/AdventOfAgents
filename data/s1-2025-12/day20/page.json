@@ -1,0 +1,46 @@
+{
+  "day": "day20",
+  "season": 1,
+  "season_name": "Season 1 — December 2025 (Winter Holiday Edition)",
+  "title": "A2A Extensions: The Flexible Sidecar for Custom Data",
+  "summary": "The Agent-to-Agent (A2A) protocol relies on a strict format, but real-world complexity often requires unique data. A2A Extensions provide a \"Sidecar\" pattern for custom data without breaking backward compatibility.",
+  "tags": [
+    "A2A Extensions",
+    "Extensions",
+    "Sidecar Pattern",
+    "Agent Communication"
+  ],
+  "canonical_url": "https://adventofagents.com/2025/12/20",
+  "video_id": "MV0Ub-xN48A",
+  "video_url": "https://www.youtube.com/watch?v=MV0Ub-xN48A",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "A2A Secure Passport Extension Sample",
+      "url": "https://github.com/a2aproject/a2a-samples/tree/main/extensions/secure-passport/v1/samples/python",
+      "description": ""
+    }
+  ],
+  "code": "",
+  "icon": "🧩",
+  "resource_link": "",
+  "code_snippets": [
+    {
+      "title": "Get the Sample:",
+      "filename": "get_sample.sh",
+      "language": "shell",
+      "code": "# Download the specific extensions sample\nuvx agent-starter-pack create secure-auth-agent   -a adk_a2a_base   --extension secure-passport"
+    },
+    {
+      "title": "The Implementation: This snippet attaches a \"Passport\" extension. If the receiver supports it, they verify the signature. If not, they process the message as a standard request.",
+      "filename": "secure_passport_implementation.py",
+      "language": "python",
+      "code": "from secure_passport_ext import CallerContext, A2AMessage, add_secure_passport, get_secure_passport\n\n# 1. THE SENDER: Attaches the \"Sidecar\"\n# We create a secure context with custom enterprise data\npassport = CallerContext(\n    client_id=\"a2a://travel-orchestrator.com\",\n    state={\"tier\": \"Platinum\", \"billing_code\": \"US-123\"},\n    signature=\"valid-crypto-signature-123\"\n)\n\nmessage = A2AMessage(type=\"task\", content=\"Book flight\")\n# \"Stamp\" the message with the extension\nadd_secure_passport(message, passport)\n\n\n# 2. THE RECEIVER: Inspects the \"Sidecar\"\n# This function safely checks for the extension without crashing if missing\nreceived_passport = get_secure_passport(message)\n\nif received_passport and received_passport.is_verified:\n    print(f\"✅ Verified Platinum Request from: {received_passport.client_id}\")\nelse: # Non-breaking fall-back behavior\n    print(f\"ℹ️ Standard processing (No auth extension found)\")"
+    }
+  ],
+  "description": "**Day 20 of Google's Advent of Agents**\n\n**The \"Sidecar\" Pattern for Agents 🏍️**\n\nThe Agent-to-Agent (A2A) protocol relies on a strict format 📋 to ensure agents from different teams can talk to each other 🤝. But real-world complexity often requires unique data that isn't in the spec (e.g., billing_id 💳 or security_clearance 🔐).\n\n**The Solution: A2A Extensions 🧩** Instead of forcing data into fields where it doesn't belong, A2A defines a dedicated extension field. Think of this like a \"Sidecar\" attached to your message 🏍️. It travels with the payload 📦, carrying custom dictionaries or objects, but doesn't alter the driver or the vehicle.\n\n**The Golden Rule: Non-Breaking ✨** Extensions follow a strict backward-compatibility rule: **If you don't understand it, ignore it 🙈**. This allows you to upgrade agents 🆙 with new capabilities (like the \"Secure Passport\" below 🛂) without breaking communication with older agents that haven't been updated yet.\n\n**Resources**:\n\n- Check out the [A2A Extensions Sample](https://github.com/a2aproject/a2a-samples/tree/main/extensions/secure-passport/v1/samples/python)\n",
+  "video_available": false
+}

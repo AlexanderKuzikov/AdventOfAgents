@@ -1,0 +1,54 @@
+{
+  "day": "day14",
+  "season": 1,
+  "season_name": "Season 1 — December 2025 (Winter Holiday Edition)",
+  "title": "Connecting Agents with A2A",
+  "summary": "Connect agents across teams, frameworks, and languages with the Agent2Agent (A2A) Protocol. ADK makes implementing A2A simple.",
+  "tags": [
+    "ADK A2A",
+    "ADK",
+    "A2A",
+    "Multi-Agent",
+    "Agent Starter Pack"
+  ],
+  "canonical_url": "https://adventofagents.com/2025/12/14",
+  "video_id": null,
+  "video_url": "",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Agent Starter Pack",
+      "url": "https://github.com/GoogleCloudPlatform/agent-starter-pack",
+      "description": "Get started with production-ready A2A agents."
+    },
+    {
+      "title": "ADK A2A Docs",
+      "url": "https://google.github.io/adk-docs/a2a/",
+      "description": "Learn how to implement A2A in the ADK."
+    },
+    {
+      "title": "A2A Protocol Spec",
+      "url": "https://a2a-protocol.org/",
+      "description": "The official Agent2Agent protocol specification."
+    },
+    {
+      "title": "Prototype to Production Whitepaper",
+      "url": "https://www.kaggle.com/whitepaper-prototype-to-production",
+      "description": "Deep dive into multi-agent architectures and production patterns."
+    }
+  ],
+  "code": "",
+  "icon": "🔗",
+  "resource_link": "https://github.com/GoogleCloudPlatform/agent-starter-pack",
+  "code_snippets": [
+    {
+      "filename": "terminal",
+      "language": "shell",
+      "code": "uvx agent-starter-pack create -p -a adk_a2a_base"
+    }
+  ],
+  "description": "**Day 14 of Google's Advent of Agents**\n\nYour Customer Service Agent needs product info. Your Product Catalog Agent has it. But they're separate services, maybe even built by different teams in different languages.\n\nHow do they talk to each other?\n\nThat's exactly what the [Agent2Agent (A2A) Protocol](https://a2a-protocol.org) solves. A2A is a standard for agents to communicate—across teams, frameworks, and languages. It shines when:\n\n- Agents run as **separate services** (microservices architecture)\n- Agents are maintained by **different teams**\n- You need to connect agents in **different languages or frameworks**\n- You want a **formal contract** between system components\n\nADK makes implementing A2A simple. To **expose** your agent, wrap it in an `A2AServer`—now other agents can discover it and send requests. To **consume** a remote agent, use `RemoteA2aAgent`. It handles network communication, auth, and data formatting. Feels just like calling a local tool.\n\nNo manual protocol work. ADK abstracts the network layer.\n\nThe easiest way to get started? [Agent Starter Pack](https://github.com/GoogleCloudPlatform/agent-starter-pack). You get:\n\n- Production-ready A2A agent with discovery endpoint\n- Integration and load tests included\n- Terraform and CI/CD generated\n- Observability pre-configured\n\nDeploy to Agent Engine or Cloud Run. Your agent becomes a discoverable micro-service, ready to collaborate.\n\nFor a deeper dive into multi-agent architectures, check out the A2A section in the [Prototype to Production](https://www.kaggle.com/whitepaper-prototype-to-production) whitepaper.\n\n**Resources:**\n\n- Check out the [Agent Starter Pack](https://github.com/GoogleCloudPlatform/agent-starter-pack)\n- Check out the [ADK A2A Docs](https://google.github.io/adk-docs/a2a/)\n- Check out the [A2A Protocol Spec](https://a2a-protocol.org/)\n- Read the [Prototype to Production Whitepaper](https://www.kaggle.com/whitepaper-prototype-to-production)"
+}

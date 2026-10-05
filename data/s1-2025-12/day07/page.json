@@ -1,0 +1,58 @@
+{
+  "day": "day07",
+  "season": 1,
+  "season_name": "Season 1 — December 2025 (Winter Holiday Edition)",
+  "title": "LLMs Can Execute Code: Autonomous Problem Solving",
+  "summary": "Explore how LLMs can not only write but also execute, debug, and refine code autonomously, transforming them into powerful problem solvers.",
+  "tags": [
+    "Code Execution",
+    "LLMs",
+    "Agents",
+    "ADK"
+  ],
+  "canonical_url": "https://adventofagents.com/2025/12/07",
+  "video_id": "u1txECrXj6k",
+  "video_url": "https://www.youtube.com/watch?v=u1txECrXj6k",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Get started with Code Execution on Vertex AI Agent Engine",
+      "url": "https://cloud.google.com/vertex-ai/docs/agent-engine/code-execution",
+      "description": "Learn how to integrate and use code execution with Vertex AI Agent Engine."
+    },
+    {
+      "title": "Retail AI Location Strategy: Autonomous Site Selection & Market Analysis",
+      "url": "https://github.com/google/adk-samples/tree/main/python/agents/retail-ai-location-strategy",
+      "description": "Explore a fully built case study on using AI for autonomous site selection and market analysis in retail."
+    },
+    {
+      "title": "Everything about Code execution step by step",
+      "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/agents/agent_engine/tutorial_get_started_with_code_execution.ipynb",
+      "description": "A comprehensive guide to the Code Execution feature, locally and on Vertex AI Agent Engine. Learn to give agents the ability to run code in a secure environment, transforming them into capable problem-solvers."
+    }
+  ],
+  "code": "git clone https://github.com/google/adk-samples.git\ncd adk-samples/python/agents/retail-ai-location-strategy\n\ncp .env.example .env\n# Edit .env with your keys:\n#   GOOGLE_API_KEY=your_ai_studio_key\n#   GOOGLE_GENAI_USE_VERTEXAI=FALSE\n#   MAPS_API_KEY=your_maps_key\n\n# Install & Run\nmake install && make dev\n\n# Set up Google Cloud:\ngcloud auth application-default login\n\n# Deploy to Vertex AI Agent Engine\ngcloud config set project YOUR_PROJECT_ID\nmake backend\n\n# Deploy to Cloud Run\nexport GOOGLE_CLOUD_PROJECT=your-project-id\nexport GOOGLE_CLOUD_LOCATION=us-central1\nmake deploy-cloud-run\n",
+  "icon": "💡",
+  "resource_link": "",
+  "code_snippets": [
+    {
+      "filename": "Local Set up.sh",
+      "language": "bash",
+      "code": "git clone https://github.com/google/adk-samples.git\ncd adk-samples/python/agents/retail-ai-location-strategy\n\ncp .env.example .env\n# Edit .env with your keys:\n#   GOOGLE_API_KEY=your_ai_studio_key\n#   GOOGLE_GENAI_USE_VERTEXAI=FALSE\n#   MAPS_API_KEY=your_maps_key\n\n# Install & Run\nmake install && make dev"
+    },
+    {
+      "filename": "(Optional) Cloud Run or Agent Engine Deployment.sh",
+      "language": "bash",
+      "code": "# Set up Google Cloud:\ngcloud auth application-default login\n\n# Deploy to Vertex AI Agent Engine\ngcloud config set project YOUR_PROJECT_ID\nmake backend\n\n# Deploy to Cloud Run\nexport GOOGLE_CLOUD_PROJECT=your-project-id\nexport GOOGLE_CLOUD_LOCATION=us-central1\nmake deploy-cloud-run"
+    },
+    {
+      "filename": "Sample Code BuiltInCodeExecutor.py",
+      "language": "python",
+      "code": "gap_analysis_agent = LlmAgent(\n    name=\"GapAnalysisAgent\",\n    model=CODE_EXEC_MODEL,\n    description=\"Performs quantitative gap analysis using Python code execution for zone rankings and viability scores\",\n    instruction=GAP_ANALYSIS_INSTRUCTION,\n    generate_content_config=types.GenerateContentConfig(\n        http_options=types.HttpOptions(\n            retry_options=types.HttpRetryOptions(\n                initial_delay=RETRY_INITIAL_DELAY,\n                attempts=RETRY_ATTEMPTS,\n            ),\n        ),\n    ),\n\n# This enables the \"Code Execution\" capability.\n# It allows the agent to write Python, run it in a sandbox, and use the\n# actual output (variables, dataframes) as the response.\n\n    code_executor=BuiltInCodeExecutor(),\n    output_key=\"gap_analysis\",\n    before_agent_callback=before_gap_analysis,\n    after_agent_callback=after_gap_analysis,\n)"
+    }
+  ],
+  "description": "**Day 7 of Google's Advent of Agents**\n\nLLMs can write code, and in a sandbox, they can execute it too. \n\nCode execution is not just for vibecoding. It's one of the most effective ways to solve complex problems.\n\nCertainly useful for math, but we aren't only talking about math. I'm talking about agents that can write, execute, debug, refine, and deliver working \"tools\", whenever they are needed.\n\n**Why code execution matters for agents:**\nMany times, a few lines of code is the most efficient solution. Code is deterministic. Code is precise. And code is simply another language for describing a process.\n\n**What you get with ADK's Code Executor:**\n\n- BuiltInCodeExecutor that works out of the box\n- Runs on your local machine or in managed cloud sandboxes\n- Compatible with cloud sandboxes like Agent Engine, Google Kubernetes Engine, and Daytona\n- Agents can write, test, debug, and iterate on code\n- Final output: either the result of code execution or the working code itself\n- No complex setup. Just enable the tool.\n\n**See it in action:**\nWe have some great resources to get you started.\n\n- A new [adk-samples](https://github.com/google/adk-samples) for [retail location strategy](https://github.com/google/adk-samples/tree/main/python/agents/retail-ai-location-strategy) showcases code execution, along with Google Search and Google Maps\n- Our [Step by step introduction notebook showing everything about Code execution](https://github.com/GoogleCloudPlatform/generative-ai/blob/main/agents/agent_engine/tutorial_get_started_with_code_execution.ipynb)\n\nThis is a gold mine of information about very important skills."
+}

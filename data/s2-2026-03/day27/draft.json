@@ -1,0 +1,157 @@
+[
+  {
+    "t": 1,
+    "en": "Hi, my name's Preston Holmes, and I'd like to introduce you to Scion. It's an open-source test bed for kind of exploring this new realm of agent orchestration where we give the agents an extra degree of autonomy. Um, and it's really around making more progress towards this progression from a beginning point where you have really no no AI in your world to increasingly amounts of uh sort of AI in your IDE, maybe switching to another terminal type um maybe later made popular by Cloud Code,",
+    "ru": ""
+  },
+  {
+    "t": 32,
+    "en": "Gemini CLI, etc. And so then ultimately getting into this sort of how do we have agents managing multiple agents. And this idea of agent workflows, multi-agent workflows, is something where I think there's just many, many opinions. And Scion's something designed to really bring essentially a game engine upon which you can bring your own game titles, right? So, imagine how you want",
+    "ru": ""
+  },
+  {
+    "t": 55,
+    "en": "multiple agents to work together, and it's really could be as simple as sort of describing the way they work. Um, a bit quickly on the technical architecture before we show just a bit of demo is that um a Scion agent is essentially the composition of the workspace, a template which is a an abstraction around the idea of the system prompt and the set of skills. Those get merged in with one of the supported harnesses. So, it's harness agnostic, it supports Gemini CLI, Cloud Code, even ADK, um",
+    "ru": ""
+  },
+  {
+    "t": 87,
+    "en": "pretty much anything that can uh interface with a a very sort of um simple uh set of abstractions around",
+    "ru": ""
+  },
+  {
+    "t": 95,
+    "en": "hooks, around inputs and outputs. You take all those things, you give it a task, you run it in a container. Now, if it happens to be based on a Git workspace, we also create for you the Git work tree and mount that into the container. And then inside that container, it's of course the agent process. Um, it also",
+    "ru": ""
+  },
+  {
+    "t": 113,
+    "en": "then has essentially a small sidecar utility called Scion tool which sits alongside it, and then the Scion command line library itself, and this becomes key because we want to show you how agents can use this command line tool to work with other agents. Now, Scion is something that you can run entirely locally just with something like Docker or Podman or the Apple container tool. You can also run it remotely on VMs or even in a full distributed mode. So, locally, this is just a running Docker",
+    "ru": ""
+  },
+  {
+    "t": 142,
+    "en": "or Podman on your workstation, easy enough. All the state is managed in the local file system. You can run and host a sort of API server on a VM, still interact with it via the CLI, or you can run it in sort of this fully distributed mode. Now, the the web server we can run this web server either locally or remotely. In this case, we're going to run it remotely here on a VM. I can have a set of what are called namespaces, which are groves to collect different collections of agents.",
+    "ru": ""
+  },
+  {
+    "t": 171,
+    "en": "I can go into this grove, and I can create a new agent. I'll call this one orchestrator.",
+    "ru": ""
+  },
+  {
+    "t": 180,
+    "en": "And start it up. This is a launch container running in Docker in the VM. It can also run in Kubernetes. We'll go ahead, and once this is started, open up a web terminal into that agent. We'll go ahead and grab a prompt that",
+    "ru": ""
+  },
+  {
+    "t": 196,
+    "en": "just does a very simple orchestration prompt using the Scion CLI tool start three agents for the colors R, G, and B to write a poem about each of their colors. Walk and wait for them to complete, and then go ahead and clean up those agents. So, because the models are so well trained on bash and command lines, the first thing you'll see it do is just call Scion-help. It'll learn that there's a start command. It'll call Scion start-help.",
+    "ru": ""
+  },
+  {
+    "t": 221,
+    "en": "It will understand that it needs to probably start these three agents. If we go back here, we'll see that it's going to start up a red, a green, and a blue agent, and assign it each to write a",
+    "ru": ""
+  },
+  {
+    "t": 232,
+    "en": "uh poem about their colors. And once these agents are started, the orchestrator is going to go ahead and block and wait patiently by for them to complete their poems. As they complete their poems, they actually will use a notification system that will send back to the orchestrator",
+    "ru": ""
+  },
+  {
+    "t": 249,
+    "en": "that um they've completed their messages. It's going to go ahead and put together an anthology. They are writing all of these down into the workspace. So, once um it's finished, it'll composite this anthology, write that, and then it'll go ahead and stop and delete the three agents that it started.",
+    "ru": ""
+  },
+  {
+    "t": 266,
+    "en": "Again, so this is all very lightweight um use of the off-the-shelf harnesses.",
+    "ru": ""
+  },
+  {
+    "t": 272,
+    "en": "All they really need to do is they use the the there's a command-line tool called Scion. So, we can also, of course, run this locally. If we want to run this locally from our own command line, we would set up something like Podman, Docker Desktop, or Apple Container on our laptops. But, you can see here though that list my locally. They're the same kind of thing. I can see the where they're running, what runtime they're in. Um I can see that uh they're certain",
+    "ru": ""
+  },
+  {
+    "t": 300,
+    "en": "state from these agents. So, they can notify me when they're waiting for input. Send a message to one of these, which simply is a quick way of getting an inserted bit of text into the harness.",
+    "ru": ""
+  },
+  {
+    "t": 313,
+    "en": "So, locally, I can also run these uh different harnesses in their own containers. This is a small script. It'll open up four of them. So, on the top left, we have Gemini CLI. On the top right, we have Open Code. We have Code X and Cloud Code. These are",
+    "ru": ""
+  },
+  {
+    "t": 328,
+    "en": "all running each in their own container. We can see them listed here. Um again, each of them can give you their status and their state. Uh they're relatively easy to reconnect to. You can stop and delete them. All of this is really around showing that same command-line tool that agents can use. Of course, you can use to be your own orchestra. The agents write their own um poems in this case into the workspace that you started them from. And then if you see here, we'll go ahead",
+    "ru": ""
+  },
+  {
+    "t": 356,
+    "en": "and list the work trees and see that uh each of these agents has their own work tree that are directly mounted into their container workspace. Now, what if we want to have the agents try something a little bit more complex than just sort of writing some color poems. For this uh we want to come up with a a full game, essentially a question challenge game for agents to play. So, this is the Relics of Athenaeum. Um this is a game that demonstrates how different agents can",
+    "ru": ""
+  },
+  {
+    "t": 385,
+    "en": "collaborate together in something like Scion. So, these are all essentially",
+    "ru": ""
+  },
+  {
+    "t": 390,
+    "en": "characters in the classic role-playing game except that they run different models and different harnesses in containers. And the overall idea is that they can call specialist agents, start up ephemeral worker agents. And part of the",
+    "ru": ""
+  },
+  {
+    "t": 404,
+    "en": "key premise for the way this game is set up is that we want this game to have genuine challenges. So, these are computational and logic puzzles, things that these agents have no prior knowledge of. They need to collaborate and communicate during the game to decide who's going to do what. No single character can just simply solve everything alone. They discover um different opportunities in the file system, clues. They uh can",
+    "ru": ""
+  },
+  {
+    "t": 432,
+    "en": "split into groups. So, different groups can go pursue different parts of the quest in parallel. And there's no guarantee here that they actually solve these puzzles. So, this really is about seeing whether they can um do sort of dynamic reasoning and emergent behavior and then uh sort of run this game. And the way this works is um we're going to go ahead and uh in Scion, so in this framework everything is collected and sent to cloud logging and cloud telemetry. So, every",
+    "ru": ""
+  },
+  {
+    "t": 462,
+    "en": "interaction, every message that goes between the agents can be collected. So, here you see for our color agents, these were sort of uh the red, blue, and and green agents talking to the orchestrator, etc. Um so, once you have all of this collected, um it's possible to build a visualization that shows what is happening um as these agents, the the",
+    "ru": ""
+  },
+  {
+    "t": 483,
+    "en": "game agents in my case, were exploring",
+    "ru": ""
+  },
+  {
+    "t": 487,
+    "en": "um the space. And so, you see the game runner, it starts the agents, the player agents, it sets the quest challenges out into the file system. And then, what you're seeing is a combination of broadcast messages. This is um one agent broadcasting sort of group chat to all of the other agents, as well as a number of direct messages, which are the lines passing between the agents. And you see agents reading and writing to different files, creating files, and as they",
+    "ru": ""
+  },
+  {
+    "t": 511,
+    "en": "create files, more and more of these artifacts are being um collected into the shared workspace. And um this game, these agents are able",
+    "ru": ""
+  },
+  {
+    "t": 519,
+    "en": "to play it play for, you know, over an hour to sort of solve all the challenges. Not everything is easy for them on the first try, they have to retry, back up, um solve things. They do in fact, in this particular play of the game, they split into two groups to go pursue different parts of the game um independently. And so, you really you can see this is a type of very organic um and sort of emergent behavior of the",
+    "ru": ""
+  },
+  {
+    "t": 544,
+    "en": "LLMs. In this case, there is really no code involved for the game itself. The",
+    "ru": ""
+  },
+  {
+    "t": 549,
+    "en": "entire game is simply markdown. So, everything in here are literally just markdown templates for these agents, along with their instructions for or for what the game is, how to play it, especially for the game runner. So, Scion is an open-source project. It's available on GitHub. Uh resources are here on the detail pages. There's full documentation and installation instructions. Again, you can install it simply and run it locally. You can install it on a VM. You can even run the",
+    "ru": ""
+  },
+  {
+    "t": 576,
+    "en": "web server locally and get some of that same UI and get the agents interacting with each other. So, it's there to experiment. And I hope you have a chance to try out your own opinions about how agents can work together on Scion. Thank you.",
+    "ru": ""
+  }
+]

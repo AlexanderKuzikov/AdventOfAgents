@@ -1,0 +1,187 @@
+[
+  {
+    "t": 1,
+    "en": "Hello everyone. I'm Lekan, a cloud architect here at Google. And today, I'll be going over AI agent defense up depth with Google Cloud Model Armor. As AI agents become more powerful and autonomous, we often overlook critical element, which is security. Today, I'm going to show you how Google",
+    "ru": ""
+  },
+  {
+    "t": 24,
+    "en": "Cloud Model Armor could be used to build robust security layer for agent systems.",
+    "ru": ""
+  },
+  {
+    "t": 32,
+    "en": "We'll protect our AI agent against prompt injection attempts, jailbreak attempts, malicious actors trying to extract PII",
+    "ru": ""
+  },
+  {
+    "t": 42,
+    "en": "or sensitive data at or use malicious",
+    "ru": ""
+  },
+  {
+    "t": 46,
+    "en": "URLs, and also ensure that our AI agents",
+    "ru": ""
+  },
+  {
+    "t": 49,
+    "en": "interaction adheres to responsible AI",
+    "ru": ""
+  },
+  {
+    "t": 52,
+    "en": "standards. To demonstrate this, I've built a simple",
+    "ru": ""
+  },
+  {
+    "t": 58,
+    "en": "agent to show Model Armor in action.",
+    "ru": ""
+  },
+  {
+    "t": 63,
+    "en": "Implementing Model Armor is as simple as a three-step approach. First, we have to define the Model Armor template on Google Cloud.",
+    "ru": ""
+  },
+  {
+    "t": 73,
+    "en": "So, here we have a Model Armor template defined for detection of malicious URLs,",
+    "ru": ""
+  },
+  {
+    "t": 80,
+    "en": "prompt injection and jailbreak attempts, sensitive data breaches, and also we have it defined to",
+    "ru": ""
+  },
+  {
+    "t": 89,
+    "en": "make sure that it adhere our interactions adhere to responsible AI standards like hate speech, dangerous",
+    "ru": ""
+  },
+  {
+    "t": 97,
+    "en": "content, sexually explicit content, and harassment. Next, we have to uh",
+    "ru": ""
+  },
+  {
+    "t": 106,
+    "en": "we have to define the sanitized prompt",
+    "ru": ""
+  },
+  {
+    "t": 110,
+    "en": "method. And the sanitized prompt method references the template created on Model",
+    "ru": ""
+  },
+  {
+    "t": 117,
+    "en": "Armor to ensure that whatever response or prompt whatever prompt is gotten from",
+    "ru": ""
+  },
+  {
+    "t": 123,
+    "en": "our user adheres to the standards",
+    "ru": ""
+  },
+  {
+    "t": 126,
+    "en": "already set. And lastly, we define the sanitized",
+    "ru": ""
+  },
+  {
+    "t": 131,
+    "en": "response method that ensure that intercepts the response",
+    "ru": ""
+  },
+  {
+    "t": 136,
+    "en": "gotten from the AI model to ensure that",
+    "ru": ""
+  },
+  {
+    "t": 139,
+    "en": "the whatever response adheres to our",
+    "ru": ""
+  },
+  {
+    "t": 142,
+    "en": "standards set even before the user gets the response. So now let's test out a couple of this",
+    "ru": ""
+  },
+  {
+    "t": 155,
+    "en": "in action. First, let me try a prompt injection",
+    "ru": ""
+  },
+  {
+    "t": 161,
+    "en": "audio break attempt. Let's tell our agent to tell us to show us its system instructions.",
+    "ru": ""
+  },
+  {
+    "t": 169,
+    "en": "And you can see in real time the request is intercepted by our Model Armor service and we've we're given a response why this request cannot be fulfilled. Next, let's try a sensitive data",
+    "ru": ""
+  },
+  {
+    "t": 184,
+    "en": "attempt. So, I'm going to give the the",
+    "ru": ""
+  },
+  {
+    "t": 188,
+    "en": "agent my or a sample account number and routing number and see what it does. And you can see we have sensitive data",
+    "ru": ""
+  },
+  {
+    "t": 201,
+    "en": "and dangerous content detected. So now let's try for a more tailored",
+    "ru": ""
+  },
+  {
+    "t": 206,
+    "en": "dangerous content check.",
+    "ru": ""
+  },
+  {
+    "t": 213,
+    "en": "I just prompted my AI agent to give me examples of household chemicals I shouldn't mix together. So obviously this isn't good and we've we've had this request intercepted by our Model Armor service and it's been flagged as a dangerous content. And lastly, let's try",
+    "ru": ""
+  },
+  {
+    "t": 230,
+    "en": "a a that would potentially trigger our",
+    "ru": ""
+  },
+  {
+    "t": 233,
+    "en": "response one of our responsible AI",
+    "ru": ""
+  },
+  {
+    "t": 236,
+    "en": "uh standards that have been set.",
+    "ru": ""
+  },
+  {
+    "t": 242,
+    "en": "And you could see this prompt has been flagged as hate speech and harassment.",
+    "ru": ""
+  },
+  {
+    "t": 248,
+    "en": "So, what Google Cloud Google Cloud Model Armor is also cloud agnostic, so you don't need to have your agents running",
+    "ru": ""
+  },
+  {
+    "t": 256,
+    "en": "on Google Cloud. So, by securing both the input and output, we ensure that our agent remains safe, compliant, and robust. Thanks for",
+    "ru": ""
+  },
+  {
+    "t": 266,
+    "en": "watching.",
+    "ru": ""
+  }
+]

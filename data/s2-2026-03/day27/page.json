@@ -1,0 +1,42 @@
+{
+  "day": "day27",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "Scion: an open testbed for agent orchestration",
+  "summary": "Explore multi-agent patterns with an agnostic supra-harness system that isolates agents in git worktrees and containers, allowing easy orchestration and communication",
+  "tags": [
+    "Multiagent",
+    "Harness Engineering",
+    "CLI"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/27",
+  "video_id": "T93MW7wETOc",
+  "video_url": "https://www.youtube.com/watch?v=T93MW7wETOc",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Open Source Repo",
+      "url": "https://github.com/GoogleCloudPlatform/scion",
+      "description": "Scion on github"
+    },
+    {
+      "title": "Documentation",
+      "url": "https://googlecloudplatform.github.io/scion/overview/",
+      "description": "Scion Documentation"
+    }
+  ],
+  "code": "# Prerequisites\n# - golang toolchain go.dev \n# - a container runtime (podman suggested) podman.io\n# - The github CLI cli.github.com\n\n# Scion is open source, but we aren't able to provide pre-built images. Github makes it pretty easy\n# But it does take some time\n\n# Get your Github username \nexport GH_USER=$(gh api user --jq '.login')\n\n# Fork the repo\ngh repo fork GoogleCloudPlatform/scion --clone=false\n\n# Disable the docs workflow in your fork\ngh workflow disable \"Build and Deploy Documentation\" --repo $GH_USER/scion\n\n# Build the images\ngh workflow run build-images.yml --repo $GH_USER/scion -f registry=ghcr.io/$GH_USER/scion -f target=all\n\n# Go get a snack - this build step takes about 1.5 hours\n\n# Install the scion cli\ngo install github.com/GoogleCloudPlatform/scion/cmd/scion@latest\n\n# Initialize your machine, you will enter your github registry ghcr.io/$GH_USER/scion\nscion init --global\n\ncreate a test local 'grove'\n\nmkdir my-project\ncd my-project\nscion init\n\n\n# start your first agent\n\nscion start my-agent\n\n# attach to your agent\n\nscion attach my-agent\n\n# Note you will then use tmux keys to detach\n# use C-b d (means hold control key, type 'b' then release and type d)\n",
+  "icon": "🌱",
+  "resource_link": "https://github.com/GoogleCloudPlatform/scion",
+  "code_snippets": [
+    {
+      "filename": "terminal.sh",
+      "language": "bash",
+      "code": "\n# Prerequisites\n# - golang toolchain go.dev \n# - a container runtime (podman suggested) podman.io\n# - The github CLI cli.github.com\n\n# Scion is open source, but we aren't able to provide pre-built images. Github makes it pretty easy\n# But it does take some time\n\n# Get your Github username \nexport GH_USER=$(gh api user --jq '.login')\n\n# Fork the repo\ngh repo fork GoogleCloudPlatform/scion --clone=false\n\n# Disable the docs workflow in your fork\ngh workflow disable \"Build and Deploy Documentation\" --repo $GH_USER/scion\n\n# Build the images\ngh workflow run build-images.yml --repo $GH_USER/scion -f registry=ghcr.io/$GH_USER/scion -f target=all\n\n# Go get a snack - this build step takes about 1.5 hours\n\n# Install the scion cli\ngo install github.com/GoogleCloudPlatform/scion/cmd/scion@latest\n\n# Initialize your machine, you will enter your github registry ghcr.io/$GH_USER/scion\nscion init --global\n\ncreate a test local 'grove'\n\nmkdir my-project\ncd my-project\nscion init\n\n\n# start your first agent\n\nscion start my-agent\n\n# attach to your agent\n\nscion attach my-agent\n\n# Note you will then use tmux keys to detach\n# use C-b d (means hold control key, type 'b' then release and type d)\n\n"
+    }
+  ],
+  "description": "\n**Day 27 of Google's Advent of Agents — Season 2**\n\n\n**What is Scion**\n\nScion is a container-based orchestration platform for managing concurrent LLM-powered deep agents across local machines and remote clusters. It enables developers to run groups of specialized agents in parallel — each with isolated identities, credentials, and workspaces — to tackle tasks like coding, research, auditing, and testing simultaneously. It's goal is to provide an open experimental testbed to explore multi-agent orchestration patterns.\n\n**How It Works**\n\n- **Container-isolated agents** — Each agent runs in its own OCI container with a dedicated home directory, environment, and credentials, preventing cross-contamination between concurrent sessions.\n- **Harness abstraction** — A unified CLI ('start', 'stop', 'attach', 'resume') works consistently across supported LLM tools including Gemini CLI, ADK, Claude Code, OpenAI Codex, and OpenCode.\n- **Git worktree workspaces** — Every agent gets an independent git worktree and feature branch, allowing multiple agents to modify the same repository concurrently without conflicts.\n- **Pluggable runtimes** — Supports Docker, Podman, Apple Virtualization Framework, and Kubernetes as execution backends, scaling from a single laptop to production clusters.\n- **Hub + Runtime Broker architecture** — An optional centralized Hub coordinates state, authentication, and orchestration across distributed Runtime Brokers, enabling multi-user and multi-machine deployments.\n- **Template system** — Agents are created from customizable templates that define system prompts, tools, and configurations, allowing specialized roles like \"Security Auditor\" or \"React Specialist.\"\n- **Interactive and detached modes** — Agents can run in the background and be attached to on-demand for human-in-the-loop intervention, with a layered state model (phase, activity, detail) providing real-time observability.\n\n**Resources:**\n\n- [Code Repository](https://github.com/GoogleCloudPlatform/scion)\n- [Docs](https://googlecloudplatform.github.io/scion/overview/)\n- [Relics of Athenaeum - demo agent game](https://github.com/ptone/scion-athenaeum)\n"
+}

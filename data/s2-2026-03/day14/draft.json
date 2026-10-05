@@ -1,0 +1,52 @@
+[
+  {
+    "t": 0,
+    "en": "Hey folks, welcome back to Advent of Agents. This is season 2 day 14 and in",
+    "ru": ""
+  },
+  {
+    "t": 5,
+    "en": "this one we're going to show you how to build your own human in the loop agentic architecture. Human in the loop architectures have become so popular recently, especially since AI agents have become almost as good as humans at doing certain tasks, maybe too good. And that's why we introduce a human in the loop. And this whole flow brings a human back into the non-deterministic flow that is AI agents when it comes to highstakes decision-m and or output within your agentic flow. In this",
+    "ru": ""
+  },
+  {
+    "t": 30,
+    "en": "example, we'll be touching a simple refund process. You may build a customer service agent that wants to refund a certain user some amount of money, but you want to have a real human in the loop to make sure we approve or deny the refund based on the amount that we give it. So, let's jump right in. Firstly, this is what our code looks like. You can see here a couple different pieces of important information first before we dive into actually seeing how this works. We import a bunch of things from",
+    "ru": ""
+  },
+  {
+    "t": 54,
+    "en": "ADK. Specifically, the most important one is the long running function tool. Let's say, for example, it asks us to approve or deny the refund. So we can come a day later, press yes or no, and then the agent will reboot its flow based on the memory that it stores. Which by the way brings us to the memory service which we need to implement in order for us to store that context for the conversation. So we can come back to it at any point in time. Two functions that we're interested in is one asking",
+    "ru": ""
+  },
+  {
+    "t": 78,
+    "en": "for approval and then two processing the refund. processing the refund is a typical tool that the agent has access to that will actually allow it to process the refund versus the ask for approval function is the function that we're going to bake into the longunning function tool to give it the possibility to ask us for some human in the loop intervention. Okay, number three. This is the agent. We've seen this one before. This is a very simple agent. It just says you handle refunds and always",
+    "ru": ""
+  },
+  {
+    "t": 102,
+    "en": "ask for approval first by calling this specific function. If approved, then you can call another function called process refund. Finally, we strap everything together in our main function here and then we set up our runner and then we take a look at the content for every event. This is the event inside of ADK and we can identify each portion of the event so that we know which ones to look in for calling a human or a specific tool. And then we get the human decision",
+    "ru": ""
+  },
+  {
+    "t": 125,
+    "en": "here. We capture that inside of a choice variable and then we check to see if that choice is yes or no. And then go from there reboot our runner and we have to punch in the session ID so that we know which context to pull back from memory for our human in the loop. agentic workflow to reboot and then finally we send it back to the user. Let's see what this looks like in action. We're going to run uvun python",
+    "ru": ""
+  },
+  {
+    "t": 145,
+    "en": "agents/refund agent. There's another agent inside of this folder called extended refund agent which shows a little bit more functionality for human in the loop. So if you want to explore more this pattern, feel free to check out that file. We'll press enter here and give it a second to run. Great. The agent comes back and says, \"Okay, I've requested approval for the refund for $200 for the duplicate charge on some transaction ID.\" And then you can see the agent spits out the JSON for logging",
+    "ru": ""
+  },
+  {
+    "t": 168,
+    "en": "purposes to show status and purpose and then the amount. So you can define this as you wish. And then it gives me the option to approve or denied. I'll go ahead and approve it cuz I'm feeling generous today. Okay, I've processed the refund for 200 and the duplicate charge of transaction. Remember, it's calling the tool to process the refund after it's made contact with me and I've responded to it. Let's run this one more time and then click no and deny the refund and see what happens.",
+    "ru": ""
+  },
+  {
+    "t": 193,
+    "en": "Great. I've asked for approval to refund 200 for a duplicate charge of transaction, but it was rejected and I'm unable to process the refund. You can imagine the agent responding to the customer in this way. I hope this one was helpful. You can imagine building out a much more complex agentic flow and having humans in the loop at certain portions and then contacting the human via email or via WhatsApp or some kind of text message or whatever. Thanks so much for watching. I'll see you in day",
+    "ru": ""
+  }
+]

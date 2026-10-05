@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Architecting Secure Multi-Agent Systems — EN / RU</title>
+<style>
+:root {
+  --en-bg: #f7f8fa;
+  --line: #dfe3e8;
+  --accent: #0b57d0;
+  --ts: #8a9099;
+  --muted: #5f6672;
+  --fix: #fff3cd;
+  --fix-line: #e0b100;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 32px 20px 72px;
+  background: #eef0f3;
+  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #1a1a1a;
+}
+
+.page { max-width: 1400px; margin: 0 auto; }
+
+h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.head .sub { color: var(--muted); font-size: 15px; }
+.head .sub a { color: var(--accent); }
+
+.legend {
+  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
+}
+.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
+.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+
+.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+
+button {
+  font: inherit; font-size: 14px; padding: 7px 14px;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: #fff; color: #1a1a1a; cursor: pointer;
+}
+button:hover { border-color: #b9c0ca; background: #fafbfc; }
+
+.grid {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden;
+}
+
+.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
+
+.head-row {
+  background: #2f3541; color: #fff;
+  font-size: 13px; letter-spacing: 0.04em;
+  text-transform: uppercase; font-weight: 600;
+  position: sticky; top: 0; z-index: 5;
+}
+.head-row > div { padding: 10px 18px; }
+.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
+
+.row > .ts {
+  padding: 14px 8px; font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ts); text-align: right;
+  border-right: 1px solid var(--line); background: #fbfbfc;
+}
+.row > .en, .row > .ru {
+  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
+}
+.row > .en { background: var(--en-bg); }
+.row > .ru { border-right: 0; }
+
+.row.cont > .ts::after {
+  content: ""; display: block; width: 14px; height: 1px;
+  background: var(--line); margin: 8px 0 0 auto;
+}
+.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
+
+.row.fixed > .en { background: var(--fix); }
+.row.fixed .tag { display: none; }
+
+body.show-fixes .row.fixed .tag { display: block; }
+
+.tag {
+  display: inline-block; margin-top: 6px;
+  font-size: 11.5px; line-height: 1.35;
+  color: #6b5400; background: var(--fix);
+  border-left: 3px solid var(--fix-line);
+  padding: 3px 8px; border-radius: 0 4px 4px 0;
+}
+
+.app { margin-top: 26px; }
+.app h2 { font-size: 19px; margin: 0 0 10px; }
+
+table {
+  width: 100%; border-collapse: collapse;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden; font-size: 15px;
+}
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
+.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
+
+body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
+body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
+body.hide-en .row, body.hide-en .head-row,
+body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
+
+@media (max-width: 900px) {
+  .head-row, .row { grid-template-columns: 56px 1fr; }
+  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
+  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .bar, .legend { display: none; }
+  .head-row { position: static; }
+  .grid, table { border-radius: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <h1>Architecting Secure Multi-Agent Systems</h1>
+    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
+      Видео: <a href="https://www.youtube.com/watch?v=c89LrULUrmI">https://www.youtube.com/watch?v=c89LrULUrmI</a> · 13:02
+      · auto (YouTube en-orig)</div>
+  </div>
+
+  <div class="legend">
+    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
+    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
+  </div>
+
+  <div class="bar">
+    <button id="btn-mark">Показать исправления</button>
+    <button id="btn-print">Печать / PDF</button>
+  </div>
+
+  <div class="grid">
+    <div class="head-row">
+      <div>Time</div>
+      <div>English</div>
+      <div>Русский</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">00:01</div>
+      <div class="en">Welcome, everyone, to day three of Advent of Agents. Today Anirudh and I are going to be talking about building secure architectures for multi-agent systems, and what that looks like on Gemini Enterprise.<div class="tag">уточнено: Anarude -&gt; Anirudh; multi- aent -&gt; multi-agent; Gemini Enterprise (product name as spoken)</div></div>
+      <div class="ru">Всем привет, третий день Advent of Agents. Сегодня мы с Анирудхом говорим о построении безопасных архитектур для мультиагентных систем и о том, как это выглядит на Gemini Enterprise.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">00:17</div>
+      <div class="en">Thanks, Mika. One of the things I often see as a frustrating experience for users is trying to navigate a product page and claim a warranty on a product that&#x27;s malfunctioning. They&#x27;re so clunky. There&#x27;s so much to fill out, and the response time is a few days, maybe even weeks. And maybe agents could be a solution to fix that.<div class="tag">уточнено: claim a warranty on a on a product -&gt; claim a warranty on a product</div></div>
+      <div class="ru">Спасибо, Мика. Одна из вещей, которые я постоянно наблюдаю как источник раздражения у пользователей, — это попытка пройтись по странице товара и оформить гарантию на сломанный продукт. Всё это до тошноты неудобно: нужно заполнить десяток полей, а ответ приходит через несколько дней, а то и недель. И вот тут агенты могут стать решением.</div>
+    </div>
+    <div class="row">
+      <div class="ts">00:36</div>
+      <div class="en">So I was thinking: what if a user who has a problem talks directly to an agent? Let&#x27;s call it the warranty agent. And this warranty agent connects to a bunch of databases that know what my product history is, what&#x27;s my purchase history, am I a premium member, or something like that. And then, based on all that data, it just connects to something like a delivery partner&#x27;s MCP server — maybe FedEx, maybe something like that — ships me a replacement, and lets me know in the user interface. This would be perfect. And in ADK, such an agent would look really nice and simple to code.</div>
+      <div class="ru">И вот я подумал: а что, если пользователь с проблемой заговорит напрямую с агентом? Назовём его агентом по гарантии. Этот агент подключается к куче баз данных, которые знают историю моих покупок, являются ли я премиальным участником, и так далее. А дальше, на основе всех этих данных, он просто подключается к MCP-серверу службы доставки — скажем, FedEx — отправляет мне замену и сообщает об этом в интерфейсе. Было бы идеально. И на ADK такой агент пишется очень просто и красиво.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">01:29</div>
+      <div class="en">Wow. I mean, just in taking a look at it, that&#x27;s kind of a god agent. It&#x27;s going to be able to take all that information, process it, and then just make a decision all on its own with one agent. So if you had to put on the hat of a threat modeler — hearkening back to our previous session — what do you think the threats with that are?<div class="tag">уточнено: god agent -&gt; бог-агент (сленг докладчика)</div></div>
+      <div class="ru">Ух ты. Смотрите — это же настоящий «агент-бог»: он берёт всю информацию, обрабатывает и принимает решение полностью сам, в одиночку. Так вот, если надеть шляпу моделировщика угроз — мы об этом говорили в прошлый раз — какие здесь угрозы?</div>
+    </div>
+    <div class="row">
+      <div class="ts">01:51</div>
+      <div class="en">Well, I would think that that would be a huge risk, because not only is it able to take actions on behalf of multiple systems, but we have to look at the input that&#x27;s being provided to it. We have to check that it&#x27;s not sending my data off in an unsanitized fashion to go look up my warranty information. We have to make sure it can&#x27;t pull other users&#x27; information just based on a serial number or something like that.</div>
+      <div class="ru">Я бы сказал, что это огромный риск. Агент не только действует от имени нескольких систем — нужно ещё смотреть на входные данные, которые он получает. Надо проверить, что он не отправляет мои данные куда-то в несанированном виде, чтобы там посмотреть информацию о моей гарантии. И надо убедиться, что он не вытащит чужие данные пользователей только по серийному номеру или чему-то подобному.</div>
+    </div>
+    <div class="row">
+      <div class="ts">02:11</div>
+      <div class="en">Gosh, that&#x27;s kind of a god agent. You have to think about it from the output and input, but also all the actions that this single agent is going to take along the way.</div>
+      <div class="ru">Ну вот, «агент-бог». Про него надо думать и на входе, и на выходе, и вообще обо всех действиях, которые этот один агент совершит по ходу дела.</div>
+    </div>
+    <div class="row">
+      <div class="ts">02:36</div>
+      <div class="en">Yeah, that makes sense. So maybe a great way to redesign this would be to split it, maybe make it into three different agents that are tightly and strictly scoped to what actions they can take. So maybe we have a case manager agent that is kind of like your front desk, and handles getting all that input. There&#x27;s the data agent that can only look up data, and it doesn&#x27;t have permissions to talk to the customer or the user directly. And then there is just a logistics liaison agent that can talk to your delivery partners and ship things, and does nothing else.</div>
+      <div class="ru">Логично. Тогда, наверное, хороший способ переработать эту схему — разбить её на три агента с узким, жёстко ограниченным scope: какие действия каждому разрешено. Скажем, есть агент-менеджер обращений, этакий стойка ресепшн, который собирает весь вход. Есть агент данных, который умеет только читать данные и не имеет прав писать напрямую клиенту или пользователю. И есть агент-логист, который общается со службами доставки и отправляет товар, и больше ничего не делает.</div>
+    </div>
+    <div class="row">
+      <div class="ts">03:04</div>
+      <div class="en">Do you think that&#x27;s a good way to think about breaking this down and scoping it down? Definitely. And I think that&#x27;s a better way to threat model too: it&#x27;s that separation of duties, so you can put specific guardrails on each component.</div>
+      <div class="ru">Так это хороший способ разбить и сузить систему? Определённо. И, по-моему, так ещё и моделировать угрозы удобнее: это разделение полномочий, и тогда на каждый компонент можно поставить свои ограничители.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">03:26</div>
+      <div class="en">I was very curious about your input. How do you think this newly redesigned input looks from a threat modeling and security perspective? Well, the first step you mentioned in your design of this warranty agent is that a user is going to submit a form that triggers a Cloud Run function — that&#x27;s the session manager. We want to make sure that this input is sanitized by Model Armor, that they&#x27;re not trying to inject a malicious prompt, that they&#x27;re not using harmful or dangerous language. And by passing that directly to the agent with an identity-aware proxy, you could make sure that an authorized client is the one passing the request along. Then it can go to the manager.<div class="tag">уточнено: cloudr run -&gt; Cloud Run; the shim session manager -&gt; the session manager (менеджер сессий)</div></div>
+      <div class="ru">Очень интересно посмотреть на вход. Как, по-вашему, выглядит это переработанное входное звено с точки зрения моделирования угроз и безопасности? Первый шаг, который вы назвали в designs этого агента по гарантии, — пользователь отправляет форму, которая запускает Cloud Run-функцию, а это менеджер сессий. Мы хотим, чтобы Model Armor санировал этот вход: чтобы никто не пытался внедрить вредоносный промпт и не использовал опасную или вредную лексику. А если передавать эти данные агенту напрямую через identity-aware proxy, можно гарантировать, что запрос отправляет авторизованный клиент. И дальше — менеджеру.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">04:09</div>
+      <div class="en">That makes sense. So if I had to summarize everything we&#x27;ve discussed so far from an architecture perspective: the first architectural decision we made to be more secure is to split one agent into three separate, strictly scoped agents. And then we&#x27;re designing the input in such a way that no unsanitized input makes it to the agent directly. There is a session manager that is actually processing that data before it goes to the agent, and it&#x27;s sending it through a gateway — an agent gateway, which is a GCP service in this case — where it applies Model Armor policies, which is basically an agent API-level or LM-level firewall, and identity-aware proxies, to make sure it&#x27;s the right kind of identity and the right users talking to the agent.<div class="tag">уточнено: identityware proxies -&gt; identity-aware proxies</div></div>
+      <div class="ru">Понятно. Если резюмировать всё, что мы обсудили, с архитектурной точки зрения: первое архитектурное решение ради безопасности — разбить одного агента на трёх отдельных агентов с жёстким scope. И дальше мы проектируем вход так, что несанированные данные до агента напрямую не доходят. Есть менеджер сессий, который обрабатывает данные до того, как они попадут к агенту, и отправляет их через шлюз — в нашем случае это Agent Gateway, сервис GCP, — где применяются политики Model Armor: по сути это файрвол на уровне API агента или уровне LM, — и identity-aware proxy, чтобы убедиться, что с агентом говорит правильный пользователь с правильной идентичностью.</div>
+    </div>
+    <div class="row">
+      <div class="ts">05:05</div>
+      <div class="en">And so this way, when we get to the case manager agent, we know that the input is really good and is safe for an agent to consume, and we&#x27;re not going to have that much more fear of, like, rogue actions from the agent, right? And I think it&#x27;s great that we&#x27;re architecting this in a way where the gateway becomes that traffic controller.</div>
+      <div class="ru">И тогда, когда мы доходим до агента-менеджера, мы знаем, что вход нормальный и его безопасно отдавать агенту, и бояться rogue-действий с его стороны уже не так страшно. Верно? И отлично, что мы строим архитектуру так, что шлюз становится этим регулятором трафика.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">05:36</div>
+      <div class="en">Makes sense. So now that we&#x27;re sending the data to the case manager agent, the case manager agent is going to be scoped to make decisions like: okay, what is this input I have that has been sanitized? Can I find out the user&#x27;s name or ID? Can I find out their serial number of the product they&#x27;re complaining about, and maybe a purchase history if they&#x27;ve shared what date they purchased it? And send only that data — instead of all of the user&#x27;s input — through another agent gateway to the data agent, which uses that specific information. The data agent itself is also going to do checks: it&#x27;s probably going to call an ADK function before pulling, to make sure the input is those specific strings that we mentioned and not random gibberish from the case manager agent. And it looks up data specifically in the databases that it has access to, and no other agent in this scenario has access to. And again, there&#x27;s an agent gateway sitting between that data agent and the database, ensuring that it&#x27;s the right agent talking to the right database and performing the right action — it&#x27;s only doing a read action, not a write action, and things like that.<div class="tag">уточнено: it&#x27;s only doing a read action, not a right action -&gt; not a write action</div></div>
+      <div class="ru">Логично. Итак, мы отправили данные агенту-менеджеру, и его scope ограничен такими решениями: ок, вот мои санированные входные данные; могу ли я узнать имя или идентификатор пользователя? Могу ли я узнать серийный номер товара, на который он жалуется, и, может быть, историю покупок — если он указал дату покупки? И отправить только эти данные, а не весь пользовательский ввод, через ещё один Agent Gateway — агенту данных, который использует именно эту информацию. Сам агент данных тоже делает проверки: скорее всего, перед чтением он вызывает функцию ADK, чтобы убедиться, что на входе именно те строки, которые мы назвали, а не случайная абракадара от агента-менеджера. И он читает данные только из тех баз, к которым имеет доступ, — ни у кого другого в этой схеме такого доступа нет. И снова между агентом данных и базой стоит Agent Gateway, который следит, чтобы нужный агент обращался к нужной базе и выполнял нужное действие: только чтение, а не запись, и так далее.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">06:38</div>
+      <div class="en">And these agents will have agentic identities — first-class identities — and not just a shared service account. And similarly, the logistics agent is going to have permissions to talk to the delivery partner&#x27;s MCP server through the gateway, which again is going to enforce all of these policies, ensuring that each agent can only do what it&#x27;s meant to do and communicate only the information required for the next agent to do its function.<div class="tag">уточнено: first class principles -&gt; first-class identities</div></div>
+      <div class="ru">И у этих агентов будут агентные идентичности — полноценные, first-class, — а не общий сервисный аккаунт. Аналогично агент-логист получает права говорить с MCP-сервером службы доставки через шлюз, который снова же применяет все эти политики и следит, чтобы каждый агент делал только то, что ему положено, и передавал только ту информацию, которая нужна следующему агенту для его работы.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">07:15</div>
+      <div class="en">Now, that sounds like you&#x27;ve thought through what could go wrong and how you can prevent it. So if we had to put all of this together on GCP, this is what that would look like. It&#x27;s a lot to take in. There is the ingress block, which is pretty much running on Cloud Run, and the messages get triggered by Pub/Sub; they make it to that session manager, which is another Cloud Run function, through a gateway, into the case manager agent. The case manager agent then sends that to the data agent, which sends the data back to the case manager, which sends the required information to the liaison agent, which returns to the case manager saying: I&#x27;ve done the action that has been requested, or whatever other status, sending it back to the case manager.<div class="tag">уточнено: leaison agent -&gt; liaison agent; data vault agent -&gt; data agent</div></div>
+      <div class="ru">Звучит так, будто вы заранее продумали, что может пойти не так и как это предотвратить. Итак, если собрать всё это на GCP, получится вот так. Информации много. Есть входной блок — он работает практически на Cloud Run, и сообщения запускаются через Pub/Sub; они попадают в менеджер сессий, а это ещё одна Cloud Run-функция, дальше через шлюз — в агент-менеджер. Агент-менеджер отправляет данные агенту данных, тот возвращает их агенту-менеджеру, а тот передаёт нужную информацию агенту- liaison, который возвращает агенту-менеджеру статус: «запрошенное действие выполнено» или что-то ещё.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">08:12</div>
+      <div class="en">Wow, this looks like a great open design. And you have some agents running on Agent Runtime, others handed off to Cloud Run. Is there something that makes one decision better than the other? Yeah, that&#x27;s a great question. We know that most people write code in different ways, and we want to keep an open system — that&#x27;s why we have different runtimes.<div class="tag">уточнено: great open design -&gt; открытая схема (open design)</div></div>
+      <div class="ru">Ух ты, красивая открытая схема. И часть агентов работает на Agent Runtime, а часть — на Cloud Run. Есть ли что-то, что делает один выбор лучше другого? Отличный вопрос. Люди пишут код по-разному, и мы хотим сохранять открытость системы — поэтому рантаймов несколько.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">08:33</div>
+      <div class="en">If you&#x27;re writing an agent in ADK and you want a completely managed experience with all of the security taken care of by GCP, then Agent Runtime is the place to be: it does automatic agentic identities and registration into a catalog like Agent Registry for you. But if you want a little bit more control, that would be Cloud Run, where you&#x27;re deploying a serverless runtime using a container but you don&#x27;t have to manage the container. It&#x27;s serverless, it scales as much as you need, all of those things. And if you want complete control, then GKE, Google Kubernetes Engine, becomes an option, where you have to manage a lot more — like patching the OS, registering with Workload Identity Federation for identities, and things like that. But it gives you a lot more control if that is what your use case needs.<div class="tag">уточнено: work for work workload identity federation -&gt; Workload Identity Federation</div></div>
+      <div class="ru">Если вы пишете агента на ADK и хотите полностью управляемый опыт, где безопасность берёт на себя GCP, — это Agent Runtime: он сам выдаёт агентные идентичности и регистрирует агентов в каталоге вроде Agent Registry. Если нужно чуть больше контроля — Cloud Run: вы разворачиваете serverless-рантайм в контейнере, но сам контейнер управлять не нужно. Он serverless, масштабируется как угодно. А если нужен полный контроль — GKE, Google Kubernetes Engine: там придётся взять на себя заметно больше, вроде обновления ОС, регистрации через Workload Identity Federation для идентичностей и прочего. Зато контроля заметно больше, если это требуется вашему сценарию.</div>
+    </div>
+    <div class="row">
+      <div class="ts">09:38</div>
+      <div class="en">Nice. So no matter where you&#x27;re deploying this, you could still take advantage of Google&#x27;s other security controls as well. So would you say that something like a VPC Service Controls perimeter to prevent data egress would be another way of preventing data exfiltration from your agentic architecture?</div>
+      <div class="ru">Отлично. То есть независимо от того, куда вы это деплоите, вы всё равно можете использовать другие контроли безопасности Google. Получается, периметр VPC Service Controls, который не даёт выгружать данные наружу, — это ещё один способ не допустить утечки данных из агентной архитектуры?</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">09:59</div>
+      <div class="en">Yeah, absolutely. And then some foundational controls like customer-managed encryption keys: no matter what environment you choose, you can apply that control, so you&#x27;re absolutely sure that whatever data you have is encrypted with your keys that you manage — either on GCP or outside of GCP — with additional controls. You can also turn on things like Cloud Trace and Cloud Logging so that you can get a deep understanding of what the agent is thinking, what its reasoning is, what the entire workflow is from input all the way to output, and you can see that with immutable logs in the back end. And finally you can also turn on Wiz, which is our CNAPP platform, our way for you to get — once all of this is running in runtime and also from your code repo — an exact picture of where the threats are, what is breaking in runtime from a security perspective, and you can fix them with one click.<div class="tag">уточнено: Wiz, which is our um CNAP platform -&gt; Wiz — наша CNAPP-платформа</div></div>
+      <div class="ru">Да, безусловно. И фундаментальные контроли вроде customer-managed encryption keys: независимо от выбранного окружения вы можете применить этот контроль и быть уверены, что ваши данные зашифрованы ключами, которыми управляете вы — на GCP или вне GCP, — с дополнительными контролями. Можно также включить Cloud Trace и Cloud Logging, чтобы глубоко понять, что агент думает, каковы его рассуждения, как устроен весь workflow от входа до выхода, и увидеть это по неизменяемым логам на бэкенде. И наконец, можно включить Wiz — нашу CNAPP-платформу: она даёт точную картину, где находятся угрозы, что ломается в рантайме с точки зрения безопасности, и позволяет чинить это в один клик.</div>
+    </div>
+    <div class="row">
+      <div class="ts">11:15</div>
+      <div class="en">Wow. Well, that makes it sound easy to manage security at scale, but am I expected to do all of this on day one? No, absolutely not. You have a lot to take in, for sure. So we do the classic crawl, walk, run.</div>
+      <div class="ru">Ух ты, звучит так, будто управлять безопасностью в масштабе легко. Но что, мне всё это делать в первый же день? Нет, конечно нет. Информации много, и это точно. Поэтому мы идём по классической схеме: crawl, walk, run.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">11:22</div>
+      <div class="en">Crawl to me would be deploying to Agent Runtime, where everything is managed and your agents automatically get native agentic identities assigned. So it&#x27;s easier for you to focus on the business logic and not worry about infrastructure and other things. That would be connecting to managed MCP servers, doing those deterministic pre-tool callbacks in ADK that I was talking about, enabling Model Armor, identity-aware proxies via a gateway — all of those would be blocked, and that&#x27;s already a very good system.<div class="tag">уточнено: all of those would be block -&gt; все эти контроли уже будут закрыты (фраза в оригинале огрызена)</div></div>
+      <div class="ru">Crawl — это развёртывание в Agent Runtime, где всё управляется, а агентам автоматически выдаются нативные агентные идентичности. Так вам проще сосредоточиться на бизнес-логике, а не на инфраструктуре. Сюда же — подключение к управляемым MCP-серверам, те детерминированные pre-tool callbacks в ADK, о которых я говорил, включение Model Armor, identity-aware proxy через шлюз: всё это уже закрыто, и это уже очень хорошая система.</div>
+    </div>
+    <div class="row">
+      <div class="ts">12:05</div>
+      <div class="en">And then come things like VPC Service Controls, Private Service Connect, so you don&#x27;t send any information over the internet. And if you&#x27;re choosing to run on Cloud Run or on GKE, turning on things like Binary Authorization so you can protect the container runtime. That is your run phase of this.</div>
+      <div class="ru">А дальше идут VPC Service Controls, Private Service Connect — чтобы ничего не уходило в интернет. А если вы выбираете Cloud Run или GKE — включение Binary Authorization для защиты контейнерного рантайма. Это и есть фаза run.</div>
+    </div>
+    <div class="row">
+      <div class="ts">12:22</div>
+      <div class="en">Awesome. Well, that sounds like a plan, and I could definitely see myself getting started and helping others learn how to crawl, walk, run to secure multi-agent system deployments. Yeah, absolutely. If you want to learn more, there are some resources on the screen and also in the description for you. We wrote a paper that goes into much more detail — that&#x27;s the paper in the third link over here, which talks about these architectural decisions in a lot more detail. Well, awesome. I hope everyone watching today can share what they learned on social, ask us any questions, and stay tuned for day four.</div>
+      <div class="ru">Отлично. Ну что ж, план есть, и я вполне могу начать и помочь другим разобраться, как пройти путь crawl, walk, run к безопасному развёртыванию мультиагентных систем. Конечно. Если хотите копнуть глубже — на экране и в описании есть ресурсы. Мы написали документ, который разбирает всё подробнее, — это третья ссылка справа, там подробно обсуждаются эти архитектурные решения. Отлично. Надеюсь, все сегодняшние зрители поделятся тем, что узнали, в соцсетях, зададут нам вопросы и не выключат Advent of Agents.</div>
+    </div>
+  </div>
+
+  <div class="app">
+    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
+    <table>
+      <thead>
+        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+      </thead>
+      <tbody>
+      <tr><td>[00:01]</td><td>Welcome, everyone, to day three of Advent of Agents. Today Anirudh and I are going to be talking about building secure architectures for multi-agent systems, and what that looks like on Gemini Enterprise.</td><td>Anarude -&gt; Anirudh; multi- aent -&gt; multi-agent; Gemini Enterprise (product name as spoken)</td><td>Всем привет, третий день Advent of Agents. Сегодня мы с Анирудхом говорим о построении безопасных архитектур для мультиагентных систем и о том, как это выглядит на Gemini Enterprise.</td></tr>
+      <tr><td>[00:17]</td><td>Thanks, Mika. One of the things I often see as a frustrating experience for users is trying to navigate a product page and claim a warranty on a product that&#x27;s malfunctioning. They&#x27;re so clunky. There&#x27;s so much to fill out, and the response time is a few days, maybe even weeks. And maybe agents could be a solution to fix that.</td><td>claim a warranty on a on a product -&gt; claim a warranty on a product</td><td>Спасибо, Мика. Одна из вещей, которые я постоянно наблюдаю как источник раздражения у пользователей, — это попытка пройтись по странице товара и оформить гарантию на сломанный продукт. Всё это до тошноты неудобно: нужно заполнить десяток полей, а ответ приходит через несколько дней, а то и недель. И вот тут агенты могут стать решением.</td></tr>
+      <tr><td>[01:29]</td><td>Wow. I mean, just in taking a look at it, that&#x27;s kind of a god agent. It&#x27;s going to be able to take all that information, process it, and then just make a decision all on its own with one agent. So if you had to put on the hat of a threat modeler — hearkening back to our previous session — what do you think the threats with that are?</td><td>god agent -&gt; бог-агент (сленг докладчика)</td><td>Ух ты. Смотрите — это же настоящий «агент-бог»: он берёт всю информацию, обрабатывает и принимает решение полностью сам, в одиночку. Так вот, если надеть шляпу моделировщика угроз — мы об этом говорили в прошлый раз — какие здесь угрозы?</td></tr>
+      <tr><td>[03:26]</td><td>I was very curious about your input. How do you think this newly redesigned input looks from a threat modeling and security perspective? Well, the first step you mentioned in your design of this warranty agent is that a user is going to submit a form that triggers a Cloud Run function — that&#x27;s the session manager. We want to make sure that this input is sanitized by Model Armor, that they&#x27;re not trying to inject a malicious prompt, that they&#x27;re not using harmful or dangerous language. And by passing that directly to the agent with an identity-aware proxy, you could make sure that an authorized client is the one passing the request along. Then it can go to the manager.</td><td>cloudr run -&gt; Cloud Run; the shim session manager -&gt; the session manager (менеджер сессий)</td><td>Очень интересно посмотреть на вход. Как, по-вашему, выглядит это переработанное входное звено с точки зрения моделирования угроз и безопасности? Первый шаг, который вы назвали в designs этого агента по гарантии, — пользователь отправляет форму, которая запускает Cloud Run-функцию, а это менеджер сессий. Мы хотим, чтобы Model Armor санировал этот вход: чтобы никто не пытался внедрить вредоносный промпт и не использовал опасную или вредную лексику. А если передавать эти данные агенту напрямую через identity-aware proxy, можно гарантировать, что запрос отправляет авторизованный клиент. И дальше — менеджеру.</td></tr>
+      <tr><td>[04:09]</td><td>That makes sense. So if I had to summarize everything we&#x27;ve discussed so far from an architecture perspective: the first architectural decision we made to be more secure is to split one agent into three separate, strictly scoped agents. And then we&#x27;re designing the input in such a way that no unsanitized input makes it to the agent directly. There is a session manager that is actually processing that data before it goes to the agent, and it&#x27;s sending it through a gateway — an agent gateway, which is a GCP service in this case — where it applies Model Armor policies, which is basically an agent API-level or LM-level firewall, and identity-aware proxies, to make sure it&#x27;s the right kind of identity and the right users talking to the agent.</td><td>identityware proxies -&gt; identity-aware proxies</td><td>Понятно. Если резюмировать всё, что мы обсудили, с архитектурной точки зрения: первое архитектурное решение ради безопасности — разбить одного агента на трёх отдельных агентов с жёстким scope. И дальше мы проектируем вход так, что несанированные данные до агента напрямую не доходят. Есть менеджер сессий, который обрабатывает данные до того, как они попадут к агенту, и отправляет их через шлюз — в нашем случае это Agent Gateway, сервис GCP, — где применяются политики Model Armor: по сути это файрвол на уровне API агента или уровне LM, — и identity-aware proxy, чтобы убедиться, что с агентом говорит правильный пользователь с правильной идентичностью.</td></tr>
+      <tr><td>[05:36]</td><td>Makes sense. So now that we&#x27;re sending the data to the case manager agent, the case manager agent is going to be scoped to make decisions like: okay, what is this input I have that has been sanitized? Can I find out the user&#x27;s name or ID? Can I find out their serial number of the product they&#x27;re complaining about, and maybe a purchase history if they&#x27;ve shared what date they purchased it? And send only that data — instead of all of the user&#x27;s input — through another agent gateway to the data agent, which uses that specific information. The data agent itself is also going to do checks: it&#x27;s probably going to call an ADK function before pulling, to make sure the input is those specific strings that we mentioned and not random gibberish from the case manager agent. And it looks up data specifically in the databases that it has access to, and no other agent in this scenario has access to. And again, there&#x27;s an agent gateway sitting between that data agent and the database, ensuring that it&#x27;s the right agent talking to the right database and performing the right action — it&#x27;s only doing a read action, not a write action, and things like that.</td><td>it&#x27;s only doing a read action, not a right action -&gt; not a write action</td><td>Логично. Итак, мы отправили данные агенту-менеджеру, и его scope ограничен такими решениями: ок, вот мои санированные входные данные; могу ли я узнать имя или идентификатор пользователя? Могу ли я узнать серийный номер товара, на который он жалуется, и, может быть, историю покупок — если он указал дату покупки? И отправить только эти данные, а не весь пользовательский ввод, через ещё один Agent Gateway — агенту данных, который использует именно эту информацию. Сам агент данных тоже делает проверки: скорее всего, перед чтением он вызывает функцию ADK, чтобы убедиться, что на входе именно те строки, которые мы назвали, а не случайная абракадара от агента-менеджера. И он читает данные только из тех баз, к которым имеет доступ, — ни у кого другого в этой схеме такого доступа нет. И снова между агентом данных и базой стоит Agent Gateway, который следит, чтобы нужный агент обращался к нужной базе и выполнял нужное действие: только чтение, а не запись, и так далее.</td></tr>
+      <tr><td>[06:38]</td><td>And these agents will have agentic identities — first-class identities — and not just a shared service account. And similarly, the logistics agent is going to have permissions to talk to the delivery partner&#x27;s MCP server through the gateway, which again is going to enforce all of these policies, ensuring that each agent can only do what it&#x27;s meant to do and communicate only the information required for the next agent to do its function.</td><td>first class principles -&gt; first-class identities</td><td>И у этих агентов будут агентные идентичности — полноценные, first-class, — а не общий сервисный аккаунт. Аналогично агент-логист получает права говорить с MCP-сервером службы доставки через шлюз, который снова же применяет все эти политики и следит, чтобы каждый агент делал только то, что ему положено, и передавал только ту информацию, которая нужна следующему агенту для его работы.</td></tr>
+      <tr><td>[07:15]</td><td>Now, that sounds like you&#x27;ve thought through what could go wrong and how you can prevent it. So if we had to put all of this together on GCP, this is what that would look like. It&#x27;s a lot to take in. There is the ingress block, which is pretty much running on Cloud Run, and the messages get triggered by Pub/Sub; they make it to that session manager, which is another Cloud Run function, through a gateway, into the case manager agent. The case manager agent then sends that to the data agent, which sends the data back to the case manager, which sends the required information to the liaison agent, which returns to the case manager saying: I&#x27;ve done the action that has been requested, or whatever other status, sending it back to the case manager.</td><td>leaison agent -&gt; liaison agent; data vault agent -&gt; data agent</td><td>Звучит так, будто вы заранее продумали, что может пойти не так и как это предотвратить. Итак, если собрать всё это на GCP, получится вот так. Информации много. Есть входной блок — он работает практически на Cloud Run, и сообщения запускаются через Pub/Sub; они попадают в менеджер сессий, а это ещё одна Cloud Run-функция, дальше через шлюз — в агент-менеджер. Агент-менеджер отправляет данные агенту данных, тот возвращает их агенту-менеджеру, а тот передаёт нужную информацию агенту- liaison, который возвращает агенту-менеджеру статус: «запрошенное действие выполнено» или что-то ещё.</td></tr>
+      <tr><td>[08:12]</td><td>Wow, this looks like a great open design. And you have some agents running on Agent Runtime, others handed off to Cloud Run. Is there something that makes one decision better than the other? Yeah, that&#x27;s a great question. We know that most people write code in different ways, and we want to keep an open system — that&#x27;s why we have different runtimes.</td><td>great open design -&gt; открытая схема (open design)</td><td>Ух ты, красивая открытая схема. И часть агентов работает на Agent Runtime, а часть — на Cloud Run. Есть ли что-то, что делает один выбор лучше другого? Отличный вопрос. Люди пишут код по-разному, и мы хотим сохранять открытость системы — поэтому рантаймов несколько.</td></tr>
+      <tr><td>[08:33]</td><td>If you&#x27;re writing an agent in ADK and you want a completely managed experience with all of the security taken care of by GCP, then Agent Runtime is the place to be: it does automatic agentic identities and registration into a catalog like Agent Registry for you. But if you want a little bit more control, that would be Cloud Run, where you&#x27;re deploying a serverless runtime using a container but you don&#x27;t have to manage the container. It&#x27;s serverless, it scales as much as you need, all of those things. And if you want complete control, then GKE, Google Kubernetes Engine, becomes an option, where you have to manage a lot more — like patching the OS, registering with Workload Identity Federation for identities, and things like that. But it gives you a lot more control if that is what your use case needs.</td><td>work for work workload identity federation -&gt; Workload Identity Federation</td><td>Если вы пишете агента на ADK и хотите полностью управляемый опыт, где безопасность берёт на себя GCP, — это Agent Runtime: он сам выдаёт агентные идентичности и регистрирует агентов в каталоге вроде Agent Registry. Если нужно чуть больше контроля — Cloud Run: вы разворачиваете serverless-рантайм в контейнере, но сам контейнер управлять не нужно. Он serverless, масштабируется как угодно. А если нужен полный контроль — GKE, Google Kubernetes Engine: там придётся взять на себя заметно больше, вроде обновления ОС, регистрации через Workload Identity Federation для идентичностей и прочего. Зато контроля заметно больше, если это требуется вашему сценарию.</td></tr>
+      <tr><td>[09:59]</td><td>Yeah, absolutely. And then some foundational controls like customer-managed encryption keys: no matter what environment you choose, you can apply that control, so you&#x27;re absolutely sure that whatever data you have is encrypted with your keys that you manage — either on GCP or outside of GCP — with additional controls. You can also turn on things like Cloud Trace and Cloud Logging so that you can get a deep understanding of what the agent is thinking, what its reasoning is, what the entire workflow is from input all the way to output, and you can see that with immutable logs in the back end. And finally you can also turn on Wiz, which is our CNAPP platform, our way for you to get — once all of this is running in runtime and also from your code repo — an exact picture of where the threats are, what is breaking in runtime from a security perspective, and you can fix them with one click.</td><td>Wiz, which is our um CNAP platform -&gt; Wiz — наша CNAPP-платформа</td><td>Да, безусловно. И фундаментальные контроли вроде customer-managed encryption keys: независимо от выбранного окружения вы можете применить этот контроль и быть уверены, что ваши данные зашифрованы ключами, которыми управляете вы — на GCP или вне GCP, — с дополнительными контролями. Можно также включить Cloud Trace и Cloud Logging, чтобы глубоко понять, что агент думает, каковы его рассуждения, как устроен весь workflow от входа до выхода, и увидеть это по неизменяемым логам на бэкенде. И наконец, можно включить Wiz — нашу CNAPP-платформу: она даёт точную картину, где находятся угрозы, что ломается в рантайме с точки зрения безопасности, и позволяет чинить это в один клик.</td></tr>
+      <tr><td>[11:22]</td><td>Crawl to me would be deploying to Agent Runtime, where everything is managed and your agents automatically get native agentic identities assigned. So it&#x27;s easier for you to focus on the business logic and not worry about infrastructure and other things. That would be connecting to managed MCP servers, doing those deterministic pre-tool callbacks in ADK that I was talking about, enabling Model Armor, identity-aware proxies via a gateway — all of those would be blocked, and that&#x27;s already a very good system.</td><td>all of those would be block -&gt; все эти контроли уже будут закрыты (фраза в оригинале огрызена)</td><td>Crawl — это развёртывание в Agent Runtime, где всё управляется, а агентам автоматически выдаются нативные агентные идентичности. Так вам проще сосредоточиться на бизнес-логике, а не на инфраструктуре. Сюда же — подключение к управляемым MCP-серверам, те детерминированные pre-tool callbacks в ADK, о которых я говорил, включение Model Armor, identity-aware proxy через шлюз: всё это уже закрыто, и это уже очень хорошая система.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Субтитры YouTube автоматические (auto, en-orig). Перевод восстановлен по смыслу: имена докладчиков — по странице дня, термины GCP приведены к официальным (identity-aware proxy, Workload Identity Federation, Binary Authorization, CNAPP). Ключ fix помечает спорные места распознавания.</p>
+  </div>
+
+</div>
+<script>
+const el = id => document.getElementById(id);
+
+el('tgl-en').addEventListener('change', e =>
+  document.body.classList.toggle('hide-en', !e.target.checked));
+el('tgl-ru').addEventListener('change', e =>
+  document.body.classList.toggle('hide-ru', !e.target.checked));
+el('btn-print').addEventListener('click', () => window.print());
+el('btn-mark').addEventListener('click', () => {
+  const on = !document.body.classList.contains('show-fixes');
+  document.body.classList.toggle('show-fixes', on);
+  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+{
+  "day": "day03",
+  "season": 1,
+  "season_name": "Season 1 — December 2025 (Winter Holiday Edition)",
+  "title": "Gemini 3 + ADK",
+  "summary": "Build a powerful AI Agent using Gemini 3 and ADK with native support for Google Search grounding, computer use, and real-time streaming.",
+  "tags": [
+    "Gemini 3",
+    "ADK",
+    "Google Search"
+  ],
+  "canonical_url": "https://adventofagents.com/2025/12/03",
+  "video_id": "9EGtawwvlNs",
+  "video_url": "https://www.youtube.com/watch?v=9EGtawwvlNs",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Build an AI Agent with Gemini 3 (Video)",
+      "url": "https://www.youtube.com/watch",
+      "description": "Step-by-step video tutorial"
+    },
+    {
+      "title": "Gemini 3 Agent Demo (GitHub)",
+      "url": "https://github.com/GoogleCloudPlatform/devrel-demos/tree/main/ai-ml/agent-labs/gemini-3-pro-agent-demo",
+      "description": "Working code for the AI Agent built with Gemini 3 Pro"
+    },
+    {
+      "title": "ADK Google Search Tool Docs",
+      "url": "https://google.github.io/adk-docs/tools/built-in-tools/#google-search",
+      "description": "Complete documentation for the Google Search tool"
+    },
+    {
+      "title": "Gemini 3 Announcement",
+      "url": "https://blog.google/products/gemini/gemini-3/#gemini-3",
+      "description": "Official announcement on The Keyword"
+    }
+  ],
+  "code": "uvx agent-starter-pack create -y --api-key YOUR_GEMINI_API_KEY\n\nuvx agent-starter-pack create -y --api-key YOUR_GEMINI_API_KEY\n\nuv init\nuv add google-adk\nuv add google-genai\nexport GOOGLE_API_KEY=\"YOUR_API_KEY\"\nsource .venv/bin/activate\nadk create my_agent\n\ncurl 'https://raw.githubusercontent.com/GoogleCloudPlatform/devrel-demos/refs/heads/main/ai-ml/agent-labs/gemini-3-pro-agent-demo/my_agent/agent.py' > my_agent/agent.py\nadk web\n",
+  "icon": "🚀",
+  "resource_link": "https://google.github.io/adk-docs/tools/built-in-tools/#google-search",
+  "code_snippets": [
+    {
+      "filename": "One liner with Agent Starter Pack",
+      "language": "bash",
+      "code": "uvx agent-starter-pack create -y --api-key YOUR_GEMINI_API_KEY"
+    },
+    {
+      "filename": "Using ADK CLI",
+      "language": "bash",
+      "code": "uv init\nuv add google-adk\nuv add google-genai\nexport GOOGLE_API_KEY=\"YOUR_API_KEY\"\nsource .venv/bin/activate\nadk create my_agent"
+    },
+    {
+      "filename": "Download sample and run locally",
+      "language": "bash",
+      "code": "curl 'https://raw.githubusercontent.com/GoogleCloudPlatform/devrel-demos/refs/heads/main/ai-ml/agent-labs/gemini-3-pro-agent-demo/my_agent/agent.py' > my_agent/agent.py\nadk web"
+    }
+  ],
+  "description": "**Day 3 of Google's Advent of Agents**\n\nGemini 3 is Google's most intelligent model yet. In just a few minutes, you can build a powerful AI Agent using Gemini 3 and ADK with native, day-one support for its most advanced capabilities.\n\n**What you get with ADK and Gemini 3:**\n\n- **Google Search grounding:** Native access to real-time web data\n- **Computer use:** Agents that navigate and interact with UIs\n- **Live API:** Real-time streaming for voice and video agents\n- **Native observability:** Full visibility into Gemini calls, tool use, and agent reasoning\n\n**Get started with just one command:**\n\n```bash\nuvx agent-starter-pack create -y --api-key YOUR_GEMINI_API_KEY\n```\n\nNo need to code from scratch. Use Gemini CLI or Antigravity IDE to generate your agent. The agent-starter-pack includes an ADK cheatsheet to guide you through everything.\n\n**Resources:**\n\n- Video tutorial to build an AI Agent with Gemini 3 and ADK\n- GitHub repo with working code\n- Complete docs for the ADK Google Search Tool"
+}

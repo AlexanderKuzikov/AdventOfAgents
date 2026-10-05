@@ -1,0 +1,53 @@
+{
+  "day": "day04",
+  "season": 1,
+  "season_name": "Season 1 — December 2025 (Winter Holiday Edition)",
+  "title": "Source-Based Deployment",
+  "summary": "Deploy your agents directly from source code with Agent Engine - no more serialization headaches.",
+  "tags": [
+    "Agent Engine",
+    "Deployment",
+    "ADK"
+  ],
+  "canonical_url": "https://adventofagents.com/2025/12/04",
+  "video_id": "8RjzMG3BKA0",
+  "video_url": "https://www.youtube.com/watch?v=8RjzMG3BKA0",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Source-Based Deployment Tutorial (Video)",
+      "url": "https://youtu.be/8RjzMG3BKA0",
+      "description": "Step-by-step video walkthrough"
+    },
+    {
+      "title": "Agent Starter Pack",
+      "url": "https://goo.gle/agent-starter-pack",
+      "description": "Quickstart tool for building and deploying agents"
+    },
+    {
+      "title": "Agent Engine Deployment Docs",
+      "url": "https://cloud.google.com/products/agent-engine#deploy",
+      "description": "Official documentation for Agent Engine deployment"
+    }
+  ],
+  "code": "uvx agent-starter-pack create my-agent -a adk_base -d agent_engine\n\nuvx agent-starter-pack enhance --d agent_engine\n\nuvx agent-starter-pack create my-agent -a adk_base -d agent_engine\ncd my-agent && make deploy\n\nuvx agent-starter-pack enhance --d agent_engine\n",
+  "icon": "🚀",
+  "resource_link": "https://cloud.google.com/products/agent-engine",
+  "code_snippets": [
+    {
+      "filename": "Create new project with Agent Starter Pack",
+      "language": "bash",
+      "code": "uvx agent-starter-pack create my-agent -a adk_base -d agent_engine\ncd my-agent && make deploy"
+    },
+    {
+      "filename": "Enhance existing ADK agent",
+      "language": "bash",
+      "code": "uvx agent-starter-pack enhance --d agent_engine"
+    }
+  ],
+  "description": "**Day 4 of Google's Advent of Agents**\n\nAgent Engine now supports source-based deployment. Your source code deploys directly to production, eliminating common deployment friction.\n\n**No more dealing with:**\n\n- Pickle errors\n- Serialization nightmares\n- Module path headaches\n\nWhat runs locally now runs in production. The gap between development and deployment is gone.\n\n**Get started with Agent Starter Pack:**\n\nFor a new project:\n\n```bash\nuvx agent-starter-pack create my-agent -a adk_base -d agent_engine\n```\n\nAlready have an ADK agent? Use enhance:\n\n```bash\nuvx agent-starter-pack enhance --d agent_engine\n```\n\nThen run `make deploy` and you're done.\n\n**Resources:**\n\n- Video walkthrough of source-based deployment\n- Agent Starter Pack repository\n- Agent Engine deployment documentation",
+  "video_available": false
+}

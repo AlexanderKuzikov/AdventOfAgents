@@ -1,0 +1,227 @@
+[
+  {
+    "t": 0,
+    "en": "back to the advent of agents.",
+    "ru": ""
+  },
+  {
+    "t": 4,
+    "en": "Today, we are going to talk about cross",
+    "ru": ""
+  },
+  {
+    "t": 7,
+    "en": "framework orchestration using the A2A",
+    "ru": ""
+  },
+  {
+    "t": 10,
+    "en": "protocol. Meet John. He is an AI developer living in a comfortable single language ordinary",
+    "ru": ""
+  },
+  {
+    "t": 21,
+    "en": "world. He builds everything in Python. He faces a call to adventure.",
+    "ru": ""
+  },
+  {
+    "t": 30,
+    "en": "His reasoning engine needs to trigger an",
+    "ru": ""
+  },
+  {
+    "t": 33,
+    "en": "enterprise execution service natively written in Go. Enter Sue. She owns the server. And her stack is entirely Go.",
+    "ru": ""
+  },
+  {
+    "t": 47,
+    "en": "How do they even talk?",
+    "ru": ""
+  },
+  {
+    "t": 50,
+    "en": "His first instinct might be to rewrite",
+    "ru": ""
+  },
+  {
+    "t": 54,
+    "en": "both services into one monolith. But that's the trap. A framework silo is keeping them apart.",
+    "ru": ""
+  },
+  {
+    "t": 62,
+    "en": "Instead of rebuilding everything,",
+    "ru": ""
+  },
+  {
+    "t": 65,
+    "en": "John meets the mentor, the A2A 1.0 protocol,",
+    "ru": ""
+  },
+  {
+    "t": 72,
+    "en": "agent to agent.",
+    "ru": ""
+  },
+  {
+    "t": 75,
+    "en": "A2A establishes a universal network",
+    "ru": ""
+  },
+  {
+    "t": 79,
+    "en": "contract. Instead of him building bespoke brittle REST APIs for",
+    "ru": ""
+  },
+  {
+    "t": 86,
+    "en": "every single tool handoff, A2A provides a strict JSON envelope.",
+    "ru": ""
+  },
+  {
+    "t": 93,
+    "en": "Because the payload is strictly standardized, it seamlessly bridges his Python reasoning with her Go execution. The silos are broken.",
+    "ru": ""
+  },
+  {
+    "t": 107,
+    "en": "To cross the threshold, he must let his framework talk.",
+    "ru": ""
+  },
+  {
+    "t": 113,
+    "en": "In Python, he uses LangGraph to aggregate his task and format it",
+    "ru": ""
+  },
+  {
+    "t": 121,
+    "en": "strictly into universal A2A 1.0 JSON",
+    "ru": ""
+  },
+  {
+    "t": 125,
+    "en": "envelope. This is then received by Sue's system",
+    "ru": ""
+  },
+  {
+    "t": 133,
+    "en": "and processed by the Gemini 3.1 Pro.",
+    "ru": ""
+  },
+  {
+    "t": 137,
+    "en": "Right? I'm sending the response back to",
+    "ru": ""
+  },
+  {
+    "t": 140,
+    "en": "John's Python LangGraph orchestration",
+    "ru": ""
+  },
+  {
+    "t": 143,
+    "en": "server. Now, let's look at some code. To keep this particular",
+    "ru": ""
+  },
+  {
+    "t": 151,
+    "en": "piece that John has, right? He uses the",
+    "ru": ""
+  },
+  {
+    "t": 156,
+    "en": "agent state protocol, the agent state object within the A2A protocol, which has an objective A2A payload final result. He uses a reasoning model and there's a dispatch node.",
+    "ru": ""
+  },
+  {
+    "t": 172,
+    "en": "These are key frameworks in the workflow. So, the workflow starts with an agent state, which is used to secure uh the service messages that need to be sent across in the A2A protocol.",
+    "ru": ""
+  },
+  {
+    "t": 185,
+    "en": "You add a node in the workflow, uh and then you set an entry point into the reasoning, right? You add edges and",
+    "ru": ""
+  },
+  {
+    "t": 194,
+    "en": "then you add the end statement to make sure you're building that workflow graph. Right? Now, this is where John securely and dynamically loads his Gemini API key",
+    "ru": ""
+  },
+  {
+    "t": 209,
+    "en": "from a local ENV file using python-dotenv. No hardcoded credentials. It's secure,",
+    "ru": ""
+  },
+  {
+    "t": 217,
+    "en": "clean, and ready for deployment. And then, he uses the graph that we created above, like the very simple graph, and sends the state to Sue's flow server.",
+    "ru": ""
+  },
+  {
+    "t": 232,
+    "en": "Flipping on, we look at the code that Sue has to receive John's",
+    "ru": ""
+  },
+  {
+    "t": 239,
+    "en": "payload, right? We face the ordeal delegating the task securely across the network to her",
+    "ru": ""
+  },
+  {
+    "t": 247,
+    "en": "framework. Her Go execution service listens for incoming A2A payloads, right?",
+    "ru": ""
+  },
+  {
+    "t": 256,
+    "en": "It passes the JSON extract,",
+    "ru": ""
+  },
+  {
+    "t": 259,
+    "en": "interprets his task, and returns a rich, step-by-step execution plan using the Gemini 3.1 Pro",
+    "ru": ""
+  },
+  {
+    "t": 268,
+    "en": "preview model.",
+    "ru": ""
+  },
+  {
+    "t": 272,
+    "en": "And the reward is abstracted away from John, right? And he just receives the reasoning output that is handled by",
+    "ru": ""
+  },
+  {
+    "t": 283,
+    "en": "Go by Sue's Go server. Let's actually trigger the journey. First, we boot her Go execution platform. Notice the beautiful, full-width header",
+    "ru": ""
+  },
+  {
+    "t": 297,
+    "en": "telling us they're listening. Now, let's trigger his Zangra orchestrator. The Python console immediately prints stunning panels. We see the live spinner spinning, and then boom! Dispatch success. His server instantly displays the raw JSON payload",
+    "ru": ""
+  },
+  {
+    "t": 319,
+    "en": "arriving. Generates the migration plan, and then returns it. Clean, decoupled, and beautifully polished. This is the hero's journey of A2A,",
+    "ru": ""
+  },
+  {
+    "t": 331,
+    "en": "decoupled reasoning from execution,",
+    "ru": ""
+  },
+  {
+    "t": 334,
+    "en": "bridge any two heterogeneous AI microservices using the universal A2A 1.0 protocol.",
+    "ru": ""
+  },
+  {
+    "t": 343,
+    "en": "You can find the copy-pasteable code snippet in the Happy coding and see you tomorrow. Thank you.",
+    "ru": ""
+  }
+]

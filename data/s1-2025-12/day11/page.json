@@ -1,0 +1,52 @@
+{
+  "day": "day11",
+  "season": 1,
+  "season_name": "Season 1 — December 2025 (Winter Holiday Edition)",
+  "title": "Google Managed MCP",
+  "summary": "Connect Agents to Google Services with Managed MCP.",
+  "tags": [
+    "MCP",
+    "ADK",
+    "Google Cloud",
+    "BigQuery",
+    "Google Maps",
+    "GKE",
+    "Compute Engine"
+  ],
+  "canonical_url": "https://adventofagents.com/2025/12/11",
+  "video_id": "wzccErUYhTI",
+  "video_url": "https://www.youtube.com/watch?v=wzccErUYhTI",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Launch My Bakery GitHub Example",
+      "url": "https://github.com/google/mcp/tree/main/examples/launchmybakery",
+      "description": "Explore the code for the \"Launch My Bakery\" demo."
+    },
+    {
+      "title": "Announcing Official MCP Support for Google Services",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-official-mcp-support-for-google-services",
+      "description": "Read the official announcement about MCP support for Google services."
+    },
+    {
+      "title": "Kaggle Whitepaper: Agent Tools and Interoperability with MCP",
+      "url": "https://www.kaggle.com/whitepaper-agent-tools-and-interoperability-with-mcp",
+      "description": "Learn more about agent tools and interoperability with MCP in this whitepaper."
+    }
+  ],
+  "code": "",
+  "icon": "☁️",
+  "resource_link": "",
+  "code_snippets": [
+    {
+      "filename": "bakery_agent.py",
+      "language": "python",
+      "code": "import os\nfrom google.genai import types\nfrom google.genai.adk import Agent\nfrom google.genai.mcp import RemoteMCPServer\n\n# 1. Define the Fully-Managed Remote MCP Servers\n#    These endpoints are now natively supported by Google's infrastructure\nbigquery_mcp = RemoteMCPServer(\n    url=\"https://mcp.googleapis.com/bigquery\",\n    capabilities=[\"schema_read\", \"query_execute\"],\n    auth_token=os.getenv(\"GOOGLE_CLOUD_TOKEN\") # Uses standard IAM\n)\n\nmaps_mcp = RemoteMCPServer(\n    url=\"https://mcp.googleapis.com/maps\",\n    capabilities=[\"places_search\", \"routing\", \"elevation\"],\n    auth_token=os.getenv(\"GOOGLE_MAPS_API_KEY\")\n)\n\n# 2. Initialize the ADK Agent with MCP Tools\n#    The agent can now \"see\" your enterprise data and the real world\nbakery_agent = Agent(\n    model=\"gemini-3-pro\",\n    tools=[bigquery_mcp, maps_mcp],\n    system_instruction=\"\"\"\n    You are a retail expansion scout.\n    1. Query BigQuery to find high-revenue demographics.\n    2. Use Google Maps to find available locations near competitors.\n    3. Synthesize a recommendation for a new bakery location.\n    \"\"\"\n)\n\n# 3. Run the Agent\n#    Gemini 3 plans the multi-step execution automatically\nresponse = bakery_agent.run(\n    \"Find a location in Austin, TX with high disposable income and low competition.\"\n)\nprint(response.text)\n"
+    }
+  ],
+  "description": "**Day 11 of Google's Advent of Agents**\n\n**Connect Agents to Google Services with Managed MCP.** While MCP as described in [Day 2 Kaggle AI Agent's intensive course Whitepaper](https://www.kaggle.com/whitepaper-agent-tools-and-interoperability-with-mcp) has standardized how models connect to tools, the burden of maintaining community-built servers often leads to fragile, unmanaged implementations. Google’s new **Managed MCP support** eliminates this overhead by upgrading our existing API infrastructure into a unified, remote layer across Google Cloud services.\n\n**A Unified, Governed Interface.** Instead of parsing brittle CLI output, your agents now have structured, discoverable interfaces for complex systems:\n\n-   **Google Maps:** Provides \"Grounding Lite\" to give agents fresh geospatial data and routing details, preventing hallucinations about physical locations.\n-   **BigQuery:** Enables agents to interpret schemas and execute queries in-place without moving massive datasets into the context window, reducing latency and security risks.\n-   **GKE & Compute Engine:** Exposes infrastructure management (provisioning, resizing, diagnosing) as discoverable tools, allowing for true \"Day-2\" autonomous operations.\n\n**Security built-in, not bolted on.** Because these are managed endpoints, you don't lose control. Administrators can govern access via **Google Cloud IAM** and defend against indirect prompt injection using **Google Cloud Model Armor**.\n\nExplore the code for the [Launch My Bakery](https://github.com/google/mcp/tree/main/examples/launchmybakery) demo.\n\n**Resources:**\n\n- Read the blog post [Announcing Official MCP Support for Google Services](https://cloud.google.com/blog/products/ai-machine-learning/announcing-official-mcp-support-for-google-services?e=48754805)\n- Read the [Kaggle Whitepaper: Agent Tools and Interoperability with MCP](https://www.kaggle.com/whitepaper-agent-tools-and-interoperability-with-mcp)\n- Check out the [Launch My Bakery GitHub Example](https://github.com/google/mcp/tree/main/examples/launchmybakery)",
+  "video_available": false
+}

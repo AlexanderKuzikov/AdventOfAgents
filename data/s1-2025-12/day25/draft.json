@@ -1,0 +1,172 @@
+[
+  {
+    "t": 1,
+    "en": "All right. So on December 25th, we are",
+    "ru": ""
+  },
+  {
+    "t": 4,
+    "en": "going to bring to you the new agent designer which is now available to you in Vert.Ex AI console. This is really",
+    "ru": ""
+  },
+  {
+    "t": 11,
+    "en": "just a graphical user interface that let you build an ADK agent. So instead of writing the configuration by hand or putting it through uh some CLI tool or whatever, this is just a guey to give you access to the same set of configuration where you can put together your instructions and the model and some",
+    "ru": ""
+  },
+  {
+    "t": 30,
+    "en": "tools via MCP servers today. Put them together into an actual ADK agent. You can get the code as a download. Uh you can run it right here in the console and you'll see a familiar type of interface. Um, this is putting all of our parts and pieces together, reducing the barrier of entry, and in no time, you have a multi- aent system ready to go. Let's review",
+    "ru": ""
+  },
+  {
+    "t": 53,
+    "en": "what we did in the 25 days of agents. YL config, Gemini 3 Pro, sourcebased deployment, production, observability, ADK in your idees, code execution, and",
+    "ru": ""
+  },
+  {
+    "t": 63,
+    "en": "sandboxes, context as a view across primitives.",
+    "ru": ""
+  },
+  {
+    "t": 68,
+    "en": "We've got time traveling debugger. We've got memory management managed MCP servers at Google scale. We got live mode deep dives. We got the interactions API launch. We're connecting your agents with the A2A protocol. We launched the A2 UI. We have a langraph implementation. We have Gemini Flash3 launch. We have tool management. We have",
+    "ru": ""
+  },
+  {
+    "t": 90,
+    "en": "Gemini Enterprise oneliner to deploy and",
+    "ru": ""
+  },
+  {
+    "t": 93,
+    "en": "register. We've got A2A extensions deep",
+    "ru": ""
+  },
+  {
+    "t": 96,
+    "en": "dive. We've got the Kaggle Capstone winners. We've got a deep dive on security and guard rails. Deep dive on durability with restate and ADK. And you",
+    "ru": ""
+  },
+  {
+    "t": 107,
+    "en": "can A2AFI anything. We also have a",
+    "ru": ""
+  },
+  {
+    "t": 111,
+    "en": "couple of fun Easter egg. If you go down to the bottom, you can triple click and TypeScript launch day announcement for ADK. You can also input the Konami code",
+    "ru": ""
+  },
+  {
+    "t": 122,
+    "en": "or go up to the Christmas tree and you",
+    "ru": ""
+  },
+  {
+    "t": 126,
+    "en": "can click five times for a comic book",
+    "ru": ""
+  },
+  {
+    "t": 130,
+    "en": "covering many of the details of how to",
+    "ru": ""
+  },
+  {
+    "t": 133,
+    "en": "think about and build ADK agents. A lot",
+    "ru": ""
+  },
+  {
+    "t": 137,
+    "en": "of the content in here was covered in our course was also covered in the Kaggle 5day intensive course. So you're getting the same materials in a lot of different formats curated for you by people in the field who are experts who are doing this dayto-day with our customers helping them find success.",
+    "ru": ""
+  },
+  {
+    "t": 156,
+    "en": "We want you to find that success. We want you to be the hero of your company as a 2x or 10x or 100x engineer or",
+    "ru": ""
+  },
+  {
+    "t": 164,
+    "en": "product manager or both because we're all wearing all the hats these days.",
+    "ru": ""
+  },
+  {
+    "t": 170,
+    "en": "All right, please review some of these materials. anything that you missed, go review the Kaggle 5day course. Go deep",
+    "ru": ""
+  },
+  {
+    "t": 177,
+    "en": "dive on whatever topic that you think is valuable, be it UX or automating your",
+    "ru": ""
+  },
+  {
+    "t": 182,
+    "en": "daily job or coming up with the next business idea that's going to move your",
+    "ru": ""
+  },
+  {
+    "t": 188,
+    "en": "company forward. Um, we're here to help you. We're here to provide this platform. We want to see the awesome things that you make. Uh, I know that 2026 is going to be a big year and uh",
+    "ru": ""
+  },
+  {
+    "t": 200,
+    "en": "maybe they're just all big years for Dwa. Um, but uh we're we're here for it",
+    "ru": ""
+  },
+  {
+    "t": 205,
+    "en": "and we want to see what you build. Please share it with us and uh thank you very much. Here's the outros. >> You did it. 25 days zero to production.",
+    "ru": ""
+  },
+  {
+    "t": 216,
+    "en": "This is the grand finale. Thank you all for spending the last month with us. We moved beyond prompts to building real agents. We gave them brains, hands, shields. We mastered the stack using agent engine, multimodal, live API, and A2A protocols. We closed the gap with enterprise hardening and durable execution. The calendar is complete, but the build has just begun. The repo and guys are yours. Now go build the future. Happy holidays and happy coding. >> Hey, hey, it's here with Leona, which is",
+    "ru": ""
+  },
+  {
+    "t": 247,
+    "en": "just interested in playing with me. Wanted to wish you merry Christmas and happy holidays. 2026 is going to be even more chaotic. So, let's get ready for it and hope you",
+    "ru": ""
+  },
+  {
+    "t": 259,
+    "en": "have a nice rest because again uh it's",
+    "ru": ""
+  },
+  {
+    "t": 262,
+    "en": "going to be a lot of really exciting things. >> Hey everyone, thanks so much for being part of the advent of agents uh calendar",
+    "ru": ""
+  },
+  {
+    "t": 271,
+    "en": "program with us. I know keeping up with models is very challenging. You know, the benchmarks feel like they change weekly if not daily. Um but even the processes right the frameworks and protocols that you need to build AI agents um to production we know it's not",
+    "ru": ""
+  },
+  {
+    "t": 286,
+    "en": "easy. So hopefully this was valuable and useful and you know we hope to do more of these type of uh content for you also. It was really fun. I learned a lot and I hope you did too. >> Hey everyone thank you for joining advent of agents. It was great having you there. Uh super exciting 25 days.",
+    "ru": ""
+  },
+  {
+    "t": 306,
+    "en": "The idea was to show what agents are capable of and what you can do with agents. More to come in 2026. Stay tuned",
+    "ru": ""
+  },
+  {
+    "t": 314,
+    "en": "and thank you so much for joining in. >> Hey, congratulations. You were able to make it to the end of Advent of Agents. I'm really glad you were on the ride with us. Uh it was fun to curate those things. I learned a lot. I hope you learned a lot. Um we're trying to build the skills we need for this new world. The new world's coming fast. Um and we're on top of things because we're thinking about it. We're playing. We're learning. We're putting things together.",
+    "ru": ""
+  },
+  {
+    "t": 337,
+    "en": "Uh we're going to keep doing this and uh hope you can keep learning along with us.",
+    "ru": ""
+  }
+]

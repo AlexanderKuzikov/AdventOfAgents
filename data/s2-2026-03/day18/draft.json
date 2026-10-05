@@ -1,0 +1,127 @@
+[
+  {
+    "t": 0,
+    "en": "Hi everyone, I'm Cheric from Google Workspace. Yesterday we demonstrated how to build and use no-code agents with access to Workspace connectors in Gemini Enterprise. Today I will show you how to build, deploy, and access Workspace enabled ADK",
+    "ru": ""
+  },
+  {
+    "t": 17,
+    "en": "agents from anywhere. In this example, we will extend our",
+    "ru": ""
+  },
+  {
+    "t": 22,
+    "en": "setup from yesterday and use Vertex AI Agent Engine in the Gemini Enterprise web app. But we could easily change to Cloud Run",
+    "ru": ""
+  },
+  {
+    "t": 32,
+    "en": "and Google Chat or Gmail, for example.",
+    "ru": ""
+  },
+  {
+    "t": 36,
+    "en": "To build our new custom agents, let's go to the Google Cloud console and open the Cloud Shell to begin our technical configuration. The code is published on GitHub, so in the shell we clone the necessary repository, check out the necessary branch, and navigate to the agent directory. It is a Python project and the main code is located in the agent.py",
+    "ru": ""
+  },
+  {
+    "t": 62,
+    "en": "It's a typical LLM agent with instructions and tools. There's one function tool that uses Calendar APIs to create a new event, and there is the Google managed Vertex",
+    "ru": ""
+  },
+  {
+    "t": 75,
+    "en": "AI Search MCP that can search in our",
+    "ru": ""
+  },
+  {
+    "t": 78,
+    "en": "Gemini Enterprise application data stores. Regarding security, all tools rely on OAuth access tokens that are retrieved at runtime from the tool context. Now you know a bit more about the agent, let's run a few commands to enable the required APIs and the Vertex AI Search MCP.",
+    "ru": ""
+  },
+  {
+    "t": 98,
+    "en": "From there we can start building and deploying the agent to the Vertex AI Agent Engine with UV commands.",
+    "ru": ""
+  },
+  {
+    "t": 106,
+    "en": "It will take a while, so in the meantime let's focus on access. We need to enable the Vertex AI reasoning engine service account to access the data stores we have set in",
+    "ru": ""
+  },
+  {
+    "t": 117,
+    "en": "Gemini Enterprise. Next, let's configure OAuth for our GCP",
+    "ru": ""
+  },
+  {
+    "t": 123,
+    "en": "project. Navigate to the branding section of the Google Cloud project, and there we need to define its name, type, and contact information.",
+    "ru": ""
+  },
+  {
+    "t": 147,
+    "en": "Under data access, we manually add the",
+    "ru": ""
+  },
+  {
+    "t": 150,
+    "en": "scopes that are used by our custom agent. In this case, we need Google Cloud Platform and Calendar.",
+    "ru": ""
+  },
+  {
+    "t": 158,
+    "en": "With scopes defined, we can generate the OAuth credentials. The type is web application. We need a name, and we need to add the",
+    "ru": ""
+  },
+  {
+    "t": 169,
+    "en": "two authorized redirect URIs required by",
+    "ru": ""
+  },
+  {
+    "t": 172,
+    "en": "Gemini Enterprise. We can now start registering the agent from the Gemini Enterprise console.",
+    "ru": ""
+  },
+  {
+    "t": 180,
+    "en": "You go under agents, select add agent,",
+    "ru": ""
+  },
+  {
+    "t": 183,
+    "en": "and choose a custom agent via agent",
+    "ru": ""
+  },
+  {
+    "t": 186,
+    "en": "engine. We'll start the setup by providing the authorization details. The authorization name is used by your agent to retrieve the tokens in the state properties. Then it's mostly about setting the newly created OAuth client IDs and redirect URIs. The authorization URI follows a specific format that can be retrieved in the doc, and it includes the client ID, so we need to add it here. Once done, we can set the name and description of the agent. At this point, the only missing piece is",
+    "ru": ""
+  },
+  {
+    "t": 221,
+    "en": "the reasoning engine path. Let's see if the agent was deployed from our Cloud Shell.",
+    "ru": ""
+  },
+  {
+    "t": 232,
+    "en": "And it is. The value we need is highlighted in green, so we can copy and paste easily to complete the agent registration uh directly in Gemini Enterprise. With that, the Advent agent should be accessible from the Gemini Enterprise web app. Under agents, uh you can see it's listed as an agent from the organization. We can pin it and start a new chat directly from the menu. Let's test it out by asking a question about Drive files. And we got an answer. It successfully",
+    "ru": ""
+  },
+  {
+    "t": 265,
+    "en": "called the Vertex AI Search MCP.",
+    "ru": ""
+  },
+  {
+    "t": 268,
+    "en": "Now, let's see if I can create a calendar event using the Workspace API in the function tool. And no errors. And if I go to the calendar, I can see",
+    "ru": ""
+  },
+  {
+    "t": 281,
+    "en": "the new event as expected. All right, that's all I had for you today. I'm dropping links and all the resources in case you want to replicate and learn more about this capability. I hope you enjoyed it. Bye, everyone.",
+    "ru": ""
+  }
+]

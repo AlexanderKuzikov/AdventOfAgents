@@ -1,0 +1,72 @@
+[
+  {
+    "t": 2,
+    "en": "Hi, I'm Akoncha. Hardcoded API keys are a legacy liability. If your source code leaks, your project's compromised. Today, we're ditching hardcoded API keys for centralized tool governance. Let's first look at why this actually matters.",
+    "ru": ""
+  },
+  {
+    "t": 19,
+    "en": "In the old secrets and source world, your API keys were basically plain text in your code. We'll see an example of this in our source code in a second. This means that you're always one accidental get push away from a security breach. But with Identity and Registry, there's no strings to steal. Your code doesn't have the password because it is the authorized identity. Then there's the maintenance aspect. We've all had an app break because an expired it because",
+    "ru": ""
+  },
+  {
+    "t": 43,
+    "en": "of an expired API key. In the new way, rotation is automatic. The registry in Google Cloud handle the token refreshes in the background while you work. And finally, think about admin control. If a developer leaves the team or a project ends, you don't have to go around changing every API key and redeploying all of your apps. The admin would just update the IAM policy in the registry, and access is revoked instantly without touching a single line of your source code. Now,",
+    "ru": ""
+  },
+  {
+    "t": 67,
+    "en": "let's move from the theory and look at the actual code that makes this handshake happen.",
+    "ru": ""
+  },
+  {
+    "t": 79,
+    "en": "Let's first begin by looking at our requirements file. In this file, we ensure that the environment has the necessary libraries for the Google Cloud handshake to happen. Now, let's look at our setup file.",
+    "ru": ""
+  },
+  {
+    "t": 91,
+    "en": "In this file, this is where the admin / infrastructure script lives. It handles the governance by setting up the identity, permissions, and demo data. We'll run this once in our terminal to register our environment in just 1 second. Now, let's look at our main.py file.",
+    "ru": ""
+  },
+  {
+    "t": 108,
+    "en": "This is the developer script. It demonstrates the no secret implementation by fetching the tool dynamically. See line six, that's the old way, hardcoding API and project IDs.",
+    "ru": ""
+  },
+  {
+    "t": 119,
+    "en": "It's a massive security risk. If this file leaks, your project will be compromised. We're now going to shift to use centralized tool governance. From lines 12 through 19, we perform a dynamic handshake with the cloud registry. There are no strings to steal here. The credentials live in the environment, not the code. This gives us automatic rotation. Because we use google.auth.default on line 14, the registry handles token refreshes behind the scenes. No more manual updates or",
+    "ru": ""
+  },
+  {
+    "t": 143,
+    "en": "expired keys. Finally, we have full admin control. On line 24, the developer just requests the admin-v2 tool. The admin can revoke access at any time in the cloud console without touching this code. Now, let's run our code.",
+    "ru": ""
+  },
+  {
+    "t": 158,
+    "en": "First, bash setup.sh.",
+    "ru": ""
+  },
+  {
+    "t": 165,
+    "en": "percent Here.",
+    "ru": ""
+  },
+  {
+    "t": 171,
+    "en": "We're first going to run bash s setup.sh. And we see that we have set up our registry data, and we've authorized our environment registry, and now we're going to run python main.py.",
+    "ru": ""
+  },
+  {
+    "t": 184,
+    "en": "And this allows us to uh pull our tool context from cloud registry, and we have loaded the admin-v2 tool as well for our",
+    "ru": ""
+  },
+  {
+    "t": 191,
+    "en": "given project ID, and we verified that our registry is active. All of this results in a successful connection, access granted, and the fact that we pulled live data with zero hardcoded secrets. This is how you scale securely.",
+    "ru": ""
+  }
+]

@@ -1,0 +1,59 @@
+{
+  "day": "day10",
+  "season": 1,
+  "season_name": "Season 1 — December 2025 (Winter Holiday Edition)",
+  "title": "Big Context ≠ Better Memory",
+  "summary": "Long-running agent sessions face two enemies: latency and \"lost in the middle\" syndrome. The ADK solves this with Context Caching and Context Compaction.",
+  "tags": [
+    "Memory",
+    "ADK",
+    "Context Caching",
+    "Context Compaction",
+    "Memory"
+  ],
+  "canonical_url": "https://adventofagents.com/2025/12/10",
+  "video_id": "L3eKHw9df-g",
+  "video_url": "https://www.youtube.com/watch?v=L3eKHw9df-g",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Context Compaction",
+      "url": "https://google.github.io/adk-docs/context/compaction/",
+      "description": "Learn how to compress history to prevent context rot."
+    },
+    {
+      "title": "Context Caching",
+      "url": "https://google.github.io/adk-docs/context/caching/",
+      "description": "Learn how to cache heavy instructions for better performance."
+    },
+    {
+      "title": "Context Compaction Explained",
+      "url": "https://x.com/Saboo_Shubham_/status/1978286461607911617",
+      "description": "A visual explanation of context compaction."
+    },
+    {
+      "title": "ADK Context Caching & Compaction Infographic",
+      "url": "https://adventofagents.com/aoa-day10-context-caching-compaction.png",
+      "description": "NotebookLM generated infographic summarizing ADK context caching & compaction."
+    },
+    {
+      "title": "Additional Reading: The Context Trap Every Agent Builder Falls Into",
+      "url": "https://www.theunwindai.com/p/the-context-trap-every-agent-builder-falls-into",
+      "description": "An article discussing common context management pitfalls every agent builder faces."
+    }
+  ],
+  "code": "",
+  "icon": "🧠",
+  "resource_link": "",
+  "code_snippets": [
+    {
+      "filename": "context_config.py",
+      "language": "python",
+      "code": "from google.adk.apps import App, EventsCompactionConfig\nfrom google.adk.agents.context_cache_config import ContextCacheConfig\n\n# Configure your App with both Caching and Compaction\napp = App(\n    name='long-memory-agent',\n    root_agent=my_agent,\n    \n    # 1. Cache heavy instructions\n    context_cache_config=ContextCacheConfig(\n        min_tokens=2048,    # Only cache if prompt is heavy\n        ttl_seconds=1800,   # Keep cache alive for 30 mins\n        cache_intervals=10  # Refresh after 10 uses\n    ),\n\n    # 2. Compress history to prevent \"Context Rot\"\n    events_compaction_config=EventsCompactionConfig(\n        compaction_interval=3, # Summarize every 3 turns\n        overlap_size=1         # Keep 1 turn of context overlap\n    )\n)"
+    }
+  ],
+  "description": "**Day 10 of Google's Advent of Agents**\n\nLong-running agent sessions face two enemies: latency and \"lost in the middle\" syndrome. As conversation history grows, re-sending massive system instructions becomes expensive, and the model struggles to prioritize earlier rules against recent noise.\n\nThe ADK solves this with a two-prong approach. First, [Context Caching](https://google.github.io/adk-docs/context/caching/) allows you to cache the immutable parts of your prompt (system instructions, few-shot examples) so you don't pay the compute cost on every turn. Second, [Context Compaction](https://google.github.io/adk-docs/context/compaction/) prevents history bloat.\n\nInstead of appending raw messages indefinitely, the ADK uses a sliding window to summarize older events into a concise \"memory\" block while keeping recent interactions verbatim for precision."
+}

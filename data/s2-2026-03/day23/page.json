@@ -1,0 +1,55 @@
+{
+  "day": "day23",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "Model Armor: AI Security Firewall for Agents",
+  "summary": "Protect AI agents from prompt injection, jailbreaks, and data leakage using Google Cloud Model Armor as a defense-in-depth security layer.",
+  "tags": [
+    "Model Armor",
+    "Security",
+    "GCP",
+    "Agent Safety"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/23",
+  "video_id": "Wrxg8OsquEY",
+  "video_url": "https://www.youtube.com/watch?v=Wrxg8OsquEY",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Model Armor Documentation",
+      "url": "https://docs.cloud.google.com/model-armor/overview",
+      "description": "Complete guide to Google Cloud Model Armor for AI security."
+    },
+    {
+      "title": "GitHub Project Repository",
+      "url": "https://github.com/lekan2001/advent-of-agents-model-armor.git",
+      "description": "Working implementation of Model Armor with ADK agents."
+    },
+    {
+      "title": "ADK Documentation",
+      "url": "https://google.github.io/adk-docs/",
+      "description": "Agent Development Kit documentation for building secure agents."
+    }
+  ],
+  "code": "",
+  "icon": "🛡️",
+  "resource_link": "https://docs.cloud.google.com/model-armor/overview",
+  "code_snippets": [
+    {
+      "title": "Sanitize User Prompts",
+      "filename": "model_armor_security.py",
+      "language": "python",
+      "code": "def sanitize_prompt(user_prompt: str) -> tuple[bool, str]:\n    \"\"\"Sanitize a user prompt using the Model Armor template.\n\n    Args:\n        user_prompt: The raw user prompt text to sanitize.\n\n    Returns:\n        A tuple of (is_safe, detail).\n        - is_safe: True if the prompt passes all checks, False if blocked.\n        - detail: Empty string when safe, or a description of why it was blocked.\n    \"\"\"\n    try:\n        client = _get_client()\n        request = modelarmor_v1.SanitizeUserPromptRequest(\n            name=TEMPLATE_NAME,\n            user_prompt_data=modelarmor_v1.DataItem(text=user_prompt),\n        )\n        response = client.sanitize_user_prompt(request=request)\n        blocked, reasons = _is_blocked(response.sanitization_result)\n        if blocked:\n            logger.warning(\"Model Armor blocked user prompt: %s\", reasons)\n            return False, reasons\n        return True, \"\"\n    except Exception:\n        logger.exception(\"Model Armor sanitize_prompt call failed\")\n        return True, \"\""
+    },
+    {
+      "title": "Sanitize Model Responses",
+      "filename": "model_armor_security.py",
+      "language": "python",
+      "code": "def sanitize_response(model_response: str) -> tuple[bool, str]:\n    \"\"\"Sanitize a model response using the Model Armor template.\n\n    Args:\n        model_response: The model-generated response text to sanitize.\n\n    Returns:\n        A tuple of (is_safe, detail).\n        - is_safe: True if the response passes all checks, False if blocked.\n        - detail: Empty string when safe, or a description of why it was blocked.\n    \"\"\"\n    try:\n        client = _get_client()\n        request = modelarmor_v1.SanitizeModelResponseRequest(\n            name=TEMPLATE_NAME,\n            model_response_data=modelarmor_v1.DataItem(text=model_response),\n        )\n        response = client.sanitize_model_response(request=request)\n        blocked, reasons = _is_blocked(response.sanitization_result)\n        if blocked:\n            logger.warning(\"Model Armor blocked model response: %s\", reasons)\n            return False, reasons\n        return True, \"\"\n    except Exception:\n        logger.exception(\"Model Armor sanitize_response call failed\")\n        return True, \"\""
+    }
+  ],
+  "description": "\n**Day 23 of Google's Advent of Agents — Season 2**\n\nAs AI agents become more advanced and autonomous, ensuring their security becomes a paramount concern. Developers must be vigilant against emerging threats that exploit the unique vulnerabilities of LLMs. To address this, developers can leverage **Google Cloud Model Armor** to build a robust defense-in-depth strategy, protecting their agents from manipulation and unintended data exposure.\n\n**The Solution**\n\nGoogle Cloud Model Armor serves as a specialized security layer—an \"AI firewall\" designed to protect generative AI applications by proactively screening both user prompts and model responses. It effectively mitigates critical risks such as prompt injection and jailbreak attacks, where malicious actors attempt to subvert a model's behavior or bypass safety constraints.\n\nBeyond intent analysis, Model Armor prevents sensitive data leakage by identifying and redacting personally identifiable information (PII) or intellectual property. It also utilizes malicious URL detection to block phishing links embedded within AI interactions. Because it is model-agnostic and cloud-agnostic, you can use its REST API to enforce consistent safety and compliance policies across any Large Language Model (LLM) or agent, whether hosted on Google Cloud, another provider, or on-premises.\n\n**How It Works**\n\n- **Define Security Template**: Configure a Model Armor template with your security policies, threat detection rules, and PII redaction requirements.\n\n- **Sanitize User Prompts**: Screen incoming prompts before they reach your LLM to detect and block prompt injection, jailbreak attempts, and malicious URLs.\n\n- **Sanitize Model Responses**: Validate generated responses before returning to users, preventing sensitive data leakage and ensuring compliance with safety policies.\n\n**Resources:**\n\n- [Model Armor Documentation](https://docs.cloud.google.com/model-armor/overview)\n- [ADK Documentation](https://google.github.io/adk-docs/)\n- [GitHub Project Repository](https://github.com/lekan2001/advent-of-agents-model-armor.git)"
+}

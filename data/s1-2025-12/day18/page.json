@@ -1,0 +1,65 @@
+{
+  "day": "day18",
+  "season": 1,
+  "season_name": "Season 1 — December 2025 (Winter Holiday Edition)",
+  "title": "Cloud API Registry + ADK",
+  "summary": "The biggest friction in enterprise agent development isn't the model—it's the tools. Vertex AI Agent Builder now integrates with Cloud API Registry, providing a centralized tool repository.",
+  "tags": [
+    "Cloud API Registry",
+    "Vertex AI Agent Builder",
+    "ADK",
+    "Tools"
+  ],
+  "canonical_url": "https://adventofagents.com/2025/12/18",
+  "video_id": null,
+  "video_url": "",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Cloud API Registry documentation",
+      "url": "https://docs.cloud.google.com/api-registry/docs/overview",
+      "description": ""
+    },
+    {
+      "title": "Get started with Cloud API Registry tutorial",
+      "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/agents/agent_engine/tutorial_get_started_with_cloud_api_registry.ipynb",
+      "description": ""
+    },
+    {
+      "title": "New Enhanced Tool Governance in Vertex AI Agent Builder Blog",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/new-enhanced-tool-governance-in-vertex-ai-agent-builder",
+      "description": ""
+    },
+    {
+      "title": "Where is the MCP server? Deploy your agent with Cloud API Registry on Vertex AI Agent Engine",
+      "url": "https://discuss.google.dev/t/where-is-the-mcp-server-deploy-your-agent-with-cloud-api-registry-on-vertex-ai-agent-engine/298130",
+      "description": ""
+    },
+    {
+      "title": "Tool Governance in Vertex AI Agent Builder with the new Cloud API Registry integration",
+      "url": "https://discuss.google.dev/t/tool-governance-in-vertex-ai-agent-builder-with-the-new-cloud-api-registry-integration/298148",
+      "description": ""
+    }
+  ],
+  "code": "gcloud beta services mcp enable bigquery.googleapis.com --project=YOUR_PROJECT_ID\n",
+  "icon": "🛠️",
+  "resource_link": "",
+  "code_snippets": [
+    {
+      "title": "Part 1: Admin setup (CLI) Enable the MCP server for your project:",
+      "filename": "admin_setup.sh",
+      "language": "bash",
+      "code": "gcloud beta services mcp enable bigquery.googleapis.com --project=YOUR_PROJECT_ID"
+    },
+    {
+      "title": "Part 2: Developer Implementation (Python) Fetch the managed tool dynamically using ADK:",
+      "filename": "developer_implementation.py",
+      "language": "python",
+      "code": "from google.adk import Agent, ApiRegistry\n\n# 1. Connect to the Cloud API Registry\nregistry = ApiRegistry(project_id=\"your-project-id\")\n\n# 2. Fetch the specific tool (e.g., BigQuery MCP)\n# This retrieves the managed tool definition directly from the registry\nbq_tool = registry.get_tool(\"google-bigquery\")\n\n# 3. Add the tool to your Agent\n# The agent now has governed access to BigQuery capabilities\nagent = Agent(\n    model=\"gemini-3-pro\",\n    tools=[bq_tool]\n)\n\nprint(\"Agent configured with governed BigQuery access.\")"
+    }
+  ],
+  "description": "**Day 18 of Google's Advent of Agents**\n\n**Tools for Vertex AI Agent Builder - Cloud API Registry & ADK Integration**\n\n![Tools GIF](/Tools_Demo_Agent Builder.gif)\n\nThe biggest friction in enterprise agent development isn't the model—it's the tools. 🛑 Developers waste time wrapping APIs, and admins lose sleep over unapproved data access.\n\n**The Solution: A Centralized Tool Repository** 🏛️ Vertex AI Agent Builder now integrates with **Cloud API Registry**. This acts as a private catalog where administrators curate authorized tools and Model Context Protocol (MCP) servers.\n\n**How it works:**\n\n1. 👨‍💼 **Admins** enable and configure tools (like Google Maps 🗺️ or BigQuery 📊) using the console or CLI.\n\n2. 👨‍💻 **Developers** use the new ApiRegistry object in the ADK to dynamically fetch these definitions at runtime.\n\nThis eliminates hardcoded API keys and complex client-side configuration 🔑. The agent simply \"checks out\" the tool from the library, fully configured and ready to run. 🚀\n\nGet started with [Cloud API Registry on Vertex AI Agent Engine](https://github.com/GoogleCloudPlatform/generative-ai/blob/main/agents/agent_engine/tutorial_get_started_with_cloud_api_registry.ipynb).\n\n\n**Resources:**\n\n- Read the official blog post [New Enhanced Tool Governance in Vertex AI Agent Builder](https://cloud.google.com/blog/products/ai-machine-learning/new-enhanced-tool-governance-in-vertex-ai-agent-builder?e=48754805?utm_source%3Dlinkedin)\n- Check out the [Cloud API Registry documentation](https://docs.cloud.google.com/api-registry/docs/overview)\n- Try out the tutorial at [Cloud API Registry](https://github.com/GoogleCloudPlatform/generative-ai/blob/main/agents/agent_engine/tutorial_get_started_with_cloud_api_registry.ipynb).\n- Learn more about [Tool Governance in Vertex AI Agent Builder with the new Cloud API Registry integration](https://discuss.google.dev/t/tool-governance-in-vertex-ai-agent-builder-with-the-new-cloud-api-registry-integration/298148)\n- Learn more about [Where is the MCP server? Deploy your agent with Cloud API Registry on Vertex AI Agent Engine](https://discuss.google.dev/t/where-is-the-mcp-server-deploy-your-agent-with-cloud-api-registry-on-vertex-ai-agent-engine/298130)\n"
+}

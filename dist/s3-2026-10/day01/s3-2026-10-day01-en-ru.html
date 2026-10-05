@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Foundation 101: Five Phases of Agent Development Lifecycle — EN / RU</title>
+<style>
+:root {
+  --en-bg: #f7f8fa;
+  --line: #dfe3e8;
+  --accent: #0b57d0;
+  --ts: #8a9099;
+  --muted: #5f6672;
+  --fix: #fff3cd;
+  --fix-line: #e0b100;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 32px 20px 72px;
+  background: #eef0f3;
+  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #1a1a1a;
+}
+
+.page { max-width: 1400px; margin: 0 auto; }
+
+h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.head .sub { color: var(--muted); font-size: 15px; }
+.head .sub a { color: var(--accent); }
+
+.legend {
+  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
+}
+.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
+.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+
+.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+
+button {
+  font: inherit; font-size: 14px; padding: 7px 14px;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: #fff; color: #1a1a1a; cursor: pointer;
+}
+button:hover { border-color: #b9c0ca; background: #fafbfc; }
+
+.grid {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden;
+}
+
+.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
+
+.head-row {
+  background: #2f3541; color: #fff;
+  font-size: 13px; letter-spacing: 0.04em;
+  text-transform: uppercase; font-weight: 600;
+  position: sticky; top: 0; z-index: 5;
+}
+.head-row > div { padding: 10px 18px; }
+.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
+
+.row > .ts {
+  padding: 14px 8px; font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ts); text-align: right;
+  border-right: 1px solid var(--line); background: #fbfbfc;
+}
+.row > .en, .row > .ru {
+  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
+}
+.row > .en { background: var(--en-bg); }
+.row > .ru { border-right: 0; }
+
+.row.cont > .ts::after {
+  content: ""; display: block; width: 14px; height: 1px;
+  background: var(--line); margin: 8px 0 0 auto;
+}
+.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
+
+.row.fixed > .en { background: var(--fix); }
+.row.fixed .tag { display: none; }
+
+body.show-fixes .row.fixed .tag { display: block; }
+
+.tag {
+  display: inline-block; margin-top: 6px;
+  font-size: 11.5px; line-height: 1.35;
+  color: #6b5400; background: var(--fix);
+  border-left: 3px solid var(--fix-line);
+  padding: 3px 8px; border-radius: 0 4px 4px 0;
+}
+
+.app { margin-top: 26px; }
+.app h2 { font-size: 19px; margin: 0 0 10px; }
+
+table {
+  width: 100%; border-collapse: collapse;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden; font-size: 15px;
+}
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
+.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
+
+body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
+body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
+body.hide-en .row, body.hide-en .head-row,
+body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
+
+@media (max-width: 900px) {
+  .head-row, .row { grid-template-columns: 56px 1fr; }
+  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
+  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .bar, .legend { display: none; }
+  .head-row { position: static; }
+  .grid, table { border-radius: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <h1>Foundation 101: Five Phases of Agent Development Lifecycle</h1>
+    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
+      Видео: <a href="https://www.youtube.com/watch?v=ngNxiZhxJjI">https://www.youtube.com/watch?v=ngNxiZhxJjI</a> · 07:23
+      · auto (YouTube en-orig)</div>
+  </div>
+
+  <div class="legend">
+    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
+    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
+  </div>
+
+  <div class="bar">
+    <button id="btn-mark">Показать исправления</button>
+    <button id="btn-print">Печать / PDF</button>
+  </div>
+
+  <div class="grid">
+    <div class="head-row">
+      <div>Time</div>
+      <div>English</div>
+      <div>Русский</div>
+    </div>
+    <div class="row">
+      <div class="ts">00:02</div>
+      <div class="en">Hi.</div>
+      <div class="ru">Привет.</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">It&#x27;s October, the month of Halloween. So, let&#x27;s start with something scary.</div>
+      <div class="ru">Октябрь — месяц Хэллоуина. Так что начнём с чего-то страшного.</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">You built an agent and it accidentally shared your customer&#x27;s PII data in the chat application.</div>
+      <div class="ru">Вы создали агента, и он по ошибке выложил PII ваших клиентов в чат-приложении.</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">Now, who approved that access? Who approved the tool? Who owns the agent? Of course, you do.</div>
+      <div class="ru">Кто разрешил этот доступ? Кто одобрил инструмент? Кто владелец агента? Конечно, вы.</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">And what step of your way or what step in the process of building your agent were you supposed to know that it actually had access?</div>
+      <div class="ru">И на каком шаге вашего пути — на каком этапе процесса создания агента — вы должны были узнать, что у него вообще есть такой доступ?</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">And before it access all of this, where were you supposed to catch and stop or block it from doing this?</div>
+      <div class="ru">И до того, как он получил доступ ко всему этому — где вы должны были перехватить и остановить или заблокировать его?</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">If you cannot answer any one of those questions, you don&#x27;t have an agent building problem. You have an agent governance problem, which is the top one reason why many of your agents don&#x27;t land in production.</div>
+      <div class="ru">Если вы не можете ответить хотя бы на один из этих вопросов — у вас не проблема разработки агента. У вас проблема управления агентами (agent governance), и это главная причина, по которой многие ваши агенты не доезжают до продакшена.</div>
+    </div>
+    <div class="row">
+      <div class="ts">00:52</div>
+      <div class="en">Welcome to season 3 of Advent of Agents. I&#x27;m a product manager here at Google Cloud. Everyday this October, we are going deep on all things agent security, agent governance, and everything that you need to know to secure your agents in production.</div>
+      <div class="ru">Добро пожаловать в третий сезон «Advent of Agents». Я продакт-менеджер в Google Cloud. Каждый день в октябре мы глубоко разбираем всё, что касается безопасности агентов, управления ими и всего, что нужно знать, чтобы защитить агентов в продакшене.</div>
+    </div>
+    <div class="row cont fixed">
+      <div class="ts"></div>
+      <div class="en">For the next 31 days, you&#x27;ll have one question a day addressed, answered, solved for, a short video, and a codelab you can run in about 5 minutes.<div class="tag">уточнено: a cut up you can run → a codelab you can run</div></div>
+      <div class="ru">В ближайшие 31 день у вас будет по одному вопросу в день — с разбором и ответом, плюс короткое видео и codelab, который можно запустить примерно за 5 минут.</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">So, day one starts with a map.</div>
+      <div class="ru">Так что день первый начинается с карты.</div>
+    </div>
+    <div class="row">
+      <div class="ts">01:16</div>
+      <div class="en">Here&#x27;s the question our customers always ask us. Before I worry about locking agents down, what are the actual stages an agent goes through from idea to production and where do security and governance checkpoint fits in?</div>
+      <div class="ru">Вот вопрос, который наши клиенты задают нам всегда: прежде чем беспокоиться о блокировке агентов, какие вообще этапы проходит агент от идеи до продакшена и где в них встраиваются контрольные точки безопасности и управления?</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">As boring as security and governance sounds, we all need insurance, right? We don&#x27;t want liability and that&#x27;s exactly what we&#x27;re going to solve in today&#x27;s.</div>
+      <div class="ru">Скучно звучит — безопасность и управление, — но ведь всем нужна страховка, верно? Мы не хотим ответственности, и именно это мы сегодня и решаем.</div>
+    </div>
+    <div class="row">
+      <div class="ts">01:46</div>
+      <div class="en">Now, we want to understand what is the difference between SDLC, ML Ops, and ADLC, which is the agent development life cycle.</div>
+      <div class="ru">Теперь давайте разберёмся, в чём разница между SDLC, MLOps и ADLC — жизненным циклом разработки агента.</div>
+    </div>
+    <div class="row cont fixed">
+      <div class="ts"></div>
+      <div class="en">If you&#x27;re a developer, you know SDLC. SDLC is code, code is deterministic. Same input, same output. So, tests prove that it works.<div class="tag">уточнено: If If a developer → as a developer; test proves if you would work → tests prove that it works</div></div>
+      <div class="ru">Если вы разработчик, вы знаете SDLC. SDLC — это код, а код детерминирован: один и тот же вход — один и тот же выход. Тесты доказывают, что оно работает.</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">If you work in data, you know ML ops, you version the data, you retrain them, you watch for drift, but the model just still returns a prediction.</div>
+      <div class="ru">Если вы работаете с данными, вы знаете MLOps: вы версионируете данные, переобучаете модель, следите за дрифтом — но модель всё равно лишь возвращает предсказание.</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">Now, agents are different. They can take actions on your behalf. They can think, they can call your databases, call APIs, write code, trigger workflows. They can do much more than what something in SDLC could do.</div>
+      <div class="ru">Агенты устроены иначе. Они могут действовать от вашего имени: думать, обращаться к вашим базам данных, вызывать API, писать код, запускать воркфлоу. Они умеют гораздо больше, что-либо в SDLC.</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">And they could also determine which tool to use in runtime.</div>
+      <div class="ru">И на рантайме они сами решают, какой инструмент использовать.</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">Because they&#x27;re non-deterministic, meaning same input but different outputs, you just cannot slap a firewall in front of them and call it a day.</div>
+      <div class="ru">Поскольку они недетерминированы (один и тот же вход — разные выходы), нельзя просто поставить перед ними файрвол и закрыть на этом вопрос.</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">You may need a life cycle that test behavior, not just output, and controls the agent at each stage.</div>
+      <div class="ru">Вам нужен жизненный цикл, который тестирует поведение, а не только выход, и контролирует агента на каждом этапе.</div>
+    </div>
+    <div class="row">
+      <div class="ts">02:47</div>
+      <div class="en">That&#x27;s where ADLC comes in, the agent development life cycle. And we essentially have five phases, one loop.</div>
+      <div class="ru">Вот тут появляется ADLC — Agent Development Lifecycle. По сути, у нас пять фаз и один цикл.</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">Scope, build, scale, govern, and optimize. That&#x27;s a loop, it&#x27;s not a line. And every phase ends with a checkpoint.</div>
+      <div class="ru">Scope, Build, Scale, Govern, Optimize. Это цикл, а не прямая линия. И каждая фаза заканчивается контрольной точкой.</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">Security is not a gate that you put in the end, it&#x27;s in every step of the way.</div>
+      <div class="ru">Безопасность — не шлюз, который ставится в конце, она присутствует на каждом шаге.</div>
+    </div>
+    <div class="row">
+      <div class="ts">03:10</div>
+      <div class="en">First, scope. Before you write a single prompt, draw a bounding box, a boundary box, right? What an agent can do, what it cannot do, what are the things it can touch and what are the things it absolutely cannot touch,</div>
+      <div class="ru">Первое — Scope. Ещё до того, как вы напишете хоть один промпт, нарисуйте bounding box, граничную рамку: что агент может делать, что не может, к чему он может прикасаться, а к чему — категорически не должен,</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">and most importantly, who owns what. Every agent needs to have an owner.</div>
+      <div class="ru">и, самое главное, кто чем владеет. У каждого агента должен быть владелец.</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">That one-page document is your governance artifact. If you don&#x27;t define what an agent should do very early on in your process, you are ending up building a liability.</div>
+      <div class="ru">Этот одностраничный документ — ваш артефакт управления. Если вы не определите на самом раннем этапе, что агент должен делать, вы в итоге строите источник ответственности.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">03:41</div>
+      <div class="en">Phase two, build. You iterate on instructions and tools locally in sandbox. On Google Cloud, that&#x27;s ADK or Gemini CLI with Gemini. You could use any framework even within Google Cloud. Google Cloud is very open in terms of frameworks.<div class="tag">уточнено: ADK or Gemini CLI -&gt; Agents CLI или ADK (в коде дня: agents-cli scaffold)</div></div>
+      <div class="ru">Фаза вторая — Build. Вы итерируетесь над инструкциями и инструментами локально, в песочнице. В Google Cloud это Agents CLI или ADK с Gemini. Можно взять любой фреймворк, даже внутри Google Cloud — Google Cloud очень открыт к фреймворкам.</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">The checkpoint: every tool call matches the spec that you&#x27;ve written, and you have an eval set before anything leaves your laptop, meaning you know how to validate your data.</div>
+      <div class="ru">Контрольная точка: каждый вызов инструмента соответствует написанной вами спецификации, и у вас есть eval-набор до того, как что-либо покинет ваш ноутбук — то есть вы понимаете, как валидировать данные.</div>
+    </div>
+    <div class="row">
+      <div class="ts">04:10</div>
+      <div class="en">Next step, scale. Moving from notebook to an enterprise runtime like agent runtime, Cloud Run, or GKE, how does it behave under load? How do you automate the deployments?</div>
+      <div class="ru">Следующий шаг — Scale. Переход из ноутбука в корпоративный рантайм — Agent Runtime, Cloud Run или GKE: как агент ведёт себя под нагрузкой? Как автоматизировать деплои?</div>
+    </div>
+    <div class="row cont fixed">
+      <div class="ts"></div>
+      <div class="en">If your organization is going to have thousands of agents, they all cannot be deployed in its own style. Then we end up risking shadow IT.<div class="tag">уточнено: deployed in its own style → each deployed their own way</div></div>
+      <div class="ru">Если в организации будут тысячи агентов, их нельзя деплоить какие попало — иначе получаем теневой IT.</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">So, the checkpoint is: your environment is in Terraform, it&#x27;s fully automated, and it gets reviewed just like any other code. We do not want to do click ops in production.</div>
+      <div class="ru">Контрольная точка: окружение описано в Terraform, полностью автоматизировано и проходит ревью как любой другой код. Мы не хотим click-ops в продакшене.</div>
+    </div>
+    <div class="row">
+      <div class="ts">04:42</div>
+      <div class="en">Phase four is govern. This is the main focus of the season.</div>
+      <div class="ru">Фаза четвёртая — Govern. Это главная тема сезона.</div>
+    </div>
+    <div class="row cont fixed">
+      <div class="ts"></div>
+      <div class="en">How does your agent authenticate? A shared service account or its own? Like, does agent have its own identity?<div class="tag">уточнено: a shared service or its own spiffy account → a shared service account or its own</div></div>
+      <div class="ru">Как ваш агент аутентифицируется? Через общий сервисный аккаунт или через свой собственный? Есть ли у агента своя идентичность?</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">Then, can you see all the agents in a registry, which is the agent registry?</div>
+      <div class="ru">Видно ли все агенты в реестре — Agent Registry?</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">Then, are you able to look into all the incoming and outgoing traffic? Like, do you have visibility into what your agents are talking to and who they&#x27;re talking to at what point? That&#x27;s the agent gateway.</div>
+      <div class="ru">Можете ли вы видеть весь входящий и исходящий трафик? Есть ли видимость того, с кем, когда и о чём общаются ваши агенты? Это Agent Gateway.</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">Then, do you have control on all the prompts that your agent is getting? Like, are your prompts getting scanned by Model Armor? So, you have safety checks in place before your agents respond.</div>
+      <div class="ru">Есть ли контроль над всеми промптами, которые получает агент? Сканируются ли входные промпты через Model Armor? То есть стоят ли проверки безопасности перед тем, как агент ответит.</div>
+    </div>
+    <div class="row cont fixed">
+      <div class="ts"></div>
+      <div class="en">And then, can you restrict tool calls with semantic governance policies? The checkpoint: no agent touches production data without an identity, an owner, and a policy. That&#x27;s crucial.<div class="tag">уточнено: with natural semantic layer, Sorry → with semantic governance policies</div></div>
+      <div class="ru">И можно ли ограничить вызовы инструментов семантическими политиками управления? Контрольная точка: ни один агент не трогает продакшен-данные без идентичности, владельца и политики. Это ключевое.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">05:44</div>
+      <div class="en">Finally, optimize: day two operations, agent drift, models update, APIs change. So, you rerun evals on every change and you opt, and you use OpenTelemetry tracing to see exactly which tools your agents decided to call and why. What you learn goes straight back into scope. That is hence the reason why it&#x27;s called a loop.<div class="tag">уточнено: open telemetry → OpenTelemetry; That hence the reason → That is hence the reason</div></div>
+      <div class="ru">И наконец — Optimize, операции второго дня: дрифт агента, обновления моделей, изменения API. Вы перезапускаете evals при каждом изменении и используете OpenTelemetry-трейсинг, чтобы точно увидеть, какие инструменты ваш агент решил вызвать и почему. Всё, что вы узнаёте, возвращается прямиком в Scope. Вот почему это называется циклом.</div>
+    </div>
+    <div class="row">
+      <div class="ts">06:08</div>
+      <div class="en">Now, this is the season three map. We go from foundations, architecture, to identity, access control. Then, we talk about runtime guardrails, data production protection. Then, we talk about fleet management, high availability. Then, we talk about observability, threat detection, and containment. And towards the end of the season, we talk about day two ops and continuous governance.</div>
+      <div class="ru">Такова карта третьего сезона: от фундамента и архитектуры к identity и access control. Затем — runtime guardrails, защита данных в продакшене. Затем — управление парком агентов (fleet management) и высокая доступность. Потом — observability, обнаружение угроз и сдерживание. А ближе к концу сезона — операции второго дня и непрерывное управление.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">06:34</div>
+      <div class="en">So, for today&#x27;s exercise, you&#x27;re essentially going to build one agent around all five loops. Start by writing down your five line spec. And then, install it using Agents CLI.<div class="tag">уточнено: using agency CLI -&gt; using Agents CLI</div></div>
+      <div class="ru">Сегодняшнее упражнение: по сути, вы собираете одного агента по всем пяти циклам. Начните с того, что запишете свою спецификацию в пять пунктов, а затем установите его через Agents CLI.</div>
+    </div>
+    <div class="row cont fixed">
+      <div class="ts"></div>
+      <div class="en">Now, you would have gotten your first audit trail. And it allows you to see what the agent decided to do. And then, use optimize: use Agents CLI evals to come up with scores and understand the behavior of your agent.<div class="tag">уточнено: use agency CLI evals -&gt; use Agents CLI evals</div></div>
+      <div class="ru">И вы сразу получите первый журнал аудита — с ним видно, что агент решил делать. Дальше — Optimize: через evals в Agents CLI получите оценки и поймёте поведение агента.</div>
+    </div>
+    <div class="row cont">
+      <div class="ts"></div>
+      <div class="en">Scale and Govern are commented out at the bottom because that&#x27;s for day five. That&#x27;s when an agent gets its true identity.</div>
+      <div class="ru">Scale и Govern внизу закомментированы, потому что это для пятого дня — тогда, когда агент получит свою настоящую идентичность.</div>
+    </div>
+    <div class="row">
+      <div class="ts">07:10</div>
+      <div class="en">The code, the ADLC diagram, and the reading list are on today&#x27;s page. Tomorrow, on day two, we tear down the agent threat surface and see why securing agents is different. See you tomorrow. Thank you.</div>
+      <div class="ru">Код, схема ADLC и список для чтения — на странице сегодняшнего выпуска. Завтра, во второй день, мы разберём поверхность угроз для агентов и посмотрим, почему защищать агентов — это не то же самое, что защищать что-то другое. Увидимся завтра. Спасибо.</div>
+    </div>
+  </div>
+
+  <div class="app">
+    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
+    <table>
+      <thead>
+        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+      </thead>
+      <tbody>
+      <tr><td>[00:52]</td><td>For the next 31 days, you&#x27;ll have one question a day addressed, answered, solved for, a short video, and a codelab you can run in about 5 minutes.</td><td>a cut up you can run → a codelab you can run</td><td>В ближайшие 31 день у вас будет по одному вопросу в день — с разбором и ответом, плюс короткое видео и codelab, который можно запустить примерно за 5 минут.</td></tr>
+      <tr><td>[01:46]</td><td>If you&#x27;re a developer, you know SDLC. SDLC is code, code is deterministic. Same input, same output. So, tests prove that it works.</td><td>If If a developer → as a developer; test proves if you would work → tests prove that it works</td><td>Если вы разработчик, вы знаете SDLC. SDLC — это код, а код детерминирован: один и тот же вход — один и тот же выход. Тесты доказывают, что оно работает.</td></tr>
+      <tr><td>[03:41]</td><td>Phase two, build. You iterate on instructions and tools locally in sandbox. On Google Cloud, that&#x27;s ADK or Gemini CLI with Gemini. You could use any framework even within Google Cloud. Google Cloud is very open in terms of frameworks.</td><td>ADK or Gemini CLI -&gt; Agents CLI или ADK (в коде дня: agents-cli scaffold)</td><td>Фаза вторая — Build. Вы итерируетесь над инструкциями и инструментами локально, в песочнице. В Google Cloud это Agents CLI или ADK с Gemini. Можно взять любой фреймворк, даже внутри Google Cloud — Google Cloud очень открыт к фреймворкам.</td></tr>
+      <tr><td>[04:10]</td><td>If your organization is going to have thousands of agents, they all cannot be deployed in its own style. Then we end up risking shadow IT.</td><td>deployed in its own style → each deployed their own way</td><td>Если в организации будут тысячи агентов, их нельзя деплоить какие попало — иначе получаем теневой IT.</td></tr>
+      <tr><td>[04:42]</td><td>How does your agent authenticate? A shared service account or its own? Like, does agent have its own identity?</td><td>a shared service or its own spiffy account → a shared service account or its own</td><td>Как ваш агент аутентифицируется? Через общий сервисный аккаунт или через свой собственный? Есть ли у агента своя идентичность?</td></tr>
+      <tr><td>[04:42]</td><td>And then, can you restrict tool calls with semantic governance policies? The checkpoint: no agent touches production data without an identity, an owner, and a policy. That&#x27;s crucial.</td><td>with natural semantic layer, Sorry → with semantic governance policies</td><td>И можно ли ограничить вызовы инструментов семантическими политиками управления? Контрольная точка: ни один агент не трогает продакшен-данные без идентичности, владельца и политики. Это ключевое.</td></tr>
+      <tr><td>[05:44]</td><td>Finally, optimize: day two operations, agent drift, models update, APIs change. So, you rerun evals on every change and you opt, and you use OpenTelemetry tracing to see exactly which tools your agents decided to call and why. What you learn goes straight back into scope. That is hence the reason why it&#x27;s called a loop.</td><td>open telemetry → OpenTelemetry; That hence the reason → That is hence the reason</td><td>И наконец — Optimize, операции второго дня: дрифт агента, обновления моделей, изменения API. Вы перезапускаете evals при каждом изменении и используете OpenTelemetry-трейсинг, чтобы точно увидеть, какие инструменты ваш агент решил вызвать и почему. Всё, что вы узнаёте, возвращается прямиком в Scope. Вот почему это называется циклом.</td></tr>
+      <tr><td>[06:34]</td><td>So, for today&#x27;s exercise, you&#x27;re essentially going to build one agent around all five loops. Start by writing down your five line spec. And then, install it using Agents CLI.</td><td>using agency CLI -&gt; using Agents CLI</td><td>Сегодняшнее упражнение: по сути, вы собираете одного агента по всем пяти циклам. Начните с того, что запишете свою спецификацию в пять пунктов, а затем установите его через Agents CLI.</td></tr>
+      <tr><td>[06:34]</td><td>Now, you would have gotten your first audit trail. And it allows you to see what the agent decided to do. And then, use optimize: use Agents CLI evals to come up with scores and understand the behavior of your agent.</td><td>use agency CLI evals -&gt; use Agents CLI evals</td><td>И вы сразу получите первый журнал аудита — с ним видно, что агент решил делать. Дальше — Optimize: через evals в Agents CLI получите оценки и поймёте поведение агента.</td></tr>
+      </tbody>
+    </table>
+    <p class="note"></p>
+  </div>
+
+</div>
+<script>
+const el = id => document.getElementById(id);
+
+el('tgl-en').addEventListener('change', e =>
+  document.body.classList.toggle('hide-en', !e.target.checked));
+el('tgl-ru').addEventListener('change', e =>
+  document.body.classList.toggle('hide-ru', !e.target.checked));
+el('btn-print').addEventListener('click', () => window.print());
+el('btn-mark').addEventListener('click', () => {
+  const on = !document.body.classList.contains('show-fixes');
+  document.body.classList.toggle('show-fixes', on);
+  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
+});
+</script>
+</body>
+</html>

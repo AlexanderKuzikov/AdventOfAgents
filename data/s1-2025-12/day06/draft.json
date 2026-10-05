@@ -1,0 +1,67 @@
+[
+  {
+    "t": 1,
+    "en": "Hi, let's look at how to bootstrap man agent using ADK and agent starter pack.",
+    "ru": ""
+  },
+  {
+    "t": 7,
+    "en": "Here's a empty repository for anti-gravity workspace and I'm going to quickly ask it to generate a deep search agent using ADK an agent starter pack.",
+    "ru": ""
+  },
+  {
+    "t": 18,
+    "en": "It's going to take a few minutes to go through it documentation and gather all the artifacts. And once we have it running, it actually generates uh the",
+    "ru": ""
+  },
+  {
+    "t": 29,
+    "en": "actual repository with the code and giving us instructions on how to run it. Here's the sample struct project",
+    "ru": ""
+  },
+  {
+    "t": 38,
+    "en": "structure, the requirements, and more information how to run it, and even how to do a make deploy to deploy it on your compute runtime of your choice.",
+    "ru": ""
+  },
+  {
+    "t": 49,
+    "en": "Let's say agent anti-gravity is not what",
+    "ru": ""
+  },
+  {
+    "t": 52,
+    "en": "you're looking for and you want to use a different IDE. No problem. We can even use Visual Studio",
+    "ru": ""
+  },
+  {
+    "t": 60,
+    "en": "opening it in a new environment. Going",
+    "ru": ""
+  },
+  {
+    "t": 63,
+    "en": "to install some dependencies and add it as well as um this extension for MCP server to read ADK documents.",
+    "ru": ""
+  },
+  {
+    "t": 73,
+    "en": "Once this is ready, I'm going to go into Gemini CLI and within Gemini CLI, I'm going to ask",
+    "ru": ""
+  },
+  {
+    "t": 80,
+    "en": "the question, how do I create a function tool using agent development kit?",
+    "ru": ""
+  },
+  {
+    "t": 86,
+    "en": "There are some dependencies needed. And while we wait for it, we can actually see that it fetched the information from the repository and it finally read",
+    "ru": ""
+  },
+  {
+    "t": 96,
+    "en": "through how to create a function and even gave us an example of how to create a function tool. The world's your oyster. Use whatever coding agent you like. Give you the right information about your framework, and you can create your own agents ready for production today.",
+    "ru": ""
+  }
+]

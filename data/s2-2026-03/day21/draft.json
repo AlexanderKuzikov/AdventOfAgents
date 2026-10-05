@@ -1,0 +1,212 @@
+[
+  {
+    "t": 0,
+    "en": "Hey, so we have a developers guide to AI",
+    "ru": ""
+  },
+  {
+    "t": 5,
+    "en": "protocols and I'm going to sort of run through that for today's advent of",
+    "ru": ""
+  },
+  {
+    "t": 11,
+    "en": "agents. Um, MCP, A2A, UCP, AP2, A2UI, AGUI. I know",
+    "ru": ""
+  },
+  {
+    "t": 20,
+    "en": "it feels like alphabet soup. Um, but this blog post came out a couple days ago and it will help you put them all",
+    "ru": ""
+  },
+  {
+    "t": 27,
+    "en": "into the appropriate context. It includes a single scenario of a",
+    "ru": ""
+  },
+  {
+    "t": 33,
+    "en": "restaurant where it sort of puts each of these protocols together for you step by step and helps you understand. So you can follow along. You can copy and paste these samples that are in the blog post itself. You are probably already using MCP in your development environment or your development agent or whatever. Any agent can access these deterministic resources and stuff them into the context window of the model and the model can decide when to take an action",
+    "ru": ""
+  },
+  {
+    "t": 59,
+    "en": "or load a different resource. In this scenario, it's uh deciding to use the",
+    "ru": ""
+  },
+  {
+    "t": 66,
+    "en": "notion MCP server or the mail gun MCP server as tools that can happen at runtime. Here is their website. And again, you're probably pretty familiar with this protocol. If you've been following Advent of agents, you're probably already familiar with A2A. In",
+    "ru": ""
+  },
+  {
+    "t": 82,
+    "en": "MCP, you're dealing with deterministic inputs and outputs. Um, A2A assumes that",
+    "ru": ""
+  },
+  {
+    "t": 89,
+    "en": "your API is non-deterministic. It's an agent of some sort, and therefore it will have some kind of a back and forth dialogue and capability escalation. It's going to make plans, and then the plans don't always work out, and it's going to be able to adjust to that. All of that flexibility and statefulness is a layer",
+    "ru": ""
+  },
+  {
+    "t": 106,
+    "en": "on the outside of most API specifications. And that's what's unique about A2I. You can do a lot of this without A2A. You can do it on top of MCP. You can define your own API spec on top of whatever agent you're putting out there. Every time I've seen somebody do this, they end up accidentally reinventing A2A. Um, so it it is a very",
+    "ru": ""
+  },
+  {
+    "t": 126,
+    "en": "good spec for any agent API surface that",
+    "ru": ""
+  },
+  {
+    "t": 130,
+    "en": "you expose to the world or even internally as a micros service architecture of multiple agents talking to each other. The agents are defined as clients and servers similar to a web protocol standard. So a client agent can access a remote agent after discovering what it's capable of based on the agent card. Again, sorry I've already spent too much time on that uh because you're all in Advent of agents and you've gone through the previous ones. I'm going to do these as a combo. UCP and AP2. If you",
+    "ru": ""
+  },
+  {
+    "t": 161,
+    "en": "look at UCP and AP2 together, they cover",
+    "ru": ""
+  },
+  {
+    "t": 164,
+    "en": "the needs of agents transacting on the",
+    "ru": ""
+  },
+  {
+    "t": 167,
+    "en": "internet. UCP is actually quite tactical. Uh you can use it today. It's using existing APIs and wrapping and organizing them into a standard that is actually open and anyone can use for uh",
+    "ru": ""
+  },
+  {
+    "t": 180,
+    "en": "connecting to some Google services but also many other services that are out there. Uh you can have your own agents on your own website and your own product catalog and your own checkout or you can connect to other providers for some of these functionalities. The modules are isolated and independent from each other. um you go to the website and find out a lot of useful information. It's very easy to see and and scroll through and then the specification has a lot of",
+    "ru": ""
+  },
+  {
+    "t": 205,
+    "en": "depth to it. So um everything is covered here in the sample to get you started",
+    "ru": ""
+  },
+  {
+    "t": 211,
+    "en": "with a very simplistic uh creating a cart and adding some line items to that cart and doing a checkout. AP2 is strategic. It is to say if you are uh allowing that agent to make a",
+    "ru": ""
+  },
+  {
+    "t": 223,
+    "en": "transaction, did it make a transaction that you wanted it to? The important bit is that intent mandate. Did you the human say I would like you to do this thing for me? In this case, make a purchase while the human is present.",
+    "ru": ""
+  },
+  {
+    "t": 238,
+    "en": "That's kind of easier. Uh I'm going to hit a thumb print and you're going to do the thing right now and I see that you did the thing and maybe I can undo it. Um, if the human is not present and you're pushing this forward into the future, it's a little bit more interesting. I put a thumbrint within these constraints, I want my agent to do the thing. Maybe when the shirt goes on sale, but it's from a merchant that I trust. Go ahead and execute the transaction. There's a lot of power in",
+    "ru": ""
+  },
+  {
+    "t": 262,
+    "en": "that intent mandate, that delegation of authority to the agent, not just for payments. You can see an implementation of it here, and again, go to the website for more information. We've got some more samples. UCP and AP2 work together.",
+    "ru": ""
+  },
+  {
+    "t": 274,
+    "en": "Um, so UCP makes it easy to put stuff in your cart and purchase it. Uh, and AP2",
+    "ru": ""
+  },
+  {
+    "t": 281,
+    "en": "is that intent delegation to prove that you actually said, \"Yeah, go ahead and make this purchase for me.\" Okay, A2 UI.",
+    "ru": ""
+  },
+  {
+    "t": 288,
+    "en": "Um, this is a, you know, uh, my agent",
+    "ru": ""
+  },
+  {
+    "t": 291,
+    "en": "can send me text and I can send the text back and at some point I get tired of that and I want it to send me buttons and I want it to send me forms and I want those forms and buttons to be specific to the moment of this interaction. Not with a bunch of extra context, not a same form that everybody gets, not a component that I have to hardcode, but for it to figure out the parts and pieces that it needs to throw on the screen for me, the human to interact with it nicely. Um this is",
+    "ru": ""
+  },
+  {
+    "t": 317,
+    "en": "created as a declarative spec that can",
+    "ru": ""
+  },
+  {
+    "t": 320,
+    "en": "be sent over the wire over any wire uh websockets or REST API or MCP or A2A or",
+    "ru": ""
+  },
+  {
+    "t": 328,
+    "en": "AGUI or whatever. Um it can be stored in",
+    "ru": ""
+  },
+  {
+    "t": 331,
+    "en": "a buffer and brought forth later or sent over multiple different hops. It doesn't matter. It's just a JSON or JSON L structure that puts these components together onto a screen. The components are your components. That is to say, we're driving your design system with an agent. This is an example of some of the ATI UI messages. And uh you know, we're",
+    "ru": ""
+  },
+  {
+    "t": 353,
+    "en": "actually in the process of migrating from version 8 to version 0.9. In a few weeks, you should see uh another blog post from us about the version 0.9 and some of the changes for that. Um, it is, uh, something I'm I'm very excited about because, uh, organizing the UI to help me interact with my agent",
+    "ru": ""
+  },
+  {
+    "t": 373,
+    "en": "easier, more fluidly. Uh, there's a whole lot of stuff we can do with that. Um, confusingly named A2UI and AGUI. Uh, I",
+    "ru": ""
+  },
+  {
+    "t": 385,
+    "en": "always get tongue tied when I try and say the two together. Work very well together. Uh AGUI is a spec that was put",
+    "ru": ""
+  },
+  {
+    "t": 392,
+    "en": "forward by the co-pilot kit team uh almost a year ago and we've been working with them the whole time. Um they are kind of a Swiss Army knife for any agent framework on the back end, any front-end client system uh to be easily connected to each other and they're organizing the backend agent streaming messages to the",
+    "ru": ""
+  },
+  {
+    "t": 412,
+    "en": "front-end agent uh with some standard conventions about what the types of events are that it would stream. So their focus is on that one tight connection between a backend and a front end. Um whereas A2A is a little bit more generalizable and includes multiple hop agent backends. Um when you're streaming",
+    "ru": ""
+  },
+  {
+    "t": 430,
+    "en": "those messages across, you can stream across A2 UI messages and get generative",
+    "ru": ""
+  },
+  {
+    "t": 435,
+    "en": "UI too. So these two things work very nicely together. You can also use A2 UI",
+    "ru": ""
+  },
+  {
+    "t": 440,
+    "en": "by itself or you could use AGUI by itself. Um, but I think the intersection of the two together is very compelling. Here's an example of getting started. And we also have several other ones or they have several other ones too. Um, so",
+    "ru": ""
+  },
+  {
+    "t": 454,
+    "en": "if you put them all together, MCP for tools, A2A for agents,",
+    "ru": ""
+  },
+  {
+    "t": 460,
+    "en": "UCP for easy commerce, putting things into a cart, discovering them, putting them in a cart, uh, doing a checkout. Uh, AP2 for that delegation of authority. I'm putting my thumb printint on the device and saying yes, I authorize this transaction or this specification for transactions that might happen in the future and can be used beyond payments. Uh probably in interesting ways soon. Um A2 UI for",
+    "ru": ""
+  },
+  {
+    "t": 487,
+    "en": "declarative UI spec driving your own front end and AGUI for streaming that to",
+    "ru": ""
+  },
+  {
+    "t": 493,
+    "en": "a front end. You have a lot of options and and possibilities here. This is a stack that we are working on and uh recommend you play with. Uh you have all the parts and pieces covered in this doc with pointers to other individualized examples. Uh thank you very much.",
+    "ru": ""
+  }
+]

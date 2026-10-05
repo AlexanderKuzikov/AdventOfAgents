@@ -1,0 +1,53 @@
+{
+  "day": "day19",
+  "season": 1,
+  "season_name": "Season 1 — December 2025 (Winter Holiday Edition)",
+  "title": "Register to Gemini Enterprise",
+  "summary": "Register your agent to Gemini Enterprise! 🌐 and make it discoverable to everyone in your organization, right alongside Google's built-in agents.",
+  "tags": [
+    "Gemini Enterprise",
+    "Agent Starter Pack",
+    "Deployment",
+    "A2A"
+  ],
+  "canonical_url": "https://adventofagents.com/2025/12/19",
+  "video_id": "dhT2dAbRwVk",
+  "video_url": "https://www.youtube.com/watch?v=dhT2dAbRwVk",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Agent Starter Pack",
+      "url": "https://github.com/GoogleCloudPlatform/agent-starter-pack",
+      "description": "Create and register agents to Gemini Enterprise."
+    },
+    {
+      "title": "Gemini Enterprise Agents Overview",
+      "url": "https://docs.cloud.google.com/gemini/enterprise/docs/agents-overview",
+      "description": "Learn about agents in Gemini Enterprise."
+    },
+    {
+      "title": "Register an ADK Agent",
+      "url": "https://docs.cloud.google.com/gemini/enterprise/docs/register-and-manage-an-adk-agent",
+      "description": "Guide for registering ADK agents to Gemini Enterprise."
+    },
+    {
+      "title": "Register an A2A Agent",
+      "url": "https://docs.cloud.google.com/gemini/enterprise/docs/register-and-manage-an-a2a-agent",
+      "description": "Guide for registering A2A agents to Gemini Enterprise."
+    }
+  ],
+  "code": "",
+  "icon": "🏢",
+  "resource_link": "https://github.com/GoogleCloudPlatform/agent-starter-pack",
+  "code_snippets": [
+    {
+      "filename": "terminal",
+      "language": "shell",
+      "code": "# Create your agent\nuvx agent-starter-pack create --adk\n\n# Deploy it\nmake deploy\n\n# Register to Gemini Enterprise\nmake register-gemini-enterprise"
+    }
+  ],
+  "description": "**Day 19 of Google's Advent of Agents**\n\nRegister your agent to Gemini Enterprise! 🌐\n\n[Gemini Enterprise](https://cloud.google.com/gemini-enterprise) is Google's intranet search 🔍, AI assistant 🤖, and agentic platform for organizations. It gives knowledge workers a single interface to access enterprise data 📊, perform tasks ✅, and work with agents—without switching between multiple tools.\n\nThe Agents Gallery 🖼️ At the heart of Gemini Enterprise is the Agents Gallery. Google-made agents like Deep Research and Data Insights live here—but you're not limited to Google's agents. You can register your own custom agents 🛠️. Once registered, your agent becomes discoverable to everyone in your organization 👥, right alongside the built-in ones.\n\nSimple Registration ⚡ Agent Starter Pack makes registration simple.\n\nThe registration command handles everything:\n\n- **Auto-detects agent type**: ADK on Agent Engine or A2A on Cloud Run\n- **Lists available apps**: Shows which Gemini Enterprise apps you can register to\n- **Fetches display name**: Pulls the name from your deployed agent\n- **Direct console link**: Takes you straight to your agent in the catalog\n\nYour agent goes from deployed to discoverable. Enterprise-wide visibility, zero friction."
+}

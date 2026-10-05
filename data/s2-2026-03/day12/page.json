@@ -1,0 +1,54 @@
+{
+  "day": "day12",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "Multi-Agent Patterns: Generator-Critic Agent Loop",
+  "summary": "Automatically refine LLM outputs using ADK's LoopAgent to orchestrate a conversation between a creative Writer and a strict Critic.",
+  "tags": [
+    "Multi-Agent",
+    "LoopAgent",
+    "Quality Assurance",
+    "ADK"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/12",
+  "video_id": "Kp0HrGst5-w",
+  "video_url": "https://www.youtube.com/watch?v=Kp0HrGst5-w",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Project Repository",
+      "url": "https://github.com/LuisSala/advent-of-agents-spring-26",
+      "description": "Source code for this project."
+    },
+    {
+      "title": "LlmAgent Reference",
+      "url": "https://google.github.io/adk-docs/agents/llm-agents/",
+      "description": "Official documentation for LlmAgent."
+    },
+    {
+      "title": "LoopAgent Reference",
+      "url": "https://google.github.io/adk-docs/agents/workflow-agents/loop-agents/",
+      "description": "Official documentation for LoopAgent."
+    },
+    {
+      "title": "Function Tools Reference",
+      "url": "https://google.github.io/adk-docs/tools-custom/function-tools/",
+      "description": "Official documentation for writing custom function tools."
+    }
+  ],
+  "code": "",
+  "icon": "🔁",
+  "resource_link": "https://google.github.io/adk-docs/",
+  "code_snippets": [
+    {
+      "filename": "agent.py",
+      "language": "python",
+      "code": "from google.adk.agents import Agent, LoopAgent\nfrom google.adk.tools import FunctionTool, ToolContext\n\ndef approve_draft(tool_context: ToolContext) -> dict:\n    tool_context.actions.escalate = True # Breaks the loop execution early\n    return {\"status\": \"success\", \"message\": \"Approved.\"}\n\nwriter = Agent(\n    name='writer', model='gemini-3-flash-preview',\n    instruction=\"Revise your draft based on feedback: {latest_feedback?}\",\n    output_key='latest_draft'\n)\n\ncritic = Agent(\n    name='critic', model='gemini-3-flash-preview',\n    instruction=(\n        \"Evaluate draft: {latest_draft}. \"\n        \"RUBRIC: 1. Must be sci-fi. 2. Must be under 100 words. \"\n        \"If it FAILS, provide feedback. If it PASSES perfectly, call approve_draft.\"\n    ),\n    tools=[FunctionTool(approve_draft)],\n    output_key='latest_feedback'\n)\n\nroot_agent = LoopAgent(name=\"loop\", sub_agents=[writer, critic], max_iterations=4)\n\nfrom google.adk.apps import App\napp = App(name=\"critic\", root_agent=root_agent)"
+    }
+  ],
+  "description": "\n**Day 12 of Google's Advent of Agents — Season 2**\n\n**The Problem / Why it matters:**\n\nLLMs hallucinate or fail strict formatting rubrics (like word count logic or structural requirements) on the first try. Manually reprompting wastes developer time.\n\n**The Solution:**\n\nThe **Writer-Critic (Generator-Evaluator)** pattern. We pit two agents against each other: a creative Writer and a strict Critic who evaluates the draft against a rubric, iterating until perfection.\n\n**How It Works:**\n\n* **LoopAgent:** We wrap the Writer and Critic inside an ADK `LoopAgent`, which automatically cycles execution back-and-forth between its sub-agents up to a `max_iterations` limit.\n\n* **output_key injection:** The Writer saves to `{latest_draft}` and the Critic saves to `{latest_feedback}`. They use these template variables in their prompts to seamlessly read each other's outputs on the next loop cycle.\n\n* **Early Escalation:** The Critic has access to an `approve_draft` function tool. Once the Critic decides the rubric is fully passed, it calls the tool. The tool sets `tool_context.actions.escalate = True`, immediately breaking out of the loop execution early and returning the successful payload.\n",
+  "video_available": false
+}

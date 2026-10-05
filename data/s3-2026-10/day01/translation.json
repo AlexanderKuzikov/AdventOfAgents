@@ -1,0 +1,223 @@
+{
+  "segments": [
+    {
+      "t": 2,
+      "en": "Hi.",
+      "ru": "Привет."
+    },
+    {
+      "t": 2,
+      "en": "It's October, the month of Halloween. So, let's start with something scary.",
+      "ru": "Октябрь — месяц Хэллоуина. Так что начнём с чего-то страшного."
+    },
+    {
+      "t": 2,
+      "en": "You built an agent and it accidentally shared your customer's PII data in the chat application.",
+      "ru": "Вы создали агента, и он по ошибке выложил PII ваших клиентов в чат-приложении."
+    },
+    {
+      "t": 2,
+      "en": "Now, who approved that access? Who approved the tool? Who owns the agent? Of course, you do.",
+      "ru": "Кто разрешил этот доступ? Кто одобрил инструмент? Кто владелец агента? Конечно, вы."
+    },
+    {
+      "t": 2,
+      "en": "And what step of your way or what step in the process of building your agent were you supposed to know that it actually had access?",
+      "ru": "И на каком шаге вашего пути — на каком этапе процесса создания агента — вы должны были узнать, что у него вообще есть такой доступ?"
+    },
+    {
+      "t": 2,
+      "en": "And before it access all of this, where were you supposed to catch and stop or block it from doing this?",
+      "ru": "И до того, как он получил доступ ко всему этому — где вы должны были перехватить и остановить или заблокировать его?"
+    },
+    {
+      "t": 2,
+      "en": "If you cannot answer any one of those questions, you don't have an agent building problem. You have an agent governance problem, which is the top one reason why many of your agents don't land in production.",
+      "ru": "Если вы не можете ответить хотя бы на один из этих вопросов — у вас не проблема разработки агента. У вас проблема управления агентами (agent governance), и это главная причина, по которой многие ваши агенты не доезжают до продакшена."
+    },
+    {
+      "t": 52,
+      "en": "Welcome to season 3 of Advent of Agents. I'm a product manager here at Google Cloud. Everyday this October, we are going deep on all things agent security, agent governance, and everything that you need to know to secure your agents in production.",
+      "ru": "Добро пожаловать в третий сезон «Advent of Agents». Я продакт-менеджер в Google Cloud. Каждый день в октябре мы глубоко разбираем всё, что касается безопасности агентов, управления ими и всего, что нужно знать, чтобы защитить агентов в продакшене."
+    },
+    {
+      "t": 52,
+      "en": "For the next 31 days, you'll have one question a day addressed, answered, solved for, a short video, and a codelab you can run in about 5 minutes.",
+      "ru": "В ближайшие 31 день у вас будет по одному вопросу в день — с разбором и ответом, плюс короткое видео и codelab, который можно запустить примерно за 5 минут.",
+      "fix": "a cut up you can run → a codelab you can run"
+    },
+    {
+      "t": 52,
+      "en": "So, day one starts with a map.",
+      "ru": "Так что день первый начинается с карты."
+    },
+    {
+      "t": 76,
+      "en": "Here's the question our customers always ask us. Before I worry about locking agents down, what are the actual stages an agent goes through from idea to production and where do security and governance checkpoint fits in?",
+      "ru": "Вот вопрос, который наши клиенты задают нам всегда: прежде чем беспокоиться о блокировке агентов, какие вообще этапы проходит агент от идеи до продакшена и где в них встраиваются контрольные точки безопасности и управления?"
+    },
+    {
+      "t": 76,
+      "en": "As boring as security and governance sounds, we all need insurance, right? We don't want liability and that's exactly what we're going to solve in today's.",
+      "ru": "Скучно звучит — безопасность и управление, — но ведь всем нужна страховка, верно? Мы не хотим ответственности, и именно это мы сегодня и решаем."
+    },
+    {
+      "t": 106,
+      "en": "Now, we want to understand what is the difference between SDLC, ML Ops, and ADLC, which is the agent development life cycle.",
+      "ru": "Теперь давайте разберёмся, в чём разница между SDLC, MLOps и ADLC — жизненным циклом разработки агента."
+    },
+    {
+      "t": 106,
+      "en": "If you're a developer, you know SDLC. SDLC is code, code is deterministic. Same input, same output. So, tests prove that it works.",
+      "ru": "Если вы разработчик, вы знаете SDLC. SDLC — это код, а код детерминирован: один и тот же вход — один и тот же выход. Тесты доказывают, что оно работает.",
+      "fix": "If If a developer → as a developer; test proves if you would work → tests prove that it works"
+    },
+    {
+      "t": 106,
+      "en": "If you work in data, you know ML ops, you version the data, you retrain them, you watch for drift, but the model just still returns a prediction.",
+      "ru": "Если вы работаете с данными, вы знаете MLOps: вы версионируете данные, переобучаете модель, следите за дрифтом — но модель всё равно лишь возвращает предсказание."
+    },
+    {
+      "t": 106,
+      "en": "Now, agents are different. They can take actions on your behalf. They can think, they can call your databases, call APIs, write code, trigger workflows. They can do much more than what something in SDLC could do.",
+      "ru": "Агенты устроены иначе. Они могут действовать от вашего имени: думать, обращаться к вашим базам данных, вызывать API, писать код, запускать воркфлоу. Они умеют гораздо больше, что-либо в SDLC."
+    },
+    {
+      "t": 106,
+      "en": "And they could also determine which tool to use in runtime.",
+      "ru": "И на рантайме они сами решают, какой инструмент использовать."
+    },
+    {
+      "t": 106,
+      "en": "Because they're non-deterministic, meaning same input but different outputs, you just cannot slap a firewall in front of them and call it a day.",
+      "ru": "Поскольку они недетерминированы (один и тот же вход — разные выходы), нельзя просто поставить перед ними файрвол и закрыть на этом вопрос."
+    },
+    {
+      "t": 106,
+      "en": "You may need a life cycle that test behavior, not just output, and controls the agent at each stage.",
+      "ru": "Вам нужен жизненный цикл, который тестирует поведение, а не только выход, и контролирует агента на каждом этапе."
+    },
+    {
+      "t": 167,
+      "en": "That's where ADLC comes in, the agent development life cycle. And we essentially have five phases, one loop.",
+      "ru": "Вот тут появляется ADLC — Agent Development Lifecycle. По сути, у нас пять фаз и один цикл."
+    },
+    {
+      "t": 167,
+      "en": "Scope, build, scale, govern, and optimize. That's a loop, it's not a line. And every phase ends with a checkpoint.",
+      "ru": "Scope, Build, Scale, Govern, Optimize. Это цикл, а не прямая линия. И каждая фаза заканчивается контрольной точкой."
+    },
+    {
+      "t": 167,
+      "en": "Security is not a gate that you put in the end, it's in every step of the way.",
+      "ru": "Безопасность — не шлюз, который ставится в конце, она присутствует на каждом шаге."
+    },
+    {
+      "t": 190,
+      "en": "First, scope. Before you write a single prompt, draw a bounding box, a boundary box, right? What an agent can do, what it cannot do, what are the things it can touch and what are the things it absolutely cannot touch,",
+      "ru": "Первое — Scope. Ещё до того, как вы напишете хоть один промпт, нарисуйте bounding box, граничную рамку: что агент может делать, что не может, к чему он может прикасаться, а к чему — категорически не должен,"
+    },
+    {
+      "t": 190,
+      "en": "and most importantly, who owns what. Every agent needs to have an owner.",
+      "ru": "и, самое главное, кто чем владеет. У каждого агента должен быть владелец."
+    },
+    {
+      "t": 190,
+      "en": "That one-page document is your governance artifact. If you don't define what an agent should do very early on in your process, you are ending up building a liability.",
+      "ru": "Этот одностраничный документ — ваш артефакт управления. Если вы не определите на самом раннем этапе, что агент должен делать, вы в итоге строите источник ответственности."
+    },
+    {
+      "t": 221,
+      "en": "Phase two, build. You iterate on instructions and tools locally in sandbox. On Google Cloud, that's ADK or Gemini CLI with Gemini. You could use any framework even within Google Cloud. Google Cloud is very open in terms of frameworks.",
+      "ru": "Фаза вторая — Build. Вы итерируетесь над инструкциями и инструментами локально, в песочнице. В Google Cloud это Agents CLI или ADK с Gemini. Можно взять любой фреймворк, даже внутри Google Cloud — Google Cloud очень открыт к фреймворкам.",
+      "fix": "ADK or Gemini CLI -> Agents CLI или ADK (в коде дня: agents-cli scaffold)"
+    },
+    {
+      "t": 221,
+      "en": "The checkpoint: every tool call matches the spec that you've written, and you have an eval set before anything leaves your laptop, meaning you know how to validate your data.",
+      "ru": "Контрольная точка: каждый вызов инструмента соответствует написанной вами спецификации, и у вас есть eval-набор до того, как что-либо покинет ваш ноутбук — то есть вы понимаете, как валидировать данные."
+    },
+    {
+      "t": 250,
+      "en": "Next step, scale. Moving from notebook to an enterprise runtime like agent runtime, Cloud Run, or GKE, how does it behave under load? How do you automate the deployments?",
+      "ru": "Следующий шаг — Scale. Переход из ноутбука в корпоративный рантайм — Agent Runtime, Cloud Run или GKE: как агент ведёт себя под нагрузкой? Как автоматизировать деплои?"
+    },
+    {
+      "t": 250,
+      "en": "If your organization is going to have thousands of agents, they all cannot be deployed in its own style. Then we end up risking shadow IT.",
+      "ru": "Если в организации будут тысячи агентов, их нельзя деплоить какие попало — иначе получаем теневой IT.",
+      "fix": "deployed in its own style → each deployed their own way"
+    },
+    {
+      "t": 250,
+      "en": "So, the checkpoint is: your environment is in Terraform, it's fully automated, and it gets reviewed just like any other code. We do not want to do click ops in production.",
+      "ru": "Контрольная точка: окружение описано в Terraform, полностью автоматизировано и проходит ревью как любой другой код. Мы не хотим click-ops в продакшене."
+    },
+    {
+      "t": 282,
+      "en": "Phase four is govern. This is the main focus of the season.",
+      "ru": "Фаза четвёртая — Govern. Это главная тема сезона."
+    },
+    {
+      "t": 282,
+      "en": "How does your agent authenticate? A shared service account or its own? Like, does agent have its own identity?",
+      "ru": "Как ваш агент аутентифицируется? Через общий сервисный аккаунт или через свой собственный? Есть ли у агента своя идентичность?",
+      "fix": "a shared service or its own spiffy account → a shared service account or its own"
+    },
+    {
+      "t": 282,
+      "en": "Then, can you see all the agents in a registry, which is the agent registry?",
+      "ru": "Видно ли все агенты в реестре — Agent Registry?"
+    },
+    {
+      "t": 282,
+      "en": "Then, are you able to look into all the incoming and outgoing traffic? Like, do you have visibility into what your agents are talking to and who they're talking to at what point? That's the agent gateway.",
+      "ru": "Можете ли вы видеть весь входящий и исходящий трафик? Есть ли видимость того, с кем, когда и о чём общаются ваши агенты? Это Agent Gateway."
+    },
+    {
+      "t": 282,
+      "en": "Then, do you have control on all the prompts that your agent is getting? Like, are your prompts getting scanned by Model Armor? So, you have safety checks in place before your agents respond.",
+      "ru": "Есть ли контроль над всеми промптами, которые получает агент? Сканируются ли входные промпты через Model Armor? То есть стоят ли проверки безопасности перед тем, как агент ответит."
+    },
+    {
+      "t": 282,
+      "en": "And then, can you restrict tool calls with semantic governance policies? The checkpoint: no agent touches production data without an identity, an owner, and a policy. That's crucial.",
+      "ru": "И можно ли ограничить вызовы инструментов семантическими политиками управления? Контрольная точка: ни один агент не трогает продакшен-данные без идентичности, владельца и политики. Это ключевое.",
+      "fix": "with natural semantic layer, Sorry → with semantic governance policies"
+    },
+    {
+      "t": 344,
+      "en": "Finally, optimize: day two operations, agent drift, models update, APIs change. So, you rerun evals on every change and you opt, and you use OpenTelemetry tracing to see exactly which tools your agents decided to call and why. What you learn goes straight back into scope. That is hence the reason why it's called a loop.",
+      "ru": "И наконец — Optimize, операции второго дня: дрифт агента, обновления моделей, изменения API. Вы перезапускаете evals при каждом изменении и используете OpenTelemetry-трейсинг, чтобы точно увидеть, какие инструменты ваш агент решил вызвать и почему. Всё, что вы узнаёте, возвращается прямиком в Scope. Вот почему это называется циклом.",
+      "fix": "open telemetry → OpenTelemetry; That hence the reason → That is hence the reason"
+    },
+    {
+      "t": 368,
+      "en": "Now, this is the season three map. We go from foundations, architecture, to identity, access control. Then, we talk about runtime guardrails, data production protection. Then, we talk about fleet management, high availability. Then, we talk about observability, threat detection, and containment. And towards the end of the season, we talk about day two ops and continuous governance.",
+      "ru": "Такова карта третьего сезона: от фундамента и архитектуры к identity и access control. Затем — runtime guardrails, защита данных в продакшене. Затем — управление парком агентов (fleet management) и высокая доступность. Потом — observability, обнаружение угроз и сдерживание. А ближе к концу сезона — операции второго дня и непрерывное управление."
+    },
+    {
+      "t": 394,
+      "en": "So, for today's exercise, you're essentially going to build one agent around all five loops. Start by writing down your five line spec. And then, install it using Agents CLI.",
+      "ru": "Сегодняшнее упражнение: по сути, вы собираете одного агента по всем пяти циклам. Начните с того, что запишете свою спецификацию в пять пунктов, а затем установите его через Agents CLI.",
+      "fix": "using agency CLI -> using Agents CLI"
+    },
+    {
+      "t": 394,
+      "en": "Now, you would have gotten your first audit trail. And it allows you to see what the agent decided to do. And then, use optimize: use Agents CLI evals to come up with scores and understand the behavior of your agent.",
+      "ru": "И вы сразу получите первый журнал аудита — с ним видно, что агент решил делать. Дальше — Optimize: через evals в Agents CLI получите оценки и поймёте поведение агента.",
+      "fix": "use agency CLI evals -> use Agents CLI evals"
+    },
+    {
+      "t": 394,
+      "en": "Scale and Govern are commented out at the bottom because that's for day five. That's when an agent gets its true identity.",
+      "ru": "Scale и Govern внизу закомментированы, потому что это для пятого дня — тогда, когда агент получит свою настоящую идентичность."
+    },
+    {
+      "t": 430,
+      "en": "The code, the ADLC diagram, and the reading list are on today's page. Tomorrow, on day two, we tear down the agent threat surface and see why securing agents is different. See you tomorrow. Thank you.",
+      "ru": "Код, схема ADLC и список для чтения — на странице сегодняшнего выпуска. Завтра, во второй день, мы разберём поверхность угроз для агентов и посмотрим, почему защищать агентов — это не то же самое, что защищать что-то другое. Увидимся завтра. Спасибо."
+    }
+  ]
+}

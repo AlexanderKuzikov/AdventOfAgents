@@ -1,0 +1,157 @@
+[
+  {
+    "t": 6,
+    "en": "Hello there and welcome to another day of advent of agent. Today we're going to show you how it's possible to build an AVK agent no matter if you're using A2A",
+    "ru": ""
+  },
+  {
+    "t": 15,
+    "en": "in cloud run or agent engine and then register it in jam enterprise in a couple of minutes. So let's start. You can do it in different ways using the starter pack but I will suggest you to start with uvx agent starter pack create. This will give you uh a prompt",
+    "ru": ""
+  },
+  {
+    "t": 30,
+    "en": "where you will be able to choose the name of the service. It might be my agent. It can be something else. For now, let's call it Alvent agent.",
+    "ru": ""
+  },
+  {
+    "t": 39,
+    "en": "You will be able to choose between a list of different samples, different agents. Let's go with the default. Again, also here agent engine or claron you can register in German enterprise. In both cases, let's go with agent engine. We don't need the terraform and the CACD for this is a size year. So, let's go with a simple mode. US Central one and boom in a couple of seconds we are verifying that we have credentials and we generated a template using the starter pack. So we can open it in our",
+    "ru": ""
+  },
+  {
+    "t": 68,
+    "en": "ID. You can see it here. I just open it up in anti-gravity. It's a really dummy agent composed by two tool calls a single agent",
+    "ru": ""
+  },
+  {
+    "t": 79,
+    "en": "some alpha code to deploy it in this case agent engine. And what's beautiful about it is that you can use tools like anti-gravity or gemini together with a",
+    "ru": ""
+  },
+  {
+    "t": 89,
+    "en": "comprehensive ADK spreadsheet to change",
+    "ru": ""
+  },
+  {
+    "t": 93,
+    "en": "this agent here and make it uh in a couple of minutes what you want to the agent to do. But for the time being,",
+    "ru": ""
+  },
+  {
+    "t": 102,
+    "en": "let's just go ahead with the typical journey. The typical journey will include kicking off the playground which",
+    "ru": ""
+  },
+  {
+    "t": 109,
+    "en": "use ADK web. ADK web will offer you the",
+    "ru": ""
+  },
+  {
+    "t": 114,
+    "en": "possibility to start interacting locally with the agent. So that so to arrive to the best kind of uh experience that you want to give to your end user. So you can see that we have a playground running on local host I can test the agent by sending a message in this case hi and the agent responds well. You can say things like weather in New York",
+    "ru": ""
+  },
+  {
+    "t": 137,
+    "en": "and the agent should use a tool called the get weather tool call to respond me. Perfect. That works. It's now time to deploy this agent in agent engine. To do that, it's a single command. So, let's do it. We'll just need to run make deploy. This command will take the package, the agent, the code, and agent engine configuration, and it will deploy remotely in Vert.Exi XI in the default project that I set in my configuration.",
+    "ru": ""
+  },
+  {
+    "t": 166,
+    "en": "Cool. So you can see here all the project location and environment variables we are using. And let's give it a couple of minutes and this agent will be deployed. Okay, perfect. You can see the agent was deployed successfully. You can look at the agent engine console where you'll be able to see the agent. So you can see here the agent is successfully deployed into agent engine. So let's start the process. For this demo, I created a dummy Geminina enterprise instance in global location.",
+    "ru": ""
+  },
+  {
+    "t": 196,
+    "en": "As we are deploying the agent in US central one should be fine. And you can see that is a pretty empty Jamine enterprise um instance which contains only the pre-built agents from Google. We want to",
+    "ru": ""
+  },
+  {
+    "t": 212,
+    "en": "register our custom agent within this console here. Okay, let's start. You",
+    "ru": ""
+  },
+  {
+    "t": 218,
+    "en": "will need to use essentially a single command to do that. Make register German",
+    "ru": ""
+  },
+  {
+    "t": 224,
+    "en": "enterprise. The ADK, sorry, the agent starter pack",
+    "ru": ""
+  },
+  {
+    "t": 230,
+    "en": "CLI will automatically detect that you previously deployed an agent in agent engine using this ID. Here it will ask you if you want to use that. Let's say yes. It will then detect which project you're using. Even in this case, this is good. We are using the same project for agent engine and German enterprise. It will then search for all the instances of",
+    "ru": ""
+  },
+  {
+    "t": 253,
+    "en": "German enterprise within this project. That's cool. We only have one. And yes, we want to use this um",
+    "ru": ""
+  },
+  {
+    "t": 261,
+    "en": "application here. Perfect.",
+    "ru": ""
+  },
+  {
+    "t": 265,
+    "en": "The registration process will kick off and in a couple of seconds you can see that it actually work. The agent is now registered in Germany Enterprise. Let's have a look at the console. to see how",
+    "ru": ""
+  },
+  {
+    "t": 277,
+    "en": "this is working.",
+    "ru": ""
+  },
+  {
+    "t": 283,
+    "en": "Okay. So, if you click on preview here,",
+    "ru": ""
+  },
+  {
+    "t": 286,
+    "en": "you'll be able to see that now in agents we have the new advent agent. Perfect.",
+    "ru": ""
+  },
+  {
+    "t": 291,
+    "en": "Let's start maybe sending some requests to it and see how the agents respond.",
+    "ru": ""
+  },
+  {
+    "t": 297,
+    "en": "So, I'm going to say hi",
+    "ru": ""
+  },
+  {
+    "t": 306,
+    "en": "and the agency. Yes, perfect. Let's ask him for the weather in New York. It should tell me that it's 90° as this is the art code that the tool will call.",
+    "ru": ""
+  },
+  {
+    "t": 319,
+    "en": "Perfect. It's 90° and sunny. Amazing. So",
+    "ru": ""
+  },
+  {
+    "t": 323,
+    "en": "you can see how in a couple of minutes we managed to create a new sample with a starter pack, deploy the agent to agent engine and then finally register it with a single command into jamine enterprise.",
+    "ru": ""
+  },
+  {
+    "t": 336,
+    "en": "Keep in mind you can do the same deployment using aa and cloud run should",
+    "ru": ""
+  },
+  {
+    "t": 342,
+    "en": "you want to use a containerbased approach. So you can also do that and you can also use different frameworks such as langraph crewi and so on. In this case, we're using ADK on agent engine. And that concludes our demo. Hope you like it and see you for the next day.",
+    "ru": ""
+  }
+]

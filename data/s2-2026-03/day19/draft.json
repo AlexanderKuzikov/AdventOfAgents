@@ -1,0 +1,37 @@
+[
+  {
+    "t": 6,
+    "en": "Hi, what is this?",
+    "ru": ""
+  },
+  {
+    "t": 9,
+    "en": ">> That appears to be a Mac Mini. Is there anything else I can help you with?",
+    "ru": ""
+  },
+  {
+    "t": 23,
+    "en": ">> Now, what do you see?",
+    "ru": ""
+  },
+  {
+    "t": 26,
+    "en": ">> I see a wireless keyboard and a double-walled glass cup with a tea bag inside sitting on a wooden coaster. Is there anything specific you'd like to know about them? >> Can you find a teapot for this glass?",
+    "ru": ""
+  },
+  {
+    "t": 43,
+    "en": ">> I found a few options including a French press, a kettle with four cups, and an electric tea kettle with an infuser. They are now showing on your screen.",
+    "ru": ""
+  },
+  {
+    "t": 64,
+    "en": ">> Can you find a fertilizer for this?",
+    "ru": ""
+  },
+  {
+    "t": 70,
+    "en": ">> I can do that. I'm searching for fertilizer for that plant now. I found a liquid fertilizer, slow-release options, and spikes. They're on your screen. Slow-release fertilizer and some plant food. They're on your screen now.",
+    "ru": ""
+  }
+]

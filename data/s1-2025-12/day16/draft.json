@@ -1,0 +1,307 @@
+[
+  {
+    "t": 6,
+    "en": "Hello and welcome to another day of advent of agents. Today we're going to show you how it's possible to build a langraph agent using A2A in a matter of",
+    "ru": ""
+  },
+  {
+    "t": 15,
+    "en": "minutes. And so then you can then deploy this agent into Google cloud using either agent engine or cl run. So let's start with it. The first thing you will need to run is a command that looks like this. UVX agent starter pack create lang graph base. Of course, you will need to have UV installed as part of your laptop. Once you run this, it will",
+    "ru": ""
+  },
+  {
+    "t": 39,
+    "en": "download the agent starter pack. It will ask you for a name for your agent. You can give it any name. In this case, we can go with the default my agent. And you'll be able to choose between agent engine or cloud run. In this case, let's go with cloud run for example. Uh the choice is you can choose either depending on where you want to deploy. It will then ask you whether you want to add any CCD and Terraform. For this example, you won't immediately need it. You can add it later using the enhance",
+    "ru": ""
+  },
+  {
+    "t": 67,
+    "en": "command as part of the starter pack. So let's go with the default again. And then again, US central one has the default region. This will verify our credentials. And in a matter of seconds, we will be able to create a sample that we can then uh",
+    "ru": ""
+  },
+  {
+    "t": 83,
+    "en": "enter into it and open in our uh ID.",
+    "ru": ""
+  },
+  {
+    "t": 89,
+    "en": "So we now have a sample",
+    "ru": ""
+  },
+  {
+    "t": 92,
+    "en": "uh that contains everything you need to build and deploy this agent. So you can",
+    "ru": ""
+  },
+  {
+    "t": 98,
+    "en": "see here like uh the structure of the of the the repo which contains the application. In this case, it's a really dummy langraph agent using GM3 Pro. U it",
+    "ru": ""
+  },
+  {
+    "t": 110,
+    "en": "will offer like a get weather tool and",
+    "ru": ""
+  },
+  {
+    "t": 114,
+    "en": "it will be a really simple reactbased agent that will essentially offer you weather information. The world purpose of this agent is for you to change it. So you need to essentially um imagine that you might want to change it depending on what you want to do and uh things like this. We will then offer depending in this case here use cloud run. So we will offer a uh fast API server that you can",
+    "ru": ""
+  },
+  {
+    "t": 139,
+    "en": "actually run locally, you can run remotely and start using it for testing.",
+    "ru": ""
+  },
+  {
+    "t": 144,
+    "en": "We also prepare for you a set of uh examples of unit and integration test.",
+    "ru": ""
+  },
+  {
+    "t": 151,
+    "en": "So the first thing you will do typically will be to uh test how the agent works locally. So in this case here the first thing you will typically do will be to install all the dependencies",
+    "ru": ""
+  },
+  {
+    "t": 169,
+    "en": "and then it will you will be able to",
+    "ru": ""
+  },
+  {
+    "t": 172,
+    "en": "essentially run the playground. In this case here the playground actually use",
+    "ru": ""
+  },
+  {
+    "t": 177,
+    "en": "the 8way inspector. The A2 inspector is a web UI that offers the capability to test any A2A agent using uh this web UI",
+    "ru": ""
+  },
+  {
+    "t": 188,
+    "en": "and the A2A protocol. So in this case here you can see the agent is running. We can actually open the inspector UI.",
+    "ru": ""
+  },
+  {
+    "t": 200,
+    "en": "Um if you give me a second I will be able to show you how it looks like.",
+    "ru": ""
+  },
+  {
+    "t": 207,
+    "en": "So yeah it looks like this. So you have like a we can also select the dark mode but essentially uh you will need to paste the URL of the agent. In this case the agent is deployed locally. So let's paste this",
+    "ru": ""
+  },
+  {
+    "t": 224,
+    "en": "and then we can hit on connect. So you can see we connected the agent card was valid and then we can start chatting with the agent. We can send images. we can send um",
+    "ru": ""
+  },
+  {
+    "t": 236,
+    "en": "uh data.",
+    "ru": ""
+  },
+  {
+    "t": 239,
+    "en": "So for example, we can send hi",
+    "ru": ""
+  },
+  {
+    "t": 243,
+    "en": "and the agent should respond back",
+    "ru": ""
+  },
+  {
+    "t": 249,
+    "en": "in the first cold start, but then it should respond with a message. In this case, hello, how can I help you? What's the where in New York?",
+    "ru": ""
+  },
+  {
+    "t": 262,
+    "en": "And yeah, so like you can use it as a way to essentially start using the agent, testing things out, then going back to the code of the agent, modifying things, and so iterate this way here.",
+    "ru": ""
+  },
+  {
+    "t": 274,
+    "en": "Once you're ready for um let's say a",
+    "ru": ""
+  },
+  {
+    "t": 278,
+    "en": "deployment, then it's time to essentially hit a new command, which is make deploy. Make deploy will package",
+    "ru": ""
+  },
+  {
+    "t": 287,
+    "en": "all the code you have here. And in this case it will deploy to cloud run. So you can see here we are actually fetching the project number and then the project ID and then we are eating G-Cloud but run deploy my agent.",
+    "ru": ""
+  },
+  {
+    "t": 300,
+    "en": "So you can see here running and this will essentially push our agent into the",
+    "ru": ""
+  },
+  {
+    "t": 306,
+    "en": "remote project in Google cloud. So we",
+    "ru": ""
+  },
+  {
+    "t": 310,
+    "en": "can wait a couple of seconds for this to be done. Well in this case a couple of minutes but let's cut it out. Okay. So now that we deployed the agent successfully, it's now time to interact with it. In this case here, we're going to use the 8way inspector to interact with it. But you can use other kind of means. For example, you will be able to use the uh a specific Python code like an client to interact with it or like a",
+    "ru": ""
+  },
+  {
+    "t": 334,
+    "en": "custom UI. In this case here, considering we are just developing with it, we're going to use the inspector. So you'll need to copy this URL then open a",
+    "ru": ""
+  },
+  {
+    "t": 343,
+    "en": "new tab and trigger make inspector.",
+    "ru": ""
+  },
+  {
+    "t": 347,
+    "en": "This will essentially kick off the same UI we show you earlier. But in this case here we are going to follow um the guidance that essentially we'll need to um we will need to use the server URL",
+    "ru": ""
+  },
+  {
+    "t": 360,
+    "en": "and then does a suffix the agent card.",
+    "ru": ""
+  },
+  {
+    "t": 364,
+    "en": "then we are going to need to essentially print an identity token which is important for authenticating with a remote cloud run instance. So now let's",
+    "ru": ""
+  },
+  {
+    "t": 375,
+    "en": "go back to the inspector",
+    "ru": ""
+  },
+  {
+    "t": 378,
+    "en": "and start populating these fields. Okay.",
+    "ru": ""
+  },
+  {
+    "t": 381,
+    "en": "So first of all I'll need my service URL. So we can do that. Then we are",
+    "ru": ""
+  },
+  {
+    "t": 388,
+    "en": "going to uh take the uh hijen card",
+    "ru": ""
+  },
+  {
+    "t": 394,
+    "en": "suffix. Let's do that. And then finally as a bear token we are going to put the an identity token. So let's take this and then paste it",
+    "ru": ""
+  },
+  {
+    "t": 407,
+    "en": "here and then hit on connect. So you can",
+    "ru": ""
+  },
+  {
+    "t": 411,
+    "en": "see we managed to authenticate successfully with the agent that was deployed remotely. It's now time to essentially start sending requests to it. So we can start with a simple hi and see if the agent responds well.",
+    "ru": ""
+  },
+  {
+    "t": 424,
+    "en": "Perfect. So you can see that we managed to actually deploy to end the agent and the agent actually managed to respond pretty well. Of course the journey doesn't finish here. For example, you might want to look at the observability part. Uh for example, you might want to go into cloud trace and see how um",
+    "ru": ""
+  },
+  {
+    "t": 441,
+    "en": "events are being emitted every time you interact with the agent. This will be extremely important so that you'll be able to understand how users are using the agent so that you can build feedback and iterate over time. So let's go into cloud trace and you can see here a bunch of events being emitted by the by the agent. we can actually click on some of them and you'll be able to see the full stack of all the traces happening within",
+    "ru": ""
+  },
+  {
+    "t": 467,
+    "en": "our agent. So let's click on some of them.",
+    "ru": ""
+  },
+  {
+    "t": 475,
+    "en": "Okay. And you'll be able to see a mix of A2A events uh together with Langraph and Google",
+    "ru": ""
+  },
+  {
+    "t": 483,
+    "en": "generative AI events emitted by Germany. For each of these events, you will be able to see like how the agent is actually able to perform a response. In this case, here is a simple request because you can see that um the agent",
+    "ru": ""
+  },
+  {
+    "t": 497,
+    "en": "just invoke the model to respond. But you can imagine that every time we ask a more complex question for example, we can ask what's the weather",
+    "ru": ""
+  },
+  {
+    "t": 507,
+    "en": "weather in New York, the agent might",
+    "ru": ""
+  },
+  {
+    "t": 511,
+    "en": "need to invoke a tool call to do that.",
+    "ru": ""
+  },
+  {
+    "t": 514,
+    "en": "And so we will be able to see um this",
+    "ru": ""
+  },
+  {
+    "t": 519,
+    "en": "tool call happening into the trace. So if we refresh cloud trace and we go here into the last five 15 minutes, you",
+    "ru": ""
+  },
+  {
+    "t": 527,
+    "en": "should be able to see that for certain events like these ones here. We just don't have",
+    "ru": ""
+  },
+  {
+    "t": 534,
+    "en": "the final response, but we actually see the full stack of doing the first call,",
+    "ru": ""
+  },
+  {
+    "t": 540,
+    "en": "getting invoking the tool call for getting the weather and then produc producing a final response to the user back plus a bunch of hauler A2A events",
+    "ru": ""
+  },
+  {
+    "t": 549,
+    "en": "that can be useful to understand what is",
+    "ru": ""
+  },
+  {
+    "t": 552,
+    "en": "adding latency within your service.",
+    "ru": ""
+  },
+  {
+    "t": 556,
+    "en": "Okay, so that's essentially conclude our demo. uh you can then use the agent",
+    "ru": ""
+  },
+  {
+    "t": 561,
+    "en": "starter pack to actually prepare for deployment to production which will involve terraform and other kind of resources uh to build more confidence into the agent. So let us know what you",
+    "ru": ""
+  },
+  {
+    "t": 572,
+    "en": "think and uh hope we you enjoy this.",
+    "ru": ""
+  }
+]

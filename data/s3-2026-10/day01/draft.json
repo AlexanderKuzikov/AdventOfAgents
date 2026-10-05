@@ -1,0 +1,142 @@
+[
+  {
+    "t": 2,
+    "en": "Hi. It's October, the month of Halloween. So, let's start with something scary. You built an agent and [music] it accidentally shared your customer's PII data in the chat application. Now, who approved that access? Who approved the tool? Who owns the agent? Of course, you do. And what step of your way or what step in the process [music] of building your agent were you supposed to know that it actually had access? And before it access all of this, where",
+    "ru": ""
+  },
+  {
+    "t": 32,
+    "en": "were you supposed to catch and stop or block it from doing this? If you cannot answer any one of those questions, you don't have an agent building problem. You have an agent governance problem, which is the top one reason [music] why many of your agents don't land in production.",
+    "ru": ""
+  },
+  {
+    "t": 52,
+    "en": "Welcome to season 3 of Advent of Agents. I'm a product manager here at Google Cloud. Everyday this October, we are going deep on all things agent security, agent governance, and everything that you need to know to secure your agents in production. For the next 31 days, you'll have one question a day addressed, answered, solved for, a short video, and a cut up you can run in about 5 minutes. So, the day one starts with a map.",
+    "ru": ""
+  },
+  {
+    "t": 80,
+    "en": "Here's the question our customers always ask us. Before I worry about locking agents down, what are the actual stages an agent goes through from idea to production and where do security and governance checkpoint fits in? As boring as security and governance sounds, we all need insurance, right? We don't want liability and that's exactly what we're going to solve in today's",
+    "ru": ""
+  },
+  {
+    "t": 107,
+    "en": "Now, we want to understand what is the difference between SDLC, ML Ops, and ADLC, which is the agent development life cycle. If If a developer, you know SDLC. SDLC",
+    "ru": ""
+  },
+  {
+    "t": 118,
+    "en": "is code, code is deterministic. Same",
+    "ru": ""
+  },
+  {
+    "t": 121,
+    "en": "input, same output. So, test proves if you would work. If you work in data, you know ML ops, you version the data, you retrain them, you watch for drift, but the model just still returns a prediction. Now, agents are different. They can take actions on your behalf. They can think, they can call your databases, call APIs, write code, trigger workflows. They can do much more than what something in SDLC",
+    "ru": ""
+  },
+  {
+    "t": 146,
+    "en": "could do. And they could also determine which tool to use in runtime. Because they're non-deterministic, meaning same input but different outputs, you just cannot slap a firewall in front of them and call it a day. You may need a life cycle that test behavior, not just output, and controls the agent at each stage.",
+    "ru": ""
+  },
+  {
+    "t": 168,
+    "en": "That's where ADLC comes in, the agent development life cycle. And we essentially have five phases, one loop.",
+    "ru": ""
+  },
+  {
+    "t": 175,
+    "en": "Scope, build, scale, govern, and",
+    "ru": ""
+  },
+  {
+    "t": 178,
+    "en": "optimize. That's a loop, it's not a line. And every phase ends with a checkpoint. Security is not a gate that you put in the end, it's in every step of the way.",
+    "ru": ""
+  },
+  {
+    "t": 190,
+    "en": "First, scope. Before you write a single prompt, draw a bounding box, a boundary box, right? What an agent can do, what it cannot do, what are the things it can touch and what are the things it absolutely cannot touch, and most importantly, who owns what. Every agent needs to have an owner. That one-page document is your governance artifact. If you don't define what an agent should do very early on in your process, you are ending up building a liability.",
+    "ru": ""
+  },
+  {
+    "t": 221,
+    "en": "Phase two, build. You iterate on instructions and tools locally in sandbox. On Google Cloud, that's ADK or Gemini CLI with Gemini.",
+    "ru": ""
+  },
+  {
+    "t": 232,
+    "en": "You could use any framework even within Google Cloud. Google Cloud is very open in terms of frameworks. The checkpoint, every tool call matches the spec that you've written, and you have an eval set before anything leaves your laptop, meaning you know how to validate your data.",
+    "ru": ""
+  },
+  {
+    "t": 250,
+    "en": "Next step, scale. Moving from notebook to an enterprise runtime like agent runtime, Cloud Run, or GKE, how does it behave under load? How do you automate the deployments? If you're got If your organization is going to have thousands of agents, they all cannot be deployed in its own style. Then we end up risking shadow IT. So, the checkpoint is your environment is in Terraform, it's fully automated, and it gets reviewed just like any other code. We do not want to do click ops in production.",
+    "ru": ""
+  },
+  {
+    "t": 283,
+    "en": "Phase four is govern. This is the main focus of the season.",
+    "ru": ""
+  },
+  {
+    "t": 288,
+    "en": "How does your agent authenticate? A shared service or its own spiffy account? Like, does agent have its own identity? Then, can you see all the agents in a registry, which is the agent registry? Then, are you able to look into all the",
+    "ru": ""
+  },
+  {
+    "t": 304,
+    "en": "incoming and outgoing traffic? Like, do you have visibility into what your agents are talking to and who they're talking to at what point? That's the agent gateway. Then, do you have control",
+    "ru": ""
+  },
+  {
+    "t": 315,
+    "en": "on all the prompts that your agent is getting? Like, are your pre prompts getting scanned by model armor? So, you",
+    "ru": ""
+  },
+  {
+    "t": 323,
+    "en": "have safety checks in place before your agents respond. And then, can you restrict tool calls with natural semantic layer? Sorry, semantic governance policies. The checkpoint, no agent touches production data without an identity, an owner, and policy. That's crucial.",
+    "ru": ""
+  },
+  {
+    "t": 345,
+    "en": "Finally, optimize day two operations, agent drift, models update, APIs change.",
+    "ru": ""
+  },
+  {
+    "t": 351,
+    "en": "So, you rerun evals on every change and",
+    "ru": ""
+  },
+  {
+    "t": 354,
+    "en": "you opt and you use open telemetry tracing to see exactly which tools your",
+    "ru": ""
+  },
+  {
+    "t": 360,
+    "en": "your agents decided to call and why. What you learn goes straight back into scope. That hence the reason why it's called a loop. Now, this is the season three map. We go from foundations architecture to identity access control. Then, we talk about runtime guardrails data production protection. Then, we talk about fleet management, high availability Then, we talk about observability, threat detection, and containment. And towards the end of the season, we talk about day",
+    "ru": ""
+  },
+  {
+    "t": 389,
+    "en": "two ops and continuous governance.",
+    "ru": ""
+  },
+  {
+    "t": 395,
+    "en": "So, for today's exercise, you're essentially going to build one agent around all five loops. Start by writing down your five line spec. And then, install it using agency CLI.",
+    "ru": ""
+  },
+  {
+    "t": 408,
+    "en": "Now, you would have gotten your first audit trail. And it allows you to see what the agent decided to do. And then, use optimize. Use agency CLI evals to come up with scores and understand the behavior of your agent. Scale and govern are commented out at the bottom because that's for day day five. That's when an agent gets its true identity.",
+    "ru": ""
+  },
+  {
+    "t": 431,
+    "en": "The code, the ADLC diagram, and the reading list are on today's page. Tomorrow on day two, we tear down the agent threat surface and see why securing agents is different. See you tomorrow. Thank you.",
+    "ru": ""
+  }
+]

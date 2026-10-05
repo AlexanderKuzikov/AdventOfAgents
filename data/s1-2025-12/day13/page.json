@@ -1,0 +1,69 @@
+{
+  "day": "day13",
+  "season": 1,
+  "season_name": "Season 1 — December 2025 (Winter Holiday Edition)",
+  "title": "Interactions API",
+  "summary": "Interactions API marks a fundamental shift from stateless text generation to stateful, autonomous workflows.",
+  "tags": [
+    "Interactions API",
+    "ADK",
+    "A2A",
+    "Google Cloud",
+    "Google DeepMind"
+  ],
+  "canonical_url": "https://adventofagents.com/2025/12/13",
+  "video_id": "kPhs6C0-JbY",
+  "video_url": "https://www.youtube.com/watch?v=kPhs6C0-JbY",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Gemini Interactions API Announcement",
+      "url": "https://blog.google/technology/developers/interactions-api",
+      "description": "Read the announcement for Gemini Interactions API."
+    },
+    {
+      "title": "Gemini Interactions API Docs",
+      "url": "https://ai.google.dev/gemini-api/docs/interactions-api",
+      "description": "Read the documentation for Gemini Interactions API."
+    },
+    {
+      "title": "Gemini Deep Research Agent Announcement",
+      "url": "https://blog.google/technology/developers/deep-research-agent-gemini-api",
+      "description": "Read the announcement for Gemini Deep Research Agent."
+    },
+    {
+      "title": "Gemini Deep Research Agent Docs",
+      "url": "https://ai.google.dev/gemini-api/docs/deep-research",
+      "description": "Read the documentation for Gemini Deep Research Agent."
+    },
+    {
+      "title": "ADK Release Notes",
+      "url": "https://github.com/google/adk-python/blob/main/CHANGELOG.md",
+      "description": "Check out the ADK release notes."
+    },
+    {
+      "title": "ADK Interactions API Sample",
+      "url": "https://github.com/google/adk-python/tree/main/contributing/samples/interactions_api",
+      "description": "Check out the ADK sample with the Interactions API."
+    },
+    {
+      "title": "A2A Interactions API Sample",
+      "url": "https://github.com/a2aproject/a2a-samples/tree/interactions-api/samples/python/transports/interactions_api",
+      "description": "Check out the A2A sample which uses the Interactions API."
+    }
+  ],
+  "code": "",
+  "icon": "☁️",
+  "resource_link": "",
+  "code_snippets": [
+    {
+      "filename": "adk_interactions_api.py",
+      "language": "python",
+      "code": "from google.adk.agents.llm_agent import Agent\nfrom google.adk.models.google_llm import Gemini\nfrom google.adk.tools.google_search_tool import GoogleSearchTool\n\nroot_agent = Agent(\n    model=Gemini(\n        model=\"gemini-2.5-flash\",\n        # Enable Interactions API\n        use_interactions_api=True,\n    ),\n    name=\"interactions_test_agent\",\n    tools=[\n        # Converted Google Search to a function tool\n        GoogleSearchTool(bypass_multi_tools_limit=True),\n        get_current_weather,\n    ],\n)\n"
+    }
+  ],
+  "description": "**Day 13 of Google's Advent of Agents**\n\nThe landscape of AI development is shifting from stateless request-response cycles to stateful, multi-turn agentic workflows. \nWith the beta launch of the [Interactions API](https://blog.google/technology/developers/interactions-api), \nGoogle is providing a unified interface designed specifically for this new era—offering a single gateway to both raw models and the fully managed \n[Gemini Deep Research Agent](https://blog.google/technology/developers/deep-research-agent-gemini-api).\n\nTwo ways to use this today:\n\n1. **The \"Engine\" Upgrade (ADK):** By setting `use_interactions_api=True` in your ADK agent, you move the conversation history and state management to the server. This allows for background execution—perfect for long-running tasks where you don't want your client to timeout while the model \"thinks.\"\n\n2. **The \"Bridge\" (A2A):** If you have a mesh of agents speaking the Agent2Agent (A2A) protocol, you can now treat Google's hosted agents as remote peers. The new `InteractionsApiTransport` maps A2A messages directly to the Interactions API, allowing your existing clients to send tasks to the Deep Research Agent without writing custom API wrappers.\n\n\n**Interactions API** marks a fundamental shift from stateless text generation to stateful, autonomous workflows.\n\n- Instead of manually juggling context windows and fragile client-side loops, developers can now offload the entire reasoning state and history management to Google's infrastructure.\n- This enables \"fire-and-forget\" background execution for long-running tasks, solving the timeout issues common in complex agentic chains.\n- It provides a single, unified primitive for accessing both raw models and fully managed agents like Gemini Deep Research.\n\n**Resources:**\n\n- Read the [announcement for Gemini Interactions API](https://blog.google/technology/developers/interactions-api) and [docs](http://ai.google.dev/gemini-api/docs/interactions-api)  \n- Read the [announcement for Gemini Deep Research Agent](https://blog.google/technology/developers/deep-research-agent-gemini-api) and [docs](https://ai.google.dev/gemini-api/docs/deep-research)  \n- Check out the [ADK release notes](https://github.com/google/adk-python/blob/main/CHANGELOG.md), [docs](https://google.github.io/adk-docs/) and the [ADK sample with the Interactions API](https://github.com/google/adk-python/tree/main/contributing/samples/interactions_api)  \n- Check out the [A2A sample which uses the Interactions API](https://github.com/a2aproject/a2a-samples/tree/interactions-api/samples/python/transports/interactions_api)\n"
+}

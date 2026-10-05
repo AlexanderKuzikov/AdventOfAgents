@@ -1,0 +1,54 @@
+{
+  "day": "day18",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "Workspace & Gemini Enterprise: ADK agents",
+  "summary": "Build ADK agents that use the Vertex AI Search MCP server and Google Workspace APIs, deploy them to Vertex AI, and register them with Gemini Enterprise.",
+  "tags": [
+    "Gemini Enterprise",
+    "Google Workspace",
+    "ADK",
+    "MCP",
+    "Vertex AI"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/18",
+  "video_id": "dVBvx9r-D-4",
+  "video_url": "https://www.youtube.com/watch?v=dVBvx9r-D-4",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Codelab: Integrate Gemini Enterprise Agents with Google Workspace",
+      "url": "https://codelabs.developers.google.com/ge-gws-agents",
+      "description": "Step-by-step guide to building the integration."
+    },
+    {
+      "title": "Gemini Enterprise Documentation",
+      "url": "https://docs.cloud.google.com/gemini/enterprise/docs",
+      "description": "Official documentation for Gemini Enterprise."
+    },
+    {
+      "title": "Google Workspace Developers",
+      "url": "https://developers.google.com/workspace",
+      "description": "Build solutions with Google Workspace."
+    },
+    {
+      "title": "Register and manage ADK agents",
+      "url": "https://docs.cloud.google.com/gemini/enterprise/docs/register-and-manage-an-adk-agent",
+      "description": "Hosted on Vertex AI Agent Engine."
+    }
+  ],
+  "code": "# Google Cloud Console: Create a Gemini Enterprise application and connect Google Workspace data stores\n\n# Download ADK agent locally\ngit clone https://github.com/PierrickVoulet/adk-samples.git adk-samples-advent-agents\ncd adk-samples-advent-agents\ngit checkout origin/advent-agents\ncd python/agents/enterprise-ai-agent\n\n# Enable Google Cloud APIs\ngcloud services enable \\\n    calendar-json.googleapis.com \\\n    aiplatform.googleapis.com \\\n    cloudresourcemanager.googleapis.com\n\n# Enable Google Cloud Vertex AI Search MCP\ngcloud beta services mcp enable discoveryengine.googleapis.com \\\n     --project=$(gcloud config get-value project)\n\n# Build and deploy agent in Vertex AI Agent Engine\nuv sync\nuv run adk deploy agent_engine \\\n  --project=$(gcloud config get-value project) \\\n  --region=us-central1 \\\n  --display_name=\"Enterprise AI\" \\\n  enterprise_ai\n\n# Set up Vertex AI Reasoning Engine access to Vertex AI Search\nPROJECT_ID=$(gcloud config get-value project)\nPROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format='value(projectNumber)')\nSERVICE_ACCOUNT=\"service-${PROJECT_NUMBER}@gcp-sa-aiplatform-re.iam.gserviceaccount.com\"\ngcloud projects add-iam-policy-binding $PROJECT_ID \\\n     --member=\"serviceAccount:$SERVICE_ACCOUNT\" \\\n     --role=\"roles/discoveryengine.viewer\"\n\n# Google Cloud Console: Register deployed agent to Gemini Enterprise application with required OAuth accesses.\n",
+  "icon": "🤖",
+  "resource_link": "https://codelabs.developers.google.com/ge-gws-agents",
+  "code_snippets": [
+    {
+      "filename": "terminal",
+      "language": "bash",
+      "code": "# Google Cloud Console: Create a Gemini Enterprise application and connect Google Workspace data stores\n\n# Download ADK agent locally\ngit clone https://github.com/PierrickVoulet/adk-samples.git adk-samples-advent-agents\ncd adk-samples-advent-agents\ngit checkout origin/advent-agents\ncd python/agents/enterprise-ai-agent\n\n# Enable Google Cloud APIs\ngcloud services enable \\\n    calendar-json.googleapis.com \\\n    aiplatform.googleapis.com \\\n    cloudresourcemanager.googleapis.com\n\n# Enable Google Cloud Vertex AI Search MCP\ngcloud beta services mcp enable discoveryengine.googleapis.com \\\n     --project=$(gcloud config get-value project)\n\n# Build and deploy agent in Vertex AI Agent Engine\nuv sync\nuv run adk deploy agent_engine \\\n  --project=$(gcloud config get-value project) \\\n  --region=us-central1 \\\n  --display_name=\"Enterprise AI\" \\\n  enterprise_ai\n\n# Set up Vertex AI Reasoning Engine access to Vertex AI Search\nPROJECT_ID=$(gcloud config get-value project)\nPROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format='value(projectNumber)')\nSERVICE_ACCOUNT=\"service-${PROJECT_NUMBER}@gcp-sa-aiplatform-re.iam.gserviceaccount.com\"\ngcloud projects add-iam-policy-binding $PROJECT_ID \\\n     --member=\"serviceAccount:$SERVICE_ACCOUNT\" \\\n     --role=\"roles/discoveryengine.viewer\"\n\n# Google Cloud Console: Register deployed agent to Gemini Enterprise application with required OAuth accesses."
+    }
+  ],
+  "description": "\n**Day 18 of Google's Advent of Agents — Season 2**\n\nYesterday we demonstrated how **Google Workspace** connectors can be used in **Gemini Enterprise** to build no-code personal agents with the Agent Designer. Today, we take the **pro-code path** and showcase:\n\n- How to use the Google-managed **Vertex AI Search MCP server** and Google **Workspace APIs** in an ADK agent.\n- How to deploy the **ADK agent to Vertex AI** Agent Engine.\n- How to register the deployed **ADK agent to Gemini Enterprise** and make it accessible at an organizational level.\n\nNote: Google Workspace-enabled ADK agents can be deployed and accessed from anywhere, you are not limited to Vertex AI Agent Engine and Gemini Enterprise. For example, we could have used Cloud Run or Google Workspace applications (Gmail, Calendar, Chat, etc.)\n\n**Resources:**\n\n- [Codelab: Integrate Gemini Enterprise Agents with Google Workspace](https://codelabs.developers.google.com/ge-gws-agents)\n- [Gemini Enterprise Documentation](https://docs.cloud.google.com/gemini/enterprise/docs)\n- [Google Workspace Developers](https://developers.google.com/workspace)\n- [Register and manage ADK agents hosted on Vertex AI Agent Engine](https://docs.cloud.google.com/gemini/enterprise/docs/register-and-manage-an-adk-agent)\n"
+}

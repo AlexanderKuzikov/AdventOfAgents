@@ -1,0 +1,49 @@
+{
+  "day": "day03",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "Build AI Agents with Gemini 3.1 Flash-Lite",
+  "summary": "Announcing Gemini 3.1 Flash-Lite: our most cost-efficient model for building high-quality AI agents at scale.",
+  "tags": [
+    "Gemini 3.1 Flash-Lite",
+    "Product Launch",
+    "Vertex AI",
+    "Memory Agent"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/03",
+  "video_id": "-7zEqFXg0zw",
+  "video_url": "https://www.youtube.com/watch?v=-7zEqFXg0zw",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "GitHub Repository",
+      "url": "https://github.com/GoogleCloudPlatform/generative-ai/tree/main/gemini/agents/always-on-memory-agent",
+      "description": "Always-On Memory Agent: Persistent, evolving memory for AI agents."
+    },
+    {
+      "title": "Vertex AI Studio",
+      "url": "https://vertexai.google.com/",
+      "description": "Get started with Gemini 3.1 Flash-Lite on Vertex AI."
+    },
+    {
+      "title": "Google AI Studio",
+      "url": "https://aistudio.google.com/",
+      "description": "Fastest way to build with Gemini models."
+    }
+  ],
+  "code": "# 1. Install\ngit clone https://github.com/GoogleCloudPlatform/generative-ai.git\ncd generative-ai/gemini/agents/always-on-memory-agent\npip install -r requirements.txt\n\n# 2. Set your API key\nexport GOOGLE_API_KEY=\"your-gemini-api-key\"\n# Get your API key from Vertex AI Studio or Google AI Studio\n\n# 3. Start the agent\npython agent.py\n\n# That's it. The agent is now running:\n# - Watching ./inbox/ for new files (text, images, audio, video, PDFs)\n# - Consolidating every 30 minutes\n# - Serving queries at http://localhost:8888\n\n# 4. Feed it information\n\n# Option A: Drop any file\necho \"Some important information\" > inbox/notes.txt\ncp photo.jpg inbox/\ncp meeting.mp3 inbox/\ncp report.pdf inbox/\n# Agent auto-ingests within 5-10 seconds\n\n# Option B: HTTP API\ncurl -X POST http://localhost:8888/ingest \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"text\": \"AI agents are the future\", \"source\": \"article\"}'\n\n# 5. Query\ncurl \"http://localhost:8888/query?q=what+do+you+know\"\n",
+  "icon": "⚡",
+  "resource_link": "https://github.com/GoogleCloudPlatform/generative-ai/tree/main/gemini/agents/always-on-memory-agent",
+  "code_snippets": [
+    {
+      "filename": "terminal",
+      "language": "bash",
+      "code": "# 1. Install\ngit clone https://github.com/GoogleCloudPlatform/generative-ai.git\ncd generative-ai/gemini/agents/always-on-memory-agent\npip install -r requirements.txt\n\n# 2. Set your API key\nexport GOOGLE_API_KEY=\"your-gemini-api-key\"\n# Get your API key from Vertex AI Studio or Google AI Studio\n\n# 3. Start the agent\npython agent.py\n\n# That's it. The agent is now running:\n# - Watching ./inbox/ for new files (text, images, audio, video, PDFs)\n# - Consolidating every 30 minutes\n# - Serving queries at http://localhost:8888\n\n# 4. Feed it information\n\n# Option A: Drop any file\necho \"Some important information\" > inbox/notes.txt\ncp photo.jpg inbox/\ncp meeting.mp3 inbox/\ncp report.pdf inbox/\n# Agent auto-ingests within 5-10 seconds\n\n# Option B: HTTP API\ncurl -X POST http://localhost:8888/ingest \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"text\": \"AI agents are the future\", \"source\": \"article\"}'\n\n# 5. Query\ncurl \"http://localhost:8888/query?q=what+do+you+know\""
+    }
+  ],
+  "description": "\n\n**Day 3 of Google's Advent of Agents — Season 2**\n\nWe’re announcing **Gemini 3.1 Flash-Lite** today, our most cost-efficient model yet, built specifically for intelligence at scale. It is a leaner, more efficient model designed for developers building high-quality AI apps while managing strict budget constraints. \n\nCost and efficiency are the critical metrics for large-scale deployments. The model is cheap and low latency, making it extremely fast. Gemini 3.1 Flash-Lite delivers the ultra-low latency required to power responsive, real-time applications and high-frequency agentic workflows at a fraction of the cost. \n\n**Why Gemini 3.1 Flash-Lite for Always On Agents?**\n\nThis agent runs continuously. Cost and speed matter more than raw intelligence for background processing:\n\n* **Fast:** Ultra-low latency ingestion and retrieval, required to power responsive, high-frequency agentic workflows.  \n\n* **Cheap:** Negligible cost per session, making 24/7 operation practical.  \n\n* **Smart:** Extracts structured data, identifies connections, and synthesizes answers.  \n\n* **Multimodal:** Extracts structured information from 27+ file types including text, images, audio, and video.\n\n**How it Works**\n\n![How it works](/season2-day03-how-it-works.png)\n\n1. **Ingest:** The agent watches a folder (auto-ingesting within 5 to 10 seconds) or API and uses Flash Lite's multimodal capabilities to extract structured data from any file.  \n\n2. **Consolidate:** Like a human brain during sleep, the **ConsolidateAgent** runs on a timer to find connections between memories and generate cross-cutting insights.  \n\n3. **Query:** Ask any question, and the **QueryAgent** synthesizes an answer by reading through all stored memories and consolidated insights with full citations.\n\n**Get Started Today**\n\nBuild with Gemini 3.1 Flash-Lite and explore the Always On Memory Agent tutorial:\n\n* **Get the Code & try it out (fork and star):** [GitHub Repo](https://github.com/GoogleCloudPlatform/generative-ai/tree/main/gemini/agents/always-on-memory-agent)  \n\n* **Get your API Key:** Available now via [Vertex AI Studio](https://vertexai.google.com/) or [Google AI Studio](https://aistudio.google.com/).\n\nShare the cool things you are building with Gemini 3.1 Flash-Lite.",
+  "video_available": false
+}

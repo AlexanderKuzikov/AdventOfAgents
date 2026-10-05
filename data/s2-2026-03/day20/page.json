@@ -1,0 +1,61 @@
+{
+  "day": "day20",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "ADK Agent Harness: Build a Generate-Validate-Refine Pipeline",
+  "summary": "Build a README improvement harness that fetches a GitHub repo via MCP, generates against a quality checklist, and refines in a loop until a critic approves.",
+  "tags": [
+    "ADK",
+    "MCP",
+    "Multi-Agent",
+    "Skills"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/20",
+  "video_id": "Bub9U7bQX4A",
+  "video_url": "https://www.youtube.com/watch?v=Bub9U7bQX4A",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "ADK Skills",
+      "url": "https://google.github.io/adk-docs/skills/",
+      "description": ""
+    },
+    {
+      "title": "ADK MCP Tools",
+      "url": "https://google.github.io/adk-docs/tools-custom/mcp-tools/",
+      "description": ""
+    },
+    {
+      "title": "ADK API Server",
+      "url": "https://google.github.io/adk-docs/runtime/api-server/",
+      "description": ""
+    },
+    {
+      "title": "Demo Video 2",
+      "url": "https://youtu.be/jh4kYgUSF-M",
+      "description": ""
+    }
+  ],
+  "code": "",
+  "icon": "🔧",
+  "resource_link": "https://github.com/google/adk-samples/tree/main/python/agents/readme-harness",
+  "code_snippets": [
+    {
+      "title": "Run the Harness",
+      "filename": "shell",
+      "language": "shell",
+      "code": "export GITHUB_PERSONAL_ACCESS_TOKEN=your_token\n\n# Start ADK harness as an API server\nadk api_server . --port 8000\n\n# Copy the bundled skill to Gemini CLI\ncp -r cli_harness ~/.gemini/skills/cli_harness\n\n# In Gemini CLI:\n# > Improve the README for google/adk-samples\n\n# Or for Claude Code, copy to:\n# cp -r cli_harness ~/.claude/skills/cli_harness"
+    },
+    {
+      "title": "The Harness Pipeline",
+      "filename": "agent.py",
+      "language": "python",
+      "code": "import os, pathlib\nfrom google.adk.agents import Agent, LoopAgent, SequentialAgent\nfrom google.adk.agents.callback_context import CallbackContext\nfrom google.adk.skills import load_skill_from_dir\nfrom google.adk.tools import exit_loop\nfrom google.adk.tools.mcp_tool import McpToolset\nfrom google.adk.tools.mcp_tool.mcp_session_manager import StdioConnectionParams\nfrom google.adk.tools.skill_toolset import SkillToolset\nfrom mcp import StdioServerParameters\n\nSKILLS_DIR = pathlib.Path(__file__).parent / \"skills\"\n\ngithub_mcp = McpToolset(\n    connection_params=StdioConnectionParams(\n        server_params=StdioServerParameters(\n            command=\"npx\", args=[\"-y\", \"@modelcontextprotocol/server-github\"],\n            env={\"GITHUB_PERSONAL_ACCESS_TOKEN\": os.getenv(\"GITHUB_PERSONAL_ACCESS_TOKEN\", \"\")},\n        ),\n    ),\n    tool_filter=[\"get_file_contents\", \"search_code\", \"list_commits\"],\n)\n\nreadme_skill = SkillToolset(\n    skills=[load_skill_from_dir(SKILLS_DIR / \"readme-conventions\")]\n)\n\nasync def init_loop_state(callback_context: CallbackContext) -> None:\n    if \"criticism\" not in callback_context.state:\n        callback_context.state[\"criticism\"] = \"No previous feedback. This is the first draft.\"\n\ncodebase_analyzer = Agent(\n    model=\"gemini-3-flash-preview\", name=\"codebase_analyzer\",\n    instruction=\"Analyze the GitHub repo. Read the file tree and key source files. Output a structured summary.\",\n    tools=[github_mcp], output_key=\"codebase_analysis\",\n)\nreadme_writer = Agent(\n    model=\"gemini-3-flash-preview\", name=\"readme_writer\",\n    before_agent_callback=init_loop_state,\n    instruction=\"Write or improve the README using {codebase_analysis}. Address all points in {criticism}.\",\n    tools=[readme_skill], output_key=\"current_readme\",\n)\nreadme_critic = Agent(\n    model=\"gemini-3-flash-preview\", name=\"readme_critic\",\n    instruction=\"Review {current_readme} against the checklist. Call exit_loop if all sections pass.\",\n    tools=[exit_loop], output_key=\"criticism\",\n)\n\nroot_agent = SequentialAgent(\n    name=\"readme_harness\",\n    sub_agents=[\n        codebase_analyzer,\n        LoopAgent(name=\"refinement_loop\", sub_agents=[readme_writer, readme_critic], max_iterations=3),\n    ],\n)"
+    }
+  ],
+  "description": "**Day 20 of Google's Advent of Agents — Season 2**\n\nAsk Gemini CLI or Claude Code to improve a README and you get a one-shot result: no validation against a checklist, no refinement, no guarantee the output covers installation, configuration, or API documentation. The problem is not the model — it is the harness. ADK lets you build a harness you own.\n\n**How It Works**\n\nThe harness is a two-stage `SequentialAgent` pipeline. Stage 1 fetches and analyzes the repository via GitHub MCP. Stage 2 runs a `LoopAgent` pairing a writer and a critic until the critic approves every section or `max_iterations` is reached.\n\n- **`SequentialAgent` + `LoopAgent`**: Execution order is defined in code, not by the model. The analyzer always runs before the writer, and the writer always runs before the critic.\n- **`McpToolset` with `tool_filter`**: Connects to the GitHub MCP server with read-only access — `get_file_contents`, `search_code`, `list_commits`. The agent cannot push or modify the repository.\n- **`SkillToolset`**: Loads README conventions in layers — a one-line description at startup, full checklist only when the writer activates the skill. Context stays lean until the knowledge is required.\n- **`output_key`**: Passes state between agents without manual wiring. The analyzer writes `codebase_analysis`, the writer reads it and writes `current_readme`, the critic reads that and writes `criticism` — or calls `exit_loop` to stop.\n\nRun `adk api_server .` to expose the harness as a REST endpoint, then copy the bundled skill to Gemini CLI or Claude Code. The CLI is the interface. ADK is the engine.\n\n**Resources:**\n\n- [ADK LoopAgent](https://google.github.io/adk-docs/agents/workflow-agents/loop-agents/)\n- [ADK MCP Tools](https://google.github.io/adk-docs/tools-custom/mcp-tools/)\n- [ADK Skills](https://google.github.io/adk-docs/skills/)\n- [ADK API Server](https://google.github.io/adk-docs/runtime/api-server/)\n- [GitHub MCP Server](https://github.com/github/github-mcp-server)\n- [adk-samples: readme-harness](https://github.com/google/adk-samples/tree/main/python/agents/readme-harness)",
+  "video_available": false
+}

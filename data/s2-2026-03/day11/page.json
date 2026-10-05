@@ -1,0 +1,54 @@
+{
+  "day": "day11",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "Multi-Agent Patterns: Hierarchical Decomposition",
+  "summary": "Use a top-level Manager agent that utilizes an AgentTool to dynamically generate a plan before executing it.",
+  "tags": [
+    "Multi-Agent",
+    "Hierarchical",
+    "Architecture",
+    "ADK"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/11",
+  "video_id": "68EznHkK_UQ",
+  "video_url": "https://www.youtube.com/watch?v=68EznHkK_UQ",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Project Repository",
+      "url": "https://github.com/LuisSala/advent-of-agents-spring-26",
+      "description": "Source code for this project."
+    },
+    {
+      "title": "LlmAgent Reference",
+      "url": "https://google.github.io/adk-docs/agents/llm-agents/",
+      "description": "Official documentation for LlmAgent."
+    },
+    {
+      "title": "ParallelAgent Reference",
+      "url": "https://google.github.io/adk-docs/agents/workflow-agents/parallel-agents/",
+      "description": "Official documentation for ParallelAgent."
+    },
+    {
+      "title": "SequentialAgent Reference",
+      "url": "https://google.github.io/adk-docs/agents/workflow-agents/sequential-agents/",
+      "description": "Official documentation for SequentialAgent."
+    }
+  ],
+  "code": "",
+  "icon": "🪆",
+  "resource_link": "https://google.github.io/adk-docs/",
+  "code_snippets": [
+    {
+      "filename": "agent.py",
+      "language": "python",
+      "code": "from google.adk.tools import AgentTool\nfrom google.adk.tools import google_search\nfrom google.adk.agents import LlmAgent, SequentialAgent\nfrom google.adk.apps import App\n\n# The Planner is used purely as a tool by the Manager\nplanner = LlmAgent(\n    name='planner',\n    model='gemini-3-flash-preview',\n    instruction='Break the user prompt into exactly three distinct research themes.'\n)\n\n# Define sub-agents for execution\nresearcher = LlmAgent(\n    name='researcher', \n    model='gemini-3-flash-preview', \n    tools=[google_search], \n    instruction='Research the assigned topic step-by-step.'\n)\nsynthesizer = LlmAgent(\n    name='synthesizer', \n    model='gemini-3-flash-preview', \n    instruction='Synthesize the findings into a cohesive report.'\n)\n\n# A logical pipeline of sub-agents to handle execution\nexecution_pipeline = SequentialAgent(\n    name='execution_pipeline',\n    sub_agents=[researcher, synthesizer]\n)\n\n# The Manager orchestrates the whole flow autonomously\nmanager = LlmAgent(\n    name='manager',\n    model='gemini-3-flash-preview',\n    tools=[AgentTool(planner)],\n    sub_agents=[execution_pipeline],\n    instruction='''\n    1. Use the planner tool to create a detailed research plan based on the user's prompt.\n    2. Activate your execution_pipeline sub-agent and pass the completed plan to it so it can execute it.\n    '''\n)\n\nroot_agent = manager\napp = App(name=\"hierarchical\", root_agent=root_agent)"
+    }
+  ],
+  "description": "\n**Day 11 of Google's Advent of Agents — Season 2**\n\n**The Problem / Why it matters:**\n\nComplex user requests cannot always be decomposed ahead of time. Hardcoding a static sequence of agent steps fails when the prompt requires a dynamically generated plan of attack.\n\n**The Solution:**\n\nThe **Hierarchical Agent (Russian Doll)** pattern. We use a top-level Manager agent to orchestrate the flow, leaning on sub-agents to do the heavy lifting.\n\n**How It Works:**\n\n* **AgentTool:** We wrap a \"Planner\" LLM agent inside an `AgentTool`. The Manager calls this tool at runtime to break the complex problem into smaller, logical steps.\n\n* **Sub-agents block:** The Manager oversees a downstream `SequentialAgent` pipeline (in this case, consisting of a Researcher and Synthesizer).\n\n* **Autonomous Handoff:** Once the Manager receives the generated plan from the Planner tool, it activates the `SequentialAgent` execution pipeline, passing the plan as input so the workers can execute it entirely autonomously without needing a human-in-the-loop.\n",
+  "video_available": false
+}

@@ -1,0 +1,59 @@
+{
+  "day": "day13",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "Multi-Agent Patterns: Iterative Refinement",
+  "summary": "Compose Skills, MCP, and Code Execution into a meta-agent that builds, tests, and refines other ADK agents through iterative loops.",
+  "tags": [
+    "Multi-Agent",
+    "Agent Skills",
+    "MCP",
+    "Code Execution"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/13",
+  "video_id": "weAygSpui4w",
+  "video_url": "https://www.youtube.com/watch?v=weAygSpui4w",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Companion Repository",
+      "url": "https://github.com/lavinigam-gcp/build-with-adk/tree/main/adk-iterative-refinement",
+      "description": "Full source code with skills, tools, and demo queries."
+    },
+    {
+      "title": "ADK Skills Documentation",
+      "url": "https://google.github.io/adk-docs/skills/",
+      "description": "How to build and load modular knowledge packages for agents."
+    },
+    {
+      "title": "ADK Code Execution",
+      "url": "https://google.github.io/adk-docs/integrations/code-execution/",
+      "description": "Code executor options: Unsafe Local, Container, and Agent Engine Sandbox."
+    },
+    {
+      "title": "Sculptor Pattern (Multi-Agent Patterns in ADK)",
+      "url": "https://developers.googleblog.com/developers-guide-to-multi-agent-patterns-in-adk/",
+      "description": "Google's guide to iterative refinement and other multi-agent patterns."
+    }
+  ],
+  "code": "# Clone and run the meta-agent\ngit clone https://github.com/lavinigam-gcp/build-with-adk.git\ncd build-with-adk/adk-iterative-refinement\npython3 -m venv .venv && source .venv/bin/activate\npip install -r app/requirements.txt\ncp app/.env.example app/.env  # Add your GOOGLE_API_KEY\nadk web app\n\n# Then ask: \"Build me a joke agent with one tool called tell_joke\"\n",
+  "icon": "🏗️",
+  "resource_link": "https://github.com/lavinigam-gcp/build-with-adk/tree/main/adk-iterative-refinement",
+  "code_snippets": [
+    {
+      "filename": "agent.py",
+      "language": "python",
+      "code": "from google.adk.agents import Agent\nfrom google.adk.tools.agent_tool import AgentTool\nfrom google.adk.code_executors import UnsafeLocalCodeExecutor\nfrom google.adk.skills import load_skill_from_dir, SkillToolset\nfrom google.adk.tools.mcp import McpToolset, StdioConnectionParams, StdioServerParameters\n\n# Code executor sub-agent (cannot coexist with other tools on the same agent)\ncode_executor_agent = Agent(\n    model=\"gemini-3.1-flash-preview\",\n    name=\"code_executor\",\n    instruction=\"Execute Python code exactly as provided. Return stdout and stderr.\",\n    code_executor=UnsafeLocalCodeExecutor(),\n)\n\n# Root agent composes all four tool groups\nroot_agent = Agent(\n    model=\"gemini-3.1-flash-preview\",\n    name=\"agent_builder\",\n    instruction=\"You are an ADK Agent Builder...\",\n    tools=[\n        skill_toolset,        # ADK coding knowledge (3 skills)\n        adk_docs_mcp,         # Live ADK documentation (MCP)\n        AgentTool(agent=code_executor_agent),  # Code execution\n        save_agent_code,      # Save tested code to disk\n        start_agent,          # Launch as adk api_server\n        talk_to_agent,        # Send messages to running agent\n        stop_agent,           # Shut down running agent\n    ],\n)"
+    },
+    {
+      "filename": "terminal",
+      "language": "bash",
+      "code": "# Clone and run the meta-agent\ngit clone https://github.com/lavinigam-gcp/build-with-adk.git\ncd build-with-adk/adk-iterative-refinement\npython3 -m venv .venv && source .venv/bin/activate\npip install -r app/requirements.txt\ncp app/.env.example app/.env  # Add your GOOGLE_API_KEY\nadk web app\n\n# Then ask: \"Build me a joke agent with one tool called tell_joke\""
+    }
+  ],
+  "description": "**Day 13 of Google's Advent of Agents — Season 2**\n\nLLMs generate broken agent code. They reach for `google.generativeai` instead of `google.adk`, use deprecated methods, and declare victory without testing. This meta-agent closes the loop by building ADK agents, testing them through code execution, and refining until everything passes.\n\n![Architecture](/season2-day13-architecture.png)\n\n**How It Works**\n\nThe builder composes four tool groups into a single agent, each solving a different problem in the code generation pipeline:\n\n- **SkillToolset**: Injects curated ADK coding conventions and a custom testing protocol. Skills fix structural failures that persist despite prompt instructions.\n- **McpToolset**: Connects to live ADK documentation via MCP, serving the latest API surface at generation time.\n- **AgentTool + Code Executor**: ADK does not allow `code_executor` and other tools on the same agent. The workaround is wrapping `UnsafeLocalCodeExecutor` in a dedicated sub-agent and exposing it via `AgentTool`.\n- **Lifecycle FunctionTools**: Four tools manage the built agent's full lifecycle to save, test, talk to, and stop the agent.\n\n**Resources:**\n\n- [Companion Repo](https://github.com/lavinigam-gcp/build-with-adk/tree/main/adk-iterative-refinement)\n- [ADK Skills](https://google.github.io/adk-docs/skills/)\n- [ADK Code Execution](https://google.github.io/adk-docs/integrations/code-execution/)\n- [Sculptor Pattern](https://developers.googleblog.com/developers-guide-to-multi-agent-patterns-in-adk/)",
+  "video_available": false
+}

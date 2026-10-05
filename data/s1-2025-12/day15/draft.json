@@ -1,0 +1,197 @@
+[
+  {
+    "t": 1,
+    "en": "Hey, so here's a quick overview on A2UI uh for LLM generated UI for agents in",
+    "ru": ""
+  },
+  {
+    "t": 7,
+    "en": "A2A. We announced it on November 6th and we're making it public December 15th. But first, a little bit of context. Uh agents, right? We came from MLM, we went to rag, we went to function calling, we put it in a loop, we called it an agent, we decomposed agents into multi-agent systems and making them communicate across API boundaries is really interesting. And uh that's what the A2A project is largely about. This is kind of where most of us are today, but we are making our agents. We are making",
+    "ru": ""
+  },
+  {
+    "t": 33,
+    "en": "them exposed to the world. We're making them interact not only with other agents, but with humans. Um, we had a",
+    "ru": ""
+  },
+  {
+    "t": 41,
+    "en": "long and interesting path to get here. It took several months. It uh feels like a decade even though it's really only been a little over a year for us. Um, we",
+    "ru": ""
+  },
+  {
+    "t": 51,
+    "en": "consolidated with several other protocols in the space and we're still working on interesting things with 808. Um, and you know, we're wiring this into a lot of different stuff inside of Google and uh many of our other uh",
+    "ru": ""
+  },
+  {
+    "t": 63,
+    "en": "partners and and companies are wiring in A2A as well. We donated a Linux Foundation on uh June 23rd. Uh kind of a",
+    "ru": ""
+  },
+  {
+    "t": 71,
+    "en": "big deal and it used to be pretty hard to work with A2A. Now it's gotten much easier. We've got a lot of SDKs. We've got uh wired uh integrations into a bunch of different frameworks and we've got a lot of contributors. Thank you everybody who contributed. So now this is an extension to A2A. Um it actually",
+    "ru": ""
+  },
+  {
+    "t": 88,
+    "en": "can be more than that too. Let's talk a little bit about the problem statement. Basically not just text. We want buttons, right? Give me some buttons that are very easy to use. Cool. Okay. Actually, how about my agent knows a bunch of my information, but your agent is asking me for a bunch of forms, but my agent can fill out all of them except for like maybe two or three that are very specific to this moment or this context or that it doesn't have information for. I should only get",
+    "ru": ""
+  },
+  {
+    "t": 115,
+    "en": "exactly those form inputs that I have to deal with and my agent should be able to handle the rest. So, customizing a UI just to this context. And of course, maybe you have fancy uh widgets that are beyond the scope of just a couple of basic forms or a couple of basic buttons. We need to be able to support that, too. Um, also maybe you're",
+    "ru": ""
+  },
+  {
+    "t": 135,
+    "en": "uploading an image and uh agent is able to determine that uh palm tree density is a reasonable slider for you. Uh I love this one. Uh that that's awesome. That's a that's a UI that I would never come up with on my own, but I think that it's really reasonable for certain types of contexts. So, how does this work? uh",
+    "ru": ""
+  },
+  {
+    "t": 153,
+    "en": "we don't have to have an orchestrator in the middle, but most of the examples that we see these days do have an orchestrator in the middle and they have remote agents. So, we're really trying to focus on security and performance. And we think we're coming up with an ideal solution, though, you know, we still are iterating. We're on version 0.8 today and 0.9 is already designed.",
+    "ru": ""
+  },
+  {
+    "t": 173,
+    "en": "We're working on more bits. Uh but we",
+    "ru": ""
+  },
+  {
+    "t": 176,
+    "en": "wanted to make this open source so you could play with it. Uh it is now public on GitHub and you can go look at our docs page and and try it out. Uh it is a little bit rough. Some things are not as ergonomic as I would like them to be but uh it is totally usable and you should go play with the day. In short, your root agent might create in addition to some text uh JSON structured output with",
+    "ru": ""
+  },
+  {
+    "t": 198,
+    "en": "some components that are in a layout and",
+    "ru": ""
+  },
+  {
+    "t": 203,
+    "en": "the values for each to hydrate the those components. That's basically it, right? And then we ship that over to a client and that shipping over can be a a streaming fancy interaction with chunks that come in out of order. Uh and that's it. Or maybe your background agent is generating structured output. It passes through the orchestrator and shows up on the client. Um and it passes through that orchestrator without any mutation. Or like I said, maybe you don't have an",
+    "ru": ""
+  },
+  {
+    "t": 229,
+    "en": "orchestrator and you've got a different uh arrangement. Or maybe you're passing through that orchestrator and the orchestrator decides that it wants to change the layout to better handle the",
+    "ru": ""
+  },
+  {
+    "t": 240,
+    "en": "the app that it has or the uh context of",
+    "ru": ""
+  },
+  {
+    "t": 244,
+    "en": "the user that it has. That's totally in scope, too. Actually, let's go ahead and jump over to a demo now. All right. So, uh if you take a look at the site now, we've got a quick start here. uh you can just clone the repo and then you know put in your API key and then let's CD into the samples client lit. Uh lit is a web components library and uh that's just an easy sample for us to take a look at right off the bat. Go ahead and install your dependencies and then run a demo. This is actually",
+    "ru": ""
+  },
+  {
+    "t": 275,
+    "en": "running not only a front-end demo but uh two backend agents as well. Uh fires up",
+    "ru": ""
+  },
+  {
+    "t": 281,
+    "en": "a little web app. Uh I have inspector open here so you can kind of see some interactions. Um,",
+    "ru": ""
+  },
+  {
+    "t": 287,
+    "en": "this is not sadly not optimized for streaming yet, but it will be. Uh, and",
+    "ru": ""
+  },
+  {
+    "t": 293,
+    "en": "if you take a look over here at what's on the side, um, we do have the output",
+    "ru": ""
+  },
+  {
+    "t": 300,
+    "en": "from the the agent. And you can see here",
+    "ru": ""
+  },
+  {
+    "t": 304,
+    "en": "that we switched into our structured output with a bunch of components. These components all get sort of uh buffered",
+    "ru": ""
+  },
+  {
+    "t": 311,
+    "en": "and and cached on the client and then rendered. Um, if you look at the values,",
+    "ru": ""
+  },
+  {
+    "t": 317,
+    "en": "these are the values that are hydrating that UI with some data bindings. And that's basically it. Um, we can also switch over here to this awesome widget builder, uh, A2 UI composer that the",
+    "ru": ""
+  },
+  {
+    "t": 330,
+    "en": "Copilot Kit team made. Um,",
+    "ru": ""
+  },
+  {
+    "t": 334,
+    "en": "and we can use this as probably the",
+    "ru": ""
+  },
+  {
+    "t": 338,
+    "en": "easiest way to take a look at what's possible with this uh UI layout. Um, so",
+    "ru": ""
+  },
+  {
+    "t": 345,
+    "en": "all of the components in this builder are uh copilot kit, but the renderer and",
+    "ru": ""
+  },
+  {
+    "t": 351,
+    "en": "the editor interfaces are implementing",
+    "ru": ""
+  },
+  {
+    "t": 354,
+    "en": "the A2 UI spec. And you can see here,",
+    "ru": ""
+  },
+  {
+    "t": 358,
+    "en": "you just type in whatever you want to to create a component. Um, you can get the JSON of that component and copy it in, download it, whatever you want to do, and it shows up on the the lefth hand side there. You got a gallery of some other components that are reasonably generated and um a way to look through the components that exist and some icons. And then you've got your own components up here. Okay, that's it for this demo of A2UI on launch day. Um, I want you to go to",
+    "ru": ""
+  },
+  {
+    "t": 383,
+    "en": "GitHub and go kick the tires on it. It's currently V version 0.8. We got 0.9",
+    "ru": ""
+  },
+  {
+    "t": 390,
+    "en": "already designed and we're working on it. Um, we wanted to get this in your hands so you could kick the tires so you can contribute some renderers and contribute some samples and use cases. Uh, and let us know what you think about it. >> Welcome to a demo of the landscape architect agent. This example showcases a hybrid architecture. We are mixing standard customuilt app components with fully AI generated user interfaces. We",
+    "ru": ""
+  },
+  {
+    "t": 414,
+    "en": "begin with a traditional Flutter UI to handle the basic navigation and photo upload. Once the photo is uploaded, the agent takes over. This is where it gets interesting. The AI analyzes the image and recognizes specific elements like the overgrown grass, the concrete patio, and the wooden fence. Note, the UI you see here was not hard-coded by a developer. The agent generated these specific questions and sliders on the fly because it saw those items in the photo. It is a fully dynamic multimodal",
+    "ru": ""
+  },
+  {
+    "t": 443,
+    "en": "form tailored exactly to this user's backyard. After processing the user's intent, the agent returns its recommendations. Again, these cards are generated in real time. The agent is calculating estimated costs, timelines, and design styles like modern zen or",
+    "ru": ""
+  },
+  {
+    "t": 459,
+    "en": "English cottage and rendering them as native UI widgets. It's serving dynamic assets directly into the application flow. Once the user selects a design, we transition seamlessly back to a structured shopping cart. The agent passes the structured data for the plants, materials, and labor directly into the checkout system. Finally, we show the versatility of this architecture. Because the UI is being generated by the agent logic, it isn't locked to a specific mobile codebase.",
+    "ru": ""
+  },
+  {
+    "t": 485,
+    "en": "Here we see the exact same experience running in a mobile web view. The agent logic remains the same, recognizing the patio and generating the questions, proving that A2I can deploy consistent, contextaware experiences across both native apps and the web. This is the future. Start building today at a2ui.org.",
+    "ru": ""
+  }
+]

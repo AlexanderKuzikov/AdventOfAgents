@@ -1,0 +1,27 @@
+[
+  {
+    "t": 0,
+    "en": "We've all been there. You push a seemingly small change to production and suddenly everything breaks. Usually fixing it involves panic, digging through logs and hot fixes. But what if you could just go back? Today I'm going to show you time travel in action. It's not science fiction. It's the fastest way to revert the state of your application to the exact moment before the crash. Let's jump into the demo. Now, let's look at how we implement this inside the ADK. As you can see in the",
+    "ru": ""
+  },
+  {
+    "t": 27,
+    "en": "code snippet on the left, we use the rewind async method. This essentially takes the runner and rolls the session back to a specific invocation ID or timestamp. When we do this, two important things happen. First, all session level resources are restored to that exact moment. And second, any new messages you send are processed as if they originated from that past timeline. It creates a seamless way to fork or retry conversations programmatically. So, what is actually happening under the",
+    "ru": ""
+  },
+  {
+    "t": 53,
+    "en": "hood when you request a rewind? If you look at the code on the left, you'll see it's a three-step process. First, we look at the current session. Then, instead of deleting history, we compute the deltas, specifically the state underscore delta and artifact delta. These represent the difference between where we are now and where we want to be. Finally, we wrap those deltas into a new rewind event and append it to the log. This tells the system exactly how to reconstruct the past without losing",
+    "ru": ""
+  },
+  {
+    "t": 77,
+    "en": "the audit trail. We start by initializing the session. We set a state variable color to red and save an artifact called file one with version one content. Next, we simulate a conversation turn. We update the state color to blue and overwrite the artifact with version two. You can see here that the system confirms these new values. Now for the magic, we trigger the rewind async function targeting the specific invocation ID before those updates happened. The rewind completes and we",
+    "ru": ""
+  },
+  {
+    "t": 106,
+    "en": "verify the data. The state has reverted back to red and the artifact is restored to version",
+    "ru": ""
+  }
+]

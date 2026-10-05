@@ -1,0 +1,72 @@
+{
+  "day": "day28",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "A2A Protocol: Decoupling Reasoning from Execution",
+  "summary": "Decouple your reasoning engine from execution using the universal A2A 1.0 protocol to bridge a Python LangGraph orchestrator and a Go ADK service.",
+  "tags": [
+    "A2A",
+    "LangGraph",
+    "ADK",
+    "Protocol"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/28",
+  "video_id": "NsJ7UjRCnZU",
+  "video_url": "https://www.youtube.com/watch?v=NsJ7UjRCnZU",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "LangChain Blog: Multi-Agent Workflows",
+      "url": "https://blog.langchain.dev/multi-agent-workflows/",
+      "description": "Conceptual architectures for delegating tasks between disconnected agent frameworks."
+    },
+    {
+      "title": "YouTube: Stop using MCP for everything!",
+      "url": "https://www.youtube.com/watch",
+      "description": "RAG vs. A2A vs. Sub-agents architecture explained."
+    },
+    {
+      "title": "Google Cloud: Building AI Workflows",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning",
+      "description": "High-level patterns for decoupling robust AI reasoning engines from API execution."
+    },
+    {
+      "title": "Agent Starter Pack Walkthrough",
+      "url": "https://github.com/GoogleCloudPlatform/agent-starter-pack",
+      "description": "Explore the Agent-to-Agent interaction patterns built by Google Cloud engineers."
+    }
+  ],
+  "code": "# 1. Create a root .env file with your API Key\necho 'GEMINI_API_KEY=\"your-api-key-here\"' > .env\n\n# Spin up the Go Execution Platform\ngo mod init example.com/adk 2>/dev/null || true\ngo get github.com/pterm/pterm github.com/joho/godotenv/autoload\ngo run adk_execution_service.go\n\n# Trigger the LangGraph Orchestrator\npip install langgraph rich pydantic python-dotenv\npython a2a_langgraph_orchestrator.py\n",
+  "icon": "🤝",
+  "resource_link": "",
+  "code_snippets": [
+    {
+      "title": "Execution Framework (Go)",
+      "filename": "adk_execution_service.go",
+      "language": "go",
+      "code": "// adk_execution_service.go\npackage main\n\nimport (\n\t\"bytes\"\n\t\"encoding/json\"\n\t\"fmt\"\n\t\"io\"\n\t\"log\"\n\t\"net/http\"\n\t\"os\"\n\n\t\"github.com/pterm/pterm\"\n\t_ \"github.com/joho/godotenv/autoload\"\n)\n\n// A2A 1.0 Universal Envelope Schema\ntype A2APayload struct {\n\tA2AVersion string            `json:\"a2a_version\"`\n\tSenderID   string            `json:\"sender_id\"`\n\tTask       string            `json:\"task\"`\n\tContext    map[string]string `json:\"context\"`\n}\n\nfunc handleA2A(w http.ResponseWriter, r *http.Request) {\n\tvar payload A2APayload\n\tif err := json.NewDecoder(r.Body).Decode(&payload); err != nil {\n\t\thttp.Error(w, err.Error(), http.StatusBadRequest)\n\t\treturn\n\t}\n\n\tpterm.Info.Printfln(\"[ADK Service] Received A2A Payload from %s: %s\", pterm.LightCyan(payload.SenderID), pterm.LightYellow(payload.Task))\n\n\tapikey := os.Getenv(\"GEMINI_API_KEY\")\n\turl := \"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=\" + apikey\n\n\treqBody := map[string]interface{}{\n\t\t\"system_instruction\": map[string]interface{}{\n\t\t\t\"parts\": []map[string]interface{}{{\"text\": \"You are a platform execution agent. You receive A2A JSON payloads. Parse the 'task' and return a concise, step-by-step execution plan.\"}},\n\t\t},\n\t\t\"contents\": []map[string]interface{}{\n\t\t\t{\"parts\": []map[string]interface{}{{\"text\": fmt.Sprintf(\"Execute this A2A payload task: %s\", payload.Task)}}},\n\t\t},\n\t}\n\tjsonReq, _ := json.Marshal(reqBody)\n\n\tresp, err := http.Post(url, \"application/json\", bytes.NewBuffer(jsonReq))\n\tif err != nil {\n\t\thttp.Error(w, err.Error(), 500)\n\t\treturn\n\t}\n\tdefer resp.Body.Close()\n\n\tbodyBytes, _ := io.ReadAll(resp.Body)\n\tvar genaiResp map[string]interface{}\n\tjson.Unmarshal(bodyBytes, &genaiResp)\n\n\tvar resultString string\n\tif cands, ok := genaiResp[\"candidates\"].([]interface{}); ok && len(cands) > 0 {\n\t\tif content, ok := cands[0].(map[string]interface{})[\"content\"].(map[string]interface{}); ok {\n\t\t\tif parts, ok := content[\"parts\"].([]interface{}); ok && len(parts) > 0 {\n\t\t\t\tif text, ok := parts[0].(map[string]interface{})[\"text\"].(string); ok {\n\t\t\t\t\tresultString = text\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\n\tw.Header().Set(\"Content-Type\", \"application/json\")\n\tjson.NewEncoder(w).Encode(map[string]string{\n\t\t\"final_result\": resultString,\n\t})\n\t\n\tpterm.Success.Println(\"Dispatched response back to LangGraph!\")\n}\n\nfunc main() {\n\tpterm.DefaultHeader.WithFullWidth().Println(\"Go ADK Execution Service\")\n\tpterm.Info.Println(\"Listening on http://localhost:8080/execute\")\n\n\tapikey := os.Getenv(\"GEMINI_API_KEY\")\n\tmaskedKey := apikey\n\tif len(apikey) > 8 {\n\t\tmaskedKey = apikey[:8] + \"...\"\n\t} else if len(apikey) == 0 {\n\t\tmaskedKey = \"NOT CONFIGURED\"\n\t}\n\tpterm.Info.Printfln(\"[Config] Loaded GEMINI_API_KEY: %s\", pterm.LightYellow(maskedKey))\n\n\thttp.HandleFunc(\"/execute\", handleA2A)\n\tlog.Fatal(http.ListenAndServe(\":8080\", nil))\n}"
+    },
+    {
+      "title": "Run Go Service (Terminal 1)",
+      "filename": "terminal",
+      "language": "bash",
+      "code": "# 1. Create a root .env file with your API Key\necho 'GEMINI_API_KEY=\"your-api-key-here\"' > .env\n\n# Spin up the Go Execution Platform\ngo mod init example.com/adk 2>/dev/null || true\ngo get github.com/pterm/pterm github.com/joho/godotenv/autoload\ngo run adk_execution_service.go"
+    },
+    {
+      "title": "Reasoning Framework (Python)",
+      "filename": "a2a_langgraph_orchestrator.py",
+      "language": "python",
+      "code": "# Based on the ASP langgraph_base template\n# a2a_langgraph_orchestrator.py\nimport os\nimport json\nimport urllib.request\nfrom typing import TypedDict\nfrom langgraph.graph import StateGraph, END\nfrom rich.console import Console\nfrom rich.panel import Panel\nfrom rich.json import JSON\nfrom rich.live import Live\nfrom rich.spinner import Spinner\nfrom rich.markdown import Markdown\n\nfrom dotenv import load_dotenv\nload_dotenv()\n\nconsole = Console()\n\n# ====================================================================\n# 1. PYTHON LANGGRAPH AGENT (The Reasoning Framework)\n# ====================================================================\nclass AgentState(TypedDict):\n    objective: str\n    a2a_payload: str\n    final_result: str\n\ndef reasoning_node(state: AgentState):\n    console.print(Panel(\"[bold green]LangGraph[/bold green]: Reasoning complete. Formatting A2A 1.0 envelope.\", title=\"[Reasoning Engine]\"))\n    \n    # Standard A2A 1.0 Payload formulation\n    envelope = {\n        \"a2a_version\": \"1.0\",\n        \"sender_id\": \"langgraph-orchestrator\",\n        \"task\": state[\"objective\"],\n        \"context\": {\"urgency\": \"high\", \"auth_token\": \"bearer_abc123\"}\n    }\n    return {\"a2a_payload\": json.dumps(envelope)}\n\ndef a2a_dispatch_node(state: AgentState):\n    \"\"\"Dispatches the A2A payload to the Go ADK framework across the network\"\"\"\n    \n    with Live(Spinner(\"dots\", text=\"[bold yellow]Dispatching A2A payload via HTTP POST to Go Service...[/bold yellow]\"), refresh_per_second=10) as live:\n        req = urllib.request.Request(\n            \"http://localhost:8080/execute\", \n            data=state[\"a2a_payload\"].encode('utf-8'),\n            headers={'Content-Type': 'application/json'}\n        )\n        \n        try:\n            with urllib.request.urlopen(req) as response:\n                result = json.loads(response.read().decode())\n                live.update(Panel(\"[bold green]Dispatch Success![/bold green]\", title=\"[Network]\"))\n                return {\"final_result\": result[\"final_result\"]}\n        except Exception as e:\n            live.update(Panel(f\"[bold red]Dispatch failed[/bold red]: {e}\", title=\"[Network]\"))\n            return {\"final_result\": f\"Dispatch failed: {e}\"}\n\n# 2. Build and Run the Graph\nworkflow = StateGraph(AgentState)\nworkflow.add_node(\"reason\", reasoning_node)\nworkflow.add_node(\"delegate_via_a2a\", a2a_dispatch_node)\n\nworkflow.set_entry_point(\"reason\")\nworkflow.add_edge(\"reason\", \"delegate_via_a2a\")\nworkflow.add_edge(\"delegate_via_a2a\", END)\n\nlanggraph_app = workflow.compile()\n\nif __name__ == \"__main__\":\n    console.print(Panel(\"[bold blue]Starting LangGraph A2A Orchestrator[/bold blue]\", title=\"[System]\"))\n    \n    apikey = os.environ.get(\"GEMINI_API_KEY\", \"\")\n    masked_key = apikey[:8] + \"...\" if len(apikey) > 8 else apikey\n    console.print(Panel(f\"[bold yellow]Loaded GEMINI_API_KEY[/bold yellow]: {masked_key}\", title=\"[Config]\"))\n    \n    final_state = langgraph_app.invoke({\n        \"objective\": \"Execute production database migration to Cloud SQL\", \n        \"a2a_payload\": \"\",\n        \"final_result\": \"\"\n    })\n    \n    console.print(Panel(JSON(final_state[\"a2a_payload\"]), title=\"[A2A 1.0 Envelope - Dispatched]\"))\n    \n    console.print(Panel(Markdown(final_state['final_result']), title=\"[ADK Execution Result]\"))"
+    },
+    {
+      "title": "Run Python Orchestrator (Terminal 2)",
+      "filename": "terminal",
+      "language": "bash",
+      "code": "# Trigger the LangGraph Orchestrator\npip install langgraph rich pydantic python-dotenv\npython a2a_langgraph_orchestrator.py"
+    }
+  ],
+  "description": "**Day 28 of Google's Advent of Agents — Season 2**\n\nAs AI development scales, teams often find themselves locked inside single-framework, single-language silos. If your reasoning team builds in Python using LangGraph, but your enterprise platform team builds scalable services in Go using ADK, how do they securely communicate?\n\n**How It Works**\n\n![A2A Cross-Framework Architecture](/season2-day28-architecture.png)\n\nEnter A2A 1.0 (Agent-to-Agent Protocol). You don't need to rewrite your entire architecture into one mono-language monolith. A2A provides a standardized schema for agents to securely delegate tasks and share context across networks and varying programming languages.\n\n- **Break the Silo**: Instantly connect a LangGraph orchestrator with an executing ADK agent using the universal A2A protocol. Because the payload is strictly standardized JSON, the receiving service can be natively written in Go, Python, or Java without requiring custom translation layers!\n- **Protocol Over Framework**: Instead of building brittle, bespoke REST APIs for every single tool handoff, A2A 1.0 establishes a universal network contract. It standardizes the Task, Context, and Authenticated validation between any two heterogeneous AI microservices.\n- **The Orchestrator Pattern**: Watch a local Python LangGraph node autonomously format an A2A 1.0 payload and dispatch it over HTTP POST to an external Go ADK execution service—completely decoupling the reasoning engine from the execution environment.\n\n**Resources:**\n\n- [LangGraph Documentation](https://langchain-ai.github.io/langgraph/): The orchestrator formatting the JSON A2A envelope.\n- [Google GenAI SDK](https://ai.google.dev/docs): The API powering the underlying execution of the Gemini models.\n- [Pydantic Reference](https://docs.pydantic.dev/): Recommended for strictly typing and parsing the A2A JSON dictionaries.\n- [FastAPI Framework](https://fastapi.tiangolo.com/): Standard for receiving A2A POST payloads in production Python/Go microservices."
+}

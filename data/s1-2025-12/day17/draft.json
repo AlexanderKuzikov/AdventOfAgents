@@ -1,0 +1,57 @@
+[
+  {
+    "t": 0,
+    "en": "Hi everyone. In this video, we're going to show you how to get started with the agent development kit ADK using the latest Gemini 3 flash model. First, open",
+    "ru": ""
+  },
+  {
+    "t": 11,
+    "en": "the ADK documentation page by typing ADK",
+    "ru": ""
+  },
+  {
+    "t": 14,
+    "en": "docs on Google search. Next, locate the get started section in the left navigation bar and select Python to open the quick start guide. You may also choose another language such as Go or Java depending on your preference. Let's get started. Copy the pip install command from the instruction to install ADK Python SDK.",
+    "ru": ""
+  },
+  {
+    "t": 39,
+    "en": "Next, run ad create command to initialize your project. When prompted to select a model, type two and press enter. This command generates a directory named my agent containing an agent. py file which serves as the primary script for your agent. Next, replace the existing agent code with the version provided on the instruction page. Copy the code, paste it into agent. py and save the file. Let's look",
+    "ru": ""
+  },
+  {
+    "t": 66,
+    "en": "at the agents code. The agent is designed to return the current time for any given city. It utilizes the Gemini 3",
+    "ru": ""
+  },
+  {
+    "t": 74,
+    "en": "flash preview model, enabling the ADK to provide highquality, low latency performance. Because Gemini 3 Flash features configurable reasoning, developers can easily tune the model to balance speed and analytical depth.",
+    "ru": ""
+  },
+  {
+    "t": 88,
+    "en": "For example, you can configure the thinking level parameter via the built-in planner API. Depending on your specific requirements, you can select from three levels, high, low, or minimal. Now, get back to the quick start. The final step is to set your Gemini API key. Open the env file.",
+    "ru": ""
+  },
+  {
+    "t": 106,
+    "en": "Replace the placeholder your underscore API_key with your actual key and save",
+    "ru": ""
+  },
+  {
+    "t": 112,
+    "en": "the file. Then execute the ADK run command. You can safely ignore any warning messages that appear. When the user prompt appears, type hi. Then enter the name of a city and the agent will respond with the local time.",
+    "ru": ""
+  },
+  {
+    "t": 128,
+    "en": "You can also run the agent using the ADK web tool. The ADK web is a command that launches a local browser-based UI to test and debug your AI agent. You can interact with your agent visually instead of in the terminal. Also, view the agents reasoning steps and tool calls in real time or monitor the agents memory and variables. Interested in trying out the tool? To get started, search for ADK",
+    "ru": ""
+  },
+  {
+    "t": 154,
+    "en": "docs on Google to find our official documentation. Thanks for your time.",
+    "ru": ""
+  }
+]

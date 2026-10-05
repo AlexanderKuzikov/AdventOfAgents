@@ -1,0 +1,60 @@
+{
+  "day": "day31",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "A2UI & A2A: Building the Dog Weather App",
+  "summary": "Transform static agent responses into rich interactive micro-apps natively rendered in Gemini Enterprise using A2UI.",
+  "tags": [
+    "A2UI",
+    "A2A",
+    "Gemini Enterprise",
+    "ADK"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/31",
+  "video_id": null,
+  "video_url": "",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "GitHub Repository",
+      "url": "https://github.com/goabego/adventofagents-day31",
+      "description": "Full source code for both the text-only baseline and the interactive Dog Weather App."
+    },
+    {
+      "title": "ADK Documentation",
+      "url": "https://github.com/google-gemini/adk",
+      "description": "Core SDK used for tool registration and A2A lifecycle management."
+    },
+    {
+      "title": "A2UI Introduction",
+      "url": "https://a2ui.org/introduction/what-is-a2ui/",
+      "description": "Overview of the declarative UI protocol for generative agents."
+    },
+    {
+      "title": "A2A Agent Registration",
+      "url": "https://docs.cloud.google.com/gemini/enterprise/docs/register-and-manage-an-adk-agent",
+      "description": "Official guide on how to register and manage your custom ADK agents within Gemini Enterprise."
+    }
+  ],
+  "code": "",
+  "icon": "🐶",
+  "resource_link": "https://a2ui.org",
+  "code_snippets": [
+    {
+      "title": "Agent Definition with A2UI",
+      "filename": "dog_weather_agent.py",
+      "language": "python",
+      "code": "from google.adk import agents\nfrom prompt_builder import get_ui_instruction\n\nclass DogWeatherAgent(agents.LlmAgent):\n    def __init__(self, **kwargs):\n        # 1. Define persona with A2UI rules & schemas\n        base_prompt = \"You are a pun-loving weather assistant. Fetch!\"\n        full_instruction = get_ui_instruction(base_prompt)\n        \n        super().__init__(\n            name=\"weather_agent_v2\",\n            model=\"gemini-3.1-flash-lite-preview\",\n            instruction=full_instruction,\n            tools=[get_weather, get_random_location]\n        )\n\n# 2. Return data-bound A2UI payload via tool chaining\ndef get_weather(location: str):\n    return {\n        \"location\": location,\n        \"temp\": \"72°F\",\n        \"dogImageUrl\": \"https://dog.ceo/api/image\"\n    }"
+    },
+    {
+      "title": "ADK Integration with A2A & A2UI",
+      "filename": "a2a_server.py",
+      "language": "python",
+      "code": "from a2a.server.apps.jsonrpc.starlette_app import A2AStarletteApplication\nfrom a2a.server.request_handlers import DefaultRequestHandler\n\n# 1. Initialize ADK Agent & A2A Executor\nagent = DogWeatherAgent()\nagent_card = agent.create_agent_card(AGENT_URL)\n\n# 2. Build A2A Server with ADK-to-A2A Bridge\napp = A2AStarletteApplication(\n    agent_card=agent_card,\n    http_handler=DefaultRequestHandler(\n        agent_executor=AdkAgentToA2AExecutor()\n    )\n).build()"
+    }
+  ],
+  "description": "**Day 31 of Google's Advent of Agents — Season 2**\n\nStandard agents often hit a wall when communicating complex, stateful data through raw text or basic Markdown. This demo showcases how to leverage A2UI to deliver high-fidelity, interactive micro-apps directly within Gemini Enterprise without deploying any frontend code.\n\n**Technical Orchestration**\n\nBy integrating A2UI templates into the system prompt, we enable the model to generate strictly validated JSON that the client renders natively. ADK orchestrates the session state and tool execution, bridging the gap between the model and the enterprise environment.\n\n- **Declarative UI**: Uses A2UI protocol to define component trees (Cards, Columns, Rows) and data binding via `valueStruct` for efficient updates.\n- **Dynamic Interaction**: Implements `sendText` actions with @-mentions to maintain session context and route button clicks reliably back to ADK.\n- **Multi-modal Chaining**: Demonstrates deterministic tool chaining where ADK manages the flow between random location selection, weather retrieval, and live image fetching in a single turn.\n\n**Resources:**\n\n- [A2UI Specification](https://a2ui.org)\n- [Google ADK Repository](https://github.com/google-gemini/adk)\n- [Day 31 Article](https://adventofagents.com/2026/03/31)"
+}

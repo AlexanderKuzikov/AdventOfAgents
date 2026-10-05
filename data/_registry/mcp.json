@@ -1,0 +1,977 @@
+{
+  "schemaVersion": "2026-03-01",
+  "name": "advent-of-agents",
+  "title": "Google Cloud Advent of Agents — Multi-Season Kata & Architecture MCP",
+  "description": "Search and retrieve all published daily AI Agent tutorials, copy-pasteable ADK/A2A/Cloud Run code snippets, and raw .md specifications across Season 1 (Dec 2025), Season 2 (Mar 2026), and Season 3 (Oct 2026).",
+  "homepage": "https://adventofagents.com",
+  "markdownIndex": "https://adventofagents.com/llms.txt",
+  "fullMarkdownBundle": "https://adventofagents.com/llms-full.txt",
+  "sitemap": "https://adventofagents.com/sitemap.xml",
+  "contentNegotiation": {
+    "supportsAcceptMarkdown": true,
+    "supportsDotMdSuffix": true,
+    "supportsBotUserAgentAutoMarkdown": true,
+    "exampleCurl": "curl -sL https://adventofagents.com/2026/10/01"
+  },
+  "webMcpTools": [
+    {
+      "name": "search_advent_days",
+      "description": "Search across all published Advent of Agents days (Seasons 1, 2, and 3) by keyword, topic, or tag.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Keyword or phrase (e.g., ADK, A2A, WebMCP, Cloud Run, Memory)"
+          },
+          "season": {
+            "type": "number",
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "description": "Optional season number filter (1=Dec 2025, 2=Mar 2026, 3=Oct 2026)"
+          },
+          "tag": {
+            "type": "string",
+            "description": "Optional exact or partial tag filter"
+          }
+        }
+      }
+    },
+    {
+      "name": "get_day_markdown",
+      "description": "Retrieve the full published Markdown (.md) specification and code snippets for a specific season and day.",
+      "inputSchema": {
+        "type": "object",
+        "required": [
+          "season",
+          "day"
+        ],
+        "properties": {
+          "season": {
+            "type": "number",
+            "enum": [
+              1,
+              2,
+              3
+            ]
+          },
+          "day": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 31
+          }
+        }
+      }
+    },
+    {
+      "name": "list_seasons",
+      "description": "List all Advent of Agents seasons, dates, day counts, and archive routes.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  ],
+  "seasons": [
+    {
+      "season": 3,
+      "label": "Season 3 — October 2026 (Autumn / Halloween Edition)",
+      "route": "/2026/10/",
+      "markdownIndex": "/2026/10/index.md",
+      "apiEndpoint": "/api/season3.json",
+      "publishedDaysCount": 4,
+      "days": [
+        {
+          "day": 1,
+          "title": "Foundation 101: Five Phases of Agent Development Lifecycle",
+          "summary": "Map the five phases every agent moves through, from Scope to Optimize, and walk one agent around the loop in about five minutes.",
+          "tags": [
+            "Launch",
+            "ADLC",
+            "Governance"
+          ],
+          "webUrl": "/2026/10/01?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s3_2026&utm_content=day01",
+          "markdownUrl": "/2026/10/01.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s3_2026&utm_content=day01",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 2,
+          "title": "Agent Security: Implementing SAIF Guardrails",
+          "summary": "Secure agent workflows against rogue actions or data disclosure using SAIF threat modeling.",
+          "tags": [
+            "Agent Security",
+            "SAIF",
+            "Guardrails"
+          ],
+          "webUrl": "/2026/10/02?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s3_2026&utm_content=day02",
+          "markdownUrl": "/2026/10/02.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s3_2026&utm_content=day02",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 3,
+          "title": "Architecting Secure Multi-Agent Systems",
+          "summary": "Move from single-agent prototypes to hardened, production multi-agent architectures on Google Cloud using Gemini Enterprise",
+          "tags": [
+            "Architecture",
+            "Enterprise Security",
+            "Gemini Enterprise",
+            "Multi-Agent"
+          ],
+          "webUrl": "/2026/10/03?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s3_2026&utm_content=day03",
+          "markdownUrl": "/2026/10/03.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s3_2026&utm_content=day03",
+          "hasCompanionVideo": true,
+          "companionVideos": [
+            {
+              "id": "s3-d03-marina-wyss-secure-agents",
+              "videoURL": "https://www.youtube.com/embed/qwsGEbrHnjQ",
+              "watchURL": "https://www.youtube.com/watch?v=qwsGEbrHnjQ",
+              "thumbnailURL": "https://i.ytimg.com/vi/qwsGEbrHnjQ/hqdefault.jpg",
+              "title": "Beginner's Guide to Building Secure AI Agents (2026) + Oct 2026 Google Cloud Production Agents",
+              "creatorName": "Marina Wyss",
+              "creatorHandle": "@MarinaWyssAI",
+              "creatorUrl": "https://www.youtube.com/@MarinaWyssAI",
+              "creatorRole": "Featured Creator Perspective · Practical AI Engineering (Oct 2026 Google Cloud Partner)",
+              "duration": "21:15",
+              "badgeText": "Featured Perspective · Architecture",
+              "invitationHeadline": "Walk through the 5 production pillars for enterprise AI agents from scratch",
+              "invitationBody": "Finished packet-walking the 4-tier reference architecture? Watch Marina Wyss demonstrate how runtime hosting, memory isolation, identity, guardrails, and tracing connect in practice (swapping in her new Oct 6, 2026 Google Cloud Production Agents Speedrun video upon delivery).",
+              "takeaways": [
+                "End-to-end walkthrough of the 5 production pillars for enterprise agents",
+                "Connecting model, runtime, memory bank, and policy gateway planes",
+                "Practical security checklist before promoting an agent from notebook to prod"
+              ],
+              "ctaLabel": "Watch Marina Wyss's 21:15 Secure Agents Guide",
+              "linkLabel": "Featured Perspective: Guide to Building Secure AI Agents (@MarinaWyssAI)",
+              "linkDescription": "Marina Wyss walks through the practical architecture and security pillars required to take AI agents from prototype to production."
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Governance Maturity Model: Progressive Trust for Agents",
+          "summary": "Score your agent estate on five governance layers, from Foundation to Continuous Alignment, and turn the result into a staged 90-day roadmap with a 15-question Python self-assessment.",
+          "tags": [
+            "Governance",
+            "Maturity Model",
+            "Roadmap"
+          ],
+          "webUrl": "/2026/10/04?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s3_2026&utm_content=day04",
+          "markdownUrl": "/2026/10/04.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s3_2026&utm_content=day04",
+          "hasCompanionVideo": false
+        }
+      ]
+    },
+    {
+      "season": 2,
+      "label": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+      "route": "/2026/03/",
+      "markdownIndex": "/2026/03/index.md",
+      "apiEndpoint": "/api/season2.json",
+      "publishedDaysCount": 31,
+      "days": [
+        {
+          "day": 1,
+          "title": "Season 2 Kick Off",
+          "summary": "31 days. Zero to Production-Ready AI Agents on Google Cloud.",
+          "tags": [
+            "Launch"
+          ],
+          "webUrl": "/2026/03/01?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day01",
+          "markdownUrl": "/2026/03/01.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day01",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 2,
+          "title": "Build ADK Agents with Gemini 3.1 Pro",
+          "summary": "Choose your language. One command. Total language flexibility. Bootstrap high-performance agents in seconds.",
+          "tags": [
+            "ADK",
+            "Agent Starter Pack",
+            "Python",
+            "Go",
+            "TypeScript",
+            "Java"
+          ],
+          "webUrl": "/2026/03/02?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day02",
+          "markdownUrl": "/2026/03/02.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day02",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 3,
+          "title": "Build AI Agents with Gemini 3.1 Flash-Lite",
+          "summary": "Announcing Gemini 3.1 Flash-Lite: our most cost-efficient model for building high-quality AI agents at scale.",
+          "tags": [
+            "Gemini 3.1 Flash-Lite",
+            "Product Launch",
+            "Vertex AI",
+            "Memory Agent"
+          ],
+          "webUrl": "/2026/03/03?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day03",
+          "markdownUrl": "/2026/03/03.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day03",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 4,
+          "title": "MCP Servers: Add external tools to your agents in just a few lines",
+          "summary": "Wire up multiple MCP servers simultaneously to trace bugs from Linear to GitHub PRs.",
+          "tags": [
+            "Code Analysis",
+            "Tool Call",
+            "MCP",
+            "ADK"
+          ],
+          "webUrl": "/2026/03/04?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day04",
+          "markdownUrl": "/2026/03/04.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day04",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 5,
+          "title": "Long Term Recall: Memory Plugins",
+          "summary": "Implement persistent semantic memory for AI agents using the GoodmemPlugin.",
+          "tags": [
+            "ADK",
+            "Memory",
+            "Vector Database",
+            "Modularity"
+          ],
+          "webUrl": "/2026/03/05?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day05",
+          "markdownUrl": "/2026/03/05.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day05",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 6,
+          "title": "ADK Skills",
+          "summary": "Eliminate wasted tokens with progressive disclosure. Use ADK Skills to load complex instructions only when needed.",
+          "tags": [
+            "ADK",
+            "Skills",
+            "Progressive Disclosure",
+            "Optimization"
+          ],
+          "webUrl": "/2026/03/06?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day06",
+          "markdownUrl": "/2026/03/06.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day06",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 7,
+          "title": "ADK Agent Skill Design Patterns",
+          "summary": "Five design patterns for structuring SKILL.md content in ADK — Tool Wrapper, Generator, Reviewer, Inversion, and Pipeline.",
+          "tags": [
+            "Skills",
+            "Design Patterns",
+            "SkillToolset",
+            "ADK"
+          ],
+          "webUrl": "/2026/03/07?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day07",
+          "markdownUrl": "/2026/03/07.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day07",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 8,
+          "title": "Multi-Agent Patterns: Sequential Agents",
+          "summary": "Build predictable sequential workflows where the output of one agent goes straight to the next.",
+          "tags": [
+            "Multi-Agent",
+            "Sequential Pipelines",
+            "Architecture",
+            "ADK"
+          ],
+          "webUrl": "/2026/03/08?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day08",
+          "markdownUrl": "/2026/03/08.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day08",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 9,
+          "title": "Multi-Agent Patterns: Coordinator/Dispatcher Agents",
+          "summary": "Build high-fidelity educational video agents that maintain character and scene consistency using the Google ADK, Gemini 3.1 Pro, Nano Banana and Veo 3.1.",
+          "tags": [
+            "Multi-Agent",
+            "Coordinator",
+            "Veo 3.1",
+            "ADK"
+          ],
+          "webUrl": "/2026/03/09?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day09",
+          "markdownUrl": "/2026/03/09.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day09",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 10,
+          "title": "Multi-Agent Patterns: Parallel Fanout and State Interpolation",
+          "summary": "Drastically reduce latency by running independent, grounded LLM tasks concurrently and automatically synthesizing their outputs.",
+          "tags": [
+            "Multi-Agent",
+            "Parallel Execution",
+            "Architecture",
+            "ADK"
+          ],
+          "webUrl": "/2026/03/10?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day10",
+          "markdownUrl": "/2026/03/10.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day10",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 11,
+          "title": "Multi-Agent Patterns: Hierarchical Decomposition",
+          "summary": "Use a top-level Manager agent that utilizes an AgentTool to dynamically generate a plan before executing it.",
+          "tags": [
+            "Multi-Agent",
+            "Hierarchical",
+            "Architecture",
+            "ADK"
+          ],
+          "webUrl": "/2026/03/11?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day11",
+          "markdownUrl": "/2026/03/11.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day11",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 12,
+          "title": "Multi-Agent Patterns: Generator-Critic Agent Loop",
+          "summary": "Automatically refine LLM outputs using ADK's LoopAgent to orchestrate a conversation between a creative Writer and a strict Critic.",
+          "tags": [
+            "Multi-Agent",
+            "LoopAgent",
+            "Quality Assurance",
+            "ADK"
+          ],
+          "webUrl": "/2026/03/12?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day12",
+          "markdownUrl": "/2026/03/12.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day12",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 13,
+          "title": "Multi-Agent Patterns: Iterative Refinement",
+          "summary": "Compose Skills, MCP, and Code Execution into a meta-agent that builds, tests, and refines other ADK agents through iterative loops.",
+          "tags": [
+            "Multi-Agent",
+            "Agent Skills",
+            "MCP",
+            "Code Execution"
+          ],
+          "webUrl": "/2026/03/13?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day13",
+          "markdownUrl": "/2026/03/13.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day13",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 14,
+          "title": "Multi-Agent Patterns: Human in the Loop",
+          "summary": "Inject an approval breakpoint to pause agent execution and wait for manual user confirmation before executing sensitive financial APIs.",
+          "tags": [
+            "Multi-Agent",
+            "ADK",
+            "Human-in-the-Loop",
+            "Security"
+          ],
+          "webUrl": "/2026/03/14?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day14",
+          "markdownUrl": "/2026/03/14.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day14",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 15,
+          "title": "Grounding with ADK: Agentic RAG with Vector Search 2.0",
+          "summary": "Build an Agentic RAG system in 3 minutes with Vector Search 2.0 and ADK.",
+          "tags": [
+            "ADK",
+            "Vector Search",
+            "RAG",
+            "Python"
+          ],
+          "webUrl": "/2026/03/15?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day15",
+          "markdownUrl": "/2026/03/15.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day15",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 16,
+          "title": "ADK Dev Skills: Accelerated Multiagent Triage",
+          "summary": "Accelerate multiagent system development from scaffolding to deployment using ADK Dev Skills.",
+          "tags": [
+            "Multiagent",
+            "Dev Skills",
+            "CLI"
+          ],
+          "webUrl": "/2026/03/16?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day16",
+          "markdownUrl": "/2026/03/16.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day16",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 17,
+          "title": "Workspace & Gemini Enterprise: no-code agents",
+          "summary": "Connect and use Google Workspace connectors in personal Gemini Enterprise agents.",
+          "tags": [
+            "Gemini Enterprise",
+            "Google Workspace",
+            "Connectors",
+            "Agent Designer"
+          ],
+          "webUrl": "/2026/03/17?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day17",
+          "markdownUrl": "/2026/03/17.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day17",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 18,
+          "title": "Workspace & Gemini Enterprise: ADK agents",
+          "summary": "Build ADK agents that use the Vertex AI Search MCP server and Google Workspace APIs, deploy them to Vertex AI, and register them with Gemini Enterprise.",
+          "tags": [
+            "Gemini Enterprise",
+            "Google Workspace",
+            "ADK",
+            "MCP",
+            "Vertex AI"
+          ],
+          "webUrl": "/2026/03/18?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day18",
+          "markdownUrl": "/2026/03/18.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day18",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 19,
+          "title": "Live Shopping Agent: Build with ADK and Gemini Embedding 2",
+          "summary": "Build a live multimodal shopping app with ADK and Gemini Embedding 2.",
+          "tags": [
+            "ADK",
+            "Gemini Live",
+            "Vector Search"
+          ],
+          "webUrl": "/2026/03/19?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day19",
+          "markdownUrl": "/2026/03/19.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day19",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 20,
+          "title": "ADK Agent Harness: Build a Generate-Validate-Refine Pipeline",
+          "summary": "Build a README improvement harness that fetches a GitHub repo via MCP, generates against a quality checklist, and refines in a loop until a critic approves.",
+          "tags": [
+            "ADK",
+            "MCP",
+            "Multi-Agent",
+            "Skills"
+          ],
+          "webUrl": "/2026/03/20?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day20",
+          "markdownUrl": "/2026/03/20.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day20",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 21,
+          "title": "Developer's Guide to AI Agent Protocols",
+          "summary": "Six protocols, disambiguated. See how MCP, A2A, UCP, AP2, A2UI, and AG-UI work together to build a production-ready supply chain agent with ADK.",
+          "tags": [
+            "MCP",
+            "A2A",
+            "UCP",
+            "AP2",
+            "A2UI",
+            "AG-UI",
+            "ADK",
+            "Protocols"
+          ],
+          "webUrl": "/2026/03/21?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day21",
+          "markdownUrl": "/2026/03/21.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day21",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 22,
+          "title": "ADK Evaluation: Trajectory Tests and Rubric-Based Scoring",
+          "summary": "Define deterministic trajectory tests and rubric-based evaluations that run on every code push, catching agent regressions before they reach production.",
+          "tags": [
+            "ADK",
+            "Evaluation",
+            "CI/CD",
+            "Testing"
+          ],
+          "webUrl": "/2026/03/22?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day22",
+          "markdownUrl": "/2026/03/22.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day22",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 23,
+          "title": "Model Armor: AI Security Firewall for Agents",
+          "summary": "Protect AI agents from prompt injection, jailbreaks, and data leakage using Google Cloud Model Armor as a defense-in-depth security layer.",
+          "tags": [
+            "Model Armor",
+            "Security",
+            "GCP",
+            "Agent Safety"
+          ],
+          "webUrl": "/2026/03/23?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day23",
+          "markdownUrl": "/2026/03/23.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day23",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 24,
+          "title": "Batch Processing: Scale to 10k with ADK",
+          "summary": "Shift from interactive processing to an Agent as Orchestrator pattern using the ADK and Gemini Batch API for efficient, large-scale asynchronous workloads.",
+          "tags": [
+            "Batch Processing",
+            "ADK",
+            "Scale"
+          ],
+          "webUrl": "/2026/03/24?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day24",
+          "markdownUrl": "/2026/03/24.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day24",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 25,
+          "title": "Agent Deployment: How to Deploy AI Agents",
+          "summary": "Deploy your AI agents to Vertex AI Agent Engine or Google Cloud Run securely and easily.",
+          "tags": [
+            "Deployment",
+            "Agent Engine",
+            "Cloud Run",
+            "Vertex AI"
+          ],
+          "webUrl": "/2026/03/25?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day25",
+          "markdownUrl": "/2026/03/25.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day25",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 26,
+          "title": "Authentication: End-User Identity Propagation",
+          "summary": "Securely delegate permissions by prompting end-users for OAuth consent during agent execution.",
+          "tags": [
+            "Authentication",
+            "Security",
+            "Identity Propagation",
+            "Interactive Auth"
+          ],
+          "webUrl": "/2026/03/26?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day26",
+          "markdownUrl": "/2026/03/26.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day26",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 27,
+          "title": "Scion: an open testbed for agent orchestration",
+          "summary": "Explore multi-agent patterns with an agnostic supra-harness system that isolates agents in git worktrees and containers, allowing easy orchestration and communication",
+          "tags": [
+            "Multiagent",
+            "Harness Engineering",
+            "CLI"
+          ],
+          "webUrl": "/2026/03/27?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day27",
+          "markdownUrl": "/2026/03/27.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day27",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 28,
+          "title": "A2A Protocol: Decoupling Reasoning from Execution",
+          "summary": "Decouple your reasoning engine from execution using the universal A2A 1.0 protocol to bridge a Python LangGraph orchestrator and a Go ADK service.",
+          "tags": [
+            "A2A",
+            "LangGraph",
+            "ADK",
+            "Protocol"
+          ],
+          "webUrl": "/2026/03/28?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day28",
+          "markdownUrl": "/2026/03/28.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day28",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 29,
+          "title": "ApiRegistry: Dynamically Fetching BigQuery Tools",
+          "summary": "Learn how to use the ApiRegistry object to dynamically fetch an admin-approved, fully configured BigQuery tool directly from the Cloud API Registry at runtime.",
+          "tags": [
+            "ApiRegistry",
+            "BigQuery",
+            "Authentication"
+          ],
+          "webUrl": "/2026/03/29?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day29",
+          "markdownUrl": "/2026/03/29.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day29",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 30,
+          "title": "Observability: Debug with Hierarchical Tracing",
+          "summary": "Eliminate silent failures in AI agents by implementing Hierarchical Trace Observability with OpenTelemetry and Arize Phoenix.",
+          "tags": [
+            "OpenTelemetry",
+            "Arize Phoenix",
+            "Tracing",
+            "ADK"
+          ],
+          "webUrl": "/2026/03/30?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day30",
+          "markdownUrl": "/2026/03/30.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day30",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 31,
+          "title": "A2UI & A2A: Building the Dog Weather App",
+          "summary": "Transform static agent responses into rich interactive micro-apps natively rendered in Gemini Enterprise using A2UI.",
+          "tags": [
+            "A2UI",
+            "A2A",
+            "Gemini Enterprise",
+            "ADK"
+          ],
+          "webUrl": "/2026/03/31?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day31",
+          "markdownUrl": "/2026/03/31.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s2_2026&utm_content=day31",
+          "hasCompanionVideo": false
+        }
+      ]
+    },
+    {
+      "season": 1,
+      "label": "Season 1 — December 2025 (Winter Holiday Edition)",
+      "route": "/2025/12/",
+      "markdownIndex": "/2025/12/index.md",
+      "apiEndpoint": "/api/season1.json",
+      "publishedDaysCount": 25,
+      "days": [
+        {
+          "day": 1,
+          "title": "Launch Initiative",
+          "summary": "25 days. Zero to Production-Ready AI Agents on Google Cloud.",
+          "tags": [
+            "Launch"
+          ],
+          "webUrl": "/2025/12/01?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day01",
+          "markdownUrl": "/2025/12/01.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day01",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 2,
+          "title": "Hello World with YAML",
+          "summary": "Build your first AI agent with Gemini 3 in under 5 minutes without writing a single line of code.",
+          "tags": [
+            "ADK",
+            "YAML",
+            "Quickstart"
+          ],
+          "webUrl": "/2025/12/02?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day02",
+          "markdownUrl": "/2025/12/02.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day02",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 3,
+          "title": "Gemini 3 + ADK",
+          "summary": "Build a powerful AI Agent using Gemini 3 and ADK with native support for Google Search grounding, computer use, and real-time streaming.",
+          "tags": [
+            "Gemini 3",
+            "ADK",
+            "Google Search"
+          ],
+          "webUrl": "/2025/12/03?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day03",
+          "markdownUrl": "/2025/12/03.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day03",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 4,
+          "title": "Source-Based Deployment",
+          "summary": "Deploy your agents directly from source code with Agent Engine - no more serialization headaches.",
+          "tags": [
+            "Agent Engine",
+            "Deployment",
+            "ADK"
+          ],
+          "webUrl": "/2025/12/04?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day04",
+          "markdownUrl": "/2025/12/04.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day04",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 5,
+          "title": "Production Observability",
+          "summary": "Agent Starter Pack includes production-grade observability with zero config. Cloud Trace, Log Analytics, and BigQuery integration out of the box.",
+          "tags": [
+            "Observability",
+            "Cloud Trace",
+            "BigQuery",
+            "Terraform"
+          ],
+          "webUrl": "/2025/12/05?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day05",
+          "markdownUrl": "/2025/12/05.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day05",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 6,
+          "title": "🧑‍💻 ADK ready in Antigravity, Gemini CLI, Cursor, Firebase Studio and more",
+          "summary": "Building agents shouldn't require an hour of environment configuration. If you use the Agent Starter Pack you already have IDE magnet context baked in for the Agent Development Kit (ADK).",
+          "tags": [
+            "ANTIGRAVITY",
+            "CLI",
+            "IDE",
+            "ADK"
+          ],
+          "webUrl": "/2025/12/06?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day06",
+          "markdownUrl": "/2025/12/06.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day06",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 7,
+          "title": "LLMs Can Execute Code: Autonomous Problem Solving",
+          "summary": "Explore how LLMs can not only write but also execute, debug, and refine code autonomously, transforming them into powerful problem solvers.",
+          "tags": [
+            "Code Execution",
+            "LLMs",
+            "Agents",
+            "ADK"
+          ],
+          "webUrl": "/2025/12/07?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day07",
+          "markdownUrl": "/2025/12/07.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day07",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 8,
+          "title": "Effective Context Management with ADK Layers",
+          "summary": "ADK Context design thesis: context as a compiled view",
+          "tags": [
+            "Context Management",
+            "Layers",
+            "Caching"
+          ],
+          "webUrl": "/2025/12/08?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day08",
+          "markdownUrl": "/2025/12/08.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day08",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 9,
+          "title": "⏪ Undo buttons for your Agents",
+          "summary": "Building an \"Edit Message\" or \"Regenerate\" feature shouldn't require complex database migrations. In the ADK, time travel is built-in.",
+          "tags": [
+            "Rewind",
+            "Resume",
+            "ADK",
+            "Time Travel",
+            "Undo"
+          ],
+          "webUrl": "/2025/12/09?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day09",
+          "markdownUrl": "/2025/12/09.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day09",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 10,
+          "title": "Big Context ≠ Better Memory",
+          "summary": "Long-running agent sessions face two enemies: latency and \"lost in the middle\" syndrome. The ADK solves this with Context Caching and Context Compaction.",
+          "tags": [
+            "Memory",
+            "ADK",
+            "Context Caching",
+            "Context Compaction",
+            "Memory"
+          ],
+          "webUrl": "/2025/12/10?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day10",
+          "markdownUrl": "/2025/12/10.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day10",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 11,
+          "title": "Google Managed MCP",
+          "summary": "Connect Agents to Google Services with Managed MCP.",
+          "tags": [
+            "MCP",
+            "ADK",
+            "Google Cloud",
+            "BigQuery",
+            "Google Maps",
+            "GKE",
+            "Compute Engine"
+          ],
+          "webUrl": "/2025/12/11?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day11",
+          "markdownUrl": "/2025/12/11.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day11",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 12,
+          "title": "Multimodal Agents with Gemini Live API",
+          "summary": "Explore ADK Bi-Directional Streaming: A visual guide to real-time multimodal AI agent development with WebSockets and Gemini Live.",
+          "tags": [
+            "Bidi-streaming",
+            "WebSockets",
+            "Gemini Live",
+            "AI Agent",
+            "ADK"
+          ],
+          "webUrl": "/2025/12/12?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day12",
+          "markdownUrl": "/2025/12/12.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day12",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 13,
+          "title": "Interactions API",
+          "summary": "Interactions API marks a fundamental shift from stateless text generation to stateful, autonomous workflows.",
+          "tags": [
+            "Interactions API",
+            "ADK",
+            "A2A",
+            "Google Cloud",
+            "Google DeepMind"
+          ],
+          "webUrl": "/2025/12/13?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day13",
+          "markdownUrl": "/2025/12/13.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day13",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 14,
+          "title": "Connecting Agents with A2A",
+          "summary": "Connect agents across teams, frameworks, and languages with the Agent2Agent (A2A) Protocol. ADK makes implementing A2A simple.",
+          "tags": [
+            "ADK A2A",
+            "ADK",
+            "A2A",
+            "Multi-Agent",
+            "Agent Starter Pack"
+          ],
+          "webUrl": "/2025/12/14?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day14",
+          "markdownUrl": "/2025/12/14.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day14",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 15,
+          "title": "Introducing A2UI",
+          "summary": "Discover A2UI (Agent-to-User Interface), an open project that enables agents to stream dynamic, generative UIs as JSONL payloads, decoupling UI definition from rendering and breaking the ceiling of traditional chat interfaces.",
+          "tags": [
+            "A2UI",
+            "Generative UI",
+            "Agent-to-User Interface",
+            "Agent Development"
+          ],
+          "webUrl": "/2025/12/15?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day15",
+          "markdownUrl": "/2025/12/15.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day15",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 16,
+          "title": "LangGraph + A2A",
+          "summary": "Build LangGraph agents with full A2A capabilities using Agent Starter Pack. Your agent becomes instantly discoverable by other agents.",
+          "tags": [
+            "LangGraph",
+            "A2A",
+            "Agent Starter Pack",
+            "Multi-Agent"
+          ],
+          "webUrl": "/2025/12/16?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day16",
+          "markdownUrl": "/2025/12/16.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day16",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 17,
+          "title": "Gemini 3 Flash is here!",
+          "summary": "Google's fastest model just got smarter with configurable thinking levels and granular controls.",
+          "tags": [
+            "gemini",
+            "flash",
+            "thinking",
+            "adk"
+          ],
+          "webUrl": "/2025/12/17?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day17",
+          "markdownUrl": "/2025/12/17.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day17",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 18,
+          "title": "Cloud API Registry + ADK",
+          "summary": "The biggest friction in enterprise agent development isn't the model—it's the tools. Vertex AI Agent Builder now integrates with Cloud API Registry, providing a centralized tool repository.",
+          "tags": [
+            "Cloud API Registry",
+            "Vertex AI Agent Builder",
+            "ADK",
+            "Tools"
+          ],
+          "webUrl": "/2025/12/18?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day18",
+          "markdownUrl": "/2025/12/18.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day18",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 19,
+          "title": "Register to Gemini Enterprise",
+          "summary": "Register your agent to Gemini Enterprise! 🌐 and make it discoverable to everyone in your organization, right alongside Google's built-in agents.",
+          "tags": [
+            "Gemini Enterprise",
+            "Agent Starter Pack",
+            "Deployment",
+            "A2A"
+          ],
+          "webUrl": "/2025/12/19?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day19",
+          "markdownUrl": "/2025/12/19.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day19",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 20,
+          "title": "A2A Extensions: The Flexible Sidecar for Custom Data",
+          "summary": "The Agent-to-Agent (A2A) protocol relies on a strict format, but real-world complexity often requires unique data. A2A Extensions provide a \"Sidecar\" pattern for custom data without breaking backward compatibility.",
+          "tags": [
+            "A2A Extensions",
+            "Extensions",
+            "Sidecar Pattern",
+            "Agent Communication"
+          ],
+          "webUrl": "/2025/12/20?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day20",
+          "markdownUrl": "/2025/12/20.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day20",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 21,
+          "title": "Kaggle Capstone Winners Highlight",
+          "summary": "🏆 The Hall of Fame: Meet the Winners",
+          "tags": [
+            "Hall of Fame",
+            "Winners",
+            "Agents for Good",
+            "Enterprise Agents",
+            "Concierge Agents",
+            "Freestyle"
+          ],
+          "webUrl": "/2025/12/21?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day21",
+          "markdownUrl": "/2025/12/21.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day21",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 22,
+          "title": "Security & Guardrails",
+          "summary": "Prompt Engineering is not a Security Strategy. Asking an LLM nicely to \"please ignore PII\" is not governance; it's wishful thinking.",
+          "tags": [
+            "Model Armor",
+            "Security",
+            "guardrails",
+            "ADK"
+          ],
+          "webUrl": "/2025/12/22?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day22",
+          "markdownUrl": "/2025/12/22.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day22",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 23,
+          "title": "Durable, Resilient Agents with Google ADK + Restate",
+          "summary": "Most agents are fragile. Durable Execution with Google ADK and Restate ensures your agent never loses context, survives crashes, and can pause execution for days.",
+          "tags": [
+            "Durable Execution",
+            "ADK",
+            "Restate",
+            "Resilient Agents"
+          ],
+          "webUrl": "/2025/12/23?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day23",
+          "markdownUrl": "/2025/12/23.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day23",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 24,
+          "title": "A2A-ify Anything",
+          "summary": "Take any ADK or LangGraph sample and launch it with A2A on top. Layer A2A capabilities onto existing agents with a single flag.",
+          "tags": [
+            "A2A",
+            "Agent Starter Pack",
+            "ADK Samples"
+          ],
+          "webUrl": "/2025/12/24?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day24",
+          "markdownUrl": "/2025/12/24.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day24",
+          "hasCompanionVideo": false
+        },
+        {
+          "day": 25,
+          "title": "🎉 Grand Finale: Mission Accomplished!",
+          "summary": "Congratulations! You've successfully completed the 25-day Advent of Agents journey.",
+          "tags": [
+            "Architecture",
+            "Blueprint",
+            "Production",
+            "Summary",
+            "Agent Engine",
+            "ADK",
+            "Gemini 3",
+            "Multi-agent"
+          ],
+          "webUrl": "/2025/12/25?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day25",
+          "markdownUrl": "/2025/12/25.md?utm_source=adventofagents&utm_medium=mcp&utm_campaign=adventofagents_s1_2026&utm_content=day25",
+          "hasCompanionVideo": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1474 @@
+{
+  "currentDay": 31,
+  "days": [
+    {
+      "day": 1,
+      "title": "Season 2 Kick Off",
+      "summary": "31 days. Zero to Production-Ready AI Agents on Google Cloud.",
+      "description": "\n**Day 1 of Google's Advent of Agents — Season 2**\n\nWelcome to **Season 2** of Advent of Agents! A fresh season of AI Agent tutorials blooms this spring.\n\n31 days. 31 tutorials. Production-Ready AI Agents on Google Cloud.\n\n**Every day in March you will:**\n\n-  🌱 Learn one new concept or feature to explore\n-  💻 Build an agent with copy-paste commands that actually work\n-  📖 Explore links to docs and resources\n\nFrom advanced agent patterns to multi-agent orchestration. From prototyping to production deployment.\n\n**What's New in Season 2:** Building on the foundations from Season 1, this season goes deeper:\n\n-  [Agent Development Kit](https://google.github.io/adk-docs/): Build agents with the latest ADK features\n-  [Vertex AI Agent Engine](https://cloud.google.com/products/agent-builder): Scale your agents to production\n-  [Agent Starter Pack](https://github.com/GoogleCloudPlatform/agent-starter-pack): E2E production-ready templates\n\n**Getting Started:** New to agents? Check out the Kaggle’s [Introduction to Agents whitepaper](https://www.kaggle.com/whitepaper-introduction-to-agents) and browse the [Season 1 Archive](http://adventofagents.com/2025/12/) to catch up on the fundamentals.\n\n**Let's build something amazing this spring! 🌸**\n",
+      "tags": [
+        "Launch"
+      ],
+      "icon": "🌸",
+      "resourceLink": "https://goo.gle/advent-of-agents",
+      "links": [
+        {
+          "label": "Subscribe to weekly newsletter",
+          "url": "https://groups.google.com/g/advent-of-agents-newsletter",
+          "description": "Get the latest updates and resources delivered to your inbox"
+        },
+        {
+          "label": "Introduction to Agents Whitepaper",
+          "url": "https://www.kaggle.com/whitepaper-introduction-to-agents",
+          "description": "Released as part of the 5 Days of Agents with Kaggle"
+        },
+        {
+          "label": "Google ADK Documentation",
+          "url": "https://google.github.io/adk-docs/",
+          "description": "Official documentation for the Agent Development Kit"
+        },
+        {
+          "label": "Agent Starter Pack",
+          "url": "https://github.com/GoogleCloudPlatform/agent-starter-pack",
+          "description": "Production-ready templates for building AI agents"
+        }
+      ],
+      "codeSnippets": [],
+      "videoURL": "https://www.youtube.com/embed/MUnjMBHsaEw",
+      "emailPrompt": "Focus the email on the launch of season 2 and the new features that will be covered in the season."
+    },
+    {
+      "day": 2,
+      "title": "Build ADK Agents with Gemini 3.1 Pro",
+      "summary": "Choose your language. One command. Total language flexibility. Bootstrap high-performance agents in seconds.",
+      "tags": [
+        "ADK",
+        "Agent Starter Pack",
+        "Python",
+        "Go",
+        "TypeScript",
+        "Java"
+      ],
+      "description": "**Day 2 of Google's Advent of Agents — Season 2**\n\n**Build your first ADK Agent with Gemini 3.1 Pro: Choose Your Language** 💻\n\n**ADK** abstracts LLM orchestration into a unified schema for tool-calling and memory management. Instead of manual prompt engineering, a single template binds **Gemini 3.1 Pro’s** reasoning to language-native functions. Whether you are using Spring Boot or Go routines, the \"Reflect\" and \"Observe\" loops maintain strict schema adherence.\n\n🚀 **One command. Total language flexibility.** By specification of the language flag upfront, the **Agent Starter Pack** bootstraps high-performance agents in seconds. This \"Template-First\" approach allows you to leverage language-specific strengths:\n\n- **Go's** concurrency\n- **Python's** RAG ecosystem\n- **TypeScript's** full-stack integration\n- **Java's** enterprise patterns\n\n...without rewriting core agentic behavior.\n\n***📚 Resource Reference**\n\n- **Getting Started** [Guide](https://googlecloudplatform.github.io/agent-starter-pack/guide/getting-started.html)\n- **Templates** [Overview](https://googlecloudplatform.github.io/agent-starter-pack/agents/overview.html)\n- **Gemini 3.1** [Documentation](https://cloud.google.com/vertex-ai/docs/generative-ai/model-reference/gemini)\n- **ADK Docs** [Docs](https://google.github.io/adk-docs/get-started/)\n",
+      "icon": "💻",
+      "codeSnippets": [
+        {
+          "filename": "terminal",
+          "language": "bash",
+          "code": "# Pick your language and deploy instantly 🚀\n# Python\nuvx agent-starter-pack@latest create my-agent -a adk\n\n# Go\nuvx agent-starter-pack@latest create my-go-agent -a adk_go\n\n# TypeScript/Node.js\nuvx agent-starter-pack@latest create my-ts-agent -a adk_ts\n\n# Java\nuvx agent-starter-pack@latest create my-java-agent -a adk_java\n\n# Authenticate and Run\ngcloud auth application-default login\ncd my-agent && make install && make playground"
+        }
+      ],
+      "videoURL": null,
+      "links": [
+        {
+          "label": "ADK Getting Started Guide",
+          "url": "https://googlecloudplatform.github.io/agent-starter-pack/guide/getting-started.html"
+        },
+        {
+          "label": "Agent Templates Overview",
+          "url": "https://googlecloudplatform.github.io/agent-starter-pack/agents/overview.html"
+        },
+        {
+          "label": "Gemini 3.1 Pro Model Documentation",
+          "url": "https://cloud.google.com/vertex-ai/docs/generative-ai/model-reference/gemini"
+        },
+        {
+          "label": "ADK Official Documentation",
+          "url": "https://google.github.io/adk-docs/get-started/"
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Build AI Agents with Gemini 3.1 Flash-Lite",
+      "summary": "Announcing Gemini 3.1 Flash-Lite: our most cost-efficient model for building high-quality AI agents at scale.",
+      "tags": [
+        "Gemini 3.1 Flash-Lite",
+        "Product Launch",
+        "Vertex AI",
+        "Memory Agent"
+      ],
+      "videoURL": "https://www.youtube.com/embed/-7zEqFXg0zw",
+      "description": "\n\n**Day 3 of Google's Advent of Agents — Season 2**\n\nWe’re announcing **Gemini 3.1 Flash-Lite** today, our most cost-efficient model yet, built specifically for intelligence at scale. It is a leaner, more efficient model designed for developers building high-quality AI apps while managing strict budget constraints. \n\nCost and efficiency are the critical metrics for large-scale deployments. The model is cheap and low latency, making it extremely fast. Gemini 3.1 Flash-Lite delivers the ultra-low latency required to power responsive, real-time applications and high-frequency agentic workflows at a fraction of the cost. \n\n**Why Gemini 3.1 Flash-Lite for Always On Agents?**\n\nThis agent runs continuously. Cost and speed matter more than raw intelligence for background processing:\n\n* **Fast:** Ultra-low latency ingestion and retrieval, required to power responsive, high-frequency agentic workflows.  \n\n* **Cheap:** Negligible cost per session, making 24/7 operation practical.  \n\n* **Smart:** Extracts structured data, identifies connections, and synthesizes answers.  \n\n* **Multimodal:** Extracts structured information from 27+ file types including text, images, audio, and video.\n\n**How it Works**\n\n![How it works](/season2-day03-how-it-works.png)\n\n1. **Ingest:** The agent watches a folder (auto-ingesting within 5 to 10 seconds) or API and uses Flash Lite's multimodal capabilities to extract structured data from any file.  \n\n2. **Consolidate:** Like a human brain during sleep, the **ConsolidateAgent** runs on a timer to find connections between memories and generate cross-cutting insights.  \n\n3. **Query:** Ask any question, and the **QueryAgent** synthesizes an answer by reading through all stored memories and consolidated insights with full citations.\n\n**Get Started Today**\n\nBuild with Gemini 3.1 Flash-Lite and explore the Always On Memory Agent tutorial:\n\n* **Get the Code & try it out (fork and star):** [GitHub Repo](https://github.com/GoogleCloudPlatform/generative-ai/tree/main/gemini/agents/always-on-memory-agent)  \n\n* **Get your API Key:** Available now via [Vertex AI Studio](https://vertexai.google.com/) or [Google AI Studio](https://aistudio.google.com/).\n\nShare the cool things you are building with Gemini 3.1 Flash-Lite.",
+      "icon": "⚡",
+      "resourceLink": "https://github.com/GoogleCloudPlatform/generative-ai/tree/main/gemini/agents/always-on-memory-agent",
+      "links": [
+        {
+          "label": "GitHub Repository",
+          "url": "https://github.com/GoogleCloudPlatform/generative-ai/tree/main/gemini/agents/always-on-memory-agent",
+          "description": "Always-On Memory Agent: Persistent, evolving memory for AI agents."
+        },
+        {
+          "label": "Vertex AI Studio",
+          "url": "https://vertexai.google.com/",
+          "description": "Get started with Gemini 3.1 Flash-Lite on Vertex AI."
+        },
+        {
+          "label": "Google AI Studio",
+          "url": "https://aistudio.google.com/",
+          "description": "Fastest way to build with Gemini models."
+        }
+      ],
+      "codeSnippets": [
+        {
+          "filename": "terminal",
+          "language": "bash",
+          "code": "# 1. Install\ngit clone https://github.com/GoogleCloudPlatform/generative-ai.git\ncd generative-ai/gemini/agents/always-on-memory-agent\npip install -r requirements.txt\n\n# 2. Set your API key\nexport GOOGLE_API_KEY=\"your-gemini-api-key\"\n# Get your API key from Vertex AI Studio or Google AI Studio\n\n# 3. Start the agent\npython agent.py\n\n# That's it. The agent is now running:\n# - Watching ./inbox/ for new files (text, images, audio, video, PDFs)\n# - Consolidating every 30 minutes\n# - Serving queries at http://localhost:8888\n\n# 4. Feed it information\n\n# Option A: Drop any file\necho \"Some important information\" > inbox/notes.txt\ncp photo.jpg inbox/\ncp meeting.mp3 inbox/\ncp report.pdf inbox/\n# Agent auto-ingests within 5-10 seconds\n\n# Option B: HTTP API\ncurl -X POST http://localhost:8888/ingest \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"text\": \"AI agents are the future\", \"source\": \"article\"}'\n\n# 5. Query\ncurl \"http://localhost:8888/query?q=what+do+you+know\""
+        }
+      ],
+      "emailPrompt": "Focus the email on the announcement of Gemini 3.1 Flash-Lite, emphasizing its cost-efficiency and intelligence at scale. Mention the Always-On Memory Agent as a prime example of what can be built."
+    },
+    {
+      "day": 4,
+      "title": "MCP Servers: Add external tools to your agents in just a few lines",
+      "summary": "Wire up multiple MCP servers simultaneously to trace bugs from Linear to GitHub PRs.",
+      "tags": [
+        "Code Analysis",
+        "Tool Call",
+        "MCP",
+        "ADK"
+      ],
+      "description": "\n**Day 4 of Google's Advent of Agents — Season 2**\n\nConnecting a single external tool to an agent is useful, but routing context across multiple specialized tools unlocks complex workflows. 🌐 \n\nThe **Model Context Protocol (MCP)** standardizes how agents access these diverse data sources. By configuring our triage agent with both the **GitHub** and **Linear** MCP servers simultaneously, it can cross-reference system records natively without manual intervention! 🤖✨\n\n**🐛 The Triaging Workflow**\n\nWhen diagnosing a reported bug, developers typically piece together context across issue trackers and version control. We can automate this painful triaging process:\n\n1. **Bug Extraction:** The agent first queries the `[Linear MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/linear)` to extract the details of a specific bug report. 📋\n\n2. **Context Routing:** Using those identifiers or branch names, the agent seamlessly pivots to query the `[GitHub MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/github)` to locate the corresponding pull request. 🔀\n\n3. **Analysis & Summary:** Finally, it analyzes the code diffs and summarizes the exact changes introduced, bridging the gap between the product issue and the committed code. 🔍💻.  \n\nSay goodbye to context-switching between tabs! 🎉\n",
+      "icon": "🐞",
+      "resourceLink": "https://developers.googleblog.com/en/supercharge-your-ai-agents-adk-integrations-ecosystem/",
+      "links": [
+        {
+          "label": "Developer Blog",
+          "url": "https://developers.googleblog.com/en/supercharge-your-ai-agents-adk-integrations-ecosystem/",
+          "description": "Supercharge your AI Agents: Details on ADK Integrations Ecosystem"
+        },
+        {
+          "label": "Model Context Protocol Documentation",
+          "url": "https://modelcontextprotocol.io/",
+          "description": "Standardizing how agents access diverse data sources"
+        },
+        {
+          "label": "GitHub MCP Server",
+          "url": "https://google.github.io/adk-docs/integrations/github",
+          "description": "GitHub MCP Server implementation"
+        },
+        {
+          "label": "Linear MCP Server",
+          "url": "https://google.github.io/adk-docs/integrations/linear",
+          "description": "Linear MCP Server implementation"
+        }
+      ],
+      "codeSnippets": [
+        {
+          "filename": "agent.py",
+          "language": "python",
+          "code": "from google.adk.agents import Agent\nfrom google.adk.models import Gemini\nfrom google.adk.apps import App\nfrom google.adk.tools.mcp_tool import McpToolset\nfrom google.adk.tools.mcp_tool.mcp_session_manager import StreamableHTTPServerParams\nimport os\n\nGITHUB_TOKEN = os.environ.get(\"GITHUB_TOKEN\")\nLINEAR_API_KEY = os.environ.get(\"LINEAR_API_KEY\")\n\nroot_agent = Agent(\n    model=Gemini(model=\"gemini-3-flash-preview\"),\n    name=\"root_agent\",\n    instruction=open(os.path.join(os.path.dirname(__file__), \"prompt.md\")).read(),\n    tools=[\n        McpToolset(\n            tool_name_prefix=\"github_\",\n            connection_params=StreamableHTTPServerParams(\n                url=\"https://api.githubcopilot.com/mcp/\",\n                headers={\n                    \"Authorization\": f\"Bearer {GITHUB_TOKEN}\",\n                    \"X-MCP-Toolsets\": \"pull_requests\",\n                    \"X-MCP-Readonly\": \"true\"\n                },\n            ),\n        ),\n        McpToolset(\n            tool_name_prefix=\"linear_\",\n            tool_filter=[\"get_issue\", \"list_issues\", \"search_issues\"],\n            connection_params=StreamableHTTPServerParams(\n                url=\"https://mcp.linear.app/mcp\",\n                headers={\n                    \"Authorization\": f\"Bearer {LINEAR_API_KEY}\",\n                },\n            ),\n        )\n    ],\n)\n\napp = App(\n    name=\"app\",\n    root_agent=root_agent,\n)"
+        },
+        {
+          "filename": "prompt.md",
+          "language": "markdown",
+          "code": "You are an intelligent agent that can fetch the source diff of a Pull Request based on the Linear issue ID. Your exact workflow is:\n1. Use `linear_get_issue` to fetch the specific bug report in Linear.\n2. Extract keywords, branch names, or the exact title from the Linear issue.\n3. Use `github_list_pull_requests` or `github_search_pull_requests` in the provided GitHub repository using those extracted keywords to find the associated Pull Request. Important: Always restrict your search to the user's provided repository (e.g. `repo:rovindra/web-master`) rather than searching globally. Do not search by the literal Linear issue ID unless you know it's in the PR title.\n4. Use `github_pull_request_read` to fetch the source diff of that exact PR.\n5. Summarize the diff based on the PR contents.\n\nWhen returning the final response, you MUST format the details as a markdown table followed by the diff summary:\n| Field | Details |\n|---|---|\n| **Title** | [PR Title] |\n| **Author** | [PR Author] |\n| **Branch** | [PR Branch] |\n| **Date** | [PR Date] |\n| **Files Changed** | [PR No. of Files Changed] |\n| **State** | [Open/Merged/Closed] |\n| **Issue** | [Linear Issue ID & Title] |\n| **Description** | [Brief PR Description] |\n| **Summary** | [Your brief summary of the changes] |\n\n### Diff Analysis\n[Detailed explanation of the code changes...]\n\n### Diff\n[Actual diff of the changes...]\n\nNever ask the user for a PR number if they already provided the target GitHub repository and Linear issue ID."
+        }
+      ],
+      "videoURL": "https://www.youtube.com/embed/to4k4aPlYDw"
+    },
+    {
+      "day": 5,
+      "title": "Long Term Recall: Memory Plugins",
+      "summary": "Implement persistent semantic memory for AI agents using the GoodmemPlugin.",
+      "tags": [
+        "ADK",
+        "Memory",
+        "Vector Database",
+        "Modularity"
+      ],
+      "icon": "🧠",
+      "resourceLink": "https://google.github.io/adk-docs/integrations/goodmem/",
+      "codeSnippets": [
+        {
+          "filename": "agent.py",
+          "language": "python",
+          "code": "import os\nfrom google.adk.agents import LlmAgent\nfrom google.adk.apps import App\nfrom goodmem_adk import GoodmemPlugin\n\n# Attach persistent memory to the App layer\ngoodmem_chat_plugin = GoodmemPlugin(\n    base_url=os.getenv(\"GOODMEM_BASE_URL\"),\n    api_key=os.getenv(\"GOODMEM_API_KEY\"),\n    top_k=5\n)\n\n# Agent context is automatically hydrated at runtime\nroot_agent = LlmAgent(\n    name=\"root_agent\",\n    model=\"gemini-3.1-pro-preview\",\n    instruction=\"You are a Professional chef with persistent memory access.\"\n)\n\napp = App(name=\"Dietary-chef\", root_agent=root_agent, plugins=[goodmem_chat_plugin])"
+        }
+      ],
+      "links": [
+        {
+          "label": "ADK Tools and Integrations",
+          "url": "https://google.github.io/adk-docs/tools",
+          "description": "Review supported tools for agent enhancement."
+        },
+        {
+          "label": "GoodMem Plugin for ADK",
+          "url": "https://google.github.io/adk-docs/integrations/goodmem/",
+          "description": "Technical specification for persistent memory plugin."
+        }
+      ],
+      "description": "\n**Day 5 of Google's Advent of Agents — Season 2**\n\nTraditional agents forget everything the moment a session ends. To build truly human-centric agents, we need to move beyond volatile chat history and into **Persistent Semantic Memory**.\n\n**How It Works**\n\nThe **GoodmemPlugin** integrates at the App layer and introduces three key capabilities:\n\n- **The Silent Observer**: By attaching the plugin, every user message is automatically captured, converted into a vector embedding, and stored in a managed \"Space.\" No manual `save()` calls required.\n- **Context Injection (The Reflect Pattern)**: Before the LLM sees your message, the plugin runs a similarity search for the `top_k=5` most relevant memories from past sessions. If you mentioned a \"walnut allergy\" last Tuesday, that memory fragment is retrieved and injected directly into the current prompt's system context.\n- **Zero-Shot Continuity**: The agent starts every new session with full knowledge of the user. By the time the LLM generates a response, it already knows your dietary restrictions, preferred coding style, or project history—saving tokens and eliminating repetition.\n\n**Resources:**\n\n- [ADK Tools and Integrations for Agents](https://google.github.io/adk-docs/integrations/)\n- [GoodMem Plugin for ADK](https://google.github.io/adk-docs/integrations/goodmem/)\n- [Supercharge your AI agents with ADK integrations](https://developers.googleblog.com/supercharge-your-ai-agents-adk-integrations-ecosystem/)\n",
+      "videoURL": "https://www.youtube.com/embed/LnTVBxhxWVA"
+    },
+    {
+      "day": 6,
+      "title": "ADK Skills",
+      "summary": "Eliminate wasted tokens with progressive disclosure. Use ADK Skills to load complex instructions only when needed.",
+      "tags": [
+        "ADK",
+        "Skills",
+        "Progressive Disclosure",
+        "Optimization"
+      ],
+      "icon": "🥋",
+      "resourceLink": "https://google.github.io/adk-docs/skills/",
+      "codeSnippets": [
+        {
+          "filename": "agent.py",
+          "language": "python",
+          "code": "# agent.py — ADK Skills: 4 patterns in one agent\nimport pathlib\nfrom google.adk import Agent\nfrom google.adk.skills import load_skill_from_dir, models\nfrom google.adk.tools.skill_toolset import SkillToolset\n\n# Pattern 1: Inline skill — stable rules defined in code\nseo_skill = models.Skill(\n    frontmatter=models.Frontmatter(\n        name=\"seo-checklist\",\n        description=\"SEO optimization checklist for blog posts.\",\n    ),\n    instructions=(\n        \"Check each item:\\n\"\n        \"1. Title: 50-60 chars, primary keyword near the start\\n\"\n        \"2. Meta description: 150-160 chars with call-to-action\\n\"\n        \"3. Headings: H2/H3 hierarchy, keywords in 2-3 headings\\n\"\n        \"4. First paragraph: primary keyword in first 100 words\\n\"\n        \"5. Images: alt text with keywords, compressed\"\n    ),\n)\n\n# Pattern 2: File-based skill — SKILL.md + references/ directory\nblog_writer = load_skill_from_dir(\n    pathlib.Path(__file__).parent / \"skills\" / \"blog-writer\"\n)\n\n# Pattern 3: External skill — same format, from a community repo\nresearcher = load_skill_from_dir(\n    pathlib.Path(__file__).parent / \"skills\" / \"content-research-writer\"\n)\n\n# Wire all skills into one SkillToolset (auto-generates 3 tools)\nroot_agent = Agent(\n    model=\"gemini-3.1-flash-preview\",\n    name=\"blog_skills_agent\",\n    description=\"A blog-writing agent powered by reusable skills.\",\n    instruction=\"You are a blog-writing assistant. Load relevant skills before acting.\",\n    tools=[SkillToolset(skills=[seo_skill, blog_writer, researcher])],\n)"
+        }
+      ],
+      "links": [
+        {
+          "label": "ADK Skills Documentation",
+          "url": "https://google.github.io/adk-docs/skills/",
+          "description": "Official guide for defining and using skills in ADK."
+        },
+        {
+          "label": "ADK Skills: Part 1 - What Are Skills?",
+          "url": "https://lavinigam.com/posts/adk-agent-skills-part1/#what-are-skills-and-why-they-matter",
+          "description": "Learn why decoupling procedural knowledge matters."
+        },
+        {
+          "label": "ADK Skills: Part 2 - Wiring Skills",
+          "url": "https://lavinigam.com/posts/adk-agent-skills-part2/#wiring-skills-into-the-agent",
+          "description": "Technical deep dive into SkillToolset internals."
+        },
+        {
+          "label": "ADK Skills: Part 3 - Skills That Write Skills",
+          "url": "https://lavinigam.com/posts/adk-agent-skills-part3/#pattern-4-skills-that-write-skills",
+          "description": "Pattern 4: The meta-skill of self-generation."
+        },
+        {
+          "label": "Agent Skills Specification",
+          "url": "https://agentskills.io/specification",
+          "description": "The open standard adopted by 40+ agents."
+        },
+        {
+          "label": "Companion Code Repository",
+          "url": "https://github.com/lavinigam-gcp/build-with-adk/tree/main/adk-agent-skills-tutorial",
+          "description": "Clone and run all four skill patterns."
+        }
+      ],
+      "description": "\n**Day 6 of Google's Advent of Agents — Season 2** 🌸\n\nMost agents load every instruction into the **system prompt** on every LLM call — compliance rules, style guides, API references — whether the user's question needs them or not. At ten capabilities, that's thousands of **wasted tokens** per call. **ADK Skills** solve this with **progressive disclosure**: the agent sees only a lightweight listing of skill names at startup, then loads full instructions on demand.\n\n**Progressive Disclosure: L1 / L2 / L3**\n\n![Progressive Disclosure Diagram](/s2-day06-progressive-disclosure.png)\n\n**How It Works**\n\n**ADK SkillToolset** auto-registers three tools that map to three disclosure levels:\n\n- **L1 — Metadata (list_skills)**: Returns skill names and descriptions (~100 tokens each). Always present. This is the \"menu\" the agent scans to decide what's relevant.\n\n- **L2 — Instructions (load_skill)**: Fetches the full skill body when the agent decides it's needed. Called explicitly per skill.\n\n- **L3 — Resources (load_skill_resource)**: Loads reference files (style guides, checklists, specs) only when skill instructions reference them.\n\nSkills can be defined **inline** in Python, loaded from **local directories** with SKILL.md files, pulled from **community repos**, or even generated on demand by a **meta skill**. The [companion blog series](https://lavinigam.com/posts/adk-agent-skills-part1/#what-are-skills-and-why-they-matter) walks through all four patterns.\n\n**Resources:**\n\n- [ADK Skills Documentation](https://google.github.io/adk-docs/skills/)\n- [ADK Skills: Part 1 - What Are Skills?](https://lavinigam.com/posts/adk-agent-skills-part1/#what-are-skills-and-why-they-matter)\n- [ADK Skills: Part 2 - Wiring Skills](https://lavinigam.com/posts/adk-agent-skills-part2/#wiring-skills-into-the-agent)\n- [ADK Skills: Part 3 - Skills That Write Skills](https://lavinigam.com/posts/adk-agent-skills-part3/#pattern-4-skills-that-write-skills)\n- [Agent Skills Specification](https://agentskills.io/specification)\n- [Companion Code Repository](https://github.com/lavinigam-gcp/build-with-adk/tree/main/adk-agent-skills-tutorial)\n",
+      "videoURL": null
+    },
+    {
+      "day": 7,
+      "title": "ADK Agent Skill Design Patterns",
+      "summary": "Five design patterns for structuring SKILL.md content in ADK — Tool Wrapper, Generator, Reviewer, Inversion, and Pipeline.",
+      "tags": [
+        "Skills",
+        "Design Patterns",
+        "SkillToolset",
+        "ADK"
+      ],
+      "icon": "🧩",
+      "resourceLink": "https://google.github.io/adk-docs/skills/",
+      "codeSnippets": [
+        {
+          "filename": "agent.py",
+          "language": "python",
+          "code": "import pathlib\nfrom google.adk import Agent\nfrom google.adk.skills import load_skill_from_dir\nfrom google.adk.tools.skill_toolset import SkillToolset\n\nSKILLS_DIR = pathlib.Path(__file__).parent / \"skills\"\n\n# One agent, five skills, five design patterns\nskill_toolset = SkillToolset(\n    skills=[\n        load_skill_from_dir(SKILLS_DIR / \"api-expert\"),       # Tool Wrapper\n        load_skill_from_dir(SKILLS_DIR / \"report-generator\"), # Generator\n        load_skill_from_dir(SKILLS_DIR / \"code-reviewer\"),    # Reviewer\n        load_skill_from_dir(SKILLS_DIR / \"project-planner\"),  # Inversion\n        load_skill_from_dir(SKILLS_DIR / \"doc-pipeline\"),     # Pipeline\n    ],\n)\n\nroot_agent = Agent(\n    model=\"gemini-3.1-flash-preview\",\n    name=\"pattern_demo_agent\",\n    description=\"A developer assistant powered by 5 skill design patterns.\",\n    instruction=\"Load relevant skills before acting on any user request.\",\n    tools=[skill_toolset],\n)"
+        }
+      ],
+      "links": [
+        {
+          "label": "5 Agent Skill Design Patterns (Blog)",
+          "url": "https://lavinigam.com/posts/adk-skill-design-patterns/",
+          "description": "Full walkthrough of the 5 patterns with working ADK code."
+        },
+        {
+          "label": "ADK Skills Documentation",
+          "url": "https://google.github.io/adk-docs/skills/",
+          "description": "Official guide for defining and using skills in ADK."
+        },
+        {
+          "label": "ADK Skills Part 1: Progressive Disclosure",
+          "url": "https://lavinigam.com/posts/adk-agent-skills-part1/",
+          "description": "Foundations: what skills are, L1/L2/L3 levels, inline skills."
+        },
+        {
+          "label": "ADK Skills Part 2: File-Based Skills",
+          "url": "https://lavinigam.com/posts/adk-agent-skills-part2/",
+          "description": "SKILL.md format, load_skill_from_dir, SkillToolset internals."
+        },
+        {
+          "label": "ADK Skills Part 3: Meta Skills",
+          "url": "https://lavinigam.com/posts/adk-agent-skills-part3/",
+          "description": "Pattern 4: skills that write skills."
+        },
+        {
+          "label": "Agent Skills Specification",
+          "url": "https://agentskills.io/specification",
+          "description": "The open standard defining SKILL.md format, adopted by 30+ agents."
+        },
+        {
+          "label": "Companion Code Repository",
+          "url": "https://github.com/lavinigam-gcp/build-with-adk/tree/main/adk-skill-design-patterns",
+          "description": "Clone and run all five design patterns with ADK Web."
+        }
+      ],
+      "description": "\n**Day 7 of Google's Advent of Agents — Season 2**\n\nYesterday we introduced ADK Skills and progressive disclosure. Today we tackle the next question: you know how to create a skill, but how should you structure the content inside? The [Agent Skills specification](https://agentskills.io/specification) defines the format (SKILL.md + references/ + assets/), but five distinct design patterns define what goes inside.\n\n**The Five Patterns**\n\nEach pattern uses the same SKILL.md format but structures the content differently:\n\n- **Tool Wrapper**: Wraps a library's conventions into on-demand expertise. The agent becomes a domain expert when the skill is loaded. Uses `references/` for convention docs — no templates, no scripts, pure knowledge.\n\n- **Generator**: Produces structured output from templates. Uses `assets/` for the template (WHAT to produce) and `references/` for style rules (HOW to produce it). The agent fills the template based on user input.\n\n- **Reviewer**: Evaluates code or content against a checklist. Separates WHAT to check (`references/checklist.md`) from HOW to check (the review protocol in instructions). Swap the checklist for a different review type.\n\n- **Inversion**: The skill interviews the user before acting. Phased questions gather requirements across multiple turns, then the agent synthesizes output using an `assets/` template. Prevents acting on assumptions.\n\n- **Pipeline**: Enforces a multi-step workflow with gate conditions. \"Do NOT proceed until the user confirms.\" The most complex pattern — combines all resource types and adds control flow.\n\n**Choosing the Right Pattern**\n\n- **Tool Wrapper** — Library expertise → uses **references/**\n- **Generator** — Structured output → uses **assets/ + references/**\n- **Reviewer** — Quality evaluation → uses **references/**\n- **Inversion** — Requirements gathering → uses **assets/**\n- **Pipeline** — Multi-step workflow → uses **all directories**\n\nPatterns compose — a Pipeline can include a Reviewer step, and a Generator can use Inversion to gather inputs first. The [companion blog post](https://lavinigam.com/posts/adk-skill-design-patterns/) walks through each pattern with working ADK code and SKILL.md examples.\n\n**Resources:**\n\n- [5 Agent Skill Design Patterns (Blog)](https://lavinigam.com/posts/adk-skill-design-patterns/)\n- [ADK Skills Part 1: Progressive Disclosure](https://lavinigam.com/posts/adk-agent-skills-part1/)\n- [ADK Skills Part 2: File-Based Skills](https://lavinigam.com/posts/adk-agent-skills-part2/)\n- [ADK Skills Part 3: Meta Skills](https://lavinigam.com/posts/adk-agent-skills-part3/)\n- [Agent Skills Specification](https://agentskills.io/specification)\n- [Companion Code Repository](https://github.com/lavinigam-gcp/build-with-adk/tree/main/adk-skill-design-patterns)\n",
+      "videoURL": null
+    },
+    {
+      "day": 8,
+      "title": "Multi-Agent Patterns: Sequential Agents",
+      "summary": "Build predictable sequential workflows where the output of one agent goes straight to the next.",
+      "tags": [
+        "Multi-Agent",
+        "Sequential Pipelines",
+        "Architecture",
+        "ADK"
+      ],
+      "icon": "⚙️",
+      "resourceLink": "https://google.github.io/adk-docs/",
+      "codeSnippets": [
+        {
+          "filename": "agent.py",
+          "language": "python",
+          "code": "from google.adk.agents import LlmAgent, SequentialAgent\n\n# Step 1: The Reader - Ingests the PDF and normalizes the content\nreader = LlmAgent(\n   model='gemini-3.1-pro-preview',\n   name=\"PDFReader\",\n   instruction=\"Analyze the provided PDF and provide a comprehensive raw text dump of its core contents.\",\n   output_key=\"parsed_content\"\n)\n\n# Step 2: The Insight Miner - Identifies key technical facts or unique points\nminer = LlmAgent(\n   model='gemini-3.1-pro-preview',\n   name=\"InsightMiner\",\n   instruction=\"\"\"\n   Review the following content: {parsed_content}\n   Extract the top 5 most important technical facts, dates, or figures.\n   \"\"\",\n   output_key=\"extracted_insights\"\n)\n\n# Step 3: The Synthesizer - Generates the final \"TL;DR\"\nsynthesizer = LlmAgent(\n   model='gemini-3.1-pro-preview',\n   name=\"ExecutiveSynthesizer\",\n   instruction=\"\"\"\n   Based on these insights: {extracted_insights}\n   Generate a 3-sentence 'Executive Briefing' suitable for a busy stakeholder.\n   \"\"\"\n)\n\n# Orchestrate the linear Assembly Line\nroot_agent = SequentialAgent(\n   name=\"UniversalDocumentPipeline\",\n   sub_agents=[reader, miner, synthesizer]\n)"
+        },
+        {
+          "filename": "__init__.py",
+          "language": "python",
+          "code": "from .agent import root_agent\n\n__all__ = [\"root_agent\"]"
+        }
+      ],
+      "links": [
+        {
+          "label": "ADK Documentation: SequentialAgent",
+          "url": "https://google.github.io/adk-docs/agents/workflow-agents/sequential-agents/",
+          "description": "Official documentation for the Agent Development Kit."
+        },
+        {
+          "label": "Multi-Agent Design Patterns",
+          "url": "https://developers.googleblog.com/developers-guide-to-multi-agent-patterns-in-adk/",
+          "description": "Google Developers Blog post on multi-agent design patterns."
+        },
+        {
+          "label": "Building Collaborative AI with ADK",
+          "url": "https://cloud.google.com/blog/topics/developers-practitioners/building-collaborative-ai-a-developers-guide-to-multi-agent-systems-with-adk",
+          "description": "A Developer's Guide to Multi-Agent Systems with ADK."
+        }
+      ],
+      "description": "\n**Day 8 of Google's Advent of Agents — Season 2**\n\nThe **SequentialAgent** in ADK lets you build a predictable workflow where the output of one agent goes straight to the next.\n\nThis keeps things simple because the agent does not have to guess what to do next. Since the flow is always the same, you get consistent results without the extra thinking time or randomness you might see in more complex setups.\n\n**How it works**\n\n- **Session state management** where one agent saves its work to an **output_key** and the next one grabs it using the raw text placeholder in the prompt.\n- **Simple debugging** because the flow is just a straight line, debugging is easy since you can check the data at every single step to see exactly what happened.\n\nCheck out the [ADK Documentation: SequentialAgent](https://google.github.io/adk-docs/agents/workflow-agents/sequential-agents/) for more information.\n\n",
+      "videoURL": "https://www.youtube.com/embed/vXoDUg2UZmQ"
+    },
+    {
+      "day": 9,
+      "title": "Multi-Agent Patterns: Coordinator/Dispatcher Agents",
+      "summary": "Build high-fidelity educational video agents that maintain character and scene consistency using the Google ADK, Gemini 3.1 Pro, Nano Banana and Veo 3.1.",
+      "tags": [
+        "Multi-Agent",
+        "Coordinator",
+        "Veo 3.1",
+        "ADK"
+      ],
+      "videoURL": "https://www.youtube.com/embed/QxzTVRYi95E",
+      "description": "\n**Day 9 of Google's Advent of Agents — Season 2**\n\nThe **Coordinator/Dispatcher** pattern uses an LLM-based root agent to dynamically route tasks to specialist sub-agents. Unlike a hardcoded `SequentialAgent` pipeline, the Coordinator reasons about user input and decides which specialists to invoke and in what order. Here we apply it to long-form video generation, where visual consistency across shots is the core challenge.\n\n**How It Works**\n\nAn **Orchestrator** root agent receives the user's request and dispatches work to two specialists:\n\n- **Script Sequencer**: Converts dense documentation into natural speech, segmenting content into 8-second chunks to match **Veo 3.1's** peak performance window.\n- **Video Agent**: Generates video clips using the Orchestrator's instructions and a reference frame, maintaining character and scene consistency across all chunks.\n\nThe Orchestrator coordinates the handoff between these agents, ensuring each video chunk receives the correct script segment and visual reference. The full application deploys on [Cloud Run](https://docs.cloud.google.com/run/docs/overview/what-is-cloud-run) with [Vertex AI Agent Engine Sessions](https://docs.cloud.google.com/agent-builder/agent-engine/sessions/overview) for state management.\n\n**Resources:**\n\n- [GitHub Repository](https://github.com/vladkol/video-avatars-agent)\n- [ADK Documentation](https://google.github.io/adk-docs/)\n",
+      "icon": "📹",
+      "resourceLink": "https://github.com/vladkol/video-avatars-agent",
+      "links": [
+        {
+          "label": "GitHub Repository",
+          "url": "https://github.com/vladkol/video-avatars-agent",
+          "description": "Complete source code for the Video Avatar Agent."
+        },
+        {
+          "label": "ADK Documentation",
+          "url": "https://google.github.io/adk-docs/",
+          "description": "Official documentation for the Agent Development Kit."
+        },
+        {
+          "label": "Sample Output",
+          "url": "https://youtu.be/QxzTVRYi95E",
+          "description": "An 8-second demo of the generated avatar consistency."
+        }
+      ],
+      "codeSnippets": [
+        {
+          "filename": "setup.sh",
+          "language": "bash",
+          "code": "# 1. Clone the repository\ngit clone https://github.com/vladkol/video-avatars-agent\ncd video-avatars-agent\n\n# 2. Setup Virtual Environment\nuv venv .venv\nsource .venv/bin/activate\n\n# 3. Install Agent & MCP Dependencies\nuv pip install pip\nuv pip install -r agents/video_avatar_agent/requirements.txt\nuv pip install -r mcp/requirements.txt\n\n# 4. Configure Environment\ncp .env-template .env\n# Edit .env with your Google Cloud Project ID and GCS Bucket\n\n# 5. Run Locally\n# Start MCP Server\n./deployment/run_mcp_local.sh \n\n# In a new terminal, run the Agent\n./deployment/run_agent_local.sh\n\n# 6. Deploy to Cloud Run\n./deployment/deploy.sh"
+        }
+      ]
+    },
+    {
+      "day": 10,
+      "title": "Multi-Agent Patterns: Parallel Fanout and State Interpolation",
+      "summary": "Drastically reduce latency by running independent, grounded LLM tasks concurrently and automatically synthesizing their outputs.",
+      "tags": [
+        "Multi-Agent",
+        "Parallel Execution",
+        "Architecture",
+        "ADK"
+      ],
+      "icon": "⚡",
+      "resourceLink": "https://google.github.io/adk-docs/agents/workflow-agents/parallel-agents/",
+      "codeSnippets": [
+        {
+          "filename": "agent.py",
+          "language": "python",
+          "code": "from google.adk.agents import Agent, ParallelAgent, SequentialAgent\nfrom google.adk.tools import google_search\n\n# 1. Define independent research agents with explicit output_keys and grounding tools\nhealthcare_researcher = Agent(name='healthcare_researcher', model='gemini-3-flash-preview', output_key='healthcare_research', tools=[google_search], instruction='Use the Google Search tool to...')\nfinance_researcher = Agent(name='finance_researcher', model='gemini-3-flash-preview', output_key='finance_research', tools=[google_search], instruction='Use the Google Search tool to...')\n\n# 2. Fanout: Run them all concurrently\nresearch_squad = ParallelAgent(\n    name='research_squad',\n    sub_agents=[healthcare_researcher, finance_researcher],\n)\n\n# 3. State Interpolation: Use `{output_key}` placeholders in the synthesizer prompt\nsynthesizer = Agent(\n    name='synthesizer',\n    model='gemini-3-flash-preview',\n    instruction=\"Synthesize the following trends: \\n\\n{healthcare_research}\\n\\n{finance_research}\",\n)\n\n# 4. Sequential block ensures fanout completes and populates state before synthesis\nroot_agent = SequentialAgent(\n    name='root_agent',\n    sub_agents=[research_squad, synthesizer],\n)\n\nfrom google.adk.apps import App\napp = App(name=\"fanout\", root_agent=root_agent)"
+        }
+      ],
+      "links": [
+        {
+          "label": "Project Repository",
+          "url": "https://github.com/LuisSala/advent-of-agents-spring-26",
+          "description": "Source code for this project."
+        },
+        {
+          "label": "LlmAgent Reference",
+          "url": "https://google.github.io/adk-docs/agents/llm-agents/",
+          "description": "Official documentation for LlmAgent."
+        },
+        {
+          "label": "ParallelAgent Reference",
+          "url": "https://google.github.io/adk-docs/agents/workflow-agents/parallel-agents/",
+          "description": "Official documentation for ParallelAgent."
+        },
+        {
+          "label": "SequentialAgent Reference",
+          "url": "https://google.github.io/adk-docs/agents/workflow-agents/sequential-agents/",
+          "description": "Official documentation for SequentialAgent."
+        }
+      ],
+      "description": "\n**Day 10 of Google's Advent of Agents — Season 2**\n\nSequential LLM calls are painfully slow. In multi-agent systems involving independent tasks (like running multiple research queries), executing them one by one creates unacceptable latency. ADK **Parallel Fanout** solves this by spinning up multiple independent agents concurrently and automatically synthesizing their results.\n\n**How It Works**\n\n- **ParallelAgent**: Groups independent agents together so they execute simultaneously, dramatically cutting wall-clock time.\n- **output_key**: Assigning an `output_key` to each parallel worker saves its return payload directly into the session state.\n- **State Interpolation**: A downstream `SequentialAgent` handles synthesis. Because the parallel workers populated the state dictionary, we use `{bracket}` templating (e.g., `{healthcare_research}`) in the synthesizer's instruction prompt. No custom data-passing code required.\n\n**Resources:**\n\n- [ParallelAgent Documentation](https://google.github.io/adk-docs/agents/workflow-agents/parallel-agents/)\n- [SequentialAgent Documentation](https://google.github.io/adk-docs/agents/workflow-agents/sequential-agents/)\n- [Project Repository](https://github.com/LuisSala/advent-of-agents-spring-26)\n",
+      "videoURL": "https://www.youtube.com/embed/4-lr3sh2ETM"
+    },
+    {
+      "day": 11,
+      "title": "Multi-Agent Patterns: Hierarchical Decomposition",
+      "summary": "Use a top-level Manager agent that utilizes an AgentTool to dynamically generate a plan before executing it.",
+      "tags": [
+        "Multi-Agent",
+        "Hierarchical",
+        "Architecture",
+        "ADK"
+      ],
+      "icon": "🪆",
+      "resourceLink": "https://google.github.io/adk-docs/",
+      "codeSnippets": [
+        {
+          "filename": "agent.py",
+          "language": "python",
+          "code": "from google.adk.tools import AgentTool\nfrom google.adk.tools import google_search\nfrom google.adk.agents import LlmAgent, SequentialAgent\nfrom google.adk.apps import App\n\n# The Planner is used purely as a tool by the Manager\nplanner = LlmAgent(\n    name='planner',\n    model='gemini-3-flash-preview',\n    instruction='Break the user prompt into exactly three distinct research themes.'\n)\n\n# Define sub-agents for execution\nresearcher = LlmAgent(\n    name='researcher', \n    model='gemini-3-flash-preview', \n    tools=[google_search], \n    instruction='Research the assigned topic step-by-step.'\n)\nsynthesizer = LlmAgent(\n    name='synthesizer', \n    model='gemini-3-flash-preview', \n    instruction='Synthesize the findings into a cohesive report.'\n)\n\n# A logical pipeline of sub-agents to handle execution\nexecution_pipeline = SequentialAgent(\n    name='execution_pipeline',\n    sub_agents=[researcher, synthesizer]\n)\n\n# The Manager orchestrates the whole flow autonomously\nmanager = LlmAgent(\n    name='manager',\n    model='gemini-3-flash-preview',\n    tools=[AgentTool(planner)],\n    sub_agents=[execution_pipeline],\n    instruction='''\n    1. Use the planner tool to create a detailed research plan based on the user's prompt.\n    2. Activate your execution_pipeline sub-agent and pass the completed plan to it so it can execute it.\n    '''\n)\n\nroot_agent = manager\napp = App(name=\"hierarchical\", root_agent=root_agent)"
+        }
+      ],
+      "links": [
+        {
+          "label": "Project Repository",
+          "url": "https://github.com/LuisSala/advent-of-agents-spring-26",
+          "description": "Source code for this project."
+        },
+        {
+          "label": "LlmAgent Reference",
+          "url": "https://google.github.io/adk-docs/agents/llm-agents/",
+          "description": "Official documentation for LlmAgent."
+        },
+        {
+          "label": "ParallelAgent Reference",
+          "url": "https://google.github.io/adk-docs/agents/workflow-agents/parallel-agents/",
+          "description": "Official documentation for ParallelAgent."
+        },
+        {
+          "label": "SequentialAgent Reference",
+          "url": "https://google.github.io/adk-docs/agents/workflow-agents/sequential-agents/",
+          "description": "Official documentation for SequentialAgent."
+        }
+      ],
+      "description": "\n**Day 11 of Google's Advent of Agents — Season 2**\n\n**The Problem / Why it matters:**\n\nComplex user requests cannot always be decomposed ahead of time. Hardcoding a static sequence of agent steps fails when the prompt requires a dynamically generated plan of attack.\n\n**The Solution:**\n\nThe **Hierarchical Agent (Russian Doll)** pattern. We use a top-level Manager agent to orchestrate the flow, leaning on sub-agents to do the heavy lifting.\n\n**How It Works:**\n\n* **AgentTool:** We wrap a \"Planner\" LLM agent inside an `AgentTool`. The Manager calls this tool at runtime to break the complex problem into smaller, logical steps.\n\n* **Sub-agents block:** The Manager oversees a downstream `SequentialAgent` pipeline (in this case, consisting of a Researcher and Synthesizer).\n\n* **Autonomous Handoff:** Once the Manager receives the generated plan from the Planner tool, it activates the `SequentialAgent` execution pipeline, passing the plan as input so the workers can execute it entirely autonomously without needing a human-in-the-loop.\n",
+      "videoURL": "https://www.youtube.com/embed/68EznHkK_UQ"
+    },
+    {
+      "day": 12,
+      "title": "Multi-Agent Patterns: Generator-Critic Agent Loop",
+      "summary": "Automatically refine LLM outputs using ADK's LoopAgent to orchestrate a conversation between a creative Writer and a strict Critic.",
+      "tags": [
+        "Multi-Agent",
+        "LoopAgent",
+        "Quality Assurance",
+        "ADK"
+      ],
+      "icon": "🔁",
+      "resourceLink": "https://google.github.io/adk-docs/",
+      "codeSnippets": [
+        {
+          "filename": "agent.py",
+          "language": "python",
+          "code": "from google.adk.agents import Agent, LoopAgent\nfrom google.adk.tools import FunctionTool, ToolContext\n\ndef approve_draft(tool_context: ToolContext) -> dict:\n    tool_context.actions.escalate = True # Breaks the loop execution early\n    return {\"status\": \"success\", \"message\": \"Approved.\"}\n\nwriter = Agent(\n    name='writer', model='gemini-3-flash-preview',\n    instruction=\"Revise your draft based on feedback: {latest_feedback?}\",\n    output_key='latest_draft'\n)\n\ncritic = Agent(\n    name='critic', model='gemini-3-flash-preview',\n    instruction=(\n        \"Evaluate draft: {latest_draft}. \"\n        \"RUBRIC: 1. Must be sci-fi. 2. Must be under 100 words. \"\n        \"If it FAILS, provide feedback. If it PASSES perfectly, call approve_draft.\"\n    ),\n    tools=[FunctionTool(approve_draft)],\n    output_key='latest_feedback'\n)\n\nroot_agent = LoopAgent(name=\"loop\", sub_agents=[writer, critic], max_iterations=4)\n\nfrom google.adk.apps import App\napp = App(name=\"critic\", root_agent=root_agent)"
+        }
+      ],
+      "links": [
+        {
+          "label": "Project Repository",
+          "url": "https://github.com/LuisSala/advent-of-agents-spring-26",
+          "description": "Source code for this project."
+        },
+        {
+          "label": "LlmAgent Reference",
+          "url": "https://google.github.io/adk-docs/agents/llm-agents/",
+          "description": "Official documentation for LlmAgent."
+        },
+        {
+          "label": "LoopAgent Reference",
+          "url": "https://google.github.io/adk-docs/agents/workflow-agents/loop-agents/",
+          "description": "Official documentation for LoopAgent."
+        },
+        {
+          "label": "Function Tools Reference",
+          "url": "https://google.github.io/adk-docs/tools-custom/function-tools/",
+          "description": "Official documentation for writing custom function tools."
+        }
+      ],
+      "description": "\n**Day 12 of Google's Advent of Agents — Season 2**\n\n**The Problem / Why it matters:**\n\nLLMs hallucinate or fail strict formatting rubrics (like word count logic or structural requirements) on the first try. Manually reprompting wastes developer time.\n\n**The Solution:**\n\nThe **Writer-Critic (Generator-Evaluator)** pattern. We pit two agents against each other: a creative Writer and a strict Critic who evaluates the draft against a rubric, iterating until perfection.\n\n**How It Works:**\n\n* **LoopAgent:** We wrap the Writer and Critic inside an ADK `LoopAgent`, which automatically cycles execution back-and-forth between its sub-agents up to a `max_iterations` limit.\n\n* **output_key injection:** The Writer saves to `{latest_draft}` and the Critic saves to `{latest_feedback}`. They use these template variables in their prompts to seamlessly read each other's outputs on the next loop cycle.\n\n* **Early Escalation:** The Critic has access to an `approve_draft` function tool. Once the Critic decides the rubric is fully passed, it calls the tool. The tool sets `tool_context.actions.escalate = True`, immediately breaking out of the loop execution early and returning the successful payload.\n",
+      "videoURL": "https://www.youtube.com/embed/Kp0HrGst5-w"
+    },
+    {
+      "day": 13,
+      "title": "Multi-Agent Patterns: Iterative Refinement",
+      "summary": "Compose Skills, MCP, and Code Execution into a meta-agent that builds, tests, and refines other ADK agents through iterative loops.",
+      "tags": [
+        "Multi-Agent",
+        "Agent Skills",
+        "MCP",
+        "Code Execution"
+      ],
+      "icon": "🏗️",
+      "resourceLink": "https://github.com/lavinigam-gcp/build-with-adk/tree/main/adk-iterative-refinement",
+      "codeSnippets": [
+        {
+          "filename": "agent.py",
+          "language": "python",
+          "code": "from google.adk.agents import Agent\nfrom google.adk.tools.agent_tool import AgentTool\nfrom google.adk.code_executors import UnsafeLocalCodeExecutor\nfrom google.adk.skills import load_skill_from_dir, SkillToolset\nfrom google.adk.tools.mcp import McpToolset, StdioConnectionParams, StdioServerParameters\n\n# Code executor sub-agent (cannot coexist with other tools on the same agent)\ncode_executor_agent = Agent(\n    model=\"gemini-3.1-flash-preview\",\n    name=\"code_executor\",\n    instruction=\"Execute Python code exactly as provided. Return stdout and stderr.\",\n    code_executor=UnsafeLocalCodeExecutor(),\n)\n\n# Root agent composes all four tool groups\nroot_agent = Agent(\n    model=\"gemini-3.1-flash-preview\",\n    name=\"agent_builder\",\n    instruction=\"You are an ADK Agent Builder...\",\n    tools=[\n        skill_toolset,        # ADK coding knowledge (3 skills)\n        adk_docs_mcp,         # Live ADK documentation (MCP)\n        AgentTool(agent=code_executor_agent),  # Code execution\n        save_agent_code,      # Save tested code to disk\n        start_agent,          # Launch as adk api_server\n        talk_to_agent,        # Send messages to running agent\n        stop_agent,           # Shut down running agent\n    ],\n)"
+        },
+        {
+          "filename": "terminal",
+          "language": "bash",
+          "code": "# Clone and run the meta-agent\ngit clone https://github.com/lavinigam-gcp/build-with-adk.git\ncd build-with-adk/adk-iterative-refinement\npython3 -m venv .venv && source .venv/bin/activate\npip install -r app/requirements.txt\ncp app/.env.example app/.env  # Add your GOOGLE_API_KEY\nadk web app\n\n# Then ask: \"Build me a joke agent with one tool called tell_joke\""
+        }
+      ],
+      "links": [
+        {
+          "label": "Companion Repository",
+          "url": "https://github.com/lavinigam-gcp/build-with-adk/tree/main/adk-iterative-refinement",
+          "description": "Full source code with skills, tools, and demo queries."
+        },
+        {
+          "label": "ADK Skills Documentation",
+          "url": "https://google.github.io/adk-docs/skills/",
+          "description": "How to build and load modular knowledge packages for agents."
+        },
+        {
+          "label": "ADK Code Execution",
+          "url": "https://google.github.io/adk-docs/integrations/code-execution/",
+          "description": "Code executor options: Unsafe Local, Container, and Agent Engine Sandbox."
+        },
+        {
+          "label": "Sculptor Pattern (Multi-Agent Patterns in ADK)",
+          "url": "https://developers.googleblog.com/developers-guide-to-multi-agent-patterns-in-adk/",
+          "description": "Google's guide to iterative refinement and other multi-agent patterns."
+        }
+      ],
+      "description": "**Day 13 of Google's Advent of Agents — Season 2**\n\nLLMs generate broken agent code. They reach for `google.generativeai` instead of `google.adk`, use deprecated methods, and declare victory without testing. This meta-agent closes the loop by building ADK agents, testing them through code execution, and refining until everything passes.\n\n![Architecture](/season2-day13-architecture.png)\n\n**How It Works**\n\nThe builder composes four tool groups into a single agent, each solving a different problem in the code generation pipeline:\n\n- **SkillToolset**: Injects curated ADK coding conventions and a custom testing protocol. Skills fix structural failures that persist despite prompt instructions.\n- **McpToolset**: Connects to live ADK documentation via MCP, serving the latest API surface at generation time.\n- **AgentTool + Code Executor**: ADK does not allow `code_executor` and other tools on the same agent. The workaround is wrapping `UnsafeLocalCodeExecutor` in a dedicated sub-agent and exposing it via `AgentTool`.\n- **Lifecycle FunctionTools**: Four tools manage the built agent's full lifecycle to save, test, talk to, and stop the agent.\n\n**Resources:**\n\n- [Companion Repo](https://github.com/lavinigam-gcp/build-with-adk/tree/main/adk-iterative-refinement)\n- [ADK Skills](https://google.github.io/adk-docs/skills/)\n- [ADK Code Execution](https://google.github.io/adk-docs/integrations/code-execution/)\n- [Sculptor Pattern](https://developers.googleblog.com/developers-guide-to-multi-agent-patterns-in-adk/)",
+      "videoURL": "https://www.youtube.com/embed/weAygSpui4w"
+    },
+    {
+      "day": 14,
+      "title": "Multi-Agent Patterns: Human in the Loop",
+      "summary": "Inject an approval breakpoint to pause agent execution and wait for manual user confirmation before executing sensitive financial APIs.",
+      "tags": [
+        "Multi-Agent",
+        "ADK",
+        "Human-in-the-Loop",
+        "Security"
+      ],
+      "icon": "🛡️",
+      "resourceLink": "https://github.com/amitkmaraj/advent-of-agents-day14",
+      "codeSnippets": [
+        {
+          "filename": "agents/refund_agent.py",
+          "language": "python",
+          "code": "import asyncio\nfrom typing import Any\nfrom google.adk.agents import Agent\nfrom google.adk.events import Event\nfrom google.adk.runners import Runner\nfrom google.adk.tools import LongRunningFunctionTool\nfrom google.adk.sessions import InMemorySessionService\nfrom google.genai import types\n\n\n# 1. Define a tool that requires human approval\ndef ask_for_approval(purpose: str, amount: float) -> dict[str, Any]:\n    \"\"\"Ask a human to approve this action before proceeding.\"\"\"\n    return {\"status\": \"pending\", \"purpose\": purpose, \"amount\": amount}\n\n\n# 2. Define the tool that runs after approval\ndef process_refund(purpose: str, amount: float) -> dict[str, str]:\n    \"\"\"Process the approved refund.\"\"\"\n    return {\"status\": \"success\", \"message\": f\"Refunded ${amount} for {purpose}.\"}\n\n\n# 3. Create the agent with a LongRunningFunctionTool\nagent = Agent(\n    name=\"refund_agent\",\n    model=\"gemini-3.1-pro\",\n    instruction=\"\"\"You handle refunds. Always call ask_for_approval first.\n    If approved, call process_refund. If rejected, tell the user.\"\"\",\n    tools=[LongRunningFunctionTool(func=ask_for_approval), process_refund],\n)\n\n\nasync def main():\n    # 4. Set up session and runner\n    session_service = InMemorySessionService()\n    session = await session_service.create_session(\n        app_name=\"hitl-app\", user_id=\"user1\", session_id=\"s1\"\n    )\n    runner = Runner(agent=agent, app_name=\"hitl-app\", session_service=session_service)\n\n    # 5. Run the agent — it will pause when it hits ask_for_approval\n    user_msg = types.Content(\n        role=\"user\",\n        parts=[types.Part(text=\"Refund $200 for a duplicate charge on txn_123\")],\n    )\n\n    # Two-step detection:\n    #  - Step A: find the function_call on the event with long_running_tool_ids\n    #  - Step B: find the function_response matching that call ID\n    long_running_call = None\n    pending_response = None\n\n    async for event in runner.run_async(\n        session_id=session.id, user_id=\"user1\", new_message=user_msg\n    ):\n        if event.content and event.content.parts:\n            for part in event.content.parts:\n                # Step A: capture the long-running function *call*\n                if (\n                    not long_running_call\n                    and part.function_call\n                    and event.long_running_tool_ids\n                    and part.function_call.id in event.long_running_tool_ids\n                ):\n                    long_running_call = part.function_call\n\n                # Step B: capture the matching function *response*\n                if (\n                    long_running_call\n                    and part.function_response\n                    and part.function_response.id == long_running_call.id\n                ):\n                    pending_response = part.function_response\n\n            # Print any agent text\n            text = \"\".join(p.text or \"\" for p in event.content.parts)\n            if text:\n                print(f\"Agent: {text}\")\n\n    if not pending_response:\n        return\n\n    # 6. Get human decision\n    print(f\"\\n⏸  Pending: {pending_response.response}\")\n    choice = input(\"Approve? [Y/n]: \").strip().lower()\n\n    # 7. Send decision back — agent resumes\n    updated = pending_response.model_copy(deep=True)\n    updated.response = {\"status\": \"approved\" if choice != \"n\" else \"rejected\"}\n\n    async for event in runner.run_async(\n        session_id=session.id,\n        user_id=\"user1\",\n        new_message=types.Content(\n            role=\"user\", parts=[types.Part(function_response=updated)]\n        ),\n    ):\n        if event.content and event.content.parts:\n            text = \"\".join(p.text or \"\" for p in event.content.parts)\n            if text:\n                print(f\"Agent: {text}\")\n\n\nif __name__ == \"__main__\":\n    asyncio.run(main())"
+        }
+      ],
+      "links": [
+        {
+          "label": "ADK Multi-Agent Design Patterns",
+          "url": "https://developers.googleblog.com/developers-guide-to-multi-agent-patterns-in-adk/",
+          "description": "Review standard architectural patterns for agent deployment."
+        },
+        {
+          "label": "Tool Configuration Docs",
+          "url": "https://google.github.io/adk-docs/tools/configuration",
+          "description": "Learn how to secure tools with approval breakpoints and access scopes."
+        },
+        {
+          "label": "Human-in-the-Loop Pattern",
+          "url": "https://google.github.io/adk-docs/agents/multi-agents/#human-in-the-loop-pattern",
+          "description": "Explore the official documentation for the Human-in-the-loop architectural pattern."
+        }
+      ],
+      "description": "**Day 14 of Google's Advent of Agents — Season 2**\n\nAutonomous agents are incredibly capable, but running them in production requires safeguards. When an agent has access to sensitive environments—like financial APIs or production databases—you cannot rely on prompt engineering alone to prevent destructive actions.\n\n**The Solution:**\nThe Human-in-the-Loop (HITL) pattern. We introduce a strict approval breakpoint: the agent must pause its execution and wait for manual human confirmation before firing a sensitive tool.\n\n**How It Works:**\nWhile there are many ways to solve this (like building custom async UI hooks or Slack workflows), ADK provides robust built-in capabilities for managing long-running tasks and interceptions natively.\n\n- **Long Running Tools**: Wrap your confirmation function in a `LongRunningFunctionTool`. This signals to ADK that the function requires external intervention and should pause execution automatically.\n- **Event Interception**: During the `run_async` loop, the client watches the stream. When the agent attempts to call the tool, it surfaces the pending call inside `event.long_running_tool_ids`.\n- **State Resumption**: The runner safely suspends the loop. Once the human provides a decision (like approving a CLI prompt), you inject the updated `function_response` back into the runner. The agent picks up exactly where it left off, armed with the human's ruling.\n\n**Resources:**\n\n- [ADK Multi-Agent Design Patterns](https://developers.googleblog.com/developers-guide-to-multi-agent-patterns-in-adk/)\n- [Securing Agent Tools with ADK](https://google.github.io/adk-docs/tools/configuration)\n- [Human-in-the-Loop Pattern](https://google.github.io/adk-docs/agents/multi-agents/#human-in-the-loop-pattern)",
+      "videoURL": "https://www.youtube.com/embed/IqtGuk-aM60"
+    },
+    {
+      "day": 15,
+      "title": "Grounding with ADK: Agentic RAG with Vector Search 2.0",
+      "summary": "Build an Agentic RAG system in 3 minutes with Vector Search 2.0 and ADK.",
+      "tags": [
+        "ADK",
+        "Vector Search",
+        "RAG",
+        "Python"
+      ],
+      "icon": "🔎",
+      "resourceLink": "https://cloud.google.com/vertex-ai/docs/vector-search-2/overview",
+      "videoURL": "https://www.youtube.com/embed/IB6cXNx5iaw",
+      "links": [
+        {
+          "label": "10-Minute Agentic RAG with the New Vector Search 2.0 and ADK",
+          "url": "https://medium.com/google-cloud/10-minute-agentic-rag-with-the-new-vector-search-2-0-and-adk-655fff0bacac",
+          "description": "More details on the Agentic RAG architecture."
+        },
+        {
+          "label": "Travel Agent Notebook",
+          "url": "https://github.com/google/adk-samples/blob/main/python/notebooks/grounding/vectorsearch2_travel_agent.ipynb",
+          "description": "Sample notebook for the Travel Agent."
+        },
+        {
+          "label": "Enhancing search with embeddings and task types",
+          "url": "https://cloud.google.com/blog/products/ai-machine-learning/improve-gen-ai-search-with-vertex-ai-embeddings-and-task-types?e=48754805&hl=en",
+          "description": "Learn how task type embeddings work."
+        },
+        {
+          "label": "ADK Documentation",
+          "url": "https://google.github.io/adk-docs/",
+          "description": "Complete guide to building AI agents."
+        }
+      ],
+      "codeSnippets": [
+        {
+          "filename": "terminal",
+          "language": "bash",
+          "code": "export GOOGLE_CLOUD_PROJECT=<YOUR_PROJECT_ID>\ngcloud auth application-default login\ngcloud services enable vectorsearch.googleapis.com aiplatform.googleapis.com\n\nuv run --with google-adk --with google-cloud-vectorsearch \\\n       --with pandas --with requests demo.py"
+        },
+        {
+          "filename": "demo.py",
+          "language": "python",
+          "code": "import asyncio, io, json, os, time\nimport pandas as pd, requests\nfrom google.adk.agents import Agent\nfrom google.adk.runners import InMemoryRunner\nfrom google.cloud import vectorsearch_v1beta\n\nPROJECT_ID = os.environ[\"GOOGLE_CLOUD_PROJECT\"]\nLOCATION = \"us-central1\"\nCOLLECTION_ID = \"london-rentals-demo\"\n\nos.environ[\"GOOGLE_CLOUD_LOCATION\"] = LOCATION\nos.environ[\"GOOGLE_GENAI_USE_VERTEXAI\"] = \"True\"\n\nadmin_client = vectorsearch_v1beta.VectorSearchServiceClient()\ndata_client = vectorsearch_v1beta.DataObjectServiceClient()\nsearch_client = vectorsearch_v1beta.DataObjectSearchServiceClient()\nparent = f\"projects/{PROJECT_ID}/locations/{LOCATION}\"\ncollection_path = f\"{parent}/collections/{COLLECTION_ID}\"\n\nprint(\"Step 1: Creating collection with auto-embedding...\")\ncollection_config = {\n    \"data_schema\": {\n        \"type\": \"object\",\n        \"properties\": {\n            \"name\": {\"type\": \"string\"},\n            \"price\": {\"type\": \"number\"},\n            \"neighborhood\": {\"type\": \"string\"},\n            \"description\": {\"type\": \"string\"},\n        },\n    },\n    \"vector_schema\": {\n        \"description_embedding\": {\n            \"dense_vector\": {\n                \"dimensions\": 768,\n                \"vertex_embedding_config\": {\n                    \"model_id\": \"gemini-embedding-001\",\n                    \"text_template\": \"{description}\",\n                    \"task_type\": \"RETRIEVAL_DOCUMENT\",\n                },\n            }\n        }\n    },\n}\n\ntry:\n    admin_client.get_collection(name=collection_path)\n    print(f\"Step 1: Collection '{COLLECTION_ID}' already exists.\")\nexcept Exception:\n    req = vectorsearch_v1beta.CreateCollectionRequest(\n        parent=parent, collection_id=COLLECTION_ID, collection=collection_config\n    )\n    admin_client.create_collection(request=req).result()\n    print(f\"Step 1: Collection '{COLLECTION_ID}' created.\")\n\nprint(\"Step 2: Downloading and ingesting data...\")\nurl = \"https://data.insideairbnb.com/united-kingdom/england/london/2025-09-14/data/listings.csv.gz\"\ndf = pd.read_csv(io.BytesIO(requests.get(url, headers={\"User-Agent\": \"Mozilla/5.0\"}).content), compression=\"gzip\")\ndf = df[[\"id\", \"name\", \"description\", \"price\", \"neighbourhood_cleansed\"]].copy()\ndf[\"price\"] = pd.to_numeric(df[\"price\"].astype(str).str.replace(r\"[$,]\", \"\", regex=True), errors=\"coerce\").fillna(0.0)\ndf = df.fillna(\"\")\ndf = df[df[\"description\"].str.strip().astype(bool)]\ndf = df[df[\"price\"] > 0].head(100)\nprint(f\"Step 2: {len(df)} listings ready for ingestion.\")\n\ndata_objects = [\n    {\"data_object_id\": str(row[\"id\"]), \"data_object\": {\n        \"data\": {\"name\": str(row[\"name\"]), \"price\": float(row[\"price\"]),\n                 \"neighborhood\": str(row[\"neighbourhood_cleansed\"]),\n                 \"description\": str(row[\"description\"])},\n        \"vectors\": {},\n    }} for _, row in df.iterrows()\n]\n\nfor i in range(0, len(data_objects), 100):\n    try:\n        data_client.batch_create_data_objects(\n            request=vectorsearch_v1beta.BatchCreateDataObjectsRequest(\n                parent=collection_path, requests=data_objects[i:i+100]))\n        time.sleep(2)\n    except Exception as e:\n        if \"already exists\" not in str(e).lower():\n            raise\nprint(\"Step 2: Ingestion complete.\")\n\nprint(\"Step 3: Registering search tool...\")\ndef find_rentals(query: str, filter: str = \"\") -> list:\n    \"\"\"Search for vacation rentals using semantic search with metadata filtering.\"\"\"\n    print(f\"\\nfind_rentals(): query='{query}'\")\n    if filter.strip():\n        print(f\"find_rentals(): filter={filter}\")\n\n    search_kwargs = {\n        \"search_text\": query,\n        \"search_field\": \"description_embedding\",\n        \"task_type\": \"QUESTION_ANSWERING\",\n        \"top_k\": 10,\n        \"output_fields\": vectorsearch_v1beta.OutputFields(\n            data_fields=[\"name\", \"price\", \"neighborhood\"]),\n    }\n    if filter.strip():\n        search_kwargs[\"filter\"] = json.loads(filter)\n\n    response = search_client.search_data_objects(\n        request=vectorsearch_v1beta.SearchDataObjectsRequest(\n            parent=collection_path,\n            semantic_search=vectorsearch_v1beta.SemanticSearch(**search_kwargs)))\n\n    results = [{\"name\": r.data_object.data.get(\"name\"),\n             \"price\": r.data_object.data.get(\"price\"),\n             \"neighborhood\": r.data_object.data.get(\"neighborhood\")}\n            for r in response.results]\n    print(f\"find_rentals(): found {len(results)} results\")\n    return results\n\nprint(\"Step 4: Creating ADK agent...\")\ntravel_agent = Agent(\n    model=\"gemini-2.5-flash\",\n    name=\"travel_agent\",\n    instruction=\"\"\"You are a London travel agent helping users find vacation rentals.\nUse find_rentals with: query (vibe/description) and filter (JSON metadata constraints).\nFilter fields: price (number), neighborhood (string).\nExamples: {\"price\": {\"$lt\": 200}}, {\"neighborhood\": {\"$eq\": \"Hackney\"}},\n{\"$and\": [{\"neighborhood\": {\"$eq\": \"Hackney\"}}, {\"price\": {\"$lt\": 200}}]}\"\"\",\n    tools=[find_rentals],\n)\n\nrunner = InMemoryRunner(agent=travel_agent, app_name=\"travel_agent\")\nprint(\"Step 4: Agent ready.\\n\")\n\nasync def main():\n    await runner.run_debug(\"Find me a cozy workspace\")\n    await runner.run_debug(\"Find me a cozy workspace under £200\")\n    await runner.run_debug(\"Find me an artist's loft in Hackney under £150\")\n\nif __name__ == \"__main__\":\n    asyncio.run(main())"
+        }
+      ],
+      "description": "\n**Day 15 of Google's Advent of Agents — Season 2**\n\nVertex AI Vector Search 2.0 gives you auto embeddings generation, unified storage, and hybrid search in a single managed service. Agent Development Kit (ADK) gives you an agent that can reason about user intent and call tools. Wire them together with one Python function, and you get an Agentic RAG system where the LLM doesn't just retrieve-and-summarize — it parses intent, builds filters, and orchestrates searches.\n\n**How It Works**\n\nThe glue between the agent and the search backend is a single Python function registered as an ADK tool. ADK inspects the function signature and docstring to generate the tool schema. The model decomposes natural language into a semantic query and structured filters, decides which constraints to apply, and synthesizes results into a conversational response, based on the user intent understanding.\n\n- **Intent Parsing**: Decomposes natural language into a semantic query (\"cozy workspace\") and a structured filter (e.g. `{\"$and\": [{\"neighborhood\": {\"$eq\": \"Hackney\"}}, {\"price\": {\"$lt\": 150}}]}`).\n- **Vector Search 2.0**: Auto-generates embeddings from text data during ingestion and provides managed hybrid search.\n- **Task Types**: Utilizing the `QUESTION_ANSWERING` task type with Gemini embeddings ensures that semantic search leverages relevance-based retrieval for improved search quality.\n\n**Resources:**\n\n- [Vector Search 2.0 Overview](https://cloud.google.com/vertex-ai/docs/vector-search-2/overview)\n- [10-Minute Agentic RAG with the New Vector Search 2.0 and ADK](https://medium.com/google-cloud/10-minute-agentic-rag-with-the-new-vector-search-2-0-and-adk-655fff0bacac)\n- [Travel Agent Notebook](https://github.com/google/adk-samples/blob/main/python/notebooks/grounding/vectorsearch2_travel_agent.ipynb)\n- [ADK Documentation](https://google.github.io/adk-docs/)\n"
+    },
+    {
+      "day": 16,
+      "title": "ADK Dev Skills: Accelerated Multiagent Triage",
+      "summary": "Accelerate multiagent system development from scaffolding to deployment using ADK Dev Skills.",
+      "tags": [
+        "Multiagent",
+        "Dev Skills",
+        "CLI"
+      ],
+      "icon": "⚡",
+      "resourceLink": "https://google.github.io/adk-docs/tutorials/coding-with-ai/#adk-dev-skills",
+      "codeSnippets": [
+        {
+          "filename": "terminal.sh",
+          "language": "bash",
+          "code": "# Install ADK Dev Skills globally\nnpx skills add google/adk-docs/skills -y -g\n\n# Instruct your AI assistant to use the skills\ngemini run \"Use adk-scaffold to build a multiagent Retail Returns system, then use adk-deploy-guide to push it to Agent Engine.\""
+        },
+        {
+          "filename": "agent.py",
+          "language": "python",
+          "code": "import os\nfrom google.adk.agents import Agent\nfrom google.adk.apps import App\nfrom google.adk.models import Gemini\nfrom .tools import check_order_status, process_refund\n\n# Sub-agents generated via ADK Dev Skills guidance\ndef create_status_agent() -> Agent:\n    return Agent(\n        name=\"status_agent\",\n        model=Gemini(model=\"gemini-3.1-flash\"),\n        instruction=\"Look up orders using the check_order_status tool.\",\n        tools=[check_order_status],\n    )\n\ndef create_refund_agent() -> Agent:\n    return Agent(\n        name=\"refund_agent\",\n        model=Gemini(model=\"gemini-3.1-flash\"),\n        instruction=\"Verify order status is 'delivered' before using process_refund.\",\n        tools=[check_order_status, process_refund],\n    )\n\n# Parent triage agent routing logic\nroot_agent = Agent(\n    name=\"triage_agent\",\n    model=Gemini(model=\"gemini-3.1-flash\"),\n    instruction=\"Route user requests to either the status_agent or refund_agent.\",\n    sub_agents=[create_status_agent(), create_refund_agent()],\n)\n\napp = App(name=\"retail_returns_app\", root_agent=root_agent)"
+        }
+      ],
+      "links": [
+        {
+          "label": "ADK Dev Skills",
+          "url": "https://google.github.io/adk-docs/tutorials/coding-with-ai/#adk-dev-skills",
+          "description": "Installation and reference for all available ADK skills."
+        },
+        {
+          "label": "ADK Multi-Agent Systems",
+          "url": "https://google.github.io/adk-docs/agents/multi-agents/",
+          "description": "Learn how to orchestrate multiagent delegation."
+        }
+      ],
+      "description": "\n**Day 16 of Google's Advent of Agents — Season 2**\n\nBuilding production-ready multiagent systems requires complex scaffolding, strict evaluation, and custom deployment configurations. Manually wiring these components slows down iteration and introduces errors.\n\n**How It Works**\n\nBy installing ADK Dev Skills into your environment, you inject expert-level ADK knowledge directly into AI coding assistants like Gemini CLI. This allows you to generate complex multi agent systems entirely through prompts.\n\n- **`adk-scaffold`**: Automatically generates the structural boilerplate, tools directory, and GitHub Actions CI/CD workflows.\n- **`adk-cheatsheet`**: Feeds precise Python API patterns to the AI for building the parent-child delegation logic between the Triage, Status, and Refund agents.\n- **`adk-eval-guide`**: Structures deterministic test sets to validate that the LLM routes correctly and halts on invalid tool parameters.\n- **`adk-deploy-guide`**: Automates infrastructure provisioning and deployment directly to Vertex AI Agent Engine.\n- **`adk-dev-guide`**: Development lifecycle and coding guidelines.\n- **`adk-observability-guide`**: Tracing, logging, and integrations.\n\n**Resources:**\n\n- [ADK Dev Skills](https://google.github.io/adk-docs/tutorials/coding-with-ai/#adk-dev-skills)\n- [ADK Multi-Agent Systems](https://google.github.io/adk-docs/agents/multi-agents/)\n",
+      "videoURL": "https://www.youtube.com/embed/7PNOkMLAk4c"
+    },
+    {
+      "day": 17,
+      "title": "Workspace & Gemini Enterprise: no-code agents",
+      "summary": "Connect and use Google Workspace connectors in personal Gemini Enterprise agents.",
+      "tags": [
+        "Gemini Enterprise",
+        "Google Workspace",
+        "Connectors",
+        "Agent Designer"
+      ],
+      "icon": "🚀",
+      "resourceLink": "https://codelabs.developers.google.com/ge-gws-agents",
+      "videoURL": "https://www.youtube.com/embed/2kQbRBftUus",
+      "codeSnippets": [
+        {
+          "filename": "terminal",
+          "language": "bash",
+          "code": "# No code solution - Check the video and codelab!"
+        }
+      ],
+      "links": [
+        {
+          "label": "Codelab: Integrate Gemini Enterprise Agents with Google Workspace",
+          "url": "https://codelabs.developers.google.com/ge-gws-agents",
+          "description": "Step-by-step guide to building the integration."
+        },
+        {
+          "label": "Gemini Enterprise Documentation",
+          "url": "https://docs.cloud.google.com/gemini/enterprise/docs",
+          "description": "Official documentation for Gemini Enterprise."
+        },
+        {
+          "label": "Google Workspace Developers",
+          "url": "https://developers.google.com/workspace",
+          "description": "Build solutions with Google Workspace."
+        },
+        {
+          "label": "Connect a Google Data Source",
+          "url": "https://docs.cloud.google.com/gemini/enterprise/docs/connectors/create-data-store",
+          "description": "Learn how to connect Workspace data to Gemini."
+        },
+        {
+          "label": "Agent Designer Overview",
+          "url": "https://docs.cloud.google.com/gemini/enterprise/docs/agent-designer",
+          "description": "Build agents without writing code."
+        }
+      ],
+      "description": "\n**Day 17 of Google's Advent of Agents — Season 2**\n\nThe **Google Workspace** and **Gemini Enterprise** platforms are a natural fit: Google Workspace brings the productivity data & tools, and Gemini Enterprise brings the agents that everyone can build and use in organizations.\n\nToday we showcase:\n\n- How to create your first **Gemini Enterprise application**.\n- How to **connect Google Workspace data** to Gemini Enterprise using connectors.\n- How to use the Gemini Enterprise **Agent Designer to build personal agents** that rely on Google Workspace connectors.\n\nWhile the **Agent Designer** offers a powerful, accessible entry point for rapid automation, a **pro-code approach is also supported** for the more complex logic, bespoke API integrations, or advanced data transformations that require the granular control of custom development. But that's a subject for another day!\n\n**Resources:**\n\n- [Codelab: Integrate Gemini Enterprise Agents with Google Workspace](https://codelabs.developers.google.com/ge-gws-agents)\n- [Gemini Enterprise Documentation](https://docs.cloud.google.com/gemini/enterprise/docs)\n- [Google Workspace Developers](https://developers.google.com/workspace)\n- [Connect a Google Data Source](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/create-data-store)\n- [Agent Designer Overview](https://docs.cloud.google.com/gemini/enterprise/docs/agent-designer)\n"
+    },
+    {
+      "day": 18,
+      "title": "Workspace & Gemini Enterprise: ADK agents",
+      "summary": "Build ADK agents that use the Vertex AI Search MCP server and Google Workspace APIs, deploy them to Vertex AI, and register them with Gemini Enterprise.",
+      "tags": [
+        "Gemini Enterprise",
+        "Google Workspace",
+        "ADK",
+        "MCP",
+        "Vertex AI"
+      ],
+      "icon": "🤖",
+      "resourceLink": "https://codelabs.developers.google.com/ge-gws-agents",
+      "videoURL": "https://www.youtube.com/embed/dVBvx9r-D-4",
+      "codeSnippets": [
+        {
+          "filename": "terminal",
+          "language": "bash",
+          "code": "# Google Cloud Console: Create a Gemini Enterprise application and connect Google Workspace data stores\n\n# Download ADK agent locally\ngit clone https://github.com/PierrickVoulet/adk-samples.git adk-samples-advent-agents\ncd adk-samples-advent-agents\ngit checkout origin/advent-agents\ncd python/agents/enterprise-ai-agent\n\n# Enable Google Cloud APIs\ngcloud services enable \\\n    calendar-json.googleapis.com \\\n    aiplatform.googleapis.com \\\n    cloudresourcemanager.googleapis.com\n\n# Enable Google Cloud Vertex AI Search MCP\ngcloud beta services mcp enable discoveryengine.googleapis.com \\\n     --project=$(gcloud config get-value project)\n\n# Build and deploy agent in Vertex AI Agent Engine\nuv sync\nuv run adk deploy agent_engine \\\n  --project=$(gcloud config get-value project) \\\n  --region=us-central1 \\\n  --display_name=\"Enterprise AI\" \\\n  enterprise_ai\n\n# Set up Vertex AI Reasoning Engine access to Vertex AI Search\nPROJECT_ID=$(gcloud config get-value project)\nPROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format='value(projectNumber)')\nSERVICE_ACCOUNT=\"service-${PROJECT_NUMBER}@gcp-sa-aiplatform-re.iam.gserviceaccount.com\"\ngcloud projects add-iam-policy-binding $PROJECT_ID \\\n     --member=\"serviceAccount:$SERVICE_ACCOUNT\" \\\n     --role=\"roles/discoveryengine.viewer\"\n\n# Google Cloud Console: Register deployed agent to Gemini Enterprise application with required OAuth accesses."
+        }
+      ],
+      "links": [
+        {
+          "label": "Codelab: Integrate Gemini Enterprise Agents with Google Workspace",
+          "url": "https://codelabs.developers.google.com/ge-gws-agents",
+          "description": "Step-by-step guide to building the integration."
+        },
+        {
+          "label": "Gemini Enterprise Documentation",
+          "url": "https://docs.cloud.google.com/gemini/enterprise/docs",
+          "description": "Official documentation for Gemini Enterprise."
+        },
+        {
+          "label": "Google Workspace Developers",
+          "url": "https://developers.google.com/workspace",
+          "description": "Build solutions with Google Workspace."
+        },
+        {
+          "label": "Register and manage ADK agents",
+          "url": "https://docs.cloud.google.com/gemini/enterprise/docs/register-and-manage-an-adk-agent",
+          "description": "Hosted on Vertex AI Agent Engine."
+        }
+      ],
+      "description": "\n**Day 18 of Google's Advent of Agents — Season 2**\n\nYesterday we demonstrated how **Google Workspace** connectors can be used in **Gemini Enterprise** to build no-code personal agents with the Agent Designer. Today, we take the **pro-code path** and showcase:\n\n- How to use the Google-managed **Vertex AI Search MCP server** and Google **Workspace APIs** in an ADK agent.\n- How to deploy the **ADK agent to Vertex AI** Agent Engine.\n- How to register the deployed **ADK agent to Gemini Enterprise** and make it accessible at an organizational level.\n\nNote: Google Workspace-enabled ADK agents can be deployed and accessed from anywhere, you are not limited to Vertex AI Agent Engine and Gemini Enterprise. For example, we could have used Cloud Run or Google Workspace applications (Gmail, Calendar, Chat, etc.)\n\n**Resources:**\n\n- [Codelab: Integrate Gemini Enterprise Agents with Google Workspace](https://codelabs.developers.google.com/ge-gws-agents)\n- [Gemini Enterprise Documentation](https://docs.cloud.google.com/gemini/enterprise/docs)\n- [Google Workspace Developers](https://developers.google.com/workspace)\n- [Register and manage ADK agents hosted on Vertex AI Agent Engine](https://docs.cloud.google.com/gemini/enterprise/docs/register-and-manage-an-adk-agent)\n"
+    },
+    {
+      "day": 19,
+      "title": "Live Shopping Agent: Build with ADK and Gemini Embedding 2",
+      "summary": "Build a live multimodal shopping app with ADK and Gemini Embedding 2.",
+      "tags": [
+        "ADK",
+        "Gemini Live",
+        "Vector Search"
+      ],
+      "icon": "🛒",
+      "resourceLink": "https://github.com/kazunori279/lens-mosaic/tree/main",
+      "links": [
+        {
+          "label": "LensMosaic Live Demo",
+          "url": "https://lens-mosaic-761793285222.us-central1.run.app/"
+        },
+        {
+          "label": "ADK Gemini Live API Toolkit",
+          "url": "https://google.github.io/adk-docs/streaming/"
+        },
+        {
+          "label": "Gemini Embedding 2",
+          "url": "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/embedding-2"
+        },
+        {
+          "label": "Vertex AI Vector Search 2.0",
+          "url": "https://cloud.google.com/vertex-ai/docs/vector-search-2/overview"
+        }
+      ],
+      "description": "**Day 19 of Google's Advent of Agents — Season 2**\n\nLensMosaic is a live multimodal shopping app. You point your camera at an item to find a similar one from one million items instantly, talk to the app, and get product matches or recommendations back in the same browser session.\n\n**Live Shopping Agent**\n\nThe app supports two core flows: similar-item search from live visual input, and recommendation queries grounded in what the user is looking at and asking for. Under the hood, LensMosaic uses FastAPI and WebSockets for live browser sessions, ADK for the agent loop, ADK Gemini Live API Toolkit for multimodal interaction, Gemini Embedding 2 for retrieval text and image vectors, Vertex AI Vector Search 2.0 for candidate lookup, and Ranking API for final reranking. The result is a single-origin app that handles UI, live session traffic, and product retrieval in one place.\n\nThe `main.py` in this post is a digested version of that app. The user experience is intentionally narrower for the sake of clarity: you still get a live voice, text, and camera conversation with product recommendations in the browser, but you do not get the full similar-item search experience. The interesting parts are the live agent loop and recommendation flow, where you can see how FastAPI and ADK Gemini Live API Toolkit work together to realize a real-time interactive UX from browser input to model events, tool calls, and product tiles on screen.\n\n**Resources:**\n\n- [LensMosaic Live Demo](https://lens-mosaic-761793285222.us-central1.run.app/)\n- [LensMosaic GitHub Repo](https://github.com/kazunori279/lens-mosaic/tree/main)\n- [ADK](https://google.github.io/adk-docs/)\n- [ADK Gemini Live API Toolkit](https://google.github.io/adk-docs/streaming/)\n- [Gemini Embedding 2](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/embedding-2)\n- [Vertex AI Vector Search 2.0](https://cloud.google.com/vertex-ai/docs/vector-search-2/overview)\n- [Vertex AI Ranking API](https://docs.cloud.google.com/generative-ai-app-builder/docs/ranking)",
+      "videoURL": "https://www.youtube.com/embed/SgMn-6q8Qg8",
+      "codeSnippets": [
+        {
+          "title": "Run the Server",
+          "filename": "shell",
+          "language": "shell",
+          "code": "gcloud auth application-default login\ngcloud services enable aiplatform.googleapis.com\nexport GOOGLE_CLOUD_PROJECT=YOUR_PROJECT_ID # replace\nexport GOOGLE_GENAI_USE_VERTEXAI=TRUE\nexport GOOGLE_CLOUD_LOCATION=us-central1\nuv run \\\n  --with google-adk \\\n  --with google-genai \\\n  --with google-cloud-aiplatform \\\n  --with certifi \\\n  uvicorn main:app --host 127.0.0.1 --port 8080\n\n# Then open http://127.0.0.1:8080 with browser"
+        },
+        {
+          "title": "LensMosaic Server",
+          "filename": "main.py",
+          "language": "python",
+          "code": "\"\"\"Minimal LensMosaic live server.\"\"\"\n\nfrom __future__ import annotations\n\nimport asyncio, base64, json, logging, os, ssl\nimport urllib.error, urllib.parse, urllib.request\nfrom dataclasses import dataclass, field\n\nimport certifi\nfrom fastapi import FastAPI, Request, Response, WebSocket, WebSocketDisconnect\nfrom google.adk.agents import Agent\nfrom google.adk.agents.live_request_queue import LiveRequestQueue\nfrom google.adk.agents.run_config import RunConfig, StreamingMode\nfrom google.adk.runners import Runner\nfrom google.adk.sessions import InMemorySessionService\nfrom google.adk.tools import ToolContext\nfrom google.genai import errors as genai_errors\nfrom google.genai import types\n\nimport vertexai\n\nos.environ.setdefault(\"GOOGLE_GENAI_USE_VERTEXAI\", \"TRUE\")\n\n# App configuration and external service setup.\nAPP_NAME = \"lens-mosaic-blog-sample\"\nAGENT_MODEL = \"gemini-live-2.5-flash-native-audio\"\nMAX_TILE_ITEMS = 64\nGOOGLE_CLOUD_PROJECT = os.environ[\"GOOGLE_CLOUD_PROJECT\"]\nGOOGLE_CLOUD_LOCATION = os.environ[\"GOOGLE_CLOUD_LOCATION\"]\nLENS_MOSAIC_COLLECTION_ID = \"mercari3m-collection-mm2\"\nHOSTED_URL = \"https://lens-mosaic-nhhfh7g7iq-uc.a.run.app\"\n\nvertexai.init(\n    project=GOOGLE_CLOUD_PROJECT,\n    location=GOOGLE_CLOUD_LOCATION,\n)\n\n\n# Per-live-session state shared across websocket handlers.\n@dataclass\nclass SessionState:\n    session_id: str\n    user_id: str | None = None\n    recommended: list[dict] = field(default_factory=list)\n    tile_client: WebSocket | None = None\n\n\nSESSION_STATES: dict[str, SessionState] = {}\nSESSION_SERVICE = InMemorySessionService()\nMAIN_LOOP: asyncio.AbstractEventLoop | None = None\nSSL_CONTEXT = ssl.create_default_context(cafile=certifi.where())\n\n\ndef _ignore_normal_live_close(record: logging.LogRecord) -> bool:\n    exc = record.exc_info[1] if record.exc_info else None\n    return not (isinstance(exc, genai_errors.APIError) and exc.code == 1000)\n\n\nlogging.getLogger(\n    \"google_adk.google.adk.flows.llm_flows.base_llm_flow\"\n).addFilter(_ignore_normal_live_close)\n\n\n# Session lifecycle helpers.\ndef session_state_for(\n    session_id: str, user_id: str | None = None\n) -> SessionState:\n    state = SESSION_STATES.get(session_id)\n    if state is None:\n        state = SessionState(session_id=session_id, user_id=user_id)\n        SESSION_STATES[session_id] = state\n        return state\n    if user_id is not None:\n        state.user_id = user_id\n    return state\n\n\ndef cleanup_session(session_id: str) -> None:\n    session = SESSION_STATES.get(session_id)\n    if session and session.user_id is None and session.tile_client is None:\n        SESSION_STATES.pop(session_id, None)\n\n\n# Upstream proxy helpers for the hosted UI and APIs.\ndef fetch_upstream(\n    path: str,\n    *,\n    method: str = \"GET\",\n    body: bytes | None = None,\n    content_type: str | None = None,\n    query: list[tuple[str, str]] | None = None,\n) -> tuple[int, str, bytes]:\n    # Keep local sample routes thin by forwarding most HTTP work upstream.\n    url = f\"{HOSTED_URL}{path}\"\n    if query:\n        url = f\"{url}?{urllib.parse.urlencode(query)}\"\n    headers = {\"Content-Type\": content_type} if content_type else {}\n    request = urllib.request.Request(url, data=body, headers=headers, method=method)\n    try:\n        with urllib.request.urlopen(request, timeout=30, context=SSL_CONTEXT) as response:\n            return response.status, response.headers.get(\"Content-Type\", \"\"), response.read()\n    except urllib.error.HTTPError as exc:\n        return exc.code, exc.headers.get(\"Content-Type\", \"\"), exc.read()\n\n\nasync def proxy_upstream(\n    path: str,\n    *,\n    method: str = \"GET\",\n    body: bytes | None = None,\n    content_type: str | None = None,\n    query: list[tuple[str, str]] | None = None,\n) -> Response:\n    status, media_type, data = await asyncio.to_thread(\n        fetch_upstream,\n        path,\n        method=method,\n        body=body,\n        content_type=content_type,\n        query=query,\n    )\n    return Response(content=data, status_code=status, media_type=media_type)\n\n\n# Tile update helpers used by the local recommendation tool.\nasync def broadcast_recommended(session_id: str, items: list[dict]) -> None:\n    session = SESSION_STATES.get(session_id)\n    if not session:\n        return\n    ws = session.tile_client\n    if ws is None:\n        return\n    try:\n        await ws.send_json({\"kind\": \"recommended\", \"items\": items})\n    except Exception:\n        if session.tile_client is ws:\n            session.tile_client = None\n\n\n# Tool and agent definitions for the local live assistant.\ndef find_items(\n    queries: list[str], ranking_query: str, tool_context: ToolContext\n) -> str:\n    \"\"\"Find shopping items that match one or more product description queries.\n\n    Use this tool to show product candidates on screen. Provide descriptive\n    product-search queries and a ranking query in English. The tool searches,\n    publishes the matched items to the UI, and uses ranking_query for the\n    final rerank across the candidates.\n\n    Args:\n        queries: One or more product-search queries in English.\n        ranking_query: A short English description used for final reranking.\n        tool_context: ADK tool context for the current user session.\n\n    Returns:\n        A comma-separated string of top matched item names, or \"No items found\".\n    \"\"\"\n    status, _, body = fetch_upstream(\n        \"/search\",\n        method=\"POST\",\n        body=json.dumps(\n            {\"queries\": queries[:4], \"ranking_query\": ranking_query}\n        ).encode(),\n        content_type=\"application/json\",\n    )\n    items = [] if status >= 400 else json.loads(body.decode())\n    session = session_state_for(tool_context.session.id, tool_context.session.user_id)\n    session.recommended = items[:MAX_TILE_ITEMS]\n    if MAIN_LOOP:\n        # Tool calls run off the main loop, so schedule the tile push back onto it.\n        asyncio.run_coroutine_threadsafe(\n            broadcast_recommended(session.session_id, session.recommended),\n            MAIN_LOOP,\n        )\n    names = [item.get(\"name\", \"\") for item in session.recommended[:3] if item.get(\"name\")]\n    return \", \".join(names) if names else \"No items found\"\n\n\nagent = Agent(\n    name=\"blog_sample_agent\",\n    model=AGENT_MODEL,\n    tools=[find_items],\n    instruction=\"\"\"\n        You are a helpful AI shopping assistant. Always respond in the user's language.\n        You can hear the user's voice, read their text, and see camera images.\n        When user asks what's in the image, describe it.\n        When user asks for finding items, recommendation, or matching-product requests:\n        - Do not ask a follow-up question before searching.\n        - Briefly say what you will search.\n        - Infer the desired items from the conversation and camera context.\n        - Call find_items with 5 descriptive queries and a ranking_query.\n        - After find_items returns, mention a few item names in simple language.\"\"\",\n)\nRUNNER = Runner(app_name=APP_NAME, agent=agent, session_service=SESSION_SERVICE)\nRUN_CONFIG = RunConfig(\n    streaming_mode=StreamingMode.BIDI,\n    response_modalities=[\"AUDIO\"],\n    session_resumption=types.SessionResumptionConfig(),\n)\napp = FastAPI(title=\"LensMosaic Blog Sample\", version=\"0.1.0\")\n\n\n# Live websocket communication between the browser and ADK.\nasync def ensure_adk_session(user_id: str, session_id: str) -> None:\n    if not await SESSION_SERVICE.get_session(app_name=APP_NAME, user_id=user_id, session_id=session_id):\n        await SESSION_SERVICE.create_session(app_name=APP_NAME, user_id=user_id, session_id=session_id)\n\n\nasync def client_to_agent(ws: WebSocket, queue: LiveRequestQueue) -> None:\n    while True:\n        message = await ws.receive()\n        if message.get(\"bytes\") is not None:\n            queue.send_realtime(\n                types.Blob(mime_type=\"audio/pcm;rate=16000\", data=message[\"bytes\"])\n            )\n            continue\n        if message.get(\"text\") is None:\n            continue\n        payload = json.loads(message[\"text\"])\n        if payload.get(\"type\") == \"text\":\n            queue.send_content(types.Content(parts=[types.Part(text=payload[\"text\"])]))\n            continue\n        if payload.get(\"type\") != \"image\":\n            continue\n        if payload.get(\"forwardToAgent\", True):\n            queue.send_realtime(\n                types.Blob(\n                    mime_type=payload.get(\"mimeType\", \"image/jpeg\"),\n                    data=base64.b64decode(payload[\"data\"]),\n                )\n            )\n\n\nasync def agent_to_client(user_id: str, session_id: str, ws: WebSocket, queue: LiveRequestQueue) -> None:\n    # Stream ADK events straight back to the browser without reshaping them.\n    async for event in RUNNER.run_live(\n        user_id=user_id,\n        session_id=session_id,\n        live_request_queue=queue,\n        run_config=RUN_CONFIG,\n    ):\n        await ws.send_text(event.model_dump_json(exclude_none=True, by_alias=True))\n\n\ndef is_disconnect_error(exc: Exception) -> bool:\n    if isinstance(exc, RuntimeError):\n        return \"disconnect message has been received\" in str(exc)\n    if isinstance(exc, genai_errors.APIError):\n        return exc.code == 1000\n    return False\n\n\n# FastAPI app lifecycle and proxied HTTP routes.\n@app.on_event(\"startup\")\nasync def startup() -> None:\n    global MAIN_LOOP\n    MAIN_LOOP = asyncio.get_running_loop()\n\n\n@app.get(\"/\")\nasync def root() -> Response:\n    return await proxy_upstream(\"/\")\n\n\n@app.get(\"/static/{path:path}\")\nasync def static_proxy(path: str, request: Request) -> Response:\n    return await proxy_upstream(f\"/static/{path}\", query=list(request.query_params.multi_items()))\n\n\n@app.post(\"/search\")\nasync def search_proxy(request: Request) -> Response:\n    body = await request.body()\n    return await proxy_upstream(\"/search\", method=\"POST\", body=body, content_type=request.headers.get(\"content-type\"))\n\n\n@app.get(\"/api/item/{item_id}\")\nasync def item_proxy(item_id: str) -> Response:\n    return await proxy_upstream(f\"/api/item/{item_id}\")\n\n\n# FastAPI websocket endpoints for recommendation tiles and live chat.\n@app.websocket(\"/ws_image_tile/{session_id}\")\nasync def tile_socket(ws: WebSocket, session_id: str) -> None:\n    await ws.accept()\n    session = session_state_for(session_id)\n    session.tile_client = ws\n    try:\n        # New tile clients receive the latest recommendation snapshot immediately.\n        await ws.send_json({\"kind\": \"snapshot\", \"similarItems\": [], \"recommendedItems\": session.recommended})\n        while True:\n            await ws.receive()\n    except WebSocketDisconnect:\n        pass\n    except (RuntimeError, genai_errors.APIError) as exc:\n        if not is_disconnect_error(exc):\n            raise\n    finally:\n        if session.tile_client is ws:\n            session.tile_client = None\n        cleanup_session(session_id)\n\n\n@app.websocket(\"/ws/{user_id}/{session_id}\")\nasync def live_socket(ws: WebSocket, user_id: str, session_id: str) -> None:\n    await ws.accept()\n    await ensure_adk_session(user_id, session_id)\n    session = session_state_for(session_id, user_id)\n    # One queue feeds the ADK runner while both websocket tasks stay in sync.\n    queue = LiveRequestQueue()\n    try:\n        await asyncio.gather(\n            client_to_agent(ws, queue),\n            agent_to_client(user_id, session_id, ws, queue),\n        )\n    except WebSocketDisconnect:\n        pass\n    except (RuntimeError, genai_errors.APIError) as exc:\n        if not is_disconnect_error(exc):\n            raise\n    finally:\n        queue.close()\n        session.user_id = None\n        cleanup_session(session_id)\n"
+        }
+      ]
+    },
+    {
+      "day": 20,
+      "title": "ADK Agent Harness: Build a Generate-Validate-Refine Pipeline",
+      "summary": "Build a README improvement harness that fetches a GitHub repo via MCP, generates against a quality checklist, and refines in a loop until a critic approves.",
+      "tags": [
+        "ADK",
+        "MCP",
+        "Multi-Agent",
+        "Skills"
+      ],
+      "icon": "🔧",
+      "resourceLink": "https://github.com/google/adk-samples/tree/main/python/agents/readme-harness",
+      "links": [
+        {
+          "label": "ADK Skills",
+          "url": "https://google.github.io/adk-docs/skills/"
+        },
+        {
+          "label": "ADK MCP Tools",
+          "url": "https://google.github.io/adk-docs/tools-custom/mcp-tools/"
+        },
+        {
+          "label": "ADK API Server",
+          "url": "https://google.github.io/adk-docs/runtime/api-server/"
+        },
+        {
+          "label": "Demo Video 2",
+          "url": "https://youtu.be/jh4kYgUSF-M"
+        }
+      ],
+      "description": "**Day 20 of Google's Advent of Agents — Season 2**\n\nAsk Gemini CLI or Claude Code to improve a README and you get a one-shot result: no validation against a checklist, no refinement, no guarantee the output covers installation, configuration, or API documentation. The problem is not the model — it is the harness. ADK lets you build a harness you own.\n\n**How It Works**\n\nThe harness is a two-stage `SequentialAgent` pipeline. Stage 1 fetches and analyzes the repository via GitHub MCP. Stage 2 runs a `LoopAgent` pairing a writer and a critic until the critic approves every section or `max_iterations` is reached.\n\n- **`SequentialAgent` + `LoopAgent`**: Execution order is defined in code, not by the model. The analyzer always runs before the writer, and the writer always runs before the critic.\n- **`McpToolset` with `tool_filter`**: Connects to the GitHub MCP server with read-only access — `get_file_contents`, `search_code`, `list_commits`. The agent cannot push or modify the repository.\n- **`SkillToolset`**: Loads README conventions in layers — a one-line description at startup, full checklist only when the writer activates the skill. Context stays lean until the knowledge is required.\n- **`output_key`**: Passes state between agents without manual wiring. The analyzer writes `codebase_analysis`, the writer reads it and writes `current_readme`, the critic reads that and writes `criticism` — or calls `exit_loop` to stop.\n\nRun `adk api_server .` to expose the harness as a REST endpoint, then copy the bundled skill to Gemini CLI or Claude Code. The CLI is the interface. ADK is the engine.\n\n**Resources:**\n\n- [ADK LoopAgent](https://google.github.io/adk-docs/agents/workflow-agents/loop-agents/)\n- [ADK MCP Tools](https://google.github.io/adk-docs/tools-custom/mcp-tools/)\n- [ADK Skills](https://google.github.io/adk-docs/skills/)\n- [ADK API Server](https://google.github.io/adk-docs/runtime/api-server/)\n- [GitHub MCP Server](https://github.com/github/github-mcp-server)\n- [adk-samples: readme-harness](https://github.com/google/adk-samples/tree/main/python/agents/readme-harness)",
+      "videoURL": "https://www.youtube.com/embed/Bub9U7bQX4A",
+      "codeSnippets": [
+        {
+          "title": "Run the Harness",
+          "filename": "shell",
+          "language": "shell",
+          "code": "export GITHUB_PERSONAL_ACCESS_TOKEN=your_token\n\n# Start ADK harness as an API server\nadk api_server . --port 8000\n\n# Copy the bundled skill to Gemini CLI\ncp -r cli_harness ~/.gemini/skills/cli_harness\n\n# In Gemini CLI:\n# > Improve the README for google/adk-samples\n\n# Or for Claude Code, copy to:\n# cp -r cli_harness ~/.claude/skills/cli_harness"
+        },
+        {
+          "title": "The Harness Pipeline",
+          "filename": "agent.py",
+          "language": "python",
+          "code": "import os, pathlib\nfrom google.adk.agents import Agent, LoopAgent, SequentialAgent\nfrom google.adk.agents.callback_context import CallbackContext\nfrom google.adk.skills import load_skill_from_dir\nfrom google.adk.tools import exit_loop\nfrom google.adk.tools.mcp_tool import McpToolset\nfrom google.adk.tools.mcp_tool.mcp_session_manager import StdioConnectionParams\nfrom google.adk.tools.skill_toolset import SkillToolset\nfrom mcp import StdioServerParameters\n\nSKILLS_DIR = pathlib.Path(__file__).parent / \"skills\"\n\ngithub_mcp = McpToolset(\n    connection_params=StdioConnectionParams(\n        server_params=StdioServerParameters(\n            command=\"npx\", args=[\"-y\", \"@modelcontextprotocol/server-github\"],\n            env={\"GITHUB_PERSONAL_ACCESS_TOKEN\": os.getenv(\"GITHUB_PERSONAL_ACCESS_TOKEN\", \"\")},\n        ),\n    ),\n    tool_filter=[\"get_file_contents\", \"search_code\", \"list_commits\"],\n)\n\nreadme_skill = SkillToolset(\n    skills=[load_skill_from_dir(SKILLS_DIR / \"readme-conventions\")]\n)\n\nasync def init_loop_state(callback_context: CallbackContext) -> None:\n    if \"criticism\" not in callback_context.state:\n        callback_context.state[\"criticism\"] = \"No previous feedback. This is the first draft.\"\n\ncodebase_analyzer = Agent(\n    model=\"gemini-3-flash-preview\", name=\"codebase_analyzer\",\n    instruction=\"Analyze the GitHub repo. Read the file tree and key source files. Output a structured summary.\",\n    tools=[github_mcp], output_key=\"codebase_analysis\",\n)\nreadme_writer = Agent(\n    model=\"gemini-3-flash-preview\", name=\"readme_writer\",\n    before_agent_callback=init_loop_state,\n    instruction=\"Write or improve the README using {codebase_analysis}. Address all points in {criticism}.\",\n    tools=[readme_skill], output_key=\"current_readme\",\n)\nreadme_critic = Agent(\n    model=\"gemini-3-flash-preview\", name=\"readme_critic\",\n    instruction=\"Review {current_readme} against the checklist. Call exit_loop if all sections pass.\",\n    tools=[exit_loop], output_key=\"criticism\",\n)\n\nroot_agent = SequentialAgent(\n    name=\"readme_harness\",\n    sub_agents=[\n        codebase_analyzer,\n        LoopAgent(name=\"refinement_loop\", sub_agents=[readme_writer, readme_critic], max_iterations=3),\n    ],\n)"
+        }
+      ]
+    },
+    {
+      "day": 21,
+      "title": "Developer's Guide to AI Agent Protocols",
+      "summary": "Six protocols, disambiguated. See how MCP, A2A, UCP, AP2, A2UI, and AG-UI work together to build a production-ready supply chain agent with ADK.",
+      "description": "\n**Day 21 of Google's Advent of Agents — Season 2**\n\nThe agent protocol landscape is exploding: MCP, A2A, UCP, AP2, A2UI, AG-UI... If the alphabet soup feels overwhelming, today's guide cuts through the noise.\n\nThis companion walkthrough follows the [Developer's Guide to AI Agent Protocols](https://developers.googleblog.com/developers-guide-to-ai-agent-protocols/) blog post, which builds a restaurant supply chain agent using ADK by adding one protocol at a time until it can check real inventory, get specialist quotes, place orders, authorize payments, and stream interactive dashboards.\n\n**The Six Protocols at a Glance**\n\n| Protocol | What It Solves | Discovery |\n|----------|---------------|-----------|\n| **MCP** | Agent ↔ Tools & Data | Server advertises tools |\n| **A2A** | Agent ↔ Agent | `/.well-known/agent-card.json` |\n| **UCP** | Standardized Commerce | `/.well-known/ucp` |\n| **AP2** | Payment Authorization | Typed mandates + audit trail |\n| **A2UI** | Agent → Rich UI | Declarative JSON components |\n| **AG-UI** | Agent → Streaming Frontend | Standardized SSE events |\n\n**When to Use What**\n\n- **Start with MCP**: Connect your agent to databases, APIs, and services without writing custom integration code.\n- **Add A2A**: When you need to talk to remote agents built by other teams or on other frameworks.\n- **Add UCP + AP2**: When your agent needs to transact (commerce + payment authorization).\n- **Add A2UI**: When plain text isn't enough and your agent needs to render interactive UIs.\n- **Add AG-UI**: When you need real-time streaming of tool calls and text to the frontend.\n\n**Key Takeaway:** You don't need all six on day one. Add protocols as your requirements grow. Each one eliminates a category of custom integration code.\n",
+      "tags": [
+        "MCP",
+        "A2A",
+        "UCP",
+        "AP2",
+        "A2UI",
+        "AG-UI",
+        "ADK",
+        "Protocols"
+      ],
+      "icon": "🔗",
+      "resourceLink": "https://developers.googleblog.com/developers-guide-to-ai-agent-protocols/",
+      "links": [
+        {
+          "label": "Developer's Guide to AI Agent Protocols (Blog)",
+          "url": "https://developers.googleblog.com/developers-guide-to-ai-agent-protocols/",
+          "description": "The full walkthrough with code samples for all six protocols"
+        },
+        {
+          "label": "MCP — Model Context Protocol",
+          "url": "https://modelcontextprotocol.io/",
+          "description": "Standard connection pattern for agent-to-tool integration"
+        },
+        {
+          "label": "A2A — Agent2Agent Protocol",
+          "url": "https://a2a-protocol.org/",
+          "description": "Discovery and communication between agents"
+        },
+        {
+          "label": "UCP — Universal Commerce Protocol",
+          "url": "https://ucp.dev/",
+          "description": "Standardized shopping lifecycle for agentic commerce"
+        },
+        {
+          "label": "AP2 — Agent Payments Protocol",
+          "url": "https://github.com/google-agentic-commerce/AP2",
+          "description": "Payment authorization with typed mandates and audit trails"
+        },
+        {
+          "label": "A2UI — Agent-to-User Interface Protocol",
+          "url": "https://a2ui.org/",
+          "description": "Declarative JSON format for agent-generated UIs"
+        },
+        {
+          "label": "AG-UI — Agent-User Interaction Protocol",
+          "url": "https://docs.ag-ui.com/",
+          "description": "Standardized SSE streaming from agent to frontend"
+        },
+        {
+          "label": "ADK MCP Integrations",
+          "url": "https://google.github.io/adk-docs/integrations/?topic=mcp",
+          "description": "Browse available MCP integrations for ADK"
+        }
+      ],
+      "codeSnippets": [
+        {
+          "filename": "mcp_tools.py",
+          "language": "python",
+          "code": "from google.adk.agents import Agent\nfrom google.adk.tools.mcp_tool import McpToolset\nfrom google.adk.tools.mcp_tool.mcp_session_manager import StdioConnectionParams\nfrom google.adk.tools.toolbox_toolset import ToolboxToolset\nfrom mcp import StdioServerParameters\n\n# 1. Connect to a database via MCP Toolbox for Databases\ninventory_tools = ToolboxToolset(server_url=\"http://localhost:5000\")\n\n# 2. Connect to Notion for recipes via MCP\nnotion_tools = McpToolset(connection_params=StdioConnectionParams(\n    server_params=StdioServerParameters(\n        command=\"npx\", args=[\"-y\", \"@notionhq/notion-mcp-server\"],\n        env={\"NOTION_TOKEN\": \"your-token\"}),\n    timeout=30))\n\n# 3. Build the agent — MCP tools are discovered automatically\nkitchen_agent = Agent(\n    model=\"gemini-3-flash-preview\",\n    name=\"kitchen_manager\",\n    instruction=\"You manage a restaurant kitchen. Check inventory, look up recipes.\",\n    tools=[inventory_tools, notion_tools],\n)"
+        },
+        {
+          "filename": "a2a_discover.py",
+          "language": "python",
+          "code": "# Turn any ADK agent into an A2A service (server side)\nfrom google.adk.a2a.utils.agent_to_a2a import to_a2a\napp = to_a2a(pricing_agent, port=8001)\n\n# Discover and call a remote A2A agent (client side)\nfrom a2a.client.client_factory import ClientFactory\nfrom a2a.client.helpers import create_text_message_object\n\nclient = await ClientFactory.connect(\"http://pricing-agent:8001\")\ncard = await client.get_card()\nprint(f\"{card.name} - {card.description}\")\n# -> \"pricing_agent - Checks today's wholesale market prices.\"\n\nmsg = create_text_message_object(\n    content=\"What's today's wholesale price for salmon?\")\nasync for response in client.send_message(msg):\n    print(response)  # Task with artifacts or direct Message"
+        },
+        {
+          "filename": "a2ui_components.py",
+          "language": "python",
+          "code": "# A2UI: Agent sends declarative JSON, renderer turns it into native UI.\n# 18 component primitives — same building blocks, any frontend.\n\na2ui_messages = [\n    # 1. Create a rendering surface\n    {\"beginRendering\": {\"surfaceId\": \"default\", \"root\": \"card\"}},\n\n    # 2. Send the component tree (flat list, ID references)\n    {\"surfaceUpdate\": {\"surfaceId\": \"default\", \"components\": [\n        {\"id\": \"card\", \"component\": {\"Card\": {\"child\": \"col\"}}},\n        {\"id\": \"col\", \"component\": {\"Column\": {\"children\": {\n            \"explicitList\": [\"title\", \"price\", \"buy\"]}}}},\n        {\"id\": \"title\", \"component\": {\"Text\": {\"usageHint\": \"h3\",\n            \"text\": {\"path\": \"name\"}}}},\n        {\"id\": \"price\", \"component\": {\"Text\": {\"text\": {\"path\": \"price\"}}}},\n        {\"id\": \"buy\", \"component\": {\"Button\": {\"child\": \"btn-label\",\n            \"action\": {\"name\": \"purchase\",\n            \"context\": [{\"key\": \"item\", \"value\": {\"path\": \"name\"}}]}}}},\n        {\"id\": \"btn-label\", \"component\": {\"Text\": {\n            \"text\": {\"literalString\": \"Buy Now\"}}}},\n    ]}},\n\n    # 3. Send the data (separate from structure)\n    {\"dataModelUpdate\": {\"surfaceId\": \"default\", \"contents\": [\n        {\"key\": \"name\", \"valueString\": \"Fresh Atlantic Salmon\"},\n        {\"key\": \"price\", \"valueString\": \"$24.00/lb\"},\n    ]}},\n]"
+        },
+        {
+          "filename": "agui_streaming.py",
+          "language": "python",
+          "code": "# AG-UI: Wrap any ADK agent as a streaming endpoint in 3 lines\nfrom ag_ui_adk import ADKAgent, add_adk_fastapi_endpoint\nfrom fastapi import FastAPI\n\nag_ui_agent = ADKAgent(adk_agent=kitchen_mgr, app_name=\"kitchen\", user_id=\"chef\")\napp = FastAPI()\nadd_adk_fastapi_endpoint(app, ag_ui_agent, path=\"/\")\n# Run with: uvicorn module:app\n\n# The SSE stream emits typed events:\n# RUN_STARTED\n# TOOL_CALL_START toolCallName=\"check_inventory\"\n# TOOL_CALL_RESULT content=\"3 lbs in stock, REORDER NEEDED\"\n# TOOL_CALL_END\n# TEXT_MESSAGE_CONTENT delta=\"Based on \"\n# TEXT_MESSAGE_CONTENT delta=\"current inventory...\"\n# RUN_FINISHED"
+        }
+      ],
+      "videoURL": "https://www.youtube.com/embed/DAZpxBF6Zfc",
+      "emailPrompt": "Focus on the six agent protocols and how they work together. Emphasize that developers should start with MCP and add protocols incrementally as needs grow."
+    },
+    {
+      "day": 22,
+      "title": "ADK Evaluation: Trajectory Tests and Rubric-Based Scoring",
+      "summary": "Define deterministic trajectory tests and rubric-based evaluations that run on every code push, catching agent regressions before they reach production.",
+      "description": "**Day 22 of Google's Advent of Agents — Season 2**\n\nBuilding an agent that \"usually works\" is easy — building one that reliably follows a specific reasoning path is the real challenge. As agents scale, \"vibes-based testing\" (refreshing the prompt and hoping for the best) breaks down, and you need a way to ensure your agent doesn't just give the right answer but arrives there using the correct tool trajectory. ADK Evalsets solve this by letting you define deterministic trajectory tests and rubric-based evaluations that hook directly into your CI pipeline.\n\n**How It Works**\n\nAn evalset is a JSON file containing test cases, each specifying a user prompt, the expected tool call sequence, and an optional reference response. ADK's evaluation engine replays these cases against your agent and scores them using configurable criteria:\n\n- **`tool_trajectory_avg_score`**: Checks whether the agent called the right tools in the right order. Use `IN_ORDER` match type to tolerate extra calls between expected ones, or `EXACT` for strict matching.\n- **`rubric_based_final_response_quality_v1`**: Uses a stronger judge model (like Gemini 3.0 Flash) to grade the agent's output against custom rubrics, with no reference answer required.\n- **`final_response_match_v2`**: Semantic comparison between the agent's response and a reference answer, tolerant of phrasing differences.\n\n**CI/CD Integration**\n\nThe `agent-starter-pack` scaffolds a project with a `tests/eval/` directory and a pre-configured `make eval` target. Wire it into GitHub Actions so that any commit causing a trajectory deviation or a rubric score drop fails the build automatically, catching regressions before they reach production.\n\n**Resources:**\n\n- [ADK Evaluation Docs](https://google.github.io/adk-docs/evaluate/)\n- [ADK Eval Criteria Reference](https://google.github.io/adk-docs/evaluate/criteria/)\n- [Agent Starter Pack](https://github.com/googlecloudplatform/agent-starter-pack)\n",
+      "tags": [
+        "ADK",
+        "Evaluation",
+        "CI/CD",
+        "Testing"
+      ],
+      "icon": "✅",
+      "resourceLink": "https://google.github.io/adk-docs/evaluate/",
+      "links": [
+        {
+          "label": "ADK Evaluation Docs",
+          "url": "https://google.github.io/adk-docs/evaluate/",
+          "description": "Official ADK evaluation overview — evalsets, criteria, and CLI commands"
+        },
+        {
+          "label": "ADK Eval Criteria Reference",
+          "url": "https://google.github.io/adk-docs/evaluate/criteria/",
+          "description": "All 8 built-in metrics, match types, custom rubrics, and judge model config"
+        },
+        {
+          "label": "Agent Starter Pack",
+          "url": "https://github.com/googlecloudplatform/agent-starter-pack",
+          "description": "Scaffold an ADK agent project with built-in eval directory and CI/CD pipelines"
+        },
+        {
+          "label": "ADK Samples",
+          "url": "https://github.com/google/adk-samples",
+          "description": "Reference agents with evalsets you can study and adapt"
+        }
+      ],
+      "codeSnippets": [
+        {
+          "title": "Bootstrap and Run",
+          "filename": "shell",
+          "language": "bash",
+          "code": "# 1. Scaffold an agent with the eval framework built-in\nuvx agent-starter-pack create --adk my-agent && cd my-agent\n\n# 2. Define a trajectory test in your evalset (eval/trajectory_tests.json)\n# See the evalset snippet below for the full schema\n\n# 3. Run the evaluation locally\nmake eval\n\n# 4. Or run directly with the ADK CLI\nadk eval ./app eval/trajectory_tests.json \\\n  --config_file_path=eval/eval_config.json \\\n  --print_detailed_results"
+        },
+        {
+          "title": "Evalset: Define the Golden Path",
+          "filename": "eval/trajectory_tests.json",
+          "language": "json",
+          "code": "{\n  \"eval_set_id\": \"trajectory_tests\",\n  \"name\": \"Tool Trajectory Tests\",\n  \"eval_cases\": [\n    {\n      \"eval_id\": \"sync_linear_to_github\",\n      \"conversation\": [\n        {\n          \"invocation_id\": \"inv_1\",\n          \"user_content\": {\n            \"parts\": [{ \"text\": \"Sync Linear issue PROJ-123 to GitHub\" }]\n          },\n          \"final_response\": {\n            \"role\": \"model\",\n            \"parts\": [{ \"text\": \"Created GitHub issue #42 from PROJ-123.\" }]\n          },\n          \"intermediate_data\": {\n            \"tool_uses\": [\n              { \"name\": \"linear_get_issue\", \"args\": { \"issue_id\": \"PROJ-123\" } },\n              { \"name\": \"github_create_issue\", \"args\": { \"repo\": \"my-org/my-repo\" } }\n            ]\n          }\n        }\n      ],\n      \"session_input\": {\n        \"app_name\": \"my_agent\", \"user_id\": \"eval_user\", \"state\": {}\n      }\n    }\n  ]\n}"
+        },
+        {
+          "title": "Eval Config: Set Pass/Fail Criteria",
+          "filename": "eval/eval_config.json",
+          "language": "json",
+          "code": "{\n  \"criteria\": {\n    \"tool_trajectory_avg_score\": {\n      \"threshold\": 1.0,\n      \"match_type\": \"IN_ORDER\"\n    },\n    \"rubric_based_final_response_quality_v1\": {\n      \"threshold\": 0.8,\n      \"rubrics\": [\n        {\n          \"rubric_id\": \"completeness\",\n          \"rubric_content\": {\n            \"text_property\": \"The response must confirm which issue was synced and provide the new GitHub issue number.\"\n          }\n        }\n      ]\n    }\n  }\n}"
+        }
+      ],
+      "videoURL": "https://www.youtube.com/embed/_JVwS-20fTg"
+    },
+    {
+      "day": 23,
+      "title": "Model Armor: AI Security Firewall for Agents",
+      "summary": "Protect AI agents from prompt injection, jailbreaks, and data leakage using Google Cloud Model Armor as a defense-in-depth security layer.",
+      "tags": [
+        "Model Armor",
+        "Security",
+        "GCP",
+        "Agent Safety"
+      ],
+      "icon": "🛡️",
+      "videoURL": "https://www.youtube.com/embed/Wrxg8OsquEY",
+      "description": "\n**Day 23 of Google's Advent of Agents — Season 2**\n\nAs AI agents become more advanced and autonomous, ensuring their security becomes a paramount concern. Developers must be vigilant against emerging threats that exploit the unique vulnerabilities of LLMs. To address this, developers can leverage **Google Cloud Model Armor** to build a robust defense-in-depth strategy, protecting their agents from manipulation and unintended data exposure.\n\n**The Solution**\n\nGoogle Cloud Model Armor serves as a specialized security layer—an \"AI firewall\" designed to protect generative AI applications by proactively screening both user prompts and model responses. It effectively mitigates critical risks such as prompt injection and jailbreak attacks, where malicious actors attempt to subvert a model's behavior or bypass safety constraints.\n\nBeyond intent analysis, Model Armor prevents sensitive data leakage by identifying and redacting personally identifiable information (PII) or intellectual property. It also utilizes malicious URL detection to block phishing links embedded within AI interactions. Because it is model-agnostic and cloud-agnostic, you can use its REST API to enforce consistent safety and compliance policies across any Large Language Model (LLM) or agent, whether hosted on Google Cloud, another provider, or on-premises.\n\n**How It Works**\n\n- **Define Security Template**: Configure a Model Armor template with your security policies, threat detection rules, and PII redaction requirements.\n\n- **Sanitize User Prompts**: Screen incoming prompts before they reach your LLM to detect and block prompt injection, jailbreak attempts, and malicious URLs.\n\n- **Sanitize Model Responses**: Validate generated responses before returning to users, preventing sensitive data leakage and ensuring compliance with safety policies.\n\n**Resources:**\n\n- [Model Armor Documentation](https://docs.cloud.google.com/model-armor/overview)\n- [ADK Documentation](https://google.github.io/adk-docs/)\n- [GitHub Project Repository](https://github.com/lekan2001/advent-of-agents-model-armor.git)",
+      "resourceLink": "https://docs.cloud.google.com/model-armor/overview",
+      "links": [
+        {
+          "label": "Model Armor Documentation",
+          "url": "https://docs.cloud.google.com/model-armor/overview",
+          "description": "Complete guide to Google Cloud Model Armor for AI security."
+        },
+        {
+          "label": "GitHub Project Repository",
+          "url": "https://github.com/lekan2001/advent-of-agents-model-armor.git",
+          "description": "Working implementation of Model Armor with ADK agents."
+        },
+        {
+          "label": "ADK Documentation",
+          "url": "https://google.github.io/adk-docs/",
+          "description": "Agent Development Kit documentation for building secure agents."
+        }
+      ],
+      "codeSnippets": [
+        {
+          "title": "Sanitize User Prompts",
+          "filename": "model_armor_security.py",
+          "language": "python",
+          "code": "def sanitize_prompt(user_prompt: str) -> tuple[bool, str]:\n    \"\"\"Sanitize a user prompt using the Model Armor template.\n\n    Args:\n        user_prompt: The raw user prompt text to sanitize.\n\n    Returns:\n        A tuple of (is_safe, detail).\n        - is_safe: True if the prompt passes all checks, False if blocked.\n        - detail: Empty string when safe, or a description of why it was blocked.\n    \"\"\"\n    try:\n        client = _get_client()\n        request = modelarmor_v1.SanitizeUserPromptRequest(\n            name=TEMPLATE_NAME,\n            user_prompt_data=modelarmor_v1.DataItem(text=user_prompt),\n        )\n        response = client.sanitize_user_prompt(request=request)\n        blocked, reasons = _is_blocked(response.sanitization_result)\n        if blocked:\n            logger.warning(\"Model Armor blocked user prompt: %s\", reasons)\n            return False, reasons\n        return True, \"\"\n    except Exception:\n        logger.exception(\"Model Armor sanitize_prompt call failed\")\n        return True, \"\""
+        },
+        {
+          "title": "Sanitize Model Responses",
+          "filename": "model_armor_security.py",
+          "language": "python",
+          "code": "def sanitize_response(model_response: str) -> tuple[bool, str]:\n    \"\"\"Sanitize a model response using the Model Armor template.\n\n    Args:\n        model_response: The model-generated response text to sanitize.\n\n    Returns:\n        A tuple of (is_safe, detail).\n        - is_safe: True if the response passes all checks, False if blocked.\n        - detail: Empty string when safe, or a description of why it was blocked.\n    \"\"\"\n    try:\n        client = _get_client()\n        request = modelarmor_v1.SanitizeModelResponseRequest(\n            name=TEMPLATE_NAME,\n            model_response_data=modelarmor_v1.DataItem(text=model_response),\n        )\n        response = client.sanitize_model_response(request=request)\n        blocked, reasons = _is_blocked(response.sanitization_result)\n        if blocked:\n            logger.warning(\"Model Armor blocked model response: %s\", reasons)\n            return False, reasons\n        return True, \"\"\n    except Exception:\n        logger.exception(\"Model Armor sanitize_response call failed\")\n        return True, \"\""
+        }
+      ],
+      "emailPrompt": "Focus on the critical importance of AI agent security and how Model Armor provides a comprehensive defense-in-depth strategy. Highlight its model-agnostic nature and ability to prevent prompt injection, jailbreaks, and data leakage."
+    },
+    {
+      "day": 24,
+      "title": "Batch Processing: Scale to 10k with ADK",
+      "summary": "Shift from interactive processing to an Agent as Orchestrator pattern using the ADK and Gemini Batch API for efficient, large-scale asynchronous workloads.",
+      "description": "**Day 24 of Google's Advent of Agents - Season 2**\n\nForcing an agent into a real-time synchronous loop to extract data from 10,000 documents guarantees throttled API limits, broken connections, and massive token costs. To achieve production scale, you must shift your architecture from interactive processing to an \"Agent as Orchestrator\" pattern.\n\n![Architecture](/season2-day24-architecture.png)\n\n**How It Works**\n\nInstead of an agent reading documents one by one, ADK enables you to equip your agent with a dedicated tool that offloads massive datasets directly to Google's backend infrastructure.\n\n- **Tool-Based Offloading**: The agent autonomously recognizes high-volume requests (like \"process this bucket\") and uses a custom tool to bundle the instructions and data into a managed job queue, rather than awaiting immediate inference.\n- **Token Efficiency**: The tool routes the request through the Gemini Batch API, executing the workload asynchronously in the background. This flex processing operates at a 50% token cost reduction compared to standard synchronous LLM calls.\n- **State Retrieval**: Once the agent confirms the batch job is submitted, the session can safely terminate. Developers can poll the job status or configure a webhook callback to retrieve the structured output once the entire dataset completes processing.\n\n**Resources:**\n\n- [ADK Documentation](https://google.github.io/adk-docs/)\n- [Gemini Batch Prediction Documentation](https://cloud.google.com/vertex-ai/generative-ai/docs/multimodal/batch-prediction-gemini)\n- [Gemini Batch API Limits and Pricing](https://cloud.google.com/vertex-ai/pricing)\n- [Google GenAI Python SDK (GitHub)](https://github.com/googleapis/python-genai)\n- [Deep Dive: How Batch Mode Cuts Costs](https://medium.com/@linz07m/how-gemini-apis-batch-mode-cuts-costs-and-increases-throughput-27cb9863a1c8)",
+      "tags": [
+        "Batch Processing",
+        "ADK",
+        "Scale"
+      ],
+      "icon": "⚙️",
+      "videoURL": "https://www.youtube.com/embed/3erD0GqEzX8",
+      "links": [
+        {
+          "label": "Scaling Language Detection: A Million Messages with Gemini’s Batch API & Flash Lite",
+          "url": "https://medium.com/google-cloud/scaling-language-detection-a-million-messages-with-geminis-batch-api-flash-lite-baccc197a1c2"
+        },
+        {
+          "label": "From GenAI Demo to Production Scale - Handling high-throughput use cases",
+          "url": "https://medium.com/google-cloud/from-genai-demo-to-production-scale-handling-high-throughput-use-cases-fbca401a5555"
+        },
+        {
+          "label": "Batch Mode in the Gemini API: Process more for less (Official Announcement)",
+          "url": "https://developers.googleblog.com/en/scale-your-ai-workloads-batch-mode-gemini-api/"
+        },
+        {
+          "label": "Experimentation to Production with Gemini and Vertex AI",
+          "url": "https://cloud.google.com/blog/products/ai-machine-learning/experimentation-to-production-with-gemini-and-vertex-ai"
+        }
+      ],
+      "codeSnippets": [
+        {
+          "title": "Batch Processor",
+          "filename": "batch_processor.py",
+          "language": "python",
+          "code": "import os\nimport json\nimport urllib.request\nfrom google import genai\nfrom google.genai import types\n\n# 1. Initialize the Gemini Client\napi_key = os.environ.get(\"GEMINI_API_KEY\")\nclient = genai.Client(api_key=api_key)\n\n# 2. Fetch live data from the web to create the JSONL dataset\ndataset_path = \"unprocessed_batch_01.jsonl\"\nprint(\"Fetching live headlines from Hacker News...\")\n\n# Grab the top 5 story IDs from the public Hacker News API\ntop_stories_url = \"https://hacker-news.firebaseio.com/v0/topstories.json\"\nstory_ids = json.loads(urllib.request.urlopen(top_stories_url).read())[:5]\n\n# Format the live data into Gemini's JSONL Batch structure\nwith open(dataset_path, \"w\") as f:\n    for sid in story_ids:\n        story_url = f\"https://hacker-news.firebaseio.com/v0/item/{sid}.json\"\n        story = json.loads(urllib.request.urlopen(story_url).read())\n        prompt = f\"Extract companies, products, and technologies from this headline: {story.get('title', '')}\"\n        f.write(json.dumps({\"request\": {\"contents\": [{\"parts\": [{\"text\": prompt}]}]}}) + \"\\n\")\n\n# 3. Upload your JSONL dataset to the Gemini API\nuploaded_file = client.files.upload(\n    file=dataset_path, \n    config={'mime_type': 'application/jsonl'}\n)\nprint(f\"Uploaded file: {uploaded_file.uri}\")\n\n# 4. Submit the Asynchronous Batch Job at 50% token cost\nbatch_job = client.batches.create(\n    model=\"gemini-3.1-pro-preview\",\n    src=uploaded_file.name,\n    config=types.CreateBatchJobConfig(\n        display_name=\"massive_document_extractor\",\n    )\n)\n\nprint(f\"Batch job {batch_job.name} submitted successfully.\")\nprint(f\"Current State: {batch_job.state}\")\n\nwith open(\".latest_batch_job.txt\", \"w\") as cached_file:\n    cached_file.write(batch_job.name)"
+        },
+        {
+          "title": "Status Polling Script",
+          "filename": "check_status.py",
+          "language": "python",
+          "code": "import os\nimport sys\nfrom google import genai\n\n# 1. Initialize Client\napi_key = os.environ.get(\"GEMINI_API_KEY\")\nif not api_key:\n    print(\"Error: Please export your GEMINI_API_KEY before running this script.\")\n    sys.exit(1)\n\nclient = genai.Client(api_key=api_key)\n\n# 2. Get the Batch Job ID to poll\njob_name = None\nif len(sys.argv) > 1:\n    job_name = sys.argv[1]\nelif os.path.exists(\".latest_batch_job.txt\"):\n    with open(\".latest_batch_job.txt\", \"r\") as cached_file:\n        job_name = cached_file.read().strip()\n    print(f\"Auto-detected latest job ID from cache: {job_name}\")\n\nif not job_name:\n    job_name = input(\"Enter the Batch Job name (e.g. batches/12345ABCD): \").strip()\n\nif not job_name.startswith(\"batches/\"):\n    job_name = f\"batches/{job_name}\"\n\n# 3. Request Status from Backend\ntry:\n    print(f\"\\nPolling Google Cloud for status of: {job_name}...\")\n    job = client.batches.get(name=job_name)\n    \n    print(\"=\" * 50)\n    print(f\"Job Name    : {job.name}\")\n    print(f\"State       : {job.state}\")\n    \n    if job.state == \"JOB_STATE_SUCCEEDED\":\n        uri = getattr(job, \"output_uri\", \"Available via Google Cloud Console\")\n        print(f\"Output URI  : {uri}\")\n        print(\"\\nSuccess! You can now download and parse the JSON payload.\")\n    elif job.state == \"JOB_STATE_FAILED\":\n        print(\"\\nThe job failed on the backend.\")\n        print(\"Error details:\", getattr(job, \"error\", \"Unknown API Error\"))\n        \n    print(\"=\" * 50)\nexcept Exception as e:\n    print(f\"\\nFailed to fetch job status. Ensure the ID is correct.\")\n    print(f\"Error: {e}\")"
+        },
+        {
+          "title": "Run Locally",
+          "filename": "terminal",
+          "language": "bash",
+          "code": "# 1. Set up a pristine Python environment\npython3 -m venv .venv && source .venv/bin/activate\npip install google-genai\n\n# 2. Export your Gemini API key\nexport GEMINI_API_KEY=\"your-secret-key\"\n\n# 3. Submit your massive dataset to the background batch service\npython batch_processor.py\n\n# 4. In a few minutes, poll for the completed workload!\npython check_status.py"
+        }
+      ]
+    },
+    {
+      "day": 25,
+      "title": "Agent Deployment: How to Deploy AI Agents",
+      "summary": "Deploy your AI agents to Vertex AI Agent Engine or Google Cloud Run securely and easily.",
+      "tags": [
+        "Deployment",
+        "Agent Engine",
+        "Cloud Run",
+        "Vertex AI"
+      ],
+      "icon": "🚀",
+      "videoURL": "https://www.youtube.com/embed/osEDoYe60E8",
+      "description": "\n\n**Day 25 of Google's Advent of Agents — Season 2**\n\nAs Generative AI shifts from prototyping to production, developers face the challenge of robustly hosting and scaling their AI agents. Knowing the correct pathways to deploy ensures your agent transitions seamlessly from a local playground to highly available cloud infrastructure.\n\n**How It Works**\n\nADK abstracts away complex infrastructure boilerplate, allowing you to deploy to either Agent Engine or Cloud Run with just a few commands. Here is how you execute deployments for both targets using ADK.\n\n**Deploying to Vertex AI Agent Engine**\n\nAgent Engine is the recommended target if your project was scaffolded using the agent-starter-pack. This automatically packages your `app/` directory, resolves dependencies via `uv`, and pushes the reasoning engine to Vertex AI.\n\n- **Dependencies**: Exported and resolved via `uv`.\n- **Packaging**: A tarball of your `app/` source packages is created in-memory.\n- **Provisioning**: ADK provisions the reasoning engine on Google Cloud in 3-5 minutes.\n- **Metadata**: A deployment JSON file (`deployment_metadata.json`) is populated with your remote agent ID.\n\n**Deploying to Google Cloud Run**\n\nCloud Run is ideal if you need your agent to run as a serverless container, responding to standard HTTP requests, Webhooks, or Eventarc triggers.\n\n- **Initialization**: ADK copies your agent source code and automatically generates a Dockerfile for your application.\n- **Configuration**: An interactive prompt asks you to select your preferred Google Cloud region.\n- **Access Control**: You will be prompted on whether to allow unauthenticated invocations.\n- **Deployment**: The container is built via Cloud Build and deployed directly to Cloud Run.\n\n**Resources:**\n\n- [Google Cloud ADK Documentation](https://google.github.io/adk-docs/)\n- [Google Cloud Run Documentation](https://cloud.google.com/run)\n- [Vertex AI Agent Engine Documentation](https://cloud.google.com/vertex-ai/docs)\n- [Github Project Repository](https://github.com/lekan2001/advent-of-agents-day-25.git)\n",
+      "resourceLink": "https://google.github.io/adk-docs/",
+      "links": [
+        {
+          "label": "Google Cloud ADK Documentation",
+          "url": "https://google.github.io/adk-docs/",
+          "description": "Documentation for the Google Cloud Agent Development Kit."
+        },
+        {
+          "label": "Google Cloud Run Documentation",
+          "url": "https://cloud.google.com/run",
+          "description": "Learn how to run serverless containers with Cloud Run."
+        },
+        {
+          "label": "Vertex AI Agent Engine Documentation",
+          "url": "https://cloud.google.com/vertex-ai/docs",
+          "description": "Documentation for Vertex AI and Agent Engine."
+        },
+        {
+          "label": "GitHub Project Repository",
+          "url": "https://github.com/lekan2001/advent-of-agents-day-25.git",
+          "description": "Source code for Day 25."
+        }
+      ],
+      "codeSnippets": [
+        {
+          "title": "Deploy to Agent Engine",
+          "filename": "terminal",
+          "language": "bash",
+          "code": "# Setup project using Agent starter pack\nuvx agent-starter-pack create\n\n# Deploy to Vertex AI Agent Engine\nmake deploy"
+        },
+        {
+          "title": "Deploy to Cloud Run",
+          "filename": "terminal",
+          "language": "bash",
+          "code": "# Explicitly install dependencies via make\nmake install\n\n# Deploy to Cloud Run targeting the 'app' directory\nuv run adk deploy cloud_run app"
+        }
+      ]
+    },
+    {
+      "day": 26,
+      "title": "Authentication: End-User Identity Propagation",
+      "summary": "Securely delegate permissions by prompting end-users for OAuth consent during agent execution.",
+      "tags": [
+        "Authentication",
+        "Security",
+        "Identity Propagation",
+        "Interactive Auth"
+      ],
+      "icon": "🔐",
+      "resourceLink": "https://github.com/google/adk-python/tree/main/contributing/samples/oauth_calendar_agent",
+      "codeSnippets": [
+        {
+          "title": "Setup Credentials",
+          "filename": ".env",
+          "language": "bash",
+          "code": "# 1. Follow the steps in this document to get the OAuth2 credentials:\n# https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid#get_your_google_api_client_id\n# 2. Set \"http://127.0.0.1:8080/dev-ui/\" as the redirect URI. Pay attention to the port number you are using.\n# 3. Copy your Client ID and Client Secret into a .env file. In production, use a secret management tool - never hardcode secrets or put them in .env files.\n\nOAUTH_CLIENT_ID=\"your-client-id.apps.googleusercontent.com\"\nOAUTH_CLIENT_SECRET=\"your-client-secret\""
+        },
+        {
+          "filename": "agent.py",
+          "language": "python",
+          "code": "from datetime import datetime\nimport os\n\nfrom dotenv import load_dotenv\nfrom fastapi.openapi.models import OAuth2\nfrom fastapi.openapi.models import OAuthFlowAuthorizationCode\nfrom fastapi.openapi.models import OAuthFlows\nfrom google.adk.agents.callback_context import CallbackContext\nfrom google.adk.agents.llm_agent import Agent\nfrom google.adk.auth.auth_credential import AuthCredential\nfrom google.adk.auth.auth_credential import AuthCredentialTypes\nfrom google.adk.auth.auth_credential import OAuth2Auth\nfrom google.adk.auth.auth_tool import AuthConfig\nfrom google.adk.tools.authenticated_function_tool import AuthenticatedFunctionTool\nfrom google.adk.tools.google_api_tool import CalendarToolset\nfrom google.adk.tools.tool_context import ToolContext\nfrom google.oauth2.credentials import Credentials\nfrom googleapiclient.discovery import build\n\n# Load environment variables from .env file\nload_dotenv()\n\n# Access the variables.\noauth_client_id = os.getenv(\"OAUTH_CLIENT_ID\")\noauth_client_secret = os.getenv(\"OAUTH_CLIENT_SECRET\")\n\n\ncalendar_toolset = CalendarToolset(\n    client_id=oauth_client_id,\n    client_secret=oauth_client_secret,\n    tool_filter=[\"calendar_events_get\"],\n)\n\ndef list_calendar_events(\n    start_time: str,\n    end_time: str,\n    limit: int,\n    tool_context: ToolContext,\n    credential: AuthCredential,\n) -> list[dict]:\n    \"\"\"Search for calendar events.\n\n    Example:\n\n        flights = get_calendar_events(\n            calendar_id='joedoe@gmail.com',\n            start_time='2024-09-17T06:00:00',\n            end_time='2024-09-17T12:00:00',\n            limit=10\n        )\n        # Returns up to 10 calendar events between 6:00 AM and 12:00 PM on\n        September 17, 2024.\n\n    Args:\n        calendar_id (str): the calendar ID to search for events.\n        start_time (str): The start of the time range (format is\n          YYYY-MM-DDTHH:MM:SS).\n        end_time (str): The end of the time range (format is YYYY-MM-DDTHH:MM:SS).\n        limit (int): The maximum number of results to return.\n\n    Returns:\n        list[dict]: A list of events that match the search criteria.\n    \"\"\"\n\n    creds = Credentials(\n        token=credential.oauth2.access_token,\n        refresh_token=credential.oauth2.refresh_token,\n    )\n\n    service = build(\"calendar\", \"v3\", credentials=creds)\n    events_result = (\n        service.events()\n        .list(\n            calendarId=\"primary\",\n            timeMin=start_time + \"Z\" if start_time else None,\n            timeMax=end_time + \"Z\" if end_time else None,\n            maxResults=limit,\n            singleEvents=True,\n            orderBy=\"startTime\",\n        )\n        .execute()\n    )\n    events = events_result.get(\"items\", [])\n    return events\n\n\ndef update_time(callback_context: CallbackContext):\n  # get current date time\n  now = datetime.now()\n  formatted_time = now.strftime(\"%Y-%m-%d %H:%M:%S\")\n  callback_context.state[\"_time\"] = formatted_time\n\n\nroot_agent = Agent(\n    model=\"gemini-3.1-pro-preview\",\n    name=\"calendar_agent\",\n    instruction=\"\"\"\n      You are a helpful personal calendar assistant.\n      Use the provided tools to search for calendar events (use 10 as limit if user doesn't specify), and get information about them.\n      Use \"primary\" as the calendarId if users don't specify.\n\n      Scenario1:\n      The user want to query the calendar events.\n      Use list_calendar_events to search for calendar events.\n\n\n      Scenario2:\n      User want to know the details of one of the listed calendar events.\n      Use google_calendar_events_get to get the details of a calendar event.\n\n      Current user:\n      <User>\n      {userInfo?}\n      </User>\n\n      Current time: {_time}\n\"\"\",\n    tools=[\n      AuthenticatedFunctionTool(\n            func=list_calendar_events,\n            auth_config=AuthConfig(\n                auth_scheme=OAuth2(\n                    flows=OAuthFlows(\n                        authorizationCode=OAuthFlowAuthorizationCode(\n                            authorizationUrl=(\n                                \"https://accounts.google.com/o/oauth2/auth\"\n                            ),\n                            tokenUrl=\"https://oauth2.googleapis.com/token\",\n                            scopes={\n                                \"https://www.googleapis.com/auth/calendar.readonly\": \"\",\n                            },\n                        )\n                    )\n                ),\n                raw_auth_credential=AuthCredential(\n                    auth_type=AuthCredentialTypes.OAUTH2,\n                    oauth2=OAuth2Auth(\n                        client_id=oauth_client_id,\n                        client_secret=oauth_client_secret,\n                    ),\n                ),\n            ),\n        ),\n        calendar_toolset],\n    before_agent_callback=update_time, \n)"
+        }
+      ],
+      "links": [
+        {
+          "label": "ADK Tool Authentication",
+          "url": "https://google.github.io/adk-docs/tools-custom/authentication/index.md"
+        },
+        {
+          "label": "Interactive OAuth CLI Example",
+          "url": "https://google.github.io/adk-docs/tools-custom/authentication/index.md#handling-the-interactive-oauthoidc-flow-client-side",
+          "description": "Documentation on how to authenticate agents in ADK."
+        },
+        {
+          "label": "OAuth Calendar Agent Sample",
+          "url": "https://github.com/google/adk-python/blob/main/contributing/samples/oauth_calendar_agent/agent.py",
+          "description": "Sample demonstrating AuthenticatedFunctionTool."
+        },
+        {
+          "label": "Dynamic Identity Propagation (ServiceNow)",
+          "url": "https://github.com/google/adk-samples/tree/main/python/agents/incident-management",
+          "description": "Example of token passing to third-party integrations."
+        }
+      ],
+      "description": "\n**Day 26 of Google's Advent of Agents — Season 2**\n\nToday we tackle something every production agent eventually needs: **acting on behalf of a real user**. When an agent needs to access an end-user's private data, like reading their Calendar, Mail or access any resource tied to a specific user's identity - you need to propagate the user's identity to the agent's tool.\n\n**Solution: OAuth 2.0**\n\nOAuth 2.0 lets the agent act on behalf of a specific user, with their explicit permission. The user sees a consent screen, approves access, and the auth server issues a short-lived access token scoped to that user's data. ADK has built-in support for this flow, but the approach differs depending on what kind of tool you're authenticating.\n\n![OAuth2 Flow](/day26-oauth2flow.png)\n\n**Server Side: Authentication Patterns in ADK**\n\n| Pattern | What It Solves | Where to use |\n|----------|---------------|-----------|\n| **Using pre-built Authenticated Tools** | You configure the tool with an 1. **Auth scheme** (the type of authentication the API expects, e.g. OAuth2) and an 2. **Auth credential** (your app's `client_id` and `client_secret`). ADK automates everything else: it detects when credentials are missing, triggers the consent flow, exchanges the authorization code for an access token, stores it in the session, and automatically retries the original tool call once the user has authenticated.| Google Workspace tools (Calendar, Gmail, Drive etc.), GoogleApiToolSet, as well as OpenAPI and APIHub toolsets. |\n| **Building custom FunctionTools** | When building pure custom tools from scratch, you manually orchestrate the full OAuth lifecycle inside your tool function. This provides you with granular control. | Because you supply the authorization endpoint, token endpoint, and auth scopes, this works with any OAuth 2.0 provider: Github, Salesforce, Notion, Spotify etc., |\n\n**AuthenticatedFunctionTool:** This is a convenience wrapper that you can use for both the above patterns. If you have your own custom function but don't want to implement the full Pattern 2 auth logic, wrap it with an `[AuthConfig](https://github.com/google/adk-python/blob/main/contributing/samples/oauth_calendar_agent/agent.py#L165-L186)` specifying the scopes you need. ADK handles credential detection, the consent flow, token exchange, and tool retry and you just write the function logic.\n\n\n**Client Side: Handling the OAuth Flow**\n\nOAuth 2.0 is a multi-step back-and-forth between your app, the user's browser, and the Auth Server. `adk web` handles all of this automatically during development. It acts as the local redirect handler, detects the auth event, opens the browser for the user, intercepts the OAuth callback, exchanges the code for a token, and resumes the agent automatically. But if you are building your own custom clients in production, you need to handle this flow. See the [ADK Authentication docs](https://google.github.io/adk-docs/tools-custom/authentication/#2-handling-the-interactive-oauthoidc-flow-client-side) for how to do that.\n\n**Resources:**\n\n- [Pre-built Tool Authentication](https://google.github.io/adk-docs/tools-custom/authentication/#1-configuring-tools-with-authentication)\n- [Custom Tool Authentication](https://google.github.io/adk-docs/tools-custom/authentication/#journey-2-building-custom-tools-functiontool-requiring-authentication)\n- [OAuth Calendar Agent Sample Code](https://github.com/google/adk-python/blob/main/contributing/samples/oauth_calendar_agent/agent.py)\n",
+      "videoURL": "https://www.youtube.com/embed/NzQM4GihwQU"
+    },
+    {
+      "day": 27,
+      "title": "Scion: an open testbed for agent orchestration",
+      "summary": "Explore multi-agent patterns with an agnostic supra-harness system that isolates agents in git worktrees and containers, allowing easy orchestration and communication",
+      "tags": [
+        "Multiagent",
+        "Harness Engineering",
+        "CLI"
+      ],
+      "icon": "🌱",
+      "resourceLink": "https://github.com/GoogleCloudPlatform/scion",
+      "codeSnippets": [
+        {
+          "filename": "terminal.sh",
+          "language": "bash",
+          "code": "\n# Prerequisites\n# - golang toolchain go.dev \n# - a container runtime (podman suggested) podman.io\n# - The github CLI cli.github.com\n\n# Scion is open source, but we aren't able to provide pre-built images. Github makes it pretty easy\n# But it does take some time\n\n# Get your Github username \nexport GH_USER=$(gh api user --jq '.login')\n\n# Fork the repo\ngh repo fork GoogleCloudPlatform/scion --clone=false\n\n# Disable the docs workflow in your fork\ngh workflow disable \"Build and Deploy Documentation\" --repo $GH_USER/scion\n\n# Build the images\ngh workflow run build-images.yml --repo $GH_USER/scion -f registry=ghcr.io/$GH_USER/scion -f target=all\n\n# Go get a snack - this build step takes about 1.5 hours\n\n# Install the scion cli\ngo install github.com/GoogleCloudPlatform/scion/cmd/scion@latest\n\n# Initialize your machine, you will enter your github registry ghcr.io/$GH_USER/scion\nscion init --global\n\ncreate a test local 'grove'\n\nmkdir my-project\ncd my-project\nscion init\n\n\n# start your first agent\n\nscion start my-agent\n\n# attach to your agent\n\nscion attach my-agent\n\n# Note you will then use tmux keys to detach\n# use C-b d (means hold control key, type 'b' then release and type d)\n\n"
+        }
+      ],
+      "links": [
+        {
+          "label": "Open Source Repo",
+          "url": "https://github.com/GoogleCloudPlatform/scion",
+          "description": "Scion on github"
+        },
+        {
+          "label": "Documentation",
+          "url": "https://googlecloudplatform.github.io/scion/overview/",
+          "description": "Scion Documentation"
+        }
+      ],
+      "description": "\n**Day 27 of Google's Advent of Agents — Season 2**\n\n\n**What is Scion**\n\nScion is a container-based orchestration platform for managing concurrent LLM-powered deep agents across local machines and remote clusters. It enables developers to run groups of specialized agents in parallel — each with isolated identities, credentials, and workspaces — to tackle tasks like coding, research, auditing, and testing simultaneously. It's goal is to provide an open experimental testbed to explore multi-agent orchestration patterns.\n\n**How It Works**\n\n- **Container-isolated agents** — Each agent runs in its own OCI container with a dedicated home directory, environment, and credentials, preventing cross-contamination between concurrent sessions.\n- **Harness abstraction** — A unified CLI ('start', 'stop', 'attach', 'resume') works consistently across supported LLM tools including Gemini CLI, ADK, Claude Code, OpenAI Codex, and OpenCode.\n- **Git worktree workspaces** — Every agent gets an independent git worktree and feature branch, allowing multiple agents to modify the same repository concurrently without conflicts.\n- **Pluggable runtimes** — Supports Docker, Podman, Apple Virtualization Framework, and Kubernetes as execution backends, scaling from a single laptop to production clusters.\n- **Hub + Runtime Broker architecture** — An optional centralized Hub coordinates state, authentication, and orchestration across distributed Runtime Brokers, enabling multi-user and multi-machine deployments.\n- **Template system** — Agents are created from customizable templates that define system prompts, tools, and configurations, allowing specialized roles like \"Security Auditor\" or \"React Specialist.\"\n- **Interactive and detached modes** — Agents can run in the background and be attached to on-demand for human-in-the-loop intervention, with a layered state model (phase, activity, detail) providing real-time observability.\n\n**Resources:**\n\n- [Code Repository](https://github.com/GoogleCloudPlatform/scion)\n- [Docs](https://googlecloudplatform.github.io/scion/overview/)\n- [Relics of Athenaeum - demo agent game](https://github.com/ptone/scion-athenaeum)\n",
+      "videoURL": "https://www.youtube.com/embed/T93MW7wETOc"
+    },
+    {
+      "day": 28,
+      "title": "A2A Protocol: Decoupling Reasoning from Execution",
+      "summary": "Decouple your reasoning engine from execution using the universal A2A 1.0 protocol to bridge a Python LangGraph orchestrator and a Go ADK service.",
+      "description": "**Day 28 of Google's Advent of Agents — Season 2**\n\nAs AI development scales, teams often find themselves locked inside single-framework, single-language silos. If your reasoning team builds in Python using LangGraph, but your enterprise platform team builds scalable services in Go using ADK, how do they securely communicate?\n\n**How It Works**\n\n![A2A Cross-Framework Architecture](/season2-day28-architecture.png)\n\nEnter A2A 1.0 (Agent-to-Agent Protocol). You don't need to rewrite your entire architecture into one mono-language monolith. A2A provides a standardized schema for agents to securely delegate tasks and share context across networks and varying programming languages.\n\n- **Break the Silo**: Instantly connect a LangGraph orchestrator with an executing ADK agent using the universal A2A protocol. Because the payload is strictly standardized JSON, the receiving service can be natively written in Go, Python, or Java without requiring custom translation layers!\n- **Protocol Over Framework**: Instead of building brittle, bespoke REST APIs for every single tool handoff, A2A 1.0 establishes a universal network contract. It standardizes the Task, Context, and Authenticated validation between any two heterogeneous AI microservices.\n- **The Orchestrator Pattern**: Watch a local Python LangGraph node autonomously format an A2A 1.0 payload and dispatch it over HTTP POST to an external Go ADK execution service—completely decoupling the reasoning engine from the execution environment.\n\n**Resources:**\n\n- [LangGraph Documentation](https://langchain-ai.github.io/langgraph/): The orchestrator formatting the JSON A2A envelope.\n- [Google GenAI SDK](https://ai.google.dev/docs): The API powering the underlying execution of the Gemini models.\n- [Pydantic Reference](https://docs.pydantic.dev/): Recommended for strictly typing and parsing the A2A JSON dictionaries.\n- [FastAPI Framework](https://fastapi.tiangolo.com/): Standard for receiving A2A POST payloads in production Python/Go microservices.",
+      "tags": [
+        "A2A",
+        "LangGraph",
+        "ADK",
+        "Protocol"
+      ],
+      "icon": "🤝",
+      "videoURL": "https://www.youtube.com/embed/NsJ7UjRCnZU",
+      "codeSnippets": [
+        {
+          "title": "Execution Framework (Go)",
+          "filename": "adk_execution_service.go",
+          "language": "go",
+          "code": "// adk_execution_service.go\npackage main\n\nimport (\n\t\"bytes\"\n\t\"encoding/json\"\n\t\"fmt\"\n\t\"io\"\n\t\"log\"\n\t\"net/http\"\n\t\"os\"\n\n\t\"github.com/pterm/pterm\"\n\t_ \"github.com/joho/godotenv/autoload\"\n)\n\n// A2A 1.0 Universal Envelope Schema\ntype A2APayload struct {\n\tA2AVersion string            `json:\"a2a_version\"`\n\tSenderID   string            `json:\"sender_id\"`\n\tTask       string            `json:\"task\"`\n\tContext    map[string]string `json:\"context\"`\n}\n\nfunc handleA2A(w http.ResponseWriter, r *http.Request) {\n\tvar payload A2APayload\n\tif err := json.NewDecoder(r.Body).Decode(&payload); err != nil {\n\t\thttp.Error(w, err.Error(), http.StatusBadRequest)\n\t\treturn\n\t}\n\n\tpterm.Info.Printfln(\"[ADK Service] Received A2A Payload from %s: %s\", pterm.LightCyan(payload.SenderID), pterm.LightYellow(payload.Task))\n\n\tapikey := os.Getenv(\"GEMINI_API_KEY\")\n\turl := \"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=\" + apikey\n\n\treqBody := map[string]interface{}{\n\t\t\"system_instruction\": map[string]interface{}{\n\t\t\t\"parts\": []map[string]interface{}{{\"text\": \"You are a platform execution agent. You receive A2A JSON payloads. Parse the 'task' and return a concise, step-by-step execution plan.\"}},\n\t\t},\n\t\t\"contents\": []map[string]interface{}{\n\t\t\t{\"parts\": []map[string]interface{}{{\"text\": fmt.Sprintf(\"Execute this A2A payload task: %s\", payload.Task)}}},\n\t\t},\n\t}\n\tjsonReq, _ := json.Marshal(reqBody)\n\n\tresp, err := http.Post(url, \"application/json\", bytes.NewBuffer(jsonReq))\n\tif err != nil {\n\t\thttp.Error(w, err.Error(), 500)\n\t\treturn\n\t}\n\tdefer resp.Body.Close()\n\n\tbodyBytes, _ := io.ReadAll(resp.Body)\n\tvar genaiResp map[string]interface{}\n\tjson.Unmarshal(bodyBytes, &genaiResp)\n\n\tvar resultString string\n\tif cands, ok := genaiResp[\"candidates\"].([]interface{}); ok && len(cands) > 0 {\n\t\tif content, ok := cands[0].(map[string]interface{})[\"content\"].(map[string]interface{}); ok {\n\t\t\tif parts, ok := content[\"parts\"].([]interface{}); ok && len(parts) > 0 {\n\t\t\t\tif text, ok := parts[0].(map[string]interface{})[\"text\"].(string); ok {\n\t\t\t\t\tresultString = text\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\n\tw.Header().Set(\"Content-Type\", \"application/json\")\n\tjson.NewEncoder(w).Encode(map[string]string{\n\t\t\"final_result\": resultString,\n\t})\n\t\n\tpterm.Success.Println(\"Dispatched response back to LangGraph!\")\n}\n\nfunc main() {\n\tpterm.DefaultHeader.WithFullWidth().Println(\"Go ADK Execution Service\")\n\tpterm.Info.Println(\"Listening on http://localhost:8080/execute\")\n\n\tapikey := os.Getenv(\"GEMINI_API_KEY\")\n\tmaskedKey := apikey\n\tif len(apikey) > 8 {\n\t\tmaskedKey = apikey[:8] + \"...\"\n\t} else if len(apikey) == 0 {\n\t\tmaskedKey = \"NOT CONFIGURED\"\n\t}\n\tpterm.Info.Printfln(\"[Config] Loaded GEMINI_API_KEY: %s\", pterm.LightYellow(maskedKey))\n\n\thttp.HandleFunc(\"/execute\", handleA2A)\n\tlog.Fatal(http.ListenAndServe(\":8080\", nil))\n}"
+        },
+        {
+          "title": "Run Go Service (Terminal 1)",
+          "filename": "terminal",
+          "language": "bash",
+          "code": "# 1. Create a root .env file with your API Key\necho 'GEMINI_API_KEY=\"your-api-key-here\"' > .env\n\n# Spin up the Go Execution Platform\ngo mod init example.com/adk 2>/dev/null || true\ngo get github.com/pterm/pterm github.com/joho/godotenv/autoload\ngo run adk_execution_service.go"
+        },
+        {
+          "title": "Reasoning Framework (Python)",
+          "filename": "a2a_langgraph_orchestrator.py",
+          "language": "python",
+          "code": "# Based on the ASP langgraph_base template\n# a2a_langgraph_orchestrator.py\nimport os\nimport json\nimport urllib.request\nfrom typing import TypedDict\nfrom langgraph.graph import StateGraph, END\nfrom rich.console import Console\nfrom rich.panel import Panel\nfrom rich.json import JSON\nfrom rich.live import Live\nfrom rich.spinner import Spinner\nfrom rich.markdown import Markdown\n\nfrom dotenv import load_dotenv\nload_dotenv()\n\nconsole = Console()\n\n# ====================================================================\n# 1. PYTHON LANGGRAPH AGENT (The Reasoning Framework)\n# ====================================================================\nclass AgentState(TypedDict):\n    objective: str\n    a2a_payload: str\n    final_result: str\n\ndef reasoning_node(state: AgentState):\n    console.print(Panel(\"[bold green]LangGraph[/bold green]: Reasoning complete. Formatting A2A 1.0 envelope.\", title=\"[Reasoning Engine]\"))\n    \n    # Standard A2A 1.0 Payload formulation\n    envelope = {\n        \"a2a_version\": \"1.0\",\n        \"sender_id\": \"langgraph-orchestrator\",\n        \"task\": state[\"objective\"],\n        \"context\": {\"urgency\": \"high\", \"auth_token\": \"bearer_abc123\"}\n    }\n    return {\"a2a_payload\": json.dumps(envelope)}\n\ndef a2a_dispatch_node(state: AgentState):\n    \"\"\"Dispatches the A2A payload to the Go ADK framework across the network\"\"\"\n    \n    with Live(Spinner(\"dots\", text=\"[bold yellow]Dispatching A2A payload via HTTP POST to Go Service...[/bold yellow]\"), refresh_per_second=10) as live:\n        req = urllib.request.Request(\n            \"http://localhost:8080/execute\", \n            data=state[\"a2a_payload\"].encode('utf-8'),\n            headers={'Content-Type': 'application/json'}\n        )\n        \n        try:\n            with urllib.request.urlopen(req) as response:\n                result = json.loads(response.read().decode())\n                live.update(Panel(\"[bold green]Dispatch Success![/bold green]\", title=\"[Network]\"))\n                return {\"final_result\": result[\"final_result\"]}\n        except Exception as e:\n            live.update(Panel(f\"[bold red]Dispatch failed[/bold red]: {e}\", title=\"[Network]\"))\n            return {\"final_result\": f\"Dispatch failed: {e}\"}\n\n# 2. Build and Run the Graph\nworkflow = StateGraph(AgentState)\nworkflow.add_node(\"reason\", reasoning_node)\nworkflow.add_node(\"delegate_via_a2a\", a2a_dispatch_node)\n\nworkflow.set_entry_point(\"reason\")\nworkflow.add_edge(\"reason\", \"delegate_via_a2a\")\nworkflow.add_edge(\"delegate_via_a2a\", END)\n\nlanggraph_app = workflow.compile()\n\nif __name__ == \"__main__\":\n    console.print(Panel(\"[bold blue]Starting LangGraph A2A Orchestrator[/bold blue]\", title=\"[System]\"))\n    \n    apikey = os.environ.get(\"GEMINI_API_KEY\", \"\")\n    masked_key = apikey[:8] + \"...\" if len(apikey) > 8 else apikey\n    console.print(Panel(f\"[bold yellow]Loaded GEMINI_API_KEY[/bold yellow]: {masked_key}\", title=\"[Config]\"))\n    \n    final_state = langgraph_app.invoke({\n        \"objective\": \"Execute production database migration to Cloud SQL\", \n        \"a2a_payload\": \"\",\n        \"final_result\": \"\"\n    })\n    \n    console.print(Panel(JSON(final_state[\"a2a_payload\"]), title=\"[A2A 1.0 Envelope - Dispatched]\"))\n    \n    console.print(Panel(Markdown(final_state['final_result']), title=\"[ADK Execution Result]\"))"
+        },
+        {
+          "title": "Run Python Orchestrator (Terminal 2)",
+          "filename": "terminal",
+          "language": "bash",
+          "code": "# Trigger the LangGraph Orchestrator\npip install langgraph rich pydantic python-dotenv\npython a2a_langgraph_orchestrator.py"
+        }
+      ],
+      "links": [
+        {
+          "label": "LangChain Blog: Multi-Agent Workflows",
+          "url": "https://blog.langchain.dev/multi-agent-workflows/",
+          "description": "Conceptual architectures for delegating tasks between disconnected agent frameworks."
+        },
+        {
+          "label": "YouTube: Stop using MCP for everything!",
+          "url": "https://www.youtube.com/watch?v=ks4M8b9Ul6E",
+          "description": "RAG vs. A2A vs. Sub-agents architecture explained."
+        },
+        {
+          "label": "Google Cloud: Building AI Workflows",
+          "url": "https://cloud.google.com/blog/products/ai-machine-learning",
+          "description": "High-level patterns for decoupling robust AI reasoning engines from API execution."
+        },
+        {
+          "label": "Agent Starter Pack Walkthrough",
+          "url": "https://github.com/GoogleCloudPlatform/agent-starter-pack",
+          "description": "Explore the Agent-to-Agent interaction patterns built by Google Cloud engineers."
+        }
+      ]
+    },
+    {
+      "day": 29,
+      "title": "ApiRegistry: Dynamically Fetching BigQuery Tools",
+      "summary": "Learn how to use the ApiRegistry object to dynamically fetch an admin-approved, fully configured BigQuery tool directly from the Cloud API Registry at runtime.",
+      "description": "**Day 29 of Google's Advent of Agents — Season 2**\n\nHardcoding API credentials into your agents is a security risk and an infrastructure headache. Instead, we can dynamically fetch admin-approved, fully configured tools directly from the Cloud API Registry at runtime.\n\n**How It Works**\n\nBy leveraging the `ApiRegistry`, we separate our agent logic from infrastructure specifics to enforce strict enterprise governance while keeping our AI portable. The registry ensures the agent always pulls the right connection settings, IAM roles, and boundaries without relying on local keys.\n\n- **Dependencies**: Include `google-cloud-bigquery` and `google-auth` to securely interact with GCP.\n- **Environment Authorization**: Use Application Default Credentials to connect from your local environment seamlessly, or inherit Workload Identity when running on Cloud Run.\n- **ApiRegistry Reference**: The wrapper dynamically yields a configured `bigquery.Client()` out of the box so your code stays clean and your credentials stay safe.\n\n**Resources:**\n\n- [API Registry Documentation](https://docs.cloud.google.com/api-registry/docs/overview)\n- [Enhanced Tool Governance in Vertex AI](https://cloud.google.com/blog/products/ai-machine-learning/new-enhanced-tool-governance-in-vertex-ai-agent-builder?e=48754805)",
+      "tags": [
+        "ApiRegistry",
+        "BigQuery",
+        "Authentication"
+      ],
+      "icon": "🗄️",
+      "resourceLink": "https://docs.cloud.google.com/api-registry/docs/overview",
+      "videoURL": "https://www.youtube.com/embed/981wf6l3fCA",
+      "links": [
+        {
+          "label": "API Registry Documentation",
+          "url": "https://docs.cloud.google.com/api-registry/docs/overview",
+          "description": "Official documentation for the Cloud API Registry."
+        },
+        {
+          "label": "Enhanced Tool Governance Blog Post",
+          "url": "https://cloud.google.com/blog/products/ai-machine-learning/new-enhanced-tool-governance-in-vertex-ai-agent-builder?e=48754805",
+          "description": "Google Cloud blog post covering Vertex AI Agent Builder tool governance."
+        }
+      ],
+      "codeSnippets": [
+        {
+          "title": "Python Dependencies",
+          "filename": "requirements.txt",
+          "language": "text",
+          "code": "google-cloud-bigquery\ngoogle-auth"
+        },
+        {
+          "title": "Environment Setup",
+          "filename": "setup.sh",
+          "language": "bash",
+          "code": "#!/bin/bash\n#1. Install dependencies\npip install -r requirements.txt\n\n#2. Setup the \"Registry\" Data\necho \"Setting up Registry Data\"\n\n#replace project-id with your project id\nbq mk --dataset project-id:registry_demo\nbq query --use_legacy_sql=false \\\n'CREATE OR REPLACE TABLE `project-id.registry_demo.test_table` AS SELECT \"Registry_Active\" as status'\n\n#3. Authorize the environment\necho \"Please authorize the environment registry:\"\ngcloud auth application-default login"
+        },
+        {
+          "title": "Dynamic Loader",
+          "filename": "main.py",
+          "language": "python",
+          "code": "import google.auth\nfrom google.cloud import bigquery\n\nclass ApiRegistry:\n    @staticmethod\n    def get_tool(tool_id):\n        #Dynamically fetch config from Cloud Registry\n        creds, project = google.auth.default()\n        project = project or \"project-id\" #replace project-id with your project id\n        return bigquery.Client(credentials=creds, project=project)\n\ndef run_task():\n    #1. Fetch tool from Registry\n    bq = ApiRegistry.get_tool(\"bigquery-admin-v2\")\n    \n    # 2. Execute admin-approved query\n    #replace project-id with your project id\n    sql = \"SELECT status FROM `project-id.registry_demo.test_table`\"\n    for row in bq.query(sql):\n        print(f\"Verified via Registry: {row.status}\")\n\nif __name__ == \"__main__\":\n    run_task()"
+        }
+      ],
+      "hasContent": true
+    },
+    {
+      "day": 30,
+      "title": "Observability: Debug with Hierarchical Tracing",
+      "summary": "Eliminate silent failures in AI agents by implementing Hierarchical Trace Observability with OpenTelemetry and Arize Phoenix.",
+      "tags": [
+        "OpenTelemetry",
+        "Arize Phoenix",
+        "Tracing",
+        "ADK"
+      ],
+      "icon": "🔍",
+      "videoURL": "https://www.youtube.com/embed/AVmNpeubF4w",
+      "description": "\n**Day 30 of Google's Advent of Agents — Season 2**\n\nTraditional logging fails to capture the non-linear reasoning of AI agents, leaving developers \"debugging in the dark\" when silent failures occur. Without granular visibility, it is impossible to isolate whether a failure stems from model hallucinations, infrastructure outages, or policy violations.\n\n**How It Works**\n\n**Hierarchical Trace Observability** provides process transparency by treating agent reasoning as discrete, measurable units using **OpenTelemetry (OTel)** and **Arize Phoenix**:\n\n- **Auto-Instrumentation**: Use OpenInference instrumentors to automatically capture spans from Google GenAI and other LLM providers.\n- **Trace Visualization**: View the hierarchical structure of agent calls in Arize Phoenix to isolate problematic spans like hallucinations.\n- **Span Replay**: Troubleshoot by replaying specific \"thoughts\" in a Prompt Playground sandbox with original variables to experiment with fixes.\n\n**Resources:**\n\n- [GitHub Project Repository](https://github.com/siri2421/advent-of-agents-observabiity.git)\n- [Arize Phoenix Documentation](https://arize.com/docs/phoenix)\n- [Phoenix Observability for ADK](https://google.github.io/adk-docs/integrations/phoenix/#support-and-resources)\n- [ADK Documentation](https://google.github.io/adk-docs/)",
+      "resourceLink": "https://arize.com/docs/phoenix",
+      "links": [
+        {
+          "label": "GitHub Project Repository",
+          "url": "https://github.com/siri2421/advent-of-agents-observabiity.git",
+          "description": "Working implementation of OTel and Phoenix observability."
+        },
+        {
+          "label": "Arize Phoenix Documentation",
+          "url": "https://arize.com/docs/phoenix",
+          "description": "Complete guide to the Phoenix observability platform."
+        },
+        {
+          "label": "Phoenix Observability for ADK",
+          "url": "https://google.github.io/adk-docs/integrations/phoenix/#support-and-resources",
+          "description": "Specific integration guide for using Phoenix with ADK."
+        },
+        {
+          "label": "ADK Documentation",
+          "url": "https://google.github.io/adk-docs/",
+          "description": "Agent Development Kit documentation."
+        }
+      ],
+      "codeSnippets": [
+        {
+          "title": "Observability & Model Call",
+          "filename": "debug_agent.py",
+          "language": "python",
+          "code": "from phoenix.otel import register\nfrom openinference.instrumentation.google_genai import GoogleGenAIInstrumentor\nfrom google import genai\n\n# 1. Register project for trace collection\nregister(project_name=\"advent-of-agents-debug\", auto_instrument=True)\n\n# 2. Instrument Google GenAI to capture model spans automatically\nGoogleGenAIInstrumentor().instrument()\n\n# 3. Execute model call with gemini-3.1-flash to generate traces\nclient = genai.Client()\nresponse = client.models.generate_content(\n    model=\"gemini-3.1-flash\", \n    contents=\"Explain observability in AI agents.\"\n)\nprint(response.text)"
+        }
+      ],
+      "emailPrompt": "Focus on solving the 'Silent Failure' problem in AI agents. Explain how Hierarchical Trace Observability with OpenTelemetry and Arize Phoenix allows developers to step inside the agent's 'thought process' to debug hallucinations and latency issues effectively."
+    },
+    {
+      "day": 31,
+      "emailPrompt": "In the email please incorporate that this is leverage Gemini Enterprise, Protocols A2A & A2UI, Agent Framework ADK, and Cloud Runtime Cloud Run.",
+      "title": "A2UI & A2A: Building the Dog Weather App",
+      "summary": "Transform static agent responses into rich interactive micro-apps natively rendered in Gemini Enterprise using A2UI.",
+      "description": "**Day 31 of Google's Advent of Agents — Season 2**\n\nStandard agents often hit a wall when communicating complex, stateful data through raw text or basic Markdown. This demo showcases how to leverage A2UI to deliver high-fidelity, interactive micro-apps directly within Gemini Enterprise without deploying any frontend code.\n\n**Technical Orchestration**\n\nBy integrating A2UI templates into the system prompt, we enable the model to generate strictly validated JSON that the client renders natively. ADK orchestrates the session state and tool execution, bridging the gap between the model and the enterprise environment.\n\n- **Declarative UI**: Uses A2UI protocol to define component trees (Cards, Columns, Rows) and data binding via `valueStruct` for efficient updates.\n- **Dynamic Interaction**: Implements `sendText` actions with @-mentions to maintain session context and route button clicks reliably back to ADK.\n- **Multi-modal Chaining**: Demonstrates deterministic tool chaining where ADK manages the flow between random location selection, weather retrieval, and live image fetching in a single turn.\n\n**Resources:**\n\n- [A2UI Specification](https://a2ui.org)\n- [Google ADK Repository](https://github.com/google-gemini/adk)\n- [Day 31 Article](https://adventofagents.com/2026/03/31)",
+      "tags": [
+        "A2UI",
+        "A2A",
+        "Gemini Enterprise",
+        "ADK"
+      ],
+      "icon": "🐶",
+      "videoURL": null,
+      "resourceLink": "https://a2ui.org",
+      "links": [
+        {
+          "label": "GitHub Repository",
+          "url": "https://github.com/goabego/adventofagents-day31",
+          "description": "Full source code for both the text-only baseline and the interactive Dog Weather App."
+        },
+        {
+          "label": "ADK Documentation",
+          "url": "https://github.com/google-gemini/adk",
+          "description": "Core SDK used for tool registration and A2A lifecycle management."
+        },
+        {
+          "label": "A2UI Introduction",
+          "url": "https://a2ui.org/introduction/what-is-a2ui/",
+          "description": "Overview of the declarative UI protocol for generative agents."
+        },
+        {
+          "label": "A2A Agent Registration",
+          "url": "https://docs.cloud.google.com/gemini/enterprise/docs/register-and-manage-an-adk-agent",
+          "description": "Official guide on how to register and manage your custom ADK agents within Gemini Enterprise."
+        }
+      ],
+      "codeSnippets": [
+        {
+          "title": "Agent Definition with A2UI",
+          "filename": "dog_weather_agent.py",
+          "language": "python",
+          "code": "from google.adk import agents\nfrom prompt_builder import get_ui_instruction\n\nclass DogWeatherAgent(agents.LlmAgent):\n    def __init__(self, **kwargs):\n        # 1. Define persona with A2UI rules & schemas\n        base_prompt = \"You are a pun-loving weather assistant. Fetch!\"\n        full_instruction = get_ui_instruction(base_prompt)\n        \n        super().__init__(\n            name=\"weather_agent_v2\",\n            model=\"gemini-3.1-flash-lite-preview\",\n            instruction=full_instruction,\n            tools=[get_weather, get_random_location]\n        )\n\n# 2. Return data-bound A2UI payload via tool chaining\ndef get_weather(location: str):\n    return {\n        \"location\": location,\n        \"temp\": \"72°F\",\n        \"dogImageUrl\": \"https://dog.ceo/api/image\"\n    }"
+        },
+        {
+          "title": "ADK Integration with A2A & A2UI",
+          "filename": "a2a_server.py",
+          "language": "python",
+          "code": "from a2a.server.apps.jsonrpc.starlette_app import A2AStarletteApplication\nfrom a2a.server.request_handlers import DefaultRequestHandler\n\n# 1. Initialize ADK Agent & A2A Executor\nagent = DogWeatherAgent()\nagent_card = agent.create_agent_card(AGENT_URL)\n\n# 2. Build A2A Server with ADK-to-A2A Bridge\napp = A2AStarletteApplication(\n    agent_card=agent_card,\n    http_handler=DefaultRequestHandler(\n        agent_executor=AdkAgentToA2AExecutor()\n    )\n).build()"
+        }
+      ]
+    }
+  ]
+}

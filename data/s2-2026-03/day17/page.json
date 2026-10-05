@@ -1,0 +1,58 @@
+{
+  "day": "day17",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "Workspace & Gemini Enterprise: no-code agents",
+  "summary": "Connect and use Google Workspace connectors in personal Gemini Enterprise agents.",
+  "tags": [
+    "Gemini Enterprise",
+    "Google Workspace",
+    "Connectors",
+    "Agent Designer"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/17",
+  "video_id": "2kQbRBftUus",
+  "video_url": "https://www.youtube.com/watch?v=2kQbRBftUus",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Codelab: Integrate Gemini Enterprise Agents with Google Workspace",
+      "url": "https://codelabs.developers.google.com/ge-gws-agents",
+      "description": "Step-by-step guide to building the integration."
+    },
+    {
+      "title": "Gemini Enterprise Documentation",
+      "url": "https://docs.cloud.google.com/gemini/enterprise/docs",
+      "description": "Official documentation for Gemini Enterprise."
+    },
+    {
+      "title": "Google Workspace Developers",
+      "url": "https://developers.google.com/workspace",
+      "description": "Build solutions with Google Workspace."
+    },
+    {
+      "title": "Connect a Google Data Source",
+      "url": "https://docs.cloud.google.com/gemini/enterprise/docs/connectors/create-data-store",
+      "description": "Learn how to connect Workspace data to Gemini."
+    },
+    {
+      "title": "Agent Designer Overview",
+      "url": "https://docs.cloud.google.com/gemini/enterprise/docs/agent-designer",
+      "description": "Build agents without writing code."
+    }
+  ],
+  "code": "# No code solution - Check the video and codelab!\n",
+  "icon": "🚀",
+  "resource_link": "https://codelabs.developers.google.com/ge-gws-agents",
+  "code_snippets": [
+    {
+      "filename": "terminal",
+      "language": "bash",
+      "code": "# No code solution - Check the video and codelab!"
+    }
+  ],
+  "description": "\n**Day 17 of Google's Advent of Agents — Season 2**\n\nThe **Google Workspace** and **Gemini Enterprise** platforms are a natural fit: Google Workspace brings the productivity data & tools, and Gemini Enterprise brings the agents that everyone can build and use in organizations.\n\nToday we showcase:\n\n- How to create your first **Gemini Enterprise application**.\n- How to **connect Google Workspace data** to Gemini Enterprise using connectors.\n- How to use the Gemini Enterprise **Agent Designer to build personal agents** that rely on Google Workspace connectors.\n\nWhile the **Agent Designer** offers a powerful, accessible entry point for rapid automation, a **pro-code approach is also supported** for the more complex logic, bespoke API integrations, or advanced data transformations that require the granular control of custom development. But that's a subject for another day!\n\n**Resources:**\n\n- [Codelab: Integrate Gemini Enterprise Agents with Google Workspace](https://codelabs.developers.google.com/ge-gws-agents)\n- [Gemini Enterprise Documentation](https://docs.cloud.google.com/gemini/enterprise/docs)\n- [Google Workspace Developers](https://developers.google.com/workspace)\n- [Connect a Google Data Source](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/create-data-store)\n- [Agent Designer Overview](https://docs.cloud.google.com/gemini/enterprise/docs/agent-designer)\n"
+}

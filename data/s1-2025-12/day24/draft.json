@@ -1,0 +1,172 @@
+[
+  {
+    "t": 0,
+    "en": "Hello there and welcome to another day of advent of agents. Did you know that you can actually build your A2A agent",
+    "ru": ""
+  },
+  {
+    "t": 7,
+    "en": "starting from any ADK agent in a matter of second? You can do it by using the agent starter packer resource we created to actually help you build production ready agents really quickly. To do that it's a matter of running a single terminal command uvx agent starter back",
+    "ru": ""
+  },
+  {
+    "t": 24,
+    "en": "enance and then passing as a base template ADK 8way base. This template",
+    "ru": ""
+  },
+  {
+    "t": 29,
+    "en": "will contain everything you need to build your 8-way agent using ADK.",
+    "ru": ""
+  },
+  {
+    "t": 35,
+    "en": "If we run it, the CLI will guide us into",
+    "ru": ""
+  },
+  {
+    "t": 38,
+    "en": "the process where it will ask us where we keep our agent code. In this case, the agent code is kept in the app folder. Uh which deployment we want to use, whether we want to use agent engine or clan. Let's choose clan for this sample.",
+    "ru": ""
+  },
+  {
+    "t": 55,
+    "en": "Um, we don't need CI/CD. So, let's go with simple. US Central one is fine. And",
+    "ru": ""
+  },
+  {
+    "t": 61,
+    "en": "this will verify that we have everything to connect to Germany. And boom, in a matter of seconds, you can see we just generated everything we need. So we have a fast API application",
+    "ru": ""
+  },
+  {
+    "t": 74,
+    "en": "which includes the A2A code",
+    "ru": ""
+  },
+  {
+    "t": 78,
+    "en": "as well as uh Python requirements some",
+    "ru": ""
+  },
+  {
+    "t": 81,
+    "en": "integration and unit test using A2A as",
+    "ru": ""
+  },
+  {
+    "t": 85,
+    "en": "well. So starting is really easy. For example, now I can um run um the the",
+    "ru": ""
+  },
+  {
+    "t": 92,
+    "en": "service the fast API service locally",
+    "ru": ""
+  },
+  {
+    "t": 95,
+    "en": "with make local back end. The back end will be exposed into localost 800",
+    "ru": ""
+  },
+  {
+    "t": 102,
+    "en": "and then in another port I can run make inspector and this will help me into using the 8way inspector. So it will launch theway inspector. It will be available in port 5001 and I can actually copy this URL that I will tend to paste into the inspector which will allow me to connect the inspector with it with the local back end. So let's open the inspector UI and",
+    "ru": ""
+  },
+  {
+    "t": 127,
+    "en": "paste the URL of the agent card. Let's",
+    "ru": ""
+  },
+  {
+    "t": 131,
+    "en": "connect with it. And you can see that actually our agent follows a way and we",
+    "ru": ""
+  },
+  {
+    "t": 137,
+    "en": "can start interacting with it. So for example in this case here is a dummy weather agent. So you can we can ask weather in New York.",
+    "ru": ""
+  },
+  {
+    "t": 148,
+    "en": "The agent will kick off and it should",
+    "ru": ""
+  },
+  {
+    "t": 151,
+    "en": "respond with a tool call. in this case saying that the weather in New York should be 90° and sunny. Perfect. You can see it responded correctly. Again, this was not an agent that was able to to cate in a matter of seconds using the",
+    "ru": ""
+  },
+  {
+    "t": 166,
+    "en": "enhance comment in the starter pack. We managed to do it. You can also use the starter pack to pull existing A2A agents. So for",
+    "ru": ""
+  },
+  {
+    "t": 178,
+    "en": "example, you can use instead of using the enhance command, you can use the create command and still pass in as a base template ADK",
+    "ru": ""
+  },
+  {
+    "t": 188,
+    "en": "A2A base. And by giving any name of your",
+    "ru": ""
+  },
+  {
+    "t": 191,
+    "en": "agent, you'll be able to choose between a list of possible agents from ADK samples. All of these samples were not originally designed to to talk K2A, but you can actually use the power of the starter pack to merge the code that would be required to power A2A. So you can use academic research, deep search, any of the sample here that are being stored in in our public ADK sample repository and",
+    "ru": ""
+  },
+  {
+    "t": 217,
+    "en": "pull it and the starter pack will essentially do the magic to create an A2A compatible agent from it. So for",
+    "ru": ""
+  },
+  {
+    "t": 225,
+    "en": "example we can choose uh I don't know five which is the deep search one the template will be fetch",
+    "ru": ""
+  },
+  {
+    "t": 235,
+    "en": "we can still continue with the prompting of um confirming a few requirements",
+    "ru": ""
+  },
+  {
+    "t": 242,
+    "en": "uh again agent engine or cloud run let's choose agent engine here we don't need any CI/CD and boom again in a couple of",
+    "ru": ""
+  },
+  {
+    "t": 250,
+    "en": "seconds the starter pack will pull our sample that will be generated here in this case is not a dummy agent or like our code.",
+    "ru": ""
+  },
+  {
+    "t": 260,
+    "en": "It's the public ADK sample in this case",
+    "ru": ""
+  },
+  {
+    "t": 263,
+    "en": "is a deep search sample together with everything you need to speak 8way in this case here you can see is the agent engine um 82A interface and",
+    "ru": ""
+  },
+  {
+    "t": 277,
+    "en": "the journey is pretty much the same. You can run this better. You can then even deploy it to make deploy so that it can be deployed to um Google cloud. So",
+    "ru": ""
+  },
+  {
+    "t": 287,
+    "en": "pretty much the same journey. So that concludes our um demo. We hope you like",
+    "ru": ""
+  },
+  {
+    "t": 293,
+    "en": "it and we look forward to see you the [clears throat] next",
+    "ru": ""
+  }
+]

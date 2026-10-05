@@ -1,0 +1,59 @@
+{
+  "day": "day04",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "MCP Servers: Add external tools to your agents in just a few lines",
+  "summary": "Wire up multiple MCP servers simultaneously to trace bugs from Linear to GitHub PRs.",
+  "tags": [
+    "Code Analysis",
+    "Tool Call",
+    "MCP",
+    "ADK"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/04",
+  "video_id": "to4k4aPlYDw",
+  "video_url": "https://www.youtube.com/watch?v=to4k4aPlYDw",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Developer Blog",
+      "url": "https://developers.googleblog.com/en/supercharge-your-ai-agents-adk-integrations-ecosystem/",
+      "description": "Supercharge your AI Agents: Details on ADK Integrations Ecosystem"
+    },
+    {
+      "title": "Model Context Protocol Documentation",
+      "url": "https://modelcontextprotocol.io/",
+      "description": "Standardizing how agents access diverse data sources"
+    },
+    {
+      "title": "GitHub MCP Server",
+      "url": "https://google.github.io/adk-docs/integrations/github",
+      "description": "GitHub MCP Server implementation"
+    },
+    {
+      "title": "Linear MCP Server",
+      "url": "https://google.github.io/adk-docs/integrations/linear",
+      "description": "Linear MCP Server implementation"
+    }
+  ],
+  "code": "",
+  "icon": "🐞",
+  "resource_link": "https://developers.googleblog.com/en/supercharge-your-ai-agents-adk-integrations-ecosystem/",
+  "code_snippets": [
+    {
+      "filename": "agent.py",
+      "language": "python",
+      "code": "from google.adk.agents import Agent\nfrom google.adk.models import Gemini\nfrom google.adk.apps import App\nfrom google.adk.tools.mcp_tool import McpToolset\nfrom google.adk.tools.mcp_tool.mcp_session_manager import StreamableHTTPServerParams\nimport os\n\nGITHUB_TOKEN = os.environ.get(\"GITHUB_TOKEN\")\nLINEAR_API_KEY = os.environ.get(\"LINEAR_API_KEY\")\n\nroot_agent = Agent(\n    model=Gemini(model=\"gemini-3-flash-preview\"),\n    name=\"root_agent\",\n    instruction=open(os.path.join(os.path.dirname(__file__), \"prompt.md\")).read(),\n    tools=[\n        McpToolset(\n            tool_name_prefix=\"github_\",\n            connection_params=StreamableHTTPServerParams(\n                url=\"https://api.githubcopilot.com/mcp/\",\n                headers={\n                    \"Authorization\": f\"Bearer {GITHUB_TOKEN}\",\n                    \"X-MCP-Toolsets\": \"pull_requests\",\n                    \"X-MCP-Readonly\": \"true\"\n                },\n            ),\n        ),\n        McpToolset(\n            tool_name_prefix=\"linear_\",\n            tool_filter=[\"get_issue\", \"list_issues\", \"search_issues\"],\n            connection_params=StreamableHTTPServerParams(\n                url=\"https://mcp.linear.app/mcp\",\n                headers={\n                    \"Authorization\": f\"Bearer {LINEAR_API_KEY}\",\n                },\n            ),\n        )\n    ],\n)\n\napp = App(\n    name=\"app\",\n    root_agent=root_agent,\n)"
+    },
+    {
+      "filename": "prompt.md",
+      "language": "markdown",
+      "code": "You are an intelligent agent that can fetch the source diff of a Pull Request based on the Linear issue ID. Your exact workflow is:\n1. Use `linear_get_issue` to fetch the specific bug report in Linear.\n2. Extract keywords, branch names, or the exact title from the Linear issue.\n3. Use `github_list_pull_requests` or `github_search_pull_requests` in the provided GitHub repository using those extracted keywords to find the associated Pull Request. Important: Always restrict your search to the user's provided repository (e.g. `repo:rovindra/web-master`) rather than searching globally. Do not search by the literal Linear issue ID unless you know it's in the PR title.\n4. Use `github_pull_request_read` to fetch the source diff of that exact PR.\n5. Summarize the diff based on the PR contents.\n\nWhen returning the final response, you MUST format the details as a markdown table followed by the diff summary:\n| Field | Details |\n|---|---|\n| **Title** | [PR Title] |\n| **Author** | [PR Author] |\n| **Branch** | [PR Branch] |\n| **Date** | [PR Date] |\n| **Files Changed** | [PR No. of Files Changed] |\n| **State** | [Open/Merged/Closed] |\n| **Issue** | [Linear Issue ID & Title] |\n| **Description** | [Brief PR Description] |\n| **Summary** | [Your brief summary of the changes] |\n\n### Diff Analysis\n[Detailed explanation of the code changes...]\n\n### Diff\n[Actual diff of the changes...]\n\nNever ask the user for a PR number if they already provided the target GitHub repository and Linear issue ID."
+    }
+  ],
+  "description": "\n**Day 4 of Google's Advent of Agents — Season 2**\n\nConnecting a single external tool to an agent is useful, but routing context across multiple specialized tools unlocks complex workflows. 🌐 \n\nThe **Model Context Protocol (MCP)** standardizes how agents access these diverse data sources. By configuring our triage agent with both the **GitHub** and **Linear** MCP servers simultaneously, it can cross-reference system records natively without manual intervention! 🤖✨\n\n**🐛 The Triaging Workflow**\n\nWhen diagnosing a reported bug, developers typically piece together context across issue trackers and version control. We can automate this painful triaging process:\n\n1. **Bug Extraction:** The agent first queries the `[Linear MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/linear)` to extract the details of a specific bug report. 📋\n\n2. **Context Routing:** Using those identifiers or branch names, the agent seamlessly pivots to query the `[GitHub MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/github)` to locate the corresponding pull request. 🔀\n\n3. **Analysis & Summary:** Finally, it analyzes the code diffs and summarizes the exact changes introduced, bridging the gap between the product issue and the committed code. 🔍💻.  \n\nSay goodbye to context-switching between tabs! 🎉\n",
+  "video_available": false
+}

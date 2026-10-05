@@ -1,0 +1,1234 @@
+{
+  "currentDay": 25,
+  "days": [
+    {
+      "day": 1,
+      "title": "Launch Initiative",
+      "summary": "25 days. Zero to Production-Ready AI Agents on Google Cloud.",
+      "description": "**Advent of Agents 2025 starts NOW!**\n\n25 days. Zero to Production-Ready AI Agents on Google Cloud.\n\n**Every day until Christmas:**\n\n- ⚡ One feature, < 5 min to try\n- 💻 Copy-paste commands that actually work\n- 📖 Links to docs\n\nFrom quickstart agents to multi-agent orchestration. From local dev to production deployment.\n\n**The Hub:** Bookmark this site! Each day we unlock new content along with helpful code snippets. It's your permanent archive to catch up on missed days, recover past posts, and grab the code you need to build your production agent by Christmas.\n\n**What we are covering:** We're going deep on the latest tools:\n\n- **Gemini 3:** Context engineering, Computer Use, Live API, and advanced patterns\n- [Google ADK](https://google.github.io/adk-docs/): The Agent Development Kit (Python)\n- [Vertex AI Agent Engine](https://cloud.google.com/products/agent-builder): Deploy an Agent in minutes\n- [The Agent Starter Pack](https://github.com/GoogleCloudPlatform/agent-starter-pack): E2E production-ready templates\n\n**📚 Recommended Reading:** To kick things off, check out the [Introduction to Agents whitepaper](https://www.kaggle.com/whitepaper-introduction-to-agents), released as part of the 5 Days of Agents with Kaggle.\n\n**Let's get ready to build!**",
+      "tags": [
+        "Launch"
+      ],
+      "icon": "🎄",
+      "resourceLink": "https://goo.gle/advent-of-agents",
+      "links": [
+        {
+          "label": "Introduction to Agents Whitepaper",
+          "url": "https://www.kaggle.com/whitepaper-introduction-to-agents",
+          "description": "Released as part of the 5 Days of Agents with Kaggle"
+        },
+        {
+          "label": "Google ADK Documentation",
+          "url": "https://google.github.io/adk-docs/",
+          "description": "Official documentation for the Agent Development Kit"
+        },
+        {
+          "label": "Agent Engine on Vertex AI",
+          "url": "https://cloud.google.com/products/agent-builder",
+          "description": "Deploy and manage agents at scale with Vertex AI"
+        },
+        {
+          "label": "Agent Starter Pack",
+          "url": "https://github.com/GoogleCloudPlatform/agent-starter-pack",
+          "description": "Production-ready templates for building AI agents"
+        }
+      ],
+      "codeSnippets": [],
+      "videoURL": "https://www.youtube.com/embed/aYG7h20YNB0"
+    },
+    {
+      "day": 2,
+      "title": "Hello World with YAML",
+      "summary": "Build your first AI agent with Gemini 3 in under 5 minutes without writing a single line of code.",
+      "description": "**Day 2 of Google's Advent of Agents**\n\nBuild your first AI agent with Gemini 3 in under 5 minutes without writing a single line of code.\n\n**4 lines of text = 1 working AI agent.**\n\nNo Python. No coding. Just YAML.\n\nI'm not talking about no-code tools with limitations. I'm talking about code-first agents. The ones developers build for real world deployment.\n\n**What you get with 4 lines of YAML:**\n\n- A working AI agent powered by Gemini 3\n- Google Search integration\n- Ready to deploy\n- Zero programming knowledge needed\n\nCopy. Paste. Run with built in web UI. That's it.\n\n**And here's where it gets interesting:**\n\nOnce you have your YAML agent, you can add:\n\n- Built-in tools (google_search, code_execution)\n- Custom Python tools (when you're ready)\n- Sub-agents for complex workflows\n- Multi-agent orchestration\n\nStart simple. Scale when needed.\n\n**What you'll build today:**\n\nTry building a multi-agent app with MCP using Google ADK (pure YAML).\n\nYou can find helpful resources in the links section.",
+      "tags": [
+        "ADK",
+        "YAML",
+        "Quickstart"
+      ],
+      "icon": "📝",
+      "resourceLink": "https://google.github.io/adk-docs/agents/config/",
+      "links": [
+        {
+          "label": "ADK Config Agents Documentation",
+          "url": "https://google.github.io/adk-docs/agents/config/",
+          "description": "Build agents with YAML configuration"
+        },
+        {
+          "label": "Tutorial: AI Agent with Google Search (YAML)",
+          "url": "https://x.com/Saboo_Shubham_/status/1971038699329908885",
+          "description": "Step-by-step tutorial (~2 mins)"
+        },
+        {
+          "label": "Tutorial: Multi-agent app with MCP (YAML)",
+          "url": "https://x.com/Saboo_Shubham_/status/1971763476818547010",
+          "description": "Build a Multi-agent app using Google ADK"
+        },
+        {
+          "label": "Third Party MCP Tools in ADK",
+          "url": "https://google.github.io/adk-docs/tools/third-party/",
+          "description": "Integrate MCP tools with your ADK agents"
+        }
+      ],
+      "codeSnippets": [
+        {
+          "filename": "terminal",
+          "language": "bash",
+          "code": "uvx --from google-adk adk create --type=config my_agent\nuvx --from google-adk adk web my_agent/"
+        }
+      ],
+      "videoURL": "https://www.youtube.com/embed/bPGf51XBJ44"
+    },
+    {
+      "day": 3,
+      "title": "Gemini 3 + ADK",
+      "summary": "Build a powerful AI Agent using Gemini 3 and ADK with native support for Google Search grounding, computer use, and real-time streaming.",
+      "description": "**Day 3 of Google's Advent of Agents**\n\nGemini 3 is Google's most intelligent model yet. In just a few minutes, you can build a powerful AI Agent using Gemini 3 and ADK with native, day-one support for its most advanced capabilities.\n\n**What you get with ADK and Gemini 3:**\n\n- **Google Search grounding:** Native access to real-time web data\n- **Computer use:** Agents that navigate and interact with UIs\n- **Live API:** Real-time streaming for voice and video agents\n- **Native observability:** Full visibility into Gemini calls, tool use, and agent reasoning\n\n**Get started with just one command:**\n\n```bash\nuvx agent-starter-pack create -y --api-key YOUR_GEMINI_API_KEY\n```\n\nNo need to code from scratch. Use Gemini CLI or Antigravity IDE to generate your agent. The agent-starter-pack includes an ADK cheatsheet to guide you through everything.\n\n**Resources:**\n\n- Video tutorial to build an AI Agent with Gemini 3 and ADK\n- GitHub repo with working code\n- Complete docs for the ADK Google Search Tool",
+      "tags": [
+        "Gemini 3",
+        "ADK",
+        "Google Search"
+      ],
+      "icon": "🚀",
+      "resourceLink": "https://google.github.io/adk-docs/tools/built-in-tools/#google-search",
+      "links": [
+        {
+          "label": "Build an AI Agent with Gemini 3 (Video)",
+          "url": "https://www.youtube.com/watch?v=9EGtawwvlNs&list=PLOU2XLYxmsIJCVXV1bLV7qnT5hilN3YJ7&index=4&t=1s",
+          "description": "Step-by-step video tutorial"
+        },
+        {
+          "label": "Gemini 3 Agent Demo (GitHub)",
+          "url": "https://github.com/GoogleCloudPlatform/devrel-demos/tree/main/ai-ml/agent-labs/gemini-3-pro-agent-demo",
+          "description": "Working code for the AI Agent built with Gemini 3 Pro"
+        },
+        {
+          "label": "ADK Google Search Tool Docs",
+          "url": "https://google.github.io/adk-docs/tools/built-in-tools/#google-search",
+          "description": "Complete documentation for the Google Search tool"
+        },
+        {
+          "label": "Gemini 3 Announcement",
+          "url": "https://blog.google/products/gemini/gemini-3/#gemini-3",
+          "description": "Official announcement on The Keyword"
+        }
+      ],
+      "codeSnippets": [
+        {
+          "filename": "One liner with Agent Starter Pack",
+          "language": "bash",
+          "code": "uvx agent-starter-pack create -y --api-key YOUR_GEMINI_API_KEY"
+        },
+        {
+          "filename": "Using ADK CLI",
+          "language": "bash",
+          "code": "uv init\nuv add google-adk\nuv add google-genai\nexport GOOGLE_API_KEY=\"YOUR_API_KEY\"\nsource .venv/bin/activate\nadk create my_agent"
+        },
+        {
+          "filename": "Download sample and run locally",
+          "language": "bash",
+          "code": "curl 'https://raw.githubusercontent.com/GoogleCloudPlatform/devrel-demos/refs/heads/main/ai-ml/agent-labs/gemini-3-pro-agent-demo/my_agent/agent.py' > my_agent/agent.py\nadk web"
+        }
+      ],
+      "videoURL": "https://www.youtube.com/embed/9EGtawwvlNs"
+    },
+    {
+      "day": 4,
+      "title": "Source-Based Deployment",
+      "summary": "Deploy your agents directly from source code with Agent Engine - no more serialization headaches.",
+      "description": "**Day 4 of Google's Advent of Agents**\n\nAgent Engine now supports source-based deployment. Your source code deploys directly to production, eliminating common deployment friction.\n\n**No more dealing with:**\n\n- Pickle errors\n- Serialization nightmares\n- Module path headaches\n\nWhat runs locally now runs in production. The gap between development and deployment is gone.\n\n**Get started with Agent Starter Pack:**\n\nFor a new project:\n\n```bash\nuvx agent-starter-pack create my-agent -a adk_base -d agent_engine\n```\n\nAlready have an ADK agent? Use enhance:\n\n```bash\nuvx agent-starter-pack enhance --d agent_engine\n```\n\nThen run `make deploy` and you're done.\n\n**Resources:**\n\n- Video walkthrough of source-based deployment\n- Agent Starter Pack repository\n- Agent Engine deployment documentation",
+      "tags": [
+        "Agent Engine",
+        "Deployment",
+        "ADK"
+      ],
+      "icon": "🚀",
+      "resourceLink": "https://cloud.google.com/products/agent-engine",
+      "links": [
+        {
+          "label": "Source-Based Deployment Tutorial (Video)",
+          "url": "https://youtu.be/8RjzMG3BKA0",
+          "description": "Step-by-step video walkthrough"
+        },
+        {
+          "label": "Agent Starter Pack",
+          "url": "https://goo.gle/agent-starter-pack",
+          "description": "Quickstart tool for building and deploying agents"
+        },
+        {
+          "label": "Agent Engine Deployment Docs",
+          "url": "https://cloud.google.com/products/agent-engine#deploy",
+          "description": "Official documentation for Agent Engine deployment"
+        }
+      ],
+      "codeSnippets": [
+        {
+          "filename": "Create new project with Agent Starter Pack",
+          "language": "bash",
+          "code": "uvx agent-starter-pack create my-agent -a adk_base -d agent_engine\ncd my-agent && make deploy"
+        },
+        {
+          "filename": "Enhance existing ADK agent",
+          "language": "bash",
+          "code": "uvx agent-starter-pack enhance --d agent_engine"
+        }
+      ],
+      "videoURL": "https://www.youtube.com/embed/8RjzMG3BKA0"
+    },
+    {
+      "day": 5,
+      "title": "Production Observability",
+      "summary": "Agent Starter Pack includes production-grade observability with zero config. Cloud Trace, Log Analytics, and BigQuery integration out of the box.",
+      "description": "**Day 5 of Google's Advent of Agents**\n\nYour agent is deployed. But what's it actually doing?\n\nAgent Starter Pack now includes production observability. Zero config required.\n\nFull production-grade observability that enterprises need, built-in from day one.\n\n**Two levels of observability, automatically configured:**\n\n**1. Agent Telemetry**\n- Cloud Trace captures every execution\n- LLM calls with latency breakdown\n- Tool execution timing\n- Full conversation flow visibility\n\n**2. Prompt-Response Logging (Auto-enabled)**\n- Full E2E journey provisioned via Terraform\n- Log Analytics + Log Buckets with custom retention\n- BigQuery Delta Lake with custom views for easy querying\n- No sensitive data in logs - all content written to GCS\n\n**Deploy with one command:**\n\n```bash\nuvx agent-starter-pack create my-agent -a adk_base -d agent_engine\nmake deploy\n```\n\nMost teams spend weeks setting up observability infrastructure. You get it in minutes. No configuration. No setup. No custom instrumentation. Just deploy and start monitoring.",
+      "tags": [
+        "Observability",
+        "Cloud Trace",
+        "BigQuery",
+        "Terraform"
+      ],
+      "icon": "📊",
+      "resourceLink": "https://googlecloudplatform.github.io/agent-starter-pack/guide/observability.html",
+      "links": [
+        {
+          "label": "Observability Guide",
+          "url": "https://googlecloudplatform.github.io/agent-starter-pack/guide/observability.html",
+          "description": "Complete documentation on production observability"
+        },
+        {
+          "label": "Agent Starter Pack GitHub",
+          "url": "https://github.com/GoogleCloudPlatform/agent-starter-pack",
+          "description": "Full source code and repository"
+        }
+      ],
+      "codeSnippets": [
+        {
+          "filename": "Deploy with observability",
+          "language": "bash",
+          "code": "uvx agent-starter-pack create my-agent -a adk_base -d agent_engine\nmake deploy"
+        }
+      ],
+      "videoURL": "https://www.youtube.com/embed/Q5CXbwkHHns"
+    },
+    {
+      "day": 6,
+      "title": "🧑‍💻 ADK ready in Antigravity, Gemini CLI, Cursor, Firebase Studio and more",
+      "summary": "Building agents shouldn't require an hour of environment configuration. If you use the Agent Starter Pack you already have IDE magnet context baked in for the Agent Development Kit (ADK).",
+      "description": "**Day 6 of Google's Advent of Agents**\n\nBuilding agents shouldn't require an hour of environment configuration. If you use the Agent Starter Pack you already have IDE magnet context baked in for the Agent Development Kit (ADK).\n\nIn the attached video, you can see the antigravity with zero config aware of how ADK works, thanks to that default-on ADK cheatsheet which ships with the Agent Starter Pack and works with most IDEs.\n\nIf you aren’t using the Agent Starter Pack, here are a few ideas how you might configure a few IDEs.\n\n**Super Short Command:**\n\n```bash\nuvx agent-starter-pack create deep_search --adk\n```\n\n**Resources:**\n\n- Check out the [Agent Starter Pack](https://github.com/GoogleCloudPlatform/agent-starter-pack)\n- Check out the [ADK Documentation](https://google.github.io/adk-docs/)\n- Check out the [ADK Cheat Sheet](https://googlecloudplatform.github.io/agent-starter-pack/guide/installation.html)\n- Check out the [llms.txt explanation](https://llmstxt.org/)\n- Check out the [Video: ADK ready in Antigravity, Gemini CLI, Cursor, Firebase Studio and more](https://www.youtube.com/watch?v=Ep8usBDUTtA)\n- Bonus: Gemini made [Code Wiki](https://codewiki.google/github.com/google/adk-go)",
+      "tags": [
+        "ANTIGRAVITY",
+        "CLI",
+        "IDE",
+        "ADK"
+      ],
+      "icon": "🧑‍💻",
+      "videoURL": "https://www.youtube.com/embed/Ep8usBDUTtA",
+      "links": [
+        {
+          "label": "Antigravity",
+          "url": "https://antigravity.google/",
+          "description": "Antigravity IDE"
+        },
+        {
+          "label": "ADK Documentation llms.txt",
+          "url": "https://google.github.io/adk-docs/llms.txt",
+          "description": "ADK Documentation llms.txt file"
+        },
+        {
+          "label": "ADK Cheat Sheet",
+          "url": "https://googlecloudplatform.github.io/agent-starter-pack/guide/installation.html",
+          "description": "ADK Cheat Sheet from Agent Starter Pack"
+        },
+        {
+          "label": "llms.txt explanation",
+          "url": "https://llmstxt.org/",
+          "description": "Explanation of llms.txt"
+        },
+        {
+          "label": "Video: ADK ready in Antigravity, Gemini CLI, Cursor, Firebase Studio and more",
+          "url": "https://www.youtube.com/watch?v=Ep8usBDUTtA",
+          "description": "YouTube video demonstrating ADK integration."
+        },
+        {
+          "label": "Bonus: Gemini made Code Wiki",
+          "url": "https://codewiki.google/github.com/google/adk-go",
+          "description": "Want all the documentation in one url for a human or a giant context window? This is a cool resource for any public repo, in this case ADK Go!"
+        }
+      ],
+      "codeSnippets": [
+        {
+          "filename": "Antigravity Commands.sh",
+          "language": "bash",
+          "code": "# Using ADK and Agent Starter Pack within Antigravity\nuvx agent-starter-pack create deep_search --adk\n# nothing else"
+        },
+        {
+          "filename": "Visual Studio Code.sh",
+          "language": "bash",
+          "code": "# Install dependencies\npip install pydantic-ai\ngemini extensions install https://github.com/derailed-dash/adk-docs-ext\ngemini"
+        },
+        {
+          "filename": "Gemini CLI.sh",
+          "language": "bash",
+          "code": "fetch from https://google.github.io/adk-docs/llms.txt\nHow do I create a function tool using Agent Development Kit?"
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "LLMs Can Execute Code: Autonomous Problem Solving",
+      "summary": "Explore how LLMs can not only write but also execute, debug, and refine code autonomously, transforming them into powerful problem solvers.",
+      "description": "**Day 7 of Google's Advent of Agents**\n\nLLMs can write code, and in a sandbox, they can execute it too. \n\nCode execution is not just for vibecoding. It's one of the most effective ways to solve complex problems.\n\nCertainly useful for math, but we aren't only talking about math. I'm talking about agents that can write, execute, debug, refine, and deliver working \"tools\", whenever they are needed.\n\n**Why code execution matters for agents:**\nMany times, a few lines of code is the most efficient solution. Code is deterministic. Code is precise. And code is simply another language for describing a process.\n\n**What you get with ADK's Code Executor:**\n\n- BuiltInCodeExecutor that works out of the box\n- Runs on your local machine or in managed cloud sandboxes\n- Compatible with cloud sandboxes like Agent Engine, Google Kubernetes Engine, and Daytona\n- Agents can write, test, debug, and iterate on code\n- Final output: either the result of code execution or the working code itself\n- No complex setup. Just enable the tool.\n\n**See it in action:**\nWe have some great resources to get you started.\n\n- A new [adk-samples](https://github.com/google/adk-samples) for [retail location strategy](https://github.com/google/adk-samples/tree/main/python/agents/retail-ai-location-strategy) showcases code execution, along with Google Search and Google Maps\n- Our [Step by step introduction notebook showing everything about Code execution](https://github.com/GoogleCloudPlatform/generative-ai/blob/main/agents/agent_engine/tutorial_get_started_with_code_execution.ipynb)\n\nThis is a gold mine of information about very important skills.",
+      "tags": [
+        "Code Execution",
+        "LLMs",
+        "Agents",
+        "ADK"
+      ],
+      "icon": "💡",
+      "videoURL": "https://www.youtube.com/embed/u1txECrXj6k",
+      "links": [
+        {
+          "label": "Get started with Code Execution on Vertex AI Agent Engine",
+          "url": "https://cloud.google.com/vertex-ai/docs/agent-engine/code-execution",
+          "description": "Learn how to integrate and use code execution with Vertex AI Agent Engine."
+        },
+        {
+          "label": "Retail AI Location Strategy: Autonomous Site Selection & Market Analysis",
+          "url": "https://github.com/google/adk-samples/tree/main/python/agents/retail-ai-location-strategy",
+          "description": "Explore a fully built case study on using AI for autonomous site selection and market analysis in retail."
+        },
+        {
+          "label": "Everything about Code execution step by step",
+          "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/agents/agent_engine/tutorial_get_started_with_code_execution.ipynb",
+          "description": "A comprehensive guide to the Code Execution feature, locally and on Vertex AI Agent Engine. Learn to give agents the ability to run code in a secure environment, transforming them into capable problem-solvers."
+        }
+      ],
+      "codeSnippets": [
+        {
+          "filename": "Local Set up.sh",
+          "language": "bash",
+          "code": "git clone https://github.com/google/adk-samples.git\ncd adk-samples/python/agents/retail-ai-location-strategy\n\ncp .env.example .env\n# Edit .env with your keys:\n#   GOOGLE_API_KEY=your_ai_studio_key\n#   GOOGLE_GENAI_USE_VERTEXAI=FALSE\n#   MAPS_API_KEY=your_maps_key\n\n# Install & Run\nmake install && make dev"
+        },
+        {
+          "filename": "(Optional) Cloud Run or Agent Engine Deployment.sh",
+          "language": "bash",
+          "code": "# Set up Google Cloud:\ngcloud auth application-default login\n\n# Deploy to Vertex AI Agent Engine\ngcloud config set project YOUR_PROJECT_ID\nmake backend\n\n# Deploy to Cloud Run\nexport GOOGLE_CLOUD_PROJECT=your-project-id\nexport GOOGLE_CLOUD_LOCATION=us-central1\nmake deploy-cloud-run"
+        },
+        {
+          "filename": "Sample Code BuiltInCodeExecutor.py",
+          "language": "python",
+          "code": "gap_analysis_agent = LlmAgent(\n    name=\"GapAnalysisAgent\",\n    model=CODE_EXEC_MODEL,\n    description=\"Performs quantitative gap analysis using Python code execution for zone rankings and viability scores\",\n    instruction=GAP_ANALYSIS_INSTRUCTION,\n    generate_content_config=types.GenerateContentConfig(\n        http_options=types.HttpOptions(\n            retry_options=types.HttpRetryOptions(\n                initial_delay=RETRY_INITIAL_DELAY,\n                attempts=RETRY_ATTEMPTS,\n            ),\n        ),\n    ),\n\n# This enables the \"Code Execution\" capability.\n# It allows the agent to write Python, run it in a sandbox, and use the\n# actual output (variables, dataframes) as the response.\n\n    code_executor=BuiltInCodeExecutor(),\n    output_key=\"gap_analysis\",\n    before_agent_callback=before_gap_analysis,\n    after_agent_callback=after_gap_analysis,\n)"
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "title": "Effective Context Management with ADK Layers",
+      "summary": "ADK Context design thesis: context as a compiled view",
+      "description": "**Day 8 of Google's Advent of Agents**\n\n**Stop stuffing spaghetti context into your agent's LLM.**\n\nThe \"append-everything\" strategy is a one-way ticket to latency spirals and \"lost in the middle\" hallucinations.\nGoogle ADK shifts the paradigm by treating context as a **compiled view** (not a giant string).\nInstead of shoveling raw history into the window, ADK uses a pipeline of processors to dynamically filter, compact, and format a clean \"working context\" derived from a structured, durable session state.  \nAs a developer, you can control that pipeline to customize the behavior to your needs.\n\n**Real engineering requires granular control, not just a bigger context window.**\n\nADK’s tiered architecture separates storage from presentation, allowing you to externalize massive files as Artifacts (using a handle pattern) and retrieve long-term data via searchable Memory only when strictly necessary.\nWhether you are managing strict multi-agent handoffs or debugging tool interactions, specialized objects like ToolContext ensure your agents access exactly the scope they need—and nothing they don't.\n\n**Build for production scale with patterns that optimize for model capabilities.**\n\nADK operationalizes Context Caching by enforcing a clear separation between \"Static Instructions\" (invariant policies and schemas) and \"Turn Instructions\" (dynamic, controller-owned steering).\nThis design keeps your heavy system headers stable to slash costs and latency, while ensuring that per-turn directives remain legally distinct from user input for better security and validation.\n\nAs described in [Day 3 of our Kaggle 5 Day intensive course](https://www.kaggle.com/whitepaper-context-engineering-sessions-and-memory), Agents are largely \"context management\".\n\nThis is how you do it.",
+      "tags": [
+        "Context Management",
+        "Layers",
+        "Caching"
+      ],
+      "icon": "🧱",
+      "videoURL": "https://www.youtube.com/embed/DdTtiWoMa3E",
+      "links": [
+        {
+          "label": "Architecting efficient context-aware multi-agent framework for production",
+          "url": "https://developers.googleblog.com/architecting-efficient-context-aware-multi-agent-framework-for-production/",
+          "description": "Design principles from an ADK Tech Lead: Context is a compiled view over a richer stateful system."
+        },
+        {
+          "label": "ADK Context Documentation",
+          "url": "https://google.github.io/adk-docs/context/",
+          "description": "Learn about working with context in the ADK in the official docs."
+        },
+        {
+          "label": "The ADK Prompting Pattern: Static vs. Turn Instructions",
+          "url": "https://medium.com/google-cloud/the-adk-prompting-pattern-static-vs-turn-instructions-7a1e5b25eeef",
+          "description": "A deep dive into static vs. turn instructions (code examples from this article)."
+        },
+        {
+          "label": "Context Engineering: Sessions & Memory | Kaggle",
+          "url": "https://www.kaggle.com/whitepaper-context-engineering-sessions-and-memory",
+          "description": "Day 3 of the Kaggle course on AI Agents is all about context management."
+        },
+        {
+          "label": "A longer NotebookLM summary of ADK context management",
+          "url": "https://youtu.be/eQDx90dVc38",
+          "description": "8 minute video summary of context management and how ADK solves it."
+        },
+        {
+          "label": "ADK Context Engineering Infographic",
+          "url": "https://adventofagents.com/aoa-day8-art-of-context-engineering-with-adk.png",
+          "description": "NotebookLM generated infographic summarizing ADK context engineering."
+        }
+      ],
+      "codeSnippets": [
+        {
+          "filename": "app_setup.py",
+          "language": "python",
+          "code": "# An Example of Static Context Policy \nfrom google.adk.apps import App\nfrom google.adk.agents import Agent\nfrom google.adk.agents.context_cache_config import ContextCacheConfig\n\nSTATIC_POLICY_HEADER = \"\"\"You are a strict policy assistant for internal compliance Q&A.\n\nFollow this exact JSON schema in every response:\n{\"answer\": str, \"citations\": [str], \"confidence\": float}\n\nSafety:\n- Never provide medical or legal advice; refuse with a brief explanation.\n- Never invent policy numbers or sections; ask for the missing reference.\n\nStyle:\n- Use short sentences.\n- Prefer active voice.\n- If uncertain, say so and request the missing input.\n\nTools:\n- search: use for public web facts.\n- bq: use for internal policy tables (read-only).\n\"\"\"\n\nagent = Agent(\n    name=\"policy_agent\",\n    static_instruction=STATIC_POLICY_HEADER,\n    instruction=\"Default: be concise and include at most two citations.\"\n)\n\napp = App(\n    name=\"policy_qa_app\",\n    context_cache_config=ContextCacheConfig(\n        ttl_seconds=3600,     # cache the header for 1 hour\n        cache_intervals=5,    # force a refresh every 5 requests (guardrail)\n        min_tokens=1000       # only cache if header is “worth it”\n    ),\n    root_agent=agent\n)"
+        },
+        {
+          "filename": "steering.py",
+          "language": "python",
+          "code": "# An Example of a runtime controller generating each turn instructions\nfrom dataclasses import dataclass\nfrom typing import Optional, Tuple\n\n@dataclass\nclass SteeringInputs:\n    goal: str                                  # this turn’s objective\n    style: str = \"concise\"                     # terse, detailed, crisp, etc.\n    max_cites: int = 2                         # runtime knob\n    tenant_hint: Optional[str] = None          # \"Answer for EU employees only\"\n    corrective: Optional[str] = None           # \"Last reply missed field X; include it\"\n    confidence_range: Tuple[float, float] = (0.6, 0.9)\n\ndef build_turn_instruction(s: SteeringInputs) -> str:\n    parts = [\n        f\"Goal: {s.goal}\",\n        f\"Style: {s.style}\",\n        (\n            \"Constraints: \"\n            f\"include at most {s.max_cites} citations; \"\n            \"refuse medical/legal advice; \"\n            \"if info is missing, ask one targeted question; \"\n            f\"return 'confidence' between {s.confidence_range[0]} and {s.confidence_range[1]}.\"\n        )\n    ]\n    if s.tenant_hint:\n        parts.append(f\"Tenant: {s.tenant_hint}\")\n    if s.corrective:\n        parts.append(f\"Correction: {s.corrective}\")\n    return \"\n\".join(parts)"
+        },
+        {
+          "filename": "chat_handler.py",
+          "language": "python",
+          "code": "# An Example of a chat handler which composes the turn instruction\nfrom steering import SteeringInputs, build_turn_instruction\nfrom google.adk.agents import Agent\n\n# agent imported from app_startup.py\n\ndef route_intent(user_message: str) -> str:\n    text = user_message.lower()\n    if \"compare\" in text: return \"compare\"\n    if \"list\" in text and \"control\" in text: return \"list_controls\"\n    if \"summarize\" in text: return \"summarize\"\n    return \"answer\"\n\nINTENT_TO_GOAL = {\n    \"summarize\": \"Summarize ACME-42 in plain English.\",\n    \"list_controls\": \"List mandatory controls from ACME-42 with one-line rationales.\",\n    \"compare\": \"Compare ACME-42 to ISO 27001 at a high level, return a short markdown table inside the JSON 'answer'.\",\n    \"answer\": \"Answer the user directly.\"\n}\n\ndef chat(session_id: str, user_message: str, ui_style: str | None = None):\n    intent = route_intent(user_message)\n    goal = INTENT_TO_GOAL.get(intent, f\"Answer the user: {user_message[:120]}\")\n\n    style = ui_style or get_flag(session_id, \"style\", default=\"concise\")\n    max_cites = get_flag(session_id, \"max_citations\", default=2)\n    tenant_hint = get_tenant_hint(session_id)     # e.g., \"EU employees only\" or None\n    corrective = get_last_validation_error(session_id)  # None or short string\n\n    turn_instruction = build_turn_instruction(\n        SteeringInputs(\n            goal=goal,\n            style=style,\n            max_cites=max_cites,\n            tenant_hint=tenant_hint,\n            corrective=(f\"Your last reply failed validation: {corrective}. Fix it this turn.\" if corrective else None)\n        )\n    )\n\n    agent.instruction = turn_instruction\n    response = agent.run(user_message=user_message)\n    validate_and_record(session_id, response)     # optional schema check + feedback\n    return response"
+        }
+      ]
+    },
+    {
+      "day": 9,
+      "title": "⏪ Undo buttons for your Agents",
+      "summary": "Building an \"Edit Message\" or \"Regenerate\" feature shouldn't require complex database migrations. In the ADK, time travel is built-in.",
+      "description": "**Day 9 of Google's Advent of Agents**\n\nYour agent does step 1, 2, 3, 4... \nbut what if you realize step 2 was a mistake and you want to rewind time and start from there?\n\nNow the ADK has time travel and checkpointing!\n\nInstead of destructively deleting history, the runner calculates the difference between \"now\" and \"then\" (State & Artifact Deltas) and appends a rewind event to the log. \nThis allows you to revert the application state to a specific timestamp or invocation ID while keeping a complete audit trail of what happened.\n\n**The simple fix**\n\nYou don't just \"go back\"—you restore the world to exactly how it was, and you keep the rewound path in case you need it.\n\nTry it out yourself in this sample [adk-python](https://github.com/google/adk-python/blob/main/contributing/samples/rewind_session/main.py).\n\nAs a developer, you can use rewind to undo a step in the conversation, or to revert to a previous state of the application.\nThe agent can also take this action as a tool, if you have configured it to know how to do so.\n",
+      "tags": [
+        "Rewind",
+        "Resume",
+        "ADK",
+        "Time Travel",
+        "Undo"
+      ],
+      "icon": "⏪",
+      "resourceLink": "https://github.com/GoogleCloudPlatform/agent-developer-kit/tree/main/adk-python/",
+      "codeSnippets": [
+        {
+          "filename": "rewind_example.py",
+          "language": "python",
+          "code": "import asyncio\nfrom adk.api.agents.in_memory_runner import InMemoryRunner\n\n# 1. Initialize the runner\nrunner = InMemoryRunner(...)\n\n# 2. Something goes wrong? (e.g., hallucination or error at 'invocation_456')\n# Instead of clearing the session, we request a rewind.\n\n# 3. Rewind (Time Travel)\n# This asynchronously restores session state and artifacts to the target moment.\nasyncio.run(\n    runner.rewind_async(\n        session_id='session_123',\n        before_invocation_id='invocation_456'\n    )\n)\n\n# 4. Resume the conversation from that exact point\nasyncio.run(runner.run(query=\"Let's try that request again with these constraints...\"))"
+        }
+      ],
+      "links": [
+        {
+          "label": "ADK Docs: Runtime Resume",
+          "url": "https://google.github.io/adk-docs/runtime/resume/",
+          "description": "Learn how to resume an ADK session."
+        },
+        {
+          "label": "ADK Docs: Sessions Rewind",
+          "url": "https://google.github.io/adk-docs/sessions/rewind/",
+          "description": "Understand the ADK rewind functionality for time travel."
+        },
+        {
+          "label": "ADK Python Sample: Rewind Session",
+          "url": "https://github.com/google/adk-python/blob/main/contributing/samples/rewind_session/main.py",
+          "description": "View a practical example of session rewinding in ADK Python."
+        }
+      ],
+      "videoURL": "https://www.youtube.com/embed/9FQh-Pw2sfE"
+    },
+    {
+      "day": 10,
+      "title": "Big Context ≠ Better Memory",
+      "summary": "Long-running agent sessions face two enemies: latency and \"lost in the middle\" syndrome. The ADK solves this with Context Caching and Context Compaction.",
+      "description": "**Day 10 of Google's Advent of Agents**\n\nLong-running agent sessions face two enemies: latency and \"lost in the middle\" syndrome. As conversation history grows, re-sending massive system instructions becomes expensive, and the model struggles to prioritize earlier rules against recent noise.\n\nThe ADK solves this with a two-prong approach. First, [Context Caching](https://google.github.io/adk-docs/context/caching/) allows you to cache the immutable parts of your prompt (system instructions, few-shot examples) so you don't pay the compute cost on every turn. Second, [Context Compaction](https://google.github.io/adk-docs/context/compaction/) prevents history bloat.\n\nInstead of appending raw messages indefinitely, the ADK uses a sliding window to summarize older events into a concise \"memory\" block while keeping recent interactions verbatim for precision.",
+      "tags": [
+        "Memory",
+        "ADK",
+        "Context Caching",
+        "Context Compaction",
+        "Memory"
+      ],
+      "icon": "🧠",
+      "videoURL": "https://www.youtube.com/embed/L3eKHw9df-g",
+      "codeSnippets": [
+        {
+          "filename": "context_config.py",
+          "language": "python",
+          "code": "from google.adk.apps import App, EventsCompactionConfig\nfrom google.adk.agents.context_cache_config import ContextCacheConfig\n\n# Configure your App with both Caching and Compaction\napp = App(\n    name='long-memory-agent',\n    root_agent=my_agent,\n    \n    # 1. Cache heavy instructions\n    context_cache_config=ContextCacheConfig(\n        min_tokens=2048,    # Only cache if prompt is heavy\n        ttl_seconds=1800,   # Keep cache alive for 30 mins\n        cache_intervals=10  # Refresh after 10 uses\n    ),\n\n    # 2. Compress history to prevent \"Context Rot\"\n    events_compaction_config=EventsCompactionConfig(\n        compaction_interval=3, # Summarize every 3 turns\n        overlap_size=1         # Keep 1 turn of context overlap\n    )\n)"
+        }
+      ],
+      "links": [
+        {
+          "label": "Context Compaction",
+          "url": "https://google.github.io/adk-docs/context/compaction/",
+          "description": "Learn how to compress history to prevent context rot."
+        },
+        {
+          "label": "Context Caching",
+          "url": "https://google.github.io/adk-docs/context/caching/",
+          "description": "Learn how to cache heavy instructions for better performance."
+        },
+        {
+          "label": "Context Compaction Explained",
+          "url": "https://x.com/Saboo_Shubham_/status/1978286461607911617",
+          "description": "A visual explanation of context compaction."
+        },
+        {
+          "label": "ADK Context Caching & Compaction Infographic",
+          "url": "https://adventofagents.com/aoa-day10-context-caching-compaction.png",
+          "description": "NotebookLM generated infographic summarizing ADK context caching & compaction."
+        },
+        {
+          "label": "Additional Reading: The Context Trap Every Agent Builder Falls Into",
+          "url": "https://www.theunwindai.com/p/the-context-trap-every-agent-builder-falls-into",
+          "description": "An article discussing common context management pitfalls every agent builder faces."
+        }
+      ]
+    },
+    {
+      "day": 11,
+      "title": "Google Managed MCP",
+      "summary": "Connect Agents to Google Services with Managed MCP.",
+      "description": "**Day 11 of Google's Advent of Agents**\n\n**Connect Agents to Google Services with Managed MCP.** While MCP as described in [Day 2 Kaggle AI Agent's intensive course Whitepaper](https://www.kaggle.com/whitepaper-agent-tools-and-interoperability-with-mcp) has standardized how models connect to tools, the burden of maintaining community-built servers often leads to fragile, unmanaged implementations. Google’s new **Managed MCP support** eliminates this overhead by upgrading our existing API infrastructure into a unified, remote layer across Google Cloud services.\n\n**A Unified, Governed Interface.** Instead of parsing brittle CLI output, your agents now have structured, discoverable interfaces for complex systems:\n\n-   **Google Maps:** Provides \"Grounding Lite\" to give agents fresh geospatial data and routing details, preventing hallucinations about physical locations.\n-   **BigQuery:** Enables agents to interpret schemas and execute queries in-place without moving massive datasets into the context window, reducing latency and security risks.\n-   **GKE & Compute Engine:** Exposes infrastructure management (provisioning, resizing, diagnosing) as discoverable tools, allowing for true \"Day-2\" autonomous operations.\n\n**Security built-in, not bolted on.** Because these are managed endpoints, you don't lose control. Administrators can govern access via **Google Cloud IAM** and defend against indirect prompt injection using **Google Cloud Model Armor**.\n\nExplore the code for the [Launch My Bakery](https://github.com/google/mcp/tree/main/examples/launchmybakery) demo.\n\n**Resources:**\n\n- Read the blog post [Announcing Official MCP Support for Google Services](https://cloud.google.com/blog/products/ai-machine-learning/announcing-official-mcp-support-for-google-services?e=48754805)\n- Read the [Kaggle Whitepaper: Agent Tools and Interoperability with MCP](https://www.kaggle.com/whitepaper-agent-tools-and-interoperability-with-mcp)\n- Check out the [Launch My Bakery GitHub Example](https://github.com/google/mcp/tree/main/examples/launchmybakery)",
+      "tags": [
+        "MCP",
+        "ADK",
+        "Google Cloud",
+        "BigQuery",
+        "Google Maps",
+        "GKE",
+        "Compute Engine"
+      ],
+      "icon": "☁️",
+      "videoURL": "https://www.youtube.com/embed/wzccErUYhTI",
+      "codeSnippets": [
+        {
+          "filename": "bakery_agent.py",
+          "language": "python",
+          "code": "import os\nfrom google.genai import types\nfrom google.genai.adk import Agent\nfrom google.genai.mcp import RemoteMCPServer\n\n# 1. Define the Fully-Managed Remote MCP Servers\n#    These endpoints are now natively supported by Google's infrastructure\nbigquery_mcp = RemoteMCPServer(\n    url=\"https://mcp.googleapis.com/bigquery\",\n    capabilities=[\"schema_read\", \"query_execute\"],\n    auth_token=os.getenv(\"GOOGLE_CLOUD_TOKEN\") # Uses standard IAM\n)\n\nmaps_mcp = RemoteMCPServer(\n    url=\"https://mcp.googleapis.com/maps\",\n    capabilities=[\"places_search\", \"routing\", \"elevation\"],\n    auth_token=os.getenv(\"GOOGLE_MAPS_API_KEY\")\n)\n\n# 2. Initialize the ADK Agent with MCP Tools\n#    The agent can now \"see\" your enterprise data and the real world\nbakery_agent = Agent(\n    model=\"gemini-3-pro\",\n    tools=[bigquery_mcp, maps_mcp],\n    system_instruction=\"\"\"\n    You are a retail expansion scout.\n    1. Query BigQuery to find high-revenue demographics.\n    2. Use Google Maps to find available locations near competitors.\n    3. Synthesize a recommendation for a new bakery location.\n    \"\"\"\n)\n\n# 3. Run the Agent\n#    Gemini 3 plans the multi-step execution automatically\nresponse = bakery_agent.run(\n    \"Find a location in Austin, TX with high disposable income and low competition.\"\n)\nprint(response.text)\n"
+        }
+      ],
+      "links": [
+        {
+          "label": "Launch My Bakery GitHub Example",
+          "url": "https://github.com/google/mcp/tree/main/examples/launchmybakery",
+          "description": "Explore the code for the \"Launch My Bakery\" demo."
+        },
+        {
+          "label": "Announcing Official MCP Support for Google Services",
+          "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-official-mcp-support-for-google-services?e=48754805",
+          "description": "Read the official announcement about MCP support for Google services."
+        },
+        {
+          "label": "Kaggle Whitepaper: Agent Tools and Interoperability with MCP",
+          "url": "https://www.kaggle.com/whitepaper-agent-tools-and-interoperability-with-mcp",
+          "description": "Learn more about agent tools and interoperability with MCP in this whitepaper."
+        }
+      ]
+    },
+    {
+      "day": 12,
+      "title": "Multimodal Agents with Gemini Live API",
+      "summary": "Explore ADK Bi-Directional Streaming: A visual guide to real-time multimodal AI agent development with WebSockets and Gemini Live.",
+      "description": "\n**Day 12 of Google's Advent of Agents**\n\n**The magic isn't in the prompt—it's in the Event Loop.**\n\nMost AI agents rely on HTTP (Request → Wait → Response). This introduces latency and makes \"interrupting\" the AI impossible. We break that cycle using **Bi-Directional Streaming**, better known as **ADK Bidi-streaming**. By opening a persistent WebSocket connection to Gemini, we create a session where client input (audio/video/text) and server output (audio/text/tool calls) flow simultaneously. We can control Gemini Live and equip it using the ADK.\n\n![ADK Bidi-streaming Diagram](/bidi.png)\n\n**How it works:**\n\n- **Application Initialization:** Creates Agent, SessionService, and Runner at startup\n- **Session Initialization:** Establishes Session, RunConfig, and LiveRequestQueue per connection\n- **Bidirectional Streaming:** Concurrent upstream (client → queue) and downstream (events → client) tasks\n- **Graceful Termination:** Proper cleanup of LiveRequestQueue and WebSocket connections\n\n**Features:**\n\n- **WebSocket Communication:** Real-time bidirectional streaming via /ws/{user_id}/{session_id}\n- **Multimodal Requests:** Text, audio, and image/video input with automatic audio transcription\n- **Flexible Responses:** Text or audio output, automatically determined based on model architecture\n- **Session Resumption:** Reconnection support configured via RunConfig\n- **Concurrent Tasks:** Separate upstream/downstream async tasks for optimal performance\n- **Interactive UI:** Web interface with event console for monitoring Live API events\n- **Google Search Integration:** Agent equipped with google_search tool\n\n**Resources:**\n\n- Read the blog post [ADK Bidi-streaming: A Visual Guide to Real-time Multimodal AI Agent Development](https://medium.com/google-cloud/adk-bidi-streaming-a-visual-guide-to-real-time-multimodal-ai-agent-development-62dd08c81399?postPublishedType=repub)\n- Check out the [Part 1: Introduction to ADK Bidi-streaming](https://google.github.io/adk-docs/streaming/dev-guide/part1/)\n- Check out the [Part 2: Sending messages with LiveRequestQueue](https://google.github.io/adk-docs/streaming/dev-guide/part2/)\n- Check out the [Part 3: Event handling with run_live()](https://google.github.io/adk-docs/streaming/dev-guide/part3/)\n- Check out the [Part 4: Run configuration - Agent Development Kit](https://google.github.io/adk-docs/streaming/dev-guide/part4/)\n- Check out the [Part 5: Audio, Images, and Video - Agent Development Kit](https://google.github.io/adk-docs/streaming/dev-guide/part5/)\n",
+      "tags": [
+        "Bidi-streaming",
+        "WebSockets",
+        "Gemini Live",
+        "AI Agent",
+        "ADK"
+      ],
+      "icon": "✨",
+      "codeSnippets": [
+        {
+          "filename": "google_search_agent.py",
+          "language": "python",
+          "code": "\"\"\"Google Search Agent definition for ADK Bidi-streaming demo.\"\"\"\n\nimport os\nfrom google.adk.agents import Agent\nfrom google.adk.tools import google_search\n\nagent = Agent(\n    name=\"google_search_agent\",\n    model=\"gemini-2.5-flash-native-audio-preview-09-2025\",\n    tools=[google_search],\n    instruction=\"You are a helpful voice assistant that can search the web.\"\n)"
+        },
+        {
+          "filename": "run_demo.sh",
+          "language": "bash",
+          "code": "# Clone the streaming sample for this deep dive and install\ngit clone https://github.com/google/adk-samples\ncd adk-samples/python/agents/bidi-demo\npython3 -m venv .venv\nsource .venv/bin/activate  # On Windows: .venvScriptsactivate\npip install -e .\nexport SSL_CERT_FILE=$(python -m certifi)\n\n# Create app/.env file with your GOOGLE_API_KEY.\n\ncd app\nexport SSL_CERT_FILE=$(uv run --project .. python -m certifi)\nuv run --project .. uvicorn main:app --port 8000\n\n# Open http://localhost:8000"
+        }
+      ],
+      "videoURL": "https://www.youtube.com/embed/vLUkAGeLR1k",
+      "links": [
+        {
+          "label": "A developer's guide to Gemini Live API in Vertex AI",
+          "url": "https://cloud.google.com/blog/topics/developers-practitioners/how-to-use-gemini-live-api-native-audio-in-vertex-ai?e=48754805",
+          "description": "Two quick start templates with three production-ready apps (Open Source Code)"
+        },
+        {
+          "label": "ADK Bidi-streaming: A Visual Guide to Real-time Multimodal AI Agent Development",
+          "url": "https://medium.com/google-cloud/adk-bidi-streaming-a-visual-guide-to-real-time-multimodal-ai-agent-development-62dd08c81399?postPublishedType=repub",
+          "description": "Comprehensive article on ADK Bidi-streaming."
+        },
+        {
+          "label": "Part 1: Introduction to ADK Bidi-streaming",
+          "url": "https://google.github.io/adk-docs/streaming/dev-guide/part1/",
+          "description": "First part of the ADK Bidi-streaming series."
+        },
+        {
+          "label": "Part 2: Sending messages with LiveRequestQueue",
+          "url": "https://google.github.io/adk-docs/streaming/dev-guide/part2/",
+          "description": "Second part focusing on LiveRequestQueue."
+        },
+        {
+          "label": "Part 3: Event handling with run_live()",
+          "url": "https://google.github.io/adk-docs/streaming/dev-guide/part3/",
+          "description": "Third part covering event handling."
+        },
+        {
+          "label": "Part 4: Run configuration - Agent Development Kit",
+          "url": "https://google.github.io/adk-docs/streaming/dev-guide/part4/",
+          "description": "Documentation on ADK run configuration."
+        },
+        {
+          "label": "Part 5: Audio, Images, and Video - Agent Development Kit",
+          "url": "https://google.github.io/adk-docs/streaming/dev-guide/part5/",
+          "description": "Documentation on multimodal capabilities in ADK."
+        }
+      ]
+    },
+    {
+      "day": 13,
+      "title": "Interactions API",
+      "summary": "Interactions API marks a fundamental shift from stateless text generation to stateful, autonomous workflows.",
+      "description": "**Day 13 of Google's Advent of Agents**\n\nThe landscape of AI development is shifting from stateless request-response cycles to stateful, multi-turn agentic workflows. \nWith the beta launch of the [Interactions API](https://blog.google/technology/developers/interactions-api), \nGoogle is providing a unified interface designed specifically for this new era—offering a single gateway to both raw models and the fully managed \n[Gemini Deep Research Agent](https://blog.google/technology/developers/deep-research-agent-gemini-api).\n\nTwo ways to use this today:\n\n1. **The \"Engine\" Upgrade (ADK):** By setting `use_interactions_api=True` in your ADK agent, you move the conversation history and state management to the server. This allows for background execution—perfect for long-running tasks where you don't want your client to timeout while the model \"thinks.\"\n\n2. **The \"Bridge\" (A2A):** If you have a mesh of agents speaking the Agent2Agent (A2A) protocol, you can now treat Google's hosted agents as remote peers. The new `InteractionsApiTransport` maps A2A messages directly to the Interactions API, allowing your existing clients to send tasks to the Deep Research Agent without writing custom API wrappers.\n\n\n**Interactions API** marks a fundamental shift from stateless text generation to stateful, autonomous workflows.\n\n- Instead of manually juggling context windows and fragile client-side loops, developers can now offload the entire reasoning state and history management to Google's infrastructure.\n- This enables \"fire-and-forget\" background execution for long-running tasks, solving the timeout issues common in complex agentic chains.\n- It provides a single, unified primitive for accessing both raw models and fully managed agents like Gemini Deep Research.\n\n**Resources:**\n\n- Read the [announcement for Gemini Interactions API](https://blog.google/technology/developers/interactions-api) and [docs](http://ai.google.dev/gemini-api/docs/interactions-api)  \n- Read the [announcement for Gemini Deep Research Agent](https://blog.google/technology/developers/deep-research-agent-gemini-api) and [docs](https://ai.google.dev/gemini-api/docs/deep-research)  \n- Check out the [ADK release notes](https://github.com/google/adk-python/blob/main/CHANGELOG.md), [docs](https://google.github.io/adk-docs/) and the [ADK sample with the Interactions API](https://github.com/google/adk-python/tree/main/contributing/samples/interactions_api)  \n- Check out the [A2A sample which uses the Interactions API](https://github.com/a2aproject/a2a-samples/tree/interactions-api/samples/python/transports/interactions_api)\n",
+      "tags": [
+        "Interactions API",
+        "ADK",
+        "A2A",
+        "Google Cloud",
+        "Google DeepMind"
+      ],
+      "icon": "☁️",
+      "videoURL": "https://www.youtube.com/embed/kPhs6C0-JbY",
+      "codeSnippets": [
+        {
+          "filename": "adk_interactions_api.py",
+          "language": "python",
+          "code": "from google.adk.agents.llm_agent import Agent\nfrom google.adk.models.google_llm import Gemini\nfrom google.adk.tools.google_search_tool import GoogleSearchTool\n\nroot_agent = Agent(\n    model=Gemini(\n        model=\"gemini-2.5-flash\",\n        # Enable Interactions API\n        use_interactions_api=True,\n    ),\n    name=\"interactions_test_agent\",\n    tools=[\n        # Converted Google Search to a function tool\n        GoogleSearchTool(bypass_multi_tools_limit=True),\n        get_current_weather,\n    ],\n)\n"
+        }
+      ],
+      "links": [
+        {
+          "label": "Gemini Interactions API Announcement",
+          "url": "https://blog.google/technology/developers/interactions-api",
+          "description": "Read the announcement for Gemini Interactions API."
+        },
+        {
+          "label": "Gemini Interactions API Docs",
+          "url": "https://ai.google.dev/gemini-api/docs/interactions-api",
+          "description": "Read the documentation for Gemini Interactions API."
+        },
+        {
+          "label": "Gemini Deep Research Agent Announcement",
+          "url": "https://blog.google/technology/developers/deep-research-agent-gemini-api",
+          "description": "Read the announcement for Gemini Deep Research Agent."
+        },
+        {
+          "label": "Gemini Deep Research Agent Docs",
+          "url": "https://ai.google.dev/gemini-api/docs/deep-research",
+          "description": "Read the documentation for Gemini Deep Research Agent."
+        },
+        {
+          "label": "ADK Release Notes",
+          "url": "https://github.com/google/adk-python/blob/main/CHANGELOG.md",
+          "description": "Check out the ADK release notes."
+        },
+        {
+          "label": "ADK Interactions API Sample",
+          "url": "https://github.com/google/adk-python/tree/main/contributing/samples/interactions_api",
+          "description": "Check out the ADK sample with the Interactions API."
+        },
+        {
+          "label": "A2A Interactions API Sample",
+          "url": "https://github.com/a2aproject/a2a-samples/tree/interactions-api/samples/python/transports/interactions_api",
+          "description": "Check out the A2A sample which uses the Interactions API."
+        }
+      ]
+    },
+    {
+      "day": 14,
+      "title": "Connecting Agents with A2A",
+      "summary": "Connect agents across teams, frameworks, and languages with the Agent2Agent (A2A) Protocol. ADK makes implementing A2A simple.",
+      "description": "**Day 14 of Google's Advent of Agents**\n\nYour Customer Service Agent needs product info. Your Product Catalog Agent has it. But they're separate services, maybe even built by different teams in different languages.\n\nHow do they talk to each other?\n\nThat's exactly what the [Agent2Agent (A2A) Protocol](https://a2a-protocol.org) solves. A2A is a standard for agents to communicate—across teams, frameworks, and languages. It shines when:\n\n- Agents run as **separate services** (microservices architecture)\n- Agents are maintained by **different teams**\n- You need to connect agents in **different languages or frameworks**\n- You want a **formal contract** between system components\n\nADK makes implementing A2A simple. To **expose** your agent, wrap it in an `A2AServer`—now other agents can discover it and send requests. To **consume** a remote agent, use `RemoteA2aAgent`. It handles network communication, auth, and data formatting. Feels just like calling a local tool.\n\nNo manual protocol work. ADK abstracts the network layer.\n\nThe easiest way to get started? [Agent Starter Pack](https://github.com/GoogleCloudPlatform/agent-starter-pack). You get:\n\n- Production-ready A2A agent with discovery endpoint\n- Integration and load tests included\n- Terraform and CI/CD generated\n- Observability pre-configured\n\nDeploy to Agent Engine or Cloud Run. Your agent becomes a discoverable micro-service, ready to collaborate.\n\nFor a deeper dive into multi-agent architectures, check out the A2A section in the [Prototype to Production](https://www.kaggle.com/whitepaper-prototype-to-production) whitepaper.\n\n**Resources:**\n\n- Check out the [Agent Starter Pack](https://github.com/GoogleCloudPlatform/agent-starter-pack)\n- Check out the [ADK A2A Docs](https://google.github.io/adk-docs/a2a/)\n- Check out the [A2A Protocol Spec](https://a2a-protocol.org/)\n- Read the [Prototype to Production Whitepaper](https://www.kaggle.com/whitepaper-prototype-to-production)",
+      "tags": [
+        "ADK A2A",
+        "ADK",
+        "A2A",
+        "Multi-Agent",
+        "Agent Starter Pack"
+      ],
+      "icon": "🔗",
+      "resourceLink": "https://github.com/GoogleCloudPlatform/agent-starter-pack",
+      "codeSnippets": [
+        {
+          "filename": "terminal",
+          "language": "shell",
+          "code": "uvx agent-starter-pack create -p -a adk_a2a_base"
+        }
+      ],
+      "links": [
+        {
+          "label": "Agent Starter Pack",
+          "url": "https://github.com/GoogleCloudPlatform/agent-starter-pack",
+          "description": "Get started with production-ready A2A agents."
+        },
+        {
+          "label": "ADK A2A Docs",
+          "url": "https://google.github.io/adk-docs/a2a/",
+          "description": "Learn how to implement A2A in the ADK."
+        },
+        {
+          "label": "A2A Protocol Spec",
+          "url": "https://a2a-protocol.org/",
+          "description": "The official Agent2Agent protocol specification."
+        },
+        {
+          "label": "Prototype to Production Whitepaper",
+          "url": "https://www.kaggle.com/whitepaper-prototype-to-production",
+          "description": "Deep dive into multi-agent architectures and production patterns."
+        }
+      ],
+      "videoURL": null
+    },
+    {
+      "day": 15,
+      "title": "Introducing A2UI",
+      "summary": "Discover A2UI (Agent-to-User Interface), an open project that enables agents to stream dynamic, generative UIs as JSONL payloads, decoupling UI definition from rendering and breaking the ceiling of traditional chat interfaces.",
+      "description": "**Day 15 of Google's Advent of Agents**\n\n🚧 **Chat interfaces have a ceiling.**\nWhen an agent needs to collect structured data or present complex options, simple text becomes tedious.\n\n🚀 **Today we are making A2UI (Agent-to-User Interface) available to the public.**\nWe decouple the UI definition from the rendering engine.\nInstead of hardcoding screens, your agent generated structured outputs and streams JSON lines to the client.\n\nThe client 📲 listens to the stream and renders native components—buttons, forms, carousels.\nThe client controls the UI and all styling, but remote agents can make layouts for widgets and select from both a set of common component and custom components.\n\n**What you get with A2UI:**\n\n- 🔌 **Transport Agnostic:** Currently we have A2A but HTTP, SSE, WebSockets, etc are feasible.\n- 🏗️ **Framework Agnostic:** Write once; render on Angular, React, Flutter, or Android.\n- 🔒 **Security:** Native secure message format, not remote code execution.\n- ✨ **Generative:** Agents can generate UI components on the fly, or hydrate existing UI components with values.\n\n**⚠️ ️Status: Early Stage Public Preview:**\n\nA2UI is currently in v0.8 (Public Preview). The specification and implementations are functional but are still evolving. We are opening the project to foster collaboration, gather feedback, and solicit contributions (e.g., on client renderers). Expect changes.\n\n**Resources:**\n- Check out the [A2UI Official Website](https://a2ui.org/)\n- Check out the [A2UI Github Repo](https://github.com/google/a2ui)\n- Check out the [A2UI Composer](https://a2ui-editor.ag-ui.com/) thanks CopilotKit / AG UI team!",
+      "tags": [
+        "A2UI",
+        "Generative UI",
+        "Agent-to-User Interface",
+        "Agent Development"
+      ],
+      "icon": "🚀",
+      "resourceLink": "https://a2ui.org/",
+      "links": [
+        {
+          "label": "A2UI Official Website",
+          "url": "https://a2ui.org/",
+          "description": "The official website for the A2UI project."
+        },
+        {
+          "label": "A2UI Github Repo",
+          "url": "https://github.com/google/a2ui",
+          "description": "The Github repository for the A2UI project."
+        },
+        {
+          "label": "A2UI Composer",
+          "url": "https://a2ui-editor.ag-ui.com/",
+          "description": "The A2UI Composer for building UI components - thanks CopilotKit / AG UI team!"
+        }
+      ],
+      "codeSnippets": [
+        {
+          "filename": "quickstart.sh",
+          "language": "bash",
+          "code": "\ngit clone https://github.com/google/a2ui.git\ncd a2ui\nexport GEMINI_API_KEY=\"your_gemini_api_key_here\"\ncd samples/client/lit\nnpm install\nnpm run demo:all\n"
+        }
+      ],
+      "videoURL": "https://www.youtube.com/embed/kJFnJr-leDI"
+    },
+    {
+      "day": 16,
+      "title": "LangGraph + A2A",
+      "summary": "Build LangGraph agents with full A2A capabilities using Agent Starter Pack. Your agent becomes instantly discoverable by other agents.",
+      "description": "**Day 16 of Google's Advent of Agents**\n\nBuild LangGraph agents with A2A support!\n\n[LangGraph](https://langchain-ai.github.io/langgraph/) is a popular framework for building stateful, multi-actor applications with LLMs. Now you can build LangGraph agents with full A2A capabilities using Agent Starter Pack.\n\nThe `langgraph_base` template in the Agent Starter Pack gives you a production-ready LangGraph agent that speaks the A2A protocol. This means:\n\n- **A2A server out of the box**: Your LangGraph agent is instantly discoverable by other agents—regardless of what framework they use\n- **Connect to any UI**: Expose your agent via A2A and plug it into chatbots, dashboards, or custom interfaces\n- **Production-ready testing**: Integration and load tests included\n- **Deployment ready**: Terraform and CI/CD generated for Cloud Run or Agent Engine\n- **Gemini Enterprise ready**: Register your agent to Gemini Enterprise with one command\n\nCreate your agent with one command.",
+      "tags": [
+        "LangGraph",
+        "A2A",
+        "Agent Starter Pack",
+        "Multi-Agent"
+      ],
+      "icon": "🦜",
+      "resourceLink": "https://github.com/GoogleCloudPlatform/agent-starter-pack",
+      "codeSnippets": [
+        {
+          "filename": "terminal",
+          "language": "shell",
+          "code": "uvx agent-starter-pack create my-agent -a langgraph_base"
+        }
+      ],
+      "links": [
+        {
+          "label": "Agent Starter Pack",
+          "url": "https://github.com/GoogleCloudPlatform/agent-starter-pack",
+          "description": "Get started with production-ready LangGraph A2A agents."
+        },
+        {
+          "label": "LangGraph Documentation",
+          "url": "https://langchain-ai.github.io/langgraph/",
+          "description": "Learn about building stateful agents with LangGraph."
+        },
+        {
+          "label": "A2A Protocol Spec",
+          "url": "https://a2a-protocol.org/",
+          "description": "The official Agent2Agent protocol specification."
+        }
+      ],
+      "videoURL": "https://www.youtube.com/embed/N25rAzQXkEA"
+    },
+    {
+      "day": 17,
+      "title": "Gemini 3 Flash is here!",
+      "summary": "Google's fastest model just got smarter with configurable thinking levels and granular controls.",
+      "description": "**Day 17 of Google's Advent of Agents**\n\n**Google's fastest model just got a lot smarter.**\nGemini 3 Flash combines flagship-level reasoning with the speed and cost-efficiency you expect from the Flash series.\n\nFlash scored **33.7%** without tool use on Humanity’s Last Exam, in comparison to Gemini 3 Pro at 37.5%, Gemini 2.5 Flash at 11%, and the newly released GPT-5.2 scored 34.5%.\n\nOn the multimodality and reasoning benchmark MMMU-Pro, the new model outscored all competitors with an **81.2%** score.\n\nAnd this is for only $0.50/1M input tokens and $3.00/1M output tokens, redefining the pareto frontier between quality, price, and performance.\n\nIt introduces powerful new controls for developers:\n\n- **🧠 Configurable Thinking Levels:** explicit control over the model's reasoning budget. (`high`, `low`, `minimal`)\n- **👁️ Granular Media Resolution:** Optimize your token usage by adjusting vision processing resolution (`low`, `medium`, `high`) per image or video frame.\n- **🔐 Robust Thought Signatures:** Encrypted tokens that preserve the model's reasoning state during multi-turn function calling, ensuring context isn't lost when the model pauses to use a tool.\n\n**ADK makes these features seamless.** The ADK automatically handles the complex circulation of **Thought Signatures** for you, so you can focus on building agents, not managing encrypted tokens.\n",
+      "tags": [
+        "gemini",
+        "flash",
+        "thinking",
+        "adk"
+      ],
+      "icon": "⚡",
+      "resourceLink": "https://blog.google/products/gemini/gemini-3-flash/",
+      "codeSnippets": [
+        {
+          "filename": "agent.py",
+          "language": "python",
+          "code": "from google.adk.agents import Agent\nfrom google.adk.planners import BuiltInPlanner\nfrom google.genai import types\n\n# Mock tool implementation\ndef get_current_time(city: str) -> dict:\n    \"\"\"Returns the current time in a specified city.\"\"\"\n    return {\"status\": \"success\", \"city\": city, \"time\": \"10:30 AM\"}\n\nroot_agent = Agent(\n    model='gemini-3-flash-preview',\n    name='root_agent',\n    description=\"Tells the current time in a specified city.\",\n    instruction=\"You are a helpful assistant that tells the current time in cities. Use the 'get_current_time' tool for this purpose.\",\n    tools=[get_current_time],\n    # Configure thinking level for Gemini 3\n    # Options: \"HIGH\" (deep reasoning), \"LOW\" (minimal latency), \"MINIMAL\" (raw speed)\n    planner=BuiltInPlanner(\n        thinking_config=types.ThinkingConfig(\n            thinking_level=\"LOW\"\n        )\n    ),\n)"
+        },
+        {
+          "filename": "install.sh",
+          "language": "shell",
+          "code": "pip install google-adk # and follow the instruction in the video"
+        }
+      ],
+      "videoURL": "https://www.youtube.com/embed/1txijlIHS_I",
+      "links": [
+        {
+          "label": "Gemini 3 Flash Announcement",
+          "url": "https://blog.google/products/gemini/gemini-3-flash/",
+          "description": "Official announcement blog post"
+        },
+        {
+          "label": "ADK Get Started Documentation",
+          "url": "https://google.github.io/adk-docs/get-started/",
+          "description": "Get started with the Agent Development Kit"
+        },
+        {
+          "label": "ADK Models Documentation",
+          "url": "https://google.github.io/adk-docs/agents/models/",
+          "description": "Learn about model configuration in ADK"
+        },
+        {
+          "label": "Developer's Guide to Multi-Agent Systems",
+          "url": "https://developers.googleblog.com/developers-guide-to-multi-agent-patterns-in-adk/",
+          "description": "Building Multi-Agent Systems with Gemini 3 Flash and ADK"
+        },
+        {
+          "label": "Google launches Gemini 3 Flash, makes it the default model in the Gemini app",
+          "url": "https://techcrunch.com/2025/12/17/google-launches-gemini-3-flash-makes-it-the-default-model-in-the-gemini-app/",
+          "description": "Techcrunch article reporting on the launch of Gemini 3 flash"
+        }
+      ]
+    },
+    {
+      "day": 18,
+      "title": "Cloud API Registry + ADK",
+      "summary": "The biggest friction in enterprise agent development isn't the model—it's the tools. Vertex AI Agent Builder now integrates with Cloud API Registry, providing a centralized tool repository.",
+      "description": "**Day 18 of Google's Advent of Agents**\n\n**Tools for Vertex AI Agent Builder - Cloud API Registry & ADK Integration**\n\n![Tools GIF](/Tools_Demo_Agent Builder.gif)\n\nThe biggest friction in enterprise agent development isn't the model—it's the tools. 🛑 Developers waste time wrapping APIs, and admins lose sleep over unapproved data access.\n\n**The Solution: A Centralized Tool Repository** 🏛️ Vertex AI Agent Builder now integrates with **Cloud API Registry**. This acts as a private catalog where administrators curate authorized tools and Model Context Protocol (MCP) servers.\n\n**How it works:**\n\n1. 👨‍💼 **Admins** enable and configure tools (like Google Maps 🗺️ or BigQuery 📊) using the console or CLI.\n\n2. 👨‍💻 **Developers** use the new ApiRegistry object in the ADK to dynamically fetch these definitions at runtime.\n\nThis eliminates hardcoded API keys and complex client-side configuration 🔑. The agent simply \"checks out\" the tool from the library, fully configured and ready to run. 🚀\n\nGet started with [Cloud API Registry on Vertex AI Agent Engine](https://github.com/GoogleCloudPlatform/generative-ai/blob/main/agents/agent_engine/tutorial_get_started_with_cloud_api_registry.ipynb).\n\n\n**Resources:**\n\n- Read the official blog post [New Enhanced Tool Governance in Vertex AI Agent Builder](https://cloud.google.com/blog/products/ai-machine-learning/new-enhanced-tool-governance-in-vertex-ai-agent-builder?e=48754805?utm_source%3Dlinkedin)\n- Check out the [Cloud API Registry documentation](https://docs.cloud.google.com/api-registry/docs/overview)\n- Try out the tutorial at [Cloud API Registry](https://github.com/GoogleCloudPlatform/generative-ai/blob/main/agents/agent_engine/tutorial_get_started_with_cloud_api_registry.ipynb).\n- Learn more about [Tool Governance in Vertex AI Agent Builder with the new Cloud API Registry integration](https://discuss.google.dev/t/tool-governance-in-vertex-ai-agent-builder-with-the-new-cloud-api-registry-integration/298148)\n- Learn more about [Where is the MCP server? Deploy your agent with Cloud API Registry on Vertex AI Agent Engine](https://discuss.google.dev/t/where-is-the-mcp-server-deploy-your-agent-with-cloud-api-registry-on-vertex-ai-agent-engine/298130)\n",
+      "tags": [
+        "Cloud API Registry",
+        "Vertex AI Agent Builder",
+        "ADK",
+        "Tools"
+      ],
+      "icon": "🛠️",
+      "codeSnippets": [
+        {
+          "title": "Part 1: Admin setup (CLI) Enable the MCP server for your project:",
+          "filename": "admin_setup.sh",
+          "language": "bash",
+          "code": "gcloud beta services mcp enable bigquery.googleapis.com --project=YOUR_PROJECT_ID"
+        },
+        {
+          "title": "Part 2: Developer Implementation (Python) Fetch the managed tool dynamically using ADK:",
+          "filename": "developer_implementation.py",
+          "language": "python",
+          "code": "from google.adk import Agent, ApiRegistry\n\n# 1. Connect to the Cloud API Registry\nregistry = ApiRegistry(project_id=\"your-project-id\")\n\n# 2. Fetch the specific tool (e.g., BigQuery MCP)\n# This retrieves the managed tool definition directly from the registry\nbq_tool = registry.get_tool(\"google-bigquery\")\n\n# 3. Add the tool to your Agent\n# The agent now has governed access to BigQuery capabilities\nagent = Agent(\n    model=\"gemini-3-pro\",\n    tools=[bq_tool]\n)\n\nprint(\"Agent configured with governed BigQuery access.\")"
+        }
+      ],
+      "links": [
+        {
+          "label": "Cloud API Registry documentation",
+          "url": "https://docs.cloud.google.com/api-registry/docs/overview"
+        },
+        {
+          "label": "Get started with Cloud API Registry tutorial",
+          "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/agents/agent_engine/tutorial_get_started_with_cloud_api_registry.ipynb"
+        },
+        {
+          "label": "New Enhanced Tool Governance in Vertex AI Agent Builder Blog",
+          "url": "https://cloud.google.com/blog/products/ai-machine-learning/new-enhanced-tool-governance-in-vertex-ai-agent-builder?e=48754805?utm_source%3Dlinkedin"
+        },
+        {
+          "label": "Where is the MCP server? Deploy your agent with Cloud API Registry on Vertex AI Agent Engine",
+          "url": "https://discuss.google.dev/t/where-is-the-mcp-server-deploy-your-agent-with-cloud-api-registry-on-vertex-ai-agent-engine/298130"
+        },
+        {
+          "label": "Tool Governance in Vertex AI Agent Builder with the new Cloud API Registry integration",
+          "url": "https://discuss.google.dev/t/tool-governance-in-vertex-ai-agent-builder-with-the-new-cloud-api-registry-integration/298148"
+        }
+      ],
+      "videoURL": null
+    },
+    {
+      "day": 19,
+      "title": "Register to Gemini Enterprise",
+      "summary": "Register your agent to Gemini Enterprise! 🌐 and make it discoverable to everyone in your organization, right alongside Google's built-in agents.",
+      "description": "**Day 19 of Google's Advent of Agents**\n\nRegister your agent to Gemini Enterprise! 🌐\n\n[Gemini Enterprise](https://cloud.google.com/gemini-enterprise) is Google's intranet search 🔍, AI assistant 🤖, and agentic platform for organizations. It gives knowledge workers a single interface to access enterprise data 📊, perform tasks ✅, and work with agents—without switching between multiple tools.\n\nThe Agents Gallery 🖼️ At the heart of Gemini Enterprise is the Agents Gallery. Google-made agents like Deep Research and Data Insights live here—but you're not limited to Google's agents. You can register your own custom agents 🛠️. Once registered, your agent becomes discoverable to everyone in your organization 👥, right alongside the built-in ones.\n\nSimple Registration ⚡ Agent Starter Pack makes registration simple.\n\nThe registration command handles everything:\n\n- **Auto-detects agent type**: ADK on Agent Engine or A2A on Cloud Run\n- **Lists available apps**: Shows which Gemini Enterprise apps you can register to\n- **Fetches display name**: Pulls the name from your deployed agent\n- **Direct console link**: Takes you straight to your agent in the catalog\n\nYour agent goes from deployed to discoverable. Enterprise-wide visibility, zero friction.",
+      "tags": [
+        "Gemini Enterprise",
+        "Agent Starter Pack",
+        "Deployment",
+        "A2A"
+      ],
+      "icon": "🏢",
+      "resourceLink": "https://github.com/GoogleCloudPlatform/agent-starter-pack",
+      "codeSnippets": [
+        {
+          "filename": "terminal",
+          "language": "shell",
+          "code": "# Create your agent\nuvx agent-starter-pack create --adk\n\n# Deploy it\nmake deploy\n\n# Register to Gemini Enterprise\nmake register-gemini-enterprise"
+        }
+      ],
+      "links": [
+        {
+          "label": "Agent Starter Pack",
+          "url": "https://github.com/GoogleCloudPlatform/agent-starter-pack",
+          "description": "Create and register agents to Gemini Enterprise."
+        },
+        {
+          "label": "Gemini Enterprise Agents Overview",
+          "url": "https://docs.cloud.google.com/gemini/enterprise/docs/agents-overview",
+          "description": "Learn about agents in Gemini Enterprise."
+        },
+        {
+          "label": "Register an ADK Agent",
+          "url": "https://docs.cloud.google.com/gemini/enterprise/docs/register-and-manage-an-adk-agent",
+          "description": "Guide for registering ADK agents to Gemini Enterprise."
+        },
+        {
+          "label": "Register an A2A Agent",
+          "url": "https://docs.cloud.google.com/gemini/enterprise/docs/register-and-manage-an-a2a-agent",
+          "description": "Guide for registering A2A agents to Gemini Enterprise."
+        }
+      ],
+      "videoURL": "https://www.youtube.com/embed/dhT2dAbRwVk"
+    },
+    {
+      "day": 20,
+      "title": "A2A Extensions: The Flexible Sidecar for Custom Data",
+      "summary": "The Agent-to-Agent (A2A) protocol relies on a strict format, but real-world complexity often requires unique data. A2A Extensions provide a \"Sidecar\" pattern for custom data without breaking backward compatibility.",
+      "description": "**Day 20 of Google's Advent of Agents**\n\n**The \"Sidecar\" Pattern for Agents 🏍️**\n\nThe Agent-to-Agent (A2A) protocol relies on a strict format 📋 to ensure agents from different teams can talk to each other 🤝. But real-world complexity often requires unique data that isn't in the spec (e.g., billing_id 💳 or security_clearance 🔐).\n\n**The Solution: A2A Extensions 🧩** Instead of forcing data into fields where it doesn't belong, A2A defines a dedicated extension field. Think of this like a \"Sidecar\" attached to your message 🏍️. It travels with the payload 📦, carrying custom dictionaries or objects, but doesn't alter the driver or the vehicle.\n\n**The Golden Rule: Non-Breaking ✨** Extensions follow a strict backward-compatibility rule: **If you don't understand it, ignore it 🙈**. This allows you to upgrade agents 🆙 with new capabilities (like the \"Secure Passport\" below 🛂) without breaking communication with older agents that haven't been updated yet.\n\n**Resources**:\n\n- Check out the [A2A Extensions Sample](https://github.com/a2aproject/a2a-samples/tree/main/extensions/secure-passport/v1/samples/python)\n",
+      "tags": [
+        "A2A Extensions",
+        "Extensions",
+        "Sidecar Pattern",
+        "Agent Communication"
+      ],
+      "icon": "🧩",
+      "codeSnippets": [
+        {
+          "title": "Get the Sample:",
+          "filename": "get_sample.sh",
+          "language": "shell",
+          "code": "# Download the specific extensions sample\nuvx agent-starter-pack create secure-auth-agent   -a adk_a2a_base   --extension secure-passport"
+        },
+        {
+          "title": "The Implementation: This snippet attaches a \"Passport\" extension. If the receiver supports it, they verify the signature. If not, they process the message as a standard request.",
+          "filename": "secure_passport_implementation.py",
+          "language": "python",
+          "code": "from secure_passport_ext import CallerContext, A2AMessage, add_secure_passport, get_secure_passport\n\n# 1. THE SENDER: Attaches the \"Sidecar\"\n# We create a secure context with custom enterprise data\npassport = CallerContext(\n    client_id=\"a2a://travel-orchestrator.com\",\n    state={\"tier\": \"Platinum\", \"billing_code\": \"US-123\"},\n    signature=\"valid-crypto-signature-123\"\n)\n\nmessage = A2AMessage(type=\"task\", content=\"Book flight\")\n# \"Stamp\" the message with the extension\nadd_secure_passport(message, passport)\n\n\n# 2. THE RECEIVER: Inspects the \"Sidecar\"\n# This function safely checks for the extension without crashing if missing\nreceived_passport = get_secure_passport(message)\n\nif received_passport and received_passport.is_verified:\n    print(f\"✅ Verified Platinum Request from: {received_passport.client_id}\")\nelse: # Non-breaking fall-back behavior\n    print(f\"ℹ️ Standard processing (No auth extension found)\")"
+        }
+      ],
+      "links": [
+        {
+          "label": "A2A Secure Passport Extension Sample",
+          "url": "https://github.com/a2aproject/a2a-samples/tree/main/extensions/secure-passport/v1/samples/python"
+        }
+      ],
+      "videoURL": "https://www.youtube.com/embed/MV0Ub-xN48A"
+    },
+    {
+      "day": 21,
+      "title": "Kaggle Capstone Winners Highlight",
+      "summary": "🏆 The Hall of Fame: Meet the Winners",
+      "description": "\n**Day 21 of Google's Advent of Agents**\n\n\n**🏆 The Hall of Fame: Meet the Winners**\n\nOver 11,000 teams competed to build the most effective agents. Here are the winners who took home the prizes across our four specialized tracks.\n\n**🟢 Agents for Good Track**. Solving problems in education, healthcare, and sustainability.\n\n- **🏆 1st Place:** [Carbon Footprint Optimization Engine](https://www.kaggle.com/code/sumitkumarguha/global-cfoe)\n- Authors: Sumit Kumar Guha\n- Concept: A compliance engine that pauses for human verification before making high-stakes supply chain decisions.\n\n- **🥈 2nd Place:** [CarbonCalc AI](https://github.com/madhuwantha/carbon-calc-ai.git)\n- Authors: Madhuwantha Priyashan, Sanduni Pavithra\n- Concept: An intelligent calculator that routes queries to specialized fuel or electricity agents for accurate emission reporting.\n\n- **🥉 3rd Place:** [Parallel Scholar](https://github.com/emansarahafi/research-assistant-agent)\n- Authors: Eman Afi, Yousef Elsonbaty\n- Concept: An automated research assistant that synthesizes academic papers using parallel discovery and persistent memory.\n\n**🏢 Enterprise Agents Track**. Improving business workflows and automating support.\n\n- **🏆 1st Place:** [Chaos Playbook Engine](https://github.com/alberto-martinez-zurita/chaos-playbook-engine)\n- Authors: Alberto Martinez Zurita, Alessandro A. Russo\n- Concept: A resilience lab that injects chaos (failures) into agents to test their recovery playbooks.\n\n- **🥈 2nd Place:** [Coderama](https://github.com/debasisdwivedy/coderama)\n- Authors: Debasis Dwivedy\n- Concept: An autonomous software delivery lifecycle agent managing requirements, planning, and development.\n\n- **🥉 3rd Place:** [VeganFlow](https://github.com/karthiksothivelr/veganflow)\n- Authors: Karthick Sothivelr (Kart)\n- Concept: Autonomous supply chain intelligence that negotiates with external vendor agents to prevent stockouts.\n\n** 🛎️ Concierge Agents Track**. Streamlining daily life, travel, and shopping.\n\n- **🏆 1st Place:** [NewsPulse AI Agent](https://github.com/azhang6-nlp/NewsPulse_AI_Agent)\n- Authors: Andy Zhang, S Tan, Vivien, Adelie Yang\n- Concept: A self-correcting news analyst that verifies citations before delivering executive summaries.\n\n- **🥈 2nd Place:** [FIL Content Agent System](https://github.com/jasononaquest/fil-agent)\n- Authors: Jason Harrison\n- Concept: A CMS agent that researches, writes, and publishes waterfall hiking guides in under 60 seconds.\n\n- **🥉 3rd Place:** [AishIngAnalyzer](https://github.com/aishasartaj1/AishIngAnalyzer)\n- Authors: Aisha Sartaj\n- Concept: A cosmetic ingredient analyzer that personalizes safety reports based on user allergies and skin type.\n\n**🎨 Freestyle Track**. Innovative agents that break the mold.\n\n- **🏆 1st Place:** [Daedalus - The Agentic Toolsmith](https://github.com/jovanovicmilos/daedalus-agentic-toolsmith)\n- Authors: Jovanovic Milos\n- Concept: A self-expanding system that writes, tests, and registers its own new Python tools on the fly.\n- **🥈 2nd Place:** [AI Stock Prediction System](https://github.com/nishantpithia/ai-stock-prediction-system)\n- Authors: Nishant Pithia, Vagge Sneha\n- Concept: A multi-agent system analyzing stocks via 6 specialized agents (Macro, Sentiment, Regulatory).\n- **🥉 3rd Place:** [StoryLand AI](https://github.com/ostrovskiy/storyland-ai)\n- Authors: Ostrovskiy\n- Concept: A literary travel planner that groups locations geographically to turn books into itineraries.\n\n**🧠 Winning Architectures**\n\nSuccess left clues. The top teams relied on rigid orchestration patterns rather than open-ended prompting:\n\n1.  **The \"Safety Gate\" Pattern:** The Global CFOE used a SequentialAgent pipeline that explicitly pauses execution via `tool_context.request_confirmation()` if risk scores exceed 0.80, ensuring no \"rogue\" decisions.\n\n2.  **The \"Self-Correcting\" Pattern:** Daedalus employed a LoopAgent to iteratively write and test code until it passed unit tests. Similarly, NewsPulse used a verification loop to reject any content lacking valid citations.\n\n3.  **The \"Parallel Specialist\" Pattern:** StoryLand AI and Parallel Scholar dispatched multiple sub-agents simultaneously (e.g., City Agent, Landmark Agent) to reduce research time from hours to seconds.\n",
+      "tags": [
+        "Hall of Fame",
+        "Winners",
+        "Agents for Good",
+        "Enterprise Agents",
+        "Concierge Agents",
+        "Freestyle"
+      ],
+      "icon": "🏆",
+      "resourceLink": "https://youtu.be/FrfaAwq0YNg",
+      "links": [
+        {
+          "label": "NewsPulse AI Agent (1st Place)",
+          "url": "https://github.com/azhang6-nlp/NewsPulse_AI_Agent",
+          "description": "Concierge Agents Track - 1st Place"
+        },
+        {
+          "label": "FIL Content Agent System - Agent Code (2nd Place)",
+          "url": "https://github.com/jasononaquest/fil-agent",
+          "description": "Concierge Agents Track - 2nd Place Agent Code"
+        },
+        {
+          "label": "FIL Content Agent System - MCP Server Code (2nd Place)",
+          "url": "https://github.com/jasononaquest/FIL-mcp",
+          "description": "Concierge Agents Track - 2nd Place MCP Server Code"
+        },
+        {
+          "label": "AishIngAnalyzer (3rd Place)",
+          "url": "https://github.com/aishasartaj1/AishIngAnalyzer",
+          "description": "Concierge Agents Track - 3rd Place"
+        },
+        {
+          "label": "Carbon Footprint Optimization Engine (CfoE) (1st Place)",
+          "url": "https://www.kaggle.com/code/sumitkumarguha/global-cfoe",
+          "description": "Agents for Good Track - 1st Place"
+        },
+        {
+          "label": "CarbonCalc AI (2nd Place)",
+          "url": "https://github.com/madhuwantha/carbon-calc-ai.git",
+          "description": "Agents for Good Track - 2nd Place"
+        },
+        {
+          "label": "Parallel Scholar (3rd Place)",
+          "url": "https://github.com/emansarahafi/research-assistant-agent",
+          "description": "Agents for Good Track - 3rd Place"
+        },
+        {
+          "label": "Chaos Playbook Engine (1st Place)",
+          "url": "https://github.com/alberto-martinez-zurita/chaos-playbook-engine",
+          "description": "Enterprise Agents Track - 1st Place"
+        },
+        {
+          "label": "Coderama (2nd Place)",
+          "url": "https://github.com/debasisdwivedy/Coderama",
+          "description": "Enterprise Agents Track - 2nd Place"
+        },
+        {
+          "label": "VeganFlow (3rd Place)",
+          "url": "https://github.com/karthick-sothivelr/Autonomous_Supply_Chain_Intelligence",
+          "description": "Enterprise Agents Track - 3rd Place"
+        },
+        {
+          "label": "Daedalus - The Agentic Toolsmith (1st Place)",
+          "url": "https://github.com/jovanovic-milos/daedalus",
+          "description": "Freestyle Track - 1st Place"
+        },
+        {
+          "label": "AI Stock Prediction System (2nd Place)",
+          "url": "https://github.com/nishapp/agents-5days-kaggle-competition",
+          "description": "Freestyle Track - 2nd Place"
+        },
+        {
+          "label": "StoryLand AI (3rd Place)",
+          "url": "https://github.com/o-ostrovskiy/storyland-ai",
+          "description": "Freestyle Track - 3rd Place"
+        }
+      ],
+      "videoURL": "https://www.youtube.com/embed/FrfaAwq0YNg"
+    },
+    {
+      "day": 22,
+      "title": "Security & Guardrails",
+      "summary": "Prompt Engineering is not a Security Strategy. Asking an LLM nicely to \"please ignore PII\" is not governance; it's wishful thinking.",
+      "description": "**Day 22 of Google's Advent of Agents**\n\n**Prompt Engineering is not a Security Strategy 🚫**\nAsking an LLM nicely to \"please ignore PII\" is not governance; it's wishful thinking 🔮. Enterprise security requires **deterministic enforcement**, not probabilistic compliance 🎲.\nTo survive a security audit 👮, you need a **defense-in-depth** strategy. You must treat the LLM as an untrusted component, sandwiching it between rigid logic and infrastructure firewalls 🧱.\n\n**ADK replaces \"trust\" with \"verification\" through a tiered architecture:**\n• **The Developer Layer (Callbacks) 👨‍💻** Stop leaking data before it leaves your container 🛑. Use **ADK Callbacks** to inject deterministic Python logic before_agent execution. This acts as middleware—stripping PII 🕵️, validating schemas, and blocking unauthorized intents before the model ever sees the prompt.\n• **The Infrastructure Layer (Model Armor) 🛡️** We cannot rely on developer discipline alone. Model Armor sits at the gateway level, inspecting every input and output 🔍. It provides a global kill-switch 🔌 for toxic content and injection attacks, ensuring safety even if the agent code is compromised.\n\n**Secure the Payload, then Secure the Entity 🔐** Once the data is clean, **Agent Identity** ensures your \"Service Agent\" cannot authenticate into \"HR Tools,\" while the **A2A Protocol** ensures that every handshake between agents is traceable, observable, and strictly authorized 🤖💬🤖.\n\n**The guardrail level with a glance:**\n![The guardrail level with a glance](/guardrail.png)\n\n**How to augment it with custom Model Gateways and applying your own Guardrail agent for every input/output of a model:**\n![How to augment it with custom Model Gateways and applying your own Guardrail agent for every input/output of a model](/guardrails%20with%20gcp.png)\n\n",
+      "tags": [
+        "Model Armor",
+        "Security",
+        "guardrails",
+        "ADK"
+      ],
+      "icon": "🛡️",
+      "videoURL": "https://www.youtube.com/embed/j9YyZM2OBS8",
+      "links": [
+        {
+          "label": "ADK Callbacks: Design Patterns and Best Practices",
+          "url": "https://google.github.io/adk-docs/callbacks/design-patterns-and-best-practices/",
+          "description": "Explore design patterns and best practices for ADK callbacks."
+        },
+        {
+          "label": "ADK Callbacks",
+          "url": "https://google.github.io/adk-docs/callbacks/",
+          "description": "Official documentation for ADK Callbacks."
+        },
+        {
+          "label": "ADK Plugins",
+          "url": "https://google.github.io/adk-docs/plugins/",
+          "description": "Official documentation for ADK Plugins."
+        },
+        {
+          "label": "Model Armor Overview",
+          "url": "https://docs.cloud.google.com/model-armor/overview",
+          "description": "Overview of Model Armor for security."
+        },
+        {
+          "label": "Manage Model Armor Templates",
+          "url": "https://docs.cloud.google.com/model-armor/manage-templates",
+          "description": "Documentation on managing Model Armor templates."
+        },
+        {
+          "label": "Agent Builder - Agent Identity",
+          "url": "https://docs.cloud.google.com/agent-builder/agent-engine/agent-identity",
+          "description": "Documentation on Agent Identity in Agent Builder."
+        },
+        {
+          "label": "Build and scale AI agents with Vertex AI Agent Builder",
+          "url": "https://cloud.google.com/blog/products/ai-machine-learning/more-ways-to-build-and-scale-ai-agents-with-vertex-ai-agent-builder?e=48754805",
+          "description": "Blog post on building and scaling AI agents."
+        },
+        {
+          "label": "A2A Protocol - Enterprise Ready",
+          "url": "https://a2a-protocol.org/latest/topics/enterprise-ready/#tracing-observability-and-monitoring",
+          "description": "Enterprise-ready features of the A2A Protocol."
+        }
+      ],
+      "codeSnippets": [
+        {
+          "filename": "callback_and_plugins.py",
+          "language": "python",
+          "code": "## The Developer Layer: Callbacks & Plugins \n# This Python snippet demonstrates how to inject security logic using the ADK callback system.\n\n\nfrom google.adk.agents import Agent\nfrom google.adk.agents.callback_context import CallbackContext\nfrom .tools import add, subtract, multiply, divide\nfrom .prompt import instruction_prompt\nfrom google.genai import types\nfrom typing import Optional\n\nMODEL = \"gemini-2.5-flash\"\n\nasync def callback_before_agent(callback_context: CallbackContext) -> Optional[types.Content]:\n       # Guardrail 1: Do we have the student profile?\n       if not callback_context.state.get(\"student_profile\"):\n               return types.Content(role='model', parts=[types.Part(text=\"Error: Cannot find student profile.\")])\n# Add more guardrails...\n\n       return None # Allow model call to proceed\n\nagent_math = Agent(\n       model=MODEL,\n       name=\"agent_math\",\n       description=\"This agent performs basic arithmetic operations (addition, subtraction, multiplication, and division) on user-provided numbers, including ranges.\",\n       instruction=instruction_prompt,\n       tools=[add, subtract, multiply, divide],\n       before_agent_callback=callback_before_agent,\n)"
+        },
+        {
+          "filename": "adk_plugin.py",
+          "language": "python",
+          "code": "## This Python snippet demonstrates how to create an ADK plugin.\n\nfrom google.adk.agents.base_agent import BaseAgent\nfrom google.adk.agents.callback_context import CallbackContext\nfrom google.adk.models.llm_request import LlmRequest\nfrom google.adk.plugins.base_plugin import BasePlugin\n\nclass CountInvocationPlugin(BasePlugin):\n \"\"\"A custom plugin that counts agent and tool invocations.\"\"\"\n def __init__(self) -> None:\n   \"\"\"Initialize the plugin with counters.\"\"\"\n   super().__init__(name=\"count_invocation\")\n   self.agent_count: int = 0\n   self.tool_count: int = 0\n   self.llm_request_count: int = 0\n\n async def before_agent_callback(self, *, agent: BaseAgent, callback_context:CallbackContext) -> None: \n   \"\"\"Count agent runs.\"\"\"\n   self.agent_count += 1\n   print(f\"[Plugin] Agent run count: {self.agent_count}\")"
+        },
+        {
+          "filename": "adk_plugin_agent.py",
+          "language": "python",
+          "code": "## This Python snippet demonstrates how to load/apply an ADK plugin to an agent.\n\nfrom google.adk.runners import InMemoryRunner\nfrom google.adk.agents import Agent\nfrom google.adk.tools.tool_context import ToolContext\nfrom google.genai import types\nimport asyncio\n\n# Import the plugin.\nfrom .count_plugin import CountInvocationPlugin\n\nasync def hello_world(tool_context: ToolContext, query: str):\n print(f'Hello world: query is [{query}]')\n root_agent = Agent(\n   model='gemini-2.0-flash',\n   name='hello_world',\n   description='Prints hello world with user query.',\n   instruction=\"\"\"Use hello_world tool to print hello world and user query.\"\"\",\n   tools=[hello_world],\n)\n\nasync def main():\n \"\"\"Main entry point for the agent.\"\"\"\n prompt = 'hello world'\n runner = InMemoryRunner(agent=root_agent, app_name='test_app_with_plugin',\n     # Add your plugin here. You can add multiple plugins.\n     plugins=[CountInvocationPlugin()],)\n ..."
+        },
+        {
+          "filename": "model_armor_template.sh",
+          "language": "bash",
+          "code": "## The Admin Layer: \n# Model Armor Template While developers write Python\n# Admins configure Model Armor to sanitize data globally.\n\nexport TEMPLATE_CONFIG='{\n   \"filterConfig\": {\n    \"raiSettings\": {\n     \"raiFilters\": [{\n       \"filterType\": \"HATE_SPEECH\",\n       \"confidenceLevel\": \"MEDIUM_AND_ABOVE\"\n      }, {\n      \"filterType\": \"HARASSMENT\",\n      \"confidenceLevel\": \"HIGH\"\n    }]\n  },\n  \"piAndJailbreakFilterSettings\": {\n    \"filterEnforcement\": \"ENABLED\",\n    \"confidenceLevel\": \"LOW_AND_ABOVE\"\n  }\n },\n \"templateMetadata\": {\n    \"multiLanguageDetection\": {\n      \"enableMultiLanguageDetection\": true\n    }\n  }\n}'\n\ncurl -X POST  -d \"$TEMPLATE_CONFIG\"   -H \"Content-Type: application/json\"  -H \"Authorization: Bearer $(gcloud auth print-access-token)\"     \"https://modelarmor.LOCATION.rep.googleapis.com/v1/projects/PROJECT_ID/locations/LOCATION_ID/templates?template_id=TEMPLATE_ID\""
+        }
+      ]
+    },
+    {
+      "day": 23,
+      "title": "Durable, Resilient Agents with Google ADK + Restate",
+      "summary": "Most agents are fragile. Durable Execution with Google ADK and Restate ensures your agent never loses context, survives crashes, and can pause execution for days.",
+      "description": "**Day 23 of Google's Advent of Agents**\n\n**Durable Execution: The Unkillable Agent** 🛡️\n\nMost agents are fragile: if the process dies, the memory dies 🪦. If your server crashes while waiting for a user reply, you lose the entire context.\n\n**Enter Durable Execution.** By combining the **Restate plugin** with Google ADK, you give your agent a persistent brain. Restate acts as a \"durability engine\" that wraps your code, ensuring that every step, tool call, and state change is recorded in a log-based journal.\n\n**I'm not talking about saving state to a database manually.** I'm talking about code that can pause execution for days (waiting for a human approval signal 🚦), survive a full server reboot, and wake up exactly on the line of code where it left off.\n\n**With the Restate Plugin, your agents can:**\n\n- ✅ **Never lose progress** - If the pod crashes, it resumes exactly where it stopped.\n- ✅ **Sleep for days** - Pause execution for human approval without keeping resources active.\n- ✅ **Recover gracefully** - Automatic retries and timeouts for every tool call.\n- ✅ **Simplify Logic** - Write complex, long-running workflows as standard procedural code.\n\n**Resources:**\n- Check out the [Restate Plugin](https://google.github.io/adk-docs/plugins/restate/)\n- Check out the [Restate Overview](https://docs.restate.dev/ai)\n",
+      "tags": [
+        "Durable Execution",
+        "ADK",
+        "Restate",
+        "Resilient Agents"
+      ],
+      "icon": "🛡️",
+      "videoURL": "https://www.youtube.com/embed/TkGFdildEXk",
+      "codeSnippets": [
+        {
+          "title": "CLI Commands Snippet:",
+          "filename": "restate_setup.sh",
+          "language": "bash",
+          "code": "#This CLI snippet gets you a local durable environment in seconds.\n\n# 1. Get the Claims Processing sample\ngit clone https://github.com/restatedev/restate-google-adk-example\ncd restate-google-adk-example\n\n# 2. Start the Durable Agent (uses uv)\n# The agent will register itself and wait for work\nexport GOOGLE_API_KEY=\"YOUR_KEY_HERE\"\nuv run .\n\n# 3. In a new terminal, start the Restate Server\n# This acts as the durable log and orchestrator\ndocker run --name restate --rm -p 8080:8080 -p 9070:9070   --add-host host.docker.internal:host-gateway   docker.restate.dev/restatedev/restate:latest\n\n# 4. Open the UI to trace execution\n# http://localhost:9070"
+        }
+      ],
+      "links": [
+        {
+          "label": "Restate Google ADK Example Repository",
+          "url": "https://github.com/restatedev/restate-google-adk-example"
+        },
+        {
+          "label": "Restate Docs/Deep Dive",
+          "url": "https://docs.restate.dev/ai"
+        }
+      ]
+    },
+    {
+      "day": 24,
+      "title": "A2A-ify Anything",
+      "summary": "Take any ADK or LangGraph sample and launch it with A2A on top. Layer A2A capabilities onto existing agents with a single flag.",
+      "description": "**Day 24 of Google's Advent of Agents**\n\nA2A-ify anything! Take any ADK or LangGraph sample and launch it with A2A on top.\n\nThe [google/adk-samples](https://github.com/google/adk-samples) repository contains ready-to-use agents built with the Agent Development Kit. You'll find agents for deep research, customer service, data engineering, financial advising, travel planning, and more—covering a range of real-world use cases.\n\nThese samples are great starting points. But what if you need your agent to collaborate with other agents, or connect to different UIs?\n\nThat's where Agent Starter Pack comes in. You can now layer A2A on top of any ADK sample with a single flag. This takes any sample (deep-search, customer-service, data-science, travel-concierge) and wraps it with full A2A capabilities:\n\n- **Auto-generated agent card**: The A2A metadata is created for you\n- **A2A endpoint exposed**: Your agent can receive requests from other agents or UIs\n- **Production infrastructure**: Terraform, CI/CD, and observability included\n\nYou get the best of both worlds: a proven sample agent, ready for multi-agent collaboration.\n\nAlready have an agent? Use the \n`enhance`\n command to add A2A capabilities to your existing code.",
+      "tags": [
+        "A2A",
+        "Agent Starter Pack",
+        "ADK Samples"
+      ],
+      "icon": "✨",
+      "resourceLink": "https://github.com/google/adk-samples",
+      "codeSnippets": [
+        {
+          "filename": "terminal",
+          "language": "shell",
+          "code": "# Create with A2A from a sample\nuvx agent-starter-pack create my-agent     -a adk@deep-search     --base-template adk_a2a_base\n\n# Or enhance an existing agent\nuvx agent-starter-pack enhance --base-template adk_a2a_base"
+        }
+      ],
+      "links": [
+        {
+          "label": "ADK Samples",
+          "url": "https://github.com/google/adk-samples",
+          "description": "Ready-to-use agents built with the Agent Development Kit."
+        },
+        {
+          "label": "Agent Starter Pack",
+          "url": "https://github.com/GoogleCloudPlatform/agent-starter-pack",
+          "description": "Add A2A capabilities to any agent."
+        },
+        {
+          "label": "A2A Protocol Spec",
+          "url": "https://a2a-protocol.org/",
+          "description": "The official Agent2Agent protocol specification."
+        }
+      ],
+      "videoURL": "https://www.youtube.com/embed/6UUEeiX2y58"
+    },
+    {
+      "day": 25,
+      "title": "🎉 Grand Finale: Mission Accomplished!",
+      "summary": "Congratulations! You've successfully completed the 25-day Advent of Agents journey.",
+      "description": "**Day 25 of Google's Advent of Agents**\n\n**🔥 Vertex AI Agent Designer is NOW in Agent Builder!**\n\nWe often debate \"low-code speed\" versus \"code control\" when developing agents. The new Agent Designer aims to bridge this gap.\n\nThis week, Vertex AI introduced Agent Designer in Agent Builder. It's a low-code visual interface that allows you to orchestrate agents and subagents on a canvas, then export the logic directly to the Agent Development Kit (ADK) for code-level refinement.\n\n- 🖱️ Visual Flow: Design agents, subagents, and control logic visually. \n- 🕹️ Playground: A chat interface to test agentic flow\n- ⬇️ Code Export: The \"Get code\" feature lets you scaffold in the UI and easily transition to your IDE (Python ADK).\n- 🛠️ Native Tools: Pre-configured with Google Search, URL context, and Vertex AI Search (RAG) integration. 🔍\n- 🔌 MCP Support: Experimental connectivity to Model Context Protocol servers.\n\n⚠️ Vertex AI Agent Designer is in preview. With MCP auth limitations and a lack of support for advanced ADK patterns, it is clearly a \"V1\". However, the visual-to-code workflow and potential integration with the Vertex AI Agent platform look very promising.\n\n----\n\n**🎊 You did it! ** \n\nOver the last 25 days, you've explored the cutting edge of AI Agents, from building your first agents with Gemini to some of the latest capabilities and showcasing design principles around compiled context views, memory, security, how we have simplified many aspects around deployment, observability, and interoperability.\n\nYour dedication to learning and building puts you at the forefront of this AI revolution.\n\n**The Stack, Phase by Phase:**\n\n- **Phase 1: The Modern Foundation (Days 1-7)** 🏗️ We ditched the boilerplate. We used **YAML** configuration for clean logic, Agent Engine for source-based deployment (no more pickling!), and turned on Otel observability to trace every thought. We gave agents the power to write and fix their own code with **Code Execution**.\n- **Phase 2: The Cognitive Engine (Days 8-13)** 🧠 We moved beyond simple chat. We engineered **Context Layers** to manage memory, used **Time Travel** to fix mistakes without restarting, and unlocked Gemini 3 with the Live API for real-time multimodal interaction. We connected it all to the real world using **Managed MCP** for Google Maps and BigQuery.\n- **Phase 3: The Multi-Agent Mesh (Days 14-21)** 🌐 We stopped building lonely chatbots. We implemented the **Agent-to-Agent (A2A)** protocol, allowing agents to discover each other via the **Gemini Enterprise Registry.** We built **A2UI** so agents could generate their own interfaces on the fly and used **A2A Extensions** to pass secure passports between services.\n- **Phase 4: Enterprise Grade (Days 22-24)** 🛡️ We hardened the stack. We replaced \"trust\" with **Model Armor** security layers. We made our agents unkillable with **Durable Execution (Restate)**, ensuring they survive server crashes and wait days for human approval.\n\nThe **Advent of Agents** calendar is now complete, but your build has just begun. The daily drops are done, but the repository is yours. Every template, every snippet, and every guide remains available here.\n\nThank you for being part of this experience. Happy holidays and happy coding! 🚀",
+      "tags": [
+        "Architecture",
+        "Blueprint",
+        "Production",
+        "Summary",
+        "Agent Engine",
+        "ADK",
+        "Gemini 3",
+        "Multi-agent"
+      ],
+      "icon": "🎉",
+      "resourceLink": "https://docs.cloud.google.com/agent-builder/agent-designer",
+      "videoURL": "https://www.youtube.com/embed/AuE-w-z9lks",
+      "links": [
+        {
+          "url": "https://docs.cloud.google.com/agent-builder/agent-designer",
+          "label": "Agent Designer",
+          "description": "Agent Designer is a low-code visual designer that lets you design and test agents in the Google Cloud console. You can experiment with your agent in Agent Designer before transitioning development to code using Agent Development Kit."
+        },
+        {
+          "url": "https://www.kaggle.com/learn-guide/5-day-agents",
+          "label": "Kaggle 5-day Intensive Course on Agents",
+          "description": "The 5-Day AI Agents Intensive course is now a self-paced learning guide.  This course was crafted by Google’s ML researchers and engineers to help developers explore the foundations and practical applications of AI agents. You’ll learn the core components – models, tools, orchestration, memory and evaluation. Each day blends conceptual deep dives with hands-on examples, codelabs, and live discussions."
+        },
+        {
+          "label": "Agent Development Kit (ADK) on GitHub",
+          "url": "https://github.com/google/adk-samples",
+          "description": "Explore more samples and contribute to the ADK community."
+        },
+        {
+          "label": "Retail AI Location Strategy: Autonomous Site Selection & Market Analysis",
+          "url": "https://github.com/google/adk-samples/tree/main/python/agents/retail-ai-location-strategy",
+          "description": "Explore a fully built case study on using AI for autonomous site selection and market analysis in retail."
+        }
+      ],
+      "codeSnippets": [
+        {
+          "filename": "fastest_start.sh",
+          "language": "bash",
+          "code": "uvx agent-starter-pack create my-agent --adk"
+        },
+        {
+          "filename": "full_example_deep_research.sh",
+          "language": "bash",
+          "code": "uvx agent-starter-pack create deep-search -a adk@deep-search"
+        },
+        {
+          "filename": "full_example_retail_location_strategy.sh",
+          "language": "bash",
+          "code": "git clone https://github.com/google/adk-samples.git\ncd adk-samples/python/agents/retail-ai-location-strategy\n\ncp .env.example .env\n# Edit .env with your keys:\n#   GOOGLE_API_KEY=your_ai_studio_key\n#   GOOGLE_GENAI_USE_VERTEXAI=FALSE\n#   MAPS_API_KEY=your_maps_key\n\n# Install & Run\nmake install && make dev"
+        }
+      ]
+    }
+  ]
+}

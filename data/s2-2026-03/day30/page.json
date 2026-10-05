@@ -1,0 +1,55 @@
+{
+  "day": "day30",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "Observability: Debug with Hierarchical Tracing",
+  "summary": "Eliminate silent failures in AI agents by implementing Hierarchical Trace Observability with OpenTelemetry and Arize Phoenix.",
+  "tags": [
+    "OpenTelemetry",
+    "Arize Phoenix",
+    "Tracing",
+    "ADK"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/30",
+  "video_id": "AVmNpeubF4w",
+  "video_url": "https://www.youtube.com/watch?v=AVmNpeubF4w",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "GitHub Project Repository",
+      "url": "https://github.com/siri2421/advent-of-agents-observabiity.git",
+      "description": "Working implementation of OTel and Phoenix observability."
+    },
+    {
+      "title": "Arize Phoenix Documentation",
+      "url": "https://arize.com/docs/phoenix",
+      "description": "Complete guide to the Phoenix observability platform."
+    },
+    {
+      "title": "Phoenix Observability for ADK",
+      "url": "https://google.github.io/adk-docs/integrations/phoenix/#support-and-resources",
+      "description": "Specific integration guide for using Phoenix with ADK."
+    },
+    {
+      "title": "ADK Documentation",
+      "url": "https://google.github.io/adk-docs/",
+      "description": "Agent Development Kit documentation."
+    }
+  ],
+  "code": "",
+  "icon": "🔍",
+  "resource_link": "https://arize.com/docs/phoenix",
+  "code_snippets": [
+    {
+      "title": "Observability & Model Call",
+      "filename": "debug_agent.py",
+      "language": "python",
+      "code": "from phoenix.otel import register\nfrom openinference.instrumentation.google_genai import GoogleGenAIInstrumentor\nfrom google import genai\n\n# 1. Register project for trace collection\nregister(project_name=\"advent-of-agents-debug\", auto_instrument=True)\n\n# 2. Instrument Google GenAI to capture model spans automatically\nGoogleGenAIInstrumentor().instrument()\n\n# 3. Execute model call with gemini-3.1-flash to generate traces\nclient = genai.Client()\nresponse = client.models.generate_content(\n    model=\"gemini-3.1-flash\", \n    contents=\"Explain observability in AI agents.\"\n)\nprint(response.text)"
+    }
+  ],
+  "description": "\n**Day 30 of Google's Advent of Agents — Season 2**\n\nTraditional logging fails to capture the non-linear reasoning of AI agents, leaving developers \"debugging in the dark\" when silent failures occur. Without granular visibility, it is impossible to isolate whether a failure stems from model hallucinations, infrastructure outages, or policy violations.\n\n**How It Works**\n\n**Hierarchical Trace Observability** provides process transparency by treating agent reasoning as discrete, measurable units using **OpenTelemetry (OTel)** and **Arize Phoenix**:\n\n- **Auto-Instrumentation**: Use OpenInference instrumentors to automatically capture spans from Google GenAI and other LLM providers.\n- **Trace Visualization**: View the hierarchical structure of agent calls in Arize Phoenix to isolate problematic spans like hallucinations.\n- **Span Replay**: Troubleshoot by replaying specific \"thoughts\" in a Prompt Playground sandbox with original variables to experiment with fixes.\n\n**Resources:**\n\n- [GitHub Project Repository](https://github.com/siri2421/advent-of-agents-observabiity.git)\n- [Arize Phoenix Documentation](https://arize.com/docs/phoenix)\n- [Phoenix Observability for ADK](https://google.github.io/adk-docs/integrations/phoenix/#support-and-resources)\n- [ADK Documentation](https://google.github.io/adk-docs/)",
+  "video_available": false
+}

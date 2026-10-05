@@ -1,0 +1,53 @@
+{
+  "day": "day08",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "Multi-Agent Patterns: Sequential Agents",
+  "summary": "Build predictable sequential workflows where the output of one agent goes straight to the next.",
+  "tags": [
+    "Multi-Agent",
+    "Sequential Pipelines",
+    "Architecture",
+    "ADK"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/08",
+  "video_id": "vXoDUg2UZmQ",
+  "video_url": "https://www.youtube.com/watch?v=vXoDUg2UZmQ",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "ADK Documentation: SequentialAgent",
+      "url": "https://google.github.io/adk-docs/agents/workflow-agents/sequential-agents/",
+      "description": "Official documentation for the Agent Development Kit."
+    },
+    {
+      "title": "Multi-Agent Design Patterns",
+      "url": "https://developers.googleblog.com/developers-guide-to-multi-agent-patterns-in-adk/",
+      "description": "Google Developers Blog post on multi-agent design patterns."
+    },
+    {
+      "title": "Building Collaborative AI with ADK",
+      "url": "https://cloud.google.com/blog/topics/developers-practitioners/building-collaborative-ai-a-developers-guide-to-multi-agent-systems-with-adk",
+      "description": "A Developer's Guide to Multi-Agent Systems with ADK."
+    }
+  ],
+  "code": "",
+  "icon": "⚙️",
+  "resource_link": "https://google.github.io/adk-docs/",
+  "code_snippets": [
+    {
+      "filename": "agent.py",
+      "language": "python",
+      "code": "from google.adk.agents import LlmAgent, SequentialAgent\n\n# Step 1: The Reader - Ingests the PDF and normalizes the content\nreader = LlmAgent(\n   model='gemini-3.1-pro-preview',\n   name=\"PDFReader\",\n   instruction=\"Analyze the provided PDF and provide a comprehensive raw text dump of its core contents.\",\n   output_key=\"parsed_content\"\n)\n\n# Step 2: The Insight Miner - Identifies key technical facts or unique points\nminer = LlmAgent(\n   model='gemini-3.1-pro-preview',\n   name=\"InsightMiner\",\n   instruction=\"\"\"\n   Review the following content: {parsed_content}\n   Extract the top 5 most important technical facts, dates, or figures.\n   \"\"\",\n   output_key=\"extracted_insights\"\n)\n\n# Step 3: The Synthesizer - Generates the final \"TL;DR\"\nsynthesizer = LlmAgent(\n   model='gemini-3.1-pro-preview',\n   name=\"ExecutiveSynthesizer\",\n   instruction=\"\"\"\n   Based on these insights: {extracted_insights}\n   Generate a 3-sentence 'Executive Briefing' suitable for a busy stakeholder.\n   \"\"\"\n)\n\n# Orchestrate the linear Assembly Line\nroot_agent = SequentialAgent(\n   name=\"UniversalDocumentPipeline\",\n   sub_agents=[reader, miner, synthesizer]\n)"
+    },
+    {
+      "filename": "__init__.py",
+      "language": "python",
+      "code": "from .agent import root_agent\n\n__all__ = [\"root_agent\"]"
+    }
+  ],
+  "description": "\n**Day 8 of Google's Advent of Agents — Season 2**\n\nThe **SequentialAgent** in ADK lets you build a predictable workflow where the output of one agent goes straight to the next.\n\nThis keeps things simple because the agent does not have to guess what to do next. Since the flow is always the same, you get consistent results without the extra thinking time or randomness you might see in more complex setups.\n\n**How it works**\n\n- **Session state management** where one agent saves its work to an **output_key** and the next one grabs it using the raw text placeholder in the prompt.\n- **Simple debugging** because the flow is just a straight line, debugging is easy since you can check the data at every single step to see exactly what happened.\n\nCheck out the [ADK Documentation: SequentialAgent](https://google.github.io/adk-docs/agents/workflow-agents/sequential-agents/) for more information.\n\n"
+}

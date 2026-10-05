@@ -1,0 +1,558 @@
+{
+  "currentDay": 4,
+  "kickoff": {
+    "day": 0,
+    "title": "Season 3 Kick Off: Agent Governance and Security",
+    "summary": "31 days to Production-Safe AI agents on Google Cloud.",
+    "description": "\n**Day 0 of Google's Advent of Agents — Season 3**\n\nWelcome to **Season 3** of Advent of Agents. Seasons 1 and 2 were about building agents. This October is about governing them.\n\n31 days. 31 questions that customers, developers, and security teams actually ask, each answered with a demo you can reproduce.\n\n**Every day in October you will:**\n\n-  🎃 Get one crisp question answered, framed the way a developer or an auditor would ask it\n-  👻 Run a kata you can copy-paste and see working in about 5 minutes\n-  🦴 Follow links to official docs and codelabs when you want to go deeper\n\n**What this season covers:**\n\n- **Foundations**: The agent development lifecycle, the agent threat surface, and a reference architecture for enterprise deployments.\n- **Identity and access**: A cryptographic identity per agent, acting on behalf of a signed-in user, least-privilege IAM, and containing blast radius.\n- **Runtime guardrails**: Prompt injection defense, data exfiltration controls, semantic policies, sandboxed code execution, and memory isolation.\n- **Fleet and operations**: Infrastructure as code, Agent Registry, tool governance, anomaly detection, kill switches, and cost controls.\n\n**New to agents?** Browse the [Season 1](https://adventofagents.com/2025/12/) and [Season 2](https://adventofagents.com/2026/03/) archives for the fundamentals, then come back for the governance layer on top.\n\n**Let's build agents you can confidently ship to production! 🎃**\n\n**Resources:**\n- [Advent of Agents](https://goo.gle/advent-of-agents)\n- [Agent Identity overview](https://g.dev/cloud/adventofagents-season3-gemini-enterprise-agent-identity)\n- [Agent Development Kit](https://google.github.io/adk-docs/)\n",
+    "tags": [
+      "Launch",
+      "Governance",
+      "Security"
+    ],
+    "icon": "🎃",
+    "resourceLink": "https://goo.gle/advent-of-agents",
+    "links": [
+      {
+        "label": "Subscribe to the newsletter",
+        "url": "https://groups.google.com/g/advent-of-agents-newsletter",
+        "description": "Each day's episode delivered to your inbox through October"
+      },
+      {
+        "label": "Season 2 Archive",
+        "url": "https://adventofagents.com/2026/03/",
+        "description": "31 days on building production-ready agents, if you want the fundamentals first"
+      },
+      {
+        "label": "Gemini Enterprise: Govern",
+        "url": "https://g.dev/cloud/adventofagents-season3-gemini-enterprise-govern",
+        "description": "The governance suite this season is built on: Agent Identity, Agent Registry, Agent Gateway, and Policies"
+      },
+      {
+        "label": "Agent Development Kit",
+        "url": "https://google.github.io/adk-docs/",
+        "description": "Official ADK documentation and quickstarts"
+      }
+    ],
+    "codeSnippets": [],
+    "videoURL": "https://www.youtube.com/embed/gQmpmhOQ8RY",
+    "emailPrompt": "Focus the email on the launch of Season 3 and the shift from building agents to governing them: identity, runtime guardrails, fleet management, and detection."
+  },
+  "days": [
+    {
+      "day": 1,
+      "title": "Foundation 101: Five Phases of Agent Development Lifecycle",
+      "summary": "Map the five phases every agent moves through, from Scope to Optimize, and walk one agent around the loop in about five minutes.",
+      "tags": [
+        "Launch",
+        "ADLC",
+        "Governance"
+      ],
+      "icon": "🔄",
+      "resourceLink": "https://google.github.io/agents-cli/",
+      "codeSnippets": [
+        {
+          "filename": "adlc-in-300-seconds.sh",
+          "language": "bash",
+          "code": "# Day 1: walk one agent around the ADLC loop in about five minutes.\n# Prereqs: Python 3.11+, uv, Node.js, gcloud, and a Google Cloud project with billing.\ngcloud auth application-default login\ngcloud services enable aiplatform.googleapis.com\nexport GOOGLE_CLOUD_PROJECT=YOUR_PROJECT_ID\nexport GOOGLE_CLOUD_LOCATION=us-central1\n\n# 1. SCOPE: decide what the agent may and may not do before any code exists.\ncat > DESIGN_SPEC.md <<'EOF'\n# adlc-day1\nOwner: you@example.com\nMay: answer weather and time questions with get_weather and get_current_time\nMay not: call any other tool, store user data, or act on external systems\nSuccess: picks the right tool for each question (see tests/eval)\nEOF\n\n# 2. BUILD: install Agents CLI, scaffold a prototype agent, move the spec in, run it.\nuvx google-agents-cli setup\nagents-cli scaffold create adlc-day1 --prototype --yes\nmv DESIGN_SPEC.md adlc-day1/ && cd adlc-day1\nagents-cli install\nagents-cli run \"What's the weather in San Francisco?\"\n# Find the [tool_call: get_weather(...)] line. That trace is your first audit trail.\n\n# 3. OPTIMIZE: score the agent's behavior against the scaffolded eval set (LLM judge, billable).\nagents-cli eval run\n\n# 4. SCALE + GOVERN: preview of Day 5 (deploy takes about 5-10 minutes).\n# agents-cli scaffold enhance . --deployment-target agent_runtime --prototype --yes\n# agents-cli deploy --agent-identity --project $GOOGLE_CLOUD_PROJECT --region us-central1"
+        }
+      ],
+      "links": [
+        {
+          "label": "Automate your agent development lifecycle",
+          "url": "https://cloud.google.com/blog/topics/developers-practitioners/automate-agent-development-lifecycles-with-gemini-enterprise",
+          "description": "Set up, build, deploy, govern, evaluate, and publish an agent with Agents CLI skills."
+        },
+        {
+          "label": "Agents CLI in Agent Platform",
+          "url": "https://developers.googleblog.com/agents-cli-in-agent-platform-create-to-production-in-one-cli/",
+          "description": "Why Agents CLI is the programmatic backbone for the ADLC on Google Cloud."
+        },
+        {
+          "label": "Gemini Enterprise Agent Platform docs",
+          "url": "https://g.dev/cloud/adventofagents-season3-gemini-enterprise-govern",
+          "description": "Build, scale, govern, and optimize: the platform behind each ADLC phase."
+        },
+        {
+          "label": "Introduction to Agents whitepaper",
+          "url": "https://www.kaggle.com/whitepaper-introduction-to-agents",
+          "description": "Google's foundational whitepaper on how agents work."
+        }
+      ],
+      "description": "\n**Day 1 of Google's Advent of Agents — Season 3**\n\nBefore you lock an agent down, you need a map of where it lives. Agents choose their own actions at runtime: they call tools, touch data, and keep changing after you ship them. The **Agent Development Lifecycle (ADLC)** is that map, and every control in this season plugs into one of its five phases.\n\n**How It Works**\n\nADLC is a loop, not a line, and each phase ends in a checkpoint you can point to:\n\n- **Scope**: Write down what the agent may do, what it must never do, which data it touches, and who owns it. A `DESIGN_SPEC.md` is your first governance artifact.\n\n- **Build**: Scaffold with Agents CLI and ADK, then iterate locally with `agents-cli run` until every tool call in the trace matches the spec.\n\n- **Scale**: Deploy to Agent Runtime, Cloud Run, or GKE, with infrastructure defined as code instead of console clicks.\n\n- **Govern**: Give the agent its own identity, register it in Agent Registry, route its traffic through Agent Gateway, and screen prompts with Model Armor.\n\n- **Optimize**: Re-run evals on every change, trace tool calls with OpenTelemetry, and feed what you learn back into Scope.\n\n**Why Not Just SDLC or MLOps?**\n\nSDLC assumes deterministic code, so tests prove correctness. MLOps adds data and model drift, but a model only returns predictions. An agent decides which tools to call, so ADLC adds two things on top: evaluating behavior (the tool trajectory, not just the answer) and governing what the agent is allowed to reach.\n\n**Resources:**\n\n- [Automate your agent development lifecycle using any coding agent](https://cloud.google.com/blog/topics/developers-practitioners/automate-agent-development-lifecycles-with-gemini-enterprise)\n\n- [Agents CLI in Agent Platform: create to production in one CLI](https://developers.googleblog.com/agents-cli-in-agent-platform-create-to-production-in-one-cli/)",
+      "videoURL": "https://www.youtube.com/embed/ngNxiZhxJjI",
+      "primaryVideoMeta": {
+        "videoURL": "https://www.youtube.com/embed/ngNxiZhxJjI",
+        "watchURL": "https://www.youtube.com/watch?v=ngNxiZhxJjI",
+        "thumbnailURL": "https://i.ytimg.com/vi/ngNxiZhxJjI/hqdefault.jpg",
+        "title": "Day 1: What is ADLC (Agent Development Lifecycle)? — 5-Minute Google Cloud Kata",
+        "creatorName": "Afrina M",
+        "creatorRole": "Google Cloud AI · Official 5-Min Kata",
+        "duration": "7:23"
+      }
+    },
+    {
+      "day": 2,
+      "title": "Agent Security: Implementing SAIF Guardrails",
+      "summary": "Secure agent workflows against rogue actions or data disclosure using SAIF threat modeling.",
+      "tags": [
+        "Agent Security",
+        "SAIF",
+        "Guardrails"
+      ],
+      "icon": "🛡️",
+      "resourceLink": "https://g.dev/cloud/adventofagents-season3-google-saif",
+      "codeSnippets": [
+        {
+          "filename": "launch.sh",
+          "language": "bash",
+          "code": "gcloud auth application-default login\ngit clone https://github.com/google/saif-data.git\n./launch_saif_demo.sh --serve"
+        }
+      ],
+      "links": [
+        {
+          "label": "Google Secure AI Framework (SAIF)",
+          "url": "https://g.dev/cloud/adventofagents-season3-google-saif",
+          "description": "Learn about Google's framework for securing AI systems and agentic workflows."
+        },
+        {
+          "label": "SAIF GitHub Repository",
+          "url": "https://github.com/google/saif-data",
+          "description": "GitHub repository for the Google Secure AI Framework (SAIF)."
+        },
+        {
+          "label": "OWASP Top 10 for LLMs",
+          "url": "https://owasp.org/projects/top-10-for-large-language-model-applications",
+          "description": "A list of the top 10 security risks for AI systems."
+        }
+      ],
+      "description": "\n**Day 2 of Google's Advent of Agents — Season 3**\n\nPresenters: Mika Devonshire & Anirudh Kannan\n\nAI agents operating in enterprise environments require robust security controls to prevent rogue actions and sensitive data leakage. Implementing Google's Secure AI Framework (SAIF) ensures agents maintain strict operational boundaries while processing untrusted inputs.\n\n**How It Works**\n\nThis threat modeling tutorial demonstrates how to scan agents for defense-in-depth using SAIF. The framework provides a structured approach to identify and mitigate risks associated with agentic workflows, including:\n\n- **Input Sanitization**: Pre-filters malformed or malicious prompts before passing context to the model reasoning loop.\n- **Rogue Actions**: Restricts tool execution and scope based on caller credentials and authenticated on-behalf-of user roles.\n- **Sensitive Data Disclosure**: Scans generated responses for sensitive data patterns and redacts or masks data before returning output.\n\n**Resources:**\n\n- [Google Secure AI Framework (SAIF)](https://g.dev/cloud/adventofagents-season3-google-saif)\n- [SAIF GitHub Repository](https://github.com/google/saif-data)\n- [OWASP Top 10 for LLMs](https://owasp.org/projects/top-10-for-large-language-model-applications)\n",
+      "videoURL": "https://www.youtube.com/embed/TA7lhezND7M",
+      "primaryVideoMeta": {
+        "videoURL": "https://www.youtube.com/embed/TA7lhezND7M",
+        "watchURL": "https://www.youtube.com/watch?v=TA7lhezND7M",
+        "thumbnailURL": "https://i.ytimg.com/vi/TA7lhezND7M/hqdefault.jpg",
+        "title": "Day 2: Why is Securing Agents Different? — 5-Minute Google Cloud Kata",
+        "creatorName": "Google Cloud Engineering",
+        "creatorRole": "Google Cloud AI · Official 5-Min Kata",
+        "duration": "13:11"
+      }
+    },
+    {
+      "day": 3,
+      "title": "Architecting Secure Multi-Agent Systems",
+      "summary": "Move from single-agent prototypes to hardened, production multi-agent architectures on Google Cloud using Gemini Enterprise",
+      "tags": [
+        "Architecture",
+        "Enterprise Security",
+        "Gemini Enterprise",
+        "Multi-Agent"
+      ],
+      "icon": "📜",
+      "resourceLink": "https://cloud.google.com/architecture",
+      "codeSnippets": [],
+      "links": [
+        {
+          "label": "Whitepaper: Secure Multi-Agent Systems on Google Cloud",
+          "url": "https://goo.gle/agent-security-enterprise",
+          "description": "Read the comprehensive Next 2026 whitepaper on agent security."
+        },
+        {
+          "label": "ADK Callback Validations",
+          "url": "https://google.github.io/adk-docs/tools/",
+          "description": "Learn how to write custom before-and-after tool validation firewalls."
+        },
+        {
+          "label": "Gemini Enterprise Agent Platform",
+          "url": "https://g.dev/cloud/adventofagents-season3-gemini-enterprise-govern",
+          "description": "Enterprise controls, Agent Identity, and Agent Gateway overview."
+        }
+      ],
+      "description": "\n**Day 3 of Google's Advent of Agents — Season 3**\n\nPresenters: Mika Devonshire and Anirudh Kannan\n\nSecuring multi-agent workflows requires a robust defense-in-depth approach. We ground theory in practice by architecting a Multi-Agent Warranty Claims System (based on a paper published at Google Next 2026).\n\n![Secure 3-Persona Warranty Architecture](/Season3Day3.png)\n\n**How It Works**\n\nThis reference architecture secures autonomous enterprise agents across four fundamental security boundaries:\n\n- ** 1. Separation of Duties (Privilege Compartmentalization)**\n     ** 1.1 The Concept**: Instead of using one unconstrained, all-powerful \"God Agent\" to handle everything, we partition task execution among highly specialized, bounded agent personas. Even if one Agent is tricked by malicious context, the attacker cannot escalate privileges because the compromised agent has no lateral access to other systems.\n     ** 1.2 The Warranty Claims System**: \n               **  1.2.1 Case Manager Agent**: Serves as the orchestrator. It receives sanitized customer requests and coordinates the workflow, but has no direct connection to the database or external shipping APIs.\n               **  1.2.2 Data Vault Agent**: An isolated retriever with exclusive, read-only permissions to query internal entitlement databases. It cannot communicate directly with users.\n               **  1.2.3 Logistics Liaison Agent**: Walled off on its own Cloud Run instance, this executor possesses tools to call shipping APIs, but is entirely blind to customer and entitlement databases.\n     ** 1.3 Key Security Outcome**: The blast radius of a prompt injection attack is confined to a single, low-privilege boundary.\n\n- ** 2. Trust and Verify (Cryptographic Machine Identity)**\n     ** 2.1 The Concept**: Traditional systems rely on fragile static passwords or over-privileged service account keys. Instead, all communications between agents and Model Context Protocol (MCP) servers must be explicitly authorized, cryptographically attested, and validated at every hop.\n     ** 2.2 The Warranty Claims System**: \n             **  2.2.1 Agent Identity**: Every agent runtime is provisioned with a native GCP Agent Identity backed by short-lived, mTLS-attested SPIFFE certificates.\n             **  2.2.2 Agent Gateway (Policy Enforcement Point)**: Serves as our single security front door. It intercepts all incoming and lateral traffic to enforce security policies globally. It runs inline **Model Armor** checks to inspect and sanitize incoming prompts, scrubbing jailbreaks, neutralizing prompt injections, and masking PII before the text is allowed to hit our model's context window. All lateral agent-to-agent (A2A) communications routes through it, which uses Identity-Aware Proxy (IAP) to verify machine identities and enforce strict authorization policies on every payload.\n             **  2.2.3 Agent Registry**: Serves as the central directory, maintaining a secure roster of authorized agents and verified MCP servers.\n     ** 2.3 Key Security Outcome**: Unauthorized lateral movement is blocked instantly. Even if a bad actor intercepts a message payload, they cannot execute tools because they lack an attested SPIFFE identity certificate.\n\n- ** 3. Private Network Connections (Network Perimeter Isolation)**\n     ** 3.1 The Concept**: To protect high-value databases and backend code, we must keep all communications off the public internet. This is achieved by creating an isolated, trusted network perimeter.\n     ** 3.2 The Warranty Claims System**: \n             ** 3.2.1 Private Service Connect (PSC)**: Serverless workloads (like Cloud Run agents) connect to VPC data backends privately using PSC.\n             ** 3.2.2 VPC Service Controls (VPC-SC)**: Encloses all internal services and database layers inside a macro-perimeter that blocks data egress, preventing a compromised agent from copying data to an external, unauthorized GCP project.\n     **3.3 Key Security Outcome**: The entire multi-agent system resides inside a secure network perimeter, protecting both inbound and outbound traffic from public exposure and external data exfiltration.\n\n**Resources:**\n\n- [Whitepaper: Building Secure Multi-Agent Systems on Google Cloud](https://goo.gle/agent-security-enterprise)\n- [ADK Callbacks & Input Verification](https://adk.dev/callbacks/)\n- [Gemini Enterprise Agent Platform](https://g.dev/cloud/adventofagents-season3-gemini-enterprise-govern)",
+      "videoURL": "https://www.youtube.com/embed/c89LrULUrmI",
+      "primaryVideoMeta": {
+        "videoURL": "https://www.youtube.com/embed/c89LrULUrmI",
+        "watchURL": "https://www.youtube.com/watch?v=c89LrULUrmI",
+        "thumbnailURL": "https://i.ytimg.com/vi/c89LrULUrmI/hqdefault.jpg",
+        "title": "Day 3: Reference Architecture for Enterprise Agents — 5-Minute Google Cloud Kata",
+        "creatorName": "Google Cloud Engineering",
+        "creatorRole": "Google Cloud AI · Official 5-Min Kata",
+        "duration": "13:02"
+      },
+      "companionVideos": [
+        {
+          "id": "s3-d03-marina-wyss-secure-agents",
+          "videoURL": "https://www.youtube.com/embed/qwsGEbrHnjQ",
+          "watchURL": "https://www.youtube.com/watch?v=qwsGEbrHnjQ",
+          "thumbnailURL": "https://i.ytimg.com/vi/qwsGEbrHnjQ/hqdefault.jpg",
+          "title": "Beginner's Guide to Building Secure AI Agents (2026) + Oct 2026 Google Cloud Production Agents",
+          "creatorName": "Marina Wyss",
+          "creatorHandle": "@MarinaWyssAI",
+          "creatorUrl": "https://www.youtube.com/@MarinaWyssAI",
+          "creatorRole": "Featured Creator Perspective · Practical AI Engineering (Oct 2026 Google Cloud Partner)",
+          "duration": "21:15",
+          "badgeText": "Featured Perspective · Architecture",
+          "invitationHeadline": "Walk through the 5 production pillars for enterprise AI agents from scratch",
+          "invitationBody": "Finished packet-walking the 4-tier reference architecture? Watch Marina Wyss demonstrate how runtime hosting, memory isolation, identity, guardrails, and tracing connect in practice (swapping in her new Oct 6, 2026 Google Cloud Production Agents Speedrun video upon delivery).",
+          "takeaways": [
+            "End-to-end walkthrough of the 5 production pillars for enterprise agents",
+            "Connecting model, runtime, memory bank, and policy gateway planes",
+            "Practical security checklist before promoting an agent from notebook to prod"
+          ],
+          "ctaLabel": "Watch Marina Wyss's 21:15 Secure Agents Guide",
+          "linkLabel": "Featured Perspective: Guide to Building Secure AI Agents (@MarinaWyssAI)",
+          "linkDescription": "Marina Wyss walks through the practical architecture and security pillars required to take AI agents from prototype to production."
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Governance Maturity Model: Progressive Trust for Agents",
+      "summary": "Score your agent estate on five governance layers, from Foundation to Continuous Alignment, and turn the result into a staged 90-day roadmap with a 15-question Python self-assessment.",
+      "tags": [
+        "Governance",
+        "Maturity Model",
+        "Roadmap"
+      ],
+      "icon": "🪜",
+      "resourceLink": "https://g.dev/cloud/adventofagents-season3-gemini-enterprise-govern",
+      "codeSnippets": [
+        {
+          "filename": "README.md",
+          "language": "markdown",
+          "code": "# Agent Governance Readiness Checklist & 90-Day Roadmap\n\nScore your agent estate as it runs today (1 = manual/ad hoc, 3 = standardized in production, 5 = automated everywhere).\n**Scoring rule:** Each layer scores its **weakest** area. Start at the lowest layer scoring below Level 3.\n\n## 1. Foundation (Days 1-30 | Season 3 Days: 5, 17, 18)\n- [ ] **Identity** (Level 3): Each agent has its own cryptographic identity (SPIFFE).\n- [ ] **Inventory** (Level 3): Core agents and tools are cataloged in a central registry.\n- [ ] **Infrastructure** (Level 3): Agents deploy from Terraform or other IaC templates.\n- **Done when:** Every agent is registered, owned, and given its own identity.\n\n## 2. Prevention (Days 31-60 | Season 3 Days: 6, 8-13, 16, 20)\n- [ ] **Prompt shielding** (Level 3): Model Armor screens prompts inline at the gateway.\n- [ ] **Data leaks** (Level 3): Managed PII masking and domain allowlists run on output.\n- [ ] **Circuit breakers** (Level 3): Iteration ceilings and rate limits are enforced at the gateway.\n- **Done when:** Every tool call routes via a gateway and Model Armor fails closed.\n\n## 3. Detection (Days 31-60 | Season 3 Days: 22, 23, 24)\n- [ ] **Tracing** (Level 3): OpenTelemetry spans land in Cloud Trace for model and tool calls.\n- [ ] **Anomalies** (Level 3): Alerts fire on token-volume and trajectory anomalies.\n- [ ] **Audit** (Level 3): Immutable audit logs export to BigQuery.\n- **Done when:** OpenTelemetry traces land in a queryable sink and Security Command Center drift alerts are active.\n\n## 4. Response (Days 61-90 | Season 3 Day: 26)\n- [ ] **Containment** (Level 3): A single agent's credentials can be revoked in the console.\n- [ ] **Threat alerts** (Level 3): Security Command Center alerts on anomalous API calls.\n- [ ] **Playbooks** (Level 3): Standard incident and postmortem templates are tested.\n- **Done when:** Tested playbooks can revoke an agent in under a minute.\n\n## 5. Continuous Alignment (Days 61-90 | Season 3 Days: 30, 31)\n- [ ] **Drift** (Level 3): Automated evaluations run daily in QA.\n- [ ] **Red teaming** (Level 3): Scheduled automated prompt-injection scans run continuously.\n- [ ] **Policy updates** (Level 3): Engineering leads hold scheduled policy reviews.\n- **Done when:** Postmortems update policy, gated by regression evals before release."
+        }
+      ],
+      "links": [
+        {
+          "label": "Agent Registry overview",
+          "url": "https://g.dev/cloud/adventofagents-season3-agent-registry",
+          "description": "Layer 1: catalog every agent, tool, and MCP server in one place."
+        },
+        {
+          "label": "Agent Gateway overview",
+          "url": "https://g.dev/cloud/adventofagents-season3-agent-gateway",
+          "description": "Layer 2: the enforcement point for agent traffic, with Model Armor attached."
+        },
+        {
+          "label": "Agent Platform Observability",
+          "url": "https://g.dev/cloud/adventofagents-season3-gemini-enterprise-observability",
+          "description": "Layer 3: OpenTelemetry traces and dashboards for your agents."
+        },
+        {
+          "label": "Agent Evaluation",
+          "url": "https://g.dev/cloud/adventofagents-season3-gemini-enterprise-agent-evaluation",
+          "description": "Layer 5: measure agent quality and catch regressions before release."
+        }
+      ],
+      "description": "\n**Day 4 of Google's Advent of Agents — Season 3**\n\nMost enterprises can't say how many agents they run, who owns each one, what those agents can reach, or what happens when one misbehaves. Before adding another control, score where you are: a **maturity model** turns \"are we governed?\" into five questions you can answer, and the answers into a staged roadmap.\n\n**How It Works**\n\nFive layers make the governance loop (reason, enforce, prove, respond, learn) measurable. Each layer answers one question and builds on the one below it:\n\n- **Foundation**: Is every agent cataloged, owned, and identifiable? Every production agent is in Agent Registry with a named owner and its own SPIFFE identity, deployed from IaC templates.\n- **Prevention**: Can you block policy violations inline? Every tool call goes through Agent Gateway, Model Armor fails closed, and sandboxes deny egress by default.\n- **Detection**: Can you spot anomalies, permission changes, and new agents, with an immutable audit trail? OpenTelemetry traces and audit logs land in a sink you can query.\n- **Response**: Can you prove containment worked? Tested playbooks revoke one agent's credentials in under a minute.\n- **Continuous Alignment**: Do escapes become better policy? Postmortems become policy updates, tested by regression evals before release.\n\n**From Score to Roadmap**\n\nThe `README.md` checklist covers 15 assessment points, three per layer, to build your plan:\n\n1. **Score**: Rate each area Level 1 (Basic), 3 (Advanced), or 5 (Optimized) for the estate as it runs today. A layer scores its weakest area.\n2. **Start low**: Begin at the lowest layer below Level 3. The order is structural: the gateway enforces against identities that must already exist, and detection needs governed traffic to watch.\n3. **Phase it**: Foundation in days 1–30, Prevention and Detection in days 31–60, Response and Continuous Alignment in days 61–90.\n\n**Resources:**\n\n- [Govern your agents](https://g.dev/cloud/adventofagents-season3-gemini-enterprise-govern)\n- [SAIF: Google's Guide to Secure AI](https://g.dev/cloud/adventofagents-season3-google-saif)",
+      "videoURL": "https://www.youtube.com/embed/nNjqaKVR3tc",
+      "primaryVideoMeta": {
+        "videoURL": "https://www.youtube.com/embed/nNjqaKVR3tc",
+        "watchURL": "https://www.youtube.com/watch?v=nNjqaKVR3tc",
+        "thumbnailURL": "https://i.ytimg.com/vi/nNjqaKVR3tc/hqdefault.jpg",
+        "title": "Day 4: The 5-Layer Agent Governance Maturity Framework — 5-Minute Google Cloud Kata",
+        "creatorName": "Afrina M",
+        "creatorRole": "Google Cloud AI · Official 5-Min Kata",
+        "duration": "7:16"
+      }
+    },
+    {
+      "day": 5,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "🕸️",
+      "resourceLink": ""
+    },
+    {
+      "day": 6,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "📜",
+      "resourceLink": ""
+    },
+    {
+      "day": 7,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "🗝️",
+      "resourceLink": ""
+    },
+    {
+      "day": 8,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "🌙",
+      "resourceLink": ""
+    },
+    {
+      "day": 9,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "🧪",
+      "resourceLink": ""
+    },
+    {
+      "day": 10,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "⚡",
+      "resourceLink": ""
+    },
+    {
+      "day": 11,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "🛡️",
+      "resourceLink": ""
+    },
+    {
+      "day": 12,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "🎃",
+      "resourceLink": ""
+    },
+    {
+      "day": 13,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "🕯️",
+      "resourceLink": ""
+    },
+    {
+      "day": 14,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "🔮",
+      "resourceLink": ""
+    },
+    {
+      "day": 15,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "⚗️",
+      "resourceLink": ""
+    },
+    {
+      "day": 16,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "🦇",
+      "resourceLink": ""
+    },
+    {
+      "day": 17,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "🕸️",
+      "resourceLink": ""
+    },
+    {
+      "day": 18,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "📜",
+      "resourceLink": ""
+    },
+    {
+      "day": 19,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "🗝️",
+      "resourceLink": ""
+    },
+    {
+      "day": 20,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "🌙",
+      "resourceLink": ""
+    },
+    {
+      "day": 21,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "🧪",
+      "resourceLink": ""
+    },
+    {
+      "day": 22,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "⚡",
+      "resourceLink": ""
+    },
+    {
+      "day": 23,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "🛡️",
+      "resourceLink": ""
+    },
+    {
+      "day": 24,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "🎃",
+      "resourceLink": ""
+    },
+    {
+      "day": 25,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "🕯️",
+      "resourceLink": ""
+    },
+    {
+      "day": 26,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "🔮",
+      "resourceLink": ""
+    },
+    {
+      "day": 27,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "⚗️",
+      "resourceLink": ""
+    },
+    {
+      "day": 28,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "🦇",
+      "resourceLink": ""
+    },
+    {
+      "day": 29,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "🕸️",
+      "resourceLink": ""
+    },
+    {
+      "day": 30,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "📜",
+      "resourceLink": ""
+    },
+    {
+      "day": 31,
+      "title": "Coming Soon",
+      "summary": "",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "icon": "🗝️",
+      "resourceLink": ""
+    }
+  ]
+}

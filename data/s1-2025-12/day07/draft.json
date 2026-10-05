@@ -1,0 +1,42 @@
+[
+  {
+    "t": 0,
+    "en": "All right, so we got the sweet new ADK sample for you about uh retail research",
+    "ru": ""
+  },
+  {
+    "t": 5,
+    "en": "agent. Uh you can download this and get up and running in just a few commands here which I'll copy and paste and you can see them get started. But let me flip over to the UI. You're up and running with this beautiful uh AGUI front end and multi-agent backend. Uh and in this use case, we're sort of trying to look for opening a bakery in",
+    "ru": ""
+  },
+  {
+    "t": 26,
+    "en": "Dubai Marina. All right. So, first the research agent kicks in and it's going to use Google search to gather real-time demographic data and customer trends. Then the competitor agent queries the Google Maps Places API, looks for high performing rivals and identifies saturation risks in the neighborhood. And here's where it gets interesting. The gap analysis agent writes and executes real Python code to mathematically calculate a viable gap score. This is not hallucinating. This",
+    "ru": ""
+  },
+  {
+    "t": 55,
+    "en": "is not just pushing th stuff through the context window. It's writing the code. This execution happens in a secure sandbox running either on your laptop or in a cloud VM as a service like agent",
+    "ru": ""
+  },
+  {
+    "t": 66,
+    "en": "engine. All right. So then we took all that information, we ran a strategic analysis and we generated an executive report. Here are an overview of some of the details within that report. The infographic is a bunch of HTML and uh",
+    "ru": ""
+  },
+  {
+    "t": 81,
+    "en": "artifacts that you could download uh turn into other assets. You have a whole whole bunch of insights here and you can customize this to other use cases uh using this as a template. And of course we have an infographic thanks to uh Nano",
+    "ru": ""
+  },
+  {
+    "t": 95,
+    "en": "Banana. Uh this whole thing is available",
+    "ru": ""
+  },
+  {
+    "t": 98,
+    "en": "on GitHub for you today. Take it, download it, turn it into something cool, and show me what you built.",
+    "ru": ""
+  }
+]

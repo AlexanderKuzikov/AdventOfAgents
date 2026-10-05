@@ -1,0 +1,172 @@
+[
+  {
+    "t": 0,
+    "en": "Hi everyone. In this video, we will show you how you can build resilient agents with the Google ADK and restate. Restate",
+    "ru": ""
+  },
+  {
+    "t": 8,
+    "en": "is a lightweight runtime that turns your AI agents into durable processes that can recover from all sorts of failures. Normally, when an AI agent would crash in the middle of a task, it would need to start over from the beginning. By enabling restate as a plug-in for your ADK agents, your agents become recoverable and after a crash, they will",
+    "ru": ""
+  },
+  {
+    "t": 31,
+    "en": "continue at the failure point instead of starting over. You can use this to implement all sorts of things like resilient human approval steps, longunning agents, for example, for research, but also advanced multi- aent systems. Let's have a look at a code example. Here I define my Google ADK agent. It's",
+    "ru": ""
+  },
+  {
+    "t": 54,
+    "en": "a claim approval agent. If the claim amount is more than 1,000, it will ask a human to review the insurance claim. If the amount is less than 1,000, it will use the check eligibility tool. Then we",
+    "ru": ""
+  },
+  {
+    "t": 68,
+    "en": "create a Google ADK app and we activate",
+    "ru": ""
+  },
+  {
+    "t": 72,
+    "en": "restate as a plug-in. So this is the part where I'm activating restate to",
+    "ru": ""
+  },
+  {
+    "t": 78,
+    "en": "persist the steps that my agent does so that I can recover them after a crash.",
+    "ru": ""
+  },
+  {
+    "t": 83,
+    "en": "Finally, I'm executing my runner. Here I'm executing the runner from within a restate handler. This restate handler can be called over HTTP as we will see in the example. The last thing I need to do is also persist the steps I do in",
+    "ru": ""
+  },
+  {
+    "t": 99,
+    "en": "tools to make sure that those can be recovered as well. Here in my eligibility tool, I'm using the restate context which can be supplied to me via the tool context. I'm using that to persist the call to the customer database here in this is eligible function. So the result that comes out of here will be persisted in restate and can be recovered. Let's run this. Our service",
+    "ru": ""
+  },
+  {
+    "t": 126,
+    "en": "is running here via UV run and restate",
+    "ru": ""
+  },
+  {
+    "t": 129,
+    "en": "is running in this terminal. Let's send a request via the restate UI. Restate",
+    "ru": ""
+  },
+  {
+    "t": 135,
+    "en": "runs as a single binary. This means that you don't need to run any databases or other systems next to it in order for it to work. The UI also gets shipped in the",
+    "ru": ""
+  },
+  {
+    "t": 145,
+    "en": "single binary and runs on port 9070.",
+    "ru": ""
+  },
+  {
+    "t": 148,
+    "en": "Let's send a request to our claim agent.",
+    "ru": ""
+  },
+  {
+    "t": 152,
+    "en": "If we click here on the run handler, then we go to the playground. In the playground, we can send an HTTP request.",
+    "ru": ""
+  },
+  {
+    "t": 159,
+    "en": "If I add as the key my user ID 1 2 3 4 5",
+    "ru": ""
+  },
+  {
+    "t": 163,
+    "en": "six and I send the default request for a",
+    "ru": ""
+  },
+  {
+    "t": 167,
+    "en": "business trip of $800, then the agent will start running.",
+    "ru": ""
+  },
+  {
+    "t": 174,
+    "en": "In the invocation step, Restate also gives me an overview of what my agent is doing. So here, if I click on the invocation, I see that it's currently failing because the customer database is currently unreachable. We can also enable the live view to see what it's doing in real time. We see that it's retrying and here on the left we see the steps it already did. It's called the LLM and right now it's retrying the eligibility tool.",
+    "ru": ""
+  },
+  {
+    "t": 202,
+    "en": "We can make the scenario a little bit more complex by killing the service.",
+    "ru": ""
+  },
+  {
+    "t": 208,
+    "en": "So here I'm controll Cing in my terminal",
+    "ru": ""
+  },
+  {
+    "t": 212,
+    "en": "to stop the Python process. If now I",
+    "ru": ""
+  },
+  {
+    "t": 215,
+    "en": "start it again by doing UV run and we go",
+    "ru": ""
+  },
+  {
+    "t": 218,
+    "en": "back to the UI, we should see that retries just continue and that the progress is still there.",
+    "ru": ""
+  },
+  {
+    "t": 226,
+    "en": "Let's fix the issue now by having a look",
+    "ru": ""
+  },
+  {
+    "t": 230,
+    "en": "at what was going wrong. Actually, in this check eligibility tool, I'm calling the iseligible function. And in this is",
+    "ru": ""
+  },
+  {
+    "t": 238,
+    "en": "eligible function, I put a runtime",
+    "ru": ""
+  },
+  {
+    "t": 242,
+    "en": "exception every time the amount is 800 to show how retries work for you. So if",
+    "ru": ""
+  },
+  {
+    "t": 248,
+    "en": "I now comment these out and restart the",
+    "ru": ""
+  },
+  {
+    "t": 252,
+    "en": "service, then now our request will be able to go through successfully and we'll be able to make progress. So now we see in the restate UI that the next",
+    "ru": ""
+  },
+  {
+    "t": 262,
+    "en": "time that it will do the retry",
+    "ru": ""
+  },
+  {
+    "t": 266,
+    "en": "this eligibility tool will finish successfully and we will end up with a success result. Our claim has been approved. So this is an example of what you can do with restate. You can also make tool executions more complex. For",
+    "ru": ""
+  },
+  {
+    "t": 282,
+    "en": "example, you will find in the repo in the links below also an example of human approval where we ask a human reviewer",
+    "ru": ""
+  },
+  {
+    "t": 290,
+    "en": "to review our insurance claim if the amount is more than 1,000. Even if this service crashes or if restate crashes or if something goes wrong while we are waiting, we can recover this promise we are waiting on on another process. So have a look at the readme, have a look at the repo and try to run it yourself. Thank you for watching.",
+    "ru": ""
+  }
+]

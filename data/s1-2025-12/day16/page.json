@@ -1,0 +1,48 @@
+{
+  "day": "day16",
+  "season": 1,
+  "season_name": "Season 1 — December 2025 (Winter Holiday Edition)",
+  "title": "LangGraph + A2A",
+  "summary": "Build LangGraph agents with full A2A capabilities using Agent Starter Pack. Your agent becomes instantly discoverable by other agents.",
+  "tags": [
+    "LangGraph",
+    "A2A",
+    "Agent Starter Pack",
+    "Multi-Agent"
+  ],
+  "canonical_url": "https://adventofagents.com/2025/12/16",
+  "video_id": "N25rAzQXkEA",
+  "video_url": "https://www.youtube.com/watch?v=N25rAzQXkEA",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Agent Starter Pack",
+      "url": "https://github.com/GoogleCloudPlatform/agent-starter-pack",
+      "description": "Get started with production-ready LangGraph A2A agents."
+    },
+    {
+      "title": "LangGraph Documentation",
+      "url": "https://langchain-ai.github.io/langgraph/",
+      "description": "Learn about building stateful agents with LangGraph."
+    },
+    {
+      "title": "A2A Protocol Spec",
+      "url": "https://a2a-protocol.org/",
+      "description": "The official Agent2Agent protocol specification."
+    }
+  ],
+  "code": "",
+  "icon": "🦜",
+  "resource_link": "https://github.com/GoogleCloudPlatform/agent-starter-pack",
+  "code_snippets": [
+    {
+      "filename": "terminal",
+      "language": "shell",
+      "code": "uvx agent-starter-pack create my-agent -a langgraph_base"
+    }
+  ],
+  "description": "**Day 16 of Google's Advent of Agents**\n\nBuild LangGraph agents with A2A support!\n\n[LangGraph](https://langchain-ai.github.io/langgraph/) is a popular framework for building stateful, multi-actor applications with LLMs. Now you can build LangGraph agents with full A2A capabilities using Agent Starter Pack.\n\nThe `langgraph_base` template in the Agent Starter Pack gives you a production-ready LangGraph agent that speaks the A2A protocol. This means:\n\n- **A2A server out of the box**: Your LangGraph agent is instantly discoverable by other agents—regardless of what framework they use\n- **Connect to any UI**: Expose your agent via A2A and plug it into chatbots, dashboards, or custom interfaces\n- **Production-ready testing**: Integration and load tests included\n- **Deployment ready**: Terraform and CI/CD generated for Cloud Run or Agent Engine\n- **Gemini Enterprise ready**: Register your agent to Gemini Enterprise with one command\n\nCreate your agent with one command."
+}

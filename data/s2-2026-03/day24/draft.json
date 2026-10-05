@@ -1,0 +1,322 @@
+[
+  {
+    "t": 0,
+    "en": "Welcome back to the advent of agents.",
+    "ru": ""
+  },
+  {
+    "t": 3,
+    "en": "Today we talking about taking AI to",
+    "ru": ""
+  },
+  {
+    "t": 7,
+    "en": "production scale. When developers first build autonomous agents, they naturally start with an",
+    "ru": ""
+  },
+  {
+    "t": 15,
+    "en": "interactive synchronous loop. The agent",
+    "ru": ""
+  },
+  {
+    "t": 18,
+    "en": "picks up a document, reads it, processes",
+    "ru": ""
+  },
+  {
+    "t": 22,
+    "en": "it, and moves on to the next one.",
+    "ru": ""
+  },
+  {
+    "t": 26,
+    "en": "But what happens when you need your agent to process an entire cloud storage bucket with 10,000 PDFs?",
+    "ru": ""
+  },
+  {
+    "t": 35,
+    "en": "Forcing an agent into a realtime synchronous pattern at that scale is a trap. You run straight into throttled API limits, broken client connections, and",
+    "ru": ""
+  },
+  {
+    "t": 47,
+    "en": "absolutely massive token costs. The",
+    "ru": ""
+  },
+  {
+    "t": 51,
+    "en": "solution isn't to increase your late",
+    "ru": ""
+  },
+  {
+    "t": 55,
+    "en": "rate limits. The solution is to change",
+    "ru": ""
+  },
+  {
+    "t": 59,
+    "en": "the architecture.",
+    "ru": ""
+  },
+  {
+    "t": 63,
+    "en": "To achieve true scale, you need to shift",
+    "ru": ""
+  },
+  {
+    "t": 67,
+    "en": "to the agent as orchestrator pattern.",
+    "ru": ""
+  },
+  {
+    "t": 71,
+    "en": "Rather than forcing your agent to read documents one by one in memory, you",
+    "ru": ""
+  },
+  {
+    "t": 77,
+    "en": "equip your agent with a tool that",
+    "ru": ""
+  },
+  {
+    "t": 80,
+    "en": "interfaces directly with the backend infrastructure. When the agent receives a massive job,",
+    "ru": ""
+  },
+  {
+    "t": 89,
+    "en": "it aggregates the data, bundles system",
+    "ru": ""
+  },
+  {
+    "t": 93,
+    "en": "in instructions and offloads it into a",
+    "ru": ""
+  },
+  {
+    "t": 97,
+    "en": "managed job queue using Gemini batch",
+    "ru": ""
+  },
+  {
+    "t": 100,
+    "en": "API.",
+    "ru": ""
+  },
+  {
+    "t": 103,
+    "en": "By processing asynchronously, you eliminate connection drops and get a 50% reduction in token costs compared to",
+    "ru": ""
+  },
+  {
+    "t": 113,
+    "en": "standard LLM calls.",
+    "ru": ""
+  },
+  {
+    "t": 117,
+    "en": "Let me show you exactly how this is implemented using Gemini Python SDK.",
+    "ru": ""
+  },
+  {
+    "t": 124,
+    "en": "First, we need data. Here we are",
+    "ru": ""
+  },
+  {
+    "t": 128,
+    "en": "simulating a large payload by fetching",
+    "ru": ""
+  },
+  {
+    "t": 132,
+    "en": "the top stories live from hacker news",
+    "ru": ""
+  },
+  {
+    "t": 135,
+    "en": "API. To feed the batch API, we must we must",
+    "ru": ""
+  },
+  {
+    "t": 141,
+    "en": "structure our inputs into JSON L format,",
+    "ru": ""
+  },
+  {
+    "t": 145,
+    "en": "JSON lines. Notice the structure being",
+    "ru": ""
+  },
+  {
+    "t": 148,
+    "en": "written out. For each story, we pass a",
+    "ru": ""
+  },
+  {
+    "t": 152,
+    "en": "request object perfectly matched to our execution prompt.",
+    "ru": ""
+  },
+  {
+    "t": 160,
+    "en": "Once your data set is formatted, we",
+    "ru": ""
+  },
+  {
+    "t": 163,
+    "en": "don't perform inference right away.",
+    "ru": ""
+  },
+  {
+    "t": 167,
+    "en": "First, we use client.files.upload",
+    "ru": ""
+  },
+  {
+    "t": 174,
+    "en": "to securely push the massive JSONL chunk",
+    "ru": ""
+  },
+  {
+    "t": 178,
+    "en": "directly to Google's back-end servers.",
+    "ru": ""
+  },
+  {
+    "t": 181,
+    "en": "The infrastructure now holds the data. Here is where the magic happens.",
+    "ru": ""
+  },
+  {
+    "t": 189,
+    "en": "Instead of calling generate content in a",
+    "ru": ""
+  },
+  {
+    "t": 193,
+    "en": "loop, we call batches.create.",
+    "ru": ""
+  },
+  {
+    "t": 196,
+    "en": "We pass in our required model string like Gemini 3.1 Pro preview which",
+    "ru": ""
+  },
+  {
+    "t": 202,
+    "en": "supports the batch API. We then point the source argument directly to the URI of the file we just uploaded. At this exact moment, the orchestrator agents job is completely done. It has",
+    "ru": ""
+  },
+  {
+    "t": 218,
+    "en": "bundled the data, passed the instructions, and successfully pushed the workload into flex execution. The",
+    "ru": ""
+  },
+  {
+    "t": 227,
+    "en": "session can now safely terminate.",
+    "ru": ""
+  },
+  {
+    "t": 231,
+    "en": "Let's actually run it. I'll execute my batch processor.py script.",
+    "ru": ""
+  },
+  {
+    "t": 241,
+    "en": "We see the script fetches the hacker news data, creates the JSONL structure",
+    "ru": ""
+  },
+  {
+    "t": 246,
+    "en": "and uploaded it. And there's our prompt",
+    "ru": ""
+  },
+  {
+    "t": 250,
+    "en": "batch success back job uh submitted",
+    "ru": ""
+  },
+  {
+    "t": 256,
+    "en": "successfully. Right? Current state of the job is pending. This is completely normal and",
+    "ru": ""
+  },
+  {
+    "t": 263,
+    "en": "is actually the exact behavior you want.",
+    "ru": ""
+  },
+  {
+    "t": 267,
+    "en": "The entire reason the Gemini batch API gives you a massive 50% token cost",
+    "ru": ""
+  },
+  {
+    "t": 273,
+    "en": "reduction is precisely because it runs on background lower priority instructions. When you submit a job, it",
+    "ru": ""
+  },
+  {
+    "t": 282,
+    "en": "enters a global queue with job state pending and Google executes it dynamically as compute frees up.",
+    "ru": ""
+  },
+  {
+    "t": 291,
+    "en": "For a tiny five item list, it usually takes anywhere from like 5 to 10 minutes to move to job state succeeded. For a",
+    "ru": ""
+  },
+  {
+    "t": 300,
+    "en": "massive 10,000page data set, it might",
+    "ru": ""
+  },
+  {
+    "t": 303,
+    "en": "run asynchronously overnight.",
+    "ru": ""
+  },
+  {
+    "t": 307,
+    "en": "When it shows pending, it physically proves the point. The orchestrator agent",
+    "ru": ""
+  },
+  {
+    "t": 314,
+    "en": "successfully offloaded the work to cloud Q. And there it goes. The job is ceued",
+    "ru": ""
+  },
+  {
+    "t": 319,
+    "en": "at a 50% discount. And our agent session is safely terminated.",
+    "ru": ""
+  },
+  {
+    "t": 325,
+    "en": "We can close our laptop right now and the job will still finish.",
+    "ru": ""
+  },
+  {
+    "t": 330,
+    "en": "That's batch processing. You have successfully upgraded your agent from a synchronized bottleneck into an asynchronous orchestrator. You can find the copy pasteable code",
+    "ru": ""
+  },
+  {
+    "t": 343,
+    "en": "snippet below alongside links to the ADK",
+    "ru": ""
+  },
+  {
+    "t": 347,
+    "en": "documentation. Happy coding and see you tomorrow on day",
+    "ru": ""
+  },
+  {
+    "t": 351,
+    "en": "27. Bye.",
+    "ru": ""
+  }
+]

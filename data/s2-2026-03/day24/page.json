@@ -1,0 +1,65 @@
+{
+  "day": "day24",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "Batch Processing: Scale to 10k with ADK",
+  "summary": "Shift from interactive processing to an Agent as Orchestrator pattern using the ADK and Gemini Batch API for efficient, large-scale asynchronous workloads.",
+  "tags": [
+    "Batch Processing",
+    "ADK",
+    "Scale"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/24",
+  "video_id": "3erD0GqEzX8",
+  "video_url": "https://www.youtube.com/watch?v=3erD0GqEzX8",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Scaling Language Detection: A Million Messages with Gemini’s Batch API & Flash Lite",
+      "url": "https://medium.com/google-cloud/scaling-language-detection-a-million-messages-with-geminis-batch-api-flash-lite-baccc197a1c2",
+      "description": ""
+    },
+    {
+      "title": "From GenAI Demo to Production Scale - Handling high-throughput use cases",
+      "url": "https://medium.com/google-cloud/from-genai-demo-to-production-scale-handling-high-throughput-use-cases-fbca401a5555",
+      "description": ""
+    },
+    {
+      "title": "Batch Mode in the Gemini API: Process more for less (Official Announcement)",
+      "url": "https://developers.googleblog.com/en/scale-your-ai-workloads-batch-mode-gemini-api/",
+      "description": ""
+    },
+    {
+      "title": "Experimentation to Production with Gemini and Vertex AI",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/experimentation-to-production-with-gemini-and-vertex-ai",
+      "description": ""
+    }
+  ],
+  "code": "# 1. Set up a pristine Python environment\npython3 -m venv .venv && source .venv/bin/activate\npip install google-genai\n\n# 2. Export your Gemini API key\nexport GEMINI_API_KEY=\"your-secret-key\"\n\n# 3. Submit your massive dataset to the background batch service\npython batch_processor.py\n\n# 4. In a few minutes, poll for the completed workload!\npython check_status.py\n",
+  "icon": "⚙️",
+  "resource_link": "",
+  "code_snippets": [
+    {
+      "title": "Batch Processor",
+      "filename": "batch_processor.py",
+      "language": "python",
+      "code": "import os\nimport json\nimport urllib.request\nfrom google import genai\nfrom google.genai import types\n\n# 1. Initialize the Gemini Client\napi_key = os.environ.get(\"GEMINI_API_KEY\")\nclient = genai.Client(api_key=api_key)\n\n# 2. Fetch live data from the web to create the JSONL dataset\ndataset_path = \"unprocessed_batch_01.jsonl\"\nprint(\"Fetching live headlines from Hacker News...\")\n\n# Grab the top 5 story IDs from the public Hacker News API\ntop_stories_url = \"https://hacker-news.firebaseio.com/v0/topstories.json\"\nstory_ids = json.loads(urllib.request.urlopen(top_stories_url).read())[:5]\n\n# Format the live data into Gemini's JSONL Batch structure\nwith open(dataset_path, \"w\") as f:\n    for sid in story_ids:\n        story_url = f\"https://hacker-news.firebaseio.com/v0/item/{sid}.json\"\n        story = json.loads(urllib.request.urlopen(story_url).read())\n        prompt = f\"Extract companies, products, and technologies from this headline: {story.get('title', '')}\"\n        f.write(json.dumps({\"request\": {\"contents\": [{\"parts\": [{\"text\": prompt}]}]}}) + \"\\n\")\n\n# 3. Upload your JSONL dataset to the Gemini API\nuploaded_file = client.files.upload(\n    file=dataset_path, \n    config={'mime_type': 'application/jsonl'}\n)\nprint(f\"Uploaded file: {uploaded_file.uri}\")\n\n# 4. Submit the Asynchronous Batch Job at 50% token cost\nbatch_job = client.batches.create(\n    model=\"gemini-3.1-pro-preview\",\n    src=uploaded_file.name,\n    config=types.CreateBatchJobConfig(\n        display_name=\"massive_document_extractor\",\n    )\n)\n\nprint(f\"Batch job {batch_job.name} submitted successfully.\")\nprint(f\"Current State: {batch_job.state}\")\n\nwith open(\".latest_batch_job.txt\", \"w\") as cached_file:\n    cached_file.write(batch_job.name)"
+    },
+    {
+      "title": "Status Polling Script",
+      "filename": "check_status.py",
+      "language": "python",
+      "code": "import os\nimport sys\nfrom google import genai\n\n# 1. Initialize Client\napi_key = os.environ.get(\"GEMINI_API_KEY\")\nif not api_key:\n    print(\"Error: Please export your GEMINI_API_KEY before running this script.\")\n    sys.exit(1)\n\nclient = genai.Client(api_key=api_key)\n\n# 2. Get the Batch Job ID to poll\njob_name = None\nif len(sys.argv) > 1:\n    job_name = sys.argv[1]\nelif os.path.exists(\".latest_batch_job.txt\"):\n    with open(\".latest_batch_job.txt\", \"r\") as cached_file:\n        job_name = cached_file.read().strip()\n    print(f\"Auto-detected latest job ID from cache: {job_name}\")\n\nif not job_name:\n    job_name = input(\"Enter the Batch Job name (e.g. batches/12345ABCD): \").strip()\n\nif not job_name.startswith(\"batches/\"):\n    job_name = f\"batches/{job_name}\"\n\n# 3. Request Status from Backend\ntry:\n    print(f\"\\nPolling Google Cloud for status of: {job_name}...\")\n    job = client.batches.get(name=job_name)\n    \n    print(\"=\" * 50)\n    print(f\"Job Name    : {job.name}\")\n    print(f\"State       : {job.state}\")\n    \n    if job.state == \"JOB_STATE_SUCCEEDED\":\n        uri = getattr(job, \"output_uri\", \"Available via Google Cloud Console\")\n        print(f\"Output URI  : {uri}\")\n        print(\"\\nSuccess! You can now download and parse the JSON payload.\")\n    elif job.state == \"JOB_STATE_FAILED\":\n        print(\"\\nThe job failed on the backend.\")\n        print(\"Error details:\", getattr(job, \"error\", \"Unknown API Error\"))\n        \n    print(\"=\" * 50)\nexcept Exception as e:\n    print(f\"\\nFailed to fetch job status. Ensure the ID is correct.\")\n    print(f\"Error: {e}\")"
+    },
+    {
+      "title": "Run Locally",
+      "filename": "terminal",
+      "language": "bash",
+      "code": "# 1. Set up a pristine Python environment\npython3 -m venv .venv && source .venv/bin/activate\npip install google-genai\n\n# 2. Export your Gemini API key\nexport GEMINI_API_KEY=\"your-secret-key\"\n\n# 3. Submit your massive dataset to the background batch service\npython batch_processor.py\n\n# 4. In a few minutes, poll for the completed workload!\npython check_status.py"
+    }
+  ],
+  "description": "**Day 24 of Google's Advent of Agents - Season 2**\n\nForcing an agent into a real-time synchronous loop to extract data from 10,000 documents guarantees throttled API limits, broken connections, and massive token costs. To achieve production scale, you must shift your architecture from interactive processing to an \"Agent as Orchestrator\" pattern.\n\n![Architecture](/season2-day24-architecture.png)\n\n**How It Works**\n\nInstead of an agent reading documents one by one, ADK enables you to equip your agent with a dedicated tool that offloads massive datasets directly to Google's backend infrastructure.\n\n- **Tool-Based Offloading**: The agent autonomously recognizes high-volume requests (like \"process this bucket\") and uses a custom tool to bundle the instructions and data into a managed job queue, rather than awaiting immediate inference.\n- **Token Efficiency**: The tool routes the request through the Gemini Batch API, executing the workload asynchronously in the background. This flex processing operates at a 50% token cost reduction compared to standard synchronous LLM calls.\n- **State Retrieval**: Once the agent confirms the batch job is submitted, the session can safely terminate. Developers can poll the job status or configure a webhook callback to retrieve the structured output once the entire dataset completes processing.\n\n**Resources:**\n\n- [ADK Documentation](https://google.github.io/adk-docs/)\n- [Gemini Batch Prediction Documentation](https://cloud.google.com/vertex-ai/generative-ai/docs/multimodal/batch-prediction-gemini)\n- [Gemini Batch API Limits and Pricing](https://cloud.google.com/vertex-ai/pricing)\n- [Google GenAI Python SDK (GitHub)](https://github.com/googleapis/python-genai)\n- [Deep Dive: How Batch Mode Cuts Costs](https://medium.com/@linz07m/how-gemini-apis-batch-mode-cuts-costs-and-increases-throughput-27cb9863a1c8)"
+}

@@ -1,0 +1,66 @@
+{
+  "day": "day22",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "ADK Evaluation: Trajectory Tests and Rubric-Based Scoring",
+  "summary": "Define deterministic trajectory tests and rubric-based evaluations that run on every code push, catching agent regressions before they reach production.",
+  "tags": [
+    "ADK",
+    "Evaluation",
+    "CI/CD",
+    "Testing"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/22",
+  "video_id": "_JVwS-20fTg",
+  "video_url": "https://www.youtube.com/watch?v=_JVwS-20fTg",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "ADK Evaluation Docs",
+      "url": "https://google.github.io/adk-docs/evaluate/",
+      "description": "Official ADK evaluation overview — evalsets, criteria, and CLI commands"
+    },
+    {
+      "title": "ADK Eval Criteria Reference",
+      "url": "https://google.github.io/adk-docs/evaluate/criteria/",
+      "description": "All 8 built-in metrics, match types, custom rubrics, and judge model config"
+    },
+    {
+      "title": "Agent Starter Pack",
+      "url": "https://github.com/googlecloudplatform/agent-starter-pack",
+      "description": "Scaffold an ADK agent project with built-in eval directory and CI/CD pipelines"
+    },
+    {
+      "title": "ADK Samples",
+      "url": "https://github.com/google/adk-samples",
+      "description": "Reference agents with evalsets you can study and adapt"
+    }
+  ],
+  "code": "# 1. Scaffold an agent with the eval framework built-in\nuvx agent-starter-pack create --adk my-agent && cd my-agent\n\n# 2. Define a trajectory test in your evalset (eval/trajectory_tests.json)\n# See the evalset snippet below for the full schema\n\n# 3. Run the evaluation locally\nmake eval\n\n# 4. Or run directly with the ADK CLI\nadk eval ./app eval/trajectory_tests.json \\\n  --config_file_path=eval/eval_config.json \\\n  --print_detailed_results\n",
+  "icon": "✅",
+  "resource_link": "https://google.github.io/adk-docs/evaluate/",
+  "code_snippets": [
+    {
+      "title": "Bootstrap and Run",
+      "filename": "shell",
+      "language": "bash",
+      "code": "# 1. Scaffold an agent with the eval framework built-in\nuvx agent-starter-pack create --adk my-agent && cd my-agent\n\n# 2. Define a trajectory test in your evalset (eval/trajectory_tests.json)\n# See the evalset snippet below for the full schema\n\n# 3. Run the evaluation locally\nmake eval\n\n# 4. Or run directly with the ADK CLI\nadk eval ./app eval/trajectory_tests.json \\\n  --config_file_path=eval/eval_config.json \\\n  --print_detailed_results"
+    },
+    {
+      "title": "Evalset: Define the Golden Path",
+      "filename": "eval/trajectory_tests.json",
+      "language": "json",
+      "code": "{\n  \"eval_set_id\": \"trajectory_tests\",\n  \"name\": \"Tool Trajectory Tests\",\n  \"eval_cases\": [\n    {\n      \"eval_id\": \"sync_linear_to_github\",\n      \"conversation\": [\n        {\n          \"invocation_id\": \"inv_1\",\n          \"user_content\": {\n            \"parts\": [{ \"text\": \"Sync Linear issue PROJ-123 to GitHub\" }]\n          },\n          \"final_response\": {\n            \"role\": \"model\",\n            \"parts\": [{ \"text\": \"Created GitHub issue #42 from PROJ-123.\" }]\n          },\n          \"intermediate_data\": {\n            \"tool_uses\": [\n              { \"name\": \"linear_get_issue\", \"args\": { \"issue_id\": \"PROJ-123\" } },\n              { \"name\": \"github_create_issue\", \"args\": { \"repo\": \"my-org/my-repo\" } }\n            ]\n          }\n        }\n      ],\n      \"session_input\": {\n        \"app_name\": \"my_agent\", \"user_id\": \"eval_user\", \"state\": {}\n      }\n    }\n  ]\n}"
+    },
+    {
+      "title": "Eval Config: Set Pass/Fail Criteria",
+      "filename": "eval/eval_config.json",
+      "language": "json",
+      "code": "{\n  \"criteria\": {\n    \"tool_trajectory_avg_score\": {\n      \"threshold\": 1.0,\n      \"match_type\": \"IN_ORDER\"\n    },\n    \"rubric_based_final_response_quality_v1\": {\n      \"threshold\": 0.8,\n      \"rubrics\": [\n        {\n          \"rubric_id\": \"completeness\",\n          \"rubric_content\": {\n            \"text_property\": \"The response must confirm which issue was synced and provide the new GitHub issue number.\"\n          }\n        }\n      ]\n    }\n  }\n}"
+    }
+  ],
+  "description": "**Day 22 of Google's Advent of Agents — Season 2**\n\nBuilding an agent that \"usually works\" is easy — building one that reliably follows a specific reasoning path is the real challenge. As agents scale, \"vibes-based testing\" (refreshing the prompt and hoping for the best) breaks down, and you need a way to ensure your agent doesn't just give the right answer but arrives there using the correct tool trajectory. ADK Evalsets solve this by letting you define deterministic trajectory tests and rubric-based evaluations that hook directly into your CI pipeline.\n\n**How It Works**\n\nAn evalset is a JSON file containing test cases, each specifying a user prompt, the expected tool call sequence, and an optional reference response. ADK's evaluation engine replays these cases against your agent and scores them using configurable criteria:\n\n- **`tool_trajectory_avg_score`**: Checks whether the agent called the right tools in the right order. Use `IN_ORDER` match type to tolerate extra calls between expected ones, or `EXACT` for strict matching.\n- **`rubric_based_final_response_quality_v1`**: Uses a stronger judge model (like Gemini 3.0 Flash) to grade the agent's output against custom rubrics, with no reference answer required.\n- **`final_response_match_v2`**: Semantic comparison between the agent's response and a reference answer, tolerant of phrasing differences.\n\n**CI/CD Integration**\n\nThe `agent-starter-pack` scaffolds a project with a `tests/eval/` directory and a pre-configured `make eval` target. Wire it into GitHub Actions so that any commit causing a trajectory deviation or a rubric score drop fails the build automatically, catching regressions before they reach production.\n\n**Resources:**\n\n- [ADK Evaluation Docs](https://google.github.io/adk-docs/evaluate/)\n- [ADK Eval Criteria Reference](https://google.github.io/adk-docs/evaluate/criteria/)\n- [Agent Starter Pack](https://github.com/googlecloudplatform/agent-starter-pack)\n"
+}

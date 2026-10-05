@@ -1,0 +1,17 @@
+[
+  {
+    "t": 0,
+    "en": "Today, we're officially launching the Advent of Agents calendar. Every single day, we're unlocking a new piece of the puzzle to help you build production-ready agents on Google Cloud. Now, we're not just talking theory here, right? The goal is for you to get hands-on with code samples. We're going to be looking at Gemini 3 to learn about context engineering, the computer use feature, and the live API, as well as Google's Agent Development Kit, where you're going to learn about multi-agent",
+    "ru": ""
+  },
+  {
+    "t": 26,
+    "en": "workloads, loop, sequential, and parallel agents. And lastly, the Agent Starter Pack, where you're going to build end-to-end production agents that include CI/CD, testing, and deploying to Google Cloud's Agent Runtime, Agent Engine.",
+    "ru": ""
+  },
+  {
+    "t": 42,
+    "en": "So, whether you're a startup founder or an enterprise developer, think of this as your daily crash course. So, if you don't want to miss out, head over to the link on the screen below. And enjoy. Have fun.",
+    "ru": ""
+  }
+]

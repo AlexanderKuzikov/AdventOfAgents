@@ -1,0 +1,59 @@
+{
+  "day": "day26",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "Authentication: End-User Identity Propagation",
+  "summary": "Securely delegate permissions by prompting end-users for OAuth consent during agent execution.",
+  "tags": [
+    "Authentication",
+    "Security",
+    "Identity Propagation",
+    "Interactive Auth"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/26",
+  "video_id": "NzQM4GihwQU",
+  "video_url": "https://www.youtube.com/watch?v=NzQM4GihwQU",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "ADK Tool Authentication",
+      "url": "https://google.github.io/adk-docs/tools-custom/authentication/index.md",
+      "description": ""
+    },
+    {
+      "title": "Interactive OAuth CLI Example",
+      "url": "https://google.github.io/adk-docs/tools-custom/authentication/index.md#handling-the-interactive-oauthoidc-flow-client-side",
+      "description": "Documentation on how to authenticate agents in ADK."
+    },
+    {
+      "title": "OAuth Calendar Agent Sample",
+      "url": "https://github.com/google/adk-python/blob/main/contributing/samples/oauth_calendar_agent/agent.py",
+      "description": "Sample demonstrating AuthenticatedFunctionTool."
+    },
+    {
+      "title": "Dynamic Identity Propagation (ServiceNow)",
+      "url": "https://github.com/google/adk-samples/tree/main/python/agents/incident-management",
+      "description": "Example of token passing to third-party integrations."
+    }
+  ],
+  "code": "# 1. Follow the steps in this document to get the OAuth2 credentials:\n# https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid#get_your_google_api_client_id\n# 2. Set \"http://127.0.0.1:8080/dev-ui/\" as the redirect URI. Pay attention to the port number you are using.\n# 3. Copy your Client ID and Client Secret into a .env file. In production, use a secret management tool - never hardcode secrets or put them in .env files.\n\nOAUTH_CLIENT_ID=\"your-client-id.apps.googleusercontent.com\"\nOAUTH_CLIENT_SECRET=\"your-client-secret\"\n",
+  "icon": "🔐",
+  "resource_link": "https://github.com/google/adk-python/tree/main/contributing/samples/oauth_calendar_agent",
+  "code_snippets": [
+    {
+      "title": "Setup Credentials",
+      "filename": ".env",
+      "language": "bash",
+      "code": "# 1. Follow the steps in this document to get the OAuth2 credentials:\n# https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid#get_your_google_api_client_id\n# 2. Set \"http://127.0.0.1:8080/dev-ui/\" as the redirect URI. Pay attention to the port number you are using.\n# 3. Copy your Client ID and Client Secret into a .env file. In production, use a secret management tool - never hardcode secrets or put them in .env files.\n\nOAUTH_CLIENT_ID=\"your-client-id.apps.googleusercontent.com\"\nOAUTH_CLIENT_SECRET=\"your-client-secret\""
+    },
+    {
+      "filename": "agent.py",
+      "language": "python",
+      "code": "from datetime import datetime\nimport os\n\nfrom dotenv import load_dotenv\nfrom fastapi.openapi.models import OAuth2\nfrom fastapi.openapi.models import OAuthFlowAuthorizationCode\nfrom fastapi.openapi.models import OAuthFlows\nfrom google.adk.agents.callback_context import CallbackContext\nfrom google.adk.agents.llm_agent import Agent\nfrom google.adk.auth.auth_credential import AuthCredential\nfrom google.adk.auth.auth_credential import AuthCredentialTypes\nfrom google.adk.auth.auth_credential import OAuth2Auth\nfrom google.adk.auth.auth_tool import AuthConfig\nfrom google.adk.tools.authenticated_function_tool import AuthenticatedFunctionTool\nfrom google.adk.tools.google_api_tool import CalendarToolset\nfrom google.adk.tools.tool_context import ToolContext\nfrom google.oauth2.credentials import Credentials\nfrom googleapiclient.discovery import build\n\n# Load environment variables from .env file\nload_dotenv()\n\n# Access the variables.\noauth_client_id = os.getenv(\"OAUTH_CLIENT_ID\")\noauth_client_secret = os.getenv(\"OAUTH_CLIENT_SECRET\")\n\n\ncalendar_toolset = CalendarToolset(\n    client_id=oauth_client_id,\n    client_secret=oauth_client_secret,\n    tool_filter=[\"calendar_events_get\"],\n)\n\ndef list_calendar_events(\n    start_time: str,\n    end_time: str,\n    limit: int,\n    tool_context: ToolContext,\n    credential: AuthCredential,\n) -> list[dict]:\n    \"\"\"Search for calendar events.\n\n    Example:\n\n        flights = get_calendar_events(\n            calendar_id='joedoe@gmail.com',\n            start_time='2024-09-17T06:00:00',\n            end_time='2024-09-17T12:00:00',\n            limit=10\n        )\n        # Returns up to 10 calendar events between 6:00 AM and 12:00 PM on\n        September 17, 2024.\n\n    Args:\n        calendar_id (str): the calendar ID to search for events.\n        start_time (str): The start of the time range (format is\n          YYYY-MM-DDTHH:MM:SS).\n        end_time (str): The end of the time range (format is YYYY-MM-DDTHH:MM:SS).\n        limit (int): The maximum number of results to return.\n\n    Returns:\n        list[dict]: A list of events that match the search criteria.\n    \"\"\"\n\n    creds = Credentials(\n        token=credential.oauth2.access_token,\n        refresh_token=credential.oauth2.refresh_token,\n    )\n\n    service = build(\"calendar\", \"v3\", credentials=creds)\n    events_result = (\n        service.events()\n        .list(\n            calendarId=\"primary\",\n            timeMin=start_time + \"Z\" if start_time else None,\n            timeMax=end_time + \"Z\" if end_time else None,\n            maxResults=limit,\n            singleEvents=True,\n            orderBy=\"startTime\",\n        )\n        .execute()\n    )\n    events = events_result.get(\"items\", [])\n    return events\n\n\ndef update_time(callback_context: CallbackContext):\n  # get current date time\n  now = datetime.now()\n  formatted_time = now.strftime(\"%Y-%m-%d %H:%M:%S\")\n  callback_context.state[\"_time\"] = formatted_time\n\n\nroot_agent = Agent(\n    model=\"gemini-3.1-pro-preview\",\n    name=\"calendar_agent\",\n    instruction=\"\"\"\n      You are a helpful personal calendar assistant.\n      Use the provided tools to search for calendar events (use 10 as limit if user doesn't specify), and get information about them.\n      Use \"primary\" as the calendarId if users don't specify.\n\n      Scenario1:\n      The user want to query the calendar events.\n      Use list_calendar_events to search for calendar events.\n\n\n      Scenario2:\n      User want to know the details of one of the listed calendar events.\n      Use google_calendar_events_get to get the details of a calendar event.\n\n      Current user:\n      <User>\n      {userInfo?}\n      </User>\n\n      Current time: {_time}\n\"\"\",\n    tools=[\n      AuthenticatedFunctionTool(\n            func=list_calendar_events,\n            auth_config=AuthConfig(\n                auth_scheme=OAuth2(\n                    flows=OAuthFlows(\n                        authorizationCode=OAuthFlowAuthorizationCode(\n                            authorizationUrl=(\n                                \"https://accounts.google.com/o/oauth2/auth\"\n                            ),\n                            tokenUrl=\"https://oauth2.googleapis.com/token\",\n                            scopes={\n                                \"https://www.googleapis.com/auth/calendar.readonly\": \"\",\n                            },\n                        )\n                    )\n                ),\n                raw_auth_credential=AuthCredential(\n                    auth_type=AuthCredentialTypes.OAUTH2,\n                    oauth2=OAuth2Auth(\n                        client_id=oauth_client_id,\n                        client_secret=oauth_client_secret,\n                    ),\n                ),\n            ),\n        ),\n        calendar_toolset],\n    before_agent_callback=update_time, \n)"
+    }
+  ],
+  "description": "\n**Day 26 of Google's Advent of Agents — Season 2**\n\nToday we tackle something every production agent eventually needs: **acting on behalf of a real user**. When an agent needs to access an end-user's private data, like reading their Calendar, Mail or access any resource tied to a specific user's identity - you need to propagate the user's identity to the agent's tool.\n\n**Solution: OAuth 2.0**\n\nOAuth 2.0 lets the agent act on behalf of a specific user, with their explicit permission. The user sees a consent screen, approves access, and the auth server issues a short-lived access token scoped to that user's data. ADK has built-in support for this flow, but the approach differs depending on what kind of tool you're authenticating.\n\n![OAuth2 Flow](/day26-oauth2flow.png)\n\n**Server Side: Authentication Patterns in ADK**\n\n| Pattern | What It Solves | Where to use |\n|----------|---------------|-----------|\n| **Using pre-built Authenticated Tools** | You configure the tool with an 1. **Auth scheme** (the type of authentication the API expects, e.g. OAuth2) and an 2. **Auth credential** (your app's `client_id` and `client_secret`). ADK automates everything else: it detects when credentials are missing, triggers the consent flow, exchanges the authorization code for an access token, stores it in the session, and automatically retries the original tool call once the user has authenticated.| Google Workspace tools (Calendar, Gmail, Drive etc.), GoogleApiToolSet, as well as OpenAPI and APIHub toolsets. |\n| **Building custom FunctionTools** | When building pure custom tools from scratch, you manually orchestrate the full OAuth lifecycle inside your tool function. This provides you with granular control. | Because you supply the authorization endpoint, token endpoint, and auth scopes, this works with any OAuth 2.0 provider: Github, Salesforce, Notion, Spotify etc., |\n\n**AuthenticatedFunctionTool:** This is a convenience wrapper that you can use for both the above patterns. If you have your own custom function but don't want to implement the full Pattern 2 auth logic, wrap it with an `[AuthConfig](https://github.com/google/adk-python/blob/main/contributing/samples/oauth_calendar_agent/agent.py#L165-L186)` specifying the scopes you need. ADK handles credential detection, the consent flow, token exchange, and tool retry and you just write the function logic.\n\n\n**Client Side: Handling the OAuth Flow**\n\nOAuth 2.0 is a multi-step back-and-forth between your app, the user's browser, and the Auth Server. `adk web` handles all of this automatically during development. It acts as the local redirect handler, detects the auth event, opens the browser for the user, intercepts the OAuth callback, exchanges the code for a token, and resumes the agent automatically. But if you are building your own custom clients in production, you need to handle this flow. See the [ADK Authentication docs](https://google.github.io/adk-docs/tools-custom/authentication/#2-handling-the-interactive-oauthoidc-flow-client-side) for how to do that.\n\n**Resources:**\n\n- [Pre-built Tool Authentication](https://google.github.io/adk-docs/tools-custom/authentication/#1-configuring-tools-with-authentication)\n- [Custom Tool Authentication](https://google.github.io/adk-docs/tools-custom/authentication/#journey-2-building-custom-tools-functiontool-requiring-authentication)\n- [OAuth Calendar Agent Sample Code](https://github.com/google/adk-python/blob/main/contributing/samples/oauth_calendar_agent/agent.py)\n"
+}

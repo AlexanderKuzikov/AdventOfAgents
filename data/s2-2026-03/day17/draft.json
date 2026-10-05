@@ -1,0 +1,112 @@
+[
+  {
+    "t": 0,
+    "en": "Hi everyone, I'm Perrick from Google Workspace. Today I'll show you how to",
+    "ru": ""
+  },
+  {
+    "t": 6,
+    "en": "connect and use Workspace connectors in Gemini Enterprise personal agents that are accessible from the web app. Let's assume you created a new GCP project and configured billing already. The first thing to do is to enable Gemini Enterprise. For that, go to the console and search for Gemini Enterprise. Select the product and click start 30 days free trial to begin the onboarding process. You will first need to activate the required API to enable the service for your project.",
+    "ru": ""
+  },
+  {
+    "t": 42,
+    "en": "Now that Gemini Enterprise is fully enabled, you can create an application here. You just need to provide the display name and choose the region. Once the app is ready, you need to configure the workforce identity. We choose Google identity for simplicity here. Next, let's connect your business",
+    "ru": ""
+  },
+  {
+    "t": 65,
+    "en": "data. Navigate to connected data source and add a new one. There are many options.",
+    "ru": ""
+  },
+  {
+    "t": 72,
+    "en": "Some are specific to Google Workspace such as Gmail, Calendar, and Drive. Others are specific to Google Cloud or third parties. and they typically connect to databases and APIs. Here",
+    "ru": ""
+  },
+  {
+    "t": 85,
+    "en": "we'll go ahead with Google Drive. Choose",
+    "ru": ""
+  },
+  {
+    "t": 89,
+    "en": "what you would like to share and give your data connector a name before clicking create. That's as simple as",
+    "ru": ""
+  },
+  {
+    "t": 97,
+    "en": "that. The drive data is now connected to your application. Now let's access the Gemini Enterprise web app using the provided link in the",
+    "ru": ""
+  },
+  {
+    "t": 107,
+    "en": "chat. Take a look at your connectors and make sure drive is enabled. Then you can ask questions directly about the workspace data such as finding the title",
+    "ru": ""
+  },
+  {
+    "t": 117,
+    "en": "of the last drive file you created. The",
+    "ru": ""
+  },
+  {
+    "t": 121,
+    "en": "agent looks into your connected data and answers accordingly. You can do a lot",
+    "ru": ""
+  },
+  {
+    "t": 126,
+    "en": "with this already. But what if you want your own custom agents to rely on data stores? In Gemini Enterprise, anyone can",
+    "ru": ""
+  },
+  {
+    "t": 135,
+    "en": "build their own personal agents using the agent designer. It's a no code solution. It's not enabled by default though. So go to the application configuration to enable the feature. With the designer enabled, let's come back to the Gemini Enterprise web app.",
+    "ru": ""
+  },
+  {
+    "t": 155,
+    "en": "Make sure to refresh the page to get access to the new feature. In the app sidebar, click new agent to open the designer and describe what you need in a prompt. I'm going with a pirate scene assistant for enterprise",
+    "ru": ""
+  },
+  {
+    "t": 171,
+    "en": "data searches in this case. The takes a moment to create the agent based on my request. And just like that,",
+    "ru": ""
+  },
+  {
+    "t": 179,
+    "en": "our parrot data searcher is ready.",
+    "ru": ""
+  },
+  {
+    "t": 183,
+    "en": "You can jump into the flow tab to review and edit the setup, including the model being used and connected data sources like Google Drive and search here. Once",
+    "ru": ""
+  },
+  {
+    "t": 192,
+    "en": "you're satisfied, click create and start the chat to see your new agent in action. When you ask a question, the agent uses its connected tools to pull realtime data as before, but it also",
+    "ru": ""
+  },
+  {
+    "t": 206,
+    "en": "uses the custom behavior you required.",
+    "ru": ""
+  },
+  {
+    "t": 210,
+    "en": "In this case, it uses a pirate theme. It's not really useful, but I guess you get the point. Oh, yeah. It's also worth noting that the custom agent is saved in your library, so you can pin it for easier access next time it's needed.",
+    "ru": ""
+  },
+  {
+    "t": 226,
+    "en": "And that's all I had for you today. I'm",
+    "ru": ""
+  },
+  {
+    "t": 230,
+    "en": "dropping links in case you want to learn more about this capability. I hope you enjoyed it. Bye, everyone.",
+    "ru": ""
+  }
+]

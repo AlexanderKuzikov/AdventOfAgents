@@ -1,0 +1,92 @@
+{
+  "day": "day21",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "Developer's Guide to AI Agent Protocols",
+  "summary": "Six protocols, disambiguated. See how MCP, A2A, UCP, AP2, A2UI, and AG-UI work together to build a production-ready supply chain agent with ADK.",
+  "tags": [
+    "MCP",
+    "A2A",
+    "UCP",
+    "AP2",
+    "A2UI",
+    "AG-UI",
+    "ADK",
+    "Protocols"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/21",
+  "video_id": "DAZpxBF6Zfc",
+  "video_url": "https://www.youtube.com/watch?v=DAZpxBF6Zfc",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Developer's Guide to AI Agent Protocols (Blog)",
+      "url": "https://developers.googleblog.com/developers-guide-to-ai-agent-protocols/",
+      "description": "The full walkthrough with code samples for all six protocols"
+    },
+    {
+      "title": "MCP — Model Context Protocol",
+      "url": "https://modelcontextprotocol.io/",
+      "description": "Standard connection pattern for agent-to-tool integration"
+    },
+    {
+      "title": "A2A — Agent2Agent Protocol",
+      "url": "https://a2a-protocol.org/",
+      "description": "Discovery and communication between agents"
+    },
+    {
+      "title": "UCP — Universal Commerce Protocol",
+      "url": "https://ucp.dev/",
+      "description": "Standardized shopping lifecycle for agentic commerce"
+    },
+    {
+      "title": "AP2 — Agent Payments Protocol",
+      "url": "https://github.com/google-agentic-commerce/AP2",
+      "description": "Payment authorization with typed mandates and audit trails"
+    },
+    {
+      "title": "A2UI — Agent-to-User Interface Protocol",
+      "url": "https://a2ui.org/",
+      "description": "Declarative JSON format for agent-generated UIs"
+    },
+    {
+      "title": "AG-UI — Agent-User Interaction Protocol",
+      "url": "https://docs.ag-ui.com/",
+      "description": "Standardized SSE streaming from agent to frontend"
+    },
+    {
+      "title": "ADK MCP Integrations",
+      "url": "https://google.github.io/adk-docs/integrations/",
+      "description": "Browse available MCP integrations for ADK"
+    }
+  ],
+  "code": "",
+  "icon": "🔗",
+  "resource_link": "https://developers.googleblog.com/developers-guide-to-ai-agent-protocols/",
+  "code_snippets": [
+    {
+      "filename": "mcp_tools.py",
+      "language": "python",
+      "code": "from google.adk.agents import Agent\nfrom google.adk.tools.mcp_tool import McpToolset\nfrom google.adk.tools.mcp_tool.mcp_session_manager import StdioConnectionParams\nfrom google.adk.tools.toolbox_toolset import ToolboxToolset\nfrom mcp import StdioServerParameters\n\n# 1. Connect to a database via MCP Toolbox for Databases\ninventory_tools = ToolboxToolset(server_url=\"http://localhost:5000\")\n\n# 2. Connect to Notion for recipes via MCP\nnotion_tools = McpToolset(connection_params=StdioConnectionParams(\n    server_params=StdioServerParameters(\n        command=\"npx\", args=[\"-y\", \"@notionhq/notion-mcp-server\"],\n        env={\"NOTION_TOKEN\": \"your-token\"}),\n    timeout=30))\n\n# 3. Build the agent — MCP tools are discovered automatically\nkitchen_agent = Agent(\n    model=\"gemini-3-flash-preview\",\n    name=\"kitchen_manager\",\n    instruction=\"You manage a restaurant kitchen. Check inventory, look up recipes.\",\n    tools=[inventory_tools, notion_tools],\n)"
+    },
+    {
+      "filename": "a2a_discover.py",
+      "language": "python",
+      "code": "# Turn any ADK agent into an A2A service (server side)\nfrom google.adk.a2a.utils.agent_to_a2a import to_a2a\napp = to_a2a(pricing_agent, port=8001)\n\n# Discover and call a remote A2A agent (client side)\nfrom a2a.client.client_factory import ClientFactory\nfrom a2a.client.helpers import create_text_message_object\n\nclient = await ClientFactory.connect(\"http://pricing-agent:8001\")\ncard = await client.get_card()\nprint(f\"{card.name} - {card.description}\")\n# -> \"pricing_agent - Checks today's wholesale market prices.\"\n\nmsg = create_text_message_object(\n    content=\"What's today's wholesale price for salmon?\")\nasync for response in client.send_message(msg):\n    print(response)  # Task with artifacts or direct Message"
+    },
+    {
+      "filename": "a2ui_components.py",
+      "language": "python",
+      "code": "# A2UI: Agent sends declarative JSON, renderer turns it into native UI.\n# 18 component primitives — same building blocks, any frontend.\n\na2ui_messages = [\n    # 1. Create a rendering surface\n    {\"beginRendering\": {\"surfaceId\": \"default\", \"root\": \"card\"}},\n\n    # 2. Send the component tree (flat list, ID references)\n    {\"surfaceUpdate\": {\"surfaceId\": \"default\", \"components\": [\n        {\"id\": \"card\", \"component\": {\"Card\": {\"child\": \"col\"}}},\n        {\"id\": \"col\", \"component\": {\"Column\": {\"children\": {\n            \"explicitList\": [\"title\", \"price\", \"buy\"]}}}},\n        {\"id\": \"title\", \"component\": {\"Text\": {\"usageHint\": \"h3\",\n            \"text\": {\"path\": \"name\"}}}},\n        {\"id\": \"price\", \"component\": {\"Text\": {\"text\": {\"path\": \"price\"}}}},\n        {\"id\": \"buy\", \"component\": {\"Button\": {\"child\": \"btn-label\",\n            \"action\": {\"name\": \"purchase\",\n            \"context\": [{\"key\": \"item\", \"value\": {\"path\": \"name\"}}]}}}},\n        {\"id\": \"btn-label\", \"component\": {\"Text\": {\n            \"text\": {\"literalString\": \"Buy Now\"}}}},\n    ]}},\n\n    # 3. Send the data (separate from structure)\n    {\"dataModelUpdate\": {\"surfaceId\": \"default\", \"contents\": [\n        {\"key\": \"name\", \"valueString\": \"Fresh Atlantic Salmon\"},\n        {\"key\": \"price\", \"valueString\": \"$24.00/lb\"},\n    ]}},\n]"
+    },
+    {
+      "filename": "agui_streaming.py",
+      "language": "python",
+      "code": "# AG-UI: Wrap any ADK agent as a streaming endpoint in 3 lines\nfrom ag_ui_adk import ADKAgent, add_adk_fastapi_endpoint\nfrom fastapi import FastAPI\n\nag_ui_agent = ADKAgent(adk_agent=kitchen_mgr, app_name=\"kitchen\", user_id=\"chef\")\napp = FastAPI()\nadd_adk_fastapi_endpoint(app, ag_ui_agent, path=\"/\")\n# Run with: uvicorn module:app\n\n# The SSE stream emits typed events:\n# RUN_STARTED\n# TOOL_CALL_START toolCallName=\"check_inventory\"\n# TOOL_CALL_RESULT content=\"3 lbs in stock, REORDER NEEDED\"\n# TOOL_CALL_END\n# TEXT_MESSAGE_CONTENT delta=\"Based on \"\n# TEXT_MESSAGE_CONTENT delta=\"current inventory...\"\n# RUN_FINISHED"
+    }
+  ],
+  "description": "\n**Day 21 of Google's Advent of Agents — Season 2**\n\nThe agent protocol landscape is exploding: MCP, A2A, UCP, AP2, A2UI, AG-UI... If the alphabet soup feels overwhelming, today's guide cuts through the noise.\n\nThis companion walkthrough follows the [Developer's Guide to AI Agent Protocols](https://developers.googleblog.com/developers-guide-to-ai-agent-protocols/) blog post, which builds a restaurant supply chain agent using ADK by adding one protocol at a time until it can check real inventory, get specialist quotes, place orders, authorize payments, and stream interactive dashboards.\n\n**The Six Protocols at a Glance**\n\n| Protocol | What It Solves | Discovery |\n|----------|---------------|-----------|\n| **MCP** | Agent ↔ Tools & Data | Server advertises tools |\n| **A2A** | Agent ↔ Agent | `/.well-known/agent-card.json` |\n| **UCP** | Standardized Commerce | `/.well-known/ucp` |\n| **AP2** | Payment Authorization | Typed mandates + audit trail |\n| **A2UI** | Agent → Rich UI | Declarative JSON components |\n| **AG-UI** | Agent → Streaming Frontend | Standardized SSE events |\n\n**When to Use What**\n\n- **Start with MCP**: Connect your agent to databases, APIs, and services without writing custom integration code.\n- **Add A2A**: When you need to talk to remote agents built by other teams or on other frameworks.\n- **Add UCP + AP2**: When your agent needs to transact (commerce + payment authorization).\n- **Add A2UI**: When plain text isn't enough and your agent needs to render interactive UIs.\n- **Add AG-UI**: When you need real-time streaming of tool calls and text to the frontend.\n\n**Key Takeaway:** You don't need all six on day one. Add protocols as your requirements grow. Each one eliminates a category of custom integration code.\n"
+}

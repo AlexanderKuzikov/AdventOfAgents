@@ -1,0 +1,63 @@
+{
+  "day": "day06",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "ADK Skills",
+  "summary": "Eliminate wasted tokens with progressive disclosure. Use ADK Skills to load complex instructions only when needed.",
+  "tags": [
+    "ADK",
+    "Skills",
+    "Progressive Disclosure",
+    "Optimization"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/06",
+  "video_id": null,
+  "video_url": "",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "ADK Skills Documentation",
+      "url": "https://google.github.io/adk-docs/skills/",
+      "description": "Official guide for defining and using skills in ADK."
+    },
+    {
+      "title": "ADK Skills: Part 1 - What Are Skills?",
+      "url": "https://lavinigam.com/posts/adk-agent-skills-part1/#what-are-skills-and-why-they-matter",
+      "description": "Learn why decoupling procedural knowledge matters."
+    },
+    {
+      "title": "ADK Skills: Part 2 - Wiring Skills",
+      "url": "https://lavinigam.com/posts/adk-agent-skills-part2/#wiring-skills-into-the-agent",
+      "description": "Technical deep dive into SkillToolset internals."
+    },
+    {
+      "title": "ADK Skills: Part 3 - Skills That Write Skills",
+      "url": "https://lavinigam.com/posts/adk-agent-skills-part3/#pattern-4-skills-that-write-skills",
+      "description": "Pattern 4: The meta-skill of self-generation."
+    },
+    {
+      "title": "Agent Skills Specification",
+      "url": "https://agentskills.io/specification",
+      "description": "The open standard adopted by 40+ agents."
+    },
+    {
+      "title": "Companion Code Repository",
+      "url": "https://github.com/lavinigam-gcp/build-with-adk/tree/main/adk-agent-skills-tutorial",
+      "description": "Clone and run all four skill patterns."
+    }
+  ],
+  "code": "",
+  "icon": "🥋",
+  "resource_link": "https://google.github.io/adk-docs/skills/",
+  "code_snippets": [
+    {
+      "filename": "agent.py",
+      "language": "python",
+      "code": "# agent.py — ADK Skills: 4 patterns in one agent\nimport pathlib\nfrom google.adk import Agent\nfrom google.adk.skills import load_skill_from_dir, models\nfrom google.adk.tools.skill_toolset import SkillToolset\n\n# Pattern 1: Inline skill — stable rules defined in code\nseo_skill = models.Skill(\n    frontmatter=models.Frontmatter(\n        name=\"seo-checklist\",\n        description=\"SEO optimization checklist for blog posts.\",\n    ),\n    instructions=(\n        \"Check each item:\\n\"\n        \"1. Title: 50-60 chars, primary keyword near the start\\n\"\n        \"2. Meta description: 150-160 chars with call-to-action\\n\"\n        \"3. Headings: H2/H3 hierarchy, keywords in 2-3 headings\\n\"\n        \"4. First paragraph: primary keyword in first 100 words\\n\"\n        \"5. Images: alt text with keywords, compressed\"\n    ),\n)\n\n# Pattern 2: File-based skill — SKILL.md + references/ directory\nblog_writer = load_skill_from_dir(\n    pathlib.Path(__file__).parent / \"skills\" / \"blog-writer\"\n)\n\n# Pattern 3: External skill — same format, from a community repo\nresearcher = load_skill_from_dir(\n    pathlib.Path(__file__).parent / \"skills\" / \"content-research-writer\"\n)\n\n# Wire all skills into one SkillToolset (auto-generates 3 tools)\nroot_agent = Agent(\n    model=\"gemini-3.1-flash-preview\",\n    name=\"blog_skills_agent\",\n    description=\"A blog-writing agent powered by reusable skills.\",\n    instruction=\"You are a blog-writing assistant. Load relevant skills before acting.\",\n    tools=[SkillToolset(skills=[seo_skill, blog_writer, researcher])],\n)"
+    }
+  ],
+  "description": "\n**Day 6 of Google's Advent of Agents — Season 2** 🌸\n\nMost agents load every instruction into the **system prompt** on every LLM call — compliance rules, style guides, API references — whether the user's question needs them or not. At ten capabilities, that's thousands of **wasted tokens** per call. **ADK Skills** solve this with **progressive disclosure**: the agent sees only a lightweight listing of skill names at startup, then loads full instructions on demand.\n\n**Progressive Disclosure: L1 / L2 / L3**\n\n![Progressive Disclosure Diagram](/s2-day06-progressive-disclosure.png)\n\n**How It Works**\n\n**ADK SkillToolset** auto-registers three tools that map to three disclosure levels:\n\n- **L1 — Metadata (list_skills)**: Returns skill names and descriptions (~100 tokens each). Always present. This is the \"menu\" the agent scans to decide what's relevant.\n\n- **L2 — Instructions (load_skill)**: Fetches the full skill body when the agent decides it's needed. Called explicitly per skill.\n\n- **L3 — Resources (load_skill_resource)**: Loads reference files (style guides, checklists, specs) only when skill instructions reference them.\n\nSkills can be defined **inline** in Python, loaded from **local directories** with SKILL.md files, pulled from **community repos**, or even generated on demand by a **meta skill**. The [companion blog series](https://lavinigam.com/posts/adk-agent-skills-part1/#what-are-skills-and-why-they-matter) walks through all four patterns.\n\n**Resources:**\n\n- [ADK Skills Documentation](https://google.github.io/adk-docs/skills/)\n- [ADK Skills: Part 1 - What Are Skills?](https://lavinigam.com/posts/adk-agent-skills-part1/#what-are-skills-and-why-they-matter)\n- [ADK Skills: Part 2 - Wiring Skills](https://lavinigam.com/posts/adk-agent-skills-part2/#wiring-skills-into-the-agent)\n- [ADK Skills: Part 3 - Skills That Write Skills](https://lavinigam.com/posts/adk-agent-skills-part3/#pattern-4-skills-that-write-skills)\n- [Agent Skills Specification](https://agentskills.io/specification)\n- [Companion Code Repository](https://github.com/lavinigam-gcp/build-with-adk/tree/main/adk-agent-skills-tutorial)\n"
+}

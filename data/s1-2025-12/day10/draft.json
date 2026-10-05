@@ -1,0 +1,107 @@
+[
+  {
+    "t": 0,
+    "en": "Hey everyone. In this video, we'll talk about how inbuilt features within Google agent development kit framework can help address one of the key challenges that you would run into if you're deploying an AI agent into production using the ADK framework. So, let's get started. So, we'll talk about two key features in this video. One of them is context compression and the other one is context caching. We'll first talk about the how and explain it visually how it works and",
+    "ru": ""
+  },
+  {
+    "t": 23,
+    "en": "then we'll walk through a step-by-step method on how we can implement this using code. So when you're deploying an ADK agent, it collects context information. Now that context information can be everything from your user request, your user information, the data that the model retrieves back and the tool calls that it's making as well as any generated output from the model itself. Now all of this is stored within what we call a session in agent development kit. Within this session, we",
+    "ru": ""
+  },
+  {
+    "t": 51,
+    "en": "have this information stored in the form of event. Now when you start off, you have fewer number of events. But as and when the complexity of the agent keeps growing, the number of events within the session also drastically increases which",
+    "ru": ""
+  },
+  {
+    "t": 65,
+    "en": "in turn increases the processing time as well as slows down the responses. So, so let's talk about how we can mitigate this using context compaction. Now, when you're implementing this feature, there's few variables that you would have to define. Number one being the compaction interval. At what point do you want to have the automatic summarizer summarize the event? And that's defined by compaction interval. And then we also have something called overlap size which is based off the",
+    "ru": ""
+  },
+  {
+    "t": 88,
+    "en": "sliding window theory wherein the next three sessions that's going to be compacted also takes in one from the previous event which is an overlap. So we'll talk about that in just a bit. In this case we have event one nothing happens event two nothing happens and then a third event is sent by the user. At that point of time the summarizer is triggered and then the summarizer summarizes the first three events into a short summary. Now this summary you can define your own model to summarize it or",
+    "ru": ""
+  },
+  {
+    "t": 114,
+    "en": "you can define your own prompt as well when you want to summarize it. This is defined this number is defined by the compaction into it. Now let's move on. Now let's say you have three more events which is you have event four, five and six. At this point of time as soon as we hit event six, the summarizer is triggered again. And now it not just summarizes four, five and six but it also takes one event from prior which is event three which is what's defined by the overlap site. And that summary is",
+    "ru": ""
+  },
+  {
+    "t": 139,
+    "en": "stored as summary 2. So what does this helper? This helps with reducing the context information and the number of tokens that's set and we'll see that when we are when we're doing the live code. Let's quickly jump into code to see how we can implement this. Now let's get started. In order to first start off building my agent, I'm going to use the agent starter pack and I'm going to link that in the comments below. That's the easiest way that you can build a production ready agent using the ADK",
+    "ru": ""
+  },
+  {
+    "t": 163,
+    "en": "framework. So, I'm going to go ahead and say create my agent using the agent starter pack. And I'm going to use the ADK base template. And now that I have my agent created, I'm going to go ahead and edit. The first thing I'm going to do is import the events compaction config. And then come here and remove these built-in tools. I'm not going to be using this built-in tools. And I'm going to add my my compaction config at the app level when I'm defining the app. So",
+    "ru": ""
+  },
+  {
+    "t": 189,
+    "en": "here I'm going to say events compaction config. And I'm going to define the events compaction config and give it the",
+    "ru": ""
+  },
+  {
+    "t": 196,
+    "en": "first one. The first variable is going to be the compaction interval which we saw in the previous example. So I'm going to say compaction interval is three. And I'm also going to define the overlap size. I'm going to define it as one. And now let's go ahead and make this environment. I'm going to say make playground. So if I open up this now I'm going to go ahead. Now once I do that I'm going to get the ADK web automatically open when I run the make playground through it in starter kit. So",
+    "ru": ""
+  },
+  {
+    "t": 220,
+    "en": "here's what I'm going to I'm ask I'm going to ask it for the significance of each lunar month and I'm going to ask it to proceed after every single month. So let's observe the events that happen to. So I'm going to say start with January and let's monitor the events and I'm just going to keep saying proceed so that it proceeds to the next one. I got the one for Jan. I'm going to say proceed. I can see that this one the first event has created. At this point of time the summary has not been",
+    "ru": ""
+  },
+  {
+    "t": 243,
+    "en": "triggered yet. I'm going to say proceed again and we have the second event and then I'm going to say proceed again for the fourth event. Now let's take a look at what's happening behind the scenes. So if you look at the session and the events that you would see that there's four events right now. Now if I click on the first event I would see that the total token count is 747 and I see my",
+    "ru": ""
+  },
+  {
+    "t": 261,
+    "en": "request here. So let me move on to the next event. I'm sending both my initial prompt as well as the prompt as the response that I got from the model the previous turn in this case the January. I move ahead. I can see that I see the month of Jan Feb as well as my original prompt. At this point of time, it's hit the three interval that we had defined it. So the next event that gets triggered, you can see that the model instead of sending each of those individual months, it's giving me a",
+    "ru": ""
+  },
+  {
+    "t": 287,
+    "en": "summary, which is the summary of the interaction so far. Now, what has this resulted in? You can see that instead of sending the large individual responses, I'm sending a summary. And if I look at total token count, it's 926 for the",
+    "ru": ""
+  },
+  {
+    "t": 301,
+    "en": "fourth interaction versus,1445",
+    "ru": ""
+  },
+  {
+    "t": 304,
+    "en": "for the previous interaction. You can see that this is an improvement in the token count as well as the performance because every time I don't have to keep sending it the entire contact. Now let's just keep proceeding further. You would see that even at the sixth month, it would again trigger another summary. So let's see how that happened. Now if I go to the next one, I would see that the sum we have the summary one. We have the fourth month as well as the fifth month.",
+    "ru": ""
+  },
+  {
+    "t": 328,
+    "en": "Now if I proceed further the next one, it should have triggered a summary here. You see I have a summary one which is generated by the first three events and a summary two which is generated by the next three events and then I have the seventh month too. So that's how context compaction work. This is an inbuilt feature with an ADK. Now let's jump on to the next feature which is context caching. Now when would you use context caching? So context caching is ideally",
+    "ru": ""
+  },
+  {
+    "t": 350,
+    "en": "used when you have a large data set or if you have let's say a prompt which is reused several times within the agent as well as the sub aent and if you're reusing that prompt caching that helps both in terms of latency as well as the price for the token. So let's take a quick look at how we can implement this. The first thing that we want to do is import the context caching libraries. I've imported this class here and now if I go back I can define that within my",
+    "ru": ""
+  },
+  {
+    "t": 376,
+    "en": "app. So I can say context cache config similar to how we define the the context compaction config say this and now the context cache config has three main variables. The first one is the minimum number of tokens at which I want to trigger the caching to take place. I can define it in let's say 4,000 tokens or 5,000 tokens. Anything less than that the caching is not going to trigger. Right? So now I can define the minimum tokens. I'm going to say 4,96. And then",
+    "ru": ""
+  },
+  {
+    "t": 402,
+    "en": "I can also define the time to live which is how long do we want the context caching to be the cache to be alive. Define it as 3,600 seconds. The third one is going to be the cache intervals. The cache interval is primarily going to help you define how many times the cache can be used before it expires. So you can say let's say 10 times if I'm using it 10 times after which I wanted not to use the cache. I wanted to expire and then refresh it. So that's how you would",
+    "ru": ""
+  },
+  {
+    "t": 424,
+    "en": "define a contact cache. Again, this is helpful in the context of if you have a really large system comp or if you're using a certain file or a data set across the agent multiple number of times. That's all for this video.",
+    "ru": ""
+  }
+]

@@ -1,0 +1,162 @@
+[
+  {
+    "t": 0,
+    "en": "Everyone, today we're celebrating the results of the AI agents intensive course, a massive collaboration between Google and Kaggle. Over 5 days in",
+    "ru": ""
+  },
+  {
+    "t": 9,
+    "en": "November, we witnessed the next wave of aic AI builders move from theory to production. The scale was incredible.",
+    "ru": ""
+  },
+  {
+    "t": 18,
+    "en": "Nearly 27,000 entrance and over 11,000",
+    "ru": ""
+  },
+  {
+    "t": 21,
+    "en": "teams competed across four distinct tracks. This wasn't just about prompts. It required agentic mastery utilizing multi- aent systems, custom tools and memory to build production ready solutions. Our first track concarch agents focus on enhancing everyday productivity. We have in first place news polls AI",
+    "ru": ""
+  },
+  {
+    "t": 44,
+    "en": "agent to address information noise for",
+    "ru": ""
+  },
+  {
+    "t": 47,
+    "en": "executives by mimicking a human research analyst. A dedicated verification agent",
+    "ru": ""
+  },
+  {
+    "t": 53,
+    "en": "acted as a quality gate, creating a",
+    "ru": ""
+  },
+  {
+    "t": 56,
+    "en": "self-correction loop to ensure every claim is citationbacked and hallucination free. In second place, we have FIL content agent system. This",
+    "ru": ""
+  },
+  {
+    "t": 67,
+    "en": "system compresses a two-hour workflow into a 60-second conversation going from one sentence to a published hiking guide. In third place, we have Asing",
+    "ru": ""
+  },
+  {
+    "t": 77,
+    "en": "Analyzer. It uses a critique agent to validate a cosmetic ingredient safety, forcing reruns if the analysis isn't up to par. In the agents for good track, we saw AI tackling global challenges.",
+    "ru": ""
+  },
+  {
+    "t": 92,
+    "en": "In first place, we have carbon footprint",
+    "ru": ""
+  },
+  {
+    "t": 95,
+    "en": "optimization engine. The problem was 70%",
+    "ru": ""
+  },
+  {
+    "t": 100,
+    "en": "of corporate emissions are hidden in complex supply chains. And the solution, a multi- aent system featuring a deterministic calculation agent for math accuracy and a policy agent that enforces a human in the loop safety gate. It reduced human review time by",
+    "ru": ""
+  },
+  {
+    "t": 116,
+    "en": "97%. In second place, we have carbon cow AI.",
+    "ru": ""
+  },
+  {
+    "t": 121,
+    "en": "This makes complex GHD calculations",
+    "ru": ""
+  },
+  {
+    "t": 125,
+    "en": "accessing through natural language routing. Parallel scholar won third place. It",
+    "ru": ""
+  },
+  {
+    "t": 132,
+    "en": "automated academic research using specialized agents and a persistent JSON knowledge base for long-term memory. The",
+    "ru": ""
+  },
+  {
+    "t": 140,
+    "en": "enterprise track focused on resilience. In first place, we have chaos playbook engine. This is an agent ops laboratory",
+    "ru": ""
+  },
+  {
+    "t": 149,
+    "en": "that injected chaos into systems to test them. Instead of simple retries, it used",
+    "ru": ""
+  },
+  {
+    "t": 155,
+    "en": "it uses rack to pull proven recovery",
+    "ru": ""
+  },
+  {
+    "t": 159,
+    "en": "strategies from a playbook. This improved success rates from 37% to 97%.",
+    "ru": ""
+  },
+  {
+    "t": 166,
+    "en": "In second place, we have Kodorama.",
+    "ru": ""
+  },
+  {
+    "t": 170,
+    "en": "It uses an A2A protocol to simulate a Rio enterprise software team. In third place, we have Vegan Flow. This features an autonomous procurement agent that actually negotiates prices with external vendor agents. Finally, our freestyle track push the boundaries of what's possible. In first place, we have Delalis. This is a self-expanding system. When it hits a problem it can solve, it designs, implements, and tests its own new Python tools. It is an agent that builds itself.",
+    "ru": ""
+  },
+  {
+    "t": 205,
+    "en": "In second place, we have AI stock prediction using six specialized microser agents for parallel analysis in under 10 seconds. In third place, we have Storyland AI transforms books into travel itineraries",
+    "ru": ""
+  },
+  {
+    "t": 221,
+    "en": "with AI with a parallel discovery phase.",
+    "ru": ""
+  },
+  {
+    "t": 227,
+    "en": "Looking across all winners, we see four clear patterns for production AI from hybrid architectures mixing both LLMs",
+    "ru": ""
+  },
+  {
+    "t": 235,
+    "en": "with the terminix code also",
+    "ru": ""
+  },
+  {
+    "t": 238,
+    "en": "selfcorrection loops A2A protocols for",
+    "ru": ""
+  },
+  {
+    "t": 241,
+    "en": "microservices and finally autonomous",
+    "ru": ""
+  },
+  {
+    "t": 245,
+    "en": "coordination. All of the repositories with code writeups as well as the YouTube videos can be found in the links below. Thank you for our amazing community of 26,955",
+    "ru": ""
+  },
+  {
+    "t": 259,
+    "en": "participants. You are building the future of Agentic AI. Winners, look for",
+    "ru": ""
+  },
+  {
+    "t": 264,
+    "en": "your Kaggle swag emails by the end of the by the end of December. Let's keep building together. Thank you.",
+    "ru": ""
+  }
+]

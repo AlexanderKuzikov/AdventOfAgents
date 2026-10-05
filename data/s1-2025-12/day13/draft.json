@@ -1,0 +1,492 @@
+[
+  {
+    "t": 0,
+    "en": "The landscape of AI development is shifting massively right now. The industry is moving from simple request response cycles towards complex stateful multi-turn agentic workflows. The standard generate content API remains the perfect tool for use cases like chatbots or text completion and handles those stateless tasks beautifully. However, with the rise of thinking models and advanced tool use, development requirements are changing. Rather than retrofitting these complex",
+    "ru": ""
+  },
+  {
+    "t": 28,
+    "en": "stateful patterns into existing",
+    "ru": ""
+  },
+  {
+    "t": 32,
+    "en": "endpoints, it would be helpful to have",
+    "ru": ""
+  },
+  {
+    "t": 35,
+    "en": "native interfaces designed specifically",
+    "ru": ""
+  },
+  {
+    "t": 38,
+    "en": "to handle this new level of complexity.",
+    "ru": ""
+  },
+  {
+    "t": 41,
+    "en": "Support this new era. Google has launched the interactions API which is now in beta. Think of this as a unified",
+    "ru": ""
+  },
+  {
+    "t": 49,
+    "en": "interface. It offers a single gateway",
+    "ru": ""
+  },
+  {
+    "t": 52,
+    "en": "that gives access to both raw models and",
+    "ru": ""
+  },
+  {
+    "t": 56,
+    "en": "fully managed systems like the new",
+    "ru": ""
+  },
+  {
+    "t": 60,
+    "en": "Gemini deep research agent.",
+    "ru": ""
+  },
+  {
+    "t": 63,
+    "en": "So if you're already building with the agent development kit ADK or the agent",
+    "ru": ""
+  },
+  {
+    "t": 69,
+    "en": "to agent or A2A protocol, you might be wondering where exactly does this new API fit into my existing ecosystem. The",
+    "ru": ""
+  },
+  {
+    "t": 77,
+    "en": "answer is that it fits in two distinct ways. The interactions API acts as both",
+    "ru": ""
+  },
+  {
+    "t": 84,
+    "en": "an alternative inference endpoint and a powerful primitive for your agent framework. Let's look at the first pattern. Implementing the interactions API inside an ADK agent is incredibly",
+    "ru": ""
+  },
+  {
+    "t": 97,
+    "en": "simple. The best part is you don't need to rewrite your agent score logic or control flow. You just need to tell the model component to switch gears. And",
+    "ru": ""
+  },
+  {
+    "t": 108,
+    "en": "here is exactly how it looks like.",
+    "ru": ""
+  },
+  {
+    "t": 111,
+    "en": "That's it. Just by setting use interactions API to true, the ADK",
+    "ru": ""
+  },
+  {
+    "t": 117,
+    "en": "switches gear. So what makes this different from just calling the generate content uh API? The",
+    "ru": ""
+  },
+  {
+    "t": 126,
+    "en": "interactions API extends the core capabilities with four critical features which are specifically uh designed for",
+    "ru": ""
+  },
+  {
+    "t": 134,
+    "en": "modern applications. First, optional",
+    "ru": ""
+  },
+  {
+    "t": 137,
+    "en": "serverside state. You can now offload",
+    "ru": ""
+  },
+  {
+    "t": 141,
+    "en": "history management entirely to the server. This drastically simplifies your client code, minimizes context management errors, and can even reduce costs through better caching. Second, a",
+    "ru": ""
+  },
+  {
+    "t": 154,
+    "en": "composible data model. This API provides",
+    "ru": ""
+  },
+  {
+    "t": 157,
+    "en": "a clean schema designed specifically for that complex agentic histories making it",
+    "ru": ""
+  },
+  {
+    "t": 162,
+    "en": "much easier to debug stream and reason over exactly what your agent is doing.",
+    "ru": ""
+  },
+  {
+    "t": 168,
+    "en": "Third, background execution. Real research takes time. You don't want to keep a client connection open for minutes while an agent works. This feature lets you offload those longunning loops to the server asynchronously. You just fire the request and pull for the result later. And finally, remote MCP tool support. Your models can now directly call the model context protocol or MCP servers as",
+    "ru": ""
+  },
+  {
+    "t": 194,
+    "en": "tools, making it seamless to integrate with the growing ecosystem of MCP compatible tools and data sources. Now,",
+    "ru": ""
+  },
+  {
+    "t": 203,
+    "en": "let's look at a code sample from the ADK",
+    "ru": ""
+  },
+  {
+    "t": 206,
+    "en": "Python repository.",
+    "ru": ""
+  },
+  {
+    "t": 210,
+    "en": "Um let's kind of look at a simple test case to prove that the server is really handling the memory. I call it the teach",
+    "ru": ""
+  },
+  {
+    "t": 218,
+    "en": "distract and recall pattern. So if you look at the code uh you know the first",
+    "ru": ""
+  },
+  {
+    "t": 224,
+    "en": "uh turn you kind of uh tell the agent",
+    "ru": ""
+  },
+  {
+    "t": 228,
+    "en": "that my favorite color is blue. So this is what I call as teach that is I tell",
+    "ru": ""
+  },
+  {
+    "t": 234,
+    "en": "the agent a specific fact and uh like",
+    "ru": ""
+  },
+  {
+    "t": 239,
+    "en": "you know my uh favorite color is blue and I am not asking for anything complex",
+    "ru": ""
+  },
+  {
+    "t": 245,
+    "en": "I'm just setting the context and then the step two comes which I call as distract here I completely change the",
+    "ru": ""
+  },
+  {
+    "t": 254,
+    "en": "subject and ask about a question about",
+    "ru": ""
+  },
+  {
+    "t": 258,
+    "en": "the weather like what is the weather in London This forces the agent to step",
+    "ru": ""
+  },
+  {
+    "t": 263,
+    "en": "away from the chat, use a tool and process new data. And then we get onto the third",
+    "ru": ""
+  },
+  {
+    "t": 272,
+    "en": "uh term. Here we ask the agent to",
+    "ru": ""
+  },
+  {
+    "t": 275,
+    "en": "remember the very first detail that we shared with it. So remember here my code",
+    "ru": ""
+  },
+  {
+    "t": 282,
+    "en": "isn't sending the chat uh history back",
+    "ru": ""
+  },
+  {
+    "t": 285,
+    "en": "to the server. I'm only sending the new",
+    "ru": ""
+  },
+  {
+    "t": 288,
+    "en": "question. And now if you look at the result uh you",
+    "ru": ""
+  },
+  {
+    "t": 294,
+    "en": "will see that the answer blue gets printed. So we'll come to the uh running",
+    "ru": ""
+  },
+  {
+    "t": 300,
+    "en": "the code in a minute. But before that you know let's just understand how this example works. So here uh you can kind of uh you",
+    "ru": ""
+  },
+  {
+    "t": 311,
+    "en": "know uh verify the interaction ids by",
+    "ru": ""
+  },
+  {
+    "t": 316,
+    "en": "printing them out and then you find that",
+    "ru": ""
+  },
+  {
+    "t": 319,
+    "en": "these are three separate interactions which are chained together automatically on the server side. So next let's run",
+    "ru": ""
+  },
+  {
+    "t": 328,
+    "en": "this uh test case and then see whether",
+    "ru": ""
+  },
+  {
+    "t": 331,
+    "en": "we are kind of getting the results that we talked about. So over to the demo",
+    "ru": ""
+  },
+  {
+    "t": 342,
+    "en": "run uh this specific uh test which is a",
+    "ru": ""
+  },
+  {
+    "t": 346,
+    "en": "multi-turn conversation on my terminal and let's see the results. So here the user says my favorite color is blue just acknowledge this and don't use any tools. So the agent says acknowledge your favorite color is blue. So you get",
+    "ru": ""
+  },
+  {
+    "t": 363,
+    "en": "uh along with the response and interaction ID as well because that's what the code is u you know asking for.",
+    "ru": ""
+  },
+  {
+    "t": 371,
+    "en": "Then the next one we ask okay what is the weather like in London. So in this",
+    "ru": ""
+  },
+  {
+    "t": 376,
+    "en": "case there's a tool call happening which is calling which is the get uh current",
+    "ru": ""
+  },
+  {
+    "t": 382,
+    "en": "weather which is a custom tool that we have written and uh uh the tool result",
+    "ru": ""
+  },
+  {
+    "t": 389,
+    "en": "is also printed out here. Then the agent",
+    "ru": ""
+  },
+  {
+    "t": 393,
+    "en": "takes this response from the tool and then it says the weather in London is cloudy and has a temperature of 59° F",
+    "ru": ""
+  },
+  {
+    "t": 400,
+    "en": "and 78% humidity. Awesome. and it also",
+    "ru": ""
+  },
+  {
+    "t": 404,
+    "en": "returns a interaction ID which is different from the first interaction ID. Then we come to the last term where we ask okay what's my favorite color that I mentioned earlier in our conversation. So here uh what happens is the aen says",
+    "ru": ""
+  },
+  {
+    "t": 421,
+    "en": "that your favorite color is blue and then it also prints a interaction ID for",
+    "ru": ""
+  },
+  {
+    "t": 427,
+    "en": "your uh the third turn. And so what",
+    "ru": ""
+  },
+  {
+    "t": 432,
+    "en": "happens over here is that we are kind of uh you know uh as I said we thought",
+    "ru": ""
+  },
+  {
+    "t": 438,
+    "en": "something we did a distract and then we did a uh recall. So here we find that the multi-turn conversation works with",
+    "ru": ""
+  },
+  {
+    "t": 446,
+    "en": "context retention and all the tests have passed. Let's say you have an existing ecosystem of A2A agents and you want them to be able to consult a new Gemini deep research agent. Historically integrating a brand new third party API like this would require writing a custom wrapper or adapter. It is friction. We",
+    "ru": ""
+  },
+  {
+    "t": 468,
+    "en": "have eliminated that friction with a new interactions API transport. Under the hood, the transport layer performs the translation for you. An AWS send message becomes an interactions create call. An A2A task maps to an interaction ID and the statuses are linked automatically. Just a quick note on this beta mapping. Features like A2A push notification and extensions aren't supported in this transport just yet. Let's now look at a",
+    "ru": ""
+  },
+  {
+    "t": 496,
+    "en": "code sample in the A2A samples GitHub uh",
+    "ru": ""
+  },
+  {
+    "t": 500,
+    "en": "repo.",
+    "ru": ""
+  },
+  {
+    "t": 503,
+    "en": "Uh so the interactions API transport",
+    "ru": ""
+  },
+  {
+    "t": 508,
+    "en": "class allows an A2A client to",
+    "ru": ""
+  },
+  {
+    "t": 511,
+    "en": "transparently communicate with the interactions API. To use the transport,",
+    "ru": ""
+  },
+  {
+    "t": 516,
+    "en": "you register it with your client factory and configure an agent card to use it.",
+    "ru": ""
+  },
+  {
+    "t": 524,
+    "en": "So why does this approach matter? Because it makes the interactions API",
+    "ru": ""
+  },
+  {
+    "t": 530,
+    "en": "completely transparent to your developer experience. You gain immediate access to powerful tools like deep research without refactoring your multi- aent system. So there are new so there are no",
+    "ru": ""
+  },
+  {
+    "t": 544,
+    "en": "new SDKs to learn. your existing A2A",
+    "ru": ""
+  },
+  {
+    "t": 548,
+    "en": "client code stays the same and it handles the real-time streaming and even manages complex configurations under the hood without breaking the standard protocol. Awesome. So now let's see a demo of this",
+    "ru": ""
+  },
+  {
+    "t": 566,
+    "en": "uh you know sample code that we were talking about. I am running the uh code",
+    "ru": ""
+  },
+  {
+    "t": 572,
+    "en": "sample in my local host as at the port",
+    "ru": ""
+  },
+  {
+    "t": 576,
+    "en": "uh 10,000. So uh in the A2A inspector",
+    "ru": ""
+  },
+  {
+    "t": 580,
+    "en": "you can see the agent card that we",
+    "ru": ""
+  },
+  {
+    "t": 584,
+    "en": "talked about earlier and then uh you",
+    "ru": ""
+  },
+  {
+    "t": 587,
+    "en": "know if you try to invoke the deep research agent by using a a query like",
+    "ru": ""
+  },
+  {
+    "t": 594,
+    "en": "you know give me a report on TensorFlow what happens is uh the uh task gets",
+    "ru": ""
+  },
+  {
+    "t": 602,
+    "en": "created initially with the state as",
+    "ru": ""
+  },
+  {
+    "t": 605,
+    "en": "submitted right and Then you also get a",
+    "ru": ""
+  },
+  {
+    "t": 608,
+    "en": "task ID here. Uh so as you kind of",
+    "ru": ""
+  },
+  {
+    "t": 612,
+    "en": "scroll through that you see that the Gemini deep research agent is being invoked and initially a research direction is being set. It says that you know I'm initiating the research process for a comprehensive report on TensorFlow and I've kind of outlined the core areas that I need to cover. Awesome. So as you",
+    "ru": ""
+  },
+  {
+    "t": 630,
+    "en": "kind of scroll through that you see that it's doing multiple different steps right. So it is defining the search strategy. It's defining what steps it needs to do next. Then it's verifying the latest version and then it's kind of resolving some conflicting dates. Then it's moving to finalization. It's also verifying some key claims. It's looking at information gaps and then what it",
+    "ru": ""
+  },
+  {
+    "t": 655,
+    "en": "does is you can just you know double I mean you can just click on one of these conversations to see this raw JSON. Uh",
+    "ru": ""
+  },
+  {
+    "t": 662,
+    "en": "so then it what it does it it says to address these gaps I've prepared a set of targeted queries. Uh so these include searching for specific terms like you know TensorFlow light RT and all of that stuff. Uh then it says you know I'm verifying the key 2025 updates and it does all of this and then finally it comes to a stage where it says okay the research is complete and the overall uh",
+    "ru": ""
+  },
+  {
+    "t": 686,
+    "en": "candidate response appears highly accurate and current. uh and after that",
+    "ru": ""
+  },
+  {
+    "t": 691,
+    "en": "what it does is it kind of uh prints out",
+    "ru": ""
+  },
+  {
+    "t": 695,
+    "en": "a uh report right. So uh and if you look",
+    "ru": ""
+  },
+  {
+    "t": 701,
+    "en": "at this report it has all the key points it has an introduction core architecture",
+    "ru": ""
+  },
+  {
+    "t": 706,
+    "en": "and uh you know towards the end of this report it also talks about the sources that it referred to. So with this we",
+    "ru": ""
+  },
+  {
+    "t": 715,
+    "en": "come to the end of this demo and this",
+    "ru": ""
+  },
+  {
+    "t": 719,
+    "en": "presentation.",
+    "ru": ""
+  }
+]

@@ -1,0 +1,55 @@
+{
+  "day": "day29",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "ApiRegistry: Dynamically Fetching BigQuery Tools",
+  "summary": "Learn how to use the ApiRegistry object to dynamically fetch an admin-approved, fully configured BigQuery tool directly from the Cloud API Registry at runtime.",
+  "tags": [
+    "ApiRegistry",
+    "BigQuery",
+    "Authentication"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/29",
+  "video_id": "981wf6l3fCA",
+  "video_url": "https://www.youtube.com/watch?v=981wf6l3fCA",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "API Registry Documentation",
+      "url": "https://docs.cloud.google.com/api-registry/docs/overview",
+      "description": "Official documentation for the Cloud API Registry."
+    },
+    {
+      "title": "Enhanced Tool Governance Blog Post",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/new-enhanced-tool-governance-in-vertex-ai-agent-builder",
+      "description": "Google Cloud blog post covering Vertex AI Agent Builder tool governance."
+    }
+  ],
+  "code": "#!/bin/bash\n#1. Install dependencies\npip install -r requirements.txt\n\n#2. Setup the \"Registry\" Data\necho \"Setting up Registry Data\"\n\n#replace project-id with your project id\nbq mk --dataset project-id:registry_demo\nbq query --use_legacy_sql=false \\\n'CREATE OR REPLACE TABLE `project-id.registry_demo.test_table` AS SELECT \"Registry_Active\" as status'\n\n#3. Authorize the environment\necho \"Please authorize the environment registry:\"\ngcloud auth application-default login\n",
+  "icon": "🗄️",
+  "resource_link": "https://docs.cloud.google.com/api-registry/docs/overview",
+  "code_snippets": [
+    {
+      "title": "Python Dependencies",
+      "filename": "requirements.txt",
+      "language": "text",
+      "code": "google-cloud-bigquery\ngoogle-auth"
+    },
+    {
+      "title": "Environment Setup",
+      "filename": "setup.sh",
+      "language": "bash",
+      "code": "#!/bin/bash\n#1. Install dependencies\npip install -r requirements.txt\n\n#2. Setup the \"Registry\" Data\necho \"Setting up Registry Data\"\n\n#replace project-id with your project id\nbq mk --dataset project-id:registry_demo\nbq query --use_legacy_sql=false \\\n'CREATE OR REPLACE TABLE `project-id.registry_demo.test_table` AS SELECT \"Registry_Active\" as status'\n\n#3. Authorize the environment\necho \"Please authorize the environment registry:\"\ngcloud auth application-default login"
+    },
+    {
+      "title": "Dynamic Loader",
+      "filename": "main.py",
+      "language": "python",
+      "code": "import google.auth\nfrom google.cloud import bigquery\n\nclass ApiRegistry:\n    @staticmethod\n    def get_tool(tool_id):\n        #Dynamically fetch config from Cloud Registry\n        creds, project = google.auth.default()\n        project = project or \"project-id\" #replace project-id with your project id\n        return bigquery.Client(credentials=creds, project=project)\n\ndef run_task():\n    #1. Fetch tool from Registry\n    bq = ApiRegistry.get_tool(\"bigquery-admin-v2\")\n    \n    # 2. Execute admin-approved query\n    #replace project-id with your project id\n    sql = \"SELECT status FROM `project-id.registry_demo.test_table`\"\n    for row in bq.query(sql):\n        print(f\"Verified via Registry: {row.status}\")\n\nif __name__ == \"__main__\":\n    run_task()"
+    }
+  ],
+  "description": "**Day 29 of Google's Advent of Agents — Season 2**\n\nHardcoding API credentials into your agents is a security risk and an infrastructure headache. Instead, we can dynamically fetch admin-approved, fully configured tools directly from the Cloud API Registry at runtime.\n\n**How It Works**\n\nBy leveraging the `ApiRegistry`, we separate our agent logic from infrastructure specifics to enforce strict enterprise governance while keeping our AI portable. The registry ensures the agent always pulls the right connection settings, IAM roles, and boundaries without relying on local keys.\n\n- **Dependencies**: Include `google-cloud-bigquery` and `google-auth` to securely interact with GCP.\n- **Environment Authorization**: Use Application Default Credentials to connect from your local environment seamlessly, or inherit Workload Identity when running on Cloud Run.\n- **ApiRegistry Reference**: The wrapper dynamically yields a configured `bigquery.Client()` out of the box so your code stays clean and your credentials stay safe.\n\n**Resources:**\n\n- [API Registry Documentation](https://docs.cloud.google.com/api-registry/docs/overview)\n- [Enhanced Tool Governance in Vertex AI](https://cloud.google.com/blog/products/ai-machine-learning/new-enhanced-tool-governance-in-vertex-ai-agent-builder?e=48754805)"
+}

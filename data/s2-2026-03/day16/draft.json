@@ -1,0 +1,67 @@
+[
+  {
+    "t": 1,
+    "en": "ADK Dev Skills is a new approach to the develop agents using AI. So, you can see",
+    "ru": ""
+  },
+  {
+    "t": 7,
+    "en": "this is going to be installed just with one command using MPX. And once it's installed, it will give you six different skills to deploy agents. The first thing we do here is just send a prompt to develop a retail agent. And now the ADK cheat sheet is actually being activated behind the scenes. And this is now going to look at the agent starter pack for references. And behind the scenes also the ADK documentation. Then at this point, the agent is going to create a design spec for us to review",
+    "ru": ""
+  },
+  {
+    "t": 36,
+    "en": "and approve. And once you are happy with it, we can accept it. And then the agent can now go",
+    "ru": ""
+  },
+  {
+    "t": 43,
+    "en": "and create the through agent starter pack, the actual template of the code, and then customize it based on the prompt we asked it. So, you can see this is all automatically done by an interface like a Gemini CLI, or you can use also other tools like Cloud Code Antigravity, Code X. They are all supported by the skills. And now at this point, you can see that the agent has been created, and I just prompted to create an evaluation suit to make sure everything really works before",
+    "ru": ""
+  },
+  {
+    "t": 71,
+    "en": "I get my hands on them. And you can see in this case is going and using ADK Eval to actually make the",
+    "ru": ""
+  },
+  {
+    "t": 78,
+    "en": "evals here. And the different eval sets have been evaluated here. Then next, I now",
+    "ru": ""
+  },
+  {
+    "t": 86,
+    "en": "focusing on deployment. So, I want to make sure that what we build locally can actually be deployed and hosted on Agent Engine as our development target. And the agent is going through the process of actually looking at the different requirements, creating the bottle, and then deploying to Agent Engine. Agent Engine is just one of the target available. You can also deploy on Cloud Run. And more support for other targets is coming soon through, for example, GKE.",
+    "ru": ""
+  },
+  {
+    "t": 112,
+    "en": "And you can see that now the agent is going through the process of the deployment. Then once it's finished, we can focus on the next step of the life cycle. So, the next step after this will be to actually focus on, for example, creating a CI/CD process. And this again can be done through different skills between the six we have provided here. And this can be done again just with a single prompt. And then reach the final stage of the life cycle, which would be about logging and monitoring.",
+    "ru": ""
+  },
+  {
+    "t": 140,
+    "en": "And the agent can also do these sorts of tasks in the background. So, for example, you will see here in a moment the agent is going to stop looking at Agent Engine, as you can see for now. And then we can set up the CI/CD process while the agent engine deployment is still running. So, to run the things in parallel. And once the CI/CD process is finished through the different staging deployment target, we can then set up observability. And you can see here that agent is explaining how to use Cloud",
+    "ru": ""
+  },
+  {
+    "t": 167,
+    "en": "Trace or BigQuery for analytics. And",
+    "ru": ""
+  },
+  {
+    "t": 170,
+    "en": "once this is finished, we can go back to Agent Engine and check, okay, is Agent Engine deployment finished? And if so, like great, let's actually now run some",
+    "ru": ""
+  },
+  {
+    "t": 181,
+    "en": "tests against it. And the agent is now going to it and try to create a script to query the agent that we deployed remotely on Agent Engine from locally and actually run the test that we created before on it to make sure everything is really working both on local and remote. And this is it more or less with what we wanted to cover today. You can see the agent is perfectly working. And we just need to run the test against it. These skills are available for you to",
+    "ru": ""
+  },
+  {
+    "t": 210,
+    "en": "use on MPX. I hope you will enjoy them. And we appreciate the feedback from the community on anything else you would like to see here to make your developer experience even better. But that's all for today. You can see here the agent passing all the tests. See you.",
+    "ru": ""
+  }
+]

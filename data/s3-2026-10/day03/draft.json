@@ -1,0 +1,317 @@
+[
+  {
+    "t": 1,
+    "en": "Welcome everyone to day three of advent of agents. Today Anarude and I are going to be talking about building secure architectures for multi- aent systems and what that looks like on Gemini Enterprise. >> Thanks Ma. Um, one of the things I often",
+    "ru": ""
+  },
+  {
+    "t": 17,
+    "en": "look at as being a frustrating experience for users is when trying to navigate like a product page and you're",
+    "ru": ""
+  },
+  {
+    "t": 25,
+    "en": "trying to claim a warranty on a on a product that's malfunctioning. they're so clunky. There's so many things you need to fill out and the response time is a few days, maybe even weeks. And",
+    "ru": ""
+  },
+  {
+    "t": 36,
+    "en": "maybe agents could be a solution to fix that. So, I was thinking, you know, what if a user that has a problem is going to",
+    "ru": ""
+  },
+  {
+    "t": 46,
+    "en": "talk directly to an agent? Let's say",
+    "ru": ""
+  },
+  {
+    "t": 49,
+    "en": "let's call the warranty agent. And this warranty agent connects to a bunch of databases that knows what is my product history, what's my purchase history, am",
+    "ru": ""
+  },
+  {
+    "t": 59,
+    "en": "I, you know, sort of a premium member or something. And then it based on all of that data, it just connects to like a delivery partners MCP server like maybe a FedEx or maybe something like that. And then, you know, just ships me a replacement and lets me know on the user interface. This would be perfect. And in ADK, such an agent would look really nice and simple to kind of code. So, what do you think about that? >> Wow. I mean, just in taking a look at it, that's kind of a god agent. It's",
+    "ru": ""
+  },
+  {
+    "t": 89,
+    "en": "going to be able to take all that information, process it, and then just make a decision all on its own with one agent. So, if you had to put on the hat of a",
+    "ru": ""
+  },
+  {
+    "t": 101,
+    "en": "threat modeler, uh, you know, hearkening back to our previous session, what do you think the threats with that are? Well, I would think that that would be a",
+    "ru": ""
+  },
+  {
+    "t": 111,
+    "en": "huge risk because not only is it able to",
+    "ru": ""
+  },
+  {
+    "t": 115,
+    "en": "take actions on behalf of multiple systems, but we have to look at the input that's being provided to that, we have to check that it's not, you know, sending my data off in an unsanitized",
+    "ru": ""
+  },
+  {
+    "t": 127,
+    "en": "fashion to go um see and look up my",
+    "ru": ""
+  },
+  {
+    "t": 131,
+    "en": "warranty information. We have to make sure that it can't pull other users information just based on a serial number or something like that. Gosh, that's kind of a god agent. You have to think about it from output and input, but also all the actions that that single agent is going to take along the way. >> Yeah, that makes sense. So maybe a great way probably to redesign this would be to split this, maybe make it into three",
+    "ru": ""
+  },
+  {
+    "t": 156,
+    "en": "different agents that are tightly and strictly scoped to what actions they can take. So maybe we have a case manager agent that is kind of like your front desk uh and then you know handles getting all that input uh and there's the data agent that can only look up data and it doesn't have permissions to talk to the customer or the user directly and then there is just a logistics liaison agent that can talk to",
+    "ru": ""
+  },
+  {
+    "t": 184,
+    "en": "your delivery partners and ship things and does nothing else. Do you think that's a that's a good way to think about breaking this down and scoping it down? >> Definitely. And I think that's a better way to threat model too is that separation of duties so you can put specific guard rails on each component.",
+    "ru": ""
+  },
+  {
+    "t": 203,
+    "en": ">> So I was very curious about your input.",
+    "ru": ""
+  },
+  {
+    "t": 206,
+    "en": "How do you think this new redesigned input looks like from a threat modeling and security perspective? Well, the first step that you mentioned in your design of this warranty agent is that a user is going to submit a form that triggers a cloudr run function. That's the shim session manager. We want to make sure that that input is sanitized by model armor that they're not trying to inject malicious prompt",
+    "ru": ""
+  },
+  {
+    "t": 232,
+    "en": "that they're not, you know, using harmful or dangerous language. And by",
+    "ru": ""
+  },
+  {
+    "t": 237,
+    "en": "passing that directly to the agent with identity aware proxy, you could make sure that an authorized client is the one passing that request over. >> Then it can go to manager. >> That makes sense. So from if I had to sort of like uh summarize everything we've discussed so far from an architecture perspective uh the first decision we made architecturally to be more secure is to split one agent into three separate strictly scoped agents and then we're designing designing the",
+    "ru": ""
+  },
+  {
+    "t": 268,
+    "en": "input in such a way that no unsanitized",
+    "ru": ""
+  },
+  {
+    "t": 272,
+    "en": "input is making it to the agent directly. There is a shim session",
+    "ru": ""
+  },
+  {
+    "t": 277,
+    "en": "manager that is actually processing that",
+    "ru": ""
+  },
+  {
+    "t": 280,
+    "en": "data before it goes to the agent and it's sending it through a gateway an agent gateway which is a GCP service in this case where it is applying model armor policies which is basically an",
+    "ru": ""
+  },
+  {
+    "t": 292,
+    "en": "agent API level or LM level firewall and",
+    "ru": ""
+  },
+  {
+    "t": 296,
+    "en": "identityware proxies to make sure that it is the right kind of identity and users that are talking to the agent. And so this way when we're uh getting to the",
+    "ru": ""
+  },
+  {
+    "t": 305,
+    "en": "case manager agent, we know that the input is really good and is safe for an agent to consume and we're not going to have that much more fear of like rogue a",
+    "ru": ""
+  },
+  {
+    "t": 317,
+    "en": "rogue uh actions from the agent, >> right? And I think it's great we're architecting this in a way that the gateway is going to be that traffic controller. >> Makes sense. And so now that we're sending the data to the case manager agent, the case manager agent is going to be scoped to make decisions like,",
+    "ru": ""
+  },
+  {
+    "t": 336,
+    "en": "okay, what is this input I have that has been sanitized? Can I find out the user's name or ID? Can I find out their",
+    "ru": ""
+  },
+  {
+    "t": 345,
+    "en": "serial number of the product that they're complaining about and maybe a purchase history if they've shared what date they purchased it and send only that data instead of all of the users's input through another agent gateway to",
+    "ru": ""
+  },
+  {
+    "t": 359,
+    "en": "the data agent which uses that specific",
+    "ru": ""
+  },
+  {
+    "t": 362,
+    "en": "information and the data agent itself is also going to pro uh do checks where it's going to probably call the ADK",
+    "ru": ""
+  },
+  {
+    "t": 370,
+    "en": "function before pull call back and make sure that the input is those specific strings that we mentioned and not, you know, random gibberish from the case",
+    "ru": ""
+  },
+  {
+    "t": 381,
+    "en": "manager agent and look up data specifically on the databases that it has access to and no other agent in this scenario has access to. And again, there's going to be an agent gateway sitting between that data agent and the database ensuring that it's the right",
+    "ru": ""
+  },
+  {
+    "t": 398,
+    "en": "agent that is talking to the right database and performing the right action. It's only doing a read action, not a right action and things like that. And these agents will have agentic identities, first class principles and not just a shared service account. And",
+    "ru": ""
+  },
+  {
+    "t": 415,
+    "en": "similarly, the logistics agent is going to have uh permissions to talk to the",
+    "ru": ""
+  },
+  {
+    "t": 421,
+    "en": "delivery partners MCP server through the gateway, which again is going to enforce all of these policies, ensuring that each agent can only do what it's meant to do and communicate only the information required for the next agent to do its function. >> Now, that sounds like you've thought through what could go wrong and how you can prevent it from going wrong. So if we had to put all of this together on GCP, this is what that would look like. Um it's a lot to take in. There is",
+    "ru": ""
+  },
+  {
+    "t": 453,
+    "en": "the ingress block that is pretty much running on cloud run and you know the",
+    "ru": ""
+  },
+  {
+    "t": 459,
+    "en": "messages get triggered with by a pub make it to that shim session manager which is another cloud run function through a gateway into the case manager agent. uh and then the case manager agent send that sends that to the data vault agent and then that sends you know data back to the case manager and then that sends that uh information the required information to the the leaison agent which then returns back to the case manager saying I've done the action that is requ has been requested or",
+    "ru": ""
+  },
+  {
+    "t": 492,
+    "en": "whatever other status that it's sending back to the case manager. Wow, this looks like a great open design. And you have some agents running on agent runtime, others are handed off to Cloud Run. Is there something that makes one decision better than the other? >> Yeah, that's that's a great question. Um, we know that most people write code",
+    "ru": ""
+  },
+  {
+    "t": 513,
+    "en": "in different ways and we want to keep an open system and that's why we have different runtimes. If you want if you're writing an agent in ADK and you want a completely managed experience with all of the securities you know taken care of by GCP then agent runtime",
+    "ru": ""
+  },
+  {
+    "t": 530,
+    "en": "is the place to be where it does you know automatic agentic identities and registration into a catalog like agent registry for you. But if you want a little bit more control, that would be cloud run where you're deploying a serverless runtime using you know container but you don't have to manage the container. It's serverless. It scales as much as you need all of those things. But if you want complete control then GKE or Google Kubernetes Engine becomes an option for you where you",
+    "ru": ""
+  },
+  {
+    "t": 561,
+    "en": "would have to manage a lot more like patching the OS you know uh registering",
+    "ru": ""
+  },
+  {
+    "t": 567,
+    "en": "with work for work workload identity federation for identities and things like that but it gives you a lot more control if that is what your use case needs.",
+    "ru": ""
+  },
+  {
+    "t": 578,
+    "en": ">> Nice. So kind of no matter where you're deploying this uh you could still take advantage of Google's other security controls as well. So would you say that",
+    "ru": ""
+  },
+  {
+    "t": 589,
+    "en": "something like a VPC service control perimeter to prevent data egress would be another way of preventing data exfill from your agentic architecture.",
+    "ru": ""
+  },
+  {
+    "t": 599,
+    "en": ">> Yeah absolutely. Um and then some foundational controls like uh customer managed encryption keys no matter what uh environment you choose will be a control that you can apply so that you're absolutely sure that whatever data you have on here is you know encrypted with your keys that you manage either on GCP or outside of GCP with",
+    "ru": ""
+  },
+  {
+    "t": 621,
+    "en": "additional controls. Um you can also uh",
+    "ru": ""
+  },
+  {
+    "t": 625,
+    "en": "turn on things like uh cloud trace uh",
+    "ru": ""
+  },
+  {
+    "t": 628,
+    "en": "and cloud logging so that you can get a deep understanding of what is the agent thinking about what is its reasoning what is the entire like workflow from the input all the way to the output and you can see that with immutable logs in the back end. And finally, you can also turn on Wiz, which is our um CNAP",
+    "ru": ""
+  },
+  {
+    "t": 649,
+    "en": "platform, our a way for you to get once",
+    "ru": ""
+  },
+  {
+    "t": 652,
+    "en": "all of this is running in runtime and also from your code repo, you can see",
+    "ru": ""
+  },
+  {
+    "t": 658,
+    "en": "exactly where are the threats uh what is",
+    "ru": ""
+  },
+  {
+    "t": 661,
+    "en": "breaking in runtime from a security perspective and you can fix them with one click. >> Wow. Well, that makes it sound easy to manage security at scale, but am I expected to do all of this on day one?",
+    "ru": ""
+  },
+  {
+    "t": 675,
+    "en": ">> No, absolutely not. And you it's a lot to take in for sure. And you know, so we do the the the classic crawl, walk, run.",
+    "ru": ""
+  },
+  {
+    "t": 682,
+    "en": "Crawl to me would be deploying to agent runtime where everything is managed and you get native agentic identities automatically assigned to your agents. So it's easier for you to focus on the business logic of things and not have to worry about infrastructure and other things. What would be connecting to",
+    "ru": ""
+  },
+  {
+    "t": 703,
+    "en": "managed MCP servers? uh you know doing",
+    "ru": ""
+  },
+  {
+    "t": 706,
+    "en": "those deterministic like before tool callbacks and AD ADK that I was talking about uh enabling model armor identity",
+    "ru": ""
+  },
+  {
+    "t": 714,
+    "en": "aware proxies uh via a gateway all of",
+    "ru": ""
+  },
+  {
+    "t": 717,
+    "en": "those would be block and that's already a very good system and then would come things like the VPC service controls uh",
+    "ru": ""
+  },
+  {
+    "t": 725,
+    "en": "private service connect so you don't send any information over the internet and then if you're choosing to run on cloud run or you're choosing to run on GKE turning on things like binary authorization so you can protect the container runtime is is your run phase",
+    "ru": ""
+  },
+  {
+    "t": 742,
+    "en": "of this. >> Awesome. Well, that sounds like a plan and I could definitely see myself getting started and helping others too to learn how to crawl lock run to secure multi-agent system deployments. >> Yeah, absolutely. And you know if you want to learn more uh there are some resources up on the screen and also in the description for you. We wrote a",
+    "ru": ""
+  },
+  {
+    "t": 763,
+    "en": "paper that goes into much more detail.",
+    "ru": ""
+  },
+  {
+    "t": 767,
+    "en": "That's the paper in the third link over here that talks about these architectural decisions in in a lot more detail for you to look at. >> Well, awesome. Well, I hope everyone watching today can share what they learned on social, ask us any questions, and stay tuned for day",
+    "ru": ""
+  }
+]

@@ -1,0 +1,55 @@
+{
+  "day": "day02",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "Build ADK Agents with Gemini 3.1 Pro",
+  "summary": "Choose your language. One command. Total language flexibility. Bootstrap high-performance agents in seconds.",
+  "tags": [
+    "ADK",
+    "Agent Starter Pack",
+    "Python",
+    "Go",
+    "TypeScript",
+    "Java"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/02",
+  "video_id": null,
+  "video_url": "",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "ADK Getting Started Guide",
+      "url": "https://googlecloudplatform.github.io/agent-starter-pack/guide/getting-started.html",
+      "description": ""
+    },
+    {
+      "title": "Agent Templates Overview",
+      "url": "https://googlecloudplatform.github.io/agent-starter-pack/agents/overview.html",
+      "description": ""
+    },
+    {
+      "title": "Gemini 3.1 Pro Model Documentation",
+      "url": "https://cloud.google.com/vertex-ai/docs/generative-ai/model-reference/gemini",
+      "description": ""
+    },
+    {
+      "title": "ADK Official Documentation",
+      "url": "https://google.github.io/adk-docs/get-started/",
+      "description": ""
+    }
+  ],
+  "code": "# Pick your language and deploy instantly 🚀\n# Python\nuvx agent-starter-pack@latest create my-agent -a adk\n\n# Go\nuvx agent-starter-pack@latest create my-go-agent -a adk_go\n\n# TypeScript/Node.js\nuvx agent-starter-pack@latest create my-ts-agent -a adk_ts\n\n# Java\nuvx agent-starter-pack@latest create my-java-agent -a adk_java\n\n# Authenticate and Run\ngcloud auth application-default login\ncd my-agent && make install && make playground\n",
+  "icon": "💻",
+  "resource_link": "",
+  "code_snippets": [
+    {
+      "filename": "terminal",
+      "language": "bash",
+      "code": "# Pick your language and deploy instantly 🚀\n# Python\nuvx agent-starter-pack@latest create my-agent -a adk\n\n# Go\nuvx agent-starter-pack@latest create my-go-agent -a adk_go\n\n# TypeScript/Node.js\nuvx agent-starter-pack@latest create my-ts-agent -a adk_ts\n\n# Java\nuvx agent-starter-pack@latest create my-java-agent -a adk_java\n\n# Authenticate and Run\ngcloud auth application-default login\ncd my-agent && make install && make playground"
+    }
+  ],
+  "description": "**Day 2 of Google's Advent of Agents — Season 2**\n\n**Build your first ADK Agent with Gemini 3.1 Pro: Choose Your Language** 💻\n\n**ADK** abstracts LLM orchestration into a unified schema for tool-calling and memory management. Instead of manual prompt engineering, a single template binds **Gemini 3.1 Pro’s** reasoning to language-native functions. Whether you are using Spring Boot or Go routines, the \"Reflect\" and \"Observe\" loops maintain strict schema adherence.\n\n🚀 **One command. Total language flexibility.** By specification of the language flag upfront, the **Agent Starter Pack** bootstraps high-performance agents in seconds. This \"Template-First\" approach allows you to leverage language-specific strengths:\n\n- **Go's** concurrency\n- **Python's** RAG ecosystem\n- **TypeScript's** full-stack integration\n- **Java's** enterprise patterns\n\n...without rewriting core agentic behavior.\n\n***📚 Resource Reference**\n\n- **Getting Started** [Guide](https://googlecloudplatform.github.io/agent-starter-pack/guide/getting-started.html)\n- **Templates** [Overview](https://googlecloudplatform.github.io/agent-starter-pack/agents/overview.html)\n- **Gemini 3.1** [Documentation](https://cloud.google.com/vertex-ai/docs/generative-ai/model-reference/gemini)\n- **ADK Docs** [Docs](https://google.github.io/adk-docs/get-started/)\n"
+}

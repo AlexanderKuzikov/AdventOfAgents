@@ -1,0 +1,44 @@
+{
+  "day": "day05",
+  "season": 1,
+  "season_name": "Season 1 — December 2025 (Winter Holiday Edition)",
+  "title": "Production Observability",
+  "summary": "Agent Starter Pack includes production-grade observability with zero config. Cloud Trace, Log Analytics, and BigQuery integration out of the box.",
+  "tags": [
+    "Observability",
+    "Cloud Trace",
+    "BigQuery",
+    "Terraform"
+  ],
+  "canonical_url": "https://adventofagents.com/2025/12/05",
+  "video_id": "Q5CXbwkHHns",
+  "video_url": "https://www.youtube.com/watch?v=Q5CXbwkHHns",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Observability Guide",
+      "url": "https://googlecloudplatform.github.io/agent-starter-pack/guide/observability.html",
+      "description": "Complete documentation on production observability"
+    },
+    {
+      "title": "Agent Starter Pack GitHub",
+      "url": "https://github.com/GoogleCloudPlatform/agent-starter-pack",
+      "description": "Full source code and repository"
+    }
+  ],
+  "code": "uvx agent-starter-pack create my-agent -a adk_base -d agent_engine\nmake deploy\n\nuvx agent-starter-pack create my-agent -a adk_base -d agent_engine\nmake deploy\n",
+  "icon": "📊",
+  "resource_link": "https://googlecloudplatform.github.io/agent-starter-pack/guide/observability.html",
+  "code_snippets": [
+    {
+      "filename": "Deploy with observability",
+      "language": "bash",
+      "code": "uvx agent-starter-pack create my-agent -a adk_base -d agent_engine\nmake deploy"
+    }
+  ],
+  "description": "**Day 5 of Google's Advent of Agents**\n\nYour agent is deployed. But what's it actually doing?\n\nAgent Starter Pack now includes production observability. Zero config required.\n\nFull production-grade observability that enterprises need, built-in from day one.\n\n**Two levels of observability, automatically configured:**\n\n**1. Agent Telemetry**\n- Cloud Trace captures every execution\n- LLM calls with latency breakdown\n- Tool execution timing\n- Full conversation flow visibility\n\n**2. Prompt-Response Logging (Auto-enabled)**\n- Full E2E journey provisioned via Terraform\n- Log Analytics + Log Buckets with custom retention\n- BigQuery Delta Lake with custom views for easy querying\n- No sensitive data in logs - all content written to GCS\n\n**Deploy with one command:**\n\n```bash\nuvx agent-starter-pack create my-agent -a adk_base -d agent_engine\nmake deploy\n```\n\nMost teams spend weeks setting up observability infrastructure. You get it in minutes. No configuration. No setup. No custom instrumentation. Just deploy and start monitoring.",
+  "video_available": false
+}

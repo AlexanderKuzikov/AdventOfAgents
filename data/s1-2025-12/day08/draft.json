@@ -1,0 +1,47 @@
+[
+  {
+    "t": 0,
+    "en": "Okay, let's dive into a powerful new way to architect your AI agents for production using the ADK. So, if you're",
+    "ru": ""
+  },
+  {
+    "t": 7,
+    "en": "building longunning agents, you've definitely felt the pain of the context bottleneck, right? It's this three-way pressure. Just dumping everything into a giant prompt. Yeah, that's not going to scale. Look, bigger windows aren't the magic bullet. We need a new discipline, context engineering. ADK flips the script with this idea. Context isn't just history. It's a compiled view. Let's break that down. So, think of it like this. Your agent's state is the source code. It's compiled",
+    "ru": ""
+  },
+  {
+    "t": 38,
+    "en": "into a lean prompt. First up, storing",
+    "ru": ""
+  },
+  {
+    "t": 41,
+    "en": "the source code. It all starts with a tiered model for your agents state. The session is your ground truth, and critically, it's structured events, not just a blob of text. Then you have memory and artifacts for long-term info, keeping that main session log clean and focused. And this is a gamecher. Instead",
+    "ru": ""
+  },
+  {
+    "t": 62,
+    "en": "of dumping files, you just use a lightweight handle. So smart. Okay, so",
+    "ru": ""
+  },
+  {
+    "t": 67,
+    "en": "we have this source state. Now let's look at how the compiler pipeline actually works. So instead of messy string building, you use an LLM flow. It's an explicit testable pipeline. This structured process transforms your session's rich history into a lean computed view for the model. And this is where it all comes together. That final compiled view gives you incredible control and efficiency. One of the biggest wins here, super precise and efficient context caching. This is huge",
+    "ru": ""
+  },
+  {
+    "t": 96,
+    "en": "for performance. You basically separate the static stuff from what's new each turn that lets the model reuse computation and the payoff is exactly",
+    "ru": ""
+  },
+  {
+    "t": 106,
+    "en": "what you want. Lower latency, lower costs, and way more predictable behavior. This also fixes context explosion in multi- aent systems. You can explicitly scope what each sub aent sees. So the big takeaway is this.",
+    "ru": ""
+  },
+  {
+    "t": 121,
+    "en": "Context isn't just string mashing. It's a real architectural concern. Ultimately, adopting this compiler mindset is how we build truly sophisticated AI. It's a total gamecher.",
+    "ru": ""
+  }
+]

@@ -1,0 +1,54 @@
+{
+  "day": "day10",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "Multi-Agent Patterns: Parallel Fanout and State Interpolation",
+  "summary": "Drastically reduce latency by running independent, grounded LLM tasks concurrently and automatically synthesizing their outputs.",
+  "tags": [
+    "Multi-Agent",
+    "Parallel Execution",
+    "Architecture",
+    "ADK"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/10",
+  "video_id": "4-lr3sh2ETM",
+  "video_url": "https://www.youtube.com/watch?v=4-lr3sh2ETM",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "Project Repository",
+      "url": "https://github.com/LuisSala/advent-of-agents-spring-26",
+      "description": "Source code for this project."
+    },
+    {
+      "title": "LlmAgent Reference",
+      "url": "https://google.github.io/adk-docs/agents/llm-agents/",
+      "description": "Official documentation for LlmAgent."
+    },
+    {
+      "title": "ParallelAgent Reference",
+      "url": "https://google.github.io/adk-docs/agents/workflow-agents/parallel-agents/",
+      "description": "Official documentation for ParallelAgent."
+    },
+    {
+      "title": "SequentialAgent Reference",
+      "url": "https://google.github.io/adk-docs/agents/workflow-agents/sequential-agents/",
+      "description": "Official documentation for SequentialAgent."
+    }
+  ],
+  "code": "",
+  "icon": "⚡",
+  "resource_link": "https://google.github.io/adk-docs/agents/workflow-agents/parallel-agents/",
+  "code_snippets": [
+    {
+      "filename": "agent.py",
+      "language": "python",
+      "code": "from google.adk.agents import Agent, ParallelAgent, SequentialAgent\nfrom google.adk.tools import google_search\n\n# 1. Define independent research agents with explicit output_keys and grounding tools\nhealthcare_researcher = Agent(name='healthcare_researcher', model='gemini-3-flash-preview', output_key='healthcare_research', tools=[google_search], instruction='Use the Google Search tool to...')\nfinance_researcher = Agent(name='finance_researcher', model='gemini-3-flash-preview', output_key='finance_research', tools=[google_search], instruction='Use the Google Search tool to...')\n\n# 2. Fanout: Run them all concurrently\nresearch_squad = ParallelAgent(\n    name='research_squad',\n    sub_agents=[healthcare_researcher, finance_researcher],\n)\n\n# 3. State Interpolation: Use `{output_key}` placeholders in the synthesizer prompt\nsynthesizer = Agent(\n    name='synthesizer',\n    model='gemini-3-flash-preview',\n    instruction=\"Synthesize the following trends: \\n\\n{healthcare_research}\\n\\n{finance_research}\",\n)\n\n# 4. Sequential block ensures fanout completes and populates state before synthesis\nroot_agent = SequentialAgent(\n    name='root_agent',\n    sub_agents=[research_squad, synthesizer],\n)\n\nfrom google.adk.apps import App\napp = App(name=\"fanout\", root_agent=root_agent)"
+    }
+  ],
+  "description": "\n**Day 10 of Google's Advent of Agents — Season 2**\n\nSequential LLM calls are painfully slow. In multi-agent systems involving independent tasks (like running multiple research queries), executing them one by one creates unacceptable latency. ADK **Parallel Fanout** solves this by spinning up multiple independent agents concurrently and automatically synthesizing their results.\n\n**How It Works**\n\n- **ParallelAgent**: Groups independent agents together so they execute simultaneously, dramatically cutting wall-clock time.\n- **output_key**: Assigning an `output_key` to each parallel worker saves its return payload directly into the session state.\n- **State Interpolation**: A downstream `SequentialAgent` handles synthesis. Because the parallel workers populated the state dictionary, we use `{bracket}` templating (e.g., `{healthcare_research}`) in the synthesizer's instruction prompt. No custom data-passing code required.\n\n**Resources:**\n\n- [ParallelAgent Documentation](https://google.github.io/adk-docs/agents/workflow-agents/parallel-agents/)\n- [SequentialAgent Documentation](https://google.github.io/adk-docs/agents/workflow-agents/sequential-agents/)\n- [Project Repository](https://github.com/LuisSala/advent-of-agents-spring-26)\n",
+  "video_available": false
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "t": 1,
+    "en": "Hi, in this video I'd like to introduce ADK BD streaming in 5 minutes. Let's take a look at a quick start demo built with ADK BD streaming.",
+    "ru": ""
+  },
+  {
+    "t": 11,
+    "en": ">> Hi, what's the current time and the date of Tokyo?",
+    "ru": ""
+  },
+  {
+    "t": 17,
+    "en": ">> The current time and date in Tokyo, Japan is 4:47 p.m. on December 9th,",
+    "ru": ""
+  },
+  {
+    "t": 23,
+    "en": "2025. >> This core functionality of ADK BD streaming is provided by Gemini Live API. The live API enables low latency,",
+    "ru": ""
+  },
+  {
+    "t": 32,
+    "en": "real-time voice and video interactions with Gemini. The first thing you'll notice is the smooth real-time conversation. The Gemini native audio model is a true multimodal AI model. This means it can understand voice input directly, reason to generate a response and produce voice output directly without using any speech to text or texttospech processing. This makes the voice interaction incredibly smooth and interactive. This real-time conversation is made possible with the live API and",
+    "ru": ""
+  },
+  {
+    "t": 59,
+    "en": "ADK bitty streaming which is built on top of it. So you might wonder why not just use the raw live API. Building a production AI agent service using the raw live API is challenging. You would need to implement various core functionalities yourself such as the agent framework tool execution connection management event and async framework session persistence and more. By contrast, the ADK Bitty streaming API",
+    "ru": ""
+  },
+  {
+    "t": 84,
+    "en": "allows you to quickly build a production level AI agent. With that, let's continue watching the demo to learn the full functionalities the ADK biddy streaming provides. >> Thank you. What's the current stock price of Alphabet?",
+    "ru": ""
+  },
+  {
+    "t": 98,
+    "en": ">> The most recent closing price for Alphabet Class A was 300.",
+    "ru": ""
+  },
+  {
+    "t": 104,
+    "en": ">> Is there anything else I can help you with today? >> What you have just seen is an example of interruption detection. This is the power of birectional streaming. The user can interrupt at any time while the agent is talking back. Unlike typical AI chats where the user needs to wait until the agent stops talking. When the agent detects the interruption, it immediately stops talking and listens to the user. Also, with the built-in voice activity detection, VAD, the agent can",
+    "ru": ""
+  },
+  {
+    "t": 127,
+    "en": "automatically determine whether the user has finished their turn and can begin responding to them. All of these events can be used to precisely control the UI behavior and realize an outstanding user experience. Also, you might have noticed that both user and agents voices are automatically transcribed, shown on the UI. This feature improves the UX of the AI agent application as the user can see how their messages are recognized and what was the conversation history",
+    "ru": ""
+  },
+  {
+    "t": 150,
+    "en": "anytime. The AI agent responded to the user's question with the current stock price. This capability is processed by the built-in Google search tool which is provided by the ADK. Enabling this functionality requires only a few lines of code. Using this tool, the agent can access a wide variety of the latest information from the internet, dynamically collecting context based on user intent and also mitigating the risk of hallucination. The ADK automatically handles the entire function call process",
+    "ru": ""
+  },
+  {
+    "t": 177,
+    "en": "and event handling, meaning you do not have to implement them from scratch.",
+    "ru": ""
+  },
+  {
+    "t": 188,
+    "en": ">> Hi, what do you see in the image?",
+    "ru": ""
+  },
+  {
+    "t": 192,
+    "en": "In the image, I see a plant with long green leaves, a floor lamp with a rectangular shade, and some textured wall panels in the background. >> As you saw, the ADK can also handle images. This capability provides a powerful way to share the user's context with the agent. As the saying goes, a picture is worth a thousand words, and sometimes it is much easier for the user to upload images rather than spending a long time talking or chatting with the agent to share their context. For",
+    "ru": ""
+  },
+  {
+    "t": 220,
+    "en": "example, a user might ask, \"What interior items would fit my room?\" Since the ADK can process one image per second, you can continuously upload a sequence of images to the agent, allowing it to understand the events occurring within them. While this speed is not sufficient for tracking fast movement, it is very useful for capturing and understanding what is happening in the images. >> Hi, I just purchased an item from your e-commerce site and it doesn't work. What's happening here?",
+    "ru": ""
+  },
+  {
+    "t": 249,
+    "en": "I understand this is frustrating. Can you tell me more about what item it is and what seems to be the issue with it? >> With the ADK, you can also gain the benefits of the advanced features in the latest Gemini Live API native audio models such as a effective dialogue and proactivity. In the last example, the demo was enabled with the effective dialogue feature. In this mode, the agent attempts to sense the user's emotional signals and reasons about how to respond to provide an effective",
+    "ru": ""
+  },
+  {
+    "t": 277,
+    "en": "interaction. This feature adds a powerful dimension to AI agents, especially for customer-f facing services such as e-commerce, maximizing the user experience. So, we have covered the basic functionalities of ADK biddy streaming. To dive deeper into the technology, simply search ADK biddy to",
+    "ru": ""
+  },
+  {
+    "t": 294,
+    "en": "find the ADK biddy streaming documentation, including the demo we have seen. Thank you for watching.",
+    "ru": ""
+  }
+]

@@ -1,0 +1,59 @@
+{
+  "day": "day15",
+  "season": 2,
+  "season_name": "Season 2 — March 2026 (Spring Cherry Blossom Edition)",
+  "title": "Grounding with ADK: Agentic RAG with Vector Search 2.0",
+  "summary": "Build an Agentic RAG system in 3 minutes with Vector Search 2.0 and ADK.",
+  "tags": [
+    "ADK",
+    "Vector Search",
+    "RAG",
+    "Python"
+  ],
+  "canonical_url": "https://adventofagents.com/2026/03/15",
+  "video_id": "IB6cXNx5iaw",
+  "video_url": "https://www.youtube.com/watch?v=IB6cXNx5iaw",
+  "video_title": "",
+  "creator_name": "",
+  "duration": "",
+  "duration_s": 0,
+  "links": [
+    {
+      "title": "10-Minute Agentic RAG with the New Vector Search 2.0 and ADK",
+      "url": "https://medium.com/google-cloud/10-minute-agentic-rag-with-the-new-vector-search-2-0-and-adk-655fff0bacac",
+      "description": "More details on the Agentic RAG architecture."
+    },
+    {
+      "title": "Travel Agent Notebook",
+      "url": "https://github.com/google/adk-samples/blob/main/python/notebooks/grounding/vectorsearch2_travel_agent.ipynb",
+      "description": "Sample notebook for the Travel Agent."
+    },
+    {
+      "title": "Enhancing search with embeddings and task types",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/improve-gen-ai-search-with-vertex-ai-embeddings-and-task-types",
+      "description": "Learn how task type embeddings work."
+    },
+    {
+      "title": "ADK Documentation",
+      "url": "https://google.github.io/adk-docs/",
+      "description": "Complete guide to building AI agents."
+    }
+  ],
+  "code": "export GOOGLE_CLOUD_PROJECT=<YOUR_PROJECT_ID>\ngcloud auth application-default login\ngcloud services enable vectorsearch.googleapis.com aiplatform.googleapis.com\n\nuv run --with google-adk --with google-cloud-vectorsearch \\\n       --with pandas --with requests demo.py\n",
+  "icon": "🔎",
+  "resource_link": "https://cloud.google.com/vertex-ai/docs/vector-search-2/overview",
+  "code_snippets": [
+    {
+      "filename": "terminal",
+      "language": "bash",
+      "code": "export GOOGLE_CLOUD_PROJECT=<YOUR_PROJECT_ID>\ngcloud auth application-default login\ngcloud services enable vectorsearch.googleapis.com aiplatform.googleapis.com\n\nuv run --with google-adk --with google-cloud-vectorsearch \\\n       --with pandas --with requests demo.py"
+    },
+    {
+      "filename": "demo.py",
+      "language": "python",
+      "code": "import asyncio, io, json, os, time\nimport pandas as pd, requests\nfrom google.adk.agents import Agent\nfrom google.adk.runners import InMemoryRunner\nfrom google.cloud import vectorsearch_v1beta\n\nPROJECT_ID = os.environ[\"GOOGLE_CLOUD_PROJECT\"]\nLOCATION = \"us-central1\"\nCOLLECTION_ID = \"london-rentals-demo\"\n\nos.environ[\"GOOGLE_CLOUD_LOCATION\"] = LOCATION\nos.environ[\"GOOGLE_GENAI_USE_VERTEXAI\"] = \"True\"\n\nadmin_client = vectorsearch_v1beta.VectorSearchServiceClient()\ndata_client = vectorsearch_v1beta.DataObjectServiceClient()\nsearch_client = vectorsearch_v1beta.DataObjectSearchServiceClient()\nparent = f\"projects/{PROJECT_ID}/locations/{LOCATION}\"\ncollection_path = f\"{parent}/collections/{COLLECTION_ID}\"\n\nprint(\"Step 1: Creating collection with auto-embedding...\")\ncollection_config = {\n    \"data_schema\": {\n        \"type\": \"object\",\n        \"properties\": {\n            \"name\": {\"type\": \"string\"},\n            \"price\": {\"type\": \"number\"},\n            \"neighborhood\": {\"type\": \"string\"},\n            \"description\": {\"type\": \"string\"},\n        },\n    },\n    \"vector_schema\": {\n        \"description_embedding\": {\n            \"dense_vector\": {\n                \"dimensions\": 768,\n                \"vertex_embedding_config\": {\n                    \"model_id\": \"gemini-embedding-001\",\n                    \"text_template\": \"{description}\",\n                    \"task_type\": \"RETRIEVAL_DOCUMENT\",\n                },\n            }\n        }\n    },\n}\n\ntry:\n    admin_client.get_collection(name=collection_path)\n    print(f\"Step 1: Collection '{COLLECTION_ID}' already exists.\")\nexcept Exception:\n    req = vectorsearch_v1beta.CreateCollectionRequest(\n        parent=parent, collection_id=COLLECTION_ID, collection=collection_config\n    )\n    admin_client.create_collection(request=req).result()\n    print(f\"Step 1: Collection '{COLLECTION_ID}' created.\")\n\nprint(\"Step 2: Downloading and ingesting data...\")\nurl = \"https://data.insideairbnb.com/united-kingdom/england/london/2025-09-14/data/listings.csv.gz\"\ndf = pd.read_csv(io.BytesIO(requests.get(url, headers={\"User-Agent\": \"Mozilla/5.0\"}).content), compression=\"gzip\")\ndf = df[[\"id\", \"name\", \"description\", \"price\", \"neighbourhood_cleansed\"]].copy()\ndf[\"price\"] = pd.to_numeric(df[\"price\"].astype(str).str.replace(r\"[$,]\", \"\", regex=True), errors=\"coerce\").fillna(0.0)\ndf = df.fillna(\"\")\ndf = df[df[\"description\"].str.strip().astype(bool)]\ndf = df[df[\"price\"] > 0].head(100)\nprint(f\"Step 2: {len(df)} listings ready for ingestion.\")\n\ndata_objects = [\n    {\"data_object_id\": str(row[\"id\"]), \"data_object\": {\n        \"data\": {\"name\": str(row[\"name\"]), \"price\": float(row[\"price\"]),\n                 \"neighborhood\": str(row[\"neighbourhood_cleansed\"]),\n                 \"description\": str(row[\"description\"])},\n        \"vectors\": {},\n    }} for _, row in df.iterrows()\n]\n\nfor i in range(0, len(data_objects), 100):\n    try:\n        data_client.batch_create_data_objects(\n            request=vectorsearch_v1beta.BatchCreateDataObjectsRequest(\n                parent=collection_path, requests=data_objects[i:i+100]))\n        time.sleep(2)\n    except Exception as e:\n        if \"already exists\" not in str(e).lower():\n            raise\nprint(\"Step 2: Ingestion complete.\")\n\nprint(\"Step 3: Registering search tool...\")\ndef find_rentals(query: str, filter: str = \"\") -> list:\n    \"\"\"Search for vacation rentals using semantic search with metadata filtering.\"\"\"\n    print(f\"\\nfind_rentals(): query='{query}'\")\n    if filter.strip():\n        print(f\"find_rentals(): filter={filter}\")\n\n    search_kwargs = {\n        \"search_text\": query,\n        \"search_field\": \"description_embedding\",\n        \"task_type\": \"QUESTION_ANSWERING\",\n        \"top_k\": 10,\n        \"output_fields\": vectorsearch_v1beta.OutputFields(\n            data_fields=[\"name\", \"price\", \"neighborhood\"]),\n    }\n    if filter.strip():\n        search_kwargs[\"filter\"] = json.loads(filter)\n\n    response = search_client.search_data_objects(\n        request=vectorsearch_v1beta.SearchDataObjectsRequest(\n            parent=collection_path,\n            semantic_search=vectorsearch_v1beta.SemanticSearch(**search_kwargs)))\n\n    results = [{\"name\": r.data_object.data.get(\"name\"),\n             \"price\": r.data_object.data.get(\"price\"),\n             \"neighborhood\": r.data_object.data.get(\"neighborhood\")}\n            for r in response.results]\n    print(f\"find_rentals(): found {len(results)} results\")\n    return results\n\nprint(\"Step 4: Creating ADK agent...\")\ntravel_agent = Agent(\n    model=\"gemini-2.5-flash\",\n    name=\"travel_agent\",\n    instruction=\"\"\"You are a London travel agent helping users find vacation rentals.\nUse find_rentals with: query (vibe/description) and filter (JSON metadata constraints).\nFilter fields: price (number), neighborhood (string).\nExamples: {\"price\": {\"$lt\": 200}}, {\"neighborhood\": {\"$eq\": \"Hackney\"}},\n{\"$and\": [{\"neighborhood\": {\"$eq\": \"Hackney\"}}, {\"price\": {\"$lt\": 200}}]}\"\"\",\n    tools=[find_rentals],\n)\n\nrunner = InMemoryRunner(agent=travel_agent, app_name=\"travel_agent\")\nprint(\"Step 4: Agent ready.\\n\")\n\nasync def main():\n    await runner.run_debug(\"Find me a cozy workspace\")\n    await runner.run_debug(\"Find me a cozy workspace under £200\")\n    await runner.run_debug(\"Find me an artist's loft in Hackney under £150\")\n\nif __name__ == \"__main__\":\n    asyncio.run(main())"
+    }
+  ],
+  "description": "\n**Day 15 of Google's Advent of Agents — Season 2**\n\nVertex AI Vector Search 2.0 gives you auto embeddings generation, unified storage, and hybrid search in a single managed service. Agent Development Kit (ADK) gives you an agent that can reason about user intent and call tools. Wire them together with one Python function, and you get an Agentic RAG system where the LLM doesn't just retrieve-and-summarize — it parses intent, builds filters, and orchestrates searches.\n\n**How It Works**\n\nThe glue between the agent and the search backend is a single Python function registered as an ADK tool. ADK inspects the function signature and docstring to generate the tool schema. The model decomposes natural language into a semantic query and structured filters, decides which constraints to apply, and synthesizes results into a conversational response, based on the user intent understanding.\n\n- **Intent Parsing**: Decomposes natural language into a semantic query (\"cozy workspace\") and a structured filter (e.g. `{\"$and\": [{\"neighborhood\": {\"$eq\": \"Hackney\"}}, {\"price\": {\"$lt\": 150}}]}`).\n- **Vector Search 2.0**: Auto-generates embeddings from text data during ingestion and provides managed hybrid search.\n- **Task Types**: Utilizing the `QUESTION_ANSWERING` task type with Gemini embeddings ensures that semantic search leverages relevance-based retrieval for improved search quality.\n\n**Resources:**\n\n- [Vector Search 2.0 Overview](https://cloud.google.com/vertex-ai/docs/vector-search-2/overview)\n- [10-Minute Agentic RAG with the New Vector Search 2.0 and ADK](https://medium.com/google-cloud/10-minute-agentic-rag-with-the-new-vector-search-2-0-and-adk-655fff0bacac)\n- [Travel Agent Notebook](https://github.com/google/adk-samples/blob/main/python/notebooks/grounding/vectorsearch2_travel_agent.ipynb)\n- [ADK Documentation](https://google.github.io/adk-docs/)\n",
+  "video_available": false
+}

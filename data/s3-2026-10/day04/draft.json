@@ -1,0 +1,127 @@
+[
+  {
+    "t": 1,
+    "en": "Welcome back to the scary October. [music] Now, do you know how many agents are running in your company right now? Who are the owners for each one of these [music] agents? What accesses do they have today? And if you asked your platform security compliance leads, you will totally get >> [music] >> different answers.",
+    "ru": ""
+  },
+  {
+    "t": 23,
+    "en": "Welcome to day four of Advent of Agents [music] season three, and I'm a fear product manager here at Google Cloud. Today's question [music] is, how do your security and compliance team assess where you and your agents are today, [music] and build a staged roadmap towards governance? We want to introduce you to a governance maturity model framework [music] designed for agents. We'll walk five layers, score ourselves live in this [music] video today, and turn the score into a 90-day plan.",
+    "ru": ""
+  },
+  {
+    "t": 55,
+    "en": "First, governance is a loop, not a gate.",
+    "ru": ""
+  },
+  {
+    "t": 59,
+    "en": "You have to start with observe how the agent reasons, enforce policy before an [music] action takes effect, prove what was enforced and why, >> [music] >> respond by containing violations, and learn by feeding them back into the policy. Most deployments today [music] do the first step, and inconsistently the second, and almost none would close the entire loop, and hence the reason why a lot of [music] agents are not able to survive in production today.",
+    "ru": ""
+  },
+  {
+    "t": 89,
+    "en": "So, we want to introduce you to a maturity model for agent governance. Now, this maturity model will have five layers, and you would be able to put scores into each layer. We'll start with the base layer, which is foundation, which is is every agent catalog owned and identifiable. Then,",
+    "ru": ""
+  },
+  {
+    "t": 109,
+    "en": "number two, prevention. Can you block policy violations [music] inline? Number three, detection. Can you spot anomalies new agents [music] with an immutable audit trail? Number four, response. Can you prove the containment [music] actually worked? And number five is continuous alignment, which is the loop. Are you learning from what you go through? Now, [music] let's score. Get your platform security and compliance leads all in one session. [music] Any single team's answer overstates",
+    "ru": ""
+  },
+  {
+    "t": 141,
+    "en": "coverage. For each layer, you could pick between [music] level one, basic, level three, advanced,",
+    "ru": ""
+  },
+  {
+    "t": 147,
+    "en": "and level four, you're optimized, you're good to go, [music] right? Now, let's score the estate as it runs today. When I say estate, your company. A control that isn't enforced [music] by default scores at the level it actually",
+    "ru": ""
+  },
+  {
+    "t": 160,
+    "en": "operates, and expect level one. Most organizations start there. >> [music] >> McKinsey's 2026 AI trust maturity survey",
+    "ru": ""
+  },
+  {
+    "t": 169,
+    "en": "found that 32% [music] of organization reach even moderate maturity in agent governance.",
+    "ru": ""
+  },
+  {
+    "t": 177,
+    "en": "A realistic starting score is more useful than an optimistic one.",
+    "ru": ""
+  },
+  {
+    "t": 182,
+    "en": "So, let's start. Question one, foundation. [music] Does each agent have its own identity? So, level one is if your agents have shared service account or [music] static API keys. You're on level three if every agent has its own cryptographic or SPIFFE identity. You're on level [music] five, meaning you're optimized, if you have rotation is enabled, automated, and delegated access works across every API. [music] Pick your number, write it down on a piece of paper. Question two, prevention. Is every",
+    "ru": ""
+  },
+  {
+    "t": 213,
+    "en": "prompt [music] screened before it reaches the model? Level one, you rely on the model's baseline safety settings. >> [music] >> Level three, model armor blocks prompt injection inline at the gateway. Level five, screening adapts to context and new [music] threats. What's your number?",
+    "ru": ""
+  },
+  {
+    "t": 233,
+    "en": "Detection. Our question three is detection. Can you follow one request end-to-end [music] across sub agents and tools? So, you're in level one if all you do is you print statements and you have application logs. You're in level three if you have total enabled and in cloud trace you're able to see every model and tool call. You're in level five if you have distributed traces across your entire multi-agent orchestration [music] systems.",
+    "ru": ""
+  },
+  {
+    "t": 261,
+    "en": "Now, question four, response. >> [music] >> When an agent goes rogue, can you contain it automatically? Level one, someone can contain it by [music] hand, meaning they kill the VM or the pod by hand. Level three, an admin revokes the agent's keys in the console. [music] Level five, the platform revokes its identity and kills its session instantly on its own. Question five, the last [music] one, is continuous alignment. How early or how often do you catch drifts? [music]",
+    "ru": ""
+  },
+  {
+    "t": 292,
+    "en": "Do you catch it before the users do? Level one, occasional spot checks. Level three, [music] automated evals that run daily in your QA. Level five, you have a dedicated team that [music] looks at your production samples and are evaluated continuously for accuracy, groundedness, and hallucination. [music] And this is the last number. By now, you should have five different scores that you've written down across five questions. [music] Start at the lowest layer below level [music] three.",
+    "ru": ""
+  },
+  {
+    "t": 322,
+    "en": "Even if a layer hot smoke, the order is",
+    "ru": ""
+  },
+  {
+    "t": 326,
+    "en": "very structural, right? [music] The gateway enforces against identities that was already exist [music] and detection only means something once there's govern traffic to watch. So, if detection scores three and foundation [music] scores one, you have to start with foundation and reach level three everywhere before chasing five.",
+    "ru": ""
+  },
+  {
+    "t": 348,
+    "en": "Then, turn the score that you have into a 90-day road map towards agent governance. >> [music] >> Day 1 to 30 is foundation. Ensure every",
+    "ru": ""
+  },
+  {
+    "t": 356,
+    "en": "agent in your system is registered. You're able to find its owner. It [music] has its own identity, and all the agents are deployed from one template [music] across your organization. We do not want to do click ops. Days 31 to 60, >> [music] >> prevention and detection. Every tool call through goes through a gateway. Model armor is right there catching all",
+    "ru": ""
+  },
+  {
+    "t": 379,
+    "en": "the unwanted and filled prompts, and all the queries are traced. That [music] and you're able to query them. Days one Days 61 to day 90, response and",
+    "ru": ""
+  },
+  {
+    "t": 389,
+    "en": "continuous [music] alignment. Test it kill switches and evals that turn incidents into a better governed [music] semantic policies, and give every layer",
+    "ru": ""
+  },
+  {
+    "t": 399,
+    "en": "one accountable owner.",
+    "ru": ""
+  },
+  {
+    "t": 403,
+    "en": "How do you know you've arrived? You'd know >> [music] >> when a new agent reaches production, automatically carrying its identity [music] and owner and trace without the team doing anything to get them. Like all of this is baked [music] into the platform. Now, revoking agent is one action and not an entire project. Compliance evidence is [music] a query.",
+    "ru": ""
+  },
+  {
+    "t": 426,
+    "en": "Today's Kata runs the 15 question version [music] in your terminal. Tomorrow on day five, an identity for every agent. See you then. Thank you.",
+    "ru": ""
+  }
+]
