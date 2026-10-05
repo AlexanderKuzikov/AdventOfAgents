@@ -23,7 +23,8 @@ docs/CATALOG.md      все 60 дней: теги, ссылки, код, ста�
 ```
 
 Три сезона: **s1-2025-12** (25 дней), **s2-2026-03** (31), **s3-2026-10** (опубликовано 4 из 31).
-Субтитры есть у 38 дней, переведены пока s3 — первые четыре.
+Видео есть у 54 роликов, но 16 из них закрыты или удалены — доступны субтитры
+38 дней, и **все 38 переведены**: 312 сегментов, 169 пометок о правках распознавания.
 
 ## Конвейер
 
@@ -31,10 +32,12 @@ docs/CATALOG.md      все 60 дней: теги, ссылки, код, ста�
 python scripts/registry.py              # сезоны и счётчики
 python scripts/prepare.py --all         # скачать страницы и субтитры
 python scripts/prepare.py s3-2026-10 day05    # один день
+python scripts/enrich.py                # дозабрать длительность и автора ролика
 python scripts/catalog.py               # пересобрать docs/CATALOG.md
 python scripts/build.py                 # собрать dist/ из переводов
 python scripts/build.py s3-2026-10/day04      # один день
-python scripts/show.py s3-2026-10/day04       # показать сегменты
+python scripts/check_docx.py            # проверка docx без Word
+python scripts/context.py s3-2026-10 day04    # контекст дня + сегменты
 ```
 
 Зависимости: Python 3.11+, `yt-dlp`, `python-docx`. Больше ничего — только стандартная библиотека.
@@ -42,10 +45,15 @@ python scripts/show.py s3-2026-10/day04       # показать сегмент�
 ## Как перевести новый день
 
 1. `python scripts/prepare.py <сезон> dayNN` — скачает страницу, субтитры и `draft.json`.
-2. Открыть `draft.json`, заполнить `ru` (по одному абзацу на осмысленную фразу) →
-   сохранить как `translation.json`.
+2. Открыть `data/<сезон>/dayNN/draft.json`, заполнить `ru` (по одному абзацу на осмысленную
+   фразу) → сохранить как `translation.json`.
 3. Где распознавание явно соврало — заполнить `fix`: одна строка «что было → что стало».
-4. `python scripts/build.py <сезон>/dayNN` и `python scripts/catalog.py`.
+4. `python scripts/build.py <сезон>/dayNN`, затем `python scripts/catalog.py`.
+
+Перед переводом стоит посмотреть `scripts/context.py <сезон> dayNN`: он показывает
+описание дня, ссылки, код и сами сегменты. Код — источник истины для имён и полей:
+за полгода ни разу не пришлось гадать, `rewind_async` это `rewind_async`, а `state_delta`
+это `state_delta`, а не то, что услышало ухо.
 
 `build.py` не пропустит день с пустым переводом — это защита от молчаливых пропусков.
 

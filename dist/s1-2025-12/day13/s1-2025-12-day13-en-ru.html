@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interactions API — EN / RU</title>
+<style>
+:root {
+  --en-bg: #f7f8fa;
+  --line: #dfe3e8;
+  --accent: #0b57d0;
+  --ts: #8a9099;
+  --muted: #5f6672;
+  --fix: #fff3cd;
+  --fix-line: #e0b100;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 32px 20px 72px;
+  background: #eef0f3;
+  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #1a1a1a;
+}
+
+.page { max-width: 1400px; margin: 0 auto; }
+
+h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.head .sub { color: var(--muted); font-size: 15px; }
+.head .sub a { color: var(--accent); }
+
+.legend {
+  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
+}
+.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
+.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+
+.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+
+button {
+  font: inherit; font-size: 14px; padding: 7px 14px;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: #fff; color: #1a1a1a; cursor: pointer;
+}
+button:hover { border-color: #b9c0ca; background: #fafbfc; }
+
+.grid {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden;
+}
+
+.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
+
+.head-row {
+  background: #2f3541; color: #fff;
+  font-size: 13px; letter-spacing: 0.04em;
+  text-transform: uppercase; font-weight: 600;
+  position: sticky; top: 0; z-index: 5;
+}
+.head-row > div { padding: 10px 18px; }
+.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
+
+.row > .ts {
+  padding: 14px 8px; font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ts); text-align: right;
+  border-right: 1px solid var(--line); background: #fbfbfc;
+}
+.row > .en, .row > .ru {
+  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
+}
+.row > .en { background: var(--en-bg); }
+.row > .ru { border-right: 0; }
+
+.row.cont > .ts::after {
+  content: ""; display: block; width: 14px; height: 1px;
+  background: var(--line); margin: 8px 0 0 auto;
+}
+.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
+
+.row.fixed > .en { background: var(--fix); }
+.row.fixed .tag { display: none; }
+
+body.show-fixes .row.fixed .tag { display: block; }
+
+.tag {
+  display: inline-block; margin-top: 6px;
+  font-size: 11.5px; line-height: 1.35;
+  color: #6b5400; background: var(--fix);
+  border-left: 3px solid var(--fix-line);
+  padding: 3px 8px; border-radius: 0 4px 4px 0;
+}
+
+.app { margin-top: 26px; }
+.app h2 { font-size: 19px; margin: 0 0 10px; }
+
+table {
+  width: 100%; border-collapse: collapse;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden; font-size: 15px;
+}
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
+.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
+
+body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
+body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
+body.hide-en .row, body.hide-en .head-row,
+body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
+
+@media (max-width: 900px) {
+  .head-row, .row { grid-template-columns: 56px 1fr; }
+  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
+  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .bar, .legend { display: none; }
+  .head-row { position: static; }
+  .grid, table { border-radius: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <h1>Interactions API</h1>
+    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
+      Видео: <a href="https://www.youtube.com/watch?v=kPhs6C0-JbY">https://www.youtube.com/watch?v=kPhs6C0-JbY</a> · 12:00
+      · auto (YouTube en-orig)</div>
+  </div>
+
+  <div class="legend">
+    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
+    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
+  </div>
+
+  <div class="bar">
+    <button id="btn-mark">Показать исправления</button>
+    <button id="btn-print">Печать / PDF</button>
+  </div>
+
+  <div class="grid">
+    <div class="head-row">
+      <div>Time</div>
+      <div>English</div>
+      <div>Русский</div>
+    </div>
+    <div class="row">
+      <div class="ts">00:00</div>
+      <div class="en">The landscape of AI development is shifting massively right now. The industry is moving from simple request-response cycles towards complex stateful multi-turn agentic workflows. The standard generate_content API remains the perfect tool for use cases like chatbots or text completion, and handles those stateless tasks beautifully. But with the rise of thinking models and advanced tool use, development requirements are changing. Rather than retrofitting these complex stateful patterns into existing endpoints, it&#x27;s helpful to have native interfaces designed specifically for this new level of complexity.</div>
+      <div class="ru">Ландшафт ИИ-разработки сейчас меняется радикально. Индустрия переходит от простых циклов «запрос — ответ» к сложным состоятельным многоходовым агентным сценариям. Стандартный API generate_content остаётся идеальным инструментом для задач вроде чат-ботов или дополнения текста и отлично справляется с такими stateless-задачами. Но с ростом thinking-моделей и продвинутого использования инструментов требования к разработке меняются. Вместо того чтобы встраивать эти сложные состоятельные паттерны в существующие эндпоинты, гораздо полезнее иметь нативные интерфейсы, спроектированные под новый уровень сложности.</div>
+    </div>
+    <div class="row">
+      <div class="ts">00:41</div>
+      <div class="en">To support this new era, Google has launched the Interactions API, now in beta. Think of it as a unified interface: a single gateway giving access both to raw models and to fully managed systems like the new Gemini Deep Research Agent. So if you&#x27;re already building with the Agent Development Kit, ADK, or the Agent2Agent, A2A, protocol, you might be wondering where this new API fits into your existing ecosystem. The answer: it fits in two distinct ways. The Interactions API acts both as an alternative inference endpoint and as a powerful primitive for your agent framework.</div>
+      <div class="ru">Чтобы поддержать эту новую эпоху, Google выпустила Interactions API — сейчас в beta. Думайте о ней как о едином интерфейсе: одном шлюзе, дающем доступ и к сырым моделям, и к полностью управляемым системам вроде нового Gemini Deep Research Agent. Так что если вы уже строите на Agent Development Kit (ADK) или по протоколу Agent2Agent (A2A), вы можете гадать, куда в вашей экосистеме вписывается этот новый API. Ответ: он вписывается двумя способами. Interactions API работает и как альтернативный эндпоинт инференса, и как мощный примитив для вашего агентного фреймворка.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">01:37</div>
+      <div class="en">Let&#x27;s look at the first pattern. Implementing the Interactions API inside an ADK agent is incredibly simple. The best part is that you don&#x27;t need to rewrite your agent&#x27;s core logic or control flow. You just need to tell the model component to switch gears — and here&#x27;s exactly how it looks. That&#x27;s it: just by setting use_interactions_api to true, ADK switches gear.<div class="tag">уточнено: your agent score logic -&gt; your agent&#x27;s core logic; use interactions API to true -&gt; use_interactions_api = true</div></div>
+      <div class="ru">Посмотрим на первый паттерн. Внедрить Interactions API в агента ADK невероятно просто. Лучшее здесь то, что не нужно переписывать основную логику агента или поток управления. Достаточно сказать компоненту модели переключить передачу — и вот как это выглядит. Вот и всё: достаточно выставить `use_interactions_api` в true, и ADK переключает передачу.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">01:57</div>
+      <div class="en">So what makes this different from just calling the generate_content API? The Interactions API extends core capabilities with four critical features designed specifically for modern applications. First, optional server-side state: you can offload history management entirely to the server. This drastically simplifies your client code, minimizes context-management errors, and can even reduce costs through better caching. Second, a composable data model: the API provides a clean schema designed specifically for complex agentic histories, making it much easier to debug, stream and reason over exactly what your agent is doing. Third, background execution: real research takes time, and you don&#x27;t want to keep a client connection open for minutes while the agent works. This feature lets you offload those long-running loops to the server asynchronously — you just fire the request and pull for the result later. And finally, remote MCP tool support: your models can now directly call Model Context Protocol, MCP, servers as tools, which makes integration with the growing ecosystem of MCP-compatible tools and data sources seamless.<div class="tag">уточнено: longunning loops -&gt; long-running loops; model context protocol -&gt; Model Context Protocol</div></div>
+      <div class="ru">Чем это отличается от простого вызова generate_content? Interactions API расширяет базовые возможности четырьмя ключевыми функциями, спроектированными под современные приложения. Первое — опциональное серверное состояние: управление историей можно целиком вынести на сервер. Это сильно упрощает клиентский код, снижает количество ошибок работы с контекстом и может даже уменьшить расходы за счёт лучшего кэширования. Второе — компонуемая модель данных: API даёт чистую схему, рассчитанную именно на сложные агентные истории, и отлаживать, стримить и рассуждать о том, что делает агент, становится намного проще. Третье — фоновое исполнение: настоящее исследование занимает время, и вам не нужно держать клиентское соединение открытым минутами, пока агент работает. Эта функция позволяет асинхронно вынести такие длинные циклы на сервер: отправляете запрос и позже забираете результат. И наконец — поддержка удалённых MCP-инструментов: модели теперь могут напрямую вызывать MCP-серверы как инструменты, что бесшовно встраивает их в растущую экосистему MCP-совместимых инструментов и источников данных.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">03:23</div>
+      <div class="en">Now let&#x27;s look at a code sample from the ADK Python repository. Let&#x27;s take a simple test case that proves the server is really handling the memory. I call it the teach, distract and recall pattern. In the code, the first turn tells the agent that my favourite colour is blue — that&#x27;s the teach step: I tell the agent a specific fact, nothing complex, I&#x27;m just setting the context. Then step two, the distract step: I completely change the subject and ask about the weather — what&#x27;s the weather in London? This forces the agent to step away from the chat, use a tool and process new data. And then the third turn: we ask the agent to remember the very first detail we shared. Here my code isn&#x27;t sending the chat history back to the server; I&#x27;m only sending the new question. And if you look at the result, you&#x27;ll see the answer: blue.<div class="tag">уточнено: my favorite color is blue -&gt; «синий» (в коде и примере); the A2A -&gt; the agent</div></div>
+      <div class="ru">Теперь посмотрим на пример кода из репозитория ADK Python. Возьмём простой тест, который доказывает, что памятью действительно занимается сервер. Я называю его паттерном «обучил — отвлёк — вспомнил». В коде первый ход сообщает агенту, что мой любимый цвет — синий: это шаг «обучил», я просто сообщаю агенту конкретный факт, ничего сложного, лишь задаю контекст. Затем шаг второй, «отвлёк»: я полностью меняю тему и спрашиваю про погоду — какая погода в Лондоне? Это заставляет агента отойти от диалога, вызвать инструмент и обработать новые данные. И на третьем ходу мы просим агента вспомнить самую первую деталь, которую сообщили. Здесь мой код не отправляет историю диалога обратно на сервер — я отправляю только новый вопрос. И в результате вы увидите ответ: синий.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">05:00</div>
+      <div class="en">You can verify the interaction IDs by printing them out, and you&#x27;ll find that these are three separate interactions which are chained together automatically on the server side. Let&#x27;s run this test case and see whether we get the results we talked about. Over to the demo: I run this specific test, which is a multi-turn conversation, on my terminal. The user says: my favourite colour is blue, just acknowledge this and don&#x27;t use any tools. The agent says: acknowledge, your favourite colour is blue. You get the response along with an interaction ID, because that&#x27;s what the code is asking for. Then we ask: what is the weather in London? Here there&#x27;s a tool call happening — calling get_current_weather, a custom tool we wrote, and the tool result is also printed. Then the agent takes the response from the tool and says the weather in London is cloudy, temperature 59°F and 78% humidity. And it also returns an interaction ID, different from the first one. Then we come to the last turn and ask: what&#x27;s my favourite colour that I mentioned earlier? The agent says your favourite colour is blue, and prints an interaction ID for the third turn as well.<div class="tag">уточнено: the aen says -&gt; the agent says</div></div>
+      <div class="ru">Идентификаторы взаимодействий можно проверить, выведя их, — и вы увидите, что это три отдельных взаимодействия, автоматически связанных на стороне сервера. Запустим тест и посмотрим, получим ли мы ожидаемые результаты. Переходим к демо: запускаю этот многоходовый диалог в терминале. Пользователь говорит: «мой любимый цвет — синий, просто подтверди и не используй инструменты». Агент отвечает: «подтверждаю, ваш любимый цвет — синий». Вместе с ответом приходит interaction ID, потому что код именно его и запрашивает. Затем спрашиваем: «какая погода в Лондоне?» Здесь происходит вызов инструмента — `get_current_weather`, нашего собственного инструмента, и результат тоже печатается. Агент берёт ответ инструмента и говорит, что в Лондоне облачно, +15 °C, влажность 78%. Возвращается и interaction ID, отличный от первого. И на последнем ходу спрашиваем: «какой мой любимый цвет, который я называл раньше?» Агент отвечает «синий» и печатает interaction ID для третьего хода.</div>
+    </div>
+    <div class="row">
+      <div class="ts">07:32</div>
+      <div class="en">So what happened here is exactly what I said: we taught something, we distracted, and then we recalled. We find that the multi-turn conversation works with context retention, and all the tests have passed. Now, say you have an existing ecosystem of A2A agents and you want them to be able to consult a new Gemini Deep Research Agent. Historically, integrating a brand-new third-party API like this would require writing a custom wrapper or adapter — that&#x27;s friction. We&#x27;ve eliminated that friction with a new Interactions API transport: under the hood, the transport layer performs the translation for you. An A2A send_message becomes an interactions create call, an A2A task maps to an interaction ID, and the statuses are linked automatically. One quick note on this beta mapping: features like A2A push notification and extensions aren&#x27;t supported in this transport just yet.</div>
+      <div class="ru">Итак, произошло ровно то, о чём я говорил: мы чему-то научили, отвлекли, а потом вспомнили. Выясняется, что многоходовый диалог работает с сохранением контекста, и все тесты прошли. Теперь представим, что у вас есть готовая экосистема A2A-агентов и вы хотите, чтобы они могли обращаться к новому Gemini Deep Research Agent. Раньше интеграция полностью нового стороннего API вроде этого требовала писать собственный враппер или адаптер — это трение. Мы сняли его новым транспортом Interactions API: под капотом слой транспорта выполняет трансляцию за вас. Вызов A2A send_message превращается в вызов interactions create, задача A2A отображается в interaction ID, а статусы связываются автоматически. Одна ремарка про эту beta-маппинг: возможности вроде A2A push notification и расширений пока в этом транспорте не поддерживаются.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">08:16</div>
+      <div class="en">Let&#x27;s look at a code sample in the A2A samples GitHub repo. The Interactions API transport class allows an A2A client to communicate with the Interactions API transparently. To use the transport you register it with your client factory and configure an agent card to use it. So why does this approach matter? Because it makes the Interactions API completely transparent to your developer experience: you gain immediate access to powerful tools like Deep Research without refactoring your multi-agent system. There are no new SDKs to learn — your existing A2A client code stays the same, and it handles real-time streaming and even manages complex configurations under the hood without breaking the standard protocol.<div class="tag">уточнено: multi- aent system -&gt; multi-agent system; the aen says -&gt; the agent says</div></div>
+      <div class="ru">Посмотрим на пример кода в репозитории a2a-samples. Класс транспорта Interactions API позволяет A2A-клиенту прозрачно общаться с Interactions API. Чтобы использовать транспорт, нужно зарегистрировать его в своей client factory и настроить agent card на его использование. Так почему этот подход важен? Потому что он делает Interactions API полностью прозрачной с точки зрения разработчика: вы сразу получаете доступ к мощным инструментам вроде Deep Research, не рефакторя свою мультиагентную систему. Новых SDK учить не нужно — ваш существующий код A2A-клиента остаётся прежним, а потоковая передача в реальном времени и даже сложные конфигурации обрабатываются под капотом без нарушения стандартного протокола.</div>
+    </div>
+    <div class="row">
+      <div class="ts">09:23</div>
+      <div class="en">Now let&#x27;s see a demo of this sample code we were talking about. I&#x27;m running the code sample on my localhost at port 10000. In the A2A inspector you can see the agent card we talked about earlier, and if you try to invoke the Deep Research Agent with a query like «give me a report on TensorFlow», the task gets created initially with the state as submitted, and you get a task ID. As you scroll through, you see the Gemini Deep Research Agent being invoked, initially setting a research direction: it says it&#x27;s initiating the research process for a comprehensive report on TensorFlow and has outlined the core areas it needs to cover.</div>
+      <div class="ru">Теперь демо упомянутого примера кода. Я запускаю его на localhost, порт 10000. В A2A inspector видна та самая agent card, а если вызвать Deep Research Agent с запросом вроде «дай мне отчёт по TensorFlow», задача создаётся со статусом submitted, и вы получаете task ID. Листая дальше, вы видите, как Gemini Deep Research Agent вызывается и сначала задаёт направление исследования: он пишет, что запускает исследование для подробного отчёта по TensorFlow и наметил основные области, которые нужно покрыть.</div>
+    </div>
+    <div class="row">
+      <div class="ts">10:30</div>
+      <div class="en">As you scroll through, you see it doing multiple different steps: defining the search strategy, defining what steps it needs to do next, verifying the latest version, resolving some conflicting dates, moving to finalization, verifying key claims, looking at information gaps. You can click on any of these conversations to see the raw JSON. It says: to address these gaps, I&#x27;ve prepared a set of targeted queries, including searches for specific terms like TensorFlow Lite RT and so on; then it verifies the key 2025 updates, and finally it reaches the stage where it says research is complete and the overall candidate response appears highly accurate and current. Then it prints out a report. If you look at the report, it has all the key points, an introduction, core architecture, and towards the end it also lists the sources it referred to. With that we come to the end of this demo and this presentation.</div>
+      <div class="ru">Листая дальше, вы видите несколько разных шагов: определение поисковой стратегии, определение следующих шагов, проверку последней версии, разрешение противоречивых дат, переход к финализации, проверку ключевых утверждений, поиск информационных пробелов. На любой из этих бесед можно кликнуть и посмотреть сырой JSON. Агент пишет: «чтобы закрыть эти пробелы, я подготовил набор точечных запросов», включая поиск конкретных терминов вроде TensorFlow Lite RT; затем проверяет ключевые обновления 2025 года и наконец доходит до стадии, где сообщает, что исследование завершено и итоговый ответ выглядит очень точным и актуальным. После этого печатается отчёт. В отчёте есть все ключевые тезисы, введение, ядро архитектуры, а ближе к концу перечислены использованные источники. На этом демо и презентация закончены.</div>
+    </div>
+  </div>
+
+  <div class="app">
+    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
+    <table>
+      <thead>
+        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+      </thead>
+      <tbody>
+      <tr><td>[01:37]</td><td>Let&#x27;s look at the first pattern. Implementing the Interactions API inside an ADK agent is incredibly simple. The best part is that you don&#x27;t need to rewrite your agent&#x27;s core logic or control flow. You just need to tell the model component to switch gears — and here&#x27;s exactly how it looks. That&#x27;s it: just by setting use_interactions_api to true, ADK switches gear.</td><td>your agent score logic -&gt; your agent&#x27;s core logic; use interactions API to true -&gt; use_interactions_api = true</td><td>Посмотрим на первый паттерн. Внедрить Interactions API в агента ADK невероятно просто. Лучшее здесь то, что не нужно переписывать основную логику агента или поток управления. Достаточно сказать компоненту модели переключить передачу — и вот как это выглядит. Вот и всё: достаточно выставить `use_interactions_api` в true, и ADK переключает передачу.</td></tr>
+      <tr><td>[01:57]</td><td>So what makes this different from just calling the generate_content API? The Interactions API extends core capabilities with four critical features designed specifically for modern applications. First, optional server-side state: you can offload history management entirely to the server. This drastically simplifies your client code, minimizes context-management errors, and can even reduce costs through better caching. Second, a composable data model: the API provides a clean schema designed specifically for complex agentic histories, making it much easier to debug, stream and reason over exactly what your agent is doing. Third, background execution: real research takes time, and you don&#x27;t want to keep a client connection open for minutes while the agent works. This feature lets you offload those long-running loops to the server asynchronously — you just fire the request and pull for the result later. And finally, remote MCP tool support: your models can now directly call Model Context Protocol, MCP, servers as tools, which makes integration with the growing ecosystem of MCP-compatible tools and data sources seamless.</td><td>longunning loops -&gt; long-running loops; model context protocol -&gt; Model Context Protocol</td><td>Чем это отличается от простого вызова generate_content? Interactions API расширяет базовые возможности четырьмя ключевыми функциями, спроектированными под современные приложения. Первое — опциональное серверное состояние: управление историей можно целиком вынести на сервер. Это сильно упрощает клиентский код, снижает количество ошибок работы с контекстом и может даже уменьшить расходы за счёт лучшего кэширования. Второе — компонуемая модель данных: API даёт чистую схему, рассчитанную именно на сложные агентные истории, и отлаживать, стримить и рассуждать о том, что делает агент, становится намного проще. Третье — фоновое исполнение: настоящее исследование занимает время, и вам не нужно держать клиентское соединение открытым минутами, пока агент работает. Эта функция позволяет асинхронно вынести такие длинные циклы на сервер: отправляете запрос и позже забираете результат. И наконец — поддержка удалённых MCP-инструментов: модели теперь могут напрямую вызывать MCP-серверы как инструменты, что бесшовно встраивает их в растущую экосистему MCP-совместимых инструментов и источников данных.</td></tr>
+      <tr><td>[03:23]</td><td>Now let&#x27;s look at a code sample from the ADK Python repository. Let&#x27;s take a simple test case that proves the server is really handling the memory. I call it the teach, distract and recall pattern. In the code, the first turn tells the agent that my favourite colour is blue — that&#x27;s the teach step: I tell the agent a specific fact, nothing complex, I&#x27;m just setting the context. Then step two, the distract step: I completely change the subject and ask about the weather — what&#x27;s the weather in London? This forces the agent to step away from the chat, use a tool and process new data. And then the third turn: we ask the agent to remember the very first detail we shared. Here my code isn&#x27;t sending the chat history back to the server; I&#x27;m only sending the new question. And if you look at the result, you&#x27;ll see the answer: blue.</td><td>my favorite color is blue -&gt; «синий» (в коде и примере); the A2A -&gt; the agent</td><td>Теперь посмотрим на пример кода из репозитория ADK Python. Возьмём простой тест, который доказывает, что памятью действительно занимается сервер. Я называю его паттерном «обучил — отвлёк — вспомнил». В коде первый ход сообщает агенту, что мой любимый цвет — синий: это шаг «обучил», я просто сообщаю агенту конкретный факт, ничего сложного, лишь задаю контекст. Затем шаг второй, «отвлёк»: я полностью меняю тему и спрашиваю про погоду — какая погода в Лондоне? Это заставляет агента отойти от диалога, вызвать инструмент и обработать новые данные. И на третьем ходу мы просим агента вспомнить самую первую деталь, которую сообщили. Здесь мой код не отправляет историю диалога обратно на сервер — я отправляю только новый вопрос. И в результате вы увидите ответ: синий.</td></tr>
+      <tr><td>[05:00]</td><td>You can verify the interaction IDs by printing them out, and you&#x27;ll find that these are three separate interactions which are chained together automatically on the server side. Let&#x27;s run this test case and see whether we get the results we talked about. Over to the demo: I run this specific test, which is a multi-turn conversation, on my terminal. The user says: my favourite colour is blue, just acknowledge this and don&#x27;t use any tools. The agent says: acknowledge, your favourite colour is blue. You get the response along with an interaction ID, because that&#x27;s what the code is asking for. Then we ask: what is the weather in London? Here there&#x27;s a tool call happening — calling get_current_weather, a custom tool we wrote, and the tool result is also printed. Then the agent takes the response from the tool and says the weather in London is cloudy, temperature 59°F and 78% humidity. And it also returns an interaction ID, different from the first one. Then we come to the last turn and ask: what&#x27;s my favourite colour that I mentioned earlier? The agent says your favourite colour is blue, and prints an interaction ID for the third turn as well.</td><td>the aen says -&gt; the agent says</td><td>Идентификаторы взаимодействий можно проверить, выведя их, — и вы увидите, что это три отдельных взаимодействия, автоматически связанных на стороне сервера. Запустим тест и посмотрим, получим ли мы ожидаемые результаты. Переходим к демо: запускаю этот многоходовый диалог в терминале. Пользователь говорит: «мой любимый цвет — синий, просто подтверди и не используй инструменты». Агент отвечает: «подтверждаю, ваш любимый цвет — синий». Вместе с ответом приходит interaction ID, потому что код именно его и запрашивает. Затем спрашиваем: «какая погода в Лондоне?» Здесь происходит вызов инструмента — `get_current_weather`, нашего собственного инструмента, и результат тоже печатается. Агент берёт ответ инструмента и говорит, что в Лондоне облачно, +15 °C, влажность 78%. Возвращается и interaction ID, отличный от первого. И на последнем ходу спрашиваем: «какой мой любимый цвет, который я называл раньше?» Агент отвечает «синий» и печатает interaction ID для третьего хода.</td></tr>
+      <tr><td>[08:16]</td><td>Let&#x27;s look at a code sample in the A2A samples GitHub repo. The Interactions API transport class allows an A2A client to communicate with the Interactions API transparently. To use the transport you register it with your client factory and configure an agent card to use it. So why does this approach matter? Because it makes the Interactions API completely transparent to your developer experience: you gain immediate access to powerful tools like Deep Research without refactoring your multi-agent system. There are no new SDKs to learn — your existing A2A client code stays the same, and it handles real-time streaming and even manages complex configurations under the hood without breaking the standard protocol.</td><td>multi- aent system -&gt; multi-agent system; the aen says -&gt; the agent says</td><td>Посмотрим на пример кода в репозитории a2a-samples. Класс транспорта Interactions API позволяет A2A-клиенту прозрачно общаться с Interactions API. Чтобы использовать транспорт, нужно зарегистрировать его в своей client factory и настроить agent card на его использование. Так почему этот подход важен? Потому что он делает Interactions API полностью прозрачной с точки зрения разработчика: вы сразу получаете доступ к мощным инструментам вроде Deep Research, не рефакторя свою мультиагентную систему. Новых SDK учить не нужно — ваш существующий код A2A-клиента остаётся прежним, а потоковая передача в реальном времени и даже сложные конфигурации обрабатываются под капотом без нарушения стандартного протокола.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Субтитры автоматические (auto, en-orig). Термины сверены со страницей дня, блогом Google и кодом: Interactions API (beta), use_interactions_api=True, Gemini Deep Research Agent, A2A.send_message, transport для A2A-клиента. Паттерн в тесте: teach — distract — recall.</p>
+  </div>
+
+</div>
+<script>
+const el = id => document.getElementById(id);
+
+el('tgl-en').addEventListener('change', e =>
+  document.body.classList.toggle('hide-en', !e.target.checked));
+el('tgl-ru').addEventListener('change', e =>
+  document.body.classList.toggle('hide-ru', !e.target.checked));
+el('btn-print').addEventListener('click', () => window.print());
+el('btn-mark').addEventListener('click', () => {
+  const on = !document.body.classList.contains('show-fixes');
+  document.body.classList.toggle('show-fixes', on);
+  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
+});
+</script>
+</body>
+</html>

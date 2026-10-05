@@ -5,7 +5,7 @@
 
 Статусы: ✅ переведён · 🟡 субтитры скачаны, ждёт перевода · ⚪ видео нет или недоступно
 
-Всего дней: **60**, с субтитрами: **38**, переведено: **37**
+Всего дней: **60**, с субтитрами: **38**, переведено: **38**
 
 ## Темы
 
@@ -590,7 +590,7 @@ uv run --project .. uvicorn main:app --port 8000
 ---
 
 ### day13 — Interactions API  
-🟡 · 12:00 · Interactions API, ADK, A2A, Google Cloud, Google DeepMind
+✅ · 12:00 · Interactions API, ADK, A2A, Google Cloud, Google DeepMind
 
 Interactions API marks a fundamental shift from stateless text generation to stateful, autonomous workflows.
 
