@@ -1,0 +1,35 @@
+{
+  "note": "Субтитры автоматические (auto, en-orig). Названия сверены со страницей дня и описанием: Cloud API Registry, ApiRegistry, google.auth.default, IAM. Докладчик — Enrique Chan.",
+  "segments": [
+    {
+      "t": 2,
+      "en": "Hi, I'm Enrique Chan. Hardcoded API keys are a legacy liability. If your source code leaks, your project is compromised. Today we're ditching hardcoded API keys for centralized tool governance. Let's first look at why this actually matters.",
+      "ru": "Привет, я Энрике Чан. API-ключи в коде — это наследие, которое дорого обходится. Если исходники утекут, проект скомпрометирован. Сегодня откажемся от хардкода ключей в пользу централизованного управления инструментами. Сначала посмотрим, почему это вообще важно.",
+      "fix": "I'm Akoncha -> I'm Enrique Chan (докладчик по странице дня)"
+    },
+    {
+      "t": 19,
+      "en": "In the old secrets-and-source world, your API keys were basically plain text in your code — we'll see an example of this in our source code in a second. That means you're always one accidental git push away from a security breach. But with the API Registry there are no strings to steal: your code doesn't hold the password, because it is the authorized identity. Then there's the maintenance aspect. We've all had an app break because an API key expired. In the new way, rotation is automatic: the registry in Google Cloud handles token refreshes in the background while you work. And finally, think about admin control. If a developer leaves the team or a project ends, you don't have to go around changing every API key and redeploying all of your apps. The admin just updates the IAM policy in the registry, and access is revoked instantly without touching a single line of your source code.",
+      "ru": "В прежнем мире «секретов в исходниках» ваши API-ключи были просто текстом в коде — пример покажу через секунду. Это значит, что один случайный `git push` от кода у вас до утечки. С реестром API строки воровать нечего: в коде нет пароля, потому что сам код и есть авторизованная идентичность. Дальше — сопровождение. У всех было, что приложение ломалось из-за истёкшего ключа. В новой схеме ротация автоматическая: реестр в Google Cloud сам обновляет токены в фоне, пока вы работаете. И наконец, административный контроль. Если разработчик уходит из команды или проект заканчивается, не нужно обходить и менять все ключи и передеплоивать все приложения. Администратор просто обновляет IAM-политику в реестре, и доступ отзывается мгновенно — ни одной строчки исходников трогать не нужно.",
+      "fix": "Identity and Registry -> API Registry; one accidental get push away -> one accidental git push away"
+    },
+    {
+      "t": 67,
+      "en": "Now let's move from theory to the actual code that makes this handshake happen. We'll start with the requirements file: there we make sure the environment has the libraries needed for the Google Cloud handshake. Now let's look at the setup file. This is where the admin / infrastructure script lives; it handles governance by setting up the identity, permissions and demo data. We run this once in our terminal to register our environment, in just one second. Now let's look at main.py. This is the developer script: it demonstrates the no-secrets implementation by fetching the tool dynamically. See line six — that's the old way, hardcoding API and project IDs. It's a massive security risk: if this file leaks, your project is compromised.",
+      "ru": "Теперь от теории перейдём к коду, который делает это рукопожательство. Начнём с requirements-файла: там мы убеждаемся, что в окружении есть нужные библиотеки для рукопожатия с Google Cloud. Дальше — файл setup. Здесь живёт административный, инфраструктурный скрипт: он занимается управлением доступом, настраивая идентичность, права и демо-данные. Запускаем его один раз в терминале — регистрация окружения занимает секунду. Теперь `main.py`. Это скрипт разработчика: он показывает реализацию без секретов, динамически подтягивая инструмент. Строка шесть — старый способ, хардкод API и project ID. Это серьёзная дыра в безопасности: если этот файл утечёт, проект скомпрометирован.",
+      "fix": null
+    },
+    {
+      "t": 119,
+      "en": "We're now shifting to centralized tool governance. From lines 12 through 19 we perform a dynamic handshake with the Cloud Registry: there are no strings to steal here, the credentials live in the environment, not the code. This gives us automatic rotation — because we use google.auth.default on line 14, the registry handles token refreshes behind the scenes. No more manual updates or expired keys. Finally, we have full admin control: on line 24 the developer just requests the admin-v2 tool, and the admin can revoke access at any time in the cloud console without touching this code. Now let's run our code.",
+      "ru": "Теперь мы переходим к централизованному управлению инструментами. В строках с 12-й по 19-ю выполняется динамическое рукопожатие с Cloud Registry: строк воровать нечего, учётные данные живут в окружении, а не в коде. Это даёт автоматическую ротацию — поскольку в строке 14 мы используем `google.auth.default`, реестр сам обновляет токены. Никаких ручных обновлений и истёкших ключей. И наконец, полный административный контроль: в строке 24 разработчик просто запрашивает инструмент `admin-v2`, а администратор может в любой момент отозвать доступ в консоли, не трогая этот код. Теперь запустим код.",
+      "fix": null
+    },
+    {
+      "t": 158,
+      "en": "First, bash setup.sh — you can see here we've set up our registry data and we've authorized our environment registry. Now we're going to run python main.py. This lets us pull our tool context from the Cloud Registry, and we have loaded the admin-v2 tool for our given project ID, and we verified that our registry is active. All of this results in a successful connection, access granted, and the fact that we pulled live data with zero hardcoded secrets. This is how you scale securely.",
+      "ru": "Сначала `bash setup.sh` — здесь видно, что мы загрузили данные в реестр и авторизовали наше окружение в реестре. Теперь запускаем `python main.py`. Это позволяет получить контекст инструмента из Cloud Registry: инструмент `admin-v2` загружен для нашего project ID, и мы проверили, что реестр активен. Результат — успешное соединение, доступ разрешён, живые данные получены без единого зашитого секрета. Вот так масштабируются безопасно.",
+      "fix": "percent Here -> (мусор распознавания, удалён)"
+    }
+  ]
+}

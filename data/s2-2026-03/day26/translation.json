@@ -46,7 +46,7 @@
     {
       "t": 409,
       "en": "And you will see the agent spinning up, and it should hopefully return our event from the calendar. Let's give it a couple of seconds. And yes, there you see the time and the name. Okay, let's actually ask it to create an event: can you create a new event called lunch for tomorrow at 1 p.m.? And let's see what the agent actually says. Remember, the agent doesn't have any permission for that — its scope is only to list and to get. So now it says: I only have the ability to search and provide details about calendar events, and I don't have the ability to create, which is exactly what we want.",
-      "ru": "Агент начинает работать и, будем надеяться, вернёт наше событие из календаря. Подождём пару секунд. Вот время и название. А теперь давайте попросим его создать событие: «создай новое событие „обед" на завтра на час дня». Посмотрим, что ответит агент. Помним: таких прав у него нет, его scope — только читать и получать. И вот что он говорит: «Я умею только искать и выдавать подробности событий календаря, создавать события я не умею» — ровно то, что нам нужно.",
+      "ru": "Агент начинает работать и, будем надеяться, вернёт наше событие из календаря. Подождём пару секунд. Вот время и название. А теперь давайте попросим его создать событие: «создай новое событие „обед“ на завтра на час дня». Посмотрим, что ответит агент. Помним: таких прав у него нет, его scope — только читать и получать. И вот что он говорит: «Я умею только искать и выдавать подробности событий календаря, создавать события я не умею» — ровно то, что нам нужно.",
       "fix": null
     },
     {

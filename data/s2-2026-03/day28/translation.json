@@ -1,0 +1,47 @@
+{
+  "note": "Субтитры автоматические (auto, en-orig). Имена и термины сверены со страницей дня: A2A 1.0, LangGraph, ADK, AgentState, Gemini 3.1 Pro, python-dotenv. Название проекта в исходниках — демонстрация «чисел» дня.",
+  "segments": [
+    {
+      "t": 0,
+      "en": "Back to Advent of Agents. Today we're going to talk about cross-framework orchestration using the A2A protocol. Meet John. He's an AI developer living in a comfortable single-language, ordinary world. He builds everything in Python. He faces a call to adventure: his reasoning engine needs to trigger an enterprise execution service natively written in Go. Enter Sue. She owns the server, and her stack is entirely Go. How do they even talk?",
+      "ru": "Снова Advent of Agents. Сегодня говорим об оркестрации между фреймворками с помощью протокола A2A. Знакомьтесь: Джон. ИИ-разработчик, живущий в привычном однопоточном мире. Он пишет всё на Python. И тут его зовёт приключение: его движку рассуждений нужно запустить корпоративный сервис исполнения, написанный нативно на Go. И входит Сью. Ей принадлежит сервер, и весь её стек — на Go. Как они вообще будут разговаривать?",
+      "fix": null
+    },
+    {
+      "t": 50,
+      "en": "His first instinct might be to rewrite both services into one monolith. But that's the trap: a framework silo is keeping them apart. Instead of rebuilding everything, John meets the mentor — the A2A 1.0 protocol, agent to agent. A2A establishes a universal network contract. Instead of building bespoke, brittle REST APIs for every single tool handoff, A2A provides a strict JSON envelope. Because the payload is strictly standardized, it seamlessly bridges his Python reasoning with her Go execution. The silos are broken.",
+      "ru": "Первый порыв — переписать оба сервиса в один монолит. Но это ловушка: их разделяет силос фреймворков. Вместо того чтобы всё перестраивать, Джон встречает наставника — протокол A2A 1.0, agent-to-agent. A2A задаёт универсальный сетевой контракт. Вместо самодельных и хрупких REST API на каждую передачу инструмента A2A даёт строгую JSON-обёртку. Поскольку нагрузка строго стандартизирована, она бесшовно соединяет его Python-рассуждения с её Go-исполнением. Силосы разрушены.",
+      "fix": null
+    },
+    {
+      "t": 107,
+      "en": "To cross the threshold, he must let his framework talk. In Python, he uses LangGraph to aggregate his task and format it strictly into a universal A2A 1.0 JSON envelope. This is then received by Sue's system and processed by Gemini 3.1 Pro. The response goes back to John's Python LangGraph orchestration server. Now let's look at some code.",
+      "ru": "Чтобы перейти порог, он должен дать своему фреймворку заговорить. На Python он использует LangGraph, чтобы собрать задачу и строго оформить её в универсальную JSON-обёртку A2A 1.0. Дальше её получает система Сью и обрабатывает Gemini 3.1 Pro. Ответ возвращается на питоновский сервер оркестрации ЛangGraph Джона. Теперь посмотрим на код.",
+      "fix": null
+    },
+    {
+      "t": 151,
+      "en": "John uses the AgentState — the agent state object within the A2A protocol — which carries the objective, the A2A payload and the final result. He uses a reasoning model, and there's a dispatch node. These are key frameworks in the workflow. The workflow starts with an AgentState, which is used to secure the service messages that need to be sent across in the A2A protocol. You add a node in the workflow, set an entry point into the reasoning, add edges, and then add the end statement to make sure you're building the workflow graph.",
+      "ru": "Джон использует AgentState — объект состояния агента в протоколе A2A, — который несёт цель, полезную нагрузку A2A и итоговый результат. Используется модель рассуждения и есть узел диспетчеризации. Это ключевые элементы схемы. Поток начинается с AgentState, который служит для защиты служебных сообщений, передаваемых по протоколу A2A. Вы добавляете узел в граф, задаёте точку входа в рассуждение, добавляете рёбра и завершающий узел — так собирается граф потока.",
+      "fix": "the agent state protocol, the agent state object -> AgentState (объект agent state)"
+    },
+    {
+      "t": 209,
+      "en": "This is where John securely and dynamically loads his Gemini API key from a local env file using python-dotenv. No hardcoded credentials. It's secure, clean and ready for deployment. And then he uses the graph we created above — the very simple graph — and sends the state to Sue's Flow server.",
+      "ru": "Здесь Джон безопасно и динамически подгружает свой Gemini API key из локального env-файла через python-dotenv. Никаких зашитых учётных данных. Это безопасно, аккуратно и готово к деплою. Дальше он берёт построенный выше, вполне простой граф и отправляет состояние на сервер Flow Сью.",
+      "fix": "Securing your Gemini API key -> загрузка Gemini API key"
+    },
+    {
+      "t": 232,
+      "en": "Now let's look at the code Sue has to receive John's payload. We face the ordeal of delegating the task securely across the network to her framework. Her Go execution service listens for incoming A2A payloads, parses the JSON, interprets his task, and returns a rich, step-by-step execution plan using the Gemini 3.1 Pro preview model. And the A2A envelope is abstracted away from John — he just receives the reasoning output handled by Go on Sue's server.",
+      "ru": "Теперь код Сью, который принимает нагрузку Джона. Нас ждёт испытание: безопасно делегировать задачу через сеть в её фреймворк. Её Go-сервис исполнения слушает входящие сообщения A2A, разбирает JSON, интерпретирует задачу и возвращает развёрнутый пошаговый план исполнения, построенный моделью Gemini 3.1 Pro Preview. При этом сама A2A-обёртка от Джона скрыта: он просто получает результат рассуждения, обработанный Go на сервере Сью.",
+      "fix": "the reward is abstracted away from John -> the A2A envelope is abstracted away from John"
+    },
+    {
+      "t": 283,
+      "en": "Let's actually trigger the journey. First, we boot her Go execution platform — notice the beautiful full-width header telling us they're listening. Now let's trigger John's LangGraph orchestrator. The Python console immediately prints stunning panels. We see the live spinner spinning, and then: dispatch success. His server instantly displays the raw JSON payload arriving, generates the migration plan, and then returns it. Clean, decoupled and beautifully polished. This is the hero's journey of A2A: decoupled reasoning from execution, bridging any two heterogeneous AI microservices using the universal A2A 1.0 protocol. You can find the copy-pasteable code snippet below. Happy coding, and see you tomorrow.",
+      "ru": "Запустим это путешествие. Сначала поднимаем её Go-платформу исполнения — обратите внимание на широкую шапку, сообщающую, что сервис слушает. Теперь запускаем оркестратор Джона на LangGraph. Питоновская консоль сразу печатает красивые панели: видно крутящийся спиннер, а затем — dispatch success. Его сервер мгновенно показывает пришедшую сырую JSON-нагрузку, формирует план и возвращает его. Чисто, разделено и отполировано. Вот такая история героя A2A: разделённые рассуждение и исполнение, мост между любыми двумя неоднородными ИИ-микросервисами на универсальном протоколе A2A 1.0. Копируемые примеры кода — ниже. Хорошего кодинга, до встречи завтра.",
+      "fix": "Zangra orchestrator -> LangGraph orchestrator; Generates the migration plan -> generates the execution plan"
+    }
+  ]
+}

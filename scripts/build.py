@@ -39,7 +39,11 @@ def load(day):
     if not tr_path.exists():
         sys.exit(f"нет перевода: {tr_path}")
 
-    tr = json.loads(tr_path.read_text(encoding="utf-8"))
+    try:
+        tr = json.loads(tr_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        # Обычно неэкранированные кавычки внутри русского текста
+        sys.exit(f"{tr_path}: битый JSON — {exc}")
     segments = tr["segments"] if isinstance(tr, dict) else tr
 
     page_path = day_dir / "page.json"

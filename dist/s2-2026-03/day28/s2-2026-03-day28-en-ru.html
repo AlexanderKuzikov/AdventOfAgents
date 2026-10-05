@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A2A Protocol: Decoupling Reasoning from Execution — EN / RU</title>
+<style>
+:root {
+  --en-bg: #f7f8fa;
+  --line: #dfe3e8;
+  --accent: #0b57d0;
+  --ts: #8a9099;
+  --muted: #5f6672;
+  --fix: #fff3cd;
+  --fix-line: #e0b100;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 32px 20px 72px;
+  background: #eef0f3;
+  font-family: Calibri, "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #1a1a1a;
+}
+
+.page { max-width: 1400px; margin: 0 auto; }
+
+h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.head .sub { color: var(--muted); font-size: 15px; }
+.head .sub a { color: var(--accent); }
+
+.legend {
+  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+  margin: 14px 0 18px; font-size: 14px; color: var(--muted);
+}
+.legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
+.legend input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+
+.bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+
+button {
+  font: inherit; font-size: 14px; padding: 7px 14px;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: #fff; color: #1a1a1a; cursor: pointer;
+}
+button:hover { border-color: #b9c0ca; background: #fafbfc; }
+
+.grid {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden;
+}
+
+.head-row, .row { display: grid; grid-template-columns: 64px 1fr 1fr; }
+
+.head-row {
+  background: #2f3541; color: #fff;
+  font-size: 13px; letter-spacing: 0.04em;
+  text-transform: uppercase; font-weight: 600;
+  position: sticky; top: 0; z-index: 5;
+}
+.head-row > div { padding: 10px 18px; }
+.head-row > div:first-child, .head-row > div:nth-child(2) { border-right: 1px solid #454c5a; }
+
+.row > .ts {
+  padding: 14px 8px; font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ts); text-align: right;
+  border-right: 1px solid var(--line); background: #fbfbfc;
+}
+.row > .en, .row > .ru {
+  padding: 14px 18px; border-right: 1px solid var(--line); font-size: 15.5px;
+}
+.row > .en { background: var(--en-bg); }
+.row > .ru { border-right: 0; }
+
+.row.cont > .ts::after {
+  content: ""; display: block; width: 14px; height: 1px;
+  background: var(--line); margin: 8px 0 0 auto;
+}
+.row.cont > .en, .row.cont > .ru { padding-top: 9px; padding-bottom: 9px; }
+
+.row.fixed > .en { background: var(--fix); }
+.row.fixed .tag { display: none; }
+
+body.show-fixes .row.fixed .tag { display: block; }
+
+.tag {
+  display: inline-block; margin-top: 6px;
+  font-size: 11.5px; line-height: 1.35;
+  color: #6b5400; background: var(--fix);
+  border-left: 3px solid var(--fix-line);
+  padding: 3px 8px; border-radius: 0 4px 4px 0;
+}
+
+.app { margin-top: 26px; }
+.app h2 { font-size: 19px; margin: 0 0 10px; }
+
+table {
+  width: 100%; border-collapse: collapse;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden; font-size: 15px;
+}
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+th { background: #f2f4f7; font-weight: 600; font-size: 14px; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13.5px; color: #3c424d; }
+.note { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
+
+body.hide-en .row > .en, body.hide-en .head-row > div:nth-child(2) { display: none; }
+body.hide-ru .row > .ru, body.hide-ru .head-row > div:nth-child(3) { display: none; }
+body.hide-en .row, body.hide-en .head-row,
+body.hide-ru .row, body.hide-ru .head-row { grid-template-columns: 64px 1fr; }
+
+@media (max-width: 900px) {
+  .head-row, .row { grid-template-columns: 56px 1fr; }
+  .row > .en, .head-row > div:nth-child(2) { border-right: 0; }
+  .row > .ru { grid-column: 2; border-top: 1px dashed var(--line); }
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .bar, .legend { display: none; }
+  .head-row { position: static; }
+  .grid, table { border-radius: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <h1>A2A Protocol: Decoupling Reasoning from Execution</h1>
+    <div class="sub">Двуязычная транскрипция: английский оригинал слева, русский перевод справа.
+      Видео: <a href="https://www.youtube.com/watch?v=NsJ7UjRCnZU">https://www.youtube.com/watch?v=NsJ7UjRCnZU</a> · 05:55
+      · auto (YouTube en-orig)</div>
+  </div>
+
+  <div class="legend">
+    <label><input type="checkbox" id="tgl-en" checked> Показывать оригинал</label>
+    <label><input type="checkbox" id="tgl-ru" checked> Показывать перевод</label>
+  </div>
+
+  <div class="bar">
+    <button id="btn-mark">Показать исправления</button>
+    <button id="btn-print">Печать / PDF</button>
+  </div>
+
+  <div class="grid">
+    <div class="head-row">
+      <div>Time</div>
+      <div>English</div>
+      <div>Русский</div>
+    </div>
+    <div class="row">
+      <div class="ts">00:00</div>
+      <div class="en">Back to Advent of Agents. Today we&#x27;re going to talk about cross-framework orchestration using the A2A protocol. Meet John. He&#x27;s an AI developer living in a comfortable single-language, ordinary world. He builds everything in Python. He faces a call to adventure: his reasoning engine needs to trigger an enterprise execution service natively written in Go. Enter Sue. She owns the server, and her stack is entirely Go. How do they even talk?</div>
+      <div class="ru">Снова Advent of Agents. Сегодня говорим об оркестрации между фреймворками с помощью протокола A2A. Знакомьтесь: Джон. ИИ-разработчик, живущий в привычном однопоточном мире. Он пишет всё на Python. И тут его зовёт приключение: его движку рассуждений нужно запустить корпоративный сервис исполнения, написанный нативно на Go. И входит Сью. Ей принадлежит сервер, и весь её стек — на Go. Как они вообще будут разговаривать?</div>
+    </div>
+    <div class="row">
+      <div class="ts">00:50</div>
+      <div class="en">His first instinct might be to rewrite both services into one monolith. But that&#x27;s the trap: a framework silo is keeping them apart. Instead of rebuilding everything, John meets the mentor — the A2A 1.0 protocol, agent to agent. A2A establishes a universal network contract. Instead of building bespoke, brittle REST APIs for every single tool handoff, A2A provides a strict JSON envelope. Because the payload is strictly standardized, it seamlessly bridges his Python reasoning with her Go execution. The silos are broken.</div>
+      <div class="ru">Первый порыв — переписать оба сервиса в один монолит. Но это ловушка: их разделяет силос фреймворков. Вместо того чтобы всё перестраивать, Джон встречает наставника — протокол A2A 1.0, agent-to-agent. A2A задаёт универсальный сетевой контракт. Вместо самодельных и хрупких REST API на каждую передачу инструмента A2A даёт строгую JSON-обёртку. Поскольку нагрузка строго стандартизирована, она бесшовно соединяет его Python-рассуждения с её Go-исполнением. Силосы разрушены.</div>
+    </div>
+    <div class="row">
+      <div class="ts">01:47</div>
+      <div class="en">To cross the threshold, he must let his framework talk. In Python, he uses LangGraph to aggregate his task and format it strictly into a universal A2A 1.0 JSON envelope. This is then received by Sue&#x27;s system and processed by Gemini 3.1 Pro. The response goes back to John&#x27;s Python LangGraph orchestration server. Now let&#x27;s look at some code.</div>
+      <div class="ru">Чтобы перейти порог, он должен дать своему фреймворку заговорить. На Python он использует LangGraph, чтобы собрать задачу и строго оформить её в универсальную JSON-обёртку A2A 1.0. Дальше её получает система Сью и обрабатывает Gemini 3.1 Pro. Ответ возвращается на питоновский сервер оркестрации ЛangGraph Джона. Теперь посмотрим на код.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">02:31</div>
+      <div class="en">John uses the AgentState — the agent state object within the A2A protocol — which carries the objective, the A2A payload and the final result. He uses a reasoning model, and there&#x27;s a dispatch node. These are key frameworks in the workflow. The workflow starts with an AgentState, which is used to secure the service messages that need to be sent across in the A2A protocol. You add a node in the workflow, set an entry point into the reasoning, add edges, and then add the end statement to make sure you&#x27;re building the workflow graph.<div class="tag">уточнено: the agent state protocol, the agent state object -&gt; AgentState (объект agent state)</div></div>
+      <div class="ru">Джон использует AgentState — объект состояния агента в протоколе A2A, — который несёт цель, полезную нагрузку A2A и итоговый результат. Используется модель рассуждения и есть узел диспетчеризации. Это ключевые элементы схемы. Поток начинается с AgentState, который служит для защиты служебных сообщений, передаваемых по протоколу A2A. Вы добавляете узел в граф, задаёте точку входа в рассуждение, добавляете рёбра и завершающий узел — так собирается граф потока.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">03:29</div>
+      <div class="en">This is where John securely and dynamically loads his Gemini API key from a local env file using python-dotenv. No hardcoded credentials. It&#x27;s secure, clean and ready for deployment. And then he uses the graph we created above — the very simple graph — and sends the state to Sue&#x27;s Flow server.<div class="tag">уточнено: Securing your Gemini API key -&gt; загрузка Gemini API key</div></div>
+      <div class="ru">Здесь Джон безопасно и динамически подгружает свой Gemini API key из локального env-файла через python-dotenv. Никаких зашитых учётных данных. Это безопасно, аккуратно и готово к деплою. Дальше он берёт построенный выше, вполне простой граф и отправляет состояние на сервер Flow Сью.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">03:52</div>
+      <div class="en">Now let&#x27;s look at the code Sue has to receive John&#x27;s payload. We face the ordeal of delegating the task securely across the network to her framework. Her Go execution service listens for incoming A2A payloads, parses the JSON, interprets his task, and returns a rich, step-by-step execution plan using the Gemini 3.1 Pro preview model. And the A2A envelope is abstracted away from John — he just receives the reasoning output handled by Go on Sue&#x27;s server.<div class="tag">уточнено: the reward is abstracted away from John -&gt; the A2A envelope is abstracted away from John</div></div>
+      <div class="ru">Теперь код Сью, который принимает нагрузку Джона. Нас ждёт испытание: безопасно делегировать задачу через сеть в её фреймворк. Её Go-сервис исполнения слушает входящие сообщения A2A, разбирает JSON, интерпретирует задачу и возвращает развёрнутый пошаговый план исполнения, построенный моделью Gemini 3.1 Pro Preview. При этом сама A2A-обёртка от Джона скрыта: он просто получает результат рассуждения, обработанный Go на сервере Сью.</div>
+    </div>
+    <div class="row fixed">
+      <div class="ts">04:43</div>
+      <div class="en">Let&#x27;s actually trigger the journey. First, we boot her Go execution platform — notice the beautiful full-width header telling us they&#x27;re listening. Now let&#x27;s trigger John&#x27;s LangGraph orchestrator. The Python console immediately prints stunning panels. We see the live spinner spinning, and then: dispatch success. His server instantly displays the raw JSON payload arriving, generates the migration plan, and then returns it. Clean, decoupled and beautifully polished. This is the hero&#x27;s journey of A2A: decoupled reasoning from execution, bridging any two heterogeneous AI microservices using the universal A2A 1.0 protocol. You can find the copy-pasteable code snippet below. Happy coding, and see you tomorrow.<div class="tag">уточнено: Zangra orchestrator -&gt; LangGraph orchestrator; Generates the migration plan -&gt; generates the execution plan</div></div>
+      <div class="ru">Запустим это путешествие. Сначала поднимаем её Go-платформу исполнения — обратите внимание на широкую шапку, сообщающую, что сервис слушает. Теперь запускаем оркестратор Джона на LangGraph. Питоновская консоль сразу печатает красивые панели: видно крутящийся спиннер, а затем — dispatch success. Его сервер мгновенно показывает пришедшую сырую JSON-нагрузку, формирует план и возвращает его. Чисто, разделено и отполировано. Вот такая история героя A2A: разделённые рассуждение и исполнение, мост между любыми двумя неоднородными ИИ-микросервисами на универсальном протоколе A2A 1.0. Копируемые примеры кода — ниже. Хорошего кодинга, до встречи завтра.</div>
+    </div>
+  </div>
+
+  <div class="app">
+    <h2>Приложение. Где автосубтитры соврали и как это восстановлено</h2>
+    <table>
+      <thead>
+        <tr><th>Время</th><th>Вероятная речь</th><th>Что исправлено</th><th>Перевод</th></tr>
+      </thead>
+      <tbody>
+      <tr><td>[02:31]</td><td>John uses the AgentState — the agent state object within the A2A protocol — which carries the objective, the A2A payload and the final result. He uses a reasoning model, and there&#x27;s a dispatch node. These are key frameworks in the workflow. The workflow starts with an AgentState, which is used to secure the service messages that need to be sent across in the A2A protocol. You add a node in the workflow, set an entry point into the reasoning, add edges, and then add the end statement to make sure you&#x27;re building the workflow graph.</td><td>the agent state protocol, the agent state object -&gt; AgentState (объект agent state)</td><td>Джон использует AgentState — объект состояния агента в протоколе A2A, — который несёт цель, полезную нагрузку A2A и итоговый результат. Используется модель рассуждения и есть узел диспетчеризации. Это ключевые элементы схемы. Поток начинается с AgentState, который служит для защиты служебных сообщений, передаваемых по протоколу A2A. Вы добавляете узел в граф, задаёте точку входа в рассуждение, добавляете рёбра и завершающий узел — так собирается граф потока.</td></tr>
+      <tr><td>[03:29]</td><td>This is where John securely and dynamically loads his Gemini API key from a local env file using python-dotenv. No hardcoded credentials. It&#x27;s secure, clean and ready for deployment. And then he uses the graph we created above — the very simple graph — and sends the state to Sue&#x27;s Flow server.</td><td>Securing your Gemini API key -&gt; загрузка Gemini API key</td><td>Здесь Джон безопасно и динамически подгружает свой Gemini API key из локального env-файла через python-dotenv. Никаких зашитых учётных данных. Это безопасно, аккуратно и готово к деплою. Дальше он берёт построенный выше, вполне простой граф и отправляет состояние на сервер Flow Сью.</td></tr>
+      <tr><td>[03:52]</td><td>Now let&#x27;s look at the code Sue has to receive John&#x27;s payload. We face the ordeal of delegating the task securely across the network to her framework. Her Go execution service listens for incoming A2A payloads, parses the JSON, interprets his task, and returns a rich, step-by-step execution plan using the Gemini 3.1 Pro preview model. And the A2A envelope is abstracted away from John — he just receives the reasoning output handled by Go on Sue&#x27;s server.</td><td>the reward is abstracted away from John -&gt; the A2A envelope is abstracted away from John</td><td>Теперь код Сью, который принимает нагрузку Джона. Нас ждёт испытание: безопасно делегировать задачу через сеть в её фреймворк. Её Go-сервис исполнения слушает входящие сообщения A2A, разбирает JSON, интерпретирует задачу и возвращает развёрнутый пошаговый план исполнения, построенный моделью Gemini 3.1 Pro Preview. При этом сама A2A-обёртка от Джона скрыта: он просто получает результат рассуждения, обработанный Go на сервере Сью.</td></tr>
+      <tr><td>[04:43]</td><td>Let&#x27;s actually trigger the journey. First, we boot her Go execution platform — notice the beautiful full-width header telling us they&#x27;re listening. Now let&#x27;s trigger John&#x27;s LangGraph orchestrator. The Python console immediately prints stunning panels. We see the live spinner spinning, and then: dispatch success. His server instantly displays the raw JSON payload arriving, generates the migration plan, and then returns it. Clean, decoupled and beautifully polished. This is the hero&#x27;s journey of A2A: decoupled reasoning from execution, bridging any two heterogeneous AI microservices using the universal A2A 1.0 protocol. You can find the copy-pasteable code snippet below. Happy coding, and see you tomorrow.</td><td>Zangra orchestrator -&gt; LangGraph orchestrator; Generates the migration plan -&gt; generates the execution plan</td><td>Запустим это путешествие. Сначала поднимаем её Go-платформу исполнения — обратите внимание на широкую шапку, сообщающую, что сервис слушает. Теперь запускаем оркестратор Джона на LangGraph. Питоновская консоль сразу печатает красивые панели: видно крутящийся спиннер, а затем — dispatch success. Его сервер мгновенно показывает пришедшую сырую JSON-нагрузку, формирует план и возвращает его. Чисто, разделено и отполировано. Вот такая история героя A2A: разделённые рассуждение и исполнение, мост между любыми двумя неоднородными ИИ-микросервисами на универсальном протоколе A2A 1.0. Копируемые примеры кода — ниже. Хорошего кодинга, до встречи завтра.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Субтитры автоматические (auto, en-orig). Имена и термины сверены со страницей дня: A2A 1.0, LangGraph, ADK, AgentState, Gemini 3.1 Pro, python-dotenv. Название проекта в исходниках — демонстрация «чисел» дня.</p>
+  </div>
+
+</div>
+<script>
+const el = id => document.getElementById(id);
+
+el('tgl-en').addEventListener('change', e =>
+  document.body.classList.toggle('hide-en', !e.target.checked));
+el('tgl-ru').addEventListener('change', e =>
+  document.body.classList.toggle('hide-ru', !e.target.checked));
+el('btn-print').addEventListener('click', () => window.print());
+el('btn-mark').addEventListener('click', () => {
+  const on = !document.body.classList.contains('show-fixes');
+  document.body.classList.toggle('show-fixes', on);
+  el('btn-mark').textContent = on ? 'Скрыть исправления' : 'Показать исправления';
+});
+</script>
+</body>
+</html>

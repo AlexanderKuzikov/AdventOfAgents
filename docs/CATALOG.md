@@ -5,7 +5,7 @@
 
 Статусы: ✅ переведён · 🟡 субтитры скачаны, ждёт перевода · ⚪ видео нет или недоступно
 
-Всего дней: **60**, с субтитрами: **38**, переведено: **16**
+Всего дней: **60**, с субтитрами: **38**, переведено: **19**
 
 ## Темы
 
@@ -3339,7 +3339,7 @@ root_agent = Agent(
 ---
 
 ### day27 — Scion: an open testbed for agent orchestration  
-🟡 · 9:49 · Multiagent, Harness Engineering, CLI
+✅ · 9:49 · Multiagent, Harness Engineering, CLI
 
 Explore multi-agent patterns with an agnostic supra-harness system that isolates agents in git worktrees and containers, allowing easy orchestration and communication
 
@@ -3402,7 +3402,7 @@ scion attach my-agent
 ---
 
 ### day28 — A2A Protocol: Decoupling Reasoning from Execution  
-🟡 · 5:55 · A2A, LangGraph, ADK, Protocol
+✅ · 5:55 · A2A, LangGraph, ADK, Protocol
 
 Decouple your reasoning engine from execution using the universal A2A 1.0 protocol to bridge a Python LangGraph orchestrator and a Go ADK service.
 
@@ -3624,7 +3624,7 @@ python a2a_langgraph_orchestrator.py
 ---
 
 ### day29 — ApiRegistry: Dynamically Fetching BigQuery Tools  
-🟡 · 3:29 · ApiRegistry, BigQuery, Authentication
+✅ · 3:29 · ApiRegistry, BigQuery, Authentication
 
 Learn how to use the ApiRegistry object to dynamically fetch an admin-approved, fully configured BigQuery tool directly from the Cloud API Registry at runtime.
 
